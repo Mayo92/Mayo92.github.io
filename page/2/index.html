@@ -197,6 +197,65 @@
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-内存划分">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/内存划分/">内存划分</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/OS/" class="cube-excerpt-tag-link">#OS</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##1. 寄存器。     </p>
+<p>##2. 本地方法区。    </p>
+<p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p>
+<p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p>
+<p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/内存划分/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Bitmap">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/Bitmap/">Bitmap</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">public class BitmapUtils &#123;</span><br><span class="line">    // 根据maxWidth, maxHeight计算最合适的inSampleSize</span><br><span class="line">    public static int calculateInSampleSize(</span><br><span class="line">            BitmapFactory.Options options, int reqWidth, int reqHeight) &#123;</span><br><span class="line">        // Raw height and width of image</span><br><span class="line">        final int height = options.outHeight;</span><br><span class="line">        final int width = options.outWidth;</span><br><span class="line">        int inSampleSize = 1;</span><br><span class="line"></span><br><span class="line">        if (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line">            if (width &gt; height) &#123;</span><br><span class="line">                inSampleSize = Math.round((float)height / (float)reqHeight);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                inSampleSize = Math.round((float)width / (float)reqWidth);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return inSampleSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //缩略图</span><br><span class="line">    public static Bitmap thumbnail(String path,</span><br><span class="line">                                   int maxWidth, int maxHeight, boolean autoRotate) &#123;</span><br><span class="line">        BitmapFactory.Options options = new BitmapFactory.Options();</span><br><span class="line">        options.inJustDecodeBounds = true;</span><br><span class="line">        // 获取这个图片的宽和高信息到options中, 此时返回bm为空</span><br><span class="line">        Bitmap bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        options.inJustDecodeBounds = false;</span><br><span class="line">        // 计算缩放比</span><br><span class="line">        int sampleSize = calculateInSampleSize(options, maxWidth, maxHeight);</span><br><span class="line">        options.inSampleSize = sampleSize;</span><br><span class="line">        options.inPreferredConfig = Bitmap.Config.RGB_565;</span><br><span class="line">        options.inPurgeable = true;</span><br><span class="line">        options.inInputShareable = true;</span><br><span class="line">        if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">            bitmap.recycle();</span><br><span class="line">        &#125;</span><br><span class="line">        bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        return bitmap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //保存bitmap</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, File destFile) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            FileOutputStream out = new FileOutputStream(destFile);</span><br><span class="line">            if (bitmap.compress(format, quality, out)) &#123;</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">            if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">                bitmap.recycle();</span><br><span class="line">            &#125;</span><br><span class="line">            return destFile.getAbsolutePath();</span><br><span class="line">        &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 保存到sd卡</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, Context context) &#123;</span><br><span class="line">        if (!Environment.getExternalStorageState()</span><br><span class="line">                .equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        File dir = new File(Environment.getExternalStorageDirectory()</span><br><span class="line">                + &quot;/&quot; + context.getPackageName() + &quot;/save/&quot;);</span><br><span class="line">        if (!dir.exists()) &#123;</span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        File destFile = new File(dir, UUID.randomUUID().toString());</span><br><span class="line">        return save(bitmap, format, quality, destFile);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/Bitmap/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-内存泄漏">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/01/25/内存泄漏/">内存泄漏</a></h1>
@@ -223,113 +282,6 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/25/内存泄漏/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-数据库">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/数据库/">数据库</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>####SQL语句增删改查<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.增加信息：insert into 表名（字段列表）values（值列表）</span><br><span class="line">2.删除信息：delete from 表名 where 条件子句</span><br><span class="line">3.修改信息：update 表名 set 字段名 = 值 where 条件子句</span><br><span class="line">4.查询星系：select * from 表名</span><br></pre></td></tr></table></figure></p>
-<p>####SQL表关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.一对一</span><br><span class="line">2.一对多</span><br><span class="line">3.多对多</span><br></pre></td></tr></table></figure></p>
-<p>####SQLiteDatabase操作SQLite数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.打开或创建数据库：openOrCreateDatabase(Stringpath,SQLiteDatabase.CursorFactory factory)</span><br><span class="line">2.添加一条记录：insert(String table,String nullColumnHack,ContentValues values)</span><br><span class="line">3.删除一条记录：delect(String table,String whereClause,String[] whereArgs)</span><br><span class="line">4.查询一条记录：query(String table,String[] columns,String selection,String[] selectionArgs,String groupBy,String having,String orderBy)</span><br><span class="line">5.修改记录：update(String table,ContentValues values,String whereClause,String[] whereArgs)</span><br><span class="line">6.执行一条SQL语句：execSQL(String sql)</span><br><span class="line">7.关闭数据库：close()</span><br></pre></td></tr></table></figure></p>
-<p>###SQLiteOpenHelper的实现</p>
-<p>####一、抽象类：SQLiteOpenHelper</p>
-<p>####二、抽象方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onCreate（建表，存放在/data/data/packagename/databases/）</span><br><span class="line">onUpgrade</span><br></pre></td></tr></table></figure></p>
-<p>####三、实例方法，可以创建或者打开一个数据库，返回可对数据库进行读写操作的对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.getReadableDatabase：创建或打开一个仅仅可读的(read-only)数据库</span><br><span class="line">2.getWritableDatabase：创建或打开一个可读可写的数据库</span><br></pre></td></tr></table></figure></p>
-<p>####四、构造方法：一般用参数较少的那个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">四个参数：1.context、2.库名、3.null（自定义cursor一般为null）、4.版本号</span><br></pre></td></tr></table></figure></p>
-<p>####五、数据类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">integer整型、real浮点型、text文本类型、blob二进制类型</span><br></pre></td></tr></table></figure></p>
-<p>####六、操作方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询：db.rawQuery()，其他：db.execSQL()</span><br></pre></td></tr></table></figure></p>
-<p>####七、SQLite支持事务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">事务的特性可以保证让一系列的操作要么全部完成，要么一个都不完成</span><br><span class="line">db.beginTransaction();//开启事务</span><br><span class="line">db.setTransactionSuccessful();//事务执行成功</span><br><span class="line">db.endTransaction();//结束事务</span><br></pre></td></tr></table></figure></p>
-<p>####八、升级<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) &#123;</span><br><span class="line">        switch (newVersion)&#123;</span><br><span class="line">            //没有break为了跨版本升级成功</span><br><span class="line">            case 1:</span><br><span class="line">                db.execSQL(&quot;&quot;);</span><br><span class="line">            case 2:</span><br><span class="line">                db.execSQL(&quot;&quot;);</span><br><span class="line">            default:</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>####Cursor常用方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">getCount()：获得总的数据条数</span><br><span class="line">isFirst()：判断是否为第一条数据</span><br><span class="line">isLast()：判断是否为最后一条数据</span><br><span class="line">moveToFirst()：移动到第一条数据</span><br><span class="line">moveToLast()：移动到最后一条数据</span><br><span class="line">move(int offset)：移动到指定记录</span><br><span class="line">moveToNext()：移动到下一条记录</span><br><span class="line">moveToPrevious()：移动到上一条记录</span><br><span class="line">getColumnIndexOrThrow(String columnName)：根据列名获得列索引</span><br><span class="line">getInt(int columnIndex)：获得指定列索引的int类型值</span><br><span class="line">getString(int columnIndex)：获得指定列索引的String类型值</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/数据库/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-书单">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/书单/">书单</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>###Android书</p>
-<p>#####1.第一行代码（第一版）</p>
-<p>#####2.Android编程权威指南（第二版）</p>
-<p>#####3.Android群英传</p>
-<p>#####4.Android开发进阶从小工到专家</p>
-<p>#####5.Android进阶之光</p>
-<h1 id="6-Android开发艺术探索"><a href="#6-Android开发艺术探索" class="headerlink" title="#####6.Android开发艺术探索"></a>#####6.Android开发艺术探索</h1><p>###Android工具书</p>
-<p>#####1.Android Studio实战</p>
-<h1 id="2-Android群英传神兵利器"><a href="#2-Android群英传神兵利器" class="headerlink" title="#####2.Android群英传神兵利器"></a>#####2.Android群英传神兵利器</h1><p>###Android面试</p>
-<h1 id="1-Android面试宝典"><a href="#1-Android面试宝典" class="headerlink" title="#####1.Android面试宝典"></a>#####1.Android面试宝典</h1><p>###Android优化<br>1.APP研发录<br>2.Android源码设计模式解析与实战</p>
-<h1 id="3-设计模式之禅"><a href="#3-设计模式之禅" class="headerlink" title="3.设计模式之禅"></a>3.设计模式之禅</h1><p>###Java书<br>1.Java程序设计<br>2.Effective Java</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/书单/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-单例模式">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/单例模式/">单例模式</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/DP/" class="cube-excerpt-tag-link">#DP</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>###饿汉试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//设立静态变量，直接创建实例  </span><br><span class="line">private static MySingleton2 mySingleton = new MySingleton2();  </span><br><span class="line">  </span><br><span class="line">private MySingleton2()&#123;  </span><br><span class="line">    //私有化构造函数  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">      </span><br><span class="line">//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">public static MySingleton2 getInstance()&#123;  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">    return mySingleton;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>懒汉式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例模式  </span><br><span class="line">public class MySingleton &#123;  </span><br><span class="line">  </span><br><span class="line">    //设立静态变量  </span><br><span class="line">    private static MySingleton mySingleton = null;  </span><br><span class="line">  </span><br><span class="line">    private MySingleton()&#123;  </span><br><span class="line">        //私有化构造函数  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    //开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">    public static MySingleton getInstance()&#123;  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">        if(mySingleton == null)&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例当前并没有被创建&quot;);  </span><br><span class="line">            mySingleton = new MySingleton();  </span><br><span class="line">        &#125;else&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例已经被创建&quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(&quot;--&gt;方法调用结束，返回单例&quot;);  </span><br><span class="line">        return mySingleton;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/单例模式/">阅读全文</a>
     </footer>
 </div>
 
@@ -365,9 +317,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-定时任务Alarm">
+<div class="cube-excerpt" id="cube-excerpt-单例模式">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/定时任务Alarm/">定时任务Alarm</a></h1>
+        <h1><a href="/2018/01/25/单例模式/">单例模式</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -376,7 +328,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                <a href="/tags/DP/" class="cube-excerpt-tag-link">#DP</a>
                 
             </div>
         </div>
@@ -384,12 +336,13 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class LongRunningService extends Service &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public IBinder onBind(Intent intent) &#123;</span><br><span class="line">                return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">                new Thread(new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().</span><br><span class="line">toString());</span><br><span class="line">                          &#125;</span><br><span class="line">                &#125;).start();</span><br><span class="line">        AlarmManager manager = (AlarmManager)       getSystemService(ALARM_SERVICE);</span><br><span class="line">        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数</span><br><span class="line">        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;</span><br><span class="line">        Intent i = new Intent(this, AlarmReceiver.class);</span><br><span class="line">        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);</span><br><span class="line">        //说明：set()方法需要传入三个参数</span><br><span class="line">        第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。</span><br><span class="line">        第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。</span><br><span class="line">        第三个参数是PendingIntent。</span><br><span class="line">        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class AlarmReceiver extends BroadcastReceiver &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">        Intent i = new Intent(context, LongRunningService.class);</span><br><span class="line">        context.startService(i);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+           <p>###饿汉试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//设立静态变量，直接创建实例  </span><br><span class="line">private static MySingleton2 mySingleton = new MySingleton2();  </span><br><span class="line">  </span><br><span class="line">private MySingleton2()&#123;  </span><br><span class="line">    //私有化构造函数  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">      </span><br><span class="line">//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">public static MySingleton2 getInstance()&#123;  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">    return mySingleton;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>懒汉式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例模式  </span><br><span class="line">public class MySingleton &#123;  </span><br><span class="line">  </span><br><span class="line">    //设立静态变量  </span><br><span class="line">    private static MySingleton mySingleton = null;  </span><br><span class="line">  </span><br><span class="line">    private MySingleton()&#123;  </span><br><span class="line">        //私有化构造函数  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    //开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">    public static MySingleton getInstance()&#123;  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">        if(mySingleton == null)&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例当前并没有被创建&quot;);  </span><br><span class="line">            mySingleton = new MySingleton();  </span><br><span class="line">        &#125;else&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例已经被创建&quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(&quot;--&gt;方法调用结束，返回单例&quot;);  </span><br><span class="line">        return mySingleton;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/定时任务Alarm/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/单例模式/">阅读全文</a>
     </footer>
 </div>
 
@@ -424,6 +377,79 @@ resources.updateConfiguration(config, dm);
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/05/Android多语言/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-定时任务Alarm">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/07/02/定时任务Alarm/">定时任务Alarm</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-07-02
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android基础/" class="cube-excerpt-tag-link">#Android基础</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="轮询服务"><a href="#轮询服务" class="headerlink" title="轮询服务"></a>轮询服务</h2><pre><code>public class LongRunningService extends Service {
+
+    @Override
+    public IBinder onBind(Intent intent) {
+
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().toString());
+             }
+         }).start();
+
+        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数
+        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
+        Intent i = new Intent(this, AlarmReceiver.class);
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+        //说明：set()方法需要传入三个参数
+        //第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。
+        //其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。
+        //ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。
+        //RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。
+        //RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。
+        //第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。
+        //第三个参数是PendingIntent。
+        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
+        return super.onStartCommand(intent, flags, startId);
+   }
+}
+</code></pre><h2 id="广播接收者"><a href="#广播接收者" class="headerlink" title="广播接收者"></a>广播接收者</h2><pre><code>public class AlarmReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+        Intent i = new Intent(context, LongRunningService.class);
+        context.startService(i);
+    }
+}    
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/07/02/定时任务Alarm/">阅读全文</a>
     </footer>
 </div>
 
@@ -658,7 +684,7 @@ resources.updateConfiguration(config, dm);
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/01/25/书单/" title="书单">书单</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -676,7 +702,7 @@ resources.updateConfiguration(config, dm);
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/字符流与字节流/" title="字符流与字节流">字符流与字节流</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -702,7 +728,7 @@ resources.updateConfiguration(config, dm);
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
+                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
                 </p>
             </div>
         </li>
@@ -733,18 +759,13 @@ resources.updateConfiguration(config, dm);
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Code/">#Code</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
@@ -754,17 +775,22 @@ resources.updateConfiguration(config, dm);
         
         
         <div class="cube-box ">
+            <a href="/categories/Algorithm/">#Algorithm</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/DP/">#DP</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/Internet/">#Internet</a>
+            <a href="/categories/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Java/">#Java</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Internet/">#Internet</a>
         </div>
         
     </div>
@@ -784,13 +810,13 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android基础/">#Android基础</a>
+        <div class="cube-box ">
+            <a href="/tags/Android/">#Android</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android/">#Android</a>
+        <div class="cube-box ">
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
@@ -809,18 +835,18 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Internet/">#Internet</a>
+            <a href="/tags/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java/">#Java</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Internet/">#Internet</a>
         </div>
         
     </div>

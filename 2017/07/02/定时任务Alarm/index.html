@@ -169,20 +169,65 @@
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2018-01-25
+            2017-07-02
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/Android/">#Android</a>
+    <a href="/tags/Android基础/">#Android基础</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class LongRunningService extends Service &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public IBinder onBind(Intent intent) &#123;</span><br><span class="line">                return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">                new Thread(new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().</span><br><span class="line">toString());</span><br><span class="line">                          &#125;</span><br><span class="line">                &#125;).start();</span><br><span class="line">        AlarmManager manager = (AlarmManager)       getSystemService(ALARM_SERVICE);</span><br><span class="line">        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数</span><br><span class="line">        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;</span><br><span class="line">        Intent i = new Intent(this, AlarmReceiver.class);</span><br><span class="line">        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);</span><br><span class="line">        //说明：set()方法需要传入三个参数</span><br><span class="line">        第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。</span><br><span class="line">        第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。</span><br><span class="line">        第三个参数是PendingIntent。</span><br><span class="line">        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class AlarmReceiver extends BroadcastReceiver &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">        Intent i = new Intent(context, LongRunningService.class);</span><br><span class="line">        context.startService(i);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="轮询服务"><a href="#轮询服务" class="headerlink" title="轮询服务"></a>轮询服务</h2><pre><code>public class LongRunningService extends Service {
+
+    @Override
+    public IBinder onBind(Intent intent) {
+
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().toString());
+             }
+         }).start();
+
+        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数
+        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
+        Intent i = new Intent(this, AlarmReceiver.class);
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+        //说明：set()方法需要传入三个参数
+        //第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。
+        //其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。
+        //ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。
+        //RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。
+        //RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。
+        //第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。
+        //第三个参数是PendingIntent。
+        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
+        return super.onStartCommand(intent, flags, startId);
+   }
+}
+</code></pre><h2 id="广播接收者"><a href="#广播接收者" class="headerlink" title="广播接收者"></a>广播接收者</h2><pre><code>public class AlarmReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+        Intent i = new Intent(context, LongRunningService.class);
+        context.startService(i);
+    }
+}    
+</code></pre>
     </div>
 </div>
 
@@ -190,16 +235,16 @@
     <ul>
         
         <li class="prev">
-            <a href="/2018/01/25/冒泡排序/">
+            <a href="/2018/01/05/Android多语言/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                冒泡排序
+                Android多语言
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2018/01/05/Android多语言/">
-                Android多语言
+            <a href="/2017/06/25/文件存储/">
+                文件存储
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -317,7 +362,7 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/01/25/书单/" title="书单">书单</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -335,7 +380,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/字符流与字节流/" title="字符流与字节流">字符流与字节流</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -361,7 +406,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
+                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
                 </p>
             </div>
         </li>
@@ -392,18 +437,13 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Code/">#Code</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
@@ -413,17 +453,22 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/DP/">#DP</a>
+            <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/Internet/">#Internet</a>
+        <div class="cube-box ">
+            <a href="/categories/DP/">#DP</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Java/">#Java</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Internet/">#Internet</a>
         </div>
         
     </div>
@@ -438,13 +483,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android国际化/">#Android国际化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
@@ -454,6 +494,11 @@
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
@@ -473,13 +518,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Internet/">#Internet</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java/">#Java</a>
+        <div class="cube-box ">
+            <a href="/tags/Internet/">#Internet</a>
         </div>
         
     </div>
