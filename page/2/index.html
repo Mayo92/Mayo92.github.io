@@ -163,6 +163,158 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-StartActivity">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/StartActivity/">StartActivity</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//如果启动ThirdActivity需要两个参数，封装一个方法使ThirdActivity所需要的数据全部都在方法参数中体现出来了</span><br><span class="line">    public static void actionStart(Context context,String data1,String data2)&#123;</span><br><span class="line">        Intent intent=new Intent(context,ThirdActivity.class);</span><br><span class="line">        intent.putExtra(&quot;param1&quot;,data1);</span><br><span class="line">        intent.putExtra(&quot;param2&quot;,data2);</span><br><span class="line">        context.startActivity(intent);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/StartActivity/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-BaseActivity">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/BaseActivity/">BaseActivity</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>###获得当前活动名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getClass.getSimpleName();</span><br></pre></td></tr></table></figure></p>
+<p>###退出应用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class ActivityCollector &#123;</span><br><span class="line">    public static List&lt;Activity&gt;activities=new ArrayList&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    public static void addActivity(Activity activity)&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void removeActivity(Activity activity)&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    //测试finishAll()方法在ThirdActivity中</span><br><span class="line">    public static void finishAll()&#123;</span><br><span class="line">        for (Activity activity:activities) &#123;</span><br><span class="line">            if(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        ActivityCollector.addActivity(this);//向List添加活动</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        ActivityCollector.removeActivity(this);//从List移除活动</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//销毁所有Activity后可以加上结束当前进程的方法</span><br><span class="line">public void onClick(View v) &#123;</span><br><span class="line">                ActivityCollector.finishAll();//销毁所有活动</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/BaseActivity/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-二分查找">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/二分查找/">二分查找</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
+<p>##思路:</p>
+<p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p>
+<p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p>
+<p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/二分查找/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-字符流与字节流">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/字符流与字节流/">字符流与字节流</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-0e77b7f3c8dbb606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-13 14.23.08.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-78f27e4c15351119.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-13 14.23.20.png"></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/字符流与字节流/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-冒泡排序">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/冒泡排序/">冒泡排序</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##思路:     </p>
+<p>###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p>
+<p>###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p>
+<p>###3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p>
+<p>###4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort</span><br><span class="line">&#123;</span><br><span class="line">    public void sort(int[] a)</span><br><span class="line">    &#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = a.length - 1; i &gt; 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[j + 1] &lt; a[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = a[j];</span><br><span class="line">                    a[j] = a[j + 1];</span><br><span class="line">                    a[j + 1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/冒泡排序/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-单例模式">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/01/25/单例模式/">单例模式</a></h1>
@@ -189,6 +341,44 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/25/单例模式/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-网络参考模型">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/网络参考模型/">网络参考模型</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Internet/" class="cube-excerpt-tag-link">#Internet</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>OSI(Open System Interconnection 开放系统互连)参考模型<br>TCP/IP 参考模型</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ce5ded47e12c0ebe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 09.56.42.png"></p>
+<p>###七层描述<br>1.物理层:主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、 0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</p>
+<p>2.数据链路层:主要将从物理层接收的数据进行MAC地址(网卡的地址)的封装与解封装。常把这一 层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。</p>
+<p>3.网络层:主要将下层接收到的数据进行IP地址(例，192.168.0.1)的封装与解封装。在这一层工作 的设备是路由器，常把这一层的数据叫做数据包。</p>
+<p>4.传输层:定义了一些传输数据的协议和端口号(WWW端口号80等)，如:TCP(传输控制协议， 传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特 性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的)。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层叫做段。</p>
+<p>5.会话层:通过传输层(端口号:传输端口与接收端口)建立数据传输的通路。主要在你的系统之间 发起会话或者接收会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</p>
+<p>6.表示层:主要是进行对接收的数据进行解释，加密与解密、压缩与解压缩等(也就是把计算机能够 识别的东西转换成人能够识别的东西(如图片、声音等)。</p>
+<p>7.应用层:主要是一些终端的应用，比如说FTP(各种文件下载)、WEB(IE浏览)、QQ之类的(可 以把它理解成我们在电脑屏幕上可以看到的东西，就是终端应用)。</p>
+<p>####PS<br>1.每个网卡的MAC地址都是全球唯一的。<br>2.路由器实现将数据包发送到指定的地点。<br>3.应用软件之间通信的过程就是层与层之间封包、解封包的过程。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-f65c6ce4396214c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 11.40.46.png"><br>4.OSI参考模型虽然设计精细，但过于麻烦，效率不高，因此才产生了简化版的TCP/IP参考模型。</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/网络参考模型/">阅读全文</a>
     </footer>
 </div>
 
@@ -220,9 +410,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-内存划分">
+<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/内存划分/">内存划分</a></h1>
+        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -231,7 +421,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/OS/" class="cube-excerpt-tag-link">#OS</a>
+                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
                 
             </div>
         </div>
@@ -239,16 +429,12 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>##1. 寄存器。     </p>
-<p>##2. 本地方法区。    </p>
-<p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p>
-<p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p>
-<p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>
+           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/内存划分/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
     </footer>
 </div>
 
@@ -292,70 +478,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-文件存储">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/文件存储/">文件存储</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>###1.openFileInput和openFileOutput的使用</p>
-<p>######文件的使用，注意最后要用finally给关闭掉。</p>
-<p>######openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&gt; 返回FileOutputStream</p>
-<p>######openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&gt; FileInputStream<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">保存文件：</span><br><span class="line">第一个参数：文件名（不包含路径）默认为data/data/包名/files/下</span><br><span class="line">第二个参数：文件操作模式，下面是写入的四种模式</span><br><span class="line">    MODE_APPEND：即向文件尾写入数据（文件已存在就追加）</span><br><span class="line">    MODE_PRIVATE：即仅打开文件可写入数据（默认模式，相同文件名会覆盖内容）</span><br><span class="line">    MODE_WORLD_READABLE：所有程序均可读该文件数据（弃用）</span><br><span class="line">    MODE_WORLD_WRITABLE：即所有程序均可写入数据（弃用）</span><br><span class="line"></span><br><span class="line">private void savePackageFile(Context context,String filename,String text) &#123;</span><br><span class="line">        //String msg = tvSaveMessage.getText().toString() + &quot; \n&quot;;</span><br><span class="line">        FileOutputStream outputStream = null;</span><br><span class="line">        BufferedWriter writer = null;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            outputStream = context.openFileOutput(filename, Context.MODE_APPEND);</span><br><span class="line">            writer = new BufferedWriter(new OutputStreamWriter(outputStream));</span><br><span class="line">            writer.write(text);</span><br><span class="line">            //outputStream.write(msg.getBytes());</span><br><span class="line">            //outputStream.flush();</span><br><span class="line">            //outputStream.close();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally&#123;</span><br><span class="line">            if(writer != null)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">读取文件：</span><br><span class="line">参数：文件名（读取包名下files文件夹下的文件）</span><br><span class="line">返回值：FileInputStream</span><br><span class="line"></span><br><span class="line">    private void readSaveFile(Context context,String filename) &#123;</span><br><span class="line">        FileInputStream inputStream = null;</span><br><span class="line">        BufferedReader bufferedReader = null;</span><br><span class="line">        StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            inputStream = context.openFileInput(filename);</span><br><span class="line">            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));</span><br><span class="line">            String line =  &quot;&quot;;</span><br><span class="line">            while ((line = bufferedReader.readLine()) != null)&#123;</span><br><span class="line">                stringBuilder.append(line);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">//            byte temp[] = new byte[1024];</span><br><span class="line">//            StringBuilder sb = new StringBuilder(&quot;&quot;);</span><br><span class="line">//            int len = 0;</span><br><span class="line">//            while ((len = inputStream.read(temp)) &gt; 0)&#123;</span><br><span class="line">//                sb.append(new String(temp, 0, len));</span><br><span class="line">//            &#125;</span><br><span class="line">//            inputStream.close();</span><br><span class="line"></span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">          if(bufferedReader != null)&#123;</span><br><span class="line">              try &#123;</span><br><span class="line">                  bufferedReader.close();</span><br><span class="line">              &#125; catch (IOException e) &#123;</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>###2.SD卡读取和写入—路径：/storage/sdcard0/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">######SD卡权限;</span><br><span class="line">&lt;!-- 在SDCard中创建与删除文件权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;</span><br><span class="line">&lt;!-- 往SDCard写入数据权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">往SD卡写入文件的方法</span><br><span class="line">public void savaFileToSD(String filename, String filecontent) throws Exception &#123;</span><br><span class="line">    //如果手机已插入sd卡,且app具有读写sd卡的权限</span><br><span class="line">    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">   filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;</span><br><span class="line"></span><br><span class="line">        //这里就不要用openFileOutput了,那个是往手机内存中写数据的</span><br><span class="line">        FileOutputStream output = new FileOutputStream(filename);</span><br><span class="line">        output.write(filecontent.getBytes());</span><br><span class="line">        //将String字符串以字节流的形式写入到输出流中</span><br><span class="line">        output.close();</span><br><span class="line">        //关闭输出流</span><br><span class="line">    &#125; else Toast.makeText(context, &quot;SD卡不存在或者不可读写&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//读取SD卡中文件的方法</span><br><span class="line">//定义读取文件的方法:</span><br><span class="line">public String readFromSD(String filename) throws IOException &#123;</span><br><span class="line">    StringBuilder sb = new StringBuilder(&quot;&quot;);</span><br><span class="line">    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">        filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;</span><br><span class="line">        //打开文件输入流</span><br><span class="line">        FileInputStream input = new FileInputStream(filename);</span><br><span class="line">        byte[] temp = new byte[1024];</span><br><span class="line"></span><br><span class="line">        int len = 0;</span><br><span class="line">        //读取文件内容:</span><br><span class="line">        while ((len = input.read(temp)) &gt; 0) &#123;</span><br><span class="line">            sb.append(new String(temp, 0, len));</span><br><span class="line">        &#125;</span><br><span class="line">        //关闭输入流</span><br><span class="line">        input.close();</span><br><span class="line">    &#125;</span><br><span class="line">    return sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###3.读取raw和assets文件夹下的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res/raw：文件会被映射到R.java文件中，访问的时候直接通过资源ID即可访问，而且 他不能有目录结构，就是不能再创建文件夹</span><br><span class="line">assets：不会映射到R.java文件中，通过AssetManager来访问，能有目录结构，即可以自行创建文件夹</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读取文件资源</span><br><span class="line">raw: </span><br><span class="line">InputStream is =getResources().openRawResource(R.raw.filename);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">读取文件资源</span><br><span class="line">assets: </span><br><span class="line">AssetManager am =  getAssets();   </span><br><span class="line">InputStream is = am.open(&quot;filename&quot;);</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/文件存储/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Service启动模式">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/09/20/Service两种启动模式/">Service启动模式</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-09-20
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>#第一种启动方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class StartService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    //绑定服务才会调用，必须实现的方法（唯一抽象方法）</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //调用startService方法启动Service时会回调</span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）</span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/09/20/Service两种启动模式/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -378,11 +500,17 @@
             </li>
             
         
+            
+            <li class="cube-pagination-index">
+                <a href="/page/3">3</a>
+            </li>
+            
+        
     
 
     
-    <li class="cube-pagination-next disabled">
-        <span>下一页 »</span>
+    <li class="cube-pagination-next">
+        <a href="/page/3/">下一页 »</a>
     </li>
     
 </ul>
@@ -451,9 +579,9 @@
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>16</span>文章</a>
-        <a class="count tags"><span>5</span>标签</a>
-        <a class="count categories"><span>5</span>分类</a>
+        <a class="count articles"><span>22</span>文章</a>
+        <a class="count tags"><span>7</span>标签</a>
+        <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
 
@@ -493,7 +621,7 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/冒泡排序/" title="冒泡排序">冒泡排序</a>
+                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -524,7 +652,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Handler两种使用方法/" title="Handler两种使用方法">Handler两种使用方法</a>
+                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
                 </p>
             </div>
         </li>
@@ -537,7 +665,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/IntentService使用方法/" title="IntentService使用方法">IntentService使用方法</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -550,7 +678,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Java变量/" title="Java变量">Java变量</a>
+                    <a href="/2018/01/25/Handler两种使用方法/" title="Handler两种使用方法">Handler两种使用方法</a>
                 </p>
             </div>
         </li>
@@ -578,18 +706,28 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/Code/Java/">#Java</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Code/Java/">#Java</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Java/">#Java</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/categories/DP/">#DP</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Internet/">#Internet</a>
         </div>
         
     </div>
@@ -609,8 +747,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OS/">#OS</a>
         </div>
         
         
@@ -620,12 +763,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/DP/">#DP</a>
+            <a href="/tags/Java/">#Java</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/OS/">#OS</a>
+            <a href="/tags/DP/">#DP</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Internet/">#Internet</a>
         </div>
         
     </div>
