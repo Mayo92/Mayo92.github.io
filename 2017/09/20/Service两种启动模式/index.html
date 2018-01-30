@@ -12,7 +12,7 @@
     
     
     
-    <title>赞美の心</title>
+    <title>Service启动模式 | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,91 +162,52 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            
-<div class="cube-excerpt" id="cube-excerpt-Android多语言">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Android多语言/">Android多语言</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
+            <div class="cube-article">
+    <h1 class="title">Service启动模式</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2017-09-20
         </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="一、添加多语言资源在Values下"><a href="#一、添加多语言资源在Values下" class="headerlink" title="一、添加多语言资源在Values下"></a>一、添加多语言资源在Values下</h3><h3 id="二、更新Configuration中的locale属性"><a href="#二、更新Configuration中的locale属性" class="headerlink" title="二、更新Configuration中的locale属性"></a>二、更新Configuration中的locale属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//更改语言 返回主Activity即IsOpenLocationActivity</span><br><span class="line">Resources resources = LanguageActivity.this.getResources();</span><br><span class="line">DisplayMetrics dm = resources.getDisplayMetrics();</span><br><span class="line">Configuration config = resources.getConfiguration();</span><br><span class="line">// 应用用户选择语言</span><br><span class="line">config.locale = UtilTool.getLanguage();</span><br><span class="line">resources.updateConfiguration(config, dm);</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Android多语言/">阅读全文</a>
-    </footer>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Android/">#Android</a>
+    
 </div>
-
-<div class="cube-excerpt" id="cube-excerpt-Service启动模式">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/09/20/Service两种启动模式/">Service启动模式</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-09-20
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
         
-        
-           <p>#第一种启动方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class StartService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    //绑定服务才会调用，必须实现的方法（唯一抽象方法）</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //调用startService方法启动Service时会回调</span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）</span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>#第一种启动方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class StartService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    //绑定服务才会调用，必须实现的方法（唯一抽象方法）</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //调用startService方法启动Service时会回调</span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）</span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>#第二种启动方法</p>
 <p>###Service<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class BindService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    private int count;</span><br><span class="line">    private boolean quit;</span><br><span class="line">    private Thread thread;</span><br><span class="line">    private LocalBinder binder = new LocalBinder();</span><br><span class="line"></span><br><span class="line">    //创建Binder对象返回给客户端，提供数据接口</span><br><span class="line">    public class LocalBinder extends Binder&#123;</span><br><span class="line">        //声明一个方法</span><br><span class="line">        BindService getService()&#123;</span><br><span class="line">            //返回当前对象，这样就可以在客户端调用Service公共方法了</span><br><span class="line">            return BindService.this;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //把Binder类返回给客户端</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return binder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        //开启一个线程，count++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //公共方法</span><br><span class="line">    public int getCount()&#123;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //解除时调用</span><br><span class="line">    @Override</span><br><span class="line">    public boolean onUnbind(Intent intent) &#123;</span><br><span class="line">        return super.onUnbind(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        this.quit = true;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>###Activity<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">public class BindActivity extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    Button btnBind,btnUnBind,btnGetData;</span><br><span class="line"></span><br><span class="line">    //代表与服务器的里链接，两个方法：onServiceConnected（操作者在链接一个服务成功时被回调）和</span><br><span class="line">    // onServiceDisConnected（服务崩溃或者被杀死导致链接中断时被调用）</span><br><span class="line">    private MyConn con;</span><br><span class="line">    private BindService mService;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        //创建绑定对象</span><br><span class="line">        final Intent intent = new Intent(this,BindService.class);</span><br><span class="line">        con = new MyConn();</span><br><span class="line">        //开始绑定(回调onBind方法，如果没有创建先执行onCreate)</span><br><span class="line">        //BIND_AUTO_CREATE:活动和服务绑定后自动创建服务，onCreate执行，onStartCommand不执行</span><br><span class="line">        bindService(intent,con,BIND_AUTO_CREATE);</span><br><span class="line"></span><br><span class="line">        //获取数据</span><br><span class="line">        if(mService != null)&#123;</span><br><span class="line">            //通过绑定服务传递的Binder对象获取Service暴露出来的数据</span><br><span class="line">            mService.getCount();</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            //还没绑定</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //解除绑定</span><br><span class="line">        if(mService != null)&#123;</span><br><span class="line">            mService = null;</span><br><span class="line">            unbindService(con);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private class MyConn implements ServiceConnection&#123;</span><br><span class="line"></span><br><span class="line">        //与服务器交互的接口方法，绑定服务时被回调，在这个方法获取绑定Service传递过来的IBinder对象</span><br><span class="line">        //通过IBinder对象实现宿主与Service的交互</span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">            //绑定成功</span><br><span class="line">            BindService.LocalBinder binder = (BindService.LocalBinder) service;</span><br><span class="line">            mService = binder.getService();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //当取消绑定时被回调，正常情况下不会被调用，当Service被意外销毁时（如内存不足）才会被调用</span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line">            mService = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
         
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/09/20/Service两种启动模式/">阅读全文</a>
-    </footer>
+        <li class="prev">
+            <a href="/2018/01/25/Android多语言/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Android多语言
+            </a>
+        </li>
+        
+        
+    </ul>
 </div>
 
 
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
-<ul class="cube-pagination cube-pagination-6">
-    
-    <li class="cube-pagination-prev disabled">
-        <span>« 上一页</span>
-    </li>
-    
-    
-        
-            
-            <li class="cube-pagination-index disabled">
-                <span>1</span>
-            </li>
-            
-        
-    
 
-    
-    <li class="cube-pagination-next disabled">
-        <span>下一页 »</span>
-    </li>
-    
-</ul>
 
-<!--其他组件后续添加-->
         </div>
         <div class="cube-right">
             
@@ -404,7 +365,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
