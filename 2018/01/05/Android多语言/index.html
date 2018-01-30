@@ -12,7 +12,7 @@
     
     
     
-    <title>BaseActivity | 赞美の心</title>
+    <title>Android多语言 | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -163,28 +163,41 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">BaseActivity</h1>
+    <h1 class="title">Android多语言</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2018-01-25
+            2018-01-05
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/Android/">#Android</a>
+    <a href="/tags/Android国际化/">#Android国际化</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <p>###获得当前活动名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getClass.getSimpleName();</span><br></pre></td></tr></table></figure></p>
-<p>###退出应用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class ActivityCollector &#123;</span><br><span class="line">    public static List&lt;Activity&gt;activities=new ArrayList&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    public static void addActivity(Activity activity)&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void removeActivity(Activity activity)&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    //测试finishAll()方法在ThirdActivity中</span><br><span class="line">    public static void finishAll()&#123;</span><br><span class="line">        for (Activity activity:activities) &#123;</span><br><span class="line">            if(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        ActivityCollector.addActivity(this);//向List添加活动</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        ActivityCollector.removeActivity(this);//从List移除活动</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//销毁所有Activity后可以加上结束当前进程的方法</span><br><span class="line">public void onClick(View v) &#123;</span><br><span class="line">                ActivityCollector.finishAll();//销毁所有活动</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="一、添加多语言资源在Values下"><a href="#一、添加多语言资源在Values下" class="headerlink" title="一、添加多语言资源在Values下"></a>一、添加多语言资源在Values下</h3><h3 id="二、更新Configuration中的locale属性"><a href="#二、更新Configuration中的locale属性" class="headerlink" title="二、更新Configuration中的locale属性"></a>二、更新Configuration中的locale属性</h3><pre><code>//更改语言 返回主Activity即IsOpenLocationActivity
+Resources resources = LanguageActivity.this.getResources();
+DisplayMetrics dm = resources.getDisplayMetrics();
+Configuration config = resources.getConfiguration();
+// 应用用户选择语言
+config.locale = UtilTool.getLanguage();
+resources.updateConfiguration(config, dm);
+</code></pre><a id="more"></a>
+<h3 id="三、重启Activity"><a href="#三、重启Activity" class="headerlink" title="三、重启Activity"></a>三、重启Activity</h3><pre><code>Intent intent = new Intent(LanguageActivity.this, IsOpenLocationActivity.class);
+intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+startActivity(intent);
+</code></pre><h3 id="四、持久化存储"><a href="#四、持久化存储" class="headerlink" title="四、持久化存储"></a>四、持久化存储</h3><pre><code>Resources resources = mContext.getResources();
+DisplayMetrics dm = resources.getDisplayMetrics();
+Configuration config = resources.getConfiguration();
+config.locale = UtilTool.getLanguage();
+resources.updateConfiguration(config, dm);
+</code></pre>
     </div>
 </div>
 
@@ -192,16 +205,16 @@
     <ul>
         
         <li class="prev">
-            <a href="/2018/01/25/二分查找/">
+            <a href="/2018/01/25/内存划分/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                二分查找
+                内存划分
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2018/01/25/内存泄漏/">
-                内存泄漏
+            <a href="/2017/06/25/文件存储/">
+                文件存储
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -278,7 +291,7 @@
     
     <div class="count">
         <a class="count articles"><span>24</span>文章</a>
-        <a class="count tags"><span>8</span>标签</a>
+        <a class="count tags"><span>9</span>标签</a>
         <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
@@ -319,10 +332,10 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/06/08/BaseActivity/" title="BaseActivity">BaseActivity</a>
                     </p>
                     <p class="date">
-                        2018-01-25
+                        2018-06-08
                     </p>
                 </div>
             </div>
@@ -337,7 +350,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -363,7 +376,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -376,7 +389,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -394,7 +407,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
@@ -419,7 +432,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
@@ -441,16 +454,21 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android国际化/">#Android国际化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
@@ -460,7 +478,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OS/">#OS</a>
         </div>
         
@@ -470,7 +488,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java/">#Java</a>
         </div>
         

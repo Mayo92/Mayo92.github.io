@@ -174,34 +174,32 @@
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/Android/">#Android</a>
+    <a href="/tags/Android基础/">#Android基础</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class IntentService extends android.app.IntentService&#123;</span><br><span class="line"></span><br><span class="line">    //两个方法必须实现，构造方法和onHandleIntent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Creates an IntentService.  Invoked by your subclass&apos;s constructor.</span><br><span class="line">     *</span><br><span class="line">     * @param name Used to name the worker thread, important only for debugging.</span><br><span class="line">     */</span><br><span class="line">    public IntentService(String name) &#123;</span><br><span class="line">        //name表示他的线程名称</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //实现异步任务的方法，Activity传过来的intent，数据包含在intent中</span><br><span class="line">    @Override</span><br><span class="line">    protected void onHandleIntent(@Nullable Intent intent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>public class IntentService extends android.app.IntentService{
+        <h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><pre><code>public class IntentService extends android.app.IntentService{
 
-//两个方法必须实现，构造方法和onHandleIntent
+    //两个方法必须实现，构造方法和onHandleIntent
 
+    /**
+      * Creates an IntentService.  Invoked by your subclass&apos;s constructor.
+      *
+      * @param name Used to name the worker thread, important only for debugging.
+      */
+    public IntentService(String name) {
+        //name表示他的线程名称
+        super(name);
+    }
 
-/**
- * Creates an IntentService.  Invoked by your subclass&apos;s constructor.
- *
- * @param name Used to name the worker thread, important only for debugging.
- */
-public IntentService(String name) {
-    //name表示他的线程名称
-    super(name);
-}
+    //实现异步任务的方法，Activity传过来的intent，数据包含在intent中
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
 
-//实现异步任务的方法，Activity传过来的intent，数据包含在intent中
-@Override
-protected void onHandleIntent(@Nullable Intent intent) {
-
-}
+    }
 }
 </code></pre>
     </div>
@@ -211,9 +209,9 @@ protected void onHandleIntent(@Nullable Intent intent) {
     <ul>
         
         <li class="prev">
-            <a href="/2018/01/25/面试记录/">
+            <a href="/2017/06/03/StartActivity/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                面试记录
+                StartActivity
             </a>
         </li>
         
@@ -297,7 +295,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
     
     <div class="count">
         <a class="count articles"><span>24</span>文章</a>
-        <a class="count tags"><span>8</span>标签</a>
+        <a class="count tags"><span>9</span>标签</a>
         <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
@@ -338,10 +336,10 @@ protected void onHandleIntent(@Nullable Intent intent) {
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/06/08/BaseActivity/" title="BaseActivity">BaseActivity</a>
                     </p>
                     <p class="date">
-                        2018-01-25
+                        2018-06-08
                     </p>
                 </div>
             </div>
@@ -356,7 +354,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -382,7 +380,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -395,7 +393,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -413,7 +411,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
@@ -433,7 +431,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/DP/">#DP</a>
         </div>
         
@@ -443,7 +441,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -459,13 +457,18 @@ protected void onHandleIntent(@Nullable Intent intent) {
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android/">#Android</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
+            <a href="/tags/Android国际化/">#Android国际化</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android/">#Android</a>
         </div>
         
         
@@ -484,7 +487,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
@@ -494,7 +497,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         

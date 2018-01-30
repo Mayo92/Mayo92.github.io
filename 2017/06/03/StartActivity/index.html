@@ -12,7 +12,7 @@
     
     
     
-    <title>标签: Android | 赞美の心</title>
+    <title>StartActivity | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,33 +162,63 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">StartActivity</h1>
     
-    <div class="cube-archive" style="margin-top: 0;">
-        <h1 class="title">Android</h1>
-        
-        <ul class="posts">
-            
-            <li class="post">
-                <a href="/2018/01/25/面试记录/">面试记录</a>
-            </li>
-            
-            <li class="post">
-                <a href="/2017/06/02/IntentService使用方法/">IntentService使用方法</a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2017-06-03
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Android基础/">#Android基础</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <pre><code>//如果启动ThirdActivity需要两个参数，封装一个方法使ThirdActivity所需要的数据全部都在方法参数中体现出来了
+public static void actionStart(Context context,String data1,String data2){
+
+    Intent intent=new Intent(context,ThirdActivity.class);
+    intent.putExtra(&quot;param1&quot;,data1);
+    intent.putExtra(&quot;param2&quot;,data2);
+    context.startActivity(intent);
+}
+</code></pre>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2017/06/25/文件存储/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                文件存储
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2017/06/02/IntentService使用方法/">
+                IntentService使用方法
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
         </div>
         <div class="cube-right">
             
@@ -253,7 +283,7 @@
     
     <div class="count">
         <a class="count articles"><span>24</span>文章</a>
-        <a class="count tags"><span>8</span>标签</a>
+        <a class="count tags"><span>9</span>标签</a>
         <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
@@ -294,10 +324,10 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/06/08/BaseActivity/" title="BaseActivity">BaseActivity</a>
                     </p>
                     <p class="date">
-                        2018-01-25
+                        2018-06-08
                     </p>
                 </div>
             </div>
@@ -312,7 +342,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -338,7 +368,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -351,7 +381,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -374,7 +404,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
@@ -389,7 +419,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/DP/">#DP</a>
         </div>
         
@@ -399,7 +429,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -415,13 +445,18 @@
     <div class="cube-boxs">
         
         
+        <div class="cube-box ">
+            <a href="/tags/Android基础/">#Android基础</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
-            <a href="/tags/Android/">#Android</a>
+            <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
+            <a href="/tags/Android/">#Android</a>
         </div>
         
         
@@ -435,7 +470,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OS/">#OS</a>
         </div>
         
@@ -445,12 +480,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         

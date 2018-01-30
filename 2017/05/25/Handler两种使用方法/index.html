@@ -181,9 +181,63 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h2 id="第一种方法Post"><a href="#第一种方法Post" class="headerlink" title="第一种方法Post"></a>第一种方法Post</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class PostActivity extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler();</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            super.run();</span><br><span class="line">            try&#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Runnable runnable = new Runnable() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void run() &#123;</span><br><span class="line">                        //更新UI</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                mHandler.post(runnable);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="第二种方法sendMessage"><a href="#第二种方法sendMessage" class="headerlink" title="第二种方法sendMessage"></a>第二种方法sendMessage</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class SendMessage extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            switch (msg.what)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    //更新UI</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Message msg = new Message();</span><br><span class="line">                //Message msg = Message.obtain();  可以避免重复创建消息对象</span><br><span class="line">                //Message msg = mHandler.obtainMessage(); 可以避免重复创建消息对象</span><br><span class="line">                //message有what，arg1/arg2(政协数据)，obj</span><br><span class="line">                msg.what = 1;</span><br><span class="line">                mHandler.sendMessage(msg);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="第一种方法Post"><a href="#第一种方法Post" class="headerlink" title="第一种方法Post"></a>第一种方法Post</h2><pre><code>public class PostActivity extends Activity {
+
+    private Handler mHandler = new Handler();
+
+    class DownloadThread extends Thread{
+
+        @Override
+        public void run() {
+            super.run();
+            try{
+                Thread.sleep(5000);
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        //更新UI
+                    }
+                };
+                mHandler.post(runnable);
+            } catch (InterruptedException e) {
+            e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre><a id="more"></a>
+<h2 id="第二种方法sendMessage"><a href="#第二种方法sendMessage" class="headerlink" title="第二种方法sendMessage"></a>第二种方法sendMessage</h2><pre><code>public class SendMessage extends Activity {
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 1:
+                //更新UI
+                break;
+            }
+        }
+    };
+
+    class DownloadThread extends Thread{
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(5000);
+                Message msg = new Message();
+                //Message msg = Message.obtain();  可以避免重复创建消息对象
+                //Message msg = mHandler.obtainMessage(); 可以避免重复创建消息对象
+                //message有what，arg1/arg2(政协数据)，obj
+                msg.what = 1;
+                mHandler.sendMessage(msg);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre>
     </div>
 </div>
 
@@ -277,7 +331,7 @@
     
     <div class="count">
         <a class="count articles"><span>24</span>文章</a>
-        <a class="count tags"><span>8</span>标签</a>
+        <a class="count tags"><span>9</span>标签</a>
         <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
@@ -318,10 +372,10 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/06/08/BaseActivity/" title="BaseActivity">BaseActivity</a>
                     </p>
                     <p class="date">
-                        2018-01-25
+                        2018-06-08
                     </p>
                 </div>
             </div>
@@ -336,7 +390,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -362,7 +416,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -375,7 +429,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -418,12 +472,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -440,12 +494,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Android/">#Android</a>
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
+            <a href="/tags/Android国际化/">#Android国际化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android/">#Android</a>
         </div>
         
         
