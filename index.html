@@ -195,9 +195,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Bitmap">
+<div class="cube-excerpt" id="cube-excerpt-Android多语言">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Bitmap/">Bitmap</a></h1>
+        <h1><a href="/2018/01/25/Android多语言/">Android多语言</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -214,11 +214,11 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">public class BitmapUtils &#123;</span><br><span class="line">    // 根据maxWidth, maxHeight计算最合适的inSampleSize</span><br><span class="line">    public static int calculateInSampleSize(</span><br><span class="line">            BitmapFactory.Options options, int reqWidth, int reqHeight) &#123;</span><br><span class="line">        // Raw height and width of image</span><br><span class="line">        final int height = options.outHeight;</span><br><span class="line">        final int width = options.outWidth;</span><br><span class="line">        int inSampleSize = 1;</span><br><span class="line"></span><br><span class="line">        if (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line">            if (width &gt; height) &#123;</span><br><span class="line">                inSampleSize = Math.round((float)height / (float)reqHeight);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                inSampleSize = Math.round((float)width / (float)reqWidth);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return inSampleSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //缩略图</span><br><span class="line">    public static Bitmap thumbnail(String path,</span><br><span class="line">                                   int maxWidth, int maxHeight, boolean autoRotate) &#123;</span><br><span class="line">        BitmapFactory.Options options = new BitmapFactory.Options();</span><br><span class="line">        options.inJustDecodeBounds = true;</span><br><span class="line">        // 获取这个图片的宽和高信息到options中, 此时返回bm为空</span><br><span class="line">        Bitmap bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        options.inJustDecodeBounds = false;</span><br><span class="line">        // 计算缩放比</span><br><span class="line">        int sampleSize = calculateInSampleSize(options, maxWidth, maxHeight);</span><br><span class="line">        options.inSampleSize = sampleSize;</span><br><span class="line">        options.inPreferredConfig = Bitmap.Config.RGB_565;</span><br><span class="line">        options.inPurgeable = true;</span><br><span class="line">        options.inInputShareable = true;</span><br><span class="line">        if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">            bitmap.recycle();</span><br><span class="line">        &#125;</span><br><span class="line">        bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        return bitmap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //保存bitmap</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, File destFile) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            FileOutputStream out = new FileOutputStream(destFile);</span><br><span class="line">            if (bitmap.compress(format, quality, out)) &#123;</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">            if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">                bitmap.recycle();</span><br><span class="line">            &#125;</span><br><span class="line">            return destFile.getAbsolutePath();</span><br><span class="line">        &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 保存到sd卡</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, Context context) &#123;</span><br><span class="line">        if (!Environment.getExternalStorageState()</span><br><span class="line">                .equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        File dir = new File(Environment.getExternalStorageDirectory()</span><br><span class="line">                + &quot;/&quot; + context.getPackageName() + &quot;/save/&quot;);</span><br><span class="line">        if (!dir.exists()) &#123;</span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        File destFile = new File(dir, UUID.randomUUID().toString());</span><br><span class="line">        return save(bitmap, format, quality, destFile);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+           <h3 id="一、添加多语言资源在Values下"><a href="#一、添加多语言资源在Values下" class="headerlink" title="一、添加多语言资源在Values下"></a>一、添加多语言资源在Values下</h3><h3 id="二、更新Configuration中的locale属性"><a href="#二、更新Configuration中的locale属性" class="headerlink" title="二、更新Configuration中的locale属性"></a>二、更新Configuration中的locale属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//更改语言 返回主Activity即IsOpenLocationActivity</span><br><span class="line">Resources resources = LanguageActivity.this.getResources();</span><br><span class="line">DisplayMetrics dm = resources.getDisplayMetrics();</span><br><span class="line">Configuration config = resources.getConfiguration();</span><br><span class="line">// 应用用户选择语言</span><br><span class="line">config.locale = UtilTool.getLanguage();</span><br><span class="line">resources.updateConfiguration(config, dm);</span><br></pre></td></tr></table></figure>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Bitmap/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/Android多语言/">阅读全文</a>
     </footer>
 </div>
 
@@ -280,9 +280,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Java变量">
+<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java变量/">Java变量</a></h1>
+        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -291,7 +291,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
                 
             </div>
         </div>
@@ -299,13 +299,16 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>###Java语言的数据类型包括8种基本类型，3种引用类型</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
+<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
+<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
+<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java变量/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
     </footer>
 </div>
 
@@ -379,9 +382,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
+<div class="cube-excerpt" id="cube-excerpt-Java变量">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
+        <h1><a href="/2018/01/25/Java变量/">Java变量</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -390,7 +393,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
                 
             </div>
         </div>
@@ -398,16 +401,13 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
-<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
-<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
-<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
+           <p>###Java语言的数据类型包括8种基本类型，3种引用类型</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/Java变量/">阅读全文</a>
     </footer>
 </div>
 
@@ -631,7 +631,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
+                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
                 </p>
             </div>
         </li>
@@ -670,7 +670,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Java变量/" title="Java变量">Java变量</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -699,12 +699,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/Code/Java/">#Java</a>
+            <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
+            <a href="/categories/Code/Java/">#Java</a>
         </div>
         
         
@@ -718,7 +718,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -739,17 +739,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
@@ -759,7 +759,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
