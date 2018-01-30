@@ -163,9 +163,9 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-选择排序">
+<div class="cube-excerpt" id="cube-excerpt-网络参考模型">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
+        <h1><a href="/2018/01/25/网络参考模型/">网络参考模型</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -174,7 +174,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                <a href="/tags/Internet/" class="cube-excerpt-tag-link">#Internet</a>
                 
             </div>
         </div>
@@ -182,16 +182,193 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>##思路:     </p>
-<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
-<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
-<p>###3、依次类推，直到最后一个元素。</p>
-<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+           <p>OSI(Open System Interconnection 开放系统互连)参考模型<br>TCP/IP 参考模型</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ce5ded47e12c0ebe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 09.56.42.png"></p>
+<p>###七层描述<br>1.物理层:主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、 0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</p>
+<p>2.数据链路层:主要将从物理层接收的数据进行MAC地址(网卡的地址)的封装与解封装。常把这一 层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。</p>
+<p>3.网络层:主要将下层接收到的数据进行IP地址(例，192.168.0.1)的封装与解封装。在这一层工作 的设备是路由器，常把这一层的数据叫做数据包。</p>
+<p>4.传输层:定义了一些传输数据的协议和端口号(WWW端口号80等)，如:TCP(传输控制协议， 传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特 性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的)。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层叫做段。</p>
+<p>5.会话层:通过传输层(端口号:传输端口与接收端口)建立数据传输的通路。主要在你的系统之间 发起会话或者接收会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</p>
+<p>6.表示层:主要是进行对接收的数据进行解释，加密与解密、压缩与解压缩等(也就是把计算机能够 识别的东西转换成人能够识别的东西(如图片、声音等)。</p>
+<p>7.应用层:主要是一些终端的应用，比如说FTP(各种文件下载)、WEB(IE浏览)、QQ之类的(可 以把它理解成我们在电脑屏幕上可以看到的东西，就是终端应用)。</p>
+<p>####PS<br>1.每个网卡的MAC地址都是全球唯一的。<br>2.路由器实现将数据包发送到指定的地点。<br>3.应用软件之间通信的过程就是层与层之间封包、解封包的过程。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-f65c6ce4396214c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 11.40.46.png"><br>4.OSI参考模型虽然设计精细，但过于麻烦，效率不高，因此才产生了简化版的TCP/IP参考模型。</p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/网络参考模型/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-面试记录">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/面试记录/">面试记录</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>最近找工作的面试题目</p>
+<p>1.介绍一下四大组件的service与brodacast</p>
+<p>2.自定义view绘制流程，在activity哪个生命周期方法完成</p>
+<p>3.事件分发流程，onClick事件与onTouchEvent顺序</p>
+<p>4.ANR是什么，怎么处理ANR</p>
+<p>5.Handler机制</p>
+<p>1.activity启动模式及应用场景</p>
+<p>2.intentservice</p>
+<p>3.aidl</p>
+<p>4.get post https</p>
+<p>5.fragment之间通信方式</p>
+<p>6.startservice bindservice unbindservice</p>
+<p>7.枚举跟静态常量的区别</p>
+<p>8.zxing的性能优化</p>
+<p>9.混合开发Hybrid</p>
+<p>1.java注解 java多线程</p>
+<p>2.多线程跳转页面后的关闭</p>
+<p>3.asynctask源码</p>
+<p>4.okhttp源码</p>
+<ol>
+<li>.9图片的应用</li>
+</ol>
+<p>6.view绘制流程，自定义一个可以上下左右滑动的view</p>
+<p>7.android两种坐标</p>
+<p>8.时间分发</p>
+<p>9.多层fragment的事件透传</p>
+<p>10.fragment的加入与去除</p>
+<p>11.fragment的生命周期</p>
+<p>12.activity的启动模式</p>
+<p>13.mvc,mvp</p>
+<p>14.java设计模式</p>
+<p>1.地图上两点路径怎么实现</p>
+<p>1.append自己实现</p>
+<p>2.广播</p>
+<p>3.主线程睡眠</p>
+<ol>
+<li>文件IO</li>
+</ol>
+<p>5.listview</p>
+<p>6.IO</p>
+<p>1.一套Android题目，两道算法</p>
+<p>2.listview图片错位</p>
+<p>3.封装的网络层有什么好处</p>
+<p>4.串口协议改了，保证数据完整唯一</p>
+<p>1.java特点</p>
+<p>2.http协议</p>
+<p>3.七层网络</p>
+<p>4.socket</p>
+<p>5.handler</p>
+<p>6.jni</p>
+<p>7.实时的视频通话</p>
+<p>8.activity传递大量数据</p>
+<p>1.自我介绍</p>
+<p>2.介绍项目流程</p>
+<p>3.项目难点</p>
+<p>4.activity启动方式</p>
+<p>5.APK的打包</p>
+<p>6.handler</p>
+<p>7.MVP</p>
+<p>8.组件化</p>
+<p>9.okhttp源码</p>
+<p>1.四大组件并分别介绍</p>
+<p>2.fragment介绍</p>
+<p>3.常用布局</p>
+<p>4.定义View流程</p>
+<p>5.事件分发机制</p>
+<p>6.Handler及源码</p>
+<p>7.AsyncTask及源码</p>
+<p>8.handlerThread及源码</p>
+<p>9.IntentService及源码</p>
+<p>10.Binder</p>
+<p>11.Aidl全称</p>
+<p>12.OkHttp、Volley源码及区别</p>
+<p>13.UIL、Picasso、Glide源码及区别</p>
+<p>14.greenDao内部实现</p>
+<p>15.Zxing通过什么算法进行图片解析</p>
+<p>16.消息推送的原理</p>
+<p>17.设计模式及手写单例</p>
+<p>18.热修复原理</p>
+<p>19.测试桩应用场景</p>
+<p>20.记录用户控件的使用习惯</p>
+<p>21.图片缓存一小时与一天</p>
+<p>22.OOM还与LINUX下的资源访问有关</p>
+<p>23.其他线程间通信的方法</p>
+<p>24.loop在哪里创建的</p>
+<p>25.synchronized怎么实现的</p>
+<p>1.定义View流程</p>
+<p>2.事件分发机制</p>
+<p>3.Handler及源码</p>
+<p>4.热修复原理</p>
+<p>5.OkHttp、Volley源码及区别</p>
+<p>6.OOM项目中的处理</p>
+<p>7.运行时权限及机型适配</p>
+<p>8.RxJava</p>
+<p>9.java虚拟机</p>
+<p>10.内存回收算法</p>
+<p>11.volley的response在哪个线程</p>
+<p>1.介绍项目</p>
+<p>2.封装的框架</p>
+<p>3.rxjava</p>
+<p>4.retrofit</p>
+<p>笔试</p>
+<p>面试</p>
+<p>1.MVP实现购物车添加商品</p>
+<p>2.图片框架的优缺点</p>
+<p>3.数据库相关问题</p>
+<p>4.热修复实际使用的问题</p>
+<p>5.aidl的实现</p>
+<p>1.主要聊了安卓以后的发展及自身的发展</p>
+<p>1.bindler</p>
+<p>2.bean为什么是一个对象</p>
+<p>3.linkhasmap</p>
+<p>1.arraylist与linklist区别（数组与链表的区别）</p>
+<p>1.viewstub与gone区别及如何显示</p>
+<p>2.MVP</p>
+<p>3.eventbus</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/面试记录/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
     </footer>
 </div>
 
@@ -323,7 +500,7 @@
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>22</span>文章</a>
+        <a class="count articles"><span>24</span>文章</a>
         <a class="count tags"><span>7</span>标签</a>
         <a class="count categories"><span>7</span>分类</a>
     </div>
@@ -396,7 +573,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
+                    <a href="/2018/01/25/BaseActivity/" title="BaseActivity">BaseActivity</a>
                 </p>
             </div>
         </li>
@@ -409,7 +586,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/Handler两种使用方法/" title="Handler两种使用方法">Handler两种使用方法</a>
                 </p>
             </div>
         </li>
@@ -422,7 +599,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Handler两种使用方法/" title="Handler两种使用方法">Handler两种使用方法</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -455,18 +632,18 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Java/">#Java</a>
+            <a href="/categories/DP/">#DP</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/DP/">#DP</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Java/">#Java</a>
         </div>
         
         
@@ -491,13 +668,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OS/">#OS</a>
         </div>
         
         
@@ -507,7 +679,7 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Java/">#Java</a>
+            <a href="/tags/OS/">#OS</a>
         </div>
         
         
@@ -516,7 +688,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Java/">#Java</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         
