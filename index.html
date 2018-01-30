@@ -163,9 +163,9 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-内存划分">
+<div class="cube-excerpt" id="cube-excerpt-二分查找">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/内存划分/">内存划分</a></h1>
+        <h1><a href="/2018/01/25/二分查找/">二分查找</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -174,7 +174,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/OS/" class="cube-excerpt-tag-link">#OS</a>
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
                 
             </div>
         </div>
@@ -182,16 +182,18 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>##1. 寄存器。     </p>
-<p>##2. 本地方法区。    </p>
-<p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p>
-<p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p>
-<p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>
-
+           <p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
+<p>##思路:</p>
+<p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p>
+<p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p>
+<p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/内存划分/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/二分查找/">阅读全文</a>
     </footer>
 </div>
 
@@ -249,9 +251,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-IntentService使用方法">
+<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/IntentService使用方法/">IntentService使用方法</a></h1>
+        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -260,7 +262,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
                 
             </div>
         </div>
@@ -268,11 +270,44 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class IntentService extends android.app.IntentService&#123;</span><br><span class="line"></span><br><span class="line">    //两个方法必须实现，构造方法和onHandleIntent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Creates an IntentService.  Invoked by your subclass&apos;s constructor.</span><br><span class="line">     *</span><br><span class="line">     * @param name Used to name the worker thread, important only for debugging.</span><br><span class="line">     */</span><br><span class="line">    public IntentService(String name) &#123;</span><br><span class="line">        //name表示他的线程名称</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //实现异步任务的方法，Activity传过来的intent，数据包含在intent中</span><br><span class="line">    @Override</span><br><span class="line">    protected void onHandleIntent(@Nullable Intent intent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
+
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/IntentService使用方法/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-选择排序">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##思路:     </p>
+<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
+<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
+<p>###3、依次类推，直到最后一个元素。</p>
+<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
     </footer>
 </div>
 
@@ -337,34 +372,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
-    </footer>
-</div>
-
 <div class="cube-excerpt" id="cube-excerpt-Java运算符">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/01/25/Java运算符/">Java运算符</a></h1>
@@ -397,9 +404,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-选择排序">
+<div class="cube-excerpt" id="cube-excerpt-网络参考模型">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
+        <h1><a href="/2018/01/25/网络参考模型/">网络参考模型</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -408,7 +415,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                <a href="/tags/Internet/" class="cube-excerpt-tag-link">#Internet</a>
                 
             </div>
         </div>
@@ -416,16 +423,22 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>##思路:     </p>
-<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
-<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
-<p>###3、依次类推，直到最后一个元素。</p>
-<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+           <p>OSI(Open System Interconnection 开放系统互连)参考模型<br>TCP/IP 参考模型</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ce5ded47e12c0ebe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 09.56.42.png"></p>
+<p>###七层描述<br>1.物理层:主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、 0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</p>
+<p>2.数据链路层:主要将从物理层接收的数据进行MAC地址(网卡的地址)的封装与解封装。常把这一 层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。</p>
+<p>3.网络层:主要将下层接收到的数据进行IP地址(例，192.168.0.1)的封装与解封装。在这一层工作 的设备是路由器，常把这一层的数据叫做数据包。</p>
+<p>4.传输层:定义了一些传输数据的协议和端口号(WWW端口号80等)，如:TCP(传输控制协议， 传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特 性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的)。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层叫做段。</p>
+<p>5.会话层:通过传输层(端口号:传输端口与接收端口)建立数据传输的通路。主要在你的系统之间 发起会话或者接收会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</p>
+<p>6.表示层:主要是进行对接收的数据进行解释，加密与解密、压缩与解压缩等(也就是把计算机能够 识别的东西转换成人能够识别的东西(如图片、声音等)。</p>
+<p>7.应用层:主要是一些终端的应用，比如说FTP(各种文件下载)、WEB(IE浏览)、QQ之类的(可 以把它理解成我们在电脑屏幕上可以看到的东西，就是终端应用)。</p>
+<p>####PS<br>1.每个网卡的MAC地址都是全球唯一的。<br>2.路由器实现将数据包发送到指定的地点。<br>3.应用软件之间通信的过程就是层与层之间封包、解封包的过程。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-f65c6ce4396214c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 11.40.46.png"><br>4.OSI参考模型虽然设计精细，但过于麻烦，效率不高，因此才产生了简化版的TCP/IP参考模型。</p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/网络参考模型/">阅读全文</a>
     </footer>
 </div>
 
@@ -599,7 +612,7 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/01/25/二分查找/" title="二分查找">二分查找</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -643,7 +656,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/IntentService使用方法/" title="IntentService使用方法">IntentService使用方法</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -656,7 +669,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
                 </p>
             </div>
         </li>
@@ -679,12 +692,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/Java/">#Java</a>
         </div>
         
@@ -699,7 +712,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
@@ -726,12 +739,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础/">#Java基础</a>
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
+            <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
@@ -745,7 +758,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
