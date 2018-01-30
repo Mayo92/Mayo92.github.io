@@ -12,7 +12,7 @@
     
     
     
-    <title>Handler两种使用方法 | 赞美の心</title>
+    <title>冒泡排序 | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -163,7 +163,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Handler两种使用方法</h1>
+    <h1 class="title">冒泡排序</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -174,34 +174,29 @@
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/Android/">#Android</a>
+    <a href="/tags/Algorithm/">#Algorithm</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <p>#post方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class PostActivity extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler();</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            super.run();</span><br><span class="line">            try&#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Runnable runnable = new Runnable() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void run() &#123;</span><br><span class="line">                        //更新UI</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                mHandler.post(runnable);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>#sendMessage方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class SendMessage extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            switch (msg.what)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    //更新UI</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Message msg = new Message();</span><br><span class="line">//                Message msg = Message.obtain();  可以避免重复创建消息对象</span><br><span class="line">//                Message msg = mHandler.obtainMessage(); 可以避免重复创建消息对象</span><br><span class="line">//message有what，arg1/arg2(政协数据)，obj</span><br><span class="line">                msg.what = 1;</span><br><span class="line">                mHandler.sendMessage(msg);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <p>##思路:     </p>
+<p>###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p>
+<p>###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p>
+<p>###3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p>
+<p>###4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort</span><br><span class="line">&#123;</span><br><span class="line">    public void sort(int[] a)</span><br><span class="line">    &#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = a.length - 1; i &gt; 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[j + 1] &lt; a[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = a[j];</span><br><span class="line">                    a[j] = a[j + 1];</span><br><span class="line">                    a[j + 1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </div>
 
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2018/01/25/Android多语言/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Android多语言
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2018/01/25/IntentService使用方法/">
-                IntentService使用方法
+            <a href="/2018/01/25/Android多语言/">
+                Android多语言
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -404,12 +399,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/Java/">#Java</a>
         </div>
         
@@ -430,7 +425,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
@@ -445,12 +440,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OS/">#OS</a>
         </div>
         

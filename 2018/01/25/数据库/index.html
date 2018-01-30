@@ -12,7 +12,7 @@
     
     
     
-    <title>Handler两种使用方法 | 赞美の心</title>
+    <title>数据库 | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -163,7 +163,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Handler两种使用方法</h1>
+    <h1 class="title">数据库</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -181,9 +181,19 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <p>#post方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class PostActivity extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler();</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            super.run();</span><br><span class="line">            try&#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Runnable runnable = new Runnable() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void run() &#123;</span><br><span class="line">                        //更新UI</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                mHandler.post(runnable);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>#sendMessage方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class SendMessage extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            switch (msg.what)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    //更新UI</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Message msg = new Message();</span><br><span class="line">//                Message msg = Message.obtain();  可以避免重复创建消息对象</span><br><span class="line">//                Message msg = mHandler.obtainMessage(); 可以避免重复创建消息对象</span><br><span class="line">//message有what，arg1/arg2(政协数据)，obj</span><br><span class="line">                msg.what = 1;</span><br><span class="line">                mHandler.sendMessage(msg);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>####SQL语句增删改查<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.增加信息：insert into 表名（字段列表）values（值列表）</span><br><span class="line">2.删除信息：delete from 表名 where 条件子句</span><br><span class="line">3.修改信息：update 表名 set 字段名 = 值 where 条件子句</span><br><span class="line">4.查询星系：select * from 表名</span><br></pre></td></tr></table></figure></p>
+<p>####SQL表关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.一对一</span><br><span class="line">2.一对多</span><br><span class="line">3.多对多</span><br></pre></td></tr></table></figure></p>
+<p>####SQLiteDatabase操作SQLite数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.打开或创建数据库：openOrCreateDatabase(Stringpath,SQLiteDatabase.CursorFactory factory)</span><br><span class="line">2.添加一条记录：insert(String table,String nullColumnHack,ContentValues values)</span><br><span class="line">3.删除一条记录：delect(String table,String whereClause,String[] whereArgs)</span><br><span class="line">4.查询一条记录：query(String table,String[] columns,String selection,String[] selectionArgs,String groupBy,String having,String orderBy)</span><br><span class="line">5.修改记录：update(String table,ContentValues values,String whereClause,String[] whereArgs)</span><br><span class="line">6.执行一条SQL语句：execSQL(String sql)</span><br><span class="line">7.关闭数据库：close()</span><br></pre></td></tr></table></figure></p>
+<p>###SQLiteOpenHelper的实现</p>
+<p>####一、抽象类：SQLiteOpenHelper</p>
+<p>####二、抽象方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onCreate（建表，存放在/data/data/packagename/databases/）</span><br><span class="line">onUpgrade</span><br></pre></td></tr></table></figure></p>
+<p>####三、实例方法，可以创建或者打开一个数据库，返回可对数据库进行读写操作的对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.getReadableDatabase：创建或打开一个仅仅可读的(read-only)数据库</span><br><span class="line">2.getWritableDatabase：创建或打开一个可读可写的数据库</span><br></pre></td></tr></table></figure></p>
+<p>####四、构造方法：一般用参数较少的那个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">四个参数：1.context、2.库名、3.null（自定义cursor一般为null）、4.版本号</span><br></pre></td></tr></table></figure></p>
+<p>####五、数据类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">integer整型、real浮点型、text文本类型、blob二进制类型</span><br></pre></td></tr></table></figure></p>
+<p>####六、操作方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询：db.rawQuery()，其他：db.execSQL()</span><br></pre></td></tr></table></figure></p>
+<p>####七、SQLite支持事务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">事务的特性可以保证让一系列的操作要么全部完成，要么一个都不完成</span><br><span class="line">db.beginTransaction();//开启事务</span><br><span class="line">db.setTransactionSuccessful();//事务执行成功</span><br><span class="line">db.endTransaction();//结束事务</span><br></pre></td></tr></table></figure></p>
+<p>####八、升级<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) &#123;</span><br><span class="line">        switch (newVersion)&#123;</span><br><span class="line">            //没有break为了跨版本升级成功</span><br><span class="line">            case 1:</span><br><span class="line">                db.execSQL(&quot;&quot;);</span><br><span class="line">            case 2:</span><br><span class="line">                db.execSQL(&quot;&quot;);</span><br><span class="line">            default:</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>####Cursor常用方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">getCount()：获得总的数据条数</span><br><span class="line">isFirst()：判断是否为第一条数据</span><br><span class="line">isLast()：判断是否为最后一条数据</span><br><span class="line">moveToFirst()：移动到第一条数据</span><br><span class="line">moveToLast()：移动到最后一条数据</span><br><span class="line">move(int offset)：移动到指定记录</span><br><span class="line">moveToNext()：移动到下一条记录</span><br><span class="line">moveToPrevious()：移动到上一条记录</span><br><span class="line">getColumnIndexOrThrow(String columnName)：根据列名获得列索引</span><br><span class="line">getInt(int columnIndex)：获得指定列索引的int类型值</span><br><span class="line">getString(int columnIndex)：获得指定列索引的String类型值</span><br></pre></td></tr></table></figure></p>
 
     </div>
 </div>
@@ -192,16 +202,16 @@
     <ul>
         
         <li class="prev">
-            <a href="/2018/01/25/Android多语言/">
+            <a href="/2018/01/25/内存划分/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Android多语言
+                内存划分
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2018/01/25/IntentService使用方法/">
-                IntentService使用方法
+            <a href="/2018/01/25/文件存储/">
+                文件存储
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -399,17 +409,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/Java/">#Java</a>
         </div>
         
@@ -430,12 +440,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
@@ -450,7 +460,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OS/">#OS</a>
         </div>
         

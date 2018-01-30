@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>赞美の心</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">MayoのBlog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">MayoのBlog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            
+<div class="cube-excerpt" id="cube-excerpt-单例模式">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/单例模式/">单例模式</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/DP/" class="cube-excerpt-tag-link">#DP</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>###饿汉试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//设立静态变量，直接创建实例  </span><br><span class="line">private static MySingleton2 mySingleton = new MySingleton2();  </span><br><span class="line">  </span><br><span class="line">private MySingleton2()&#123;  </span><br><span class="line">    //私有化构造函数  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">      </span><br><span class="line">//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">public static MySingleton2 getInstance()&#123;  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">    return mySingleton;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>懒汉式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例模式  </span><br><span class="line">public class MySingleton &#123;  </span><br><span class="line">  </span><br><span class="line">    //设立静态变量  </span><br><span class="line">    private static MySingleton mySingleton = null;  </span><br><span class="line">  </span><br><span class="line">    private MySingleton()&#123;  </span><br><span class="line">        //私有化构造函数  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    //开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">    public static MySingleton getInstance()&#123;  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">        if(mySingleton == null)&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例当前并没有被创建&quot;);  </span><br><span class="line">            mySingleton = new MySingleton();  </span><br><span class="line">        &#125;else&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例已经被创建&quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(&quot;--&gt;方法调用结束，返回单例&quot;);  </span><br><span class="line">        return mySingleton;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/单例模式/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-定时任务Alarm">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/定时任务Alarm/">定时任务Alarm</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class LongRunningService extends Service &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public IBinder onBind(Intent intent) &#123;</span><br><span class="line">                return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">                new Thread(new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().</span><br><span class="line">toString());</span><br><span class="line">                          &#125;</span><br><span class="line">                &#125;).start();</span><br><span class="line">        AlarmManager manager = (AlarmManager)       getSystemService(ALARM_SERVICE);</span><br><span class="line">        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数</span><br><span class="line">        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;</span><br><span class="line">        Intent i = new Intent(this, AlarmReceiver.class);</span><br><span class="line">        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);</span><br><span class="line">        //说明：set()方法需要传入三个参数</span><br><span class="line">        第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。</span><br><span class="line">        第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。</span><br><span class="line">        第三个参数是PendingIntent。</span><br><span class="line">        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class AlarmReceiver extends BroadcastReceiver &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">        Intent i = new Intent(context, LongRunningService.class);</span><br><span class="line">        context.startService(i);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/定时任务Alarm/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-内存划分">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/内存划分/">内存划分</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/OS/" class="cube-excerpt-tag-link">#OS</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##1. 寄存器。     </p>
+<p>##2. 本地方法区。    </p>
+<p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p>
+<p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p>
+<p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/内存划分/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-数据库">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/数据库/">数据库</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>####SQL语句增删改查<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.增加信息：insert into 表名（字段列表）values（值列表）</span><br><span class="line">2.删除信息：delete from 表名 where 条件子句</span><br><span class="line">3.修改信息：update 表名 set 字段名 = 值 where 条件子句</span><br><span class="line">4.查询星系：select * from 表名</span><br></pre></td></tr></table></figure></p>
+<p>####SQL表关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.一对一</span><br><span class="line">2.一对多</span><br><span class="line">3.多对多</span><br></pre></td></tr></table></figure></p>
+<p>####SQLiteDatabase操作SQLite数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.打开或创建数据库：openOrCreateDatabase(Stringpath,SQLiteDatabase.CursorFactory factory)</span><br><span class="line">2.添加一条记录：insert(String table,String nullColumnHack,ContentValues values)</span><br><span class="line">3.删除一条记录：delect(String table,String whereClause,String[] whereArgs)</span><br><span class="line">4.查询一条记录：query(String table,String[] columns,String selection,String[] selectionArgs,String groupBy,String having,String orderBy)</span><br><span class="line">5.修改记录：update(String table,ContentValues values,String whereClause,String[] whereArgs)</span><br><span class="line">6.执行一条SQL语句：execSQL(String sql)</span><br><span class="line">7.关闭数据库：close()</span><br></pre></td></tr></table></figure></p>
+<p>###SQLiteOpenHelper的实现</p>
+<p>####一、抽象类：SQLiteOpenHelper</p>
+<p>####二、抽象方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onCreate（建表，存放在/data/data/packagename/databases/）</span><br><span class="line">onUpgrade</span><br></pre></td></tr></table></figure></p>
+<p>####三、实例方法，可以创建或者打开一个数据库，返回可对数据库进行读写操作的对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.getReadableDatabase：创建或打开一个仅仅可读的(read-only)数据库</span><br><span class="line">2.getWritableDatabase：创建或打开一个可读可写的数据库</span><br></pre></td></tr></table></figure></p>
+<p>####四、构造方法：一般用参数较少的那个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">四个参数：1.context、2.库名、3.null（自定义cursor一般为null）、4.版本号</span><br></pre></td></tr></table></figure></p>
+<p>####五、数据类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">integer整型、real浮点型、text文本类型、blob二进制类型</span><br></pre></td></tr></table></figure></p>
+<p>####六、操作方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询：db.rawQuery()，其他：db.execSQL()</span><br></pre></td></tr></table></figure></p>
+<p>####七、SQLite支持事务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">事务的特性可以保证让一系列的操作要么全部完成，要么一个都不完成</span><br><span class="line">db.beginTransaction();//开启事务</span><br><span class="line">db.setTransactionSuccessful();//事务执行成功</span><br><span class="line">db.endTransaction();//结束事务</span><br></pre></td></tr></table></figure></p>
+<p>####八、升级<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) &#123;</span><br><span class="line">        switch (newVersion)&#123;</span><br><span class="line">            //没有break为了跨版本升级成功</span><br><span class="line">            case 1:</span><br><span class="line">                db.execSQL(&quot;&quot;);</span><br><span class="line">            case 2:</span><br><span class="line">                db.execSQL(&quot;&quot;);</span><br><span class="line">            default:</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>####Cursor常用方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">getCount()：获得总的数据条数</span><br><span class="line">isFirst()：判断是否为第一条数据</span><br><span class="line">isLast()：判断是否为最后一条数据</span><br><span class="line">moveToFirst()：移动到第一条数据</span><br><span class="line">moveToLast()：移动到最后一条数据</span><br><span class="line">move(int offset)：移动到指定记录</span><br><span class="line">moveToNext()：移动到下一条记录</span><br><span class="line">moveToPrevious()：移动到上一条记录</span><br><span class="line">getColumnIndexOrThrow(String columnName)：根据列名获得列索引</span><br><span class="line">getInt(int columnIndex)：获得指定列索引的int类型值</span><br><span class="line">getString(int columnIndex)：获得指定列索引的String类型值</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/数据库/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-文件存储">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/文件存储/">文件存储</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>###1.openFileInput和openFileOutput的使用</p>
+<p>######文件的使用，注意最后要用finally给关闭掉。</p>
+<p>######openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&gt; 返回FileOutputStream</p>
+<p>######openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&gt; FileInputStream<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">保存文件：</span><br><span class="line">第一个参数：文件名（不包含路径）默认为data/data/包名/files/下</span><br><span class="line">第二个参数：文件操作模式，下面是写入的四种模式</span><br><span class="line">    MODE_APPEND：即向文件尾写入数据（文件已存在就追加）</span><br><span class="line">    MODE_PRIVATE：即仅打开文件可写入数据（默认模式，相同文件名会覆盖内容）</span><br><span class="line">    MODE_WORLD_READABLE：所有程序均可读该文件数据（弃用）</span><br><span class="line">    MODE_WORLD_WRITABLE：即所有程序均可写入数据（弃用）</span><br><span class="line"></span><br><span class="line">private void savePackageFile(Context context,String filename,String text) &#123;</span><br><span class="line">        //String msg = tvSaveMessage.getText().toString() + &quot; \n&quot;;</span><br><span class="line">        FileOutputStream outputStream = null;</span><br><span class="line">        BufferedWriter writer = null;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            outputStream = context.openFileOutput(filename, Context.MODE_APPEND);</span><br><span class="line">            writer = new BufferedWriter(new OutputStreamWriter(outputStream));</span><br><span class="line">            writer.write(text);</span><br><span class="line">            //outputStream.write(msg.getBytes());</span><br><span class="line">            //outputStream.flush();</span><br><span class="line">            //outputStream.close();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally&#123;</span><br><span class="line">            if(writer != null)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">读取文件：</span><br><span class="line">参数：文件名（读取包名下files文件夹下的文件）</span><br><span class="line">返回值：FileInputStream</span><br><span class="line"></span><br><span class="line">    private void readSaveFile(Context context,String filename) &#123;</span><br><span class="line">        FileInputStream inputStream = null;</span><br><span class="line">        BufferedReader bufferedReader = null;</span><br><span class="line">        StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            inputStream = context.openFileInput(filename);</span><br><span class="line">            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));</span><br><span class="line">            String line =  &quot;&quot;;</span><br><span class="line">            while ((line = bufferedReader.readLine()) != null)&#123;</span><br><span class="line">                stringBuilder.append(line);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">//            byte temp[] = new byte[1024];</span><br><span class="line">//            StringBuilder sb = new StringBuilder(&quot;&quot;);</span><br><span class="line">//            int len = 0;</span><br><span class="line">//            while ((len = inputStream.read(temp)) &gt; 0)&#123;</span><br><span class="line">//                sb.append(new String(temp, 0, len));</span><br><span class="line">//            &#125;</span><br><span class="line">//            inputStream.close();</span><br><span class="line"></span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">          if(bufferedReader != null)&#123;</span><br><span class="line">              try &#123;</span><br><span class="line">                  bufferedReader.close();</span><br><span class="line">              &#125; catch (IOException e) &#123;</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>###2.SD卡读取和写入—路径：/storage/sdcard0/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">######SD卡权限;</span><br><span class="line">&lt;!-- 在SDCard中创建与删除文件权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;</span><br><span class="line">&lt;!-- 往SDCard写入数据权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">往SD卡写入文件的方法</span><br><span class="line">public void savaFileToSD(String filename, String filecontent) throws Exception &#123;</span><br><span class="line">    //如果手机已插入sd卡,且app具有读写sd卡的权限</span><br><span class="line">    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">   filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;</span><br><span class="line"></span><br><span class="line">        //这里就不要用openFileOutput了,那个是往手机内存中写数据的</span><br><span class="line">        FileOutputStream output = new FileOutputStream(filename);</span><br><span class="line">        output.write(filecontent.getBytes());</span><br><span class="line">        //将String字符串以字节流的形式写入到输出流中</span><br><span class="line">        output.close();</span><br><span class="line">        //关闭输出流</span><br><span class="line">    &#125; else Toast.makeText(context, &quot;SD卡不存在或者不可读写&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//读取SD卡中文件的方法</span><br><span class="line">//定义读取文件的方法:</span><br><span class="line">public String readFromSD(String filename) throws IOException &#123;</span><br><span class="line">    StringBuilder sb = new StringBuilder(&quot;&quot;);</span><br><span class="line">    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">        filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;</span><br><span class="line">        //打开文件输入流</span><br><span class="line">        FileInputStream input = new FileInputStream(filename);</span><br><span class="line">        byte[] temp = new byte[1024];</span><br><span class="line"></span><br><span class="line">        int len = 0;</span><br><span class="line">        //读取文件内容:</span><br><span class="line">        while ((len = input.read(temp)) &gt; 0) &#123;</span><br><span class="line">            sb.append(new String(temp, 0, len));</span><br><span class="line">        &#125;</span><br><span class="line">        //关闭输入流</span><br><span class="line">        input.close();</span><br><span class="line">    &#125;</span><br><span class="line">    return sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###3.读取raw和assets文件夹下的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res/raw：文件会被映射到R.java文件中，访问的时候直接通过资源ID即可访问，而且 他不能有目录结构，就是不能再创建文件夹</span><br><span class="line">assets：不会映射到R.java文件中，通过AssetManager来访问，能有目录结构，即可以自行创建文件夹</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读取文件资源</span><br><span class="line">raw: </span><br><span class="line">InputStream is =getResources().openRawResource(R.raw.filename);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">读取文件资源</span><br><span class="line">assets: </span><br><span class="line">AssetManager am =  getAssets();   </span><br><span class="line">InputStream is = am.open(&quot;filename&quot;);</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/文件存储/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Service启动模式">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/09/20/Service两种启动模式/">Service启动模式</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-09-20
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>#第一种启动方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class StartService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    //绑定服务才会调用，必须实现的方法（唯一抽象方法）</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //调用startService方法启动Service时会回调</span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）</span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/09/20/Service两种启动模式/">阅读全文</a>
+    </footer>
+</div>
+
+
+
+<ul class="cube-pagination cube-pagination-6">
+    
+    <li class="cube-pagination-prev">
+        <a href="/">« 上一页</a>
+    </li>
+    
+    
+        
+            
+            <li class="cube-pagination-index">
+                <a href="/">1</a>
+            </li>
+            
+        
+            
+            <li class="cube-pagination-index disabled">
+                <span>2</span>
+            </li>
+            
+        
+    
+
+    
+    <li class="cube-pagination-next disabled">
+        <span>下一页 »</span>
+    </li>
+    
+</ul>
+
+<!--其他组件后续添加-->
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>5</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            
+            <div class="preview">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
+                <div class="info">
+                    <p class="title">
+                        <a href="/2018/01/25/冒泡排序/" title="冒泡排序">冒泡排序</a>
+                    </p>
+                    <p class="date">
+                        2018-01-25
+                    </p>
+                </div>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/Handler两种使用方法/" title="Handler两种使用方法">Handler两种使用方法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/IntentService使用方法/" title="IntentService使用方法">IntentService使用方法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/Java变量/" title="Java变量">Java变量</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Android/">#Android</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Code/">#Code</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Algorithm/">#Algorithm</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Code/Java/">#Java</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/DP/">#DP</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android/">#Android</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Algorithm/">#Algorithm</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DP/">#DP</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OS/">#OS</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

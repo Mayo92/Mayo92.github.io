@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>文件存储 | 赞美の心</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">MayoのBlog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">MayoのBlog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">文件存储</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-01-25
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Android/">#Android</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>###1.openFileInput和openFileOutput的使用</p>
+<p>######文件的使用，注意最后要用finally给关闭掉。</p>
+<p>######openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&gt; 返回FileOutputStream</p>
+<p>######openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&gt; FileInputStream<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">保存文件：</span><br><span class="line">第一个参数：文件名（不包含路径）默认为data/data/包名/files/下</span><br><span class="line">第二个参数：文件操作模式，下面是写入的四种模式</span><br><span class="line">    MODE_APPEND：即向文件尾写入数据（文件已存在就追加）</span><br><span class="line">    MODE_PRIVATE：即仅打开文件可写入数据（默认模式，相同文件名会覆盖内容）</span><br><span class="line">    MODE_WORLD_READABLE：所有程序均可读该文件数据（弃用）</span><br><span class="line">    MODE_WORLD_WRITABLE：即所有程序均可写入数据（弃用）</span><br><span class="line"></span><br><span class="line">private void savePackageFile(Context context,String filename,String text) &#123;</span><br><span class="line">        //String msg = tvSaveMessage.getText().toString() + &quot; \n&quot;;</span><br><span class="line">        FileOutputStream outputStream = null;</span><br><span class="line">        BufferedWriter writer = null;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            outputStream = context.openFileOutput(filename, Context.MODE_APPEND);</span><br><span class="line">            writer = new BufferedWriter(new OutputStreamWriter(outputStream));</span><br><span class="line">            writer.write(text);</span><br><span class="line">            //outputStream.write(msg.getBytes());</span><br><span class="line">            //outputStream.flush();</span><br><span class="line">            //outputStream.close();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally&#123;</span><br><span class="line">            if(writer != null)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">读取文件：</span><br><span class="line">参数：文件名（读取包名下files文件夹下的文件）</span><br><span class="line">返回值：FileInputStream</span><br><span class="line"></span><br><span class="line">    private void readSaveFile(Context context,String filename) &#123;</span><br><span class="line">        FileInputStream inputStream = null;</span><br><span class="line">        BufferedReader bufferedReader = null;</span><br><span class="line">        StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            inputStream = context.openFileInput(filename);</span><br><span class="line">            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));</span><br><span class="line">            String line =  &quot;&quot;;</span><br><span class="line">            while ((line = bufferedReader.readLine()) != null)&#123;</span><br><span class="line">                stringBuilder.append(line);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">//            byte temp[] = new byte[1024];</span><br><span class="line">//            StringBuilder sb = new StringBuilder(&quot;&quot;);</span><br><span class="line">//            int len = 0;</span><br><span class="line">//            while ((len = inputStream.read(temp)) &gt; 0)&#123;</span><br><span class="line">//                sb.append(new String(temp, 0, len));</span><br><span class="line">//            &#125;</span><br><span class="line">//            inputStream.close();</span><br><span class="line"></span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">          if(bufferedReader != null)&#123;</span><br><span class="line">              try &#123;</span><br><span class="line">                  bufferedReader.close();</span><br><span class="line">              &#125; catch (IOException e) &#123;</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>###2.SD卡读取和写入—路径：/storage/sdcard0/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">######SD卡权限;</span><br><span class="line">&lt;!-- 在SDCard中创建与删除文件权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;</span><br><span class="line">&lt;!-- 往SDCard写入数据权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">往SD卡写入文件的方法</span><br><span class="line">public void savaFileToSD(String filename, String filecontent) throws Exception &#123;</span><br><span class="line">    //如果手机已插入sd卡,且app具有读写sd卡的权限</span><br><span class="line">    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">   filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;</span><br><span class="line"></span><br><span class="line">        //这里就不要用openFileOutput了,那个是往手机内存中写数据的</span><br><span class="line">        FileOutputStream output = new FileOutputStream(filename);</span><br><span class="line">        output.write(filecontent.getBytes());</span><br><span class="line">        //将String字符串以字节流的形式写入到输出流中</span><br><span class="line">        output.close();</span><br><span class="line">        //关闭输出流</span><br><span class="line">    &#125; else Toast.makeText(context, &quot;SD卡不存在或者不可读写&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//读取SD卡中文件的方法</span><br><span class="line">//定义读取文件的方法:</span><br><span class="line">public String readFromSD(String filename) throws IOException &#123;</span><br><span class="line">    StringBuilder sb = new StringBuilder(&quot;&quot;);</span><br><span class="line">    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">        filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;</span><br><span class="line">        //打开文件输入流</span><br><span class="line">        FileInputStream input = new FileInputStream(filename);</span><br><span class="line">        byte[] temp = new byte[1024];</span><br><span class="line"></span><br><span class="line">        int len = 0;</span><br><span class="line">        //读取文件内容:</span><br><span class="line">        while ((len = input.read(temp)) &gt; 0) &#123;</span><br><span class="line">            sb.append(new String(temp, 0, len));</span><br><span class="line">        &#125;</span><br><span class="line">        //关闭输入流</span><br><span class="line">        input.close();</span><br><span class="line">    &#125;</span><br><span class="line">    return sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###3.读取raw和assets文件夹下的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res/raw：文件会被映射到R.java文件中，访问的时候直接通过资源ID即可访问，而且 他不能有目录结构，就是不能再创建文件夹</span><br><span class="line">assets：不会映射到R.java文件中，通过AssetManager来访问，能有目录结构，即可以自行创建文件夹</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读取文件资源</span><br><span class="line">raw: </span><br><span class="line">InputStream is =getResources().openRawResource(R.raw.filename);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">读取文件资源</span><br><span class="line">assets: </span><br><span class="line">AssetManager am =  getAssets();   </span><br><span class="line">InputStream is = am.open(&quot;filename&quot;);</span><br></pre></td></tr></table></figure>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/01/25/数据库/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                数据库
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2017/09/20/Service两种启动模式/">
+                Service启动模式
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>5</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            
+            <div class="preview">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
+                <div class="info">
+                    <p class="title">
+                        <a href="/2018/01/25/冒泡排序/" title="冒泡排序">冒泡排序</a>
+                    </p>
+                    <p class="date">
+                        2018-01-25
+                    </p>
+                </div>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/Handler两种使用方法/" title="Handler两种使用方法">Handler两种使用方法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/IntentService使用方法/" title="IntentService使用方法">IntentService使用方法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/01/25/Java变量/" title="Java变量">Java变量</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Android/">#Android</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Code/">#Code</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Algorithm/">#Algorithm</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Code/Java/">#Java</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/DP/">#DP</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android/">#Android</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Algorithm/">#Algorithm</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DP/">#DP</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/OS/">#OS</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

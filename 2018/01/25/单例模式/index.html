@@ -12,7 +12,7 @@
     
     
     
-    <title>Handler两种使用方法 | 赞美の心</title>
+    <title>单例模式 | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -163,7 +163,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Handler两种使用方法</h1>
+    <h1 class="title">单例模式</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -174,16 +174,15 @@
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/Android/">#Android</a>
+    <a href="/tags/DP/">#DP</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <p>#post方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class PostActivity extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler();</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            super.run();</span><br><span class="line">            try&#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Runnable runnable = new Runnable() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void run() &#123;</span><br><span class="line">                        //更新UI</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                mHandler.post(runnable);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>#sendMessage方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class SendMessage extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    private Handler mHandler = new Handler()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            switch (msg.what)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    //更新UI</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    class DownloadThread extends Thread&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(5000);</span><br><span class="line">                Message msg = new Message();</span><br><span class="line">//                Message msg = Message.obtain();  可以避免重复创建消息对象</span><br><span class="line">//                Message msg = mHandler.obtainMessage(); 可以避免重复创建消息对象</span><br><span class="line">//message有what，arg1/arg2(政协数据)，obj</span><br><span class="line">                msg.what = 1;</span><br><span class="line">                mHandler.sendMessage(msg);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>###饿汉试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//设立静态变量，直接创建实例  </span><br><span class="line">private static MySingleton2 mySingleton = new MySingleton2();  </span><br><span class="line">  </span><br><span class="line">private MySingleton2()&#123;  </span><br><span class="line">    //私有化构造函数  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">      </span><br><span class="line">//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">public static MySingleton2 getInstance()&#123;  </span><br><span class="line">    System.out.println(&quot;--&gt;饿汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">    return mySingleton;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>懒汉式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例模式  </span><br><span class="line">public class MySingleton &#123;  </span><br><span class="line">  </span><br><span class="line">    //设立静态变量  </span><br><span class="line">    private static MySingleton mySingleton = null;  </span><br><span class="line">  </span><br><span class="line">    private MySingleton()&#123;  </span><br><span class="line">        //私有化构造函数  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    //开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">    public static MySingleton getInstance()&#123;  </span><br><span class="line">        System.out.println(&quot;--&gt;懒汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">        if(mySingleton == null)&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例当前并没有被创建&quot;);  </span><br><span class="line">            mySingleton = new MySingleton();  </span><br><span class="line">        &#125;else&#123;  </span><br><span class="line">            System.out.println(&quot;--&gt;懒汉式构造函数的实例已经被创建&quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(&quot;--&gt;方法调用结束，返回单例&quot;);  </span><br><span class="line">        return mySingleton;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
     </div>
 </div>
@@ -192,16 +191,16 @@
     <ul>
         
         <li class="prev">
-            <a href="/2018/01/25/Android多语言/">
+            <a href="/2018/01/25/选择排序/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Android多语言
+                选择排序
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2018/01/25/IntentService使用方法/">
-                IntentService使用方法
+            <a href="/2018/01/25/定时任务Alarm/">
+                定时任务Alarm
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -394,7 +393,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
@@ -430,7 +429,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
@@ -445,12 +444,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OS/">#OS</a>
         </div>
         
