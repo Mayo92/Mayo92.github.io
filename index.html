@@ -163,9 +163,9 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-书单">
+<div class="cube-excerpt" id="cube-excerpt-内存泄漏">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/书单/">书单</a></h1>
+        <h1><a href="/2018/01/25/内存泄漏/">内存泄漏</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -182,22 +182,13 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>###Android书</p>
-<p>#####1.第一行代码（第一版）</p>
-<p>#####2.Android编程权威指南（第二版）</p>
-<p>#####3.Android群英传</p>
-<p>#####4.Android开发进阶从小工到专家</p>
-<p>#####5.Android进阶之光</p>
-<h1 id="6-Android开发艺术探索"><a href="#6-Android开发艺术探索" class="headerlink" title="#####6.Android开发艺术探索"></a>#####6.Android开发艺术探索</h1><p>###Android工具书</p>
-<p>#####1.Android Studio实战</p>
-<h1 id="2-Android群英传神兵利器"><a href="#2-Android群英传神兵利器" class="headerlink" title="#####2.Android群英传神兵利器"></a>#####2.Android群英传神兵利器</h1><p>###Android面试</p>
-<h1 id="1-Android面试宝典"><a href="#1-Android面试宝典" class="headerlink" title="#####1.Android面试宝典"></a>#####1.Android面试宝典</h1><p>###Android优化<br>1.APP研发录<br>2.Android源码设计模式解析与实战</p>
-<h1 id="3-设计模式之禅"><a href="#3-设计模式之禅" class="headerlink" title="3.设计模式之禅"></a>3.设计模式之禅</h1><p>###Java书<br>1.Java程序设计<br>2.Effective Java</p>
+           <p>####单例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class AppManager &#123;</span><br><span class="line"></span><br><span class="line">    //有内存泄漏的问题：</span><br><span class="line">//    private static AppManager instance;</span><br><span class="line">//    private Context context;</span><br><span class="line">//    private AppManager(Context context) &#123;</span><br><span class="line">//        this.context = context;</span><br><span class="line">//    &#125;</span><br><span class="line">//    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">//        if (instance == null) &#123;</span><br><span class="line">//传入的Activity回收时由于被单例持有无法回收</span><br><span class="line">//            instance = new AppManager(context);</span><br><span class="line">//        &#125;</span><br><span class="line">//        return instance;</span><br><span class="line">//    &#125;</span><br><span class="line">//    修复内存泄漏的写法：</span><br><span class="line">    private static AppManager instance;</span><br><span class="line">    private Context context;</span><br><span class="line">    private AppManager(Context context) &#123;</span><br><span class="line">        this.context = context.getApplicationContext();// 使用Application 的context</span><br><span class="line">    &#125;</span><br><span class="line">    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">        if (instance == null) &#123;</span><br><span class="line">            instance = new AppManager(context);</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####匿名内部类handler<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    //容易造成内存泄漏的写法：</span><br><span class="line">//非静态内部类</span><br><span class="line">//    private Handler mHandler = new Handler() &#123;</span><br><span class="line">//        @Override</span><br><span class="line">//        public void handleMessage(Message msg) &#123;</span><br><span class="line">//            //...</span><br><span class="line">//        &#125;</span><br><span class="line">//    &#125;;</span><br><span class="line">//</span><br><span class="line">//    @Override</span><br><span class="line">//    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">//        super.onCreate(savedInstanceState);</span><br><span class="line">//        setContentView(R.layout.activity_main);</span><br><span class="line">//        loadData();</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    private void loadData() &#123;</span><br><span class="line">//        //...request</span><br><span class="line">//        Message message = Message.obtain();</span><br><span class="line">//        mHandler.sendMessage(message);</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    static class TestResource &#123;</span><br><span class="line">//该静态实例持有activity的引用，内存资源得不到正常回收，应该设为静态内部类</span><br><span class="line">//        private static final String TAG = &quot;&quot;;</span><br><span class="line">//        //...</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">//    修复内存泄漏的方法：</span><br><span class="line">//1.设为静态内部类2.在handler内部持有外部类Activity的弱引用</span><br><span class="line">    private MyHandler mHandler = new MyHandler(this);</span><br><span class="line">    private TextView mTextView ;</span><br><span class="line">    private static class MyHandler extends Handler &#123;</span><br><span class="line">        private WeakReference&lt;Context&gt; reference;</span><br><span class="line">        public MyHandler(Context context) &#123;</span><br><span class="line">            reference = new WeakReference&lt;&gt;(context);</span><br><span class="line">        &#125;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            MainActivity activity = (MainActivity) reference.get();</span><br><span class="line">            if(activity != null)&#123;</span><br><span class="line">//                activity.mTextView.setText(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void loadData() &#123;</span><br><span class="line">        //...request</span><br><span class="line">        Message message = Message.obtain();</span><br><span class="line">        mHandler.sendMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        mHandler.removeCallbacksAndMessages(null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/书单/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/内存泄漏/">阅读全文</a>
     </footer>
 </div>
 
@@ -371,44 +362,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-网络参考模型">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/网络参考模型/">网络参考模型</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Internet/" class="cube-excerpt-tag-link">#Internet</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>OSI(Open System Interconnection 开放系统互连)参考模型<br>TCP/IP 参考模型</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ce5ded47e12c0ebe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 09.56.42.png"></p>
-<p>###七层描述<br>1.物理层:主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、 0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</p>
-<p>2.数据链路层:主要将从物理层接收的数据进行MAC地址(网卡的地址)的封装与解封装。常把这一 层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。</p>
-<p>3.网络层:主要将下层接收到的数据进行IP地址(例，192.168.0.1)的封装与解封装。在这一层工作 的设备是路由器，常把这一层的数据叫做数据包。</p>
-<p>4.传输层:定义了一些传输数据的协议和端口号(WWW端口号80等)，如:TCP(传输控制协议， 传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特 性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的)。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层叫做段。</p>
-<p>5.会话层:通过传输层(端口号:传输端口与接收端口)建立数据传输的通路。主要在你的系统之间 发起会话或者接收会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</p>
-<p>6.表示层:主要是进行对接收的数据进行解释，加密与解密、压缩与解压缩等(也就是把计算机能够 识别的东西转换成人能够识别的东西(如图片、声音等)。</p>
-<p>7.应用层:主要是一些终端的应用，比如说FTP(各种文件下载)、WEB(IE浏览)、QQ之类的(可 以把它理解成我们在电脑屏幕上可以看到的东西，就是终端应用)。</p>
-<p>####PS<br>1.每个网卡的MAC地址都是全球唯一的。<br>2.路由器实现将数据包发送到指定的地点。<br>3.应用软件之间通信的过程就是层与层之间封包、解封包的过程。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-f65c6ce4396214c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 11.40.46.png"><br>4.OSI参考模型虽然设计精细，但过于麻烦，效率不高，因此才产生了简化版的TCP/IP参考模型。</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/网络参考模型/">阅读全文</a>
-    </footer>
-</div>
-
 <div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
@@ -466,6 +419,38 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-选择排序">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##思路:     </p>
+<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
+<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
+<p>###3、依次类推，直到最后一个元素。</p>
+<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
     </footer>
 </div>
 
@@ -530,9 +515,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-选择排序">
+<div class="cube-excerpt" id="cube-excerpt-网络参考模型">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
+        <h1><a href="/2018/01/25/网络参考模型/">网络参考模型</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -541,7 +526,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                <a href="/tags/Internet/" class="cube-excerpt-tag-link">#Internet</a>
                 
             </div>
         </div>
@@ -549,16 +534,22 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>##思路:     </p>
-<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
-<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
-<p>###3、依次类推，直到最后一个元素。</p>
-<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+           <p>OSI(Open System Interconnection 开放系统互连)参考模型<br>TCP/IP 参考模型</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ce5ded47e12c0ebe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 09.56.42.png"></p>
+<p>###七层描述<br>1.物理层:主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、 0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</p>
+<p>2.数据链路层:主要将从物理层接收的数据进行MAC地址(网卡的地址)的封装与解封装。常把这一 层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。</p>
+<p>3.网络层:主要将下层接收到的数据进行IP地址(例，192.168.0.1)的封装与解封装。在这一层工作 的设备是路由器，常把这一层的数据叫做数据包。</p>
+<p>4.传输层:定义了一些传输数据的协议和端口号(WWW端口号80等)，如:TCP(传输控制协议， 传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特 性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的)。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层叫做段。</p>
+<p>5.会话层:通过传输层(端口号:传输端口与接收端口)建立数据传输的通路。主要在你的系统之间 发起会话或者接收会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</p>
+<p>6.表示层:主要是进行对接收的数据进行解释，加密与解密、压缩与解压缩等(也就是把计算机能够 识别的东西转换成人能够识别的东西(如图片、声音等)。</p>
+<p>7.应用层:主要是一些终端的应用，比如说FTP(各种文件下载)、WEB(IE浏览)、QQ之类的(可 以把它理解成我们在电脑屏幕上可以看到的东西，就是终端应用)。</p>
+<p>####PS<br>1.每个网卡的MAC地址都是全球唯一的。<br>2.路由器实现将数据包发送到指定的地点。<br>3.应用软件之间通信的过程就是层与层之间封包、解封包的过程。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-f65c6ce4396214c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 11.40.46.png"><br>4.OSI参考模型虽然设计精细，但过于麻烦，效率不高，因此才产生了简化版的TCP/IP参考模型。</p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/网络参考模型/">阅读全文</a>
     </footer>
 </div>
 
@@ -733,7 +724,7 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/书单/" title="书单">书单</a>
+                        <a href="/2018/01/25/内存泄漏/" title="内存泄漏">内存泄漏</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -777,7 +768,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -790,7 +781,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
                 </p>
             </div>
         </li>
@@ -808,7 +799,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
@@ -838,7 +829,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -855,16 +846,16 @@
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
