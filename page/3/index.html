@@ -227,6 +227,7 @@ public static void actionStart(Context context,String data1,String data2){
       * @param name Used to name the worker thread, important only for debugging.
       */
     public IntentService(String name) {
+
         //name表示他的线程名称
         super(name);
     }
@@ -272,17 +273,22 @@ public static void actionStart(Context context,String data1,String data2){
 
         @Override
         public void run() {
+
             super.run();
             try{
+
                 Thread.sleep(5000);
                 Runnable runnable = new Runnable() {
+
                     @Override
                     public void run() {
+
                         //更新UI
                     }
                 };
                 mHandler.post(runnable);
             } catch (InterruptedException e) {
+
                 e.printStackTrace();
             }
         }
@@ -321,24 +327,28 @@ public static void actionStart(Context context,String data1,String data2){
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return null;
     }
 
     //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）
     @Override
     public void onCreate() {
+
         super.onCreate();
     }
 
     //调用startService方法启动Service时会回调
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         return super.onStartCommand(intent, flags, startId);
     }
 
     //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）
     @Override
     public void onDestroy() {
+
         super.onDestroy();
     }
 }
@@ -493,10 +503,10 @@ public static void actionStart(Context context,String data1,String data2){
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/06/08/BaseActivity/" title="BaseActivity">BaseActivity</a>
+                        <a href="/2018/01/25/书单/" title="书单">书单</a>
                     </p>
                     <p class="date">
-                        2018-06-08
+                        2018-01-25
                     </p>
                 </div>
             </div>
@@ -511,7 +521,7 @@ public static void actionStart(Context context,String data1,String data2){
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/内存泄漏/" title="内存泄漏">内存泄漏</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -537,7 +547,7 @@ public static void actionStart(Context context,String data1,String data2){
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
                 </p>
             </div>
         </li>
@@ -550,7 +560,7 @@ public static void actionStart(Context context,String data1,String data2){
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -593,12 +603,12 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -614,7 +624,7 @@ public static void actionStart(Context context,String data1,String data2){
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
@@ -634,7 +644,7 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
@@ -654,7 +664,7 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         

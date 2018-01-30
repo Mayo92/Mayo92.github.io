@@ -181,14 +181,24 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h2 id="1-openFileInput和openFileOutput的使用"><a href="#1-openFileInput和openFileOutput的使用" class="headerlink" title="1.openFileInput和openFileOutput的使用"></a>1.openFileInput和openFileOutput的使用</h2><h4 id="文件的使用，注意最后要用finally给关闭掉。"><a href="#文件的使用，注意最后要用finally给关闭掉。" class="headerlink" title="文件的使用，注意最后要用finally给关闭掉。"></a>文件的使用，注意最后要用finally给关闭掉。</h4><h4 id="openFileOutput-写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件-—-gt-返回FileOutputStream"><a href="#openFileOutput-写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件-—-gt-返回FileOutputStream" class="headerlink" title="openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&gt; 返回FileOutputStream"></a>openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&gt; 返回FileOutputStream</h4><h4 id="openFileInput-读取文件，没有文件名会保存，debug的时候会看到，不影响ui-—-gt-FileInputStream"><a href="#openFileInput-读取文件，没有文件名会保存，debug的时候会看到，不影响ui-—-gt-FileInputStream" class="headerlink" title="openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&gt; FileInputStream"></a>openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&gt; FileInputStream</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">保存文件：</span><br><span class="line">第一个参数：文件名（不包含路径）默认为data/data/包名/files/下</span><br><span class="line">第二个参数：文件操作模式，下面是写入的四种模式</span><br><span class="line">    MODE_APPEND：即向文件尾写入数据（文件已存在就追加）</span><br><span class="line">    MODE_PRIVATE：即仅打开文件可写入数据（默认模式，相同文件名会覆盖内容）</span><br><span class="line">    MODE_WORLD_READABLE：所有程序均可读该文件数据（弃用）</span><br><span class="line">    MODE_WORLD_WRITABLE：即所有程序均可写入数据（弃用）</span><br></pre></td></tr></table></figure>
+        <h2 id="一、openFileInput和openFileOutput的使用"><a href="#一、openFileInput和openFileOutput的使用" class="headerlink" title="一、openFileInput和openFileOutput的使用"></a>一、openFileInput和openFileOutput的使用</h2><ul>
+<li><p>文件的使用，注意最后要用finally给关闭掉。</p>
+</li>
+<li><p>openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&gt; 返回FileOutputStream</p>
+</li>
+<li><p>openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&gt; 返回FileInputStream</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">保存文件：</span><br><span class="line">第一个参数：文件名（不包含路径）默认为data/data/包名/files/下</span><br><span class="line">第二个参数：文件操作模式，下面是写入的四种模式</span><br><span class="line">    MODE_APPEND：即向文件尾写入数据（文件已存在就追加）</span><br><span class="line">    MODE_PRIVATE：即仅打开文件可写入数据（默认模式，相同文件名会覆盖内容）</span><br><span class="line">    MODE_WORLD_READABLE：所有程序均可读该文件数据（弃用）</span><br><span class="line">    MODE_WORLD_WRITABLE：即所有程序均可写入数据（弃用）</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <pre><code>private void savePackageFile(Context context,String filename,String text) {
+
     //String msg = tvSaveMessage.getText().toString() + &quot; \n&quot;;
     FileOutputStream outputStream = null;
     BufferedWriter writer = null;
 
     try {
+
         outputStream = context.openFileOutput(filename, Context.MODE_APPEND);
         writer = new BufferedWriter(new OutputStreamWriter(outputStream));
         writer.write(text);
@@ -196,81 +206,97 @@
         //outputStream.flush();
         //outputStream.close();
     } catch (Exception e) {
+
         e.printStackTrace();
     } finally{
+
         if(writer != null){
+
             try {
+
                 writer.close();
             } catch (IOException e) {
+
                 e.printStackTrace();
             }
         }
     }
 }
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读取文件：</span><br><span class="line">参数：文件名（读取包名下files文件夹下的文件）</span><br><span class="line">返回值：FileInputStream</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读取文件：</span><br><span class="line">	参数：文件名（读取包名下files文件夹下的文件）</span><br><span class="line">	返回值：FileInputStream</span><br></pre></td></tr></table></figure>
 <pre><code>private void readSaveFile(Context context,String filename) {
+
     FileInputStream inputStream = null;
     BufferedReader bufferedReader = null;
     StringBuilder stringBuilder = new StringBuilder();
 
     try {
+
         inputStream = context.openFileInput(filename);
         bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line =  &quot;&quot;;
         while ((line = bufferedReader.readLine()) != null){
+
             stringBuilder.append(line);
         }
 
-            //byte temp[] = new byte[1024];
-            //StringBuilder sb = new StringBuilder(&quot;&quot;);
-            //int len = 0;
-            //while ((len = inputStream.read(temp)) &gt; 0){
-                //sb.append(new String(temp, 0, len));
-            //}
-            //inputStream.close();
+            byte temp[] = new byte[1024];
+            StringBuilder sb = new StringBuilder(&quot;&quot;);
+            int len = 0;
+            while ((len = inputStream.read(temp)) &gt; 0){
 
+                sb.append(new String(temp, 0, len));
+            }
+            inputStream.close();
     } catch (Exception e) {
+
         e.printStackTrace();
     } finally {
+
       if(bufferedReader != null){
           try {
+
               bufferedReader.close();
           } catch (IOException e) {
+
               e.printStackTrace();
           }
       }
     }
 }
-</code></pre><h2 id="2-SD卡读取和写入—路径：-storage-sdcard0"><a href="#2-SD卡读取和写入—路径：-storage-sdcard0" class="headerlink" title="2.SD卡读取和写入—路径：/storage/sdcard0/"></a>2.SD卡读取和写入—路径：/storage/sdcard0/</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SD卡权限;</span><br><span class="line">&lt;!-- 在SDCard中创建与删除文件权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;</span><br><span class="line">&lt;!-- 往SDCard写入数据权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="二、SD卡读取和写入—路径：-storage-sdcard0"><a href="#二、SD卡读取和写入—路径：-storage-sdcard0" class="headerlink" title="二、SD卡读取和写入—路径：/storage/sdcard0/"></a>二、SD卡读取和写入—路径：/storage/sdcard0/</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SD卡权限:</span><br><span class="line">&lt;!-- 在SDCard中创建与删除文件权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;</span><br><span class="line">&lt;!-- 往SDCard写入数据权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <pre><code>//往SD卡写入文件的方法
 public void savaFileToSD(String filename, String filecontent) throws Exception {
+
     //如果手机已插入sd卡,且app具有读写sd卡的权限
     if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 
         filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;
-
         //这里就不要用openFileOutput了,那个是往手机内存中写数据的
         FileOutputStream output = new FileOutputStream(filename);
         output.write(filecontent.getBytes());
         //将String字符串以字节流的形式写入到输出流中
         output.close();
         //关闭输出流
-    } else Toast.makeText(context, &quot;SD卡不存在或者不可读写&quot;, Toast.LENGTH_SHORT).show();
+    } else 
+
+        Toast.makeText(context, &quot;SD卡不存在或者不可读写&quot;, Toast.LENGTH_SHORT).show();
 }
 
 //读取SD卡中文件的方法
 //定义读取文件的方法:
 public String readFromSD(String filename) throws IOException {
+
     StringBuilder sb = new StringBuilder(&quot;&quot;);
     if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+
         filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;
         //打开文件输入流
         FileInputStream input = new FileInputStream(filename);
         byte[] temp = new byte[1024];
-
         int len = 0;
         //读取文件内容:
         while ((len = input.read(temp)) &gt; 0) {
+
             sb.append(new String(temp, 0, len));
         }
         //关闭输入流
@@ -278,14 +304,9 @@ public String readFromSD(String filename) throws IOException {
     }
     return sb.toString();
 }
-</code></pre><h3 id="3-读取raw和assets文件夹下的文件"><a href="#3-读取raw和assets文件夹下的文件" class="headerlink" title="3.读取raw和assets文件夹下的文件"></a>3.读取raw和assets文件夹下的文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res/raw：文件会被映射到R.java文件中，访问的时候直接通过资源ID即可访问，而且 他不能有目录结构，就是不能再创建文件夹</span><br><span class="line">assets：不会映射到R.java文件中，通过AssetManager来访问，能有目录结构，即可以自行创建文件夹</span><br></pre></td></tr></table></figure>
-<pre><code>//读取文件资源
-//raw: 
-InputStream is =getResources().openRawResource(R.raw.filename); 
-
-//读取文件资源
-//assets: 
-AssetManager am =  getAssets();   
+</code></pre><h3 id="三、读取raw和assets文件夹下的文件"><a href="#三、读取raw和assets文件夹下的文件" class="headerlink" title="三、读取raw和assets文件夹下的文件"></a>三、读取raw和assets文件夹下的文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res/raw：文件会被映射到R.java文件中，访问的时候直接通过资源ID即可访问，而且 他不能有目录结构，就是不能再创建文件夹</span><br><span class="line">assets：不会映射到R.java文件中，通过AssetManager来访问，能有目录结构，即可以自行创建文件夹</span><br></pre></td></tr></table></figure>
+<h4 id="读取文件资源raw"><a href="#读取文件资源raw" class="headerlink" title="读取文件资源raw:"></a>读取文件资源raw:</h4><pre><code>InputStream is =getResources().openRawResource(R.raw.filename); 
+</code></pre><h4 id="读取文件资源assets"><a href="#读取文件资源assets" class="headerlink" title="读取文件资源assets:"></a>读取文件资源assets:</h4><pre><code>AssetManager am =  getAssets();   
 InputStream is = am.open(&quot;filename&quot;);
 </code></pre>
     </div>
@@ -303,8 +324,8 @@ InputStream is = am.open(&quot;filename&quot;);
         
         
         <li class="next">
-            <a href="/2017/06/03/StartActivity/">
-                StartActivity
+            <a href="/2017/06/08/BaseActivity/">
+                BaseActivity
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -422,10 +443,10 @@ InputStream is = am.open(&quot;filename&quot;);
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/06/08/BaseActivity/" title="BaseActivity">BaseActivity</a>
+                        <a href="/2018/01/25/书单/" title="书单">书单</a>
                     </p>
                     <p class="date">
-                        2018-06-08
+                        2018-01-25
                     </p>
                 </div>
             </div>
@@ -440,7 +461,7 @@ InputStream is = am.open(&quot;filename&quot;);
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/内存泄漏/" title="内存泄漏">内存泄漏</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -466,7 +487,7 @@ InputStream is = am.open(&quot;filename&quot;);
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
                 </p>
             </div>
         </li>
@@ -479,7 +500,7 @@ InputStream is = am.open(&quot;filename&quot;);
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -502,7 +523,7 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
@@ -512,7 +533,7 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
@@ -522,7 +543,7 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
@@ -543,12 +564,12 @@ InputStream is = am.open(&quot;filename&quot;);
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
@@ -558,12 +579,12 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
@@ -578,12 +599,12 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         

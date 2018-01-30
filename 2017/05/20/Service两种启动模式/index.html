@@ -187,24 +187,28 @@
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return null;
     }
 
     //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）
     @Override
     public void onCreate() {
+
         super.onCreate();
     }
 
     //调用startService方法启动Service时会回调
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         return super.onStartCommand(intent, flags, startId);
     }
 
     //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）
     @Override
     public void onDestroy() {
+
         super.onDestroy();
     }
 }
@@ -218,8 +222,10 @@
 
     //创建Binder对象返回给客户端，提供数据接口
     public class LocalBinder extends Binder{
+
         //声明一个方法
         BindService getService(){
+
             //返回当前对象，这样就可以在客户端调用Service公共方法了
             return BindService.this;
         }
@@ -229,11 +235,13 @@
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return binder;
     }
 
     @Override
     public void onCreate() {
+
         super.onCreate();
         //开启一个线程
         count++
@@ -241,17 +249,20 @@
 
     //公共方法
     public int getCount(){
+
         return count;
     }
 
     //解除时调用
     @Override
     public boolean onUnbind(Intent intent) {
+
         return super.onUnbind(intent);
     }
 
     @Override
     public void onDestroy() {
+
         this.quit = true;
         super.onDestroy();
     }
@@ -267,6 +278,7 @@
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         //创建绑定对象
         final Intent intent = new Intent(this,BindService.class);
@@ -277,14 +289,17 @@
 
         //获取数据
         if(mService != null){
+
             //通过绑定服务传递的Binder对象获取Service暴露出来的数据
             mService.getCount();
         }else {
+
             //还没绑定
         }
 
         //解除绑定
         if(mService != null){
+
             mService = null;
             unbindService(con);
         }
@@ -296,6 +311,7 @@
         //通过IBinder对象实现宿主与Service的交互
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+
             //绑定成功
             BindService.LocalBinder binder = (BindService.LocalBinder) service;
             mService = binder.getService();
@@ -304,6 +320,7 @@
         //当取消绑定时被回调，正常情况下不会被调用，当Service被意外销毁时（如内存不足）才会被调用
         @Override
         public void onServiceDisconnected(ComponentName name) {
+
             mService = null;
         }
     }
@@ -436,10 +453,10 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/06/08/BaseActivity/" title="BaseActivity">BaseActivity</a>
+                        <a href="/2018/01/25/书单/" title="书单">书单</a>
                     </p>
                     <p class="date">
-                        2018-06-08
+                        2018-01-25
                     </p>
                 </div>
             </div>
@@ -454,7 +471,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/内存泄漏/" title="内存泄漏">内存泄漏</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -480,7 +497,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
                 </p>
             </div>
         </li>
@@ -493,7 +510,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -511,7 +528,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
@@ -536,7 +553,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
@@ -557,7 +574,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
@@ -572,7 +589,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
@@ -582,7 +599,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OS/">#OS</a>
         </div>
         
@@ -592,7 +609,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java/">#Java</a>
         </div>
         
