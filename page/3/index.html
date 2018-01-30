@@ -401,7 +401,34 @@ protected void onHandleIntent(@Nullable Intent intent) {
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h2 id="第一种启动方法StartService"><a href="#第一种启动方法StartService" class="headerlink" title="第一种启动方法StartService"></a>第一种启动方法StartService</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class StartService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    //绑定服务才会调用，必须实现的方法（唯一抽象方法）</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //调用startService方法启动Service时会回调</span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）</span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+           <h2 id="第一种启动方法StartService"><a href="#第一种启动方法StartService" class="headerlink" title="第一种启动方法StartService"></a>第一种启动方法StartService</h2><pre><code>public class StartService extends Service {
+
+    //绑定服务才会调用，必须实现的方法（唯一抽象方法）
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    //调用startService方法启动Service时会回调
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class StartService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    //绑定服务才会调用，必须实现的方法（唯一抽象方法）</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用onStartCommond或onBind之前）</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //调用startService方法启动Service时会回调</span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return super.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //服务销毁时回调，实现资源的清理（线程、资源的监听器，contentprovider等）</span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -552,7 +579,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/二分查找/" title="二分查找">二分查找</a>
+                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -570,7 +597,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Android多语言/" title="Android多语言">Android多语言</a>
+                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
                 </p>
             </div>
         </li>
@@ -583,7 +610,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
+                    <a href="/2018/01/25/BaseActivity/" title="BaseActivity">BaseActivity</a>
                 </p>
             </div>
         </li>
@@ -609,7 +636,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
+                    <a href="/2018/01/25/Java变量/" title="Java变量">Java变量</a>
                 </p>
             </div>
         </li>
@@ -647,12 +674,12 @@ protected void onHandleIntent(@Nullable Intent intent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/DP/">#DP</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
@@ -678,7 +705,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
@@ -689,16 +716,16 @@ protected void onHandleIntent(@Nullable Intent intent) {
         
         
         <div class="cube-box ">
+            <a href="/tags/Algorithm/">#Algorithm</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/OS/">#OS</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Algorithm/">#Algorithm</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
@@ -708,7 +735,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         
