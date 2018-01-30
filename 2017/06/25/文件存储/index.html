@@ -282,11 +282,11 @@ public void savaFileToSD(String filename, String filecontent) throws Exception {
         filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;
         //这里就不要用openFileOutput了,那个是往手机内存中写数据的
         FileOutputStream output = new FileOutputStream(filename);
-        output.write(filecontent.getBytes());
         //将String字符串以字节流的形式写入到输出流中
-        output.close();
+        output.write(filecontent.getBytes());
         //关闭输出流
-    } else 
+        output.close();
+      } else 
 
         Toast.makeText(context, &quot;SD卡不存在或者不可读写&quot;, Toast.LENGTH_SHORT).show();
 }
@@ -455,7 +455,7 @@ InputStream is = am.open(&quot;filename&quot;);
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存泄漏/" title="内存泄漏">内存泄漏</a>
+                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -473,7 +473,7 @@ InputStream is = am.open(&quot;filename&quot;);
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
+                    <a href="/2018/01/25/字符流与字节流/" title="字符流与字节流">字符流与字节流</a>
                 </p>
             </div>
         </li>
@@ -486,7 +486,7 @@ InputStream is = am.open(&quot;filename&quot;);
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -499,7 +499,7 @@ InputStream is = am.open(&quot;filename&quot;);
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
+                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
                 </p>
             </div>
         </li>
@@ -535,13 +535,8 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/Code/">#Code</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/Code/Java/">#Java</a>
+            <a href="/categories/Code/">#Code</a>
         </div>
         
         
@@ -550,18 +545,23 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/DP/">#DP</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Code/Java/">#Java</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/Java/">#Java</a>
+            <a href="/categories/DP/">#DP</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Internet/">#Internet</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java/">#Java</a>
         </div>
         
     </div>
@@ -582,21 +582,21 @@ InputStream is = am.open(&quot;filename&quot;);
         
         
         <div class="cube-box ">
-            <a href="/tags/Android/">#Android</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础/">#Java基础</a>
+            <a href="/tags/Android/">#Android</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
@@ -606,18 +606,18 @@ InputStream is = am.open(&quot;filename&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java/">#Java</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Internet/">#Internet</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java/">#Java</a>
         </div>
         
     </div>
