@@ -163,9 +163,9 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-内存划分">
+<div class="cube-excerpt" id="cube-excerpt-Java运算符">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/内存划分/">内存划分</a></h1>
+        <h1><a href="/2018/01/25/Java运算符/">Java运算符</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -174,7 +174,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/OS/" class="cube-excerpt-tag-link">#OS</a>
+                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
                 
             </div>
         </div>
@@ -182,16 +182,16 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>##1. 寄存器。     </p>
-<p>##2. 本地方法区。    </p>
-<p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p>
-<p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p>
-<p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>
+           <h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>####左移几位其实就是该数据乘以2的几次方。</p>
+<p>####右移几位其实就是该数据除以2的几次幂</p>
+<p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/内存划分/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/Java运算符/">阅读全文</a>
     </footer>
 </div>
 
@@ -338,9 +338,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Bitmap">
+<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Bitmap/">Bitmap</a></h1>
+        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -349,7 +349,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
                 
             </div>
         </div>
@@ -357,11 +357,12 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">public class BitmapUtils &#123;</span><br><span class="line">    // 根据maxWidth, maxHeight计算最合适的inSampleSize</span><br><span class="line">    public static int calculateInSampleSize(</span><br><span class="line">            BitmapFactory.Options options, int reqWidth, int reqHeight) &#123;</span><br><span class="line">        // Raw height and width of image</span><br><span class="line">        final int height = options.outHeight;</span><br><span class="line">        final int width = options.outWidth;</span><br><span class="line">        int inSampleSize = 1;</span><br><span class="line"></span><br><span class="line">        if (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line">            if (width &gt; height) &#123;</span><br><span class="line">                inSampleSize = Math.round((float)height / (float)reqHeight);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                inSampleSize = Math.round((float)width / (float)reqWidth);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return inSampleSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //缩略图</span><br><span class="line">    public static Bitmap thumbnail(String path,</span><br><span class="line">                                   int maxWidth, int maxHeight, boolean autoRotate) &#123;</span><br><span class="line">        BitmapFactory.Options options = new BitmapFactory.Options();</span><br><span class="line">        options.inJustDecodeBounds = true;</span><br><span class="line">        // 获取这个图片的宽和高信息到options中, 此时返回bm为空</span><br><span class="line">        Bitmap bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        options.inJustDecodeBounds = false;</span><br><span class="line">        // 计算缩放比</span><br><span class="line">        int sampleSize = calculateInSampleSize(options, maxWidth, maxHeight);</span><br><span class="line">        options.inSampleSize = sampleSize;</span><br><span class="line">        options.inPreferredConfig = Bitmap.Config.RGB_565;</span><br><span class="line">        options.inPurgeable = true;</span><br><span class="line">        options.inInputShareable = true;</span><br><span class="line">        if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">            bitmap.recycle();</span><br><span class="line">        &#125;</span><br><span class="line">        bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        return bitmap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //保存bitmap</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, File destFile) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            FileOutputStream out = new FileOutputStream(destFile);</span><br><span class="line">            if (bitmap.compress(format, quality, out)) &#123;</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">            if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">                bitmap.recycle();</span><br><span class="line">            &#125;</span><br><span class="line">            return destFile.getAbsolutePath();</span><br><span class="line">        &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 保存到sd卡</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, Context context) &#123;</span><br><span class="line">        if (!Environment.getExternalStorageState()</span><br><span class="line">                .equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        File dir = new File(Environment.getExternalStorageDirectory()</span><br><span class="line">                + &quot;/&quot; + context.getPackageName() + &quot;/save/&quot;);</span><br><span class="line">        if (!dir.exists()) &#123;</span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        File destFile = new File(dir, UUID.randomUUID().toString());</span><br><span class="line">        return save(bitmap, format, quality, destFile);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
+
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Bitmap/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
     </footer>
 </div>
 
@@ -394,127 +395,6 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
-<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
-<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
-<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Java变量">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java变量/">Java变量</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>###Java语言的数据类型包括8种基本类型，3种引用类型</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java变量/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Java运算符">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java运算符/">Java运算符</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>####左移几位其实就是该数据乘以2的几次方。</p>
-<p>####右移几位其实就是该数据除以2的几次幂</p>
-<p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java运算符/">阅读全文</a>
     </footer>
 </div>
 
@@ -556,6 +436,99 @@
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
+<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
+<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
+<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java变量">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/Java变量/">Java变量</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>###Java语言的数据类型包括8种基本类型，3种引用类型</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/Java变量/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-内存划分">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/内存划分/">内存划分</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/OS/" class="cube-excerpt-tag-link">#OS</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##1. 寄存器。     </p>
+<p>##2. 本地方法区。    </p>
+<p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p>
+<p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p>
+<p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/内存划分/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-字符流与字节流">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/01/25/字符流与字节流/">字符流与字节流</a></h1>
@@ -582,6 +555,40 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/25/字符流与字节流/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-二分查找">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/二分查找/">二分查找</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
+<p>##思路:</p>
+<p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p>
+<p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p>
+<p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/二分查找/">阅读全文</a>
     </footer>
 </div>
 
@@ -687,7 +694,7 @@
     
     <div class="count">
         <a class="count articles"><span>24</span>文章</a>
-        <a class="count tags"><span>9</span>标签</a>
+        <a class="count tags"><span>10</span>标签</a>
         <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
@@ -728,7 +735,7 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/01/25/Java运算符/" title="Java运算符">Java运算符</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -759,7 +766,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -785,7 +792,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
                 </p>
             </div>
         </li>
@@ -803,23 +810,23 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Code/Java/">#Java</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Code/Java/">#Java</a>
         </div>
         
         
@@ -850,11 +857,16 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Android国际化/">#Android国际化</a>
+            <a href="/tags/Android图片/">#Android图片</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Android国际化/">#Android国际化</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
@@ -874,12 +886,7 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/OS/">#OS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
@@ -889,7 +896,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/OS/">#OS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         

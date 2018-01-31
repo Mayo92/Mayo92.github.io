@@ -12,7 +12,7 @@
     
     
     
-    <title>Bitmap | 赞美の心</title>
+    <title>标签: Android图片 | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,55 +162,29 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <div class="cube-article">
-    <h1 class="title">Bitmap</h1>
+            <style>
+    @media(max-width: 768px) {
+        body {
+            background-color: #fff!important;
+        }
+    }
+</style>
+<div class="cube-archives">
     
-    <div class="cube-article-header">
-        <div class="cube-article-date">
-            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-            <!-- moment.js对象 -->
-            2018-01-25
-        </div>
-        <div class="cube-article-tags">
-    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-    
-    <a href="/tags/Android/">#Android</a>
-    
-</div>
+    <div class="cube-archive" style="margin-top: 0;">
+        <h1 class="title">Android图片</h1>
+        
+        <ul class="posts">
+            
+            <li class="post">
+                <a href="/2017/07/12/Bitmap/">Bitmap</a>
+            </li>
+            
+        </ul>
+        
     </div>
     
-    <div class="cube-article-content cube-markdown">
-        
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">public class BitmapUtils &#123;</span><br><span class="line">    // 根据maxWidth, maxHeight计算最合适的inSampleSize</span><br><span class="line">    public static int calculateInSampleSize(</span><br><span class="line">            BitmapFactory.Options options, int reqWidth, int reqHeight) &#123;</span><br><span class="line">        // Raw height and width of image</span><br><span class="line">        final int height = options.outHeight;</span><br><span class="line">        final int width = options.outWidth;</span><br><span class="line">        int inSampleSize = 1;</span><br><span class="line"></span><br><span class="line">        if (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line">            if (width &gt; height) &#123;</span><br><span class="line">                inSampleSize = Math.round((float)height / (float)reqHeight);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                inSampleSize = Math.round((float)width / (float)reqWidth);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return inSampleSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //缩略图</span><br><span class="line">    public static Bitmap thumbnail(String path,</span><br><span class="line">                                   int maxWidth, int maxHeight, boolean autoRotate) &#123;</span><br><span class="line">        BitmapFactory.Options options = new BitmapFactory.Options();</span><br><span class="line">        options.inJustDecodeBounds = true;</span><br><span class="line">        // 获取这个图片的宽和高信息到options中, 此时返回bm为空</span><br><span class="line">        Bitmap bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        options.inJustDecodeBounds = false;</span><br><span class="line">        // 计算缩放比</span><br><span class="line">        int sampleSize = calculateInSampleSize(options, maxWidth, maxHeight);</span><br><span class="line">        options.inSampleSize = sampleSize;</span><br><span class="line">        options.inPreferredConfig = Bitmap.Config.RGB_565;</span><br><span class="line">        options.inPurgeable = true;</span><br><span class="line">        options.inInputShareable = true;</span><br><span class="line">        if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">            bitmap.recycle();</span><br><span class="line">        &#125;</span><br><span class="line">        bitmap = BitmapFactory.decodeFile(path, options);</span><br><span class="line">        return bitmap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //保存bitmap</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, File destFile) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            FileOutputStream out = new FileOutputStream(destFile);</span><br><span class="line">            if (bitmap.compress(format, quality, out)) &#123;</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">            if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</span><br><span class="line">                bitmap.recycle();</span><br><span class="line">            &#125;</span><br><span class="line">            return destFile.getAbsolutePath();</span><br><span class="line">        &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 保存到sd卡</span><br><span class="line">    public static String save(Bitmap bitmap,</span><br><span class="line">                               Bitmap.CompressFormat format, int quality, Context context) &#123;</span><br><span class="line">        if (!Environment.getExternalStorageState()</span><br><span class="line">                .equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        File dir = new File(Environment.getExternalStorageDirectory()</span><br><span class="line">                + &quot;/&quot; + context.getPackageName() + &quot;/save/&quot;);</span><br><span class="line">        if (!dir.exists()) &#123;</span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        File destFile = new File(dir, UUID.randomUUID().toString());</span><br><span class="line">        return save(bitmap, format, quality, destFile);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    </div>
 </div>
-
-<div class="cube-article-nav">
-    <ul>
-        
-        <li class="prev">
-            <a href="/2018/01/25/面试记录/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                面试记录
-            </a>
-        </li>
-        
-        
-        <li class="next">
-            <a href="/2018/01/25/选择排序/">
-                选择排序
-                <i class="cube-icon cube-next" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-<!-- TODO 根据theme.comment的内容进行入口选择 -->
-
-
-
         </div>
         <div class="cube-right">
             
@@ -275,7 +249,7 @@
     
     <div class="count">
         <a class="count articles"><span>24</span>文章</a>
-        <a class="count tags"><span>9</span>标签</a>
+        <a class="count tags"><span>10</span>标签</a>
         <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
@@ -316,7 +290,7 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
+                        <a href="/2018/01/25/Java运算符/" title="Java运算符">Java运算符</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -347,7 +321,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Bitmap/" title="Bitmap">Bitmap</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -373,7 +347,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
                 </p>
             </div>
         </li>
@@ -401,13 +375,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Code/Java/">#Java</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
+            <a href="/categories/Code/Java/">#Java</a>
         </div>
         
         
@@ -421,7 +395,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -438,11 +412,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Android图片/">#Android图片</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
@@ -452,18 +431,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Algorithm/">#Algorithm</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/OS/">#OS</a>
         </div>
         
         
@@ -474,6 +448,11 @@
         
         <div class="cube-box ">
             <a href="/tags/Java/">#Java</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/OS/">#OS</a>
         </div>
         
         
