@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Mayo">
+    <meta name="author" content="Krido">
     
     <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
     
@@ -163,9 +163,9 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-内存泄漏">
+<div class="cube-excerpt" id="cube-excerpt-内存划分">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/内存泄漏/">内存泄漏</a></h1>
+        <h1><a href="/2018/01/25/内存划分/">内存划分</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -174,7 +174,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                <a href="/tags/OS/" class="cube-excerpt-tag-link">#OS</a>
                 
             </div>
         </div>
@@ -182,248 +182,16 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>####单例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class AppManager &#123;</span><br><span class="line"></span><br><span class="line">    //有内存泄漏的问题：</span><br><span class="line">//    private static AppManager instance;</span><br><span class="line">//    private Context context;</span><br><span class="line">//    private AppManager(Context context) &#123;</span><br><span class="line">//        this.context = context;</span><br><span class="line">//    &#125;</span><br><span class="line">//    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">//        if (instance == null) &#123;</span><br><span class="line">//传入的Activity回收时由于被单例持有无法回收</span><br><span class="line">//            instance = new AppManager(context);</span><br><span class="line">//        &#125;</span><br><span class="line">//        return instance;</span><br><span class="line">//    &#125;</span><br><span class="line">//    修复内存泄漏的写法：</span><br><span class="line">    private static AppManager instance;</span><br><span class="line">    private Context context;</span><br><span class="line">    private AppManager(Context context) &#123;</span><br><span class="line">        this.context = context.getApplicationContext();// 使用Application 的context</span><br><span class="line">    &#125;</span><br><span class="line">    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">        if (instance == null) &#123;</span><br><span class="line">            instance = new AppManager(context);</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>####匿名内部类handler<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    //容易造成内存泄漏的写法：</span><br><span class="line">//非静态内部类</span><br><span class="line">//    private Handler mHandler = new Handler() &#123;</span><br><span class="line">//        @Override</span><br><span class="line">//        public void handleMessage(Message msg) &#123;</span><br><span class="line">//            //...</span><br><span class="line">//        &#125;</span><br><span class="line">//    &#125;;</span><br><span class="line">//</span><br><span class="line">//    @Override</span><br><span class="line">//    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">//        super.onCreate(savedInstanceState);</span><br><span class="line">//        setContentView(R.layout.activity_main);</span><br><span class="line">//        loadData();</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    private void loadData() &#123;</span><br><span class="line">//        //...request</span><br><span class="line">//        Message message = Message.obtain();</span><br><span class="line">//        mHandler.sendMessage(message);</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    static class TestResource &#123;</span><br><span class="line">//该静态实例持有activity的引用，内存资源得不到正常回收，应该设为静态内部类</span><br><span class="line">//        private static final String TAG = &quot;&quot;;</span><br><span class="line">//        //...</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">//    修复内存泄漏的方法：</span><br><span class="line">//1.设为静态内部类2.在handler内部持有外部类Activity的弱引用</span><br><span class="line">    private MyHandler mHandler = new MyHandler(this);</span><br><span class="line">    private TextView mTextView ;</span><br><span class="line">    private static class MyHandler extends Handler &#123;</span><br><span class="line">        private WeakReference&lt;Context&gt; reference;</span><br><span class="line">        public MyHandler(Context context) &#123;</span><br><span class="line">            reference = new WeakReference&lt;&gt;(context);</span><br><span class="line">        &#125;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            MainActivity activity = (MainActivity) reference.get();</span><br><span class="line">            if(activity != null)&#123;</span><br><span class="line">//                activity.mTextView.setText(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void loadData() &#123;</span><br><span class="line">        //...request</span><br><span class="line">        Message message = Message.obtain();</span><br><span class="line">        mHandler.sendMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        mHandler.removeCallbacksAndMessages(null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+           <p>##1. 寄存器。     </p>
+<p>##2. 本地方法区。    </p>
+<p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p>
+<p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p>
+<p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/内存泄漏/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-面试记录">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/面试记录/">面试记录</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>最近找工作的面试题目</p>
-<p>1.介绍一下四大组件的service与brodacast</p>
-<p>2.自定义view绘制流程，在activity哪个生命周期方法完成</p>
-<p>3.事件分发流程，onClick事件与onTouchEvent顺序</p>
-<p>4.ANR是什么，怎么处理ANR</p>
-<p>5.Handler机制</p>
-<p>1.activity启动模式及应用场景</p>
-<p>2.intentservice</p>
-<p>3.aidl</p>
-<p>4.get post https</p>
-<p>5.fragment之间通信方式</p>
-<p>6.startservice bindservice unbindservice</p>
-<p>7.枚举跟静态常量的区别</p>
-<p>8.zxing的性能优化</p>
-<p>9.混合开发Hybrid</p>
-<p>1.java注解 java多线程</p>
-<p>2.多线程跳转页面后的关闭</p>
-<p>3.asynctask源码</p>
-<p>4.okhttp源码</p>
-<ol>
-<li>.9图片的应用</li>
-</ol>
-<p>6.view绘制流程，自定义一个可以上下左右滑动的view</p>
-<p>7.android两种坐标</p>
-<p>8.时间分发</p>
-<p>9.多层fragment的事件透传</p>
-<p>10.fragment的加入与去除</p>
-<p>11.fragment的生命周期</p>
-<p>12.activity的启动模式</p>
-<p>13.mvc,mvp</p>
-<p>14.java设计模式</p>
-<p>1.地图上两点路径怎么实现</p>
-<p>1.append自己实现</p>
-<p>2.广播</p>
-<p>3.主线程睡眠</p>
-<ol>
-<li>文件IO</li>
-</ol>
-<p>5.listview</p>
-<p>6.IO</p>
-<p>1.一套Android题目，两道算法</p>
-<p>2.listview图片错位</p>
-<p>3.封装的网络层有什么好处</p>
-<p>4.串口协议改了，保证数据完整唯一</p>
-<p>1.java特点</p>
-<p>2.http协议</p>
-<p>3.七层网络</p>
-<p>4.socket</p>
-<p>5.handler</p>
-<p>6.jni</p>
-<p>7.实时的视频通话</p>
-<p>8.activity传递大量数据</p>
-<p>1.自我介绍</p>
-<p>2.介绍项目流程</p>
-<p>3.项目难点</p>
-<p>4.activity启动方式</p>
-<p>5.APK的打包</p>
-<p>6.handler</p>
-<p>7.MVP</p>
-<p>8.组件化</p>
-<p>9.okhttp源码</p>
-<p>1.四大组件并分别介绍</p>
-<p>2.fragment介绍</p>
-<p>3.常用布局</p>
-<p>4.定义View流程</p>
-<p>5.事件分发机制</p>
-<p>6.Handler及源码</p>
-<p>7.AsyncTask及源码</p>
-<p>8.handlerThread及源码</p>
-<p>9.IntentService及源码</p>
-<p>10.Binder</p>
-<p>11.Aidl全称</p>
-<p>12.OkHttp、Volley源码及区别</p>
-<p>13.UIL、Picasso、Glide源码及区别</p>
-<p>14.greenDao内部实现</p>
-<p>15.Zxing通过什么算法进行图片解析</p>
-<p>16.消息推送的原理</p>
-<p>17.设计模式及手写单例</p>
-<p>18.热修复原理</p>
-<p>19.测试桩应用场景</p>
-<p>20.记录用户控件的使用习惯</p>
-<p>21.图片缓存一小时与一天</p>
-<p>22.OOM还与LINUX下的资源访问有关</p>
-<p>23.其他线程间通信的方法</p>
-<p>24.loop在哪里创建的</p>
-<p>25.synchronized怎么实现的</p>
-<p>1.定义View流程</p>
-<p>2.事件分发机制</p>
-<p>3.Handler及源码</p>
-<p>4.热修复原理</p>
-<p>5.OkHttp、Volley源码及区别</p>
-<p>6.OOM项目中的处理</p>
-<p>7.运行时权限及机型适配</p>
-<p>8.RxJava</p>
-<p>9.java虚拟机</p>
-<p>10.内存回收算法</p>
-<p>11.volley的response在哪个线程</p>
-<p>1.介绍项目</p>
-<p>2.封装的框架</p>
-<p>3.rxjava</p>
-<p>4.retrofit</p>
-<p>笔试</p>
-<p>面试</p>
-<p>1.MVP实现购物车添加商品</p>
-<p>2.图片框架的优缺点</p>
-<p>3.数据库相关问题</p>
-<p>4.热修复实际使用的问题</p>
-<p>5.aidl的实现</p>
-<p>1.主要聊了安卓以后的发展及自身的发展</p>
-<p>1.bindler</p>
-<p>2.bean为什么是一个对象</p>
-<p>3.linkhasmap</p>
-<p>1.arraylist与linklist区别（数组与链表的区别）</p>
-<p>1.viewstub与gone区别及如何显示</p>
-<p>2.MVP</p>
-<p>3.eventbus</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/面试记录/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-选择排序">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>##思路:     </p>
-<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
-<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
-<p>###3、依次类推，直到最后一个元素。</p>
-<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
-<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
-<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
-<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/内存划分/">阅读全文</a>
     </footer>
 </div>
 
@@ -465,9 +233,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Java变量">
+<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java变量/">Java变量</a></h1>
+        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -476,7 +244,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
+                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
                 
             </div>
         </div>
@@ -484,19 +252,18 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>###Java语言的数据类型包括8种基本类型，3种引用类型</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java变量/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Java运算符">
+<div class="cube-excerpt" id="cube-excerpt-字符流与字节流">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java运算符/">Java运算符</a></h1>
+        <h1><a href="/2018/01/25/字符流与字节流/">字符流与字节流</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -505,7 +272,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
+                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
                 
             </div>
         </div>
@@ -513,16 +280,140 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>####左移几位其实就是该数据乘以2的几次方。</p>
-<p>####右移几位其实就是该数据除以2的几次幂</p>
-<p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>
+           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-0e77b7f3c8dbb606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-13 14.23.08.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-78f27e4c15351119.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-13 14.23.20.png"></p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java运算符/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/字符流与字节流/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-面试记录">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/面试记录/">面试记录</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="最近找工作的面试题目"><a href="#最近找工作的面试题目" class="headerlink" title="最近找工作的面试题目"></a>最近找工作的面试题目</h3><h4 id="要看的"><a href="#要看的" class="headerlink" title="要看的"></a>要看的</h4><h4 id="弘扬-https完全解析-okhttp封装"><a href="#弘扬-https完全解析-okhttp封装" class="headerlink" title="弘扬 https完全解析 okhttp封装"></a>弘扬 https完全解析 okhttp封装</h4><h4 id="uil-的imageloadconfigration调用的是getapplication的context"><a href="#uil-的imageloadconfigration调用的是getapplication的context" class="headerlink" title="uil 的imageloadconfigration调用的是getapplication的context"></a>uil 的imageloadconfigration调用的是getapplication的context</h4><h4 id="list-array-list"><a href="#list-array-list" class="headerlink" title="list array list"></a>list array list</h4><h4 id="注解-反射-IO"><a href="#注解-反射-IO" class="headerlink" title="注解 反射 IO"></a>注解 反射 IO</h4><h4 id="布局一律用小写加下划线"><a href="#布局一律用小写加下划线" class="headerlink" title="布局一律用小写加下划线"></a>布局一律用小写加下划线</h4><h4 id="android中，用add的一般可以重复添加，set会覆盖之前的值"><a href="#android中，用add的一般可以重复添加，set会覆盖之前的值" class="headerlink" title="android中，用add的一般可以重复添加，set会覆盖之前的值"></a>android中，用add的一般可以重复添加，set会覆盖之前的值</h4><h5 id="1-介绍一下四大组件的service与brodacast"><a href="#1-介绍一下四大组件的service与brodacast" class="headerlink" title="1.介绍一下四大组件的service与brodacast"></a>1.介绍一下四大组件的service与brodacast</h5><h5 id="2-自定义view绘制流程，在activity哪个生命周期方法完成"><a href="#2-自定义view绘制流程，在activity哪个生命周期方法完成" class="headerlink" title="2.自定义view绘制流程，在activity哪个生命周期方法完成"></a>2.自定义view绘制流程，在activity哪个生命周期方法完成</h5><h5 id="3-事件分发流程，onClick事件与onTouchEvent顺序"><a href="#3-事件分发流程，onClick事件与onTouchEvent顺序" class="headerlink" title="3.事件分发流程，onClick事件与onTouchEvent顺序"></a>3.事件分发流程，onClick事件与onTouchEvent顺序</h5><h5 id="4-ANR是什么，怎么处理ANR"><a href="#4-ANR是什么，怎么处理ANR" class="headerlink" title="4.ANR是什么，怎么处理ANR"></a>4.ANR是什么，怎么处理ANR</h5><h5 id="5-Handler机制"><a href="#5-Handler机制" class="headerlink" title="5.Handler机制"></a>5.Handler机制</h5><h5 id="1-activity启动模式及应用场景"><a href="#1-activity启动模式及应用场景" class="headerlink" title="1.activity启动模式及应用场景"></a>1.activity启动模式及应用场景</h5><h5 id="2-intentservice"><a href="#2-intentservice" class="headerlink" title="2.intentservice"></a>2.intentservice</h5><h5 id="3-aidl"><a href="#3-aidl" class="headerlink" title="3.aidl"></a>3.aidl</h5><h5 id="4-get-post-https"><a href="#4-get-post-https" class="headerlink" title="4.get post https"></a>4.get post https</h5><h5 id="5-fragment之间通信方式"><a href="#5-fragment之间通信方式" class="headerlink" title="5.fragment之间通信方式"></a>5.fragment之间通信方式</h5><h5 id="6-startservice-bindservice-unbindservice"><a href="#6-startservice-bindservice-unbindservice" class="headerlink" title="6.startservice bindservice unbindservice"></a>6.startservice bindservice unbindservice</h5><h5 id="7-枚举跟静态常量的区别"><a href="#7-枚举跟静态常量的区别" class="headerlink" title="7.枚举跟静态常量的区别"></a>7.枚举跟静态常量的区别</h5><h5 id="8-zxing的性能优化"><a href="#8-zxing的性能优化" class="headerlink" title="8.zxing的性能优化"></a>8.zxing的性能优化</h5><h5 id="9-混合开发Hybrid"><a href="#9-混合开发Hybrid" class="headerlink" title="9.混合开发Hybrid"></a>9.混合开发Hybrid</h5><h5 id="1-java注解-java多线程"><a href="#1-java注解-java多线程" class="headerlink" title="1.java注解 java多线程"></a>1.java注解 java多线程</h5><h5 id="2-多线程跳转页面后的关闭"><a href="#2-多线程跳转页面后的关闭" class="headerlink" title="2.多线程跳转页面后的关闭"></a>2.多线程跳转页面后的关闭</h5><h5 id="3-asynctask源码"><a href="#3-asynctask源码" class="headerlink" title="3.asynctask源码"></a>3.asynctask源码</h5><h5 id="4-okhttp源码"><a href="#4-okhttp源码" class="headerlink" title="4.okhttp源码"></a>4.okhttp源码</h5><h5 id="5-9图片的应用"><a href="#5-9图片的应用" class="headerlink" title="5. .9图片的应用"></a>5. .9图片的应用</h5><h5 id="6-view绘制流程，自定义一个可以上下左右滑动的view"><a href="#6-view绘制流程，自定义一个可以上下左右滑动的view" class="headerlink" title="6.view绘制流程，自定义一个可以上下左右滑动的view"></a>6.view绘制流程，自定义一个可以上下左右滑动的view</h5><h5 id="7-android两种坐标"><a href="#7-android两种坐标" class="headerlink" title="7.android两种坐标"></a>7.android两种坐标</h5><h5 id="8-时间分发"><a href="#8-时间分发" class="headerlink" title="8.时间分发"></a>8.时间分发</h5><h5 id="9-多层fragment的事件透传"><a href="#9-多层fragment的事件透传" class="headerlink" title="9.多层fragment的事件透传"></a>9.多层fragment的事件透传</h5><h5 id="10-fragment的加入与去除"><a href="#10-fragment的加入与去除" class="headerlink" title="10.fragment的加入与去除"></a>10.fragment的加入与去除</h5><h5 id="11-fragment的生命周期"><a href="#11-fragment的生命周期" class="headerlink" title="11.fragment的生命周期"></a>11.fragment的生命周期</h5><h5 id="12-activity的启动模式"><a href="#12-activity的启动模式" class="headerlink" title="12.activity的启动模式"></a>12.activity的启动模式</h5><h5 id="13-mvc-mvp"><a href="#13-mvc-mvp" class="headerlink" title="13.mvc,mvp"></a>13.mvc,mvp</h5><h5 id="14-java设计模式"><a href="#14-java设计模式" class="headerlink" title="14.java设计模式"></a>14.java设计模式</h5><h5 id="1-地图上两点路径怎么实现"><a href="#1-地图上两点路径怎么实现" class="headerlink" title="1.地图上两点路径怎么实现"></a>1.地图上两点路径怎么实现</h5><h5 id="1-append自己实现"><a href="#1-append自己实现" class="headerlink" title="1.append自己实现"></a>1.append自己实现</h5><h5 id="2-广播"><a href="#2-广播" class="headerlink" title="2.广播"></a>2.广播</h5><h5 id="3-主线程睡眠"><a href="#3-主线程睡眠" class="headerlink" title="3.主线程睡眠"></a>3.主线程睡眠</h5><h5 id="4-文件IO"><a href="#4-文件IO" class="headerlink" title="4.文件IO"></a>4.文件IO</h5><h5 id="5-listview"><a href="#5-listview" class="headerlink" title="5.listview"></a>5.listview</h5><h5 id="6-IO"><a href="#6-IO" class="headerlink" title="6.IO"></a>6.IO</h5><h5 id="1-一套Android题目，两道算法"><a href="#1-一套Android题目，两道算法" class="headerlink" title="1.一套Android题目，两道算法"></a>1.一套Android题目，两道算法</h5><h5 id="2-listview图片错位"><a href="#2-listview图片错位" class="headerlink" title="2.listview图片错位"></a>2.listview图片错位</h5><h5 id="3-封装的网络层有什么好处"><a href="#3-封装的网络层有什么好处" class="headerlink" title="3.封装的网络层有什么好处"></a>3.封装的网络层有什么好处</h5><h5 id="4-串口协议改了，保证数据完整唯一"><a href="#4-串口协议改了，保证数据完整唯一" class="headerlink" title="4.串口协议改了，保证数据完整唯一"></a>4.串口协议改了，保证数据完整唯一</h5><h5 id="1-java特点"><a href="#1-java特点" class="headerlink" title="1.java特点"></a>1.java特点</h5><h5 id="2-http协议"><a href="#2-http协议" class="headerlink" title="2.http协议"></a>2.http协议</h5><h5 id="3-七层网络"><a href="#3-七层网络" class="headerlink" title="3.七层网络"></a>3.七层网络</h5><h5 id="4-socket"><a href="#4-socket" class="headerlink" title="4.socket"></a>4.socket</h5><h5 id="5-handler"><a href="#5-handler" class="headerlink" title="5.handler"></a>5.handler</h5><h5 id="6-jni"><a href="#6-jni" class="headerlink" title="6.jni"></a>6.jni</h5><h5 id="7-实时的视频通话"><a href="#7-实时的视频通话" class="headerlink" title="7.实时的视频通话"></a>7.实时的视频通话</h5><h5 id="8-activity传递大量数据"><a href="#8-activity传递大量数据" class="headerlink" title="8.activity传递大量数据"></a>8.activity传递大量数据</h5><h5 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1.自我介绍"></a>1.自我介绍</h5><h5 id="2-介绍项目流程"><a href="#2-介绍项目流程" class="headerlink" title="2.介绍项目流程"></a>2.介绍项目流程</h5><h5 id="3-项目难点"><a href="#3-项目难点" class="headerlink" title="3.项目难点"></a>3.项目难点</h5><h5 id="4-activity启动方式"><a href="#4-activity启动方式" class="headerlink" title="4.activity启动方式"></a>4.activity启动方式</h5><h5 id="5-APK的打包"><a href="#5-APK的打包" class="headerlink" title="5.APK的打包"></a>5.APK的打包</h5><h5 id="6-handler"><a href="#6-handler" class="headerlink" title="6.handler"></a>6.handler</h5><h5 id="7-MVP"><a href="#7-MVP" class="headerlink" title="7.MVP"></a>7.MVP</h5><h5 id="8-组件化"><a href="#8-组件化" class="headerlink" title="8.组件化"></a>8.组件化</h5><h5 id="9-okhttp源码"><a href="#9-okhttp源码" class="headerlink" title="9.okhttp源码"></a>9.okhttp源码</h5><h5 id="1-四大组件并分别介绍"><a href="#1-四大组件并分别介绍" class="headerlink" title="1.四大组件并分别介绍"></a>1.四大组件并分别介绍</h5><h5 id="2-fragment介绍"><a href="#2-fragment介绍" class="headerlink" title="2.fragment介绍"></a>2.fragment介绍</h5><h5 id="3-常用布局"><a href="#3-常用布局" class="headerlink" title="3.常用布局"></a>3.常用布局</h5><h5 id="4-定义View流程"><a href="#4-定义View流程" class="headerlink" title="4.定义View流程"></a>4.定义View流程</h5><h5 id="5-事件分发机制"><a href="#5-事件分发机制" class="headerlink" title="5.事件分发机制"></a>5.事件分发机制</h5><h5 id="6-Handler及源码"><a href="#6-Handler及源码" class="headerlink" title="6.Handler及源码"></a>6.Handler及源码</h5><h5 id="7-AsyncTask及源码"><a href="#7-AsyncTask及源码" class="headerlink" title="7.AsyncTask及源码"></a>7.AsyncTask及源码</h5><h5 id="8-handlerThread及源码"><a href="#8-handlerThread及源码" class="headerlink" title="8.handlerThread及源码"></a>8.handlerThread及源码</h5><h5 id="9-IntentService及源码"><a href="#9-IntentService及源码" class="headerlink" title="9.IntentService及源码"></a>9.IntentService及源码</h5><h5 id="10-Binder"><a href="#10-Binder" class="headerlink" title="10.Binder"></a>10.Binder</h5><h5 id="11-Aidl全称"><a href="#11-Aidl全称" class="headerlink" title="11.Aidl全称"></a>11.Aidl全称</h5><h5 id="12-OkHttp、Volley源码及区别"><a href="#12-OkHttp、Volley源码及区别" class="headerlink" title="12.OkHttp、Volley源码及区别"></a>12.OkHttp、Volley源码及区别</h5><h5 id="13-UIL、Picasso、Glide源码及区别"><a href="#13-UIL、Picasso、Glide源码及区别" class="headerlink" title="13.UIL、Picasso、Glide源码及区别"></a>13.UIL、Picasso、Glide源码及区别</h5><h5 id="14-greenDao内部实现"><a href="#14-greenDao内部实现" class="headerlink" title="14.greenDao内部实现"></a>14.greenDao内部实现</h5><h5 id="15-Zxing通过什么算法进行图片解析"><a href="#15-Zxing通过什么算法进行图片解析" class="headerlink" title="15.Zxing通过什么算法进行图片解析"></a>15.Zxing通过什么算法进行图片解析</h5><h5 id="16-消息推送的原理"><a href="#16-消息推送的原理" class="headerlink" title="16.消息推送的原理"></a>16.消息推送的原理</h5><h5 id="17-设计模式及手写单例"><a href="#17-设计模式及手写单例" class="headerlink" title="17.设计模式及手写单例"></a>17.设计模式及手写单例</h5><h5 id="18-热修复原理"><a href="#18-热修复原理" class="headerlink" title="18.热修复原理"></a>18.热修复原理</h5><h5 id="19-测试桩应用场景"><a href="#19-测试桩应用场景" class="headerlink" title="19.测试桩应用场景"></a>19.测试桩应用场景</h5><h5 id="20-记录用户控件的使用习惯"><a href="#20-记录用户控件的使用习惯" class="headerlink" title="20.记录用户控件的使用习惯"></a>20.记录用户控件的使用习惯</h5><h5 id="21-图片缓存一小时与一天"><a href="#21-图片缓存一小时与一天" class="headerlink" title="21.图片缓存一小时与一天"></a>21.图片缓存一小时与一天</h5><h5 id="22-OOM还与LINUX下的资源访问有关"><a href="#22-OOM还与LINUX下的资源访问有关" class="headerlink" title="22.OOM还与LINUX下的资源访问有关"></a>22.OOM还与LINUX下的资源访问有关</h5><h5 id="23-其他线程间通信的方法"><a href="#23-其他线程间通信的方法" class="headerlink" title="23.其他线程间通信的方法"></a>23.其他线程间通信的方法</h5><h5 id="24-loop在哪里创建的"><a href="#24-loop在哪里创建的" class="headerlink" title="24.loop在哪里创建的"></a>24.loop在哪里创建的</h5><h5 id="25-synchronized怎么实现的"><a href="#25-synchronized怎么实现的" class="headerlink" title="25.synchronized怎么实现的"></a>25.synchronized怎么实现的</h5><h5 id="1-定义View流程"><a href="#1-定义View流程" class="headerlink" title="1.定义View流程"></a>1.定义View流程</h5><h5 id="2-事件分发机制"><a href="#2-事件分发机制" class="headerlink" title="2.事件分发机制"></a>2.事件分发机制</h5><h5 id="3-Handler及源码"><a href="#3-Handler及源码" class="headerlink" title="3.Handler及源码"></a>3.Handler及源码</h5><h5 id="4-热修复原理"><a href="#4-热修复原理" class="headerlink" title="4.热修复原理"></a>4.热修复原理</h5><h5 id="5-OkHttp、Volley源码及区别"><a href="#5-OkHttp、Volley源码及区别" class="headerlink" title="5.OkHttp、Volley源码及区别"></a>5.OkHttp、Volley源码及区别</h5><h5 id="6-OOM项目中的处理"><a href="#6-OOM项目中的处理" class="headerlink" title="6.OOM项目中的处理"></a>6.OOM项目中的处理</h5><h5 id="7-运行时权限及机型适配"><a href="#7-运行时权限及机型适配" class="headerlink" title="7.运行时权限及机型适配"></a>7.运行时权限及机型适配</h5><h5 id="8-RxJava"><a href="#8-RxJava" class="headerlink" title="8.RxJava"></a>8.RxJava</h5><h5 id="9-java虚拟机"><a href="#9-java虚拟机" class="headerlink" title="9.java虚拟机"></a>9.java虚拟机</h5><h5 id="10-内存回收算法"><a href="#10-内存回收算法" class="headerlink" title="10.内存回收算法"></a>10.内存回收算法</h5><h5 id="11-volley的response在哪个线程"><a href="#11-volley的response在哪个线程" class="headerlink" title="11.volley的response在哪个线程"></a>11.volley的response在哪个线程</h5><h5 id="1-介绍项目"><a href="#1-介绍项目" class="headerlink" title="1.介绍项目"></a>1.介绍项目</h5><h5 id="2-封装的框架"><a href="#2-封装的框架" class="headerlink" title="2.封装的框架"></a>2.封装的框架</h5><h5 id="3-rxjava"><a href="#3-rxjava" class="headerlink" title="3.rxjava"></a>3.rxjava</h5><h5 id="4-retrofit"><a href="#4-retrofit" class="headerlink" title="4.retrofit"></a>4.retrofit</h5><h5 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h5><h5 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h5><h5 id="1-MVP实现购物车添加商品"><a href="#1-MVP实现购物车添加商品" class="headerlink" title="1.MVP实现购物车添加商品"></a>1.MVP实现购物车添加商品</h5><h5 id="2-图片框架的优缺点"><a href="#2-图片框架的优缺点" class="headerlink" title="2.图片框架的优缺点"></a>2.图片框架的优缺点</h5><h5 id="3-数据库相关问题"><a href="#3-数据库相关问题" class="headerlink" title="3.数据库相关问题"></a>3.数据库相关问题</h5><h5 id="4-热修复实际使用的问题"><a href="#4-热修复实际使用的问题" class="headerlink" title="4.热修复实际使用的问题"></a>4.热修复实际使用的问题</h5><h5 id="5-aidl的实现"><a href="#5-aidl的实现" class="headerlink" title="5.aidl的实现"></a>5.aidl的实现</h5><h5 id="1-主要聊了安卓以后的发展及自身的发展"><a href="#1-主要聊了安卓以后的发展及自身的发展" class="headerlink" title="1.主要聊了安卓以后的发展及自身的发展"></a>1.主要聊了安卓以后的发展及自身的发展</h5><h5 id="1-bindler"><a href="#1-bindler" class="headerlink" title="1.bindler"></a>1.bindler</h5><h5 id="2-bean为什么是一个对象"><a href="#2-bean为什么是一个对象" class="headerlink" title="2.bean为什么是一个对象"></a>2.bean为什么是一个对象</h5><h5 id="3-linkhasmap"><a href="#3-linkhasmap" class="headerlink" title="3.linkhasmap"></a>3.linkhasmap</h5><h5 id="1-arraylist与linklist区别（数组与链表的区别）"><a href="#1-arraylist与linklist区别（数组与链表的区别）" class="headerlink" title="1.arraylist与linklist区别（数组与链表的区别）"></a>1.arraylist与linklist区别（数组与链表的区别）</h5><h5 id="1-viewstub与gone区别及如何显示"><a href="#1-viewstub与gone区别及如何显示" class="headerlink" title="1.viewstub与gone区别及如何显示"></a>1.viewstub与gone区别及如何显示</h5><h5 id="2-MVP"><a href="#2-MVP" class="headerlink" title="2.MVP"></a>2.MVP</h5><h5 id="3-eventbus"><a href="#3-eventbus" class="headerlink" title="3.eventbus"></a>3.eventbus</h5><p>方陈伟投了200家</p>
+<p>猎头推荐<br>无瑞科技简历没过<br>依图 没面<br>东南亚没面<br>新大陆没面<br>宇视科技简历没过<br>大华外包简历没过<br>盗火者 没反应</p>
+<p>内推<br>美团简历没过<br>vivo简历没过<br>有赞简历没过</p>
+<p>已经面试<br>6.16 启扬 已过12*13~15<br>6.18 云暴拉黑<br>6.19 信雅达没过 工资要高了<br>6.19黄金宝没过<br>6.20 星迈联系不上<br>6.27 宇信没去<br>6.29彼此科技没去<br>7.01同花顺没过<br>7.07思创医惠没去<br>9.08亿建联没过<br>9.25牛帮没过<br>10.10海康没过<br>10.11萌侠没去<br>10.18锐嵌科技没过<br>10.19E修鸽没去<br>11.03公积金没去<br>11.06科大讯飞没过<br>11.15名赫资产已过<br>11.15摩尚基本过了<br>11.16聚光没过<br>11.17融易通没面是外包<br>11.20搜度没去<br>11.25招银网络科技没过<br>11.27熊猫软件没去<br>11.27中广格兰过了12＋<br>11.29丝集网太垃圾了<br>11.30趋横 过了<br>12.01物恋网 没过<br>12.05扳手网络 没过</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/面试记录/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-冒泡排序">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/冒泡排序/">冒泡排序</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##思路:     </p>
+<p>###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p>
+<p>###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p>
+<p>###3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p>
+<p>###4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort</span><br><span class="line">&#123;</span><br><span class="line">    public void sort(int[] a)</span><br><span class="line">    &#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = a.length - 1; i &gt; 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[j + 1] &lt; a[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = a[j];</span><br><span class="line">                    a[j] = a[j + 1];</span><br><span class="line">                    a[j + 1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/冒泡排序/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-选择排序">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##思路:     </p>
+<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
+<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
+<p>###3、依次类推，直到最后一个元素。</p>
+<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
+<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
+<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
+<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
     </footer>
 </div>
 
@@ -564,9 +455,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-字符流与字节流">
+<div class="cube-excerpt" id="cube-excerpt-二分查找">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/字符流与字节流/">字符流与字节流</a></h1>
+        <h1><a href="/2018/01/25/二分查找/">二分查找</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -575,7 +466,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
                 
             </div>
         </div>
@@ -583,13 +474,18 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-0e77b7f3c8dbb606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-13 14.23.08.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-78f27e4c15351119.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-13 14.23.20.png"></p>
-
+           <p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
+<p>##思路:</p>
+<p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p>
+<p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p>
+<p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/字符流与字节流/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/二分查找/">阅读全文</a>
     </footer>
 </div>
 
@@ -688,7 +584,7 @@
     <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
     
     
-    <span>Mayo</span>
+    <span>Krido</span>
     
     
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
@@ -736,7 +632,7 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存泄漏/" title="内存泄漏">内存泄漏</a>
+                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -754,7 +650,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
+                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
                 </p>
             </div>
         </li>
@@ -767,7 +663,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -780,7 +676,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/字符流与字节流/" title="字符流与字节流">字符流与字节流</a>
                 </p>
             </div>
         </li>
@@ -793,7 +689,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -816,23 +712,23 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/categories/Algorithm/">#Algorithm</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/Code/">#Code</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/DP/">#DP</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Code/Java/">#Java</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/DP/">#DP</a>
         </div>
         
         
@@ -857,17 +753,17 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android图片/">#Android图片</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
@@ -877,22 +773,22 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础/">#Java基础</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/OS/">#OS</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
@@ -934,7 +830,7 @@
 </div>
 <footer class="cube-footer">
     
-© 2017 Mayo
+© 2017 Krido
 
 <br>
 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>

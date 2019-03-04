@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Mayo">
+    <meta name="author" content="Krido">
     
     <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
     
@@ -226,7 +226,8 @@ public void onClick(View v{
 
     ActivityCollector.finishAll();//销毁所有活动
 }
-</code></pre>
+</code></pre><h5 id="还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出"><a href="#还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出" class="headerlink" title="还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出"></a>还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出</h5><pre><code>android.os.Process.killProcess(android.os.Process.myPid());
+</code></pre><h5 id="killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid-方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。"><a href="#killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid-方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。" class="headerlink" title="killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid()方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。"></a>killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid()方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。</h5>
     </div>
 </div>
 
@@ -313,7 +314,7 @@ public void onClick(View v{
     <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
     
     
-    <span>Mayo</span>
+    <span>Krido</span>
     
     
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
@@ -361,7 +362,7 @@ public void onClick(View v{
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/01/25/内存泄漏/" title="内存泄漏">内存泄漏</a>
+                        <a href="/2018/01/25/内存划分/" title="内存划分">内存划分</a>
                     </p>
                     <p class="date">
                         2018-01-25
@@ -379,7 +380,7 @@ public void onClick(View v{
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
+                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
                 </p>
             </div>
         </li>
@@ -392,7 +393,7 @@ public void onClick(View v{
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
+                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
                 </p>
             </div>
         </li>
@@ -405,7 +406,7 @@ public void onClick(View v{
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/集合框架的构成及分类/" title="集合框架的构成及分类">集合框架的构成及分类</a>
+                    <a href="/2018/01/25/字符流与字节流/" title="字符流与字节流">字符流与字节流</a>
                 </p>
             </div>
         </li>
@@ -418,7 +419,7 @@ public void onClick(View v{
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/HttpURLConnection/" title="HttpURLConnection">HttpURLConnection</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -436,8 +437,13 @@ public void onClick(View v{
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
@@ -447,21 +453,16 @@ public void onClick(View v{
         
         
         <div class="cube-box ">
-            <a href="/categories/Code/Java/">#Java</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/DP/">#DP</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/Code/Java/">#Java</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
@@ -482,33 +483,33 @@ public void onClick(View v{
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android国际化/">#Android国际化</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android图片/">#Android图片</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Java基础/">#Java基础</a>
+            <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Algorithm/">#Algorithm</a>
+        <div class="cube-box ">
+            <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
@@ -522,12 +523,12 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         
@@ -559,7 +560,7 @@ public void onClick(View v{
 </div>
 <footer class="cube-footer">
     
-© 2017 Mayo
+© 2017 Krido
 
 <br>
 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
