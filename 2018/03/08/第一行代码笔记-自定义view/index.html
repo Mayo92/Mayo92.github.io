@@ -12,7 +12,7 @@
     
     
     
-    <title>标签: 第一行代码，读书笔记 | 赞美の心</title>
+    <title>第一行代码笔记-自定义view | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,37 +162,73 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">第一行代码笔记-自定义view</h1>
     
-    <div class="cube-archive" style="margin-top: 0;">
-        <h1 class="title">第一行代码，读书笔记</h1>
-        
-        <ul class="posts">
-            
-            <li class="post">
-                <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/">第一行代码笔记-Android基础控件布局</a>
-            </li>
-            
-            <li class="post">
-                <a href="/2018/03/07/第一行代码笔记-Android基础用法/">第一行代码笔记-Android基础用法</a>
-            </li>
-            
-            <li class="post">
-                <a href="/2018/03/06/第一行代码笔记-Android-Studio/">第一行代码笔记-Android Studio</a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-03-08
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/自定义view/">#自定义view</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。</p>
+<a id="more"></a>
+<pre><code>public class TitleLayout extends LinearLayout {
+
+    public TitleLayout(Context context,AttributeSet attrs){
+        super(context,attrs);
+        LayoutInflater.from(context).inflate(R.layout.title,this);
+        Button titleBack = (Button)findViewById(R.id.title_back);
+        titleBack.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((Activity)getContext()).finish();
+            }
+        })
+
+    }
+} 
+</code></pre><p>重写LinearLayout中带有两个参数的构造函数，在布局中引入TitleLayout控件就会调用这个构造函数，然后在构造函数中需要对标题栏布局进行动态加载，这就要借助LayoutInflater来实现了。通过LayoutInflater的from()方法可以构建出一个LayoutInflater对象，然后调用inflate()方法就可以动态加载一个布局文件，inflate()方法接受两个参数，第一个参数是要加载的布局文件id，这里我们传入R.layout.title，第二个参数是给加载好的布局再添加一个父容器，这里我们想要指定为TitleLayout，于是直接传入this。</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/03/06/HEXO总结/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                HEXO总结
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/">
+                第一行代码笔记-Android基础控件布局
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
         </div>
         <div class="cube-right">
             
@@ -256,7 +292,7 @@
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>5</span>文章</a>
+        <a class="count articles"><span>6</span>文章</a>
         <a class="count tags"><span>9</span>标签</a>
         <a class="count categories"><span>4</span>分类</a>
     </div>
@@ -329,7 +365,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
+                    <a href="/2018/03/08/第一行代码笔记-自定义view/" title="第一行代码笔记-自定义view">第一行代码笔记-自定义view</a>
                 </p>
             </div>
         </li>
@@ -342,7 +378,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
+                    <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
                 </p>
             </div>
         </li>
@@ -355,7 +391,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/06/第一行代码笔记-Android-Studio/" title="第一行代码笔记-Android Studio">第一行代码笔记-Android Studio</a>
+                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
                 </p>
             </div>
         </li>
@@ -378,7 +414,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -404,7 +440,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Blog/">#Blog</a>
         </div>
         
@@ -425,11 +461,6 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/第一行代码，读书笔记/">#第一行代码，读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Intent/">#Intent</a>
         </div>
         
@@ -441,6 +472,11 @@
         
         <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
