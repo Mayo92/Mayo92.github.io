@@ -6,41 +6,100 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-30T06:29:43.135Z</updated>
+  <updated>2019-03-06T09:33:54.363Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Krido</name>
+    <name>Mayo</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>内存划分</title>
-    <link href="http://yoursite.com/2018/01/25/%E5%86%85%E5%AD%98%E5%88%92%E5%88%86/"/>
-    <id>http://yoursite.com/2018/01/25/内存划分/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:29:43.135Z</updated>
+    <title>HEXO总结</title>
+    <link href="http://yoursite.com/2019/03/06/HEXO%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2019/03/06/HEXO总结/</id>
+    <published>2019-03-06T09:31:00.000Z</published>
+    <updated>2019-03-06T09:33:54.363Z</updated>
     
-    <content type="html"><![CDATA[<p>##1. 寄存器。     </p><p>##2. 本地方法区。    </p><p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p><p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p><p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="安装nodejs，查看node版本：node-v"><a href="#安装nodejs，查看node版本：node-v" class="headerlink" title="安装nodejs，查看node版本：node -v"></a>安装nodejs，查看node版本：node -v</h4><h4 id="安装git，查看git版本：git-–version"><a href="#安装git，查看git版本：git-–version" class="headerlink" title="安装git，查看git版本：git –version"></a>安装git，查看git版本：git –version</h4><h4 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h4><h4 id="npm安装Hexo：sudo-npm-install-g-hexo-官网有坑"><a href="#npm安装Hexo：sudo-npm-install-g-hexo-官网有坑" class="headerlink" title="npm安装Hexo：sudo npm install -g hexo(官网有坑)"></a>npm安装Hexo：sudo npm install -g hexo(官网有坑)</h4><h4 id="初始化。在指定目录创建所需要的文件："><a href="#初始化。在指定目录创建所需要的文件：" class="headerlink" title="初始化。在指定目录创建所需要的文件："></a>初始化。在指定目录创建所需要的文件：</h4><ul><li>hexo init &lt;文件夹名称&gt; </li><li>cd &lt;文件夹名称&gt; </li><li>npm install</li></ul><h4 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h4><ul><li>_config.yml 配置信息</li><li>package.json 应用程序信息</li><li>scaffolds 模板文件夹</li><li>source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.</li><li>themes 主题文件夹</li></ul><a id="more"></a><h4 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h4><h5 id="设置SSH"><a href="#设置SSH" class="headerlink" title="设置SSH"></a>设置SSH</h5><h5 id="新建项目，名称为用户名-github-io"><a href="#新建项目，名称为用户名-github-io" class="headerlink" title="新建项目，名称为用户名.github.io"></a>新建项目，名称为用户名.github.io</h5><h5 id="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"><a href="#输入git上传插件安装代码（安装时会提示输入github用户名及密码）" class="headerlink" title="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"></a>输入git上传插件安装代码（安装时会提示输入github用户名及密码）</h5><pre><code>npm install hexo-deployer-git --save</code></pre><h5 id="在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错"><a href="#在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错" class="headerlink" title="在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)"></a>在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)</h5><pre><code>deploy:      type: git      repository:            github: https://github.com/jikaipenggithub/jikaipenggithub.github.io      branch: master</code></pre><h5 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h5><pre><code>hexo cleanhexo ghexo d</code></pre><h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http://你的用户名.github.io"></a>打开<a href="http://你的用户名.github.io" target="_blank" rel="noopener">http://你的用户名.github.io</a></h5><h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><pre><code>$ git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre><h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><pre><code>hexo clean           //清除缓存文件 (db.json) 和已生成的静态文件 (public)hexo g             //生成缓存和静态文件hexo d             //重新部署到服务器</code></pre><h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称"></a>修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog/themes/next/ 下执行命令 git pull 更新主题"></a>cd 到 blog/themes/next/ 下执行命令 git pull 更新主题</h5><h4 id="新建与更新博客"><a href="#新建与更新博客" class="headerlink" title="新建与更新博客"></a>新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><pre><code>hexo new &apos;filename&apos;</code></pre><h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg/source/_posts/下面会看到新建的博客"></a>在bolg/source/_posts/下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre><code>title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot;  #博文题目date: 2014-11-21 11:25:38      #生成时间tags:                    #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]- tag1- tag2- tag3categories: [cat1,cat2,cat3]---</code></pre><h5 id="如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加"><a href="#如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加" class="headerlink" title="如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加"></a>如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加</h5><pre><code>&lt;!--more--&gt;</code></pre><h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><pre><code>hexo cleanhexo ghexo d</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;安装nodejs，查看node版本：node-v&quot;&gt;&lt;a href=&quot;#安装nodejs，查看node版本：node-v&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs，查看node版本：node -v&quot;&gt;&lt;/a&gt;安装nodejs，查看node版本：node -v&lt;/h4&gt;&lt;h4 id=&quot;安装git，查看git版本：git-–version&quot;&gt;&lt;a href=&quot;#安装git，查看git版本：git-–version&quot; class=&quot;headerlink&quot; title=&quot;安装git，查看git版本：git –version&quot;&gt;&lt;/a&gt;安装git，查看git版本：git –version&lt;/h4&gt;&lt;h4 id=&quot;安装Xcode&quot;&gt;&lt;a href=&quot;#安装Xcode&quot; class=&quot;headerlink&quot; title=&quot;安装Xcode&quot;&gt;&lt;/a&gt;安装Xcode&lt;/h4&gt;&lt;h4 id=&quot;npm安装Hexo：sudo-npm-install-g-hexo-官网有坑&quot;&gt;&lt;a href=&quot;#npm安装Hexo：sudo-npm-install-g-hexo-官网有坑&quot; class=&quot;headerlink&quot; title=&quot;npm安装Hexo：sudo npm install -g hexo(官网有坑)&quot;&gt;&lt;/a&gt;npm安装Hexo：sudo npm install -g hexo(官网有坑)&lt;/h4&gt;&lt;h4 id=&quot;初始化。在指定目录创建所需要的文件：&quot;&gt;&lt;a href=&quot;#初始化。在指定目录创建所需要的文件：&quot; class=&quot;headerlink&quot; title=&quot;初始化。在指定目录创建所需要的文件：&quot;&gt;&lt;/a&gt;初始化。在指定目录创建所需要的文件：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;hexo init &amp;lt;文件夹名称&amp;gt; &lt;/li&gt;
+&lt;li&gt;cd &amp;lt;文件夹名称&amp;gt; &lt;/li&gt;
+&lt;li&gt;npm install&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;文件目录含义&quot;&gt;&lt;a href=&quot;#文件目录含义&quot; class=&quot;headerlink&quot; title=&quot;文件目录含义&quot;&gt;&lt;/a&gt;文件目录含义&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;_config.yml 配置信息&lt;/li&gt;
+&lt;li&gt;package.json 应用程序信息&lt;/li&gt;
+&lt;li&gt;scaffolds 模板文件夹&lt;/li&gt;
+&lt;li&gt;source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.&lt;/li&gt;
+&lt;li&gt;themes 主题文件夹&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://yoursite.com/categories/Blog/"/>
+    
+    
+      <category term="Blog" scheme="http://yoursite.com/tags/Blog/"/>
+    
+      <category term="HEXO" scheme="http://yoursite.com/tags/HEXO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java运算符</title>
+    <link href="http://yoursite.com/2018/01/25/Java%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <id>http://yoursite.com/2018/01/25/Java运算符/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-01-30T06:25:07.928Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p>####左移几位其实就是该数据乘以2的几次方。</p><p>####右移几位其实就是该数据除以2的几次幂</p><p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;##1. 寄存器。     &lt;/p&gt;
-&lt;p&gt;##2. 本地方法区。    &lt;/p&gt;
-&lt;p&gt;##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     &lt;/p&gt;
-&lt;p&gt;##4. 栈内
+        &lt;h3 id=&quot;位运算符&quot;&gt;&lt;a href=&quot;#位运算符&quot; class=&quot;headerlink&quot; title=&quot;位运算符&quot;&gt;&lt;/a&gt;位运算符&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/464017
       
     
     </summary>
     
       <category term="Code" scheme="http://yoursite.com/categories/Code/"/>
     
+      <category term="Java" scheme="http://yoursite.com/categories/Code/Java/"/>
     
-      <category term="OS" scheme="http://yoursite.com/tags/OS/"/>
+    
+      <category term="Java基础" scheme="http://yoursite.com/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>集合框架的构成及分类</title>
+    <link href="http://yoursite.com/2018/01/25/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E6%9E%84%E6%88%90%E5%8F%8A%E5%88%86%E7%B1%BB/"/>
+    <id>http://yoursite.com/2018/01/25/集合框架的构成及分类/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-01-30T06:49:05.958Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; 
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
@@ -71,27 +130,55 @@
   </entry>
   
   <entry>
-    <title>集合框架的构成及分类</title>
-    <link href="http://yoursite.com/2018/01/25/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E6%9E%84%E6%88%90%E5%8F%8A%E5%88%86%E7%B1%BB/"/>
-    <id>http://yoursite.com/2018/01/25/集合框架的构成及分类/</id>
+    <title>Java变量</title>
+    <link href="http://yoursite.com/2018/01/25/Java%E5%8F%98%E9%87%8F/"/>
+    <id>http://yoursite.com/2018/01/25/Java变量/</id>
     <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:49:05.958Z</updated>
+    <updated>2018-01-30T06:18:56.688Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>]]></content>
+    <content type="html"><![CDATA[<p>###Java语言的数据类型包括8种基本类型，3种引用类型</p><p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; 
+        &lt;p&gt;###Java语言的数据类型包括8种基本类型，3种引用类型&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto
       
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Code" scheme="http://yoursite.com/categories/Code/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Code/Java/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+      <category term="Java基础" scheme="http://yoursite.com/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HttpURLConnection</title>
+    <link href="http://yoursite.com/2018/01/25/HttpURLConnection/"/>
+    <id>http://yoursite.com/2018/01/25/HttpURLConnection/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-01-30T06:46:46.709Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p><p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p><p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p><p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p><p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
   </entry>
   
@@ -146,33 +233,6 @@
   </entry>
   
   <entry>
-    <title>冒泡排序</title>
-    <link href="http://yoursite.com/2018/01/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
-    <id>http://yoursite.com/2018/01/25/冒泡排序/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:35:33.360Z</updated>
-    
-    <content type="html"><![CDATA[<p>##思路:     </p><p>###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p><p>###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p><p>###3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p><p>###4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort</span><br><span class="line">&#123;</span><br><span class="line">    public void sort(int[] a)</span><br><span class="line">    &#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = a.length - 1; i &gt; 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[j + 1] &lt; a[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = a[j];</span><br><span class="line">                    a[j] = a[j + 1];</span><br><span class="line">                    a[j + 1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##思路:     &lt;/p&gt;
-&lt;p&gt;###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     &lt;/p&gt;
-&lt;p&gt;###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。
-      
-    
-    </summary>
-    
-      <category term="Algorithm" scheme="http://yoursite.com/categories/Algorithm/"/>
-    
-    
-      <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
     <title>选择排序</title>
     <link href="http://yoursite.com/2018/01/25/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/"/>
     <id>http://yoursite.com/2018/01/25/选择排序/</id>
@@ -200,49 +260,19 @@
   </entry>
   
   <entry>
-    <title>HttpURLConnection</title>
-    <link href="http://yoursite.com/2018/01/25/HttpURLConnection/"/>
-    <id>http://yoursite.com/2018/01/25/HttpURLConnection/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:46:46.709Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p><p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p><p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p><p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p><p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
     <title>书单</title>
     <link href="http://yoursite.com/2018/01/25/%E4%B9%A6%E5%8D%95/"/>
     <id>http://yoursite.com/2018/01/25/书单/</id>
     <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:54:59.379Z</updated>
+    <updated>2019-03-06T07:30:15.375Z</updated>
     
-    <content type="html"><![CDATA[<p>###Android书</p><p>#####1.第一行代码（第一版）</p><p>#####2.Android编程权威指南（第二版）</p><p>#####3.Android群英传</p><p>#####4.Android开发进阶从小工到专家</p><p>#####5.Android进阶之光</p><h1 id="6-Android开发艺术探索"><a href="#6-Android开发艺术探索" class="headerlink" title="#####6.Android开发艺术探索"></a>#####6.Android开发艺术探索</h1><p>###Android工具书</p><p>#####1.Android Studio实战</p><h1 id="2-Android群英传神兵利器"><a href="#2-Android群英传神兵利器" class="headerlink" title="#####2.Android群英传神兵利器"></a>#####2.Android群英传神兵利器</h1><p>###Android面试</p><h1 id="1-Android面试宝典"><a href="#1-Android面试宝典" class="headerlink" title="#####1.Android面试宝典"></a>#####1.Android面试宝典</h1><p>###Android优化<br>1.APP研发录<br>2.Android源码设计模式解析与实战</p><h1 id="3-设计模式之禅"><a href="#3-设计模式之禅" class="headerlink" title="3.设计模式之禅"></a>3.设计模式之禅</h1><p>###Java书<br>1.Java程序设计<br>2.Effective Java</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Android书"><a href="#Android书" class="headerlink" title="Android书"></a>Android书</h3><h5 id="1-第一行代码（第一版）"><a href="#1-第一行代码（第一版）" class="headerlink" title="1.第一行代码（第一版）"></a>1.第一行代码（第一版）</h5><h5 id="2-Android编程权威指南（第二版）"><a href="#2-Android编程权威指南（第二版）" class="headerlink" title="2.Android编程权威指南（第二版）"></a>2.Android编程权威指南（第二版）</h5><h5 id="3-Android群英传"><a href="#3-Android群英传" class="headerlink" title="3.Android群英传"></a>3.Android群英传</h5><h5 id="4-Android开发进阶从小工到专家"><a href="#4-Android开发进阶从小工到专家" class="headerlink" title="4.Android开发进阶从小工到专家"></a>4.Android开发进阶从小工到专家</h5><h5 id="5-Android进阶之光"><a href="#5-Android进阶之光" class="headerlink" title="5.Android进阶之光"></a>5.Android进阶之光</h5><h5 id="6-Android开发艺术探索"><a href="#6-Android开发艺术探索" class="headerlink" title="6.Android开发艺术探索"></a>6.Android开发艺术探索</h5><p>=================================================</p><p>###Android工具书</p><p>#####1.Android Studio实战</p><h1 id="2-Android群英传神兵利器"><a href="#2-Android群英传神兵利器" class="headerlink" title="#####2.Android群英传神兵利器"></a>#####2.Android群英传神兵利器</h1><p>###Android面试</p><h1 id="1-Android面试宝典"><a href="#1-Android面试宝典" class="headerlink" title="#####1.Android面试宝典"></a>#####1.Android面试宝典</h1><p>###Android优化<br>1.APP研发录<br>2.Android源码设计模式解析与实战</p><h1 id="3-设计模式之禅"><a href="#3-设计模式之禅" class="headerlink" title="3.设计模式之禅"></a>3.设计模式之禅</h1><p>###Java书<br>1.Java程序设计<br>2.Effective Java</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;###Android书&lt;/p&gt;
-&lt;p&gt;#####1.第一行代码（第一版）&lt;/p&gt;
-&lt;p&gt;#####2.Android编程权威指南（第二版）&lt;/p&gt;
-&lt;p&gt;#####3.Android群英传&lt;/p&gt;
-&lt;p&gt;#####4.Android开发进阶从小工到专家&lt;/p&gt;
-&lt;p&gt;###
+        &lt;h3 id=&quot;Android书&quot;&gt;&lt;a href=&quot;#Android书&quot; class=&quot;headerlink&quot; title=&quot;Android书&quot;&gt;&lt;/a&gt;Android书&lt;/h3&gt;&lt;h5 id=&quot;1-第一行代码（第一版）&quot;&gt;&lt;a href=&quot;#1-第一行代码（第一版）&quot; cla
       
     
     </summary>
@@ -255,81 +285,30 @@
   </entry>
   
   <entry>
-    <title>二分查找</title>
-    <link href="http://yoursite.com/2018/01/25/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    <id>http://yoursite.com/2018/01/25/二分查找/</id>
+    <title>内存划分</title>
+    <link href="http://yoursite.com/2018/01/25/%E5%86%85%E5%AD%98%E5%88%92%E5%88%86/"/>
+    <id>http://yoursite.com/2018/01/25/内存划分/</id>
     <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:37:26.157Z</updated>
+    <updated>2018-01-30T06:29:43.135Z</updated>
     
-    <content type="html"><![CDATA[<p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p><p>##思路:</p><p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p><p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p><p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p><p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p><p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>##1. 寄存器。     </p><p>##2. 本地方法区。    </p><p>##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     </p><p>##4. 栈内存：用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放。    </p><p>##5. 堆内存：数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类 型是false，char类型是’\u0000’。如果将数组的引用实体设置为null，也就是实体不再被使用，那么会在不确定的时间内被垃圾回收器回收。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。&lt;/p&gt;
-&lt;p&gt;##思路:&lt;/p&gt;
-&lt;p&gt;###1、设置三个变量记录角标:min、max、mid。m
-      
-    
-    </summary>
-    
-      <category term="Algorithm" scheme="http://yoursite.com/categories/Algorithm/"/>
-    
-    
-      <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内存泄漏</title>
-    <link href="http://yoursite.com/2018/01/25/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
-    <id>http://yoursite.com/2018/01/25/内存泄漏/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:48:19.023Z</updated>
-    
-    <content type="html"><![CDATA[<p>####单例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class AppManager &#123;</span><br><span class="line"></span><br><span class="line">    //有内存泄漏的问题：</span><br><span class="line">//    private static AppManager instance;</span><br><span class="line">//    private Context context;</span><br><span class="line">//    private AppManager(Context context) &#123;</span><br><span class="line">//        this.context = context;</span><br><span class="line">//    &#125;</span><br><span class="line">//    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">//        if (instance == null) &#123;</span><br><span class="line">//传入的Activity回收时由于被单例持有无法回收</span><br><span class="line">//            instance = new AppManager(context);</span><br><span class="line">//        &#125;</span><br><span class="line">//        return instance;</span><br><span class="line">//    &#125;</span><br><span class="line">//    修复内存泄漏的写法：</span><br><span class="line">    private static AppManager instance;</span><br><span class="line">    private Context context;</span><br><span class="line">    private AppManager(Context context) &#123;</span><br><span class="line">        this.context = context.getApplicationContext();// 使用Application 的context</span><br><span class="line">    &#125;</span><br><span class="line">    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">        if (instance == null) &#123;</span><br><span class="line">            instance = new AppManager(context);</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>####匿名内部类handler<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    //容易造成内存泄漏的写法：</span><br><span class="line">//非静态内部类</span><br><span class="line">//    private Handler mHandler = new Handler() &#123;</span><br><span class="line">//        @Override</span><br><span class="line">//        public void handleMessage(Message msg) &#123;</span><br><span class="line">//            //...</span><br><span class="line">//        &#125;</span><br><span class="line">//    &#125;;</span><br><span class="line">//</span><br><span class="line">//    @Override</span><br><span class="line">//    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">//        super.onCreate(savedInstanceState);</span><br><span class="line">//        setContentView(R.layout.activity_main);</span><br><span class="line">//        loadData();</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    private void loadData() &#123;</span><br><span class="line">//        //...request</span><br><span class="line">//        Message message = Message.obtain();</span><br><span class="line">//        mHandler.sendMessage(message);</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    static class TestResource &#123;</span><br><span class="line">//该静态实例持有activity的引用，内存资源得不到正常回收，应该设为静态内部类</span><br><span class="line">//        private static final String TAG = &quot;&quot;;</span><br><span class="line">//        //...</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">//    修复内存泄漏的方法：</span><br><span class="line">//1.设为静态内部类2.在handler内部持有外部类Activity的弱引用</span><br><span class="line">    private MyHandler mHandler = new MyHandler(this);</span><br><span class="line">    private TextView mTextView ;</span><br><span class="line">    private static class MyHandler extends Handler &#123;</span><br><span class="line">        private WeakReference&lt;Context&gt; reference;</span><br><span class="line">        public MyHandler(Context context) &#123;</span><br><span class="line">            reference = new WeakReference&lt;&gt;(context);</span><br><span class="line">        &#125;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            MainActivity activity = (MainActivity) reference.get();</span><br><span class="line">            if(activity != null)&#123;</span><br><span class="line">//                activity.mTextView.setText(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void loadData() &#123;</span><br><span class="line">        //...request</span><br><span class="line">        Message message = Message.obtain();</span><br><span class="line">        mHandler.sendMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        mHandler.removeCallbacksAndMessages(null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;####单例&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;b
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java运算符</title>
-    <link href="http://yoursite.com/2018/01/25/Java%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-    <id>http://yoursite.com/2018/01/25/Java运算符/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:25:07.928Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p>####左移几位其实就是该数据乘以2的几次方。</p><p>####右移几位其实就是该数据除以2的几次幂</p><p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;位运算符&quot;&gt;&lt;a href=&quot;#位运算符&quot; class=&quot;headerlink&quot; title=&quot;位运算符&quot;&gt;&lt;/a&gt;位运算符&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/464017
+        &lt;p&gt;##1. 寄存器。     &lt;/p&gt;
+&lt;p&gt;##2. 本地方法区。    &lt;/p&gt;
+&lt;p&gt;##3. 方法区：成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。     &lt;/p&gt;
+&lt;p&gt;##4. 栈内
       
     
     </summary>
     
       <category term="Code" scheme="http://yoursite.com/categories/Code/"/>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Code/Java/"/>
     
-    
-      <category term="Java基础" scheme="http://yoursite.com/tags/Java%E5%9F%BA%E7%A1%80/"/>
+      <category term="OS" scheme="http://yoursite.com/tags/OS/"/>
     
   </entry>
   
@@ -359,30 +338,81 @@
   </entry>
   
   <entry>
-    <title>Java变量</title>
-    <link href="http://yoursite.com/2018/01/25/Java%E5%8F%98%E9%87%8F/"/>
-    <id>http://yoursite.com/2018/01/25/Java变量/</id>
+    <title>内存泄漏</title>
+    <link href="http://yoursite.com/2018/01/25/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
+    <id>http://yoursite.com/2018/01/25/内存泄漏/</id>
     <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:18:56.688Z</updated>
+    <updated>2018-01-30T06:48:19.023Z</updated>
     
-    <content type="html"><![CDATA[<p>###Java语言的数据类型包括8种基本类型，3种引用类型</p><p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>]]></content>
+    <content type="html"><![CDATA[<p>####单例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class AppManager &#123;</span><br><span class="line"></span><br><span class="line">    //有内存泄漏的问题：</span><br><span class="line">//    private static AppManager instance;</span><br><span class="line">//    private Context context;</span><br><span class="line">//    private AppManager(Context context) &#123;</span><br><span class="line">//        this.context = context;</span><br><span class="line">//    &#125;</span><br><span class="line">//    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">//        if (instance == null) &#123;</span><br><span class="line">//传入的Activity回收时由于被单例持有无法回收</span><br><span class="line">//            instance = new AppManager(context);</span><br><span class="line">//        &#125;</span><br><span class="line">//        return instance;</span><br><span class="line">//    &#125;</span><br><span class="line">//    修复内存泄漏的写法：</span><br><span class="line">    private static AppManager instance;</span><br><span class="line">    private Context context;</span><br><span class="line">    private AppManager(Context context) &#123;</span><br><span class="line">        this.context = context.getApplicationContext();// 使用Application 的context</span><br><span class="line">    &#125;</span><br><span class="line">    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">        if (instance == null) &#123;</span><br><span class="line">            instance = new AppManager(context);</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>####匿名内部类handler<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    //容易造成内存泄漏的写法：</span><br><span class="line">//非静态内部类</span><br><span class="line">//    private Handler mHandler = new Handler() &#123;</span><br><span class="line">//        @Override</span><br><span class="line">//        public void handleMessage(Message msg) &#123;</span><br><span class="line">//            //...</span><br><span class="line">//        &#125;</span><br><span class="line">//    &#125;;</span><br><span class="line">//</span><br><span class="line">//    @Override</span><br><span class="line">//    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">//        super.onCreate(savedInstanceState);</span><br><span class="line">//        setContentView(R.layout.activity_main);</span><br><span class="line">//        loadData();</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    private void loadData() &#123;</span><br><span class="line">//        //...request</span><br><span class="line">//        Message message = Message.obtain();</span><br><span class="line">//        mHandler.sendMessage(message);</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    static class TestResource &#123;</span><br><span class="line">//该静态实例持有activity的引用，内存资源得不到正常回收，应该设为静态内部类</span><br><span class="line">//        private static final String TAG = &quot;&quot;;</span><br><span class="line">//        //...</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">//    修复内存泄漏的方法：</span><br><span class="line">//1.设为静态内部类2.在handler内部持有外部类Activity的弱引用</span><br><span class="line">    private MyHandler mHandler = new MyHandler(this);</span><br><span class="line">    private TextView mTextView ;</span><br><span class="line">    private static class MyHandler extends Handler &#123;</span><br><span class="line">        private WeakReference&lt;Context&gt; reference;</span><br><span class="line">        public MyHandler(Context context) &#123;</span><br><span class="line">            reference = new WeakReference&lt;&gt;(context);</span><br><span class="line">        &#125;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            MainActivity activity = (MainActivity) reference.get();</span><br><span class="line">            if(activity != null)&#123;</span><br><span class="line">//                activity.mTextView.setText(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void loadData() &#123;</span><br><span class="line">        //...request</span><br><span class="line">        Message message = Message.obtain();</span><br><span class="line">        mHandler.sendMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        mHandler.removeCallbacksAndMessages(null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;###Java语言的数据类型包括8种基本类型，3种引用类型&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto
+        &lt;p&gt;####单例&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;b
       
     
     </summary>
     
-      <category term="Code" scheme="http://yoursite.com/categories/Code/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Code/Java/"/>
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
     
-      <category term="Java基础" scheme="http://yoursite.com/tags/Java%E5%9F%BA%E7%A1%80/"/>
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>冒泡排序</title>
+    <link href="http://yoursite.com/2018/01/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2018/01/25/冒泡排序/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-01-30T06:35:33.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>##思路:     </p><p>###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p><p>###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p><p>###3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p><p>###4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort</span><br><span class="line">&#123;</span><br><span class="line">    public void sort(int[] a)</span><br><span class="line">    &#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = a.length - 1; i &gt; 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[j + 1] &lt; a[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = a[j];</span><br><span class="line">                    a[j] = a[j + 1];</span><br><span class="line">                    a[j + 1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##思路:     &lt;/p&gt;
+&lt;p&gt;###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     &lt;/p&gt;
+&lt;p&gt;###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。
+      
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://yoursite.com/categories/Algorithm/"/>
+    
+    
+      <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二分查找</title>
+    <link href="http://yoursite.com/2018/01/25/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+    <id>http://yoursite.com/2018/01/25/二分查找/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-01-30T06:37:26.157Z</updated>
+    
+    <content type="html"><![CDATA[<p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p><p>##思路:</p><p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p><p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p><p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p><p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p><p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。&lt;/p&gt;
+&lt;p&gt;##思路:&lt;/p&gt;
+&lt;p&gt;###1、设置三个变量记录角标:min、max、mid。m
+      
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://yoursite.com/categories/Algorithm/"/>
+    
+    
+      <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
     
   </entry>
   
@@ -549,55 +579,6 @@ resources.updateConfiguration(config, dm);
 &lt;li&gt;&lt;p&gt;openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&amp;gt; 返回FileInputStream&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-    
-      <category term="Android基础" scheme="http://yoursite.com/tags/Android%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BaseActivity</title>
-    <link href="http://yoursite.com/2017/06/08/BaseActivity/"/>
-    <id>http://yoursite.com/2017/06/08/BaseActivity/</id>
-    <published>2017-06-08T06:00:11.000Z</published>
-    <updated>2018-03-15T09:08:15.552Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="获得当前活动名称"><a href="#获得当前活动名称" class="headerlink" title="获得当前活动名称"></a>获得当前活动名称</h3><pre><code>getClass.getSimpleName();</code></pre><h3 id="退出应用"><a href="#退出应用" class="headerlink" title="退出应用"></a>退出应用</h3><h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h4><pre><code>public class ActivityCollector {    public static List&lt;Activity&gt;activities = new ArrayList&lt;Activity&gt;();    public static void addActivity(Activity activity){        activities.add(activity);    }    public static void removeActivity(Activity activity){        activities.remove(activity);    }    //测试finishAll()方法在ThirdActivity中    public static void finishAll(){        for (Activity activity:activities) {            if(!activity.isFinishing()){                activity.finish();            }        }    }}</code></pre><a id="more"></a>    <h4 id="BaseActivity实现，子类复写"><a href="#BaseActivity实现，子类复写" class="headerlink" title="BaseActivity实现，子类复写"></a>BaseActivity实现，子类复写</h4><pre><code>protected void onCreate(Bundle savedInstanceState) {    super.onCreate(savedInstanceState);    ActivityCollector.addActivity(this);//向List添加活动}@Overrideprotected void onDestroy() {    super.onDestroy();    ActivityCollector.removeActivity(this);//从List移除活动}</code></pre><h4 id="退出方法"><a href="#退出方法" class="headerlink" title="退出方法"></a>退出方法</h4><pre><code>//销毁所有Activity后可以加上结束当前进程的方法public void onClick(View v{         ActivityCollector.finishAll();//销毁所有活动}</code></pre><h5 id="还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出"><a href="#还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出" class="headerlink" title="还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出"></a>还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出</h5><pre><code>android.os.Process.killProcess(android.os.Process.myPid());</code></pre><h5 id="killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid-方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。"><a href="#killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid-方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。" class="headerlink" title="killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid()方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。"></a>killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid()方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。</h5>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;获得当前活动名称&quot;&gt;&lt;a href=&quot;#获得当前活动名称&quot; class=&quot;headerlink&quot; title=&quot;获得当前活动名称&quot;&gt;&lt;/a&gt;获得当前活动名称&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;getClass.getSimpleName();
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;退出应用&quot;&gt;&lt;a href=&quot;#退出应用&quot; class=&quot;headerlink&quot; title=&quot;退出应用&quot;&gt;&lt;/a&gt;退出应用&lt;/h3&gt;&lt;h4 id=&quot;工具类&quot;&gt;&lt;a href=&quot;#工具类&quot; class=&quot;headerlink&quot; title=&quot;工具类&quot;&gt;&lt;/a&gt;工具类&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;public class ActivityCollector {
-
-    public static List&amp;lt;Activity&amp;gt;activities = new ArrayList&amp;lt;Activity&amp;gt;();
-
-    public static void addActivity(Activity activity){
-
-        activities.add(activity);
-    }
-
-    public static void removeActivity(Activity activity){
-
-        activities.remove(activity);
-    }
-
-    //测试finishAll()方法在ThirdActivity中
-    public static void finishAll(){
-
-        for (Activity activity:activities) {
-
-            if(!activity.isFinishing()){
-
-                activity.finish();
-            }
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     

@@ -12,7 +12,7 @@
     
     
     
-    <title>BaseActivity | 赞美の心</title>
+    <title>标签: Blog | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,101 +162,29 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <div class="cube-article">
-    <h1 class="title">BaseActivity</h1>
-    
-    <div class="cube-article-header">
-        <div class="cube-article-date">
-            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-            <!-- moment.js对象 -->
-            2017-06-08
-        </div>
-        <div class="cube-article-tags">
-    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-    
-    <a href="/tags/Android基础/">#Android基础</a>
-    
-</div>
-    </div>
-    
-    <div class="cube-article-content cube-markdown">
-        
-        <h3 id="获得当前活动名称"><a href="#获得当前活动名称" class="headerlink" title="获得当前活动名称"></a>获得当前活动名称</h3><pre><code>getClass.getSimpleName();
-</code></pre><h3 id="退出应用"><a href="#退出应用" class="headerlink" title="退出应用"></a>退出应用</h3><h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h4><pre><code>public class ActivityCollector {
-
-    public static List&lt;Activity&gt;activities = new ArrayList&lt;Activity&gt;();
-
-    public static void addActivity(Activity activity){
-
-        activities.add(activity);
-    }
-
-    public static void removeActivity(Activity activity){
-
-        activities.remove(activity);
-    }
-
-    //测试finishAll()方法在ThirdActivity中
-    public static void finishAll(){
-
-        for (Activity activity:activities) {
-
-            if(!activity.isFinishing()){
-
-                activity.finish();
-            }
+            <style>
+    @media(max-width: 768px) {
+        body {
+            background-color: #fff!important;
         }
     }
-}
-</code></pre><a id="more"></a>    
-<h4 id="BaseActivity实现，子类复写"><a href="#BaseActivity实现，子类复写" class="headerlink" title="BaseActivity实现，子类复写"></a>BaseActivity实现，子类复写</h4><pre><code>protected void onCreate(Bundle savedInstanceState) {
-
-    super.onCreate(savedInstanceState);
-    ActivityCollector.addActivity(this);//向List添加活动
-}
-
-@Override
-protected void onDestroy() {
-
-    super.onDestroy();
-    ActivityCollector.removeActivity(this);//从List移除活动
-}
-</code></pre><h4 id="退出方法"><a href="#退出方法" class="headerlink" title="退出方法"></a>退出方法</h4><pre><code>//销毁所有Activity后可以加上结束当前进程的方法
-public void onClick(View v{     
-
-    ActivityCollector.finishAll();//销毁所有活动
-}
-</code></pre><h5 id="还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出"><a href="#还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出" class="headerlink" title="还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出"></a>还可以在销毁所有活动后再加上杀掉当前进程的代码，以保证程序完全退出</h5><pre><code>android.os.Process.killProcess(android.os.Process.myPid());
-</code></pre><h5 id="killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid-方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。"><a href="#killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid-方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。" class="headerlink" title="killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid()方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。"></a>killProcess方法用于杀掉一个进程，它接收一个进程id参数，我们可以通过myPid()方法来获得当前程序的进程id，需要注意的是，killProcess方法只能用于杀掉当前程序的进程，我们不能使用这个方法杀掉其他进程。</h5>
+</style>
+<div class="cube-archives">
+    
+    <div class="cube-archive" style="margin-top: 0;">
+        <h1 class="title">Blog</h1>
+        
+        <ul class="posts">
+            
+            <li class="post">
+                <a href="/2019/03/06/HEXO总结/">HEXO总结</a>
+            </li>
+            
+        </ul>
+        
     </div>
+    
 </div>
-
-<div class="cube-article-nav">
-    <ul>
-        
-        <li class="prev">
-            <a href="/2017/06/25/文件存储/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                文件存储
-            </a>
-        </li>
-        
-        
-        <li class="next">
-            <a href="/2017/06/03/StartActivity/">
-                StartActivity
-                <i class="cube-icon cube-next" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-<!-- TODO 根据theme.comment的内容进行入口选择 -->
-
-
-
         </div>
         <div class="cube-right">
             
@@ -442,17 +370,17 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Code/Java/">#Java</a>
         </div>
         
@@ -462,7 +390,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/DP/">#DP</a>
         </div>
         
@@ -493,12 +421,12 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Blog/">#Blog</a>
         </div>
         
@@ -508,7 +436,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android图片/">#Android图片</a>
         </div>
         
@@ -523,12 +451,12 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OS/">#OS</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
@@ -538,12 +466,12 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         
