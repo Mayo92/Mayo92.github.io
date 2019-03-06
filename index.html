@@ -297,231 +297,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-二分查找">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/二分查找/">二分查找</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
-<p>##思路:</p>
-<p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p>
-<p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p>
-<p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
-<p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
-<p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/二分查找/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-选择排序">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>##思路:     </p>
-<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
-<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
-<p>###3、依次类推，直到最后一个元素。</p>
-<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
-<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
-<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
-<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-网络参考模型">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/网络参考模型/">网络参考模型</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Internet/" class="cube-excerpt-tag-link">#Internet</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>OSI(Open System Interconnection 开放系统互连)参考模型<br>TCP/IP 参考模型</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ce5ded47e12c0ebe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 09.56.42.png"></p>
-<p>###七层描述<br>1.物理层:主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、 0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</p>
-<p>2.数据链路层:主要将从物理层接收的数据进行MAC地址(网卡的地址)的封装与解封装。常把这一 层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。</p>
-<p>3.网络层:主要将下层接收到的数据进行IP地址(例，192.168.0.1)的封装与解封装。在这一层工作 的设备是路由器，常把这一层的数据叫做数据包。</p>
-<p>4.传输层:定义了一些传输数据的协议和端口号(WWW端口号80等)，如:TCP(传输控制协议， 传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特 性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的)。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层叫做段。</p>
-<p>5.会话层:通过传输层(端口号:传输端口与接收端口)建立数据传输的通路。主要在你的系统之间 发起会话或者接收会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</p>
-<p>6.表示层:主要是进行对接收的数据进行解释，加密与解密、压缩与解压缩等(也就是把计算机能够 识别的东西转换成人能够识别的东西(如图片、声音等)。</p>
-<p>7.应用层:主要是一些终端的应用，比如说FTP(各种文件下载)、WEB(IE浏览)、QQ之类的(可 以把它理解成我们在电脑屏幕上可以看到的东西，就是终端应用)。</p>
-<p>####PS<br>1.每个网卡的MAC地址都是全球唯一的。<br>2.路由器实现将数据包发送到指定的地点。<br>3.应用软件之间通信的过程就是层与层之间封包、解封包的过程。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-f65c6ce4396214c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-15 11.40.46.png"><br>4.OSI参考模型虽然设计精细，但过于麻烦，效率不高，因此才产生了简化版的TCP/IP参考模型。</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/网络参考模型/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Java变量">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java变量/">Java变量</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>###Java语言的数据类型包括8种基本类型，3种引用类型</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-ac15f861af56770f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java变量/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Java运算符">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java运算符/">Java运算符</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>####左移几位其实就是该数据乘以2的几次方。</p>
-<p>####右移几位其实就是该数据除以2的几次幂</p>
-<p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java运算符/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-集合框架的构成及分类">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/集合框架的构成及分类/">集合框架的构成及分类</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java/" class="cube-excerpt-tag-link">#Java</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -538,23 +313,11 @@
             </li>
             
         
-            
-            <li class="cube-pagination-index">
-                <a href="/page/2">2</a>
-            </li>
-            
-        
-            
-            <li class="cube-pagination-index">
-                <a href="/page/3">3</a>
-            </li>
-            
-        
     
 
     
-    <li class="cube-pagination-next">
-        <a href="/page/2/">下一页 »</a>
+    <li class="cube-pagination-next disabled">
+        <span>下一页 »</span>
     </li>
     
 </ul>
@@ -623,9 +386,9 @@
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>27</span>文章</a>
-        <a class="count tags"><span>14</span>标签</a>
-        <a class="count categories"><span>10</span>分类</a>
+        <a class="count articles"><span>3</span>文章</a>
+        <a class="count tags"><span>4</span>标签</a>
+        <a class="count categories"><span>3</span>分类</a>
     </div>
 </div>
 
@@ -702,32 +465,6 @@
         </li>
         
         
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>4</span>
-                </p>
-                <p class="title">
-                    <a href="/2018/01/25/二分查找/" title="二分查找">二分查找</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>5</span>
-                </p>
-                <p class="title">
-                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
-                </p>
-            </div>
-        </li>
-        
-        
     </ul>
 </div>
 
@@ -741,17 +478,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/Android/">#Android</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Code/">#Code</a>
         </div>
         
         
@@ -760,33 +487,8 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Code/Java/">#Java</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Algorithm/">#Algorithm</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/DP/">#DP</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Java/">#Java</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/categories/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Internet/">#Internet</a>
         </div>
         
     </div>
@@ -801,22 +503,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android国际化/">#Android国际化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android图片/">#Android图片</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Blog/">#Blog</a>
         </div>
         
@@ -826,48 +513,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android/">#Android</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础/">#Java基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Algorithm/">#Algorithm</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OS/">#OS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/DP/">#DP</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java/">#Java</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Internet/">#Internet</a>
         </div>
         
     </div>
