@@ -184,12 +184,15 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h4 id="安装nodejs，查看node版本：node-v"><a href="#安装nodejs，查看node版本：node-v" class="headerlink" title="安装nodejs，查看node版本：node -v"></a>安装nodejs，查看node版本：node -v</h4><h4 id="安装git，查看git版本：git-–version"><a href="#安装git，查看git版本：git-–version" class="headerlink" title="安装git，查看git版本：git –version"></a>安装git，查看git版本：git –version</h4><h4 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h4><h4 id="npm安装Hexo：sudo-npm-install-g-hexo-官网有坑"><a href="#npm安装Hexo：sudo-npm-install-g-hexo-官网有坑" class="headerlink" title="npm安装Hexo：sudo npm install -g hexo(官网有坑)"></a>npm安装Hexo：sudo npm install -g hexo(官网有坑)</h4><h4 id="初始化。在指定目录创建所需要的文件："><a href="#初始化。在指定目录创建所需要的文件：" class="headerlink" title="初始化。在指定目录创建所需要的文件："></a>初始化。在指定目录创建所需要的文件：</h4><ul>
+           <h4 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h4><h5 id="安装nodejs，查看node版本："><a href="#安装nodejs，查看node版本：" class="headerlink" title="安装nodejs，查看node版本："></a>安装nodejs，查看node版本：</h5><pre><code>node -v
+</code></pre><h5 id="安装git，查看git版本："><a href="#安装git，查看git版本：" class="headerlink" title="安装git，查看git版本："></a>安装git，查看git版本：</h5><pre><code>git --version
+</code></pre><h5 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h5><h5 id="npm安装Hexo："><a href="#npm安装Hexo：" class="headerlink" title="npm安装Hexo："></a>npm安装Hexo：</h5><pre><code>sudo npm install -g hexo(官网有坑)
+</code></pre><h5 id="初始化，在指定目录创建所需要的文件："><a href="#初始化，在指定目录创建所需要的文件：" class="headerlink" title="初始化，在指定目录创建所需要的文件："></a>初始化，在指定目录创建所需要的文件：</h5><ul>
 <li>hexo init &lt;文件夹名称&gt; </li>
 <li>cd &lt;文件夹名称&gt; </li>
 <li>npm install</li>
 </ul>
-<h4 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h4><ul>
+<h5 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h5><ul>
 <li>_config.yml 配置信息</li>
 <li>package.json 应用程序信息</li>
 <li>scaffolds 模板文件夹</li>
@@ -203,9 +206,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Java运算符">
+<div class="cube-excerpt" id="cube-excerpt-二分查找">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/Java运算符/">Java运算符</a></h1>
+        <h1><a href="/2018/01/25/二分查找/">二分查找</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -214,7 +217,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
                 
             </div>
         </div>
@@ -222,16 +225,18 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>####左移几位其实就是该数据乘以2的几次方。</p>
-<p>####右移几位其实就是该数据除以2的几次幂</p>
-<p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>
-
+           <p>###如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
+<p>##思路:</p>
+<p>###1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p>
+<p>###2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p>
+<p>###3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p>
+<p>###5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearch(Integer[] srcArray, int des) &#123;</span><br><span class="line">    //定义初始最小、最大索引</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = srcArray.length - 1;</span><br><span class="line">    //确保不会出现重复查找，越界</span><br><span class="line">    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)</span><br><span class="line">            &amp;&amp; (high &lt;= srcArray.length - 1)) &#123;</span><br><span class="line">        //计算出中间索引值</span><br><span class="line">        int middle = (high + low)/2 ;</span><br><span class="line">        if (des == srcArray[middle]) &#123;</span><br><span class="line">            return middle;</span><br><span class="line">        //判断下限</span><br><span class="line">        &#125; else if (des &lt; srcArray[middle]) &#123;</span><br><span class="line">            high = middle - 1;</span><br><span class="line">        //判断上限</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            low = middle + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //若没有，则返回-1</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/Java运算符/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/二分查找/">阅读全文</a>
     </footer>
 </div>
 
@@ -260,6 +265,101 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/25/集合框架的构成及分类/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-面试记录">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/面试记录/">面试记录</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="最近找工作的面试题目"><a href="#最近找工作的面试题目" class="headerlink" title="最近找工作的面试题目"></a>最近找工作的面试题目</h3><h4 id="要看的"><a href="#要看的" class="headerlink" title="要看的"></a>要看的</h4><h4 id="弘扬-https完全解析-okhttp封装"><a href="#弘扬-https完全解析-okhttp封装" class="headerlink" title="弘扬 https完全解析 okhttp封装"></a>弘扬 https完全解析 okhttp封装</h4><h4 id="uil-的imageloadconfigration调用的是getapplication的context"><a href="#uil-的imageloadconfigration调用的是getapplication的context" class="headerlink" title="uil 的imageloadconfigration调用的是getapplication的context"></a>uil 的imageloadconfigration调用的是getapplication的context</h4><h4 id="list-array-list"><a href="#list-array-list" class="headerlink" title="list array list"></a>list array list</h4><h4 id="注解-反射-IO"><a href="#注解-反射-IO" class="headerlink" title="注解 反射 IO"></a>注解 反射 IO</h4><h4 id="布局一律用小写加下划线"><a href="#布局一律用小写加下划线" class="headerlink" title="布局一律用小写加下划线"></a>布局一律用小写加下划线</h4><h4 id="android中，用add的一般可以重复添加，set会覆盖之前的值"><a href="#android中，用add的一般可以重复添加，set会覆盖之前的值" class="headerlink" title="android中，用add的一般可以重复添加，set会覆盖之前的值"></a>android中，用add的一般可以重复添加，set会覆盖之前的值</h4><h5 id="1-介绍一下四大组件的service与brodacast"><a href="#1-介绍一下四大组件的service与brodacast" class="headerlink" title="1.介绍一下四大组件的service与brodacast"></a>1.介绍一下四大组件的service与brodacast</h5><h5 id="2-自定义view绘制流程，在activity哪个生命周期方法完成"><a href="#2-自定义view绘制流程，在activity哪个生命周期方法完成" class="headerlink" title="2.自定义view绘制流程，在activity哪个生命周期方法完成"></a>2.自定义view绘制流程，在activity哪个生命周期方法完成</h5><h5 id="3-事件分发流程，onClick事件与onTouchEvent顺序"><a href="#3-事件分发流程，onClick事件与onTouchEvent顺序" class="headerlink" title="3.事件分发流程，onClick事件与onTouchEvent顺序"></a>3.事件分发流程，onClick事件与onTouchEvent顺序</h5><h5 id="4-ANR是什么，怎么处理ANR"><a href="#4-ANR是什么，怎么处理ANR" class="headerlink" title="4.ANR是什么，怎么处理ANR"></a>4.ANR是什么，怎么处理ANR</h5><h5 id="5-Handler机制"><a href="#5-Handler机制" class="headerlink" title="5.Handler机制"></a>5.Handler机制</h5><h5 id="1-activity启动模式及应用场景"><a href="#1-activity启动模式及应用场景" class="headerlink" title="1.activity启动模式及应用场景"></a>1.activity启动模式及应用场景</h5><h5 id="2-intentservice"><a href="#2-intentservice" class="headerlink" title="2.intentservice"></a>2.intentservice</h5><h5 id="3-aidl"><a href="#3-aidl" class="headerlink" title="3.aidl"></a>3.aidl</h5><h5 id="4-get-post-https"><a href="#4-get-post-https" class="headerlink" title="4.get post https"></a>4.get post https</h5><h5 id="5-fragment之间通信方式"><a href="#5-fragment之间通信方式" class="headerlink" title="5.fragment之间通信方式"></a>5.fragment之间通信方式</h5><h5 id="6-startservice-bindservice-unbindservice"><a href="#6-startservice-bindservice-unbindservice" class="headerlink" title="6.startservice bindservice unbindservice"></a>6.startservice bindservice unbindservice</h5><h5 id="7-枚举跟静态常量的区别"><a href="#7-枚举跟静态常量的区别" class="headerlink" title="7.枚举跟静态常量的区别"></a>7.枚举跟静态常量的区别</h5><h5 id="8-zxing的性能优化"><a href="#8-zxing的性能优化" class="headerlink" title="8.zxing的性能优化"></a>8.zxing的性能优化</h5><h5 id="9-混合开发Hybrid"><a href="#9-混合开发Hybrid" class="headerlink" title="9.混合开发Hybrid"></a>9.混合开发Hybrid</h5><h5 id="1-java注解-java多线程"><a href="#1-java注解-java多线程" class="headerlink" title="1.java注解 java多线程"></a>1.java注解 java多线程</h5><h5 id="2-多线程跳转页面后的关闭"><a href="#2-多线程跳转页面后的关闭" class="headerlink" title="2.多线程跳转页面后的关闭"></a>2.多线程跳转页面后的关闭</h5><h5 id="3-asynctask源码"><a href="#3-asynctask源码" class="headerlink" title="3.asynctask源码"></a>3.asynctask源码</h5><h5 id="4-okhttp源码"><a href="#4-okhttp源码" class="headerlink" title="4.okhttp源码"></a>4.okhttp源码</h5><h5 id="5-9图片的应用"><a href="#5-9图片的应用" class="headerlink" title="5. .9图片的应用"></a>5. .9图片的应用</h5><h5 id="6-view绘制流程，自定义一个可以上下左右滑动的view"><a href="#6-view绘制流程，自定义一个可以上下左右滑动的view" class="headerlink" title="6.view绘制流程，自定义一个可以上下左右滑动的view"></a>6.view绘制流程，自定义一个可以上下左右滑动的view</h5><h5 id="7-android两种坐标"><a href="#7-android两种坐标" class="headerlink" title="7.android两种坐标"></a>7.android两种坐标</h5><h5 id="8-时间分发"><a href="#8-时间分发" class="headerlink" title="8.时间分发"></a>8.时间分发</h5><h5 id="9-多层fragment的事件透传"><a href="#9-多层fragment的事件透传" class="headerlink" title="9.多层fragment的事件透传"></a>9.多层fragment的事件透传</h5><h5 id="10-fragment的加入与去除"><a href="#10-fragment的加入与去除" class="headerlink" title="10.fragment的加入与去除"></a>10.fragment的加入与去除</h5><h5 id="11-fragment的生命周期"><a href="#11-fragment的生命周期" class="headerlink" title="11.fragment的生命周期"></a>11.fragment的生命周期</h5><h5 id="12-activity的启动模式"><a href="#12-activity的启动模式" class="headerlink" title="12.activity的启动模式"></a>12.activity的启动模式</h5><h5 id="13-mvc-mvp"><a href="#13-mvc-mvp" class="headerlink" title="13.mvc,mvp"></a>13.mvc,mvp</h5><h5 id="14-java设计模式"><a href="#14-java设计模式" class="headerlink" title="14.java设计模式"></a>14.java设计模式</h5><h5 id="1-地图上两点路径怎么实现"><a href="#1-地图上两点路径怎么实现" class="headerlink" title="1.地图上两点路径怎么实现"></a>1.地图上两点路径怎么实现</h5><h5 id="1-append自己实现"><a href="#1-append自己实现" class="headerlink" title="1.append自己实现"></a>1.append自己实现</h5><h5 id="2-广播"><a href="#2-广播" class="headerlink" title="2.广播"></a>2.广播</h5><h5 id="3-主线程睡眠"><a href="#3-主线程睡眠" class="headerlink" title="3.主线程睡眠"></a>3.主线程睡眠</h5><h5 id="4-文件IO"><a href="#4-文件IO" class="headerlink" title="4.文件IO"></a>4.文件IO</h5><h5 id="5-listview"><a href="#5-listview" class="headerlink" title="5.listview"></a>5.listview</h5><h5 id="6-IO"><a href="#6-IO" class="headerlink" title="6.IO"></a>6.IO</h5><h5 id="1-一套Android题目，两道算法"><a href="#1-一套Android题目，两道算法" class="headerlink" title="1.一套Android题目，两道算法"></a>1.一套Android题目，两道算法</h5><h5 id="2-listview图片错位"><a href="#2-listview图片错位" class="headerlink" title="2.listview图片错位"></a>2.listview图片错位</h5><h5 id="3-封装的网络层有什么好处"><a href="#3-封装的网络层有什么好处" class="headerlink" title="3.封装的网络层有什么好处"></a>3.封装的网络层有什么好处</h5><h5 id="4-串口协议改了，保证数据完整唯一"><a href="#4-串口协议改了，保证数据完整唯一" class="headerlink" title="4.串口协议改了，保证数据完整唯一"></a>4.串口协议改了，保证数据完整唯一</h5><h5 id="1-java特点"><a href="#1-java特点" class="headerlink" title="1.java特点"></a>1.java特点</h5><h5 id="2-http协议"><a href="#2-http协议" class="headerlink" title="2.http协议"></a>2.http协议</h5><h5 id="3-七层网络"><a href="#3-七层网络" class="headerlink" title="3.七层网络"></a>3.七层网络</h5><h5 id="4-socket"><a href="#4-socket" class="headerlink" title="4.socket"></a>4.socket</h5><h5 id="5-handler"><a href="#5-handler" class="headerlink" title="5.handler"></a>5.handler</h5><h5 id="6-jni"><a href="#6-jni" class="headerlink" title="6.jni"></a>6.jni</h5><h5 id="7-实时的视频通话"><a href="#7-实时的视频通话" class="headerlink" title="7.实时的视频通话"></a>7.实时的视频通话</h5><h5 id="8-activity传递大量数据"><a href="#8-activity传递大量数据" class="headerlink" title="8.activity传递大量数据"></a>8.activity传递大量数据</h5><h5 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1.自我介绍"></a>1.自我介绍</h5><h5 id="2-介绍项目流程"><a href="#2-介绍项目流程" class="headerlink" title="2.介绍项目流程"></a>2.介绍项目流程</h5><h5 id="3-项目难点"><a href="#3-项目难点" class="headerlink" title="3.项目难点"></a>3.项目难点</h5><h5 id="4-activity启动方式"><a href="#4-activity启动方式" class="headerlink" title="4.activity启动方式"></a>4.activity启动方式</h5><h5 id="5-APK的打包"><a href="#5-APK的打包" class="headerlink" title="5.APK的打包"></a>5.APK的打包</h5><h5 id="6-handler"><a href="#6-handler" class="headerlink" title="6.handler"></a>6.handler</h5><h5 id="7-MVP"><a href="#7-MVP" class="headerlink" title="7.MVP"></a>7.MVP</h5><h5 id="8-组件化"><a href="#8-组件化" class="headerlink" title="8.组件化"></a>8.组件化</h5><h5 id="9-okhttp源码"><a href="#9-okhttp源码" class="headerlink" title="9.okhttp源码"></a>9.okhttp源码</h5><h5 id="1-四大组件并分别介绍"><a href="#1-四大组件并分别介绍" class="headerlink" title="1.四大组件并分别介绍"></a>1.四大组件并分别介绍</h5><h5 id="2-fragment介绍"><a href="#2-fragment介绍" class="headerlink" title="2.fragment介绍"></a>2.fragment介绍</h5><h5 id="3-常用布局"><a href="#3-常用布局" class="headerlink" title="3.常用布局"></a>3.常用布局</h5><h5 id="4-定义View流程"><a href="#4-定义View流程" class="headerlink" title="4.定义View流程"></a>4.定义View流程</h5><h5 id="5-事件分发机制"><a href="#5-事件分发机制" class="headerlink" title="5.事件分发机制"></a>5.事件分发机制</h5><h5 id="6-Handler及源码"><a href="#6-Handler及源码" class="headerlink" title="6.Handler及源码"></a>6.Handler及源码</h5><h5 id="7-AsyncTask及源码"><a href="#7-AsyncTask及源码" class="headerlink" title="7.AsyncTask及源码"></a>7.AsyncTask及源码</h5><h5 id="8-handlerThread及源码"><a href="#8-handlerThread及源码" class="headerlink" title="8.handlerThread及源码"></a>8.handlerThread及源码</h5><h5 id="9-IntentService及源码"><a href="#9-IntentService及源码" class="headerlink" title="9.IntentService及源码"></a>9.IntentService及源码</h5><h5 id="10-Binder"><a href="#10-Binder" class="headerlink" title="10.Binder"></a>10.Binder</h5><h5 id="11-Aidl全称"><a href="#11-Aidl全称" class="headerlink" title="11.Aidl全称"></a>11.Aidl全称</h5><h5 id="12-OkHttp、Volley源码及区别"><a href="#12-OkHttp、Volley源码及区别" class="headerlink" title="12.OkHttp、Volley源码及区别"></a>12.OkHttp、Volley源码及区别</h5><h5 id="13-UIL、Picasso、Glide源码及区别"><a href="#13-UIL、Picasso、Glide源码及区别" class="headerlink" title="13.UIL、Picasso、Glide源码及区别"></a>13.UIL、Picasso、Glide源码及区别</h5><h5 id="14-greenDao内部实现"><a href="#14-greenDao内部实现" class="headerlink" title="14.greenDao内部实现"></a>14.greenDao内部实现</h5><h5 id="15-Zxing通过什么算法进行图片解析"><a href="#15-Zxing通过什么算法进行图片解析" class="headerlink" title="15.Zxing通过什么算法进行图片解析"></a>15.Zxing通过什么算法进行图片解析</h5><h5 id="16-消息推送的原理"><a href="#16-消息推送的原理" class="headerlink" title="16.消息推送的原理"></a>16.消息推送的原理</h5><h5 id="17-设计模式及手写单例"><a href="#17-设计模式及手写单例" class="headerlink" title="17.设计模式及手写单例"></a>17.设计模式及手写单例</h5><h5 id="18-热修复原理"><a href="#18-热修复原理" class="headerlink" title="18.热修复原理"></a>18.热修复原理</h5><h5 id="19-测试桩应用场景"><a href="#19-测试桩应用场景" class="headerlink" title="19.测试桩应用场景"></a>19.测试桩应用场景</h5><h5 id="20-记录用户控件的使用习惯"><a href="#20-记录用户控件的使用习惯" class="headerlink" title="20.记录用户控件的使用习惯"></a>20.记录用户控件的使用习惯</h5><h5 id="21-图片缓存一小时与一天"><a href="#21-图片缓存一小时与一天" class="headerlink" title="21.图片缓存一小时与一天"></a>21.图片缓存一小时与一天</h5><h5 id="22-OOM还与LINUX下的资源访问有关"><a href="#22-OOM还与LINUX下的资源访问有关" class="headerlink" title="22.OOM还与LINUX下的资源访问有关"></a>22.OOM还与LINUX下的资源访问有关</h5><h5 id="23-其他线程间通信的方法"><a href="#23-其他线程间通信的方法" class="headerlink" title="23.其他线程间通信的方法"></a>23.其他线程间通信的方法</h5><h5 id="24-loop在哪里创建的"><a href="#24-loop在哪里创建的" class="headerlink" title="24.loop在哪里创建的"></a>24.loop在哪里创建的</h5><h5 id="25-synchronized怎么实现的"><a href="#25-synchronized怎么实现的" class="headerlink" title="25.synchronized怎么实现的"></a>25.synchronized怎么实现的</h5><h5 id="1-定义View流程"><a href="#1-定义View流程" class="headerlink" title="1.定义View流程"></a>1.定义View流程</h5><h5 id="2-事件分发机制"><a href="#2-事件分发机制" class="headerlink" title="2.事件分发机制"></a>2.事件分发机制</h5><h5 id="3-Handler及源码"><a href="#3-Handler及源码" class="headerlink" title="3.Handler及源码"></a>3.Handler及源码</h5><h5 id="4-热修复原理"><a href="#4-热修复原理" class="headerlink" title="4.热修复原理"></a>4.热修复原理</h5><h5 id="5-OkHttp、Volley源码及区别"><a href="#5-OkHttp、Volley源码及区别" class="headerlink" title="5.OkHttp、Volley源码及区别"></a>5.OkHttp、Volley源码及区别</h5><h5 id="6-OOM项目中的处理"><a href="#6-OOM项目中的处理" class="headerlink" title="6.OOM项目中的处理"></a>6.OOM项目中的处理</h5><h5 id="7-运行时权限及机型适配"><a href="#7-运行时权限及机型适配" class="headerlink" title="7.运行时权限及机型适配"></a>7.运行时权限及机型适配</h5><h5 id="8-RxJava"><a href="#8-RxJava" class="headerlink" title="8.RxJava"></a>8.RxJava</h5><h5 id="9-java虚拟机"><a href="#9-java虚拟机" class="headerlink" title="9.java虚拟机"></a>9.java虚拟机</h5><h5 id="10-内存回收算法"><a href="#10-内存回收算法" class="headerlink" title="10.内存回收算法"></a>10.内存回收算法</h5><h5 id="11-volley的response在哪个线程"><a href="#11-volley的response在哪个线程" class="headerlink" title="11.volley的response在哪个线程"></a>11.volley的response在哪个线程</h5><h5 id="1-介绍项目"><a href="#1-介绍项目" class="headerlink" title="1.介绍项目"></a>1.介绍项目</h5><h5 id="2-封装的框架"><a href="#2-封装的框架" class="headerlink" title="2.封装的框架"></a>2.封装的框架</h5><h5 id="3-rxjava"><a href="#3-rxjava" class="headerlink" title="3.rxjava"></a>3.rxjava</h5><h5 id="4-retrofit"><a href="#4-retrofit" class="headerlink" title="4.retrofit"></a>4.retrofit</h5><h5 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h5><h5 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h5><h5 id="1-MVP实现购物车添加商品"><a href="#1-MVP实现购物车添加商品" class="headerlink" title="1.MVP实现购物车添加商品"></a>1.MVP实现购物车添加商品</h5><h5 id="2-图片框架的优缺点"><a href="#2-图片框架的优缺点" class="headerlink" title="2.图片框架的优缺点"></a>2.图片框架的优缺点</h5><h5 id="3-数据库相关问题"><a href="#3-数据库相关问题" class="headerlink" title="3.数据库相关问题"></a>3.数据库相关问题</h5><h5 id="4-热修复实际使用的问题"><a href="#4-热修复实际使用的问题" class="headerlink" title="4.热修复实际使用的问题"></a>4.热修复实际使用的问题</h5><h5 id="5-aidl的实现"><a href="#5-aidl的实现" class="headerlink" title="5.aidl的实现"></a>5.aidl的实现</h5><h5 id="1-主要聊了安卓以后的发展及自身的发展"><a href="#1-主要聊了安卓以后的发展及自身的发展" class="headerlink" title="1.主要聊了安卓以后的发展及自身的发展"></a>1.主要聊了安卓以后的发展及自身的发展</h5><h5 id="1-bindler"><a href="#1-bindler" class="headerlink" title="1.bindler"></a>1.bindler</h5><h5 id="2-bean为什么是一个对象"><a href="#2-bean为什么是一个对象" class="headerlink" title="2.bean为什么是一个对象"></a>2.bean为什么是一个对象</h5><h5 id="3-linkhasmap"><a href="#3-linkhasmap" class="headerlink" title="3.linkhasmap"></a>3.linkhasmap</h5><h5 id="1-arraylist与linklist区别（数组与链表的区别）"><a href="#1-arraylist与linklist区别（数组与链表的区别）" class="headerlink" title="1.arraylist与linklist区别（数组与链表的区别）"></a>1.arraylist与linklist区别（数组与链表的区别）</h5><h5 id="1-viewstub与gone区别及如何显示"><a href="#1-viewstub与gone区别及如何显示" class="headerlink" title="1.viewstub与gone区别及如何显示"></a>1.viewstub与gone区别及如何显示</h5><h5 id="2-MVP"><a href="#2-MVP" class="headerlink" title="2.MVP"></a>2.MVP</h5><h5 id="3-eventbus"><a href="#3-eventbus" class="headerlink" title="3.eventbus"></a>3.eventbus</h5><p>方陈伟投了200家</p>
+<p>猎头推荐<br>无瑞科技简历没过<br>依图 没面<br>东南亚没面<br>新大陆没面<br>宇视科技简历没过<br>大华外包简历没过<br>盗火者 没反应</p>
+<p>内推<br>美团简历没过<br>vivo简历没过<br>有赞简历没过</p>
+<p>已经面试<br>6.16 启扬 已过12*13~15<br>6.18 云暴拉黑<br>6.19 信雅达没过 工资要高了<br>6.19黄金宝没过<br>6.20 星迈联系不上<br>6.27 宇信没去<br>6.29彼此科技没去<br>7.01同花顺没过<br>7.07思创医惠没去<br>9.08亿建联没过<br>9.25牛帮没过<br>10.10海康没过<br>10.11萌侠没去<br>10.18锐嵌科技没过<br>10.19E修鸽没去<br>11.03公积金没去<br>11.06科大讯飞没过<br>11.15名赫资产已过<br>11.15摩尚基本过了<br>11.16聚光没过<br>11.17融易通没面是外包<br>11.20搜度没去<br>11.25招银网络科技没过<br>11.27熊猫软件没去<br>11.27中广格兰过了12＋<br>11.29丝集网太垃圾了<br>11.30趋横 过了<br>12.01物恋网 没过<br>12.05扳手网络 没过</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/面试记录/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-选择排序">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>##思路:     </p>
+<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
+<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
+<p>###3、依次类推，直到最后一个元素。</p>
+<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
+<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
+<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
+<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
     </footer>
 </div>
 
@@ -330,9 +430,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
+<div class="cube-excerpt" id="cube-excerpt-Java运算符">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/HttpURLConnection/">HttpURLConnection</a></h1>
+        <h1><a href="/2018/01/25/Java运算符/">Java运算符</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -341,7 +441,7 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
+                <a href="/tags/Java基础/" class="cube-excerpt-tag-link">#Java基础</a>
                 
             </div>
         </div>
@@ -349,16 +449,16 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>1.获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); </span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure></p>
-<p>2.设置Get/Post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>3.设置链接超时、读取超时毫秒数，消息头等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure></p>
-<p>4.getInputStream()获取服务器返回的输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure></p>
-<p>5.关闭HTTP链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disConnect();</span><br></pre></td></tr></table></figure></p>
+           <h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p><img src="http://upload-images.jianshu.io/upload_images/4640170-b4781d190c8557bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4640170-1092e0067718b70c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>####左移几位其实就是该数据乘以2的几次方。</p>
+<p>####右移几位其实就是该数据除以2的几次幂</p>
+<p>####右移:对于高位出现的空位，原来高位是什么，就用什么补这个空位。     &gt;&gt;&gt;:无符号右移，数据进行右移时，高位出现的空位，无论原高位是什么，空位都用0补。</p>
 
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/HttpURLConnection/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/25/Java运算符/">阅读全文</a>
     </footer>
 </div>
 
@@ -388,102 +488,6 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/01/25/字符流与字节流/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-面试记录">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/面试记录/">面试记录</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="最近找工作的面试题目"><a href="#最近找工作的面试题目" class="headerlink" title="最近找工作的面试题目"></a>最近找工作的面试题目</h3><h4 id="要看的"><a href="#要看的" class="headerlink" title="要看的"></a>要看的</h4><h4 id="弘扬-https完全解析-okhttp封装"><a href="#弘扬-https完全解析-okhttp封装" class="headerlink" title="弘扬 https完全解析 okhttp封装"></a>弘扬 https完全解析 okhttp封装</h4><h4 id="uil-的imageloadconfigration调用的是getapplication的context"><a href="#uil-的imageloadconfigration调用的是getapplication的context" class="headerlink" title="uil 的imageloadconfigration调用的是getapplication的context"></a>uil 的imageloadconfigration调用的是getapplication的context</h4><h4 id="list-array-list"><a href="#list-array-list" class="headerlink" title="list array list"></a>list array list</h4><h4 id="注解-反射-IO"><a href="#注解-反射-IO" class="headerlink" title="注解 反射 IO"></a>注解 反射 IO</h4><h4 id="布局一律用小写加下划线"><a href="#布局一律用小写加下划线" class="headerlink" title="布局一律用小写加下划线"></a>布局一律用小写加下划线</h4><h4 id="android中，用add的一般可以重复添加，set会覆盖之前的值"><a href="#android中，用add的一般可以重复添加，set会覆盖之前的值" class="headerlink" title="android中，用add的一般可以重复添加，set会覆盖之前的值"></a>android中，用add的一般可以重复添加，set会覆盖之前的值</h4><h5 id="1-介绍一下四大组件的service与brodacast"><a href="#1-介绍一下四大组件的service与brodacast" class="headerlink" title="1.介绍一下四大组件的service与brodacast"></a>1.介绍一下四大组件的service与brodacast</h5><h5 id="2-自定义view绘制流程，在activity哪个生命周期方法完成"><a href="#2-自定义view绘制流程，在activity哪个生命周期方法完成" class="headerlink" title="2.自定义view绘制流程，在activity哪个生命周期方法完成"></a>2.自定义view绘制流程，在activity哪个生命周期方法完成</h5><h5 id="3-事件分发流程，onClick事件与onTouchEvent顺序"><a href="#3-事件分发流程，onClick事件与onTouchEvent顺序" class="headerlink" title="3.事件分发流程，onClick事件与onTouchEvent顺序"></a>3.事件分发流程，onClick事件与onTouchEvent顺序</h5><h5 id="4-ANR是什么，怎么处理ANR"><a href="#4-ANR是什么，怎么处理ANR" class="headerlink" title="4.ANR是什么，怎么处理ANR"></a>4.ANR是什么，怎么处理ANR</h5><h5 id="5-Handler机制"><a href="#5-Handler机制" class="headerlink" title="5.Handler机制"></a>5.Handler机制</h5><h5 id="1-activity启动模式及应用场景"><a href="#1-activity启动模式及应用场景" class="headerlink" title="1.activity启动模式及应用场景"></a>1.activity启动模式及应用场景</h5><h5 id="2-intentservice"><a href="#2-intentservice" class="headerlink" title="2.intentservice"></a>2.intentservice</h5><h5 id="3-aidl"><a href="#3-aidl" class="headerlink" title="3.aidl"></a>3.aidl</h5><h5 id="4-get-post-https"><a href="#4-get-post-https" class="headerlink" title="4.get post https"></a>4.get post https</h5><h5 id="5-fragment之间通信方式"><a href="#5-fragment之间通信方式" class="headerlink" title="5.fragment之间通信方式"></a>5.fragment之间通信方式</h5><h5 id="6-startservice-bindservice-unbindservice"><a href="#6-startservice-bindservice-unbindservice" class="headerlink" title="6.startservice bindservice unbindservice"></a>6.startservice bindservice unbindservice</h5><h5 id="7-枚举跟静态常量的区别"><a href="#7-枚举跟静态常量的区别" class="headerlink" title="7.枚举跟静态常量的区别"></a>7.枚举跟静态常量的区别</h5><h5 id="8-zxing的性能优化"><a href="#8-zxing的性能优化" class="headerlink" title="8.zxing的性能优化"></a>8.zxing的性能优化</h5><h5 id="9-混合开发Hybrid"><a href="#9-混合开发Hybrid" class="headerlink" title="9.混合开发Hybrid"></a>9.混合开发Hybrid</h5><h5 id="1-java注解-java多线程"><a href="#1-java注解-java多线程" class="headerlink" title="1.java注解 java多线程"></a>1.java注解 java多线程</h5><h5 id="2-多线程跳转页面后的关闭"><a href="#2-多线程跳转页面后的关闭" class="headerlink" title="2.多线程跳转页面后的关闭"></a>2.多线程跳转页面后的关闭</h5><h5 id="3-asynctask源码"><a href="#3-asynctask源码" class="headerlink" title="3.asynctask源码"></a>3.asynctask源码</h5><h5 id="4-okhttp源码"><a href="#4-okhttp源码" class="headerlink" title="4.okhttp源码"></a>4.okhttp源码</h5><h5 id="5-9图片的应用"><a href="#5-9图片的应用" class="headerlink" title="5. .9图片的应用"></a>5. .9图片的应用</h5><h5 id="6-view绘制流程，自定义一个可以上下左右滑动的view"><a href="#6-view绘制流程，自定义一个可以上下左右滑动的view" class="headerlink" title="6.view绘制流程，自定义一个可以上下左右滑动的view"></a>6.view绘制流程，自定义一个可以上下左右滑动的view</h5><h5 id="7-android两种坐标"><a href="#7-android两种坐标" class="headerlink" title="7.android两种坐标"></a>7.android两种坐标</h5><h5 id="8-时间分发"><a href="#8-时间分发" class="headerlink" title="8.时间分发"></a>8.时间分发</h5><h5 id="9-多层fragment的事件透传"><a href="#9-多层fragment的事件透传" class="headerlink" title="9.多层fragment的事件透传"></a>9.多层fragment的事件透传</h5><h5 id="10-fragment的加入与去除"><a href="#10-fragment的加入与去除" class="headerlink" title="10.fragment的加入与去除"></a>10.fragment的加入与去除</h5><h5 id="11-fragment的生命周期"><a href="#11-fragment的生命周期" class="headerlink" title="11.fragment的生命周期"></a>11.fragment的生命周期</h5><h5 id="12-activity的启动模式"><a href="#12-activity的启动模式" class="headerlink" title="12.activity的启动模式"></a>12.activity的启动模式</h5><h5 id="13-mvc-mvp"><a href="#13-mvc-mvp" class="headerlink" title="13.mvc,mvp"></a>13.mvc,mvp</h5><h5 id="14-java设计模式"><a href="#14-java设计模式" class="headerlink" title="14.java设计模式"></a>14.java设计模式</h5><h5 id="1-地图上两点路径怎么实现"><a href="#1-地图上两点路径怎么实现" class="headerlink" title="1.地图上两点路径怎么实现"></a>1.地图上两点路径怎么实现</h5><h5 id="1-append自己实现"><a href="#1-append自己实现" class="headerlink" title="1.append自己实现"></a>1.append自己实现</h5><h5 id="2-广播"><a href="#2-广播" class="headerlink" title="2.广播"></a>2.广播</h5><h5 id="3-主线程睡眠"><a href="#3-主线程睡眠" class="headerlink" title="3.主线程睡眠"></a>3.主线程睡眠</h5><h5 id="4-文件IO"><a href="#4-文件IO" class="headerlink" title="4.文件IO"></a>4.文件IO</h5><h5 id="5-listview"><a href="#5-listview" class="headerlink" title="5.listview"></a>5.listview</h5><h5 id="6-IO"><a href="#6-IO" class="headerlink" title="6.IO"></a>6.IO</h5><h5 id="1-一套Android题目，两道算法"><a href="#1-一套Android题目，两道算法" class="headerlink" title="1.一套Android题目，两道算法"></a>1.一套Android题目，两道算法</h5><h5 id="2-listview图片错位"><a href="#2-listview图片错位" class="headerlink" title="2.listview图片错位"></a>2.listview图片错位</h5><h5 id="3-封装的网络层有什么好处"><a href="#3-封装的网络层有什么好处" class="headerlink" title="3.封装的网络层有什么好处"></a>3.封装的网络层有什么好处</h5><h5 id="4-串口协议改了，保证数据完整唯一"><a href="#4-串口协议改了，保证数据完整唯一" class="headerlink" title="4.串口协议改了，保证数据完整唯一"></a>4.串口协议改了，保证数据完整唯一</h5><h5 id="1-java特点"><a href="#1-java特点" class="headerlink" title="1.java特点"></a>1.java特点</h5><h5 id="2-http协议"><a href="#2-http协议" class="headerlink" title="2.http协议"></a>2.http协议</h5><h5 id="3-七层网络"><a href="#3-七层网络" class="headerlink" title="3.七层网络"></a>3.七层网络</h5><h5 id="4-socket"><a href="#4-socket" class="headerlink" title="4.socket"></a>4.socket</h5><h5 id="5-handler"><a href="#5-handler" class="headerlink" title="5.handler"></a>5.handler</h5><h5 id="6-jni"><a href="#6-jni" class="headerlink" title="6.jni"></a>6.jni</h5><h5 id="7-实时的视频通话"><a href="#7-实时的视频通话" class="headerlink" title="7.实时的视频通话"></a>7.实时的视频通话</h5><h5 id="8-activity传递大量数据"><a href="#8-activity传递大量数据" class="headerlink" title="8.activity传递大量数据"></a>8.activity传递大量数据</h5><h5 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1.自我介绍"></a>1.自我介绍</h5><h5 id="2-介绍项目流程"><a href="#2-介绍项目流程" class="headerlink" title="2.介绍项目流程"></a>2.介绍项目流程</h5><h5 id="3-项目难点"><a href="#3-项目难点" class="headerlink" title="3.项目难点"></a>3.项目难点</h5><h5 id="4-activity启动方式"><a href="#4-activity启动方式" class="headerlink" title="4.activity启动方式"></a>4.activity启动方式</h5><h5 id="5-APK的打包"><a href="#5-APK的打包" class="headerlink" title="5.APK的打包"></a>5.APK的打包</h5><h5 id="6-handler"><a href="#6-handler" class="headerlink" title="6.handler"></a>6.handler</h5><h5 id="7-MVP"><a href="#7-MVP" class="headerlink" title="7.MVP"></a>7.MVP</h5><h5 id="8-组件化"><a href="#8-组件化" class="headerlink" title="8.组件化"></a>8.组件化</h5><h5 id="9-okhttp源码"><a href="#9-okhttp源码" class="headerlink" title="9.okhttp源码"></a>9.okhttp源码</h5><h5 id="1-四大组件并分别介绍"><a href="#1-四大组件并分别介绍" class="headerlink" title="1.四大组件并分别介绍"></a>1.四大组件并分别介绍</h5><h5 id="2-fragment介绍"><a href="#2-fragment介绍" class="headerlink" title="2.fragment介绍"></a>2.fragment介绍</h5><h5 id="3-常用布局"><a href="#3-常用布局" class="headerlink" title="3.常用布局"></a>3.常用布局</h5><h5 id="4-定义View流程"><a href="#4-定义View流程" class="headerlink" title="4.定义View流程"></a>4.定义View流程</h5><h5 id="5-事件分发机制"><a href="#5-事件分发机制" class="headerlink" title="5.事件分发机制"></a>5.事件分发机制</h5><h5 id="6-Handler及源码"><a href="#6-Handler及源码" class="headerlink" title="6.Handler及源码"></a>6.Handler及源码</h5><h5 id="7-AsyncTask及源码"><a href="#7-AsyncTask及源码" class="headerlink" title="7.AsyncTask及源码"></a>7.AsyncTask及源码</h5><h5 id="8-handlerThread及源码"><a href="#8-handlerThread及源码" class="headerlink" title="8.handlerThread及源码"></a>8.handlerThread及源码</h5><h5 id="9-IntentService及源码"><a href="#9-IntentService及源码" class="headerlink" title="9.IntentService及源码"></a>9.IntentService及源码</h5><h5 id="10-Binder"><a href="#10-Binder" class="headerlink" title="10.Binder"></a>10.Binder</h5><h5 id="11-Aidl全称"><a href="#11-Aidl全称" class="headerlink" title="11.Aidl全称"></a>11.Aidl全称</h5><h5 id="12-OkHttp、Volley源码及区别"><a href="#12-OkHttp、Volley源码及区别" class="headerlink" title="12.OkHttp、Volley源码及区别"></a>12.OkHttp、Volley源码及区别</h5><h5 id="13-UIL、Picasso、Glide源码及区别"><a href="#13-UIL、Picasso、Glide源码及区别" class="headerlink" title="13.UIL、Picasso、Glide源码及区别"></a>13.UIL、Picasso、Glide源码及区别</h5><h5 id="14-greenDao内部实现"><a href="#14-greenDao内部实现" class="headerlink" title="14.greenDao内部实现"></a>14.greenDao内部实现</h5><h5 id="15-Zxing通过什么算法进行图片解析"><a href="#15-Zxing通过什么算法进行图片解析" class="headerlink" title="15.Zxing通过什么算法进行图片解析"></a>15.Zxing通过什么算法进行图片解析</h5><h5 id="16-消息推送的原理"><a href="#16-消息推送的原理" class="headerlink" title="16.消息推送的原理"></a>16.消息推送的原理</h5><h5 id="17-设计模式及手写单例"><a href="#17-设计模式及手写单例" class="headerlink" title="17.设计模式及手写单例"></a>17.设计模式及手写单例</h5><h5 id="18-热修复原理"><a href="#18-热修复原理" class="headerlink" title="18.热修复原理"></a>18.热修复原理</h5><h5 id="19-测试桩应用场景"><a href="#19-测试桩应用场景" class="headerlink" title="19.测试桩应用场景"></a>19.测试桩应用场景</h5><h5 id="20-记录用户控件的使用习惯"><a href="#20-记录用户控件的使用习惯" class="headerlink" title="20.记录用户控件的使用习惯"></a>20.记录用户控件的使用习惯</h5><h5 id="21-图片缓存一小时与一天"><a href="#21-图片缓存一小时与一天" class="headerlink" title="21.图片缓存一小时与一天"></a>21.图片缓存一小时与一天</h5><h5 id="22-OOM还与LINUX下的资源访问有关"><a href="#22-OOM还与LINUX下的资源访问有关" class="headerlink" title="22.OOM还与LINUX下的资源访问有关"></a>22.OOM还与LINUX下的资源访问有关</h5><h5 id="23-其他线程间通信的方法"><a href="#23-其他线程间通信的方法" class="headerlink" title="23.其他线程间通信的方法"></a>23.其他线程间通信的方法</h5><h5 id="24-loop在哪里创建的"><a href="#24-loop在哪里创建的" class="headerlink" title="24.loop在哪里创建的"></a>24.loop在哪里创建的</h5><h5 id="25-synchronized怎么实现的"><a href="#25-synchronized怎么实现的" class="headerlink" title="25.synchronized怎么实现的"></a>25.synchronized怎么实现的</h5><h5 id="1-定义View流程"><a href="#1-定义View流程" class="headerlink" title="1.定义View流程"></a>1.定义View流程</h5><h5 id="2-事件分发机制"><a href="#2-事件分发机制" class="headerlink" title="2.事件分发机制"></a>2.事件分发机制</h5><h5 id="3-Handler及源码"><a href="#3-Handler及源码" class="headerlink" title="3.Handler及源码"></a>3.Handler及源码</h5><h5 id="4-热修复原理"><a href="#4-热修复原理" class="headerlink" title="4.热修复原理"></a>4.热修复原理</h5><h5 id="5-OkHttp、Volley源码及区别"><a href="#5-OkHttp、Volley源码及区别" class="headerlink" title="5.OkHttp、Volley源码及区别"></a>5.OkHttp、Volley源码及区别</h5><h5 id="6-OOM项目中的处理"><a href="#6-OOM项目中的处理" class="headerlink" title="6.OOM项目中的处理"></a>6.OOM项目中的处理</h5><h5 id="7-运行时权限及机型适配"><a href="#7-运行时权限及机型适配" class="headerlink" title="7.运行时权限及机型适配"></a>7.运行时权限及机型适配</h5><h5 id="8-RxJava"><a href="#8-RxJava" class="headerlink" title="8.RxJava"></a>8.RxJava</h5><h5 id="9-java虚拟机"><a href="#9-java虚拟机" class="headerlink" title="9.java虚拟机"></a>9.java虚拟机</h5><h5 id="10-内存回收算法"><a href="#10-内存回收算法" class="headerlink" title="10.内存回收算法"></a>10.内存回收算法</h5><h5 id="11-volley的response在哪个线程"><a href="#11-volley的response在哪个线程" class="headerlink" title="11.volley的response在哪个线程"></a>11.volley的response在哪个线程</h5><h5 id="1-介绍项目"><a href="#1-介绍项目" class="headerlink" title="1.介绍项目"></a>1.介绍项目</h5><h5 id="2-封装的框架"><a href="#2-封装的框架" class="headerlink" title="2.封装的框架"></a>2.封装的框架</h5><h5 id="3-rxjava"><a href="#3-rxjava" class="headerlink" title="3.rxjava"></a>3.rxjava</h5><h5 id="4-retrofit"><a href="#4-retrofit" class="headerlink" title="4.retrofit"></a>4.retrofit</h5><h5 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h5><h5 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h5><h5 id="1-MVP实现购物车添加商品"><a href="#1-MVP实现购物车添加商品" class="headerlink" title="1.MVP实现购物车添加商品"></a>1.MVP实现购物车添加商品</h5><h5 id="2-图片框架的优缺点"><a href="#2-图片框架的优缺点" class="headerlink" title="2.图片框架的优缺点"></a>2.图片框架的优缺点</h5><h5 id="3-数据库相关问题"><a href="#3-数据库相关问题" class="headerlink" title="3.数据库相关问题"></a>3.数据库相关问题</h5><h5 id="4-热修复实际使用的问题"><a href="#4-热修复实际使用的问题" class="headerlink" title="4.热修复实际使用的问题"></a>4.热修复实际使用的问题</h5><h5 id="5-aidl的实现"><a href="#5-aidl的实现" class="headerlink" title="5.aidl的实现"></a>5.aidl的实现</h5><h5 id="1-主要聊了安卓以后的发展及自身的发展"><a href="#1-主要聊了安卓以后的发展及自身的发展" class="headerlink" title="1.主要聊了安卓以后的发展及自身的发展"></a>1.主要聊了安卓以后的发展及自身的发展</h5><h5 id="1-bindler"><a href="#1-bindler" class="headerlink" title="1.bindler"></a>1.bindler</h5><h5 id="2-bean为什么是一个对象"><a href="#2-bean为什么是一个对象" class="headerlink" title="2.bean为什么是一个对象"></a>2.bean为什么是一个对象</h5><h5 id="3-linkhasmap"><a href="#3-linkhasmap" class="headerlink" title="3.linkhasmap"></a>3.linkhasmap</h5><h5 id="1-arraylist与linklist区别（数组与链表的区别）"><a href="#1-arraylist与linklist区别（数组与链表的区别）" class="headerlink" title="1.arraylist与linklist区别（数组与链表的区别）"></a>1.arraylist与linklist区别（数组与链表的区别）</h5><h5 id="1-viewstub与gone区别及如何显示"><a href="#1-viewstub与gone区别及如何显示" class="headerlink" title="1.viewstub与gone区别及如何显示"></a>1.viewstub与gone区别及如何显示</h5><h5 id="2-MVP"><a href="#2-MVP" class="headerlink" title="2.MVP"></a>2.MVP</h5><h5 id="3-eventbus"><a href="#3-eventbus" class="headerlink" title="3.eventbus"></a>3.eventbus</h5><p>方陈伟投了200家</p>
-<p>猎头推荐<br>无瑞科技简历没过<br>依图 没面<br>东南亚没面<br>新大陆没面<br>宇视科技简历没过<br>大华外包简历没过<br>盗火者 没反应</p>
-<p>内推<br>美团简历没过<br>vivo简历没过<br>有赞简历没过</p>
-<p>已经面试<br>6.16 启扬 已过12*13~15<br>6.18 云暴拉黑<br>6.19 信雅达没过 工资要高了<br>6.19黄金宝没过<br>6.20 星迈联系不上<br>6.27 宇信没去<br>6.29彼此科技没去<br>7.01同花顺没过<br>7.07思创医惠没去<br>9.08亿建联没过<br>9.25牛帮没过<br>10.10海康没过<br>10.11萌侠没去<br>10.18锐嵌科技没过<br>10.19E修鸽没去<br>11.03公积金没去<br>11.06科大讯飞没过<br>11.15名赫资产已过<br>11.15摩尚基本过了<br>11.16聚光没过<br>11.17融易通没面是外包<br>11.20搜度没去<br>11.25招银网络科技没过<br>11.27熊猫软件没去<br>11.27中广格兰过了12＋<br>11.29丝集网太垃圾了<br>11.30趋横 过了<br>12.01物恋网 没过<br>12.05扳手网络 没过</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/面试记录/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-选择排序">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/选择排序/">选择排序</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Algorithm/" class="cube-excerpt-tag-link">#Algorithm</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>##思路:     </p>
-<p>###1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p>
-<p>###2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p>
-<p>###3、依次类推，直到最后一个元素。</p>
-<p>###高效做法：只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void selectSort(int[]a)</span><br><span class="line">&#123;</span><br><span class="line">    int minIndex=0;</span><br><span class="line">    int temp=0;</span><br><span class="line">    if((a==null)||(a.length==0))</span><br><span class="line">        return;</span><br><span class="line">    for(int i=0;i&lt;a.length-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex=i;//无序区的最小数据数组下标</span><br><span class="line">        for(intj=i+1;j&lt;a.length;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            //在无序区中找到最小数据并保存其数组下标</span><br><span class="line">            if(a[j]&lt;a[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(minIndex!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。</span><br><span class="line">            temp=a[i];</span><br><span class="line">            a[i]=a[minIndex];</span><br><span class="line">            a[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/选择排序/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-书单">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/书单/">书单</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android/" class="cube-excerpt-tag-link">#Android</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="Android书"><a href="#Android书" class="headerlink" title="Android书"></a>Android书</h3><h5 id="1-第一行代码（第一版）"><a href="#1-第一行代码（第一版）" class="headerlink" title="1.第一行代码（第一版）"></a>1.第一行代码（第一版）</h5><h5 id="2-Android编程权威指南（第二版）"><a href="#2-Android编程权威指南（第二版）" class="headerlink" title="2.Android编程权威指南（第二版）"></a>2.Android编程权威指南（第二版）</h5><h5 id="3-Android群英传"><a href="#3-Android群英传" class="headerlink" title="3.Android群英传"></a>3.Android群英传</h5><h5 id="4-Android开发进阶从小工到专家"><a href="#4-Android开发进阶从小工到专家" class="headerlink" title="4.Android开发进阶从小工到专家"></a>4.Android开发进阶从小工到专家</h5><h5 id="5-Android进阶之光"><a href="#5-Android进阶之光" class="headerlink" title="5.Android进阶之光"></a>5.Android进阶之光</h5><h5 id="6-Android开发艺术探索"><a href="#6-Android开发艺术探索" class="headerlink" title="6.Android开发艺术探索"></a>6.Android开发艺术探索</h5><p>=================================================</p>
-<p>###Android工具书</p>
-<p>#####1.Android Studio实战</p>
-<h1 id="2-Android群英传神兵利器"><a href="#2-Android群英传神兵利器" class="headerlink" title="#####2.Android群英传神兵利器"></a>#####2.Android群英传神兵利器</h1><p>###Android面试</p>
-<h1 id="1-Android面试宝典"><a href="#1-Android面试宝典" class="headerlink" title="#####1.Android面试宝典"></a>#####1.Android面试宝典</h1><p>###Android优化<br>1.APP研发录<br>2.Android源码设计模式解析与实战</p>
-<h1 id="3-设计模式之禅"><a href="#3-设计模式之禅" class="headerlink" title="3.设计模式之禅"></a>3.设计模式之禅</h1><p>###Java书<br>1.Java程序设计<br>2.Effective Java</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/书单/">阅读全文</a>
     </footer>
 </div>
 
@@ -648,7 +652,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Java运算符/" title="Java运算符">Java运算符</a>
+                    <a href="/2018/01/25/二分查找/" title="二分查找">二分查找</a>
                 </p>
             </div>
         </li>
@@ -674,7 +678,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -687,7 +691,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Java变量/" title="Java变量">Java变量</a>
+                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
                 </p>
             </div>
         </li>
@@ -761,18 +765,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -782,17 +776,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础/">#Java基础</a>
+            <a href="/tags/Blog/">#Blog</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/OS/">#OS</a>
+            <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
@@ -802,11 +801,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/OS/">#OS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java/">#Java</a>
         </div>
         

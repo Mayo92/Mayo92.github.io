@@ -183,12 +183,15 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h4 id="安装nodejs，查看node版本：node-v"><a href="#安装nodejs，查看node版本：node-v" class="headerlink" title="安装nodejs，查看node版本：node -v"></a>安装nodejs，查看node版本：node -v</h4><h4 id="安装git，查看git版本：git-–version"><a href="#安装git，查看git版本：git-–version" class="headerlink" title="安装git，查看git版本：git –version"></a>安装git，查看git版本：git –version</h4><h4 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h4><h4 id="npm安装Hexo：sudo-npm-install-g-hexo-官网有坑"><a href="#npm安装Hexo：sudo-npm-install-g-hexo-官网有坑" class="headerlink" title="npm安装Hexo：sudo npm install -g hexo(官网有坑)"></a>npm安装Hexo：sudo npm install -g hexo(官网有坑)</h4><h4 id="初始化。在指定目录创建所需要的文件："><a href="#初始化。在指定目录创建所需要的文件：" class="headerlink" title="初始化。在指定目录创建所需要的文件："></a>初始化。在指定目录创建所需要的文件：</h4><ul>
+        <h4 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h4><h5 id="安装nodejs，查看node版本："><a href="#安装nodejs，查看node版本：" class="headerlink" title="安装nodejs，查看node版本："></a>安装nodejs，查看node版本：</h5><pre><code>node -v
+</code></pre><h5 id="安装git，查看git版本："><a href="#安装git，查看git版本：" class="headerlink" title="安装git，查看git版本："></a>安装git，查看git版本：</h5><pre><code>git --version
+</code></pre><h5 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h5><h5 id="npm安装Hexo："><a href="#npm安装Hexo：" class="headerlink" title="npm安装Hexo："></a>npm安装Hexo：</h5><pre><code>sudo npm install -g hexo(官网有坑)
+</code></pre><h5 id="初始化，在指定目录创建所需要的文件："><a href="#初始化，在指定目录创建所需要的文件：" class="headerlink" title="初始化，在指定目录创建所需要的文件："></a>初始化，在指定目录创建所需要的文件：</h5><ul>
 <li>hexo init &lt;文件夹名称&gt; </li>
 <li>cd &lt;文件夹名称&gt; </li>
 <li>npm install</li>
 </ul>
-<h4 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h4><ul>
+<h5 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h5><ul>
 <li>_config.yml 配置信息</li>
 <li>package.json 应用程序信息</li>
 <li>scaffolds 模板文件夹</li>
@@ -196,7 +199,7 @@
 <li>themes 主题文件夹</li>
 </ul>
 <a id="more"></a>
-<h4 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h4><h5 id="设置SSH"><a href="#设置SSH" class="headerlink" title="设置SSH"></a>设置SSH</h5><h5 id="新建项目，名称为用户名-github-io"><a href="#新建项目，名称为用户名-github-io" class="headerlink" title="新建项目，名称为用户名.github.io"></a>新建项目，名称为用户名.github.io</h5><h5 id="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"><a href="#输入git上传插件安装代码（安装时会提示输入github用户名及密码）" class="headerlink" title="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"></a>输入git上传插件安装代码（安装时会提示输入github用户名及密码）</h5><pre><code>npm install hexo-deployer-git --save
+<h4 id="2-关联GitHub"><a href="#2-关联GitHub" class="headerlink" title="2.关联GitHub"></a>2.关联GitHub</h4><h5 id="设置SSH"><a href="#设置SSH" class="headerlink" title="设置SSH"></a>设置SSH</h5><h5 id="新建项目，名称为用户名-github-io"><a href="#新建项目，名称为用户名-github-io" class="headerlink" title="新建项目，名称为用户名.github.io"></a>新建项目，名称为用户名.github.io</h5><h5 id="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"><a href="#输入git上传插件安装代码（安装时会提示输入github用户名及密码）" class="headerlink" title="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"></a>输入git上传插件安装代码（安装时会提示输入github用户名及密码）</h5><pre><code>npm install hexo-deployer-git --save
 </code></pre><h5 id="在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错"><a href="#在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错" class="headerlink" title="在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)"></a>在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)</h5><pre><code>deploy:
       type: git
       repository:
@@ -205,11 +208,11 @@
 </code></pre><h5 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h5><pre><code>hexo clean
 hexo g
 hexo d
-</code></pre><h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http://你的用户名.github.io"></a>打开<a href="http://你的用户名.github.io" target="_blank" rel="noopener">http://你的用户名.github.io</a></h5><h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><pre><code>$ git clone https://github.com/iissnan/hexo-theme-next themes/next
+</code></pre><h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http://你的用户名.github.io"></a>打开<a href="http://你的用户名.github.io" target="_blank" rel="noopener">http://你的用户名.github.io</a></h5><h4 id="3-安装主题"><a href="#3-安装主题" class="headerlink" title="3.安装主题"></a>3.安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><pre><code>$ git clone https://github.com/iissnan/hexo-theme-next themes/next
 </code></pre><h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><pre><code>hexo clean           //清除缓存文件 (db.json) 和已生成的静态文件 (public)
 hexo g             //生成缓存和静态文件
 hexo d             //重新部署到服务器
-</code></pre><h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称"></a>修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog/themes/next/ 下执行命令 git pull 更新主题"></a>cd 到 blog/themes/next/ 下执行命令 git pull 更新主题</h5><h4 id="新建与更新博客"><a href="#新建与更新博客" class="headerlink" title="新建与更新博客"></a>新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><pre><code>hexo new &apos;filename&apos;
+</code></pre><h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称"></a>修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog/themes/next/ 下执行命令 git pull 更新主题"></a>cd 到 blog/themes/next/ 下执行命令 git pull 更新主题</h5><h4 id="4-新建与更新博客"><a href="#4-新建与更新博客" class="headerlink" title="4.新建与更新博客"></a>4.新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><pre><code>hexo new &apos;filename&apos;
 </code></pre><h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg/source/_posts/下面会看到新建的博客"></a>在bolg/source/_posts/下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre><code>title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot;  #博文题目
 date: 2014-11-21 11:25:38      #生成时间
 tags:                    #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]
@@ -231,8 +234,8 @@ hexo d
         
         
         <li class="next">
-            <a href="/2018/01/25/Java运算符/">
-                Java运算符
+            <a href="/2018/01/25/二分查找/">
+                二分查找
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -368,7 +371,7 @@ hexo d
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Java运算符/" title="Java运算符">Java运算符</a>
+                    <a href="/2018/01/25/二分查找/" title="二分查找">二分查找</a>
                 </p>
             </div>
         </li>
@@ -394,7 +397,7 @@ hexo d
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/网络参考模型/" title="网络参考模型">网络参考模型</a>
+                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
                 </p>
             </div>
         </li>
@@ -407,7 +410,7 @@ hexo d
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/Java变量/" title="Java变量">Java变量</a>
+                    <a href="/2018/01/25/选择排序/" title="选择排序">选择排序</a>
                 </p>
             </div>
         </li>
@@ -430,12 +433,12 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
@@ -445,17 +448,17 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Algorithm/">#Algorithm</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/DP/">#DP</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
@@ -487,6 +490,11 @@ hexo d
         
         
         <div class="cube-box ">
+            <a href="/tags/Android图片/">#Android图片</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Blog/">#Blog</a>
         </div>
         
@@ -497,27 +505,22 @@ hexo d
         
         
         <div class="cube-box ">
-            <a href="/tags/Android图片/">#Android图片</a>
+            <a href="/tags/Android/">#Android</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android/">#Android</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/OS/">#OS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
         
