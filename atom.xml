@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-06T10:18:01.248Z</updated>
+  <updated>2019-03-06T14:27:06.054Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,73 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>SSH</title>
-    <link href="http://yoursite.com/2019/03/06/SSH/"/>
-    <id>http://yoursite.com/2019/03/06/SSH/</id>
-    <published>2019-03-06T10:14:19.000Z</published>
-    <updated>2019-03-06T10:18:01.248Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul><li>检查是否存在</li><li>不存在生成</li><li>复制</li></ul><h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1.检查是否存在"></a>1.检查是否存在</h4><h5 id="1-1输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1输入id_rsa.pub 或 id_dsa.pub"></a>1.1输入id_rsa.pub 或 id_dsa.pub</h5><pre><code>ls -al ~/.ssh# Lists the files in your .ssh directory, if they exist</code></pre><a id="more"></a><h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2.生成新的ssh key"></a>2.生成新的ssh key</h4><h5 id="2-1生成public-private-rsa-key-pair"><a href="#2-1生成public-private-rsa-key-pair" class="headerlink" title="2.1生成public/private rsa key pair"></a>2.1生成public/private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “your_email@example.com”，默认会在相应的路径下( /your_home_path )生成id_rsa和id_rsa.pub两个文件</p><pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;# Creates a new ssh key using the provided emailGenerating public/private rsa key pair.Enter file in which to save the key (/your_home_path/.ssh/id_rsa):</code></pre><h5 id="2-2输入passphrase-可以跳过"><a href="#2-2输入passphrase-可以跳过" class="headerlink" title="2.2输入passphrase(可以跳过)"></a>2.2输入passphrase(可以跳过)</h5><p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p><pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]Enter same passphrase again: [Type passphrase again]</code></pre><h5 id="sample-result"><a href="#sample-result" class="headerlink" title="sample result:"></a>sample result:</h5><pre><code>Your identification has been saved in /your_home_path/.ssh/id_rsa.Your public key has been saved in /your_home_path/.ssh/id_rsa.pub.The key fingerprint is:#01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</code></pre><h5 id="2-3将新生成的key添加到ssh-agent中"><a href="#2-3将新生成的key添加到ssh-agent中" class="headerlink" title="2.3将新生成的key添加到ssh-agent中:"></a>2.3将新生成的key添加到ssh-agent中:</h5><pre><code># start the ssh-agent in the backgroundeval &quot;$(ssh-agent -s)&quot;Agent pid 59566ssh-add ~/.ssh/id_rsa</code></pre><h4 id="3-复制ssh-key-mac"><a href="#3-复制ssh-key-mac" class="headerlink" title="3.复制ssh key(mac)"></a>3.复制ssh key(mac)</h4><pre><code>pbcopy &lt; ~/.ssh/id_rsa.pub# Copies the contents of the id_rsa.pub file to your clipboard</code></pre><p>Find前往文件夹~/.ssh/id_rsa.pub打开id_rsa.pub文件，里面的信息即为SSH key</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;检查是否存在&lt;/li&gt;
-&lt;li&gt;不存在生成&lt;/li&gt;
-&lt;li&gt;复制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;1-检查是否存在&quot;&gt;&lt;a href=&quot;#1-检查是否存在&quot; class=&quot;headerlink&quot; title=&quot;1.检查是否存在&quot;&gt;&lt;/a&gt;1.检查是否存在&lt;/h4&gt;&lt;h5 id=&quot;1-1输入id-rsa-pub-或-id-dsa-pub&quot;&gt;&lt;a href=&quot;#1-1输入id-rsa-pub-或-id-dsa-pub&quot; class=&quot;headerlink&quot; title=&quot;1.1输入id_rsa.pub 或 id_dsa.pub&quot;&gt;&lt;/a&gt;1.1输入id_rsa.pub 或 id_dsa.pub&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;ls -al ~/.ssh
-# Lists the files in your .ssh directory, if they exist
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="环境配置" scheme="http://yoursite.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="环境配置" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HEXO总结</title>
-    <link href="http://yoursite.com/2019/03/06/HEXO%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2019/03/06/HEXO总结/</id>
-    <published>2019-03-06T09:31:00.000Z</published>
-    <updated>2019-03-06T10:10:55.230Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h4><h5 id="安装nodejs，查看node版本："><a href="#安装nodejs，查看node版本：" class="headerlink" title="安装nodejs，查看node版本："></a>安装nodejs，查看node版本：</h5><pre><code>node -v</code></pre><h5 id="安装git，查看git版本："><a href="#安装git，查看git版本：" class="headerlink" title="安装git，查看git版本："></a>安装git，查看git版本：</h5><pre><code>git --version</code></pre><h5 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h5><h5 id="npm安装Hexo："><a href="#npm安装Hexo：" class="headerlink" title="npm安装Hexo："></a>npm安装Hexo：</h5><pre><code>sudo npm install -g hexo(官网有坑)</code></pre><h5 id="初始化，在指定目录创建所需要的文件："><a href="#初始化，在指定目录创建所需要的文件：" class="headerlink" title="初始化，在指定目录创建所需要的文件："></a>初始化，在指定目录创建所需要的文件：</h5><ul><li>hexo init &lt;文件夹名称&gt; </li><li>cd &lt;文件夹名称&gt; </li><li>npm install</li></ul><h5 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h5><ul><li>_config.yml 配置信息</li><li>package.json 应用程序信息</li><li>scaffolds 模板文件夹</li><li>source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.</li><li>themes 主题文件夹</li></ul><a id="more"></a><h4 id="2-关联GitHub"><a href="#2-关联GitHub" class="headerlink" title="2.关联GitHub"></a>2.关联GitHub</h4><h5 id="设置SSH"><a href="#设置SSH" class="headerlink" title="设置SSH"></a>设置SSH</h5><h5 id="新建项目，名称为用户名-github-io"><a href="#新建项目，名称为用户名-github-io" class="headerlink" title="新建项目，名称为用户名.github.io"></a>新建项目，名称为用户名.github.io</h5><h5 id="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"><a href="#输入git上传插件安装代码（安装时会提示输入github用户名及密码）" class="headerlink" title="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"></a>输入git上传插件安装代码（安装时会提示输入github用户名及密码）</h5><pre><code>npm install hexo-deployer-git --save</code></pre><h5 id="在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错"><a href="#在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错" class="headerlink" title="在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)"></a>在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)</h5><pre><code>deploy:      type: git      repository:            github: https://github.com/jikaipenggithub/jikaipenggithub.github.io      branch: master</code></pre><h5 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h5><pre><code>hexo cleanhexo ghexo d</code></pre><h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http://你的用户名.github.io"></a>打开<a href="http://你的用户名.github.io" target="_blank" rel="noopener">http://你的用户名.github.io</a></h5><h4 id="3-安装主题"><a href="#3-安装主题" class="headerlink" title="3.安装主题"></a>3.安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><pre><code>$ git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre><h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><pre><code>hexo clean           //清除缓存文件 (db.json) 和已生成的静态文件 (public)hexo g             //生成缓存和静态文件hexo d             //重新部署到服务器</code></pre><h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称"></a>修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog/themes/next/ 下执行命令 git pull 更新主题"></a>cd 到 blog/themes/next/ 下执行命令 git pull 更新主题</h5><h4 id="4-新建与更新博客"><a href="#4-新建与更新博客" class="headerlink" title="4.新建与更新博客"></a>4.新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><pre><code>hexo new &apos;filename&apos;</code></pre><h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg/source/_posts/下面会看到新建的博客"></a>在bolg/source/_posts/下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre><code>title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot;  #博文题目date: 2014-11-21 11:25:38      #生成时间tags:                    #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]- tag1- tag2- tag3categories: [cat1,cat2,cat3]---</code></pre><h5 id="如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加"><a href="#如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加" class="headerlink" title="如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加"></a>如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加</h5><pre><code>&lt;!--more--&gt;</code></pre><h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><pre><code>hexo cleanhexo ghexo d</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;1-准备环境&quot;&gt;&lt;a href=&quot;#1-准备环境&quot; class=&quot;headerlink&quot; title=&quot;1.准备环境&quot;&gt;&lt;/a&gt;1.准备环境&lt;/h4&gt;&lt;h5 id=&quot;安装nodejs，查看node版本：&quot;&gt;&lt;a href=&quot;#安装nodejs，查看node版本：&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs，查看node版本：&quot;&gt;&lt;/a&gt;安装nodejs，查看node版本：&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;node -v
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;安装git，查看git版本：&quot;&gt;&lt;a href=&quot;#安装git，查看git版本：&quot; class=&quot;headerlink&quot; title=&quot;安装git，查看git版本：&quot;&gt;&lt;/a&gt;安装git，查看git版本：&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;git --version
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;安装Xcode&quot;&gt;&lt;a href=&quot;#安装Xcode&quot; class=&quot;headerlink&quot; title=&quot;安装Xcode&quot;&gt;&lt;/a&gt;安装Xcode&lt;/h5&gt;&lt;h5 id=&quot;npm安装Hexo：&quot;&gt;&lt;a href=&quot;#npm安装Hexo：&quot; class=&quot;headerlink&quot; title=&quot;npm安装Hexo：&quot;&gt;&lt;/a&gt;npm安装Hexo：&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;sudo npm install -g hexo(官网有坑)
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;初始化，在指定目录创建所需要的文件：&quot;&gt;&lt;a href=&quot;#初始化，在指定目录创建所需要的文件：&quot; class=&quot;headerlink&quot; title=&quot;初始化，在指定目录创建所需要的文件：&quot;&gt;&lt;/a&gt;初始化，在指定目录创建所需要的文件：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;hexo init &amp;lt;文件夹名称&amp;gt; &lt;/li&gt;
-&lt;li&gt;cd &amp;lt;文件夹名称&amp;gt; &lt;/li&gt;
-&lt;li&gt;npm install&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;文件目录含义&quot;&gt;&lt;a href=&quot;#文件目录含义&quot; class=&quot;headerlink&quot; title=&quot;文件目录含义&quot;&gt;&lt;/a&gt;文件目录含义&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;_config.yml 配置信息&lt;/li&gt;
-&lt;li&gt;package.json 应用程序信息&lt;/li&gt;
-&lt;li&gt;scaffolds 模板文件夹&lt;/li&gt;
-&lt;li&gt;source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.&lt;/li&gt;
-&lt;li&gt;themes 主题文件夹&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Blog" scheme="http://yoursite.com/categories/Blog/"/>
-    
-    
-      <category term="Blog" scheme="http://yoursite.com/tags/Blog/"/>
-    
-      <category term="HEXO" scheme="http://yoursite.com/tags/HEXO/"/>
-    
-  </entry>
   
   <entry>
     <title>第一行代码笔记-自定义view</title>
@@ -198,6 +131,73 @@ intent.setData(Uri.parse(&amp;quot;http://www.baidu.com&amp;quot;));
     
     
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSH</title>
+    <link href="http://yoursite.com/2018/02/06/SSH/"/>
+    <id>http://yoursite.com/2018/02/06/SSH/</id>
+    <published>2018-02-06T10:14:19.000Z</published>
+    <updated>2019-03-06T14:31:03.879Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul><li>检查是否存在</li><li>不存在生成</li><li>复制</li></ul><h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1.检查是否存在"></a>1.检查是否存在</h4><h5 id="1-1输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1输入id_rsa.pub 或 id_dsa.pub"></a>1.1输入id_rsa.pub 或 id_dsa.pub</h5><pre><code>ls -al ~/.ssh# Lists the files in your .ssh directory, if they exist</code></pre><a id="more"></a><h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2.生成新的ssh key"></a>2.生成新的ssh key</h4><h5 id="2-1生成public-private-rsa-key-pair"><a href="#2-1生成public-private-rsa-key-pair" class="headerlink" title="2.1生成public/private rsa key pair"></a>2.1生成public/private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “your_email@example.com”，默认会在相应的路径下( /your_home_path )生成id_rsa和id_rsa.pub两个文件</p><pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;# Creates a new ssh key using the provided emailGenerating public/private rsa key pair.Enter file in which to save the key (/your_home_path/.ssh/id_rsa):</code></pre><h5 id="2-2输入passphrase-可以跳过"><a href="#2-2输入passphrase-可以跳过" class="headerlink" title="2.2输入passphrase(可以跳过)"></a>2.2输入passphrase(可以跳过)</h5><p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p><pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]Enter same passphrase again: [Type passphrase again]</code></pre><h5 id="sample-result"><a href="#sample-result" class="headerlink" title="sample result:"></a>sample result:</h5><pre><code>Your identification has been saved in /your_home_path/.ssh/id_rsa.Your public key has been saved in /your_home_path/.ssh/id_rsa.pub.The key fingerprint is:#01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</code></pre><h5 id="2-3将新生成的key添加到ssh-agent中"><a href="#2-3将新生成的key添加到ssh-agent中" class="headerlink" title="2.3将新生成的key添加到ssh-agent中:"></a>2.3将新生成的key添加到ssh-agent中:</h5><pre><code># start the ssh-agent in the backgroundeval &quot;$(ssh-agent -s)&quot;Agent pid 59566ssh-add ~/.ssh/id_rsa</code></pre><h4 id="3-复制ssh-key-mac"><a href="#3-复制ssh-key-mac" class="headerlink" title="3.复制ssh key(mac)"></a>3.复制ssh key(mac)</h4><pre><code>pbcopy &lt; ~/.ssh/id_rsa.pub# Copies the contents of the id_rsa.pub file to your clipboard</code></pre><p>Find前往文件夹~/.ssh/id_rsa.pub打开id_rsa.pub文件，里面的信息即为SSH key</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;检查是否存在&lt;/li&gt;
+&lt;li&gt;不存在生成&lt;/li&gt;
+&lt;li&gt;复制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-检查是否存在&quot;&gt;&lt;a href=&quot;#1-检查是否存在&quot; class=&quot;headerlink&quot; title=&quot;1.检查是否存在&quot;&gt;&lt;/a&gt;1.检查是否存在&lt;/h4&gt;&lt;h5 id=&quot;1-1输入id-rsa-pub-或-id-dsa-pub&quot;&gt;&lt;a href=&quot;#1-1输入id-rsa-pub-或-id-dsa-pub&quot; class=&quot;headerlink&quot; title=&quot;1.1输入id_rsa.pub 或 id_dsa.pub&quot;&gt;&lt;/a&gt;1.1输入id_rsa.pub 或 id_dsa.pub&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;ls -al ~/.ssh
+# Lists the files in your .ssh directory, if they exist
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="环境配置" scheme="http://yoursite.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="环境配置" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HEXO总结</title>
+    <link href="http://yoursite.com/2018/02/06/HEXO%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2018/02/06/HEXO总结/</id>
+    <published>2018-02-06T09:31:00.000Z</published>
+    <updated>2019-03-06T14:31:15.692Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h4><h5 id="安装nodejs，查看node版本："><a href="#安装nodejs，查看node版本：" class="headerlink" title="安装nodejs，查看node版本："></a>安装nodejs，查看node版本：</h5><pre><code>node -v</code></pre><h5 id="安装git，查看git版本："><a href="#安装git，查看git版本：" class="headerlink" title="安装git，查看git版本："></a>安装git，查看git版本：</h5><pre><code>git --version</code></pre><h5 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h5><h5 id="npm安装Hexo："><a href="#npm安装Hexo：" class="headerlink" title="npm安装Hexo："></a>npm安装Hexo：</h5><pre><code>sudo npm install -g hexo(官网有坑)</code></pre><h5 id="初始化，在指定目录创建所需要的文件："><a href="#初始化，在指定目录创建所需要的文件：" class="headerlink" title="初始化，在指定目录创建所需要的文件："></a>初始化，在指定目录创建所需要的文件：</h5><ul><li>hexo init &lt;文件夹名称&gt; </li><li>cd &lt;文件夹名称&gt; </li><li>npm install</li></ul><h5 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h5><ul><li>_config.yml 配置信息</li><li>package.json 应用程序信息</li><li>scaffolds 模板文件夹</li><li>source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.</li><li>themes 主题文件夹</li></ul><a id="more"></a><h4 id="2-关联GitHub"><a href="#2-关联GitHub" class="headerlink" title="2.关联GitHub"></a>2.关联GitHub</h4><h5 id="设置SSH"><a href="#设置SSH" class="headerlink" title="设置SSH"></a>设置SSH</h5><h5 id="新建项目，名称为用户名-github-io"><a href="#新建项目，名称为用户名-github-io" class="headerlink" title="新建项目，名称为用户名.github.io"></a>新建项目，名称为用户名.github.io</h5><h5 id="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"><a href="#输入git上传插件安装代码（安装时会提示输入github用户名及密码）" class="headerlink" title="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"></a>输入git上传插件安装代码（安装时会提示输入github用户名及密码）</h5><pre><code>npm install hexo-deployer-git --save</code></pre><h5 id="在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错"><a href="#在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错" class="headerlink" title="在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)"></a>在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)</h5><pre><code>deploy:      type: git      repository:            github: https://github.com/jikaipenggithub/jikaipenggithub.github.io      branch: master</code></pre><h5 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h5><pre><code>hexo cleanhexo ghexo d</code></pre><h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http://你的用户名.github.io"></a>打开<a href="http://你的用户名.github.io" target="_blank" rel="noopener">http://你的用户名.github.io</a></h5><h4 id="3-安装主题"><a href="#3-安装主题" class="headerlink" title="3.安装主题"></a>3.安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><pre><code>$ git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre><h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><pre><code>hexo clean           //清除缓存文件 (db.json) 和已生成的静态文件 (public)hexo g             //生成缓存和静态文件hexo d             //重新部署到服务器</code></pre><h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称"></a>修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog/themes/next/ 下执行命令 git pull 更新主题"></a>cd 到 blog/themes/next/ 下执行命令 git pull 更新主题</h5><h4 id="4-新建与更新博客"><a href="#4-新建与更新博客" class="headerlink" title="4.新建与更新博客"></a>4.新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><pre><code>hexo new &apos;filename&apos;</code></pre><h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg/source/_posts/下面会看到新建的博客"></a>在bolg/source/_posts/下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre><code>title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot;  #博文题目date: 2014-11-21 11:25:38      #生成时间tags:                    #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]- tag1- tag2- tag3categories: [cat1,cat2,cat3]---</code></pre><h5 id="如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加"><a href="#如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加" class="headerlink" title="如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加"></a>如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加</h5><pre><code>&lt;!--more--&gt;</code></pre><h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><pre><code>hexo cleanhexo ghexo d</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-准备环境&quot;&gt;&lt;a href=&quot;#1-准备环境&quot; class=&quot;headerlink&quot; title=&quot;1.准备环境&quot;&gt;&lt;/a&gt;1.准备环境&lt;/h4&gt;&lt;h5 id=&quot;安装nodejs，查看node版本：&quot;&gt;&lt;a href=&quot;#安装nodejs，查看node版本：&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs，查看node版本：&quot;&gt;&lt;/a&gt;安装nodejs，查看node版本：&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;node -v
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;安装git，查看git版本：&quot;&gt;&lt;a href=&quot;#安装git，查看git版本：&quot; class=&quot;headerlink&quot; title=&quot;安装git，查看git版本：&quot;&gt;&lt;/a&gt;安装git，查看git版本：&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;git --version
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;安装Xcode&quot;&gt;&lt;a href=&quot;#安装Xcode&quot; class=&quot;headerlink&quot; title=&quot;安装Xcode&quot;&gt;&lt;/a&gt;安装Xcode&lt;/h5&gt;&lt;h5 id=&quot;npm安装Hexo：&quot;&gt;&lt;a href=&quot;#npm安装Hexo：&quot; class=&quot;headerlink&quot; title=&quot;npm安装Hexo：&quot;&gt;&lt;/a&gt;npm安装Hexo：&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;sudo npm install -g hexo(官网有坑)
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;初始化，在指定目录创建所需要的文件：&quot;&gt;&lt;a href=&quot;#初始化，在指定目录创建所需要的文件：&quot; class=&quot;headerlink&quot; title=&quot;初始化，在指定目录创建所需要的文件：&quot;&gt;&lt;/a&gt;初始化，在指定目录创建所需要的文件：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;hexo init &amp;lt;文件夹名称&amp;gt; &lt;/li&gt;
+&lt;li&gt;cd &amp;lt;文件夹名称&amp;gt; &lt;/li&gt;
+&lt;li&gt;npm install&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;文件目录含义&quot;&gt;&lt;a href=&quot;#文件目录含义&quot; class=&quot;headerlink&quot; title=&quot;文件目录含义&quot;&gt;&lt;/a&gt;文件目录含义&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;_config.yml 配置信息&lt;/li&gt;
+&lt;li&gt;package.json 应用程序信息&lt;/li&gt;
+&lt;li&gt;scaffolds 模板文件夹&lt;/li&gt;
+&lt;li&gt;source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.&lt;/li&gt;
+&lt;li&gt;themes 主题文件夹&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://yoursite.com/categories/Blog/"/>
+    
+    
+      <category term="Blog" scheme="http://yoursite.com/tags/Blog/"/>
+    
+      <category term="HEXO" scheme="http://yoursite.com/tags/HEXO/"/>
     
   </entry>
   
