@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-06T10:10:55.230Z</updated>
+  <updated>2019-03-06T10:18:01.248Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSH</title>
+    <link href="http://yoursite.com/2019/03/06/SSH/"/>
+    <id>http://yoursite.com/2019/03/06/SSH/</id>
+    <published>2019-03-06T10:14:19.000Z</published>
+    <updated>2019-03-06T10:18:01.248Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul><li>检查是否存在</li><li>不存在生成</li><li>复制</li></ul><h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1.检查是否存在"></a>1.检查是否存在</h4><h5 id="1-1输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1输入id_rsa.pub 或 id_dsa.pub"></a>1.1输入id_rsa.pub 或 id_dsa.pub</h5><pre><code>ls -al ~/.ssh# Lists the files in your .ssh directory, if they exist</code></pre><a id="more"></a><h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2.生成新的ssh key"></a>2.生成新的ssh key</h4><h5 id="2-1生成public-private-rsa-key-pair"><a href="#2-1生成public-private-rsa-key-pair" class="headerlink" title="2.1生成public/private rsa key pair"></a>2.1生成public/private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “your_email@example.com”，默认会在相应的路径下( /your_home_path )生成id_rsa和id_rsa.pub两个文件</p><pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;# Creates a new ssh key using the provided emailGenerating public/private rsa key pair.Enter file in which to save the key (/your_home_path/.ssh/id_rsa):</code></pre><h5 id="2-2输入passphrase-可以跳过"><a href="#2-2输入passphrase-可以跳过" class="headerlink" title="2.2输入passphrase(可以跳过)"></a>2.2输入passphrase(可以跳过)</h5><p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p><pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]Enter same passphrase again: [Type passphrase again]</code></pre><h5 id="sample-result"><a href="#sample-result" class="headerlink" title="sample result:"></a>sample result:</h5><pre><code>Your identification has been saved in /your_home_path/.ssh/id_rsa.Your public key has been saved in /your_home_path/.ssh/id_rsa.pub.The key fingerprint is:#01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</code></pre><h5 id="2-3将新生成的key添加到ssh-agent中"><a href="#2-3将新生成的key添加到ssh-agent中" class="headerlink" title="2.3将新生成的key添加到ssh-agent中:"></a>2.3将新生成的key添加到ssh-agent中:</h5><pre><code># start the ssh-agent in the backgroundeval &quot;$(ssh-agent -s)&quot;Agent pid 59566ssh-add ~/.ssh/id_rsa</code></pre><h4 id="3-复制ssh-key-mac"><a href="#3-复制ssh-key-mac" class="headerlink" title="3.复制ssh key(mac)"></a>3.复制ssh key(mac)</h4><pre><code>pbcopy &lt; ~/.ssh/id_rsa.pub# Copies the contents of the id_rsa.pub file to your clipboard</code></pre><p>Find前往文件夹~/.ssh/id_rsa.pub打开id_rsa.pub文件，里面的信息即为SSH key</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;检查是否存在&lt;/li&gt;
+&lt;li&gt;不存在生成&lt;/li&gt;
+&lt;li&gt;复制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-检查是否存在&quot;&gt;&lt;a href=&quot;#1-检查是否存在&quot; class=&quot;headerlink&quot; title=&quot;1.检查是否存在&quot;&gt;&lt;/a&gt;1.检查是否存在&lt;/h4&gt;&lt;h5 id=&quot;1-1输入id-rsa-pub-或-id-dsa-pub&quot;&gt;&lt;a href=&quot;#1-1输入id-rsa-pub-或-id-dsa-pub&quot; class=&quot;headerlink&quot; title=&quot;1.1输入id_rsa.pub 或 id_dsa.pub&quot;&gt;&lt;/a&gt;1.1输入id_rsa.pub 或 id_dsa.pub&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;ls -al ~/.ssh
+# Lists the files in your .ssh directory, if they exist
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="环境配置" scheme="http://yoursite.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="环境配置" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>HEXO总结</title>
@@ -78,31 +107,6 @@
     
     
       <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>集合框架的构成及分类</title>
-    <link href="http://yoursite.com/2018/01/25/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E6%9E%84%E6%88%90%E5%8F%8A%E5%88%86%E7%B1%BB/"/>
-    <id>http://yoursite.com/2018/01/25/集合框架的构成及分类/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:49:05.958Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; 
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
@@ -261,6 +265,31 @@
     
     
       <category term="Java基础" scheme="http://yoursite.com/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>集合框架的构成及分类</title>
+    <link href="http://yoursite.com/2018/01/25/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E6%9E%84%E6%88%90%E5%8F%8A%E5%88%86%E7%B1%BB/"/>
+    <id>http://yoursite.com/2018/01/25/集合框架的构成及分类/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-01-30T06:49:05.958Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-08 16.50.31.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/4640170-04464166474b18ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; 
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
@@ -553,35 +582,6 @@ resources.updateConfiguration(config, dm);
    }
 }
 &lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-    
-      <category term="Android基础" scheme="http://yoursite.com/tags/Android%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>文件存储</title>
-    <link href="http://yoursite.com/2017/06/25/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/"/>
-    <id>http://yoursite.com/2017/06/25/文件存储/</id>
-    <published>2017-06-25T06:00:11.000Z</published>
-    <updated>2018-01-30T10:12:19.308Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一、openFileInput和openFileOutput的使用"><a href="#一、openFileInput和openFileOutput的使用" class="headerlink" title="一、openFileInput和openFileOutput的使用"></a>一、openFileInput和openFileOutput的使用</h2><ul><li><p>文件的使用，注意最后要用finally给关闭掉。</p></li><li><p>openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&gt; 返回FileOutputStream</p></li><li><p>openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&gt; 返回FileInputStream</p></li></ul><a id="more"></a><pre><code>//保存文件//第一个参数：文件名（不包含路径）默认为data/data/包名/files/下//第二个参数：文件操作模式，下面是写入的四种模式//    MODE_APPEND：即向文件尾写入数据（文件已存在就追加）//    MODE_PRIVATE：即仅打开文件可写入数据（默认模式，相同文件名会覆盖内容）//    MODE_WORLD_READABLE：所有程序均可读该文件数据（弃用）//    MODE_WORLD_WRITABLE：即所有程序均可写入数据（弃用）private void savePackageFile(Context context,String filename,String text) {    //String msg = tvSaveMessage.getText().toString() + &quot; \n&quot;;    FileOutputStream outputStream = null;    BufferedWriter writer = null;    try {        outputStream = context.openFileOutput(filename, Context.MODE_APPEND);        writer = new BufferedWriter(new OutputStreamWriter(outputStream));        writer.write(text);        //outputStream.write(msg.getBytes());        //outputStream.flush();        //outputStream.close();    } catch (Exception e) {        e.printStackTrace();    } finally{        if(writer != null){            try {                writer.close();            } catch (IOException e) {                e.printStackTrace();            }        }    }}//读取文件//参数：文件名（读取包名下files文件夹下的文件）//返回值：FileInputStreamprivate void readSaveFile(Context context,String filename) {    FileInputStream inputStream = null;    BufferedReader bufferedReader = null;    StringBuilder stringBuilder = new StringBuilder();    try {        inputStream = context.openFileInput(filename);        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));        String line =  &quot;&quot;;        while ((line = bufferedReader.readLine()) != null){            stringBuilder.append(line);        }            byte temp[] = new byte[1024];            StringBuilder sb = new StringBuilder(&quot;&quot;);            int len = 0;            while ((len = inputStream.read(temp)) &gt; 0){                sb.append(new String(temp, 0, len));            }            inputStream.close();    } catch (Exception e) {        e.printStackTrace();    } finally {      if(bufferedReader != null){          try {              bufferedReader.close();          } catch (IOException e) {              e.printStackTrace();          }      }    }}</code></pre><h2 id="二、SD卡读取和写入—路径：-storage-sdcard0"><a href="#二、SD卡读取和写入—路径：-storage-sdcard0" class="headerlink" title="二、SD卡读取和写入—路径：/storage/sdcard0/"></a>二、SD卡读取和写入—路径：/storage/sdcard0/</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SD卡权限:</span><br><span class="line">&lt;!-- 在SDCard中创建与删除文件权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;</span><br><span class="line">&lt;!-- 往SDCard写入数据权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br></pre></td></tr></table></figure><pre><code>//往SD卡写入文件的方法public void savaFileToSD(String filename, String filecontent) throws Exception {    //如果手机已插入sd卡,且app具有读写sd卡的权限    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {        filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;        //这里就不要用openFileOutput了,那个是往手机内存中写数据的        FileOutputStream output = new FileOutputStream(filename);        //将String字符串以字节流的形式写入到输出流中        output.write(filecontent.getBytes());        //关闭输出流        output.close();      } else         Toast.makeText(context, &quot;SD卡不存在或者不可读写&quot;, Toast.LENGTH_SHORT).show();}//读取SD卡中文件的方法//定义读取文件的方法:public String readFromSD(String filename) throws IOException {    StringBuilder sb = new StringBuilder(&quot;&quot;);    if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {        filename = Environment.getExternalStorageDirectory().getCanonicalPath() + &quot;/&quot; + filename;        //打开文件输入流        FileInputStream input = new FileInputStream(filename);        byte[] temp = new byte[1024];        int len = 0;        //读取文件内容:        while ((len = input.read(temp)) &gt; 0) {            sb.append(new String(temp, 0, len));        }        //关闭输入流        input.close();    }    return sb.toString();}</code></pre><h3 id="三、读取raw和assets文件夹下的文件"><a href="#三、读取raw和assets文件夹下的文件" class="headerlink" title="三、读取raw和assets文件夹下的文件"></a>三、读取raw和assets文件夹下的文件</h3><ul><li>res/raw：文件会被映射到R.java文件中，访问的时候直接通过资源ID即可访问，而且 他不能有目录结构，就是不能再创建文件夹</li><li>assets：不会映射到R.java文件中，通过AssetManager来访问，能有目录结构，即可以自行创建文件夹</li></ul><h4 id="读取文件资源raw"><a href="#读取文件资源raw" class="headerlink" title="读取文件资源raw:"></a>读取文件资源raw:</h4><pre><code>InputStream is =getResources().openRawResource(R.raw.filename); </code></pre><h4 id="读取文件资源assets"><a href="#读取文件资源assets" class="headerlink" title="读取文件资源assets:"></a>读取文件资源assets:</h4><pre><code>AssetManager am =  getAssets();   InputStream is = am.open(&quot;filename&quot;);</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;一、openFileInput和openFileOutput的使用&quot;&gt;&lt;a href=&quot;#一、openFileInput和openFileOutput的使用&quot; class=&quot;headerlink&quot; title=&quot;一、openFileInput和openFileOutput的使用&quot;&gt;&lt;/a&gt;一、openFileInput和openFileOutput的使用&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;文件的使用，注意最后要用finally给关闭掉。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;openFileOutput:(写入文件，如果没有文件名可以创建，这里不需要判断是否有这个文件)—&amp;gt; 返回FileOutputStream&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;openFileInput:(读取文件，没有文件名会保存，debug的时候会看到，不影响ui)—&amp;gt; 返回FileInputStream&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
