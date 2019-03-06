@@ -163,6 +163,107 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-RecyclerView">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/09/第一行代码笔记-RecyclerView/">第一行代码笔记-RecyclerView</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-09
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/RecyclerView/" class="cube-excerpt-tag-link">#RecyclerView</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><h5 id="gradle添加依赖"><a href="#gradle添加依赖" class="headerlink" title="gradle添加依赖"></a>gradle添加依赖</h5><h4 id="编写适配器"><a href="#编写适配器" class="headerlink" title="编写适配器"></a>编写适配器</h4><pre><code>public class FruitAdapter extends RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;{
+
+    private List&lt;Fruit&gt; mFruitList;
+
+    static class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView fruitImage;
+
+        public ViewHolder(View view){
+            super(view);
+            fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
+        }
+    }
+
+    public FruitAdapter(List&lt;Fruit&gt; fruitList) {
+        mFruitList = fruitList;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+        View view = LayoutInflater.from(parent. getContext()).inflate(R.layout.fruit_item,parent,false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder,int position){
+        Fruit fruit = mFruitList.get(position);
+        holder.fruitImage.setImageResource(fruit.getImageId());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mFruitList.size();
+    }
+}
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/09/第一行代码笔记-RecyclerView/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-ListView">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/09/第一行代码笔记-ListView/">第一行代码笔记-ListView</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-09
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/ListView/" class="cube-excerpt-tag-link">#ListView</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <pre><code>public FruitAdapter(Context context,int textViewResourceId,
+                        List&lt;Fruit&gt; objects) {
+    super(context, textViewResourceId, objects);
+    resourceId = textViewResourceId;     
+}
+
+@Override
+public View getView(int position,View convertView,ViewGroup parent) {
+    Fruit fruit = getItem(position); //获取当前的Fruit实例
+    View view = LayoutInflater.from(getContext()).inflate(resorced,parent,false);
+    ...
+}
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/09/第一行代码笔记-ListView/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-自定义view">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/03/08/第一行代码笔记-自定义view/">第一行代码笔记-自定义view</a></h1>
@@ -182,7 +283,9 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。</p>
+           <blockquote>
+<p>比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。</p>
+</blockquote>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -213,8 +316,12 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1.Android常用控件"></a>1.Android常用控件</h3><h4 id="1-1Button"><a href="#1-1Button" class="headerlink" title="1.1Button"></a>1.1Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
-<h4 id="1-2EditText"><a href="#1-2EditText" class="headerlink" title="1.2EditText"></a>1.2EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
+           <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1.Android常用控件"></a>1.Android常用控件</h3><h4 id="1-1Button"><a href="#1-1Button" class="headerlink" title="1.1Button"></a>1.1Button</h4><blockquote>
+<p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
+</blockquote>
+<h4 id="1-2EditText"><a href="#1-2EditText" class="headerlink" title="1.2EditText"></a>1.2EditText</h4><blockquote>
+<p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
+</blockquote>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -245,10 +352,14 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="1-更多隐式Intent的用法"><a href="#1-更多隐式Intent的用法" class="headerlink" title="1.更多隐式Intent的用法"></a>1.更多隐式Intent的用法</h3><p>使用隐式Intent，不仅可以启动自己程序内的活动，还可以启动其他程序的活动，这使得Android多个应用程序之间的功能共享成为了可能。</p>
+           <h3 id="1-更多隐式Intent的用法"><a href="#1-更多隐式Intent的用法" class="headerlink" title="1.更多隐式Intent的用法"></a>1.更多隐式Intent的用法</h3><blockquote>
+<p>使用隐式Intent，不仅可以启动自己程序内的活动，还可以启动其他程序的活动，这使得Android多个应用程序之间的功能共享成为了可能。</p>
+</blockquote>
 <h4 id="例：展示网页代码"><a href="#例：展示网页代码" class="headerlink" title="例：展示网页代码"></a>例：展示网页代码</h4><pre><code>Intent intent = new Intent(Intent.ACTION_VIEW);
 intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
-</code></pre><p>首先指定Intent的action是Intent.ACTION_VIEW，这是一个Android系统内置动作，其常量值为android.intent.action.VIEW，然后通过Uri.parse()方法，将一个网址字符串解析成一个Uri对象，再调用Intent的setData()方法将这个Uri对象传递进去。</p>
+</code></pre><blockquote>
+<p>首先指定Intent的action是Intent.ACTION_VIEW，这是一个Android系统内置动作，其常量值为android.intent.action.VIEW，然后通过Uri.parse()方法，将一个网址字符串解析成一个Uri对象，再调用Intent的setData()方法将这个Uri对象传递进去。</p>
+</blockquote>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -275,17 +386,39 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h3><p>Android Studio自动生成，无需关心也不要手动编辑。</p>
-<h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p>
-<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><p>在编译时自动生成的文件</p>
-<h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><p>包含gradle wrapper的配置文件</p>
-<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>将指定的目录或文件排除在版本控制之外</p>
-<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>项目全局的gradle构建脚本</p>
-<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><p>全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本</p>
-<h3 id="gradlew和gradlew-bat"><a href="#gradlew和gradlew-bat" class="headerlink" title="gradlew和gradlew.bat"></a>gradlew和gradlew.bat</h3><p>用来在命令行界面中执行gradle命令，前者在Linux或Mac系统使用，后者在Windows系统使用</p>
-<h3 id="xxx-iml"><a href="#xxx-iml" class="headerlink" title="xxx.iml"></a>xxx.iml</h3><p>iml文件是所有intellij idea项目都会自动生成的一个文件，用于标识这是一个intellij idea项目，不需要修改</p>
-<h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><p>用于指定本机中的Android SDK路径，通常自动生成，不需要修改。</p>
-<h3 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h3><p>用于指定项目中所引入的模块，通常自动完成</p>
+           <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h3><blockquote>
+<p>Android Studio自动生成，无需关心也不要手动编辑。</p>
+</blockquote>
+<h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><blockquote>
+<p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p>
+</blockquote>
+<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><blockquote>
+<p>在编译时自动生成的文件</p>
+</blockquote>
+<h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><blockquote>
+<p>包含gradle wrapper的配置文件</p>
+</blockquote>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><blockquote>
+<p>将指定的目录或文件排除在版本控制之外</p>
+</blockquote>
+<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><blockquote>
+<p>项目全局的gradle构建脚本</p>
+</blockquote>
+<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><blockquote>
+<p>全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本</p>
+</blockquote>
+<h3 id="gradlew和gradlew-bat"><a href="#gradlew和gradlew-bat" class="headerlink" title="gradlew和gradlew.bat"></a>gradlew和gradlew.bat</h3><blockquote>
+<p>用来在命令行界面中执行gradle命令，前者在Linux或Mac系统使用，后者在Windows系统使用</p>
+</blockquote>
+<h3 id="xxx-iml"><a href="#xxx-iml" class="headerlink" title="xxx.iml"></a>xxx.iml</h3><blockquote>
+<p>iml文件是所有intellij idea项目都会自动生成的一个文件，用于标识这是一个intellij idea项目，不需要修改</p>
+</blockquote>
+<h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><blockquote>
+<p>用于指定本机中的Android SDK路径，通常自动生成，不需要修改。</p>
+</blockquote>
+<h3 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h3><blockquote>
+<p>用于指定项目中所引入的模块，通常自动完成</p>
+</blockquote>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -424,6 +557,9 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
 <h3 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a>Kotlin</h3><ul>
 <li>Kotlin程序开发入门精要</li>
 </ul>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><ul>
+<li>编程小白的第一本Python入门书</li>
+</ul>
 <h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><ul>
 <li>设计模式之禅</li>
 <li>Android源码设计模式解析与实战</li>
@@ -433,6 +569,9 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
 </ul>
 <h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><ul>
 <li>深入理解计算机网络</li>
+</ul>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><ul>
+<li>啊哈算法</li>
 </ul>
 
         
@@ -531,8 +670,8 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>7</span>文章</a>
-        <a class="count tags"><span>10</span>标签</a>
+        <a class="count articles"><span>9</span>文章</a>
+        <a class="count tags"><span>12</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -573,10 +712,10 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/08/第一行代码笔记-自定义view/" title="第一行代码笔记-自定义view">第一行代码笔记-自定义view</a>
+                        <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
                     </p>
                     <p class="date">
-                        2018-03-08
+                        2018-03-09
                     </p>
                 </div>
             </div>
@@ -591,7 +730,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
+                    <a href="/2018/03/09/第一行代码笔记-ListView/" title="第一行代码笔记-ListView">第一行代码笔记-ListView</a>
                 </p>
             </div>
         </li>
@@ -604,7 +743,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
+                    <a href="/2018/03/08/第一行代码笔记-自定义view/" title="第一行代码笔记-自定义view">第一行代码笔记-自定义view</a>
                 </p>
             </div>
         </li>
@@ -617,7 +756,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/06/第一行代码笔记-Android-Studio/" title="第一行代码笔记-Android Studio">第一行代码笔记-Android Studio</a>
+                    <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
                 </p>
             </div>
         </li>
@@ -630,7 +769,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/02/06/SSH/" title="SSH">SSH</a>
+                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
                 </p>
             </div>
         </li>
@@ -648,12 +787,12 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -709,7 +848,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Intent/">#Intent</a>
         </div>
         
@@ -719,18 +858,28 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
     </div>

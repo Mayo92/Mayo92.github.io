@@ -189,12 +189,16 @@
 <h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1.检查是否存在"></a>1.检查是否存在</h4><h5 id="1-1输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1输入id_rsa.pub 或 id_dsa.pub"></a>1.1输入id_rsa.pub 或 id_dsa.pub</h5><pre><code>ls -al ~/.ssh
 # Lists the files in your .ssh directory, if they exist
 </code></pre><a id="more"></a>
-<h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2.生成新的ssh key"></a>2.生成新的ssh key</h4><h5 id="2-1生成public-private-rsa-key-pair"><a href="#2-1生成public-private-rsa-key-pair" class="headerlink" title="2.1生成public/private rsa key pair"></a>2.1生成public/private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “your_email@example.com”，默认会在相应的路径下( /your_home_path )生成id_rsa和id_rsa.pub两个文件</p>
+<h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2.生成新的ssh key"></a>2.生成新的ssh key</h4><h5 id="2-1生成public-private-rsa-key-pair"><a href="#2-1生成public-private-rsa-key-pair" class="headerlink" title="2.1生成public/private rsa key pair"></a>2.1生成public/private rsa key pair</h5><blockquote>
+<p>输入ssh-keygen -t rsa -C “your_email@example.com”，默认会在相应的路径下( /your_home_path )生成id_rsa和id_rsa.pub两个文件</p>
+</blockquote>
 <pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
 # Creates a new ssh key using the provided email
 Generating public/private rsa key pair.
 Enter file in which to save the key (/your_home_path/.ssh/id_rsa):
-</code></pre><h5 id="2-2输入passphrase-可以跳过"><a href="#2-2输入passphrase-可以跳过" class="headerlink" title="2.2输入passphrase(可以跳过)"></a>2.2输入passphrase(可以跳过)</h5><p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p>
+</code></pre><h5 id="2-2输入passphrase-可以跳过"><a href="#2-2输入passphrase-可以跳过" class="headerlink" title="2.2输入passphrase(可以跳过)"></a>2.2输入passphrase(可以跳过)</h5><blockquote>
+<p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p>
+</blockquote>
 <pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
 Enter same passphrase again: [Type passphrase again]
 </code></pre><h5 id="sample-result"><a href="#sample-result" class="headerlink" title="sample result:"></a>sample result:</h5><pre><code>Your identification has been saved in /your_home_path/.ssh/id_rsa.
@@ -207,7 +211,9 @@ Agent pid 59566
 ssh-add ~/.ssh/id_rsa
 </code></pre><h4 id="3-复制ssh-key-mac"><a href="#3-复制ssh-key-mac" class="headerlink" title="3.复制ssh key(mac)"></a>3.复制ssh key(mac)</h4><pre><code>pbcopy &lt; ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
-</code></pre><p>Find前往文件夹~/.ssh/id_rsa.pub打开id_rsa.pub文件，里面的信息即为SSH key</p>
+</code></pre><blockquote>
+<p>Find前往文件夹~/.ssh/id_rsa.pub打开id_rsa.pub文件，里面的信息即为SSH key</p>
+</blockquote>
 
     </div>
 </div>
@@ -301,8 +307,8 @@ ssh-add ~/.ssh/id_rsa
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>7</span>文章</a>
-        <a class="count tags"><span>10</span>标签</a>
+        <a class="count articles"><span>9</span>文章</a>
+        <a class="count tags"><span>12</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -343,10 +349,10 @@ ssh-add ~/.ssh/id_rsa
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/08/第一行代码笔记-自定义view/" title="第一行代码笔记-自定义view">第一行代码笔记-自定义view</a>
+                        <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
                     </p>
                     <p class="date">
-                        2018-03-08
+                        2018-03-09
                     </p>
                 </div>
             </div>
@@ -361,7 +367,7 @@ ssh-add ~/.ssh/id_rsa
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
+                    <a href="/2018/03/09/第一行代码笔记-ListView/" title="第一行代码笔记-ListView">第一行代码笔记-ListView</a>
                 </p>
             </div>
         </li>
@@ -374,7 +380,7 @@ ssh-add ~/.ssh/id_rsa
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
+                    <a href="/2018/03/08/第一行代码笔记-自定义view/" title="第一行代码笔记-自定义view">第一行代码笔记-自定义view</a>
                 </p>
             </div>
         </li>
@@ -387,7 +393,7 @@ ssh-add ~/.ssh/id_rsa
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/06/第一行代码笔记-Android-Studio/" title="第一行代码笔记-Android Studio">第一行代码笔记-Android Studio</a>
+                    <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
                 </p>
             </div>
         </li>
@@ -400,7 +406,7 @@ ssh-add ~/.ssh/id_rsa
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/02/06/SSH/" title="SSH">SSH</a>
+                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
                 </p>
             </div>
         </li>
@@ -438,7 +444,7 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -459,7 +465,7 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
@@ -474,7 +480,7 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -489,18 +495,28 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
     </div>

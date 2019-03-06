@@ -12,7 +12,7 @@
     
     
     
-    <title>标签: Android Studio | 赞美の心</title>
+    <title>第一行代码笔记-RecyclerView | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,29 +162,148 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">第一行代码笔记-RecyclerView</h1>
     
-    <div class="cube-archive" style="margin-top: 0;">
-        <h1 class="title">Android Studio</h1>
-        
-        <ul class="posts">
-            
-            <li class="post">
-                <a href="/2018/03/06/第一行代码笔记-Android-Studio/">第一行代码笔记-Android Studio</a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-03-09
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/RecyclerView/">#RecyclerView</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><h5 id="gradle添加依赖"><a href="#gradle添加依赖" class="headerlink" title="gradle添加依赖"></a>gradle添加依赖</h5><h4 id="编写适配器"><a href="#编写适配器" class="headerlink" title="编写适配器"></a>编写适配器</h4><pre><code>public class FruitAdapter extends RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;{
+
+    private List&lt;Fruit&gt; mFruitList;
+
+    static class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView fruitImage;
+
+        public ViewHolder(View view){
+            super(view);
+            fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
+        }
+    }
+
+    public FruitAdapter(List&lt;Fruit&gt; fruitList) {
+        mFruitList = fruitList;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+        View view = LayoutInflater.from(parent. getContext()).inflate(R.layout.fruit_item,parent,false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder,int position){
+        Fruit fruit = mFruitList.get(position);
+        holder.fruitImage.setImageResource(fruit.getImageId());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mFruitList.size();
+    }
+}
+</code></pre><a id="more"></a>
+<blockquote>
+<p>首先构建一个内部类ViewHolder，并且构造函数中传入View参数，这个参数通常就是RecyclerView子项的最外层布局，这样就可以通过view.findViewById方法获得布局中的实例。FruitAdapter的构造函数，主要是把数据源传入进来。继承RecyclerView.Adapter则必须重写onCreateViewHolder、onBindViewHolder、getItemCount方法。onCreateViewHolder用于创建ViewHolder实例的，将fruit_item布局加载进来，然后创建一个ViewHolder实例，并且把加载出来的布局传入到他的构造函数中，最后将ViewHolder实例返回。onBindViewHolder方法，是对RecyclerView子项的数据进行赋值的，会在每个子项被滚动到屏幕内的时候执行。</p>
+</blockquote>
+<h4 id="指定布局方式"><a href="#指定布局方式" class="headerlink" title="指定布局方式"></a>指定布局方式</h4><blockquote>
+<p>RecyclerView的布局排列交给了LayoutManager，LayoutManager中定制了一套可以拓展的布局排列接口，子类只要按照接口的规范来实现，就可以定制出各种不同排列方式的布局了。提供LinearLayoutManger，GridLayoutManager（网格布局），StaggeredGridLayoutManager(瀑布流布局).</p>
+</blockquote>
+<pre><code>//水平
+LinearLayoutManger layoutManager = new LinearLayoutManger(this);
+layoutManager.setOrientation(LinearLayoutManger.HORIZONTAL);//竖直注释这一行
+
+//瀑布（子项布局match_parent，因为瀑布流是自动适配的）
+StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)；
+</code></pre><blockquote>
+<p>StaggeredGridLayoutManager的构造函数接收两个参数，第一个指定布局的列数，第二个指定排列方向</p>
+</blockquote>
+<h4 id="点击事件"><a href="#点击事件" class="headerlink" title="点击事件"></a>点击事件</h4><blockquote>
+<p>不仅可以注册子项的点击事件，还可以注册子项里具体的控件的点击事件。</p>
+</blockquote>
+<pre><code>public class FruitAdapter extends RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;{
+
+    private List&lt;Fruit&gt; mFruitList;
+
+    static class ViewHolder extends RecyclerView.ViewHolder{
+
+        View fruitView;
+        ImageView fruitImage;
+
+        public ViewHolder(View view){
+            super(view);
+            //子项最外层布局的实例
+            fruitView = view;
+            fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
+        }
+    }
+
+    public FruitAdapter(List&lt;Fruit&gt; fruitList) {
+        mFruitList = fruitList;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+        View view = LayoutInflater.from(parent. getContext()).inflate(R.layout.fruit_item,parent,false);
+        final ViewHolder holder = new ViewHolder(view);
+        //点击事件
+        //获取点击事件里的位置 int position = holder.getAdapterPosition();
+        holder.fruitView.setOnClickListener(new View.OnClickListener...)
+        holder.fruitImage.setOnClickListener(new View.OnClickListener...)
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder,int position){
+        Fruit fruit = mFruitList.get(position);
+        holder.fruitImage.setImageResource(fruit.getImageId());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mFruitList.size();
+    }
+}
+</code></pre><h4 id="动态添加数据"><a href="#动态添加数据" class="headerlink" title="动态添加数据"></a>动态添加数据</h4><pre><code>adapter.notifyItemInserted(msgList.size() - 1);
+//定位到最后一行
+msgRecyclerView.scrollToPosition(msgList.size() -1);
+</code></pre>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2018/03/09/第一行代码笔记-ListView/">
+                第一行代码笔记-ListView
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
         </div>
         <div class="cube-right">
             
@@ -370,17 +489,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/书单/">#书单</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
@@ -401,7 +520,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Blog/">#Blog</a>
         </div>
         
@@ -411,7 +530,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/环境配置/">#环境配置</a>
         </div>
         
@@ -426,7 +545,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Intent/">#Intent</a>
         </div>
         
@@ -441,7 +560,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
