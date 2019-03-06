@@ -176,11 +176,11 @@
     
     <a href="/tags/第一行代码，读书笔记/">#第一行代码，读书笔记</a>
     
-    <a href="/tags/隐式Intent/">#隐式Intent</a>
-    
     <a href="/tags/startActivityForResult/">#startActivityForResult</a>
     
     <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+    
+    <a href="/tags/隐式Intent/">#隐式Intent</a>
     
 </div>
     </div>
@@ -191,6 +191,7 @@
 <h4 id="例：展示网页代码"><a href="#例：展示网页代码" class="headerlink" title="例：展示网页代码"></a>例：展示网页代码</h4><pre><code>Intent intent = new Intent(Intent.ACTION_VIEW);
 intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
 </code></pre><p>首先指定Intent的action是Intent.ACTION_VIEW，这是一个Android系统内置动作，其常量值为android.intent.action.VIEW，然后通过Uri.parse()方法，将一个网址字符串解析成一个Uri对象，再调用Intent的setData()方法将这个Uri对象传递进去。</p>
+<a id="more"></a>
 <p>setData()方法接受一个Uri对象，主要用于指定当前Intent正在操作的数据，而这些数据通常都是以字符串的形式传入到Uri.parse()方法中解析产生的。</p>
 <p>我们还可以在<intent-filter>标签中再配置一个<data>标签，用于更精确地指定当前活动能够响应什么类型的数据。<data>标签中主要可以配置以下内容：</data></data></intent-filter></p>
 <pre><code>android:scheme，用于指定数据的协议部分，如上面的http部分
@@ -327,8 +328,8 @@ protected void onCreated(Bundle savedInstanceState) {
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>4</span>文章</a>
-        <a class="count tags"><span>8</span>标签</a>
+        <a class="count articles"><span>5</span>文章</a>
+        <a class="count tags"><span>9</span>标签</a>
         <a class="count categories"><span>4</span>分类</a>
     </div>
 </div>
@@ -369,7 +370,7 @@ protected void onCreated(Bundle savedInstanceState) {
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2019/03/06/SSH/" title="SSH">SSH</a>
+                        <a href="/2019/03/06/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
                     </p>
                     <p class="date">
                         2019-03-06
@@ -387,7 +388,7 @@ protected void onCreated(Bundle savedInstanceState) {
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/HEXO总结/" title="HEXO总结">HEXO总结</a>
+                    <a href="/2019/03/06/SSH/" title="SSH">SSH</a>
                 </p>
             </div>
         </li>
@@ -400,7 +401,7 @@ protected void onCreated(Bundle savedInstanceState) {
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
+                    <a href="/2019/03/06/HEXO总结/" title="HEXO总结">HEXO总结</a>
                 </p>
             </div>
         </li>
@@ -411,6 +412,19 @@ protected void onCreated(Bundle savedInstanceState) {
             <div class="normal">
                 <p class="index">
                     <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
                 </p>
                 <p class="title">
                     <a href="/2018/03/06/第一行代码笔记-Android-Studio/" title="第一行代码笔记-Android Studio">第一行代码笔记-Android Studio</a>
@@ -431,12 +445,12 @@ protected void onCreated(Bundle savedInstanceState) {
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -446,7 +460,7 @@ protected void onCreated(Bundle savedInstanceState) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -462,12 +476,12 @@ protected void onCreated(Bundle savedInstanceState) {
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
@@ -488,17 +502,22 @@ protected void onCreated(Bundle savedInstanceState) {
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+            <a href="/tags/Intent/">#Intent</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
     </div>
