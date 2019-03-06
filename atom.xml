@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-06T14:17:51.255Z</updated>
+  <updated>2019-03-06T10:18:01.248Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,37 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>第一行代码笔记-Android基础控件布局</title>
-    <link href="http://yoursite.com/2019/03/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6%E5%B8%83%E5%B1%80/"/>
-    <id>http://yoursite.com/2019/03/06/第一行代码笔记-Android基础控件布局/</id>
-    <published>2019-03-06T14:12:40.000Z</published>
-    <updated>2019-03-06T14:17:51.255Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1.Android常用控件"></a>1.Android常用控件</h3><h4 id="1-1Button"><a href="#1-1Button" class="headerlink" title="1.1Button"></a>1.1Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p><h4 id="1-2EditText"><a href="#1-2EditText" class="headerlink" title="1.2EditText"></a>1.2EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p><a id="more"></a><h4 id="1-3ImageView"><a href="#1-3ImageView" class="headerlink" title="1.3ImageView"></a>1.3ImageView</h4><p>代码设置资源，imageView.setImageResource(R.drawable.img);</p><h4 id="1-4ProgressBar"><a href="#1-4ProgressBar" class="headerlink" title="1.4ProgressBar"></a>1.4ProgressBar</h4><p>可以给ProgressBar指定不同的样式，刚刚是圆形进度条，通过style属性可以将它指定成水平进度条，也可设置其他类型，style=”?android:attr/progressBarStyleHorizonal”,android:max=”100”</p><pre><code>int progress = progressBar.getProgress();progress = progress + 10;progressBar.setProgress(progress);</code></pre><h4 id="1-5AlertDialog"><a href="#1-5AlertDialog" class="headerlink" title="1.5AlertDialog"></a>1.5AlertDialog</h4><pre><code>AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);dialog.setTitle(&quot;This is Dialog&quot;);dialog.setMessage(&quot;Something important.&quot;);dialog.setCancelable(false);dialog.setPositiveButton(&quot;OK&quot;, new DialogInterface.    OnClickListener() {        @Override        public void onClick(DialogInterface dialog,int which){        }    });dialog.setNegativeButton(&quot;Cancel&quot;, new DialogInterface.    OnClickListener() {        @Override        public void onClick(DialogInterface dialog,int which){        }    });    dialog.show();</code></pre><h4 id="1-6ProgressDialog"><a href="#1-6ProgressDialog" class="headerlink" title="1.6ProgressDialog"></a>1.6ProgressDialog</h4><pre><code>ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);progressDialog.setTitle(&quot;&quot;);progressDialog.setMessage(&quot;&quot;);progressDialog.setCancelable(true);progressDialog.show();    </code></pre><h3 id="2-基本布局"><a href="#2-基本布局" class="headerlink" title="2.基本布局"></a>2.基本布局</h3><h4 id="2-1线性布局LinearLayout"><a href="#2-1线性布局LinearLayout" class="headerlink" title="2.1线性布局LinearLayout"></a>2.1线性布局LinearLayout</h4><p>如果排列方向是horizontal，内部控件就不能将宽度指定为match_parent，这样的化单独一个控件就会将整个水平方向占满，其他控件就没有可放置的位置了。同理vertical，内部控件就不能将高度指定为match_parent。</p><p>android:gravity用于指定文字在控件中的对齐方式，而android:layout_gravity用于指定控件在布局中的对齐方式。需要注意，当LinearLayout的排列方向是horizontal时，只有垂直方向上的对齐方式才会生效，因为此时水平方向上的长度是不固定的，每添加一个控件水平方向上的长度都会改变，因而无法指定该方向上的对齐方式。同理，为vertical时，只有水平方向上的对齐方式才会生效。</p><p>一个weight为1，另一个width为wrap_content时，第一个会占满除了另一个的位置</p><h4 id="2-2相对布局RelativeLayout"><a href="#2-2相对布局RelativeLayout" class="headerlink" title="2.2相对布局RelativeLayout"></a>2.2相对布局RelativeLayout</h4><h4 id="2-3帧布局FrameLayout"><a href="#2-3帧布局FrameLayout" class="headerlink" title="2.3帧布局FrameLayout"></a>2.3帧布局FrameLayout</h4><p>layout_gravity属性来指定控件在布局中的对齐方式</p><h4 id="2-4百分比布局PercentFrameLayout和PercentRelativeLayout"><a href="#2-4百分比布局PercentFrameLayout和PercentRelativeLayout" class="headerlink" title="2.4百分比布局PercentFrameLayout和PercentRelativeLayout"></a>2.4百分比布局PercentFrameLayout和PercentRelativeLayout</h4><p>LinearLayout不支持。gradle文件中添加com.android.support:percent。使用app:layout_widthPercent属性以及app:layout_heightPercent。</p><h4 id="2-5绝对布局AbsoluteLayout"><a href="#2-5绝对布局AbsoluteLayout" class="headerlink" title="2.5绝对布局AbsoluteLayout"></a>2.5绝对布局AbsoluteLayout</h4><h4 id="2-6TableLayout"><a href="#2-6TableLayout" class="headerlink" title="2.6TableLayout"></a>2.6TableLayout</h4><h3 id="3-引入布局"><a href="#3-引入布局" class="headerlink" title="3.引入布局"></a>3.引入布局</h3><p>android:layout_margin这个属性，它可以指定控件在上下左右方向上偏移的距离，当然也可以使用android:layout_marginLeft或android:layout_marginTop等属性来单独指定控件在某个方向上偏移的距离。</p><h4 id="4-隐藏ActionBar"><a href="#4-隐藏ActionBar" class="headerlink" title="4.隐藏ActionBar"></a>4.隐藏ActionBar</h4><h5 id="onCreate方法中"><a href="#onCreate方法中" class="headerlink" title="onCreate方法中:"></a>onCreate方法中:</h5><pre><code>ActionBar actionBar = getSupportActionBar();if(actionBar != null){    actionBar.hide();}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;1-Android常用控件&quot;&gt;&lt;a href=&quot;#1-Android常用控件&quot; class=&quot;headerlink&quot; title=&quot;1.Android常用控件&quot;&gt;&lt;/a&gt;1.Android常用控件&lt;/h3&gt;&lt;h4 id=&quot;1-1Button&quot;&gt;&lt;a href=&quot;#1-1Button&quot; class=&quot;headerlink&quot; title=&quot;1.1Button&quot;&gt;&lt;/a&gt;1.1Button&lt;/h4&gt;&lt;p&gt;系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”&lt;/p&gt;
-&lt;h4 id=&quot;1-2EditText&quot;&gt;&lt;a href=&quot;#1-2EditText&quot; class=&quot;headerlink&quot; title=&quot;1.2EditText&quot;&gt;&lt;/a&gt;1.2EditText&lt;/h4&gt;&lt;p&gt;android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="第一行代码，读书笔记" scheme="http://yoursite.com/tags/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Intent" scheme="http://yoursite.com/tags/Intent/"/>
-    
-      <category term="startActivityForResult" scheme="http://yoursite.com/tags/startActivityForResult/"/>
-    
-      <category term="onSaveInstanceState" scheme="http://yoursite.com/tags/onSaveInstanceState/"/>
-    
-  </entry>
   
   <entry>
     <title>SSH</title>
@@ -111,6 +80,37 @@
       <category term="Blog" scheme="http://yoursite.com/tags/Blog/"/>
     
       <category term="HEXO" scheme="http://yoursite.com/tags/HEXO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一行代码笔记-Android基础控件布局</title>
+    <link href="http://yoursite.com/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6%E5%B8%83%E5%B1%80/"/>
+    <id>http://yoursite.com/2018/03/08/第一行代码笔记-Android基础控件布局/</id>
+    <published>2018-03-08T14:12:40.000Z</published>
+    <updated>2019-03-06T14:19:42.654Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1.Android常用控件"></a>1.Android常用控件</h3><h4 id="1-1Button"><a href="#1-1Button" class="headerlink" title="1.1Button"></a>1.1Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p><h4 id="1-2EditText"><a href="#1-2EditText" class="headerlink" title="1.2EditText"></a>1.2EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p><a id="more"></a><h4 id="1-3ImageView"><a href="#1-3ImageView" class="headerlink" title="1.3ImageView"></a>1.3ImageView</h4><p>代码设置资源，imageView.setImageResource(R.drawable.img);</p><h4 id="1-4ProgressBar"><a href="#1-4ProgressBar" class="headerlink" title="1.4ProgressBar"></a>1.4ProgressBar</h4><p>可以给ProgressBar指定不同的样式，刚刚是圆形进度条，通过style属性可以将它指定成水平进度条，也可设置其他类型，style=”?android:attr/progressBarStyleHorizonal”,android:max=”100”</p><pre><code>int progress = progressBar.getProgress();progress = progress + 10;progressBar.setProgress(progress);</code></pre><h4 id="1-5AlertDialog"><a href="#1-5AlertDialog" class="headerlink" title="1.5AlertDialog"></a>1.5AlertDialog</h4><pre><code>AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);dialog.setTitle(&quot;This is Dialog&quot;);dialog.setMessage(&quot;Something important.&quot;);dialog.setCancelable(false);dialog.setPositiveButton(&quot;OK&quot;, new DialogInterface.    OnClickListener() {        @Override        public void onClick(DialogInterface dialog,int which){        }    });dialog.setNegativeButton(&quot;Cancel&quot;, new DialogInterface.    OnClickListener() {        @Override        public void onClick(DialogInterface dialog,int which){        }    });    dialog.show();</code></pre><h4 id="1-6ProgressDialog"><a href="#1-6ProgressDialog" class="headerlink" title="1.6ProgressDialog"></a>1.6ProgressDialog</h4><pre><code>ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);progressDialog.setTitle(&quot;&quot;);progressDialog.setMessage(&quot;&quot;);progressDialog.setCancelable(true);progressDialog.show();    </code></pre><h3 id="2-基本布局"><a href="#2-基本布局" class="headerlink" title="2.基本布局"></a>2.基本布局</h3><h4 id="2-1线性布局LinearLayout"><a href="#2-1线性布局LinearLayout" class="headerlink" title="2.1线性布局LinearLayout"></a>2.1线性布局LinearLayout</h4><p>如果排列方向是horizontal，内部控件就不能将宽度指定为match_parent，这样的化单独一个控件就会将整个水平方向占满，其他控件就没有可放置的位置了。同理vertical，内部控件就不能将高度指定为match_parent。</p><p>android:gravity用于指定文字在控件中的对齐方式，而android:layout_gravity用于指定控件在布局中的对齐方式。需要注意，当LinearLayout的排列方向是horizontal时，只有垂直方向上的对齐方式才会生效，因为此时水平方向上的长度是不固定的，每添加一个控件水平方向上的长度都会改变，因而无法指定该方向上的对齐方式。同理，为vertical时，只有水平方向上的对齐方式才会生效。</p><p>一个weight为1，另一个width为wrap_content时，第一个会占满除了另一个的位置</p><h4 id="2-2相对布局RelativeLayout"><a href="#2-2相对布局RelativeLayout" class="headerlink" title="2.2相对布局RelativeLayout"></a>2.2相对布局RelativeLayout</h4><h4 id="2-3帧布局FrameLayout"><a href="#2-3帧布局FrameLayout" class="headerlink" title="2.3帧布局FrameLayout"></a>2.3帧布局FrameLayout</h4><p>layout_gravity属性来指定控件在布局中的对齐方式</p><h4 id="2-4百分比布局PercentFrameLayout和PercentRelativeLayout"><a href="#2-4百分比布局PercentFrameLayout和PercentRelativeLayout" class="headerlink" title="2.4百分比布局PercentFrameLayout和PercentRelativeLayout"></a>2.4百分比布局PercentFrameLayout和PercentRelativeLayout</h4><p>LinearLayout不支持。gradle文件中添加com.android.support:percent。使用app:layout_widthPercent属性以及app:layout_heightPercent。</p><h4 id="2-5绝对布局AbsoluteLayout"><a href="#2-5绝对布局AbsoluteLayout" class="headerlink" title="2.5绝对布局AbsoluteLayout"></a>2.5绝对布局AbsoluteLayout</h4><h4 id="2-6TableLayout"><a href="#2-6TableLayout" class="headerlink" title="2.6TableLayout"></a>2.6TableLayout</h4><h3 id="3-引入布局"><a href="#3-引入布局" class="headerlink" title="3.引入布局"></a>3.引入布局</h3><p>android:layout_margin这个属性，它可以指定控件在上下左右方向上偏移的距离，当然也可以使用android:layout_marginLeft或android:layout_marginTop等属性来单独指定控件在某个方向上偏移的距离。</p><h4 id="4-隐藏ActionBar"><a href="#4-隐藏ActionBar" class="headerlink" title="4.隐藏ActionBar"></a>4.隐藏ActionBar</h4><h5 id="onCreate方法中"><a href="#onCreate方法中" class="headerlink" title="onCreate方法中:"></a>onCreate方法中:</h5><pre><code>ActionBar actionBar = getSupportActionBar();if(actionBar != null){    actionBar.hide();}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-Android常用控件&quot;&gt;&lt;a href=&quot;#1-Android常用控件&quot; class=&quot;headerlink&quot; title=&quot;1.Android常用控件&quot;&gt;&lt;/a&gt;1.Android常用控件&lt;/h3&gt;&lt;h4 id=&quot;1-1Button&quot;&gt;&lt;a href=&quot;#1-1Button&quot; class=&quot;headerlink&quot; title=&quot;1.1Button&quot;&gt;&lt;/a&gt;1.1Button&lt;/h4&gt;&lt;p&gt;系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”&lt;/p&gt;
+&lt;h4 id=&quot;1-2EditText&quot;&gt;&lt;a href=&quot;#1-2EditText&quot; class=&quot;headerlink&quot; title=&quot;1.2EditText&quot;&gt;&lt;/a&gt;1.2EditText&lt;/h4&gt;&lt;p&gt;android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="第一行代码，读书笔记" scheme="http://yoursite.com/tags/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Intent" scheme="http://yoursite.com/tags/Intent/"/>
+    
+      <category term="startActivityForResult" scheme="http://yoursite.com/tags/startActivityForResult/"/>
+    
+      <category term="onSaveInstanceState" scheme="http://yoursite.com/tags/onSaveInstanceState/"/>
     
   </entry>
   
