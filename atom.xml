@@ -84,6 +84,31 @@
   </entry>
   
   <entry>
+    <title>第一行代码笔记-Android Studio</title>
+    <link href="http://yoursite.com/2018/03/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android-Studio/"/>
+    <id>http://yoursite.com/2018/03/06/第一行代码笔记-Android-Studio/</id>
+    <published>2018-03-06T10:23:34.000Z</published>
+    <updated>2019-03-06T10:30:08.008Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h3><p>Android Studio自动生成，无需关心也不要手动编辑。</p><h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p><h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><p>在编译时自动生成的文件</p><h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><p>包含gradle wrapper的配置文件</p><h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>将指定的目录或文件排除在版本控制之外</p><h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>项目全局的gradle构建脚本</p><h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><p>全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本</p><h3 id="gradlew和gradlew-bat"><a href="#gradlew和gradlew-bat" class="headerlink" title="gradlew和gradlew.bat"></a>gradlew和gradlew.bat</h3><p>用来在命令行界面中执行gradle命令，前者在Linux或Mac系统使用，后者在Windows系统使用</p><h3 id="xxx-iml"><a href="#xxx-iml" class="headerlink" title="xxx.iml"></a>xxx.iml</h3><p>iml文件是所有intellij idea项目都会自动生成的一个文件，用于标识这是一个intellij idea项目，不需要修改</p><h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><p>用于指定本机中的Android SDK路径，通常自动生成，不需要修改。</p><h3 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h3><p>用于指定项目中所引入的模块，通常自动完成</p><h2 id="APP目录结构"><a href="#APP目录结构" class="headerlink" title="APP目录结构"></a>APP目录结构</h2><h3 id="build-1"><a href="#build-1" class="headerlink" title="build"></a>build</h3><p>主要包含一些在编译时自动生成的文件，不需要过多关心</p><h3 id="libs"><a href="#libs" class="headerlink" title="libs"></a>libs</h3><p>项目中用到了第三方jar包，放到这个目录下都会被自动添加到构建路径里去</p><h3 id="androidTest"><a href="#androidTest" class="headerlink" title="androidTest"></a>androidTest</h3><p>用来编写测试用例，进行自动化测试</p><h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><p>Java代码的地方</p><h3 id="res"><a href="#res" class="headerlink" title="res"></a>res</h3><p>项目中使用的图片、布局、字符串等资源都要放到这个目录下。drawale开头的文件夹都是用来存放图片的，mipmap开头的文件夹都是用来存放应用图标的</p><h3 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>Android项目的配置文件，四大组件，权限申明</p><h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>编写Unit Test测试用例的，项目自动化测试的另一种方式</p><h3 id="gitigone"><a href="#gitigone" class="headerlink" title=".gitigone"></a>.gitigone</h3><p>将app模块内的指定的目录或文件排除在版本控制之外</p><h3 id="app-iml"><a href="#app-iml" class="headerlink" title="app.iml"></a>app.iml</h3><p>intellij idea自动生成，无需关心或修改</p><h3 id="build-gradle-1"><a href="#build-gradle-1" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>app模块的gradle构建脚本，会指定很多项目构建相关的配置</p><h3 id="proguard-rules-pro"><a href="#proguard-rules-pro" class="headerlink" title="proguard-rules.pro"></a>proguard-rules.pro</h3><p>指定项目代码的混淆规则</p><h2 id="详解build-gradle文件"><a href="#详解build-gradle文件" class="headerlink" title="详解build.gradle文件"></a>详解build.gradle文件</h2><p>Android Studio采用Gradle构建项目，Gradle使用了一种基于Groovy的领域特定语言（DSL）来声明项目设置，摒弃了传统基于XML（如Ant和Maven）的各种繁琐配置。</p><h3 id="外层目录下的build-gradle文件"><a href="#外层目录下的build-gradle文件" class="headerlink" title="外层目录下的build.gradle文件"></a>外层目录下的build.gradle文件</h3><p>1.两处repositories的闭包中都声明了jcenter()这行配置，jcenter是一个代码托管仓库，很多Android开源项目都会选择将代码托管到jcenter上，声明这行配置后，我们就可以在项目中轻松引用任何jcenter上的开源项目了。</p><p>2.dependencies闭包中使用classpath声明一个Gradle插件，这是因为Gradle并不是专门为构建Android项目而开发的，java、C++等很多项目都可以使用Gradle来构建。因此如果我们想要使用它来构建Android项目，则需要声明com.android.tools.build:gradle:2.2.0这个插件。最后的数字是插件的版本号。</p><h3 id="app目录下的build-gradle文件"><a href="#app目录下的build-gradle文件" class="headerlink" title="app目录下的build.gradle文件"></a>app目录下的build.gradle文件</h3><p>1.第一行应用了一个插件，一般有两种值可选：com.android.application表示是一个应用程序模块，com.android.library表示是一个库模块。两者的最大区别在于一个是可以直接运行的，一个只能作为代码库依附于别的应用程序模块来运行。</p><p>2.大的android闭包，可以配置项目构建的各种属性。compileSdkVersion用于指定项目的编译版本。buildToolsVersion用于指定项目构建工具的版本。</p><p>3.android闭包中的defaultConfig闭包，可以对项目更多细节进行配置。applicationId用于指定项目包名。minSdkVersion指定项目最低兼容的Android系统版本。targetSdkVersion表示你在该目标版本上已经做了充分的测试，系统将会为你的应用程序启用一些最新的功能和特性。versionCode用于指定项目的版本号，versionName用于指定项目的版本名，这两个属性在生成安装文件的时候非常重要。</p><p>4.android闭包中的buildTypes闭包，用于指定生成安装文件的相关配置，通常只会有两个子闭包，一个是debug用于指定生成测试版安装文件的配置，一个是release用于指定生成正式版安装文件的配置。debug闭包是可以忽略不写的。release闭包的具体内容，minifyEnabled用于指定是否对项目的代码进行混淆，true表示混淆，false表示不混淆。proguardFiles用于指定混淆时使用的规则文件，这里指定了两个文件，第一个proguard-android.txt是在Android SDK目录下的，里面是所有项目通用的混淆规则。第二个proguard-rules.pro是在当前项目的根目录下的，里面可以编写当前项目特有的混淆规则。</p><p>5.dependencies闭包，它可以指定当前项目所有的依赖关系。通常Android Studio项目一共有三种依赖方式：本地依赖、库依赖、远程依赖。本地依赖可以对本地的jar包或目录添加依赖关系，库依赖可以对项目中的库模块添加依赖关系，远程依赖则可以对jcenter库上的开源项目添加依赖关系。第一行的compile fileTree就是一个本地依赖声明，它表示将libs目录下所有.jar后缀的文件都添加到项目的构建路径中。第二行的compile则是远程依赖声明，com.android.support:appcompat-v7:24.2.1就是一个标准的远程依赖库格式，其中com.android.support是域名部分，用于和其他公司的库做区分；appcompat-v7是组名称，用于和同一个公司中不同的库做区分；24.2.1是版本号，用于和同一库不同版本做区分。加上这句声明后，Gradle在构建项目时会首先检查一下本地是否已有这个库的缓存，没有的话则会自动去联网下载，然后再添加到项目的构建路径当中。库依赖的基本格式是compile project后面加上要依赖库的名称，如compile project(‘:helper’)。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;项目结构&quot;&gt;&lt;a href=&quot;#项目结构&quot; class=&quot;headerlink&quot; title=&quot;项目结构&quot;&gt;&lt;/a&gt;项目结构&lt;/h2&gt;&lt;h3 id=&quot;gradle和-idea‘’&quot;&gt;&lt;a href=&quot;#gradle和-idea‘’&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+  </entry>
+  
+  <entry>
     <title>二分查找</title>
     <link href="http://yoursite.com/2018/01/25/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     <id>http://yoursite.com/2018/01/25/二分查找/</id>
@@ -107,31 +132,6 @@
     
     
       <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试记录</title>
-    <link href="http://yoursite.com/2018/01/25/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/01/25/面试记录/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-05-03T07:26:14.894Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="最近找工作的面试题目"><a href="#最近找工作的面试题目" class="headerlink" title="最近找工作的面试题目"></a>最近找工作的面试题目</h3><h4 id="要看的"><a href="#要看的" class="headerlink" title="要看的"></a>要看的</h4><h4 id="弘扬-https完全解析-okhttp封装"><a href="#弘扬-https完全解析-okhttp封装" class="headerlink" title="弘扬 https完全解析 okhttp封装"></a>弘扬 https完全解析 okhttp封装</h4><h4 id="uil-的imageloadconfigration调用的是getapplication的context"><a href="#uil-的imageloadconfigration调用的是getapplication的context" class="headerlink" title="uil 的imageloadconfigration调用的是getapplication的context"></a>uil 的imageloadconfigration调用的是getapplication的context</h4><h4 id="list-array-list"><a href="#list-array-list" class="headerlink" title="list array list"></a>list array list</h4><h4 id="注解-反射-IO"><a href="#注解-反射-IO" class="headerlink" title="注解 反射 IO"></a>注解 反射 IO</h4><h4 id="布局一律用小写加下划线"><a href="#布局一律用小写加下划线" class="headerlink" title="布局一律用小写加下划线"></a>布局一律用小写加下划线</h4><h4 id="android中，用add的一般可以重复添加，set会覆盖之前的值"><a href="#android中，用add的一般可以重复添加，set会覆盖之前的值" class="headerlink" title="android中，用add的一般可以重复添加，set会覆盖之前的值"></a>android中，用add的一般可以重复添加，set会覆盖之前的值</h4><h5 id="1-介绍一下四大组件的service与brodacast"><a href="#1-介绍一下四大组件的service与brodacast" class="headerlink" title="1.介绍一下四大组件的service与brodacast"></a>1.介绍一下四大组件的service与brodacast</h5><h5 id="2-自定义view绘制流程，在activity哪个生命周期方法完成"><a href="#2-自定义view绘制流程，在activity哪个生命周期方法完成" class="headerlink" title="2.自定义view绘制流程，在activity哪个生命周期方法完成"></a>2.自定义view绘制流程，在activity哪个生命周期方法完成</h5><h5 id="3-事件分发流程，onClick事件与onTouchEvent顺序"><a href="#3-事件分发流程，onClick事件与onTouchEvent顺序" class="headerlink" title="3.事件分发流程，onClick事件与onTouchEvent顺序"></a>3.事件分发流程，onClick事件与onTouchEvent顺序</h5><h5 id="4-ANR是什么，怎么处理ANR"><a href="#4-ANR是什么，怎么处理ANR" class="headerlink" title="4.ANR是什么，怎么处理ANR"></a>4.ANR是什么，怎么处理ANR</h5><h5 id="5-Handler机制"><a href="#5-Handler机制" class="headerlink" title="5.Handler机制"></a>5.Handler机制</h5><h5 id="1-activity启动模式及应用场景"><a href="#1-activity启动模式及应用场景" class="headerlink" title="1.activity启动模式及应用场景"></a>1.activity启动模式及应用场景</h5><h5 id="2-intentservice"><a href="#2-intentservice" class="headerlink" title="2.intentservice"></a>2.intentservice</h5><h5 id="3-aidl"><a href="#3-aidl" class="headerlink" title="3.aidl"></a>3.aidl</h5><h5 id="4-get-post-https"><a href="#4-get-post-https" class="headerlink" title="4.get post https"></a>4.get post https</h5><h5 id="5-fragment之间通信方式"><a href="#5-fragment之间通信方式" class="headerlink" title="5.fragment之间通信方式"></a>5.fragment之间通信方式</h5><h5 id="6-startservice-bindservice-unbindservice"><a href="#6-startservice-bindservice-unbindservice" class="headerlink" title="6.startservice bindservice unbindservice"></a>6.startservice bindservice unbindservice</h5><h5 id="7-枚举跟静态常量的区别"><a href="#7-枚举跟静态常量的区别" class="headerlink" title="7.枚举跟静态常量的区别"></a>7.枚举跟静态常量的区别</h5><h5 id="8-zxing的性能优化"><a href="#8-zxing的性能优化" class="headerlink" title="8.zxing的性能优化"></a>8.zxing的性能优化</h5><h5 id="9-混合开发Hybrid"><a href="#9-混合开发Hybrid" class="headerlink" title="9.混合开发Hybrid"></a>9.混合开发Hybrid</h5><h5 id="1-java注解-java多线程"><a href="#1-java注解-java多线程" class="headerlink" title="1.java注解 java多线程"></a>1.java注解 java多线程</h5><h5 id="2-多线程跳转页面后的关闭"><a href="#2-多线程跳转页面后的关闭" class="headerlink" title="2.多线程跳转页面后的关闭"></a>2.多线程跳转页面后的关闭</h5><h5 id="3-asynctask源码"><a href="#3-asynctask源码" class="headerlink" title="3.asynctask源码"></a>3.asynctask源码</h5><h5 id="4-okhttp源码"><a href="#4-okhttp源码" class="headerlink" title="4.okhttp源码"></a>4.okhttp源码</h5><h5 id="5-9图片的应用"><a href="#5-9图片的应用" class="headerlink" title="5. .9图片的应用"></a>5. .9图片的应用</h5><h5 id="6-view绘制流程，自定义一个可以上下左右滑动的view"><a href="#6-view绘制流程，自定义一个可以上下左右滑动的view" class="headerlink" title="6.view绘制流程，自定义一个可以上下左右滑动的view"></a>6.view绘制流程，自定义一个可以上下左右滑动的view</h5><h5 id="7-android两种坐标"><a href="#7-android两种坐标" class="headerlink" title="7.android两种坐标"></a>7.android两种坐标</h5><h5 id="8-时间分发"><a href="#8-时间分发" class="headerlink" title="8.时间分发"></a>8.时间分发</h5><h5 id="9-多层fragment的事件透传"><a href="#9-多层fragment的事件透传" class="headerlink" title="9.多层fragment的事件透传"></a>9.多层fragment的事件透传</h5><h5 id="10-fragment的加入与去除"><a href="#10-fragment的加入与去除" class="headerlink" title="10.fragment的加入与去除"></a>10.fragment的加入与去除</h5><h5 id="11-fragment的生命周期"><a href="#11-fragment的生命周期" class="headerlink" title="11.fragment的生命周期"></a>11.fragment的生命周期</h5><h5 id="12-activity的启动模式"><a href="#12-activity的启动模式" class="headerlink" title="12.activity的启动模式"></a>12.activity的启动模式</h5><h5 id="13-mvc-mvp"><a href="#13-mvc-mvp" class="headerlink" title="13.mvc,mvp"></a>13.mvc,mvp</h5><h5 id="14-java设计模式"><a href="#14-java设计模式" class="headerlink" title="14.java设计模式"></a>14.java设计模式</h5><h5 id="1-地图上两点路径怎么实现"><a href="#1-地图上两点路径怎么实现" class="headerlink" title="1.地图上两点路径怎么实现"></a>1.地图上两点路径怎么实现</h5><h5 id="1-append自己实现"><a href="#1-append自己实现" class="headerlink" title="1.append自己实现"></a>1.append自己实现</h5><h5 id="2-广播"><a href="#2-广播" class="headerlink" title="2.广播"></a>2.广播</h5><h5 id="3-主线程睡眠"><a href="#3-主线程睡眠" class="headerlink" title="3.主线程睡眠"></a>3.主线程睡眠</h5><h5 id="4-文件IO"><a href="#4-文件IO" class="headerlink" title="4.文件IO"></a>4.文件IO</h5><h5 id="5-listview"><a href="#5-listview" class="headerlink" title="5.listview"></a>5.listview</h5><h5 id="6-IO"><a href="#6-IO" class="headerlink" title="6.IO"></a>6.IO</h5><h5 id="1-一套Android题目，两道算法"><a href="#1-一套Android题目，两道算法" class="headerlink" title="1.一套Android题目，两道算法"></a>1.一套Android题目，两道算法</h5><h5 id="2-listview图片错位"><a href="#2-listview图片错位" class="headerlink" title="2.listview图片错位"></a>2.listview图片错位</h5><h5 id="3-封装的网络层有什么好处"><a href="#3-封装的网络层有什么好处" class="headerlink" title="3.封装的网络层有什么好处"></a>3.封装的网络层有什么好处</h5><h5 id="4-串口协议改了，保证数据完整唯一"><a href="#4-串口协议改了，保证数据完整唯一" class="headerlink" title="4.串口协议改了，保证数据完整唯一"></a>4.串口协议改了，保证数据完整唯一</h5><h5 id="1-java特点"><a href="#1-java特点" class="headerlink" title="1.java特点"></a>1.java特点</h5><h5 id="2-http协议"><a href="#2-http协议" class="headerlink" title="2.http协议"></a>2.http协议</h5><h5 id="3-七层网络"><a href="#3-七层网络" class="headerlink" title="3.七层网络"></a>3.七层网络</h5><h5 id="4-socket"><a href="#4-socket" class="headerlink" title="4.socket"></a>4.socket</h5><h5 id="5-handler"><a href="#5-handler" class="headerlink" title="5.handler"></a>5.handler</h5><h5 id="6-jni"><a href="#6-jni" class="headerlink" title="6.jni"></a>6.jni</h5><h5 id="7-实时的视频通话"><a href="#7-实时的视频通话" class="headerlink" title="7.实时的视频通话"></a>7.实时的视频通话</h5><h5 id="8-activity传递大量数据"><a href="#8-activity传递大量数据" class="headerlink" title="8.activity传递大量数据"></a>8.activity传递大量数据</h5><h5 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1.自我介绍"></a>1.自我介绍</h5><h5 id="2-介绍项目流程"><a href="#2-介绍项目流程" class="headerlink" title="2.介绍项目流程"></a>2.介绍项目流程</h5><h5 id="3-项目难点"><a href="#3-项目难点" class="headerlink" title="3.项目难点"></a>3.项目难点</h5><h5 id="4-activity启动方式"><a href="#4-activity启动方式" class="headerlink" title="4.activity启动方式"></a>4.activity启动方式</h5><h5 id="5-APK的打包"><a href="#5-APK的打包" class="headerlink" title="5.APK的打包"></a>5.APK的打包</h5><h5 id="6-handler"><a href="#6-handler" class="headerlink" title="6.handler"></a>6.handler</h5><h5 id="7-MVP"><a href="#7-MVP" class="headerlink" title="7.MVP"></a>7.MVP</h5><h5 id="8-组件化"><a href="#8-组件化" class="headerlink" title="8.组件化"></a>8.组件化</h5><h5 id="9-okhttp源码"><a href="#9-okhttp源码" class="headerlink" title="9.okhttp源码"></a>9.okhttp源码</h5><h5 id="1-四大组件并分别介绍"><a href="#1-四大组件并分别介绍" class="headerlink" title="1.四大组件并分别介绍"></a>1.四大组件并分别介绍</h5><h5 id="2-fragment介绍"><a href="#2-fragment介绍" class="headerlink" title="2.fragment介绍"></a>2.fragment介绍</h5><h5 id="3-常用布局"><a href="#3-常用布局" class="headerlink" title="3.常用布局"></a>3.常用布局</h5><h5 id="4-定义View流程"><a href="#4-定义View流程" class="headerlink" title="4.定义View流程"></a>4.定义View流程</h5><h5 id="5-事件分发机制"><a href="#5-事件分发机制" class="headerlink" title="5.事件分发机制"></a>5.事件分发机制</h5><h5 id="6-Handler及源码"><a href="#6-Handler及源码" class="headerlink" title="6.Handler及源码"></a>6.Handler及源码</h5><h5 id="7-AsyncTask及源码"><a href="#7-AsyncTask及源码" class="headerlink" title="7.AsyncTask及源码"></a>7.AsyncTask及源码</h5><h5 id="8-handlerThread及源码"><a href="#8-handlerThread及源码" class="headerlink" title="8.handlerThread及源码"></a>8.handlerThread及源码</h5><h5 id="9-IntentService及源码"><a href="#9-IntentService及源码" class="headerlink" title="9.IntentService及源码"></a>9.IntentService及源码</h5><h5 id="10-Binder"><a href="#10-Binder" class="headerlink" title="10.Binder"></a>10.Binder</h5><h5 id="11-Aidl全称"><a href="#11-Aidl全称" class="headerlink" title="11.Aidl全称"></a>11.Aidl全称</h5><h5 id="12-OkHttp、Volley源码及区别"><a href="#12-OkHttp、Volley源码及区别" class="headerlink" title="12.OkHttp、Volley源码及区别"></a>12.OkHttp、Volley源码及区别</h5><h5 id="13-UIL、Picasso、Glide源码及区别"><a href="#13-UIL、Picasso、Glide源码及区别" class="headerlink" title="13.UIL、Picasso、Glide源码及区别"></a>13.UIL、Picasso、Glide源码及区别</h5><h5 id="14-greenDao内部实现"><a href="#14-greenDao内部实现" class="headerlink" title="14.greenDao内部实现"></a>14.greenDao内部实现</h5><h5 id="15-Zxing通过什么算法进行图片解析"><a href="#15-Zxing通过什么算法进行图片解析" class="headerlink" title="15.Zxing通过什么算法进行图片解析"></a>15.Zxing通过什么算法进行图片解析</h5><h5 id="16-消息推送的原理"><a href="#16-消息推送的原理" class="headerlink" title="16.消息推送的原理"></a>16.消息推送的原理</h5><h5 id="17-设计模式及手写单例"><a href="#17-设计模式及手写单例" class="headerlink" title="17.设计模式及手写单例"></a>17.设计模式及手写单例</h5><h5 id="18-热修复原理"><a href="#18-热修复原理" class="headerlink" title="18.热修复原理"></a>18.热修复原理</h5><h5 id="19-测试桩应用场景"><a href="#19-测试桩应用场景" class="headerlink" title="19.测试桩应用场景"></a>19.测试桩应用场景</h5><h5 id="20-记录用户控件的使用习惯"><a href="#20-记录用户控件的使用习惯" class="headerlink" title="20.记录用户控件的使用习惯"></a>20.记录用户控件的使用习惯</h5><h5 id="21-图片缓存一小时与一天"><a href="#21-图片缓存一小时与一天" class="headerlink" title="21.图片缓存一小时与一天"></a>21.图片缓存一小时与一天</h5><h5 id="22-OOM还与LINUX下的资源访问有关"><a href="#22-OOM还与LINUX下的资源访问有关" class="headerlink" title="22.OOM还与LINUX下的资源访问有关"></a>22.OOM还与LINUX下的资源访问有关</h5><h5 id="23-其他线程间通信的方法"><a href="#23-其他线程间通信的方法" class="headerlink" title="23.其他线程间通信的方法"></a>23.其他线程间通信的方法</h5><h5 id="24-loop在哪里创建的"><a href="#24-loop在哪里创建的" class="headerlink" title="24.loop在哪里创建的"></a>24.loop在哪里创建的</h5><h5 id="25-synchronized怎么实现的"><a href="#25-synchronized怎么实现的" class="headerlink" title="25.synchronized怎么实现的"></a>25.synchronized怎么实现的</h5><h5 id="1-定义View流程"><a href="#1-定义View流程" class="headerlink" title="1.定义View流程"></a>1.定义View流程</h5><h5 id="2-事件分发机制"><a href="#2-事件分发机制" class="headerlink" title="2.事件分发机制"></a>2.事件分发机制</h5><h5 id="3-Handler及源码"><a href="#3-Handler及源码" class="headerlink" title="3.Handler及源码"></a>3.Handler及源码</h5><h5 id="4-热修复原理"><a href="#4-热修复原理" class="headerlink" title="4.热修复原理"></a>4.热修复原理</h5><h5 id="5-OkHttp、Volley源码及区别"><a href="#5-OkHttp、Volley源码及区别" class="headerlink" title="5.OkHttp、Volley源码及区别"></a>5.OkHttp、Volley源码及区别</h5><h5 id="6-OOM项目中的处理"><a href="#6-OOM项目中的处理" class="headerlink" title="6.OOM项目中的处理"></a>6.OOM项目中的处理</h5><h5 id="7-运行时权限及机型适配"><a href="#7-运行时权限及机型适配" class="headerlink" title="7.运行时权限及机型适配"></a>7.运行时权限及机型适配</h5><h5 id="8-RxJava"><a href="#8-RxJava" class="headerlink" title="8.RxJava"></a>8.RxJava</h5><h5 id="9-java虚拟机"><a href="#9-java虚拟机" class="headerlink" title="9.java虚拟机"></a>9.java虚拟机</h5><h5 id="10-内存回收算法"><a href="#10-内存回收算法" class="headerlink" title="10.内存回收算法"></a>10.内存回收算法</h5><h5 id="11-volley的response在哪个线程"><a href="#11-volley的response在哪个线程" class="headerlink" title="11.volley的response在哪个线程"></a>11.volley的response在哪个线程</h5><h5 id="1-介绍项目"><a href="#1-介绍项目" class="headerlink" title="1.介绍项目"></a>1.介绍项目</h5><h5 id="2-封装的框架"><a href="#2-封装的框架" class="headerlink" title="2.封装的框架"></a>2.封装的框架</h5><h5 id="3-rxjava"><a href="#3-rxjava" class="headerlink" title="3.rxjava"></a>3.rxjava</h5><h5 id="4-retrofit"><a href="#4-retrofit" class="headerlink" title="4.retrofit"></a>4.retrofit</h5><h5 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h5><h5 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h5><h5 id="1-MVP实现购物车添加商品"><a href="#1-MVP实现购物车添加商品" class="headerlink" title="1.MVP实现购物车添加商品"></a>1.MVP实现购物车添加商品</h5><h5 id="2-图片框架的优缺点"><a href="#2-图片框架的优缺点" class="headerlink" title="2.图片框架的优缺点"></a>2.图片框架的优缺点</h5><h5 id="3-数据库相关问题"><a href="#3-数据库相关问题" class="headerlink" title="3.数据库相关问题"></a>3.数据库相关问题</h5><h5 id="4-热修复实际使用的问题"><a href="#4-热修复实际使用的问题" class="headerlink" title="4.热修复实际使用的问题"></a>4.热修复实际使用的问题</h5><h5 id="5-aidl的实现"><a href="#5-aidl的实现" class="headerlink" title="5.aidl的实现"></a>5.aidl的实现</h5><h5 id="1-主要聊了安卓以后的发展及自身的发展"><a href="#1-主要聊了安卓以后的发展及自身的发展" class="headerlink" title="1.主要聊了安卓以后的发展及自身的发展"></a>1.主要聊了安卓以后的发展及自身的发展</h5><h5 id="1-bindler"><a href="#1-bindler" class="headerlink" title="1.bindler"></a>1.bindler</h5><h5 id="2-bean为什么是一个对象"><a href="#2-bean为什么是一个对象" class="headerlink" title="2.bean为什么是一个对象"></a>2.bean为什么是一个对象</h5><h5 id="3-linkhasmap"><a href="#3-linkhasmap" class="headerlink" title="3.linkhasmap"></a>3.linkhasmap</h5><h5 id="1-arraylist与linklist区别（数组与链表的区别）"><a href="#1-arraylist与linklist区别（数组与链表的区别）" class="headerlink" title="1.arraylist与linklist区别（数组与链表的区别）"></a>1.arraylist与linklist区别（数组与链表的区别）</h5><h5 id="1-viewstub与gone区别及如何显示"><a href="#1-viewstub与gone区别及如何显示" class="headerlink" title="1.viewstub与gone区别及如何显示"></a>1.viewstub与gone区别及如何显示</h5><h5 id="2-MVP"><a href="#2-MVP" class="headerlink" title="2.MVP"></a>2.MVP</h5><h5 id="3-eventbus"><a href="#3-eventbus" class="headerlink" title="3.eventbus"></a>3.eventbus</h5><p>方陈伟投了200家</p><p>猎头推荐<br>无瑞科技简历没过<br>依图 没面<br>东南亚没面<br>新大陆没面<br>宇视科技简历没过<br>大华外包简历没过<br>盗火者 没反应</p><p>内推<br>美团简历没过<br>vivo简历没过<br>有赞简历没过</p><p>已经面试<br>6.16 启扬 已过12*13~15<br>6.18 云暴拉黑<br>6.19 信雅达没过 工资要高了<br>6.19黄金宝没过<br>6.20 星迈联系不上<br>6.27 宇信没去<br>6.29彼此科技没去<br>7.01同花顺没过<br>7.07思创医惠没去<br>9.08亿建联没过<br>9.25牛帮没过<br>10.10海康没过<br>10.11萌侠没去<br>10.18锐嵌科技没过<br>10.19E修鸽没去<br>11.03公积金没去<br>11.06科大讯飞没过<br>11.15名赫资产已过<br>11.15摩尚基本过了<br>11.16聚光没过<br>11.17融易通没面是外包<br>11.20搜度没去<br>11.25招银网络科技没过<br>11.27熊猫软件没去<br>11.27中广格兰过了12＋<br>11.29丝集网太垃圾了<br>11.30趋横 过了<br>12.01物恋网 没过<br>12.05扳手网络 没过</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;最近找工作的面试题目&quot;&gt;&lt;a href=&quot;#最近找工作的面试题目&quot; class=&quot;headerlink&quot; title=&quot;最近找工作的面试题目&quot;&gt;&lt;/a&gt;最近找工作的面试题目&lt;/h3&gt;&lt;h4 id=&quot;要看的&quot;&gt;&lt;a href=&quot;#要看的&quot; class=&quot;header
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
   </entry>
   
@@ -294,6 +294,56 @@
   </entry>
   
   <entry>
+    <title>面试记录</title>
+    <link href="http://yoursite.com/2018/01/25/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2018/01/25/面试记录/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-05-03T07:26:14.894Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="最近找工作的面试题目"><a href="#最近找工作的面试题目" class="headerlink" title="最近找工作的面试题目"></a>最近找工作的面试题目</h3><h4 id="要看的"><a href="#要看的" class="headerlink" title="要看的"></a>要看的</h4><h4 id="弘扬-https完全解析-okhttp封装"><a href="#弘扬-https完全解析-okhttp封装" class="headerlink" title="弘扬 https完全解析 okhttp封装"></a>弘扬 https完全解析 okhttp封装</h4><h4 id="uil-的imageloadconfigration调用的是getapplication的context"><a href="#uil-的imageloadconfigration调用的是getapplication的context" class="headerlink" title="uil 的imageloadconfigration调用的是getapplication的context"></a>uil 的imageloadconfigration调用的是getapplication的context</h4><h4 id="list-array-list"><a href="#list-array-list" class="headerlink" title="list array list"></a>list array list</h4><h4 id="注解-反射-IO"><a href="#注解-反射-IO" class="headerlink" title="注解 反射 IO"></a>注解 反射 IO</h4><h4 id="布局一律用小写加下划线"><a href="#布局一律用小写加下划线" class="headerlink" title="布局一律用小写加下划线"></a>布局一律用小写加下划线</h4><h4 id="android中，用add的一般可以重复添加，set会覆盖之前的值"><a href="#android中，用add的一般可以重复添加，set会覆盖之前的值" class="headerlink" title="android中，用add的一般可以重复添加，set会覆盖之前的值"></a>android中，用add的一般可以重复添加，set会覆盖之前的值</h4><h5 id="1-介绍一下四大组件的service与brodacast"><a href="#1-介绍一下四大组件的service与brodacast" class="headerlink" title="1.介绍一下四大组件的service与brodacast"></a>1.介绍一下四大组件的service与brodacast</h5><h5 id="2-自定义view绘制流程，在activity哪个生命周期方法完成"><a href="#2-自定义view绘制流程，在activity哪个生命周期方法完成" class="headerlink" title="2.自定义view绘制流程，在activity哪个生命周期方法完成"></a>2.自定义view绘制流程，在activity哪个生命周期方法完成</h5><h5 id="3-事件分发流程，onClick事件与onTouchEvent顺序"><a href="#3-事件分发流程，onClick事件与onTouchEvent顺序" class="headerlink" title="3.事件分发流程，onClick事件与onTouchEvent顺序"></a>3.事件分发流程，onClick事件与onTouchEvent顺序</h5><h5 id="4-ANR是什么，怎么处理ANR"><a href="#4-ANR是什么，怎么处理ANR" class="headerlink" title="4.ANR是什么，怎么处理ANR"></a>4.ANR是什么，怎么处理ANR</h5><h5 id="5-Handler机制"><a href="#5-Handler机制" class="headerlink" title="5.Handler机制"></a>5.Handler机制</h5><h5 id="1-activity启动模式及应用场景"><a href="#1-activity启动模式及应用场景" class="headerlink" title="1.activity启动模式及应用场景"></a>1.activity启动模式及应用场景</h5><h5 id="2-intentservice"><a href="#2-intentservice" class="headerlink" title="2.intentservice"></a>2.intentservice</h5><h5 id="3-aidl"><a href="#3-aidl" class="headerlink" title="3.aidl"></a>3.aidl</h5><h5 id="4-get-post-https"><a href="#4-get-post-https" class="headerlink" title="4.get post https"></a>4.get post https</h5><h5 id="5-fragment之间通信方式"><a href="#5-fragment之间通信方式" class="headerlink" title="5.fragment之间通信方式"></a>5.fragment之间通信方式</h5><h5 id="6-startservice-bindservice-unbindservice"><a href="#6-startservice-bindservice-unbindservice" class="headerlink" title="6.startservice bindservice unbindservice"></a>6.startservice bindservice unbindservice</h5><h5 id="7-枚举跟静态常量的区别"><a href="#7-枚举跟静态常量的区别" class="headerlink" title="7.枚举跟静态常量的区别"></a>7.枚举跟静态常量的区别</h5><h5 id="8-zxing的性能优化"><a href="#8-zxing的性能优化" class="headerlink" title="8.zxing的性能优化"></a>8.zxing的性能优化</h5><h5 id="9-混合开发Hybrid"><a href="#9-混合开发Hybrid" class="headerlink" title="9.混合开发Hybrid"></a>9.混合开发Hybrid</h5><h5 id="1-java注解-java多线程"><a href="#1-java注解-java多线程" class="headerlink" title="1.java注解 java多线程"></a>1.java注解 java多线程</h5><h5 id="2-多线程跳转页面后的关闭"><a href="#2-多线程跳转页面后的关闭" class="headerlink" title="2.多线程跳转页面后的关闭"></a>2.多线程跳转页面后的关闭</h5><h5 id="3-asynctask源码"><a href="#3-asynctask源码" class="headerlink" title="3.asynctask源码"></a>3.asynctask源码</h5><h5 id="4-okhttp源码"><a href="#4-okhttp源码" class="headerlink" title="4.okhttp源码"></a>4.okhttp源码</h5><h5 id="5-9图片的应用"><a href="#5-9图片的应用" class="headerlink" title="5. .9图片的应用"></a>5. .9图片的应用</h5><h5 id="6-view绘制流程，自定义一个可以上下左右滑动的view"><a href="#6-view绘制流程，自定义一个可以上下左右滑动的view" class="headerlink" title="6.view绘制流程，自定义一个可以上下左右滑动的view"></a>6.view绘制流程，自定义一个可以上下左右滑动的view</h5><h5 id="7-android两种坐标"><a href="#7-android两种坐标" class="headerlink" title="7.android两种坐标"></a>7.android两种坐标</h5><h5 id="8-时间分发"><a href="#8-时间分发" class="headerlink" title="8.时间分发"></a>8.时间分发</h5><h5 id="9-多层fragment的事件透传"><a href="#9-多层fragment的事件透传" class="headerlink" title="9.多层fragment的事件透传"></a>9.多层fragment的事件透传</h5><h5 id="10-fragment的加入与去除"><a href="#10-fragment的加入与去除" class="headerlink" title="10.fragment的加入与去除"></a>10.fragment的加入与去除</h5><h5 id="11-fragment的生命周期"><a href="#11-fragment的生命周期" class="headerlink" title="11.fragment的生命周期"></a>11.fragment的生命周期</h5><h5 id="12-activity的启动模式"><a href="#12-activity的启动模式" class="headerlink" title="12.activity的启动模式"></a>12.activity的启动模式</h5><h5 id="13-mvc-mvp"><a href="#13-mvc-mvp" class="headerlink" title="13.mvc,mvp"></a>13.mvc,mvp</h5><h5 id="14-java设计模式"><a href="#14-java设计模式" class="headerlink" title="14.java设计模式"></a>14.java设计模式</h5><h5 id="1-地图上两点路径怎么实现"><a href="#1-地图上两点路径怎么实现" class="headerlink" title="1.地图上两点路径怎么实现"></a>1.地图上两点路径怎么实现</h5><h5 id="1-append自己实现"><a href="#1-append自己实现" class="headerlink" title="1.append自己实现"></a>1.append自己实现</h5><h5 id="2-广播"><a href="#2-广播" class="headerlink" title="2.广播"></a>2.广播</h5><h5 id="3-主线程睡眠"><a href="#3-主线程睡眠" class="headerlink" title="3.主线程睡眠"></a>3.主线程睡眠</h5><h5 id="4-文件IO"><a href="#4-文件IO" class="headerlink" title="4.文件IO"></a>4.文件IO</h5><h5 id="5-listview"><a href="#5-listview" class="headerlink" title="5.listview"></a>5.listview</h5><h5 id="6-IO"><a href="#6-IO" class="headerlink" title="6.IO"></a>6.IO</h5><h5 id="1-一套Android题目，两道算法"><a href="#1-一套Android题目，两道算法" class="headerlink" title="1.一套Android题目，两道算法"></a>1.一套Android题目，两道算法</h5><h5 id="2-listview图片错位"><a href="#2-listview图片错位" class="headerlink" title="2.listview图片错位"></a>2.listview图片错位</h5><h5 id="3-封装的网络层有什么好处"><a href="#3-封装的网络层有什么好处" class="headerlink" title="3.封装的网络层有什么好处"></a>3.封装的网络层有什么好处</h5><h5 id="4-串口协议改了，保证数据完整唯一"><a href="#4-串口协议改了，保证数据完整唯一" class="headerlink" title="4.串口协议改了，保证数据完整唯一"></a>4.串口协议改了，保证数据完整唯一</h5><h5 id="1-java特点"><a href="#1-java特点" class="headerlink" title="1.java特点"></a>1.java特点</h5><h5 id="2-http协议"><a href="#2-http协议" class="headerlink" title="2.http协议"></a>2.http协议</h5><h5 id="3-七层网络"><a href="#3-七层网络" class="headerlink" title="3.七层网络"></a>3.七层网络</h5><h5 id="4-socket"><a href="#4-socket" class="headerlink" title="4.socket"></a>4.socket</h5><h5 id="5-handler"><a href="#5-handler" class="headerlink" title="5.handler"></a>5.handler</h5><h5 id="6-jni"><a href="#6-jni" class="headerlink" title="6.jni"></a>6.jni</h5><h5 id="7-实时的视频通话"><a href="#7-实时的视频通话" class="headerlink" title="7.实时的视频通话"></a>7.实时的视频通话</h5><h5 id="8-activity传递大量数据"><a href="#8-activity传递大量数据" class="headerlink" title="8.activity传递大量数据"></a>8.activity传递大量数据</h5><h5 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1.自我介绍"></a>1.自我介绍</h5><h5 id="2-介绍项目流程"><a href="#2-介绍项目流程" class="headerlink" title="2.介绍项目流程"></a>2.介绍项目流程</h5><h5 id="3-项目难点"><a href="#3-项目难点" class="headerlink" title="3.项目难点"></a>3.项目难点</h5><h5 id="4-activity启动方式"><a href="#4-activity启动方式" class="headerlink" title="4.activity启动方式"></a>4.activity启动方式</h5><h5 id="5-APK的打包"><a href="#5-APK的打包" class="headerlink" title="5.APK的打包"></a>5.APK的打包</h5><h5 id="6-handler"><a href="#6-handler" class="headerlink" title="6.handler"></a>6.handler</h5><h5 id="7-MVP"><a href="#7-MVP" class="headerlink" title="7.MVP"></a>7.MVP</h5><h5 id="8-组件化"><a href="#8-组件化" class="headerlink" title="8.组件化"></a>8.组件化</h5><h5 id="9-okhttp源码"><a href="#9-okhttp源码" class="headerlink" title="9.okhttp源码"></a>9.okhttp源码</h5><h5 id="1-四大组件并分别介绍"><a href="#1-四大组件并分别介绍" class="headerlink" title="1.四大组件并分别介绍"></a>1.四大组件并分别介绍</h5><h5 id="2-fragment介绍"><a href="#2-fragment介绍" class="headerlink" title="2.fragment介绍"></a>2.fragment介绍</h5><h5 id="3-常用布局"><a href="#3-常用布局" class="headerlink" title="3.常用布局"></a>3.常用布局</h5><h5 id="4-定义View流程"><a href="#4-定义View流程" class="headerlink" title="4.定义View流程"></a>4.定义View流程</h5><h5 id="5-事件分发机制"><a href="#5-事件分发机制" class="headerlink" title="5.事件分发机制"></a>5.事件分发机制</h5><h5 id="6-Handler及源码"><a href="#6-Handler及源码" class="headerlink" title="6.Handler及源码"></a>6.Handler及源码</h5><h5 id="7-AsyncTask及源码"><a href="#7-AsyncTask及源码" class="headerlink" title="7.AsyncTask及源码"></a>7.AsyncTask及源码</h5><h5 id="8-handlerThread及源码"><a href="#8-handlerThread及源码" class="headerlink" title="8.handlerThread及源码"></a>8.handlerThread及源码</h5><h5 id="9-IntentService及源码"><a href="#9-IntentService及源码" class="headerlink" title="9.IntentService及源码"></a>9.IntentService及源码</h5><h5 id="10-Binder"><a href="#10-Binder" class="headerlink" title="10.Binder"></a>10.Binder</h5><h5 id="11-Aidl全称"><a href="#11-Aidl全称" class="headerlink" title="11.Aidl全称"></a>11.Aidl全称</h5><h5 id="12-OkHttp、Volley源码及区别"><a href="#12-OkHttp、Volley源码及区别" class="headerlink" title="12.OkHttp、Volley源码及区别"></a>12.OkHttp、Volley源码及区别</h5><h5 id="13-UIL、Picasso、Glide源码及区别"><a href="#13-UIL、Picasso、Glide源码及区别" class="headerlink" title="13.UIL、Picasso、Glide源码及区别"></a>13.UIL、Picasso、Glide源码及区别</h5><h5 id="14-greenDao内部实现"><a href="#14-greenDao内部实现" class="headerlink" title="14.greenDao内部实现"></a>14.greenDao内部实现</h5><h5 id="15-Zxing通过什么算法进行图片解析"><a href="#15-Zxing通过什么算法进行图片解析" class="headerlink" title="15.Zxing通过什么算法进行图片解析"></a>15.Zxing通过什么算法进行图片解析</h5><h5 id="16-消息推送的原理"><a href="#16-消息推送的原理" class="headerlink" title="16.消息推送的原理"></a>16.消息推送的原理</h5><h5 id="17-设计模式及手写单例"><a href="#17-设计模式及手写单例" class="headerlink" title="17.设计模式及手写单例"></a>17.设计模式及手写单例</h5><h5 id="18-热修复原理"><a href="#18-热修复原理" class="headerlink" title="18.热修复原理"></a>18.热修复原理</h5><h5 id="19-测试桩应用场景"><a href="#19-测试桩应用场景" class="headerlink" title="19.测试桩应用场景"></a>19.测试桩应用场景</h5><h5 id="20-记录用户控件的使用习惯"><a href="#20-记录用户控件的使用习惯" class="headerlink" title="20.记录用户控件的使用习惯"></a>20.记录用户控件的使用习惯</h5><h5 id="21-图片缓存一小时与一天"><a href="#21-图片缓存一小时与一天" class="headerlink" title="21.图片缓存一小时与一天"></a>21.图片缓存一小时与一天</h5><h5 id="22-OOM还与LINUX下的资源访问有关"><a href="#22-OOM还与LINUX下的资源访问有关" class="headerlink" title="22.OOM还与LINUX下的资源访问有关"></a>22.OOM还与LINUX下的资源访问有关</h5><h5 id="23-其他线程间通信的方法"><a href="#23-其他线程间通信的方法" class="headerlink" title="23.其他线程间通信的方法"></a>23.其他线程间通信的方法</h5><h5 id="24-loop在哪里创建的"><a href="#24-loop在哪里创建的" class="headerlink" title="24.loop在哪里创建的"></a>24.loop在哪里创建的</h5><h5 id="25-synchronized怎么实现的"><a href="#25-synchronized怎么实现的" class="headerlink" title="25.synchronized怎么实现的"></a>25.synchronized怎么实现的</h5><h5 id="1-定义View流程"><a href="#1-定义View流程" class="headerlink" title="1.定义View流程"></a>1.定义View流程</h5><h5 id="2-事件分发机制"><a href="#2-事件分发机制" class="headerlink" title="2.事件分发机制"></a>2.事件分发机制</h5><h5 id="3-Handler及源码"><a href="#3-Handler及源码" class="headerlink" title="3.Handler及源码"></a>3.Handler及源码</h5><h5 id="4-热修复原理"><a href="#4-热修复原理" class="headerlink" title="4.热修复原理"></a>4.热修复原理</h5><h5 id="5-OkHttp、Volley源码及区别"><a href="#5-OkHttp、Volley源码及区别" class="headerlink" title="5.OkHttp、Volley源码及区别"></a>5.OkHttp、Volley源码及区别</h5><h5 id="6-OOM项目中的处理"><a href="#6-OOM项目中的处理" class="headerlink" title="6.OOM项目中的处理"></a>6.OOM项目中的处理</h5><h5 id="7-运行时权限及机型适配"><a href="#7-运行时权限及机型适配" class="headerlink" title="7.运行时权限及机型适配"></a>7.运行时权限及机型适配</h5><h5 id="8-RxJava"><a href="#8-RxJava" class="headerlink" title="8.RxJava"></a>8.RxJava</h5><h5 id="9-java虚拟机"><a href="#9-java虚拟机" class="headerlink" title="9.java虚拟机"></a>9.java虚拟机</h5><h5 id="10-内存回收算法"><a href="#10-内存回收算法" class="headerlink" title="10.内存回收算法"></a>10.内存回收算法</h5><h5 id="11-volley的response在哪个线程"><a href="#11-volley的response在哪个线程" class="headerlink" title="11.volley的response在哪个线程"></a>11.volley的response在哪个线程</h5><h5 id="1-介绍项目"><a href="#1-介绍项目" class="headerlink" title="1.介绍项目"></a>1.介绍项目</h5><h5 id="2-封装的框架"><a href="#2-封装的框架" class="headerlink" title="2.封装的框架"></a>2.封装的框架</h5><h5 id="3-rxjava"><a href="#3-rxjava" class="headerlink" title="3.rxjava"></a>3.rxjava</h5><h5 id="4-retrofit"><a href="#4-retrofit" class="headerlink" title="4.retrofit"></a>4.retrofit</h5><h5 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h5><h5 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h5><h5 id="1-MVP实现购物车添加商品"><a href="#1-MVP实现购物车添加商品" class="headerlink" title="1.MVP实现购物车添加商品"></a>1.MVP实现购物车添加商品</h5><h5 id="2-图片框架的优缺点"><a href="#2-图片框架的优缺点" class="headerlink" title="2.图片框架的优缺点"></a>2.图片框架的优缺点</h5><h5 id="3-数据库相关问题"><a href="#3-数据库相关问题" class="headerlink" title="3.数据库相关问题"></a>3.数据库相关问题</h5><h5 id="4-热修复实际使用的问题"><a href="#4-热修复实际使用的问题" class="headerlink" title="4.热修复实际使用的问题"></a>4.热修复实际使用的问题</h5><h5 id="5-aidl的实现"><a href="#5-aidl的实现" class="headerlink" title="5.aidl的实现"></a>5.aidl的实现</h5><h5 id="1-主要聊了安卓以后的发展及自身的发展"><a href="#1-主要聊了安卓以后的发展及自身的发展" class="headerlink" title="1.主要聊了安卓以后的发展及自身的发展"></a>1.主要聊了安卓以后的发展及自身的发展</h5><h5 id="1-bindler"><a href="#1-bindler" class="headerlink" title="1.bindler"></a>1.bindler</h5><h5 id="2-bean为什么是一个对象"><a href="#2-bean为什么是一个对象" class="headerlink" title="2.bean为什么是一个对象"></a>2.bean为什么是一个对象</h5><h5 id="3-linkhasmap"><a href="#3-linkhasmap" class="headerlink" title="3.linkhasmap"></a>3.linkhasmap</h5><h5 id="1-arraylist与linklist区别（数组与链表的区别）"><a href="#1-arraylist与linklist区别（数组与链表的区别）" class="headerlink" title="1.arraylist与linklist区别（数组与链表的区别）"></a>1.arraylist与linklist区别（数组与链表的区别）</h5><h5 id="1-viewstub与gone区别及如何显示"><a href="#1-viewstub与gone区别及如何显示" class="headerlink" title="1.viewstub与gone区别及如何显示"></a>1.viewstub与gone区别及如何显示</h5><h5 id="2-MVP"><a href="#2-MVP" class="headerlink" title="2.MVP"></a>2.MVP</h5><h5 id="3-eventbus"><a href="#3-eventbus" class="headerlink" title="3.eventbus"></a>3.eventbus</h5><p>方陈伟投了200家</p><p>猎头推荐<br>无瑞科技简历没过<br>依图 没面<br>东南亚没面<br>新大陆没面<br>宇视科技简历没过<br>大华外包简历没过<br>盗火者 没反应</p><p>内推<br>美团简历没过<br>vivo简历没过<br>有赞简历没过</p><p>已经面试<br>6.16 启扬 已过12*13~15<br>6.18 云暴拉黑<br>6.19 信雅达没过 工资要高了<br>6.19黄金宝没过<br>6.20 星迈联系不上<br>6.27 宇信没去<br>6.29彼此科技没去<br>7.01同花顺没过<br>7.07思创医惠没去<br>9.08亿建联没过<br>9.25牛帮没过<br>10.10海康没过<br>10.11萌侠没去<br>10.18锐嵌科技没过<br>10.19E修鸽没去<br>11.03公积金没去<br>11.06科大讯飞没过<br>11.15名赫资产已过<br>11.15摩尚基本过了<br>11.16聚光没过<br>11.17融易通没面是外包<br>11.20搜度没去<br>11.25招银网络科技没过<br>11.27熊猫软件没去<br>11.27中广格兰过了12＋<br>11.29丝集网太垃圾了<br>11.30趋横 过了<br>12.01物恋网 没过<br>12.05扳手网络 没过</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;最近找工作的面试题目&quot;&gt;&lt;a href=&quot;#最近找工作的面试题目&quot; class=&quot;headerlink&quot; title=&quot;最近找工作的面试题目&quot;&gt;&lt;/a&gt;最近找工作的面试题目&lt;/h3&gt;&lt;h4 id=&quot;要看的&quot;&gt;&lt;a href=&quot;#要看的&quot; class=&quot;header
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>书单</title>
+    <link href="http://yoursite.com/2018/01/25/%E4%B9%A6%E5%8D%95/"/>
+    <id>http://yoursite.com/2018/01/25/书单/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2019-03-06T07:30:15.375Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Android书"><a href="#Android书" class="headerlink" title="Android书"></a>Android书</h3><h5 id="1-第一行代码（第一版）"><a href="#1-第一行代码（第一版）" class="headerlink" title="1.第一行代码（第一版）"></a>1.第一行代码（第一版）</h5><h5 id="2-Android编程权威指南（第二版）"><a href="#2-Android编程权威指南（第二版）" class="headerlink" title="2.Android编程权威指南（第二版）"></a>2.Android编程权威指南（第二版）</h5><h5 id="3-Android群英传"><a href="#3-Android群英传" class="headerlink" title="3.Android群英传"></a>3.Android群英传</h5><h5 id="4-Android开发进阶从小工到专家"><a href="#4-Android开发进阶从小工到专家" class="headerlink" title="4.Android开发进阶从小工到专家"></a>4.Android开发进阶从小工到专家</h5><h5 id="5-Android进阶之光"><a href="#5-Android进阶之光" class="headerlink" title="5.Android进阶之光"></a>5.Android进阶之光</h5><h5 id="6-Android开发艺术探索"><a href="#6-Android开发艺术探索" class="headerlink" title="6.Android开发艺术探索"></a>6.Android开发艺术探索</h5><p>=================================================</p><p>###Android工具书</p><p>#####1.Android Studio实战</p><h1 id="2-Android群英传神兵利器"><a href="#2-Android群英传神兵利器" class="headerlink" title="#####2.Android群英传神兵利器"></a>#####2.Android群英传神兵利器</h1><p>###Android面试</p><h1 id="1-Android面试宝典"><a href="#1-Android面试宝典" class="headerlink" title="#####1.Android面试宝典"></a>#####1.Android面试宝典</h1><p>###Android优化<br>1.APP研发录<br>2.Android源码设计模式解析与实战</p><h1 id="3-设计模式之禅"><a href="#3-设计模式之禅" class="headerlink" title="3.设计模式之禅"></a>3.设计模式之禅</h1><p>###Java书<br>1.Java程序设计<br>2.Effective Java</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Android书&quot;&gt;&lt;a href=&quot;#Android书&quot; class=&quot;headerlink&quot; title=&quot;Android书&quot;&gt;&lt;/a&gt;Android书&lt;/h3&gt;&lt;h5 id=&quot;1-第一行代码（第一版）&quot;&gt;&lt;a href=&quot;#1-第一行代码（第一版）&quot; cla
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
     <title>字符流与字节流</title>
     <link href="http://yoursite.com/2018/01/25/%E5%AD%97%E7%AC%A6%E6%B5%81%E4%B8%8E%E5%AD%97%E8%8A%82%E6%B5%81/"/>
     <id>http://yoursite.com/2018/01/25/字符流与字节流/</id>
@@ -340,58 +390,6 @@
     
     
       <category term="DP" scheme="http://yoursite.com/tags/DP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>书单</title>
-    <link href="http://yoursite.com/2018/01/25/%E4%B9%A6%E5%8D%95/"/>
-    <id>http://yoursite.com/2018/01/25/书单/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2019-03-06T07:30:15.375Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Android书"><a href="#Android书" class="headerlink" title="Android书"></a>Android书</h3><h5 id="1-第一行代码（第一版）"><a href="#1-第一行代码（第一版）" class="headerlink" title="1.第一行代码（第一版）"></a>1.第一行代码（第一版）</h5><h5 id="2-Android编程权威指南（第二版）"><a href="#2-Android编程权威指南（第二版）" class="headerlink" title="2.Android编程权威指南（第二版）"></a>2.Android编程权威指南（第二版）</h5><h5 id="3-Android群英传"><a href="#3-Android群英传" class="headerlink" title="3.Android群英传"></a>3.Android群英传</h5><h5 id="4-Android开发进阶从小工到专家"><a href="#4-Android开发进阶从小工到专家" class="headerlink" title="4.Android开发进阶从小工到专家"></a>4.Android开发进阶从小工到专家</h5><h5 id="5-Android进阶之光"><a href="#5-Android进阶之光" class="headerlink" title="5.Android进阶之光"></a>5.Android进阶之光</h5><h5 id="6-Android开发艺术探索"><a href="#6-Android开发艺术探索" class="headerlink" title="6.Android开发艺术探索"></a>6.Android开发艺术探索</h5><p>=================================================</p><p>###Android工具书</p><p>#####1.Android Studio实战</p><h1 id="2-Android群英传神兵利器"><a href="#2-Android群英传神兵利器" class="headerlink" title="#####2.Android群英传神兵利器"></a>#####2.Android群英传神兵利器</h1><p>###Android面试</p><h1 id="1-Android面试宝典"><a href="#1-Android面试宝典" class="headerlink" title="#####1.Android面试宝典"></a>#####1.Android面试宝典</h1><p>###Android优化<br>1.APP研发录<br>2.Android源码设计模式解析与实战</p><h1 id="3-设计模式之禅"><a href="#3-设计模式之禅" class="headerlink" title="3.设计模式之禅"></a>3.设计模式之禅</h1><p>###Java书<br>1.Java程序设计<br>2.Effective Java</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Android书&quot;&gt;&lt;a href=&quot;#Android书&quot; class=&quot;headerlink&quot; title=&quot;Android书&quot;&gt;&lt;/a&gt;Android书&lt;/h3&gt;&lt;h5 id=&quot;1-第一行代码（第一版）&quot;&gt;&lt;a href=&quot;#1-第一行代码（第一版）&quot; cla
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>冒泡排序</title>
-    <link href="http://yoursite.com/2018/01/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
-    <id>http://yoursite.com/2018/01/25/冒泡排序/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2018-01-30T06:35:33.360Z</updated>
-    
-    <content type="html"><![CDATA[<p>##思路:     </p><p>###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p><p>###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p><p>###3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p><p>###4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort</span><br><span class="line">&#123;</span><br><span class="line">    public void sort(int[] a)</span><br><span class="line">    &#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = a.length - 1; i &gt; 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[j + 1] &lt; a[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = a[j];</span><br><span class="line">                    a[j] = a[j + 1];</span><br><span class="line">                    a[j + 1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##思路:     &lt;/p&gt;
-&lt;p&gt;###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     &lt;/p&gt;
-&lt;p&gt;###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。
-      
-    
-    </summary>
-    
-      <category term="Algorithm" scheme="http://yoursite.com/categories/Algorithm/"/>
-    
-    
-      <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
     
   </entry>
   
@@ -445,6 +443,33 @@
     
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>冒泡排序</title>
+    <link href="http://yoursite.com/2018/01/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2018/01/25/冒泡排序/</id>
+    <published>2018-01-25T06:00:11.000Z</published>
+    <updated>2018-01-30T06:35:33.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>##思路:     </p><p>###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p><p>###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p><p>###3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p><p>###4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort</span><br><span class="line">&#123;</span><br><span class="line">    public void sort(int[] a)</span><br><span class="line">    &#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = a.length - 1; i &gt; 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[j + 1] &lt; a[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = a[j];</span><br><span class="line">                    a[j] = a[j + 1];</span><br><span class="line">                    a[j + 1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##思路:     &lt;/p&gt;
+&lt;p&gt;###1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     &lt;/p&gt;
+&lt;p&gt;###2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。
+      
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://yoursite.com/categories/Algorithm/"/>
+    
+    
+      <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
     
   </entry>
   
@@ -523,65 +548,6 @@ resources.updateConfiguration(config, dm);
 &lt;li&gt;修改信息：update 表名 set 字段名 = 值 where 条件子句&lt;/li&gt;
 &lt;li&gt;查询星系：select * from 表名&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-    
-      <category term="Android基础" scheme="http://yoursite.com/tags/Android%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>定时任务Alarm</title>
-    <link href="http://yoursite.com/2017/07/02/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Alarm/"/>
-    <id>http://yoursite.com/2017/07/02/定时任务Alarm/</id>
-    <published>2017-07-02T06:00:11.000Z</published>
-    <updated>2018-01-30T10:37:54.102Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="轮询服务"><a href="#轮询服务" class="headerlink" title="轮询服务"></a>轮询服务</h2><pre><code>public class LongRunningService extends Service {    @Override    public IBinder onBind(Intent intent) {        return null;    }    @Override    public int onStartCommand(Intent intent, int flags, int startId) {        new Thread(new Runnable() {            @Override            public void run() {                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().toString());             }         }).start();        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;        Intent i = new Intent(this, AlarmReceiver.class);        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);        //说明：set()方法需要传入三个参数        //第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。        //其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。        //ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。        //RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。        //RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。        //第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。        //第三个参数是PendingIntent。        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);        return super.onStartCommand(intent, flags, startId);   }}</code></pre><a id="more"></a>    <h2 id="广播接收者"><a href="#广播接收者" class="headerlink" title="广播接收者"></a>广播接收者</h2><pre><code>public class AlarmReceiver extends BroadcastReceiver {    @Override    public void onReceive(Context context, Intent intent) {        Intent i = new Intent(context, LongRunningService.class);        context.startService(i);    }}    </code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;轮询服务&quot;&gt;&lt;a href=&quot;#轮询服务&quot; class=&quot;headerlink&quot; title=&quot;轮询服务&quot;&gt;&lt;/a&gt;轮询服务&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;public class LongRunningService extends Service {
-
-    @Override
-    public IBinder onBind(Intent intent) {
-
-        return null;
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-
-                Log.d(&amp;quot;LongRunningService&amp;quot;, &amp;quot;executed at &amp;quot; + new Date().toString());
-             }
-         }).start();
-
-        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数
-        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
-        Intent i = new Intent(this, AlarmReceiver.class);
-        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
-        //说明：set()方法需要传入三个参数
-        //第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。
-        //其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。
-        //ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。
-        //RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。
-        //RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。
-        //第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。
-        //第三个参数是PendingIntent。
-        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
-        return super.onStartCommand(intent, flags, startId);
-   }
-}
-&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     

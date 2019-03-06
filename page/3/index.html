@@ -163,6 +163,70 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-定时任务Alarm">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/07/02/定时任务Alarm/">定时任务Alarm</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-07-02
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Android基础/" class="cube-excerpt-tag-link">#Android基础</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="轮询服务"><a href="#轮询服务" class="headerlink" title="轮询服务"></a>轮询服务</h2><pre><code>public class LongRunningService extends Service {
+
+    @Override
+    public IBinder onBind(Intent intent) {
+
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().toString());
+             }
+         }).start();
+
+        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数
+        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
+        Intent i = new Intent(this, AlarmReceiver.class);
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+        //说明：set()方法需要传入三个参数
+        //第一个是整型参数，用于指定AlarmManager的工作类型，有四种值可选，分别是ELAPSED_REALTIME、ELAPSED_REALTIME_WAKEUP、RTC 和 RTC_WAKEUP。
+        //其中 ELAPSED_REALTIME 表示让定时任务的触发时间从系统开机开始算起，但不会唤醒 CPU。
+        //ELAPSED_REALTIME_WAKEUP 表示会唤醒 CPU。
+        //RTC 表示从 1970 年 1月 1 日 0 点开始算起，不唤醒CPU。
+        //RTC_WAKEUP 表示会唤醒 CPU。使用 SystemClock.elapsedRealtime()方法可以获取到系统开机至今所经历时间的毫秒数，使用 System.currentTimeMillis()方法可以获取到 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数。
+        //第二个参数是定时任务触发时间。与第一个参数相关。如果是开机时间，则获取开始时间再加上延迟时间，其他同理。
+        //第三个参数是PendingIntent。
+        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
+        return super.onStartCommand(intent, flags, startId);
+   }
+}
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/07/02/定时任务Alarm/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-文件存储">
     <header class="cube-excerpt-header">
         <h1><a href="/2017/06/25/文件存储/">文件存储</a></h1>
@@ -549,9 +613,9 @@ public static void actionStart(Context context,String data1,String data2){
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>26</span>文章</a>
-        <a class="count tags"><span>13</span>标签</a>
-        <a class="count categories"><span>9</span>分类</a>
+        <a class="count articles"><span>27</span>文章</a>
+        <a class="count tags"><span>14</span>标签</a>
+        <a class="count categories"><span>10</span>分类</a>
     </div>
 </div>
 
@@ -622,7 +686,7 @@ public static void actionStart(Context context,String data1,String data2){
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/二分查找/" title="二分查找">二分查找</a>
+                    <a href="/2018/03/06/第一行代码笔记-Android-Studio/" title="第一行代码笔记-Android Studio">第一行代码笔记-Android Studio</a>
                 </p>
             </div>
         </li>
@@ -635,7 +699,7 @@ public static void actionStart(Context context,String data1,String data2){
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/01/25/面试记录/" title="面试记录">面试记录</a>
+                    <a href="/2018/01/25/二分查找/" title="二分查找">二分查找</a>
                 </p>
             </div>
         </li>
@@ -681,7 +745,7 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -701,12 +765,17 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java/">#Java</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Internet/">#Internet</a>
         </div>
         
@@ -732,7 +801,7 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android图片/">#Android图片</a>
         </div>
         
@@ -742,7 +811,7 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
@@ -752,17 +821,17 @@ public static void actionStart(Context context,String data1,String data2){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/环境配置/">#环境配置</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Algorithm/">#Algorithm</a>
         </div>
         
@@ -779,6 +848,11 @@ public static void actionStart(Context context,String data1,String data2){
         
         <div class="cube-box ">
             <a href="/tags/Java/">#Java</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         

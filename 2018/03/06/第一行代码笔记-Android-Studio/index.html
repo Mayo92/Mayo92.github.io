@@ -12,7 +12,7 @@
     
     
     
-    <title>SSH | 赞美の心</title>
+    <title>第一行代码笔记-Android Studio | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -163,51 +163,54 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">SSH</h1>
+    <h1 class="title">第一行代码笔记-Android Studio</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2019-03-06
+            2018-03-06
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/环境配置/">#环境配置</a>
+    <a href="/tags/Android-Studio/">#Android Studio</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
-<li>检查是否存在</li>
-<li>不存在生成</li>
-<li>复制</li>
-</ul>
-<h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1.检查是否存在"></a>1.检查是否存在</h4><h5 id="1-1输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1输入id_rsa.pub 或 id_dsa.pub"></a>1.1输入id_rsa.pub 或 id_dsa.pub</h5><pre><code>ls -al ~/.ssh
-# Lists the files in your .ssh directory, if they exist
-</code></pre><a id="more"></a>
-<h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2.生成新的ssh key"></a>2.生成新的ssh key</h4><h5 id="2-1生成public-private-rsa-key-pair"><a href="#2-1生成public-private-rsa-key-pair" class="headerlink" title="2.1生成public/private rsa key pair"></a>2.1生成public/private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “your_email@example.com”，默认会在相应的路径下( /your_home_path )生成id_rsa和id_rsa.pub两个文件</p>
-<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
-# Creates a new ssh key using the provided email
-Generating public/private rsa key pair.
-Enter file in which to save the key (/your_home_path/.ssh/id_rsa):
-</code></pre><h5 id="2-2输入passphrase-可以跳过"><a href="#2-2输入passphrase-可以跳过" class="headerlink" title="2.2输入passphrase(可以跳过)"></a>2.2输入passphrase(可以跳过)</h5><p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p>
-<pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
-Enter same passphrase again: [Type passphrase again]
-</code></pre><h5 id="sample-result"><a href="#sample-result" class="headerlink" title="sample result:"></a>sample result:</h5><pre><code>Your identification has been saved in /your_home_path/.ssh/id_rsa.
-Your public key has been saved in /your_home_path/.ssh/id_rsa.pub.
-The key fingerprint is:
-#01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
-</code></pre><h5 id="2-3将新生成的key添加到ssh-agent中"><a href="#2-3将新生成的key添加到ssh-agent中" class="headerlink" title="2.3将新生成的key添加到ssh-agent中:"></a>2.3将新生成的key添加到ssh-agent中:</h5><pre><code># start the ssh-agent in the background
-eval &quot;$(ssh-agent -s)&quot;
-Agent pid 59566
-ssh-add ~/.ssh/id_rsa
-</code></pre><h4 id="3-复制ssh-key-mac"><a href="#3-复制ssh-key-mac" class="headerlink" title="3.复制ssh key(mac)"></a>3.复制ssh key(mac)</h4><pre><code>pbcopy &lt; ~/.ssh/id_rsa.pub
-# Copies the contents of the id_rsa.pub file to your clipboard
-</code></pre><p>Find前往文件夹~/.ssh/id_rsa.pub打开id_rsa.pub文件，里面的信息即为SSH key</p>
+        <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h3><p>Android Studio自动生成，无需关心也不要手动编辑。</p>
+<h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p>
+<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><p>在编译时自动生成的文件</p>
+<h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><p>包含gradle wrapper的配置文件</p>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>将指定的目录或文件排除在版本控制之外</p>
+<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>项目全局的gradle构建脚本</p>
+<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><p>全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本</p>
+<h3 id="gradlew和gradlew-bat"><a href="#gradlew和gradlew-bat" class="headerlink" title="gradlew和gradlew.bat"></a>gradlew和gradlew.bat</h3><p>用来在命令行界面中执行gradle命令，前者在Linux或Mac系统使用，后者在Windows系统使用</p>
+<h3 id="xxx-iml"><a href="#xxx-iml" class="headerlink" title="xxx.iml"></a>xxx.iml</h3><p>iml文件是所有intellij idea项目都会自动生成的一个文件，用于标识这是一个intellij idea项目，不需要修改</p>
+<h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><p>用于指定本机中的Android SDK路径，通常自动生成，不需要修改。</p>
+<h3 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h3><p>用于指定项目中所引入的模块，通常自动完成</p>
+<h2 id="APP目录结构"><a href="#APP目录结构" class="headerlink" title="APP目录结构"></a>APP目录结构</h2><h3 id="build-1"><a href="#build-1" class="headerlink" title="build"></a>build</h3><p>主要包含一些在编译时自动生成的文件，不需要过多关心</p>
+<h3 id="libs"><a href="#libs" class="headerlink" title="libs"></a>libs</h3><p>项目中用到了第三方jar包，放到这个目录下都会被自动添加到构建路径里去</p>
+<h3 id="androidTest"><a href="#androidTest" class="headerlink" title="androidTest"></a>androidTest</h3><p>用来编写测试用例，进行自动化测试</p>
+<h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><p>Java代码的地方</p>
+<h3 id="res"><a href="#res" class="headerlink" title="res"></a>res</h3><p>项目中使用的图片、布局、字符串等资源都要放到这个目录下。drawale开头的文件夹都是用来存放图片的，mipmap开头的文件夹都是用来存放应用图标的</p>
+<h3 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>Android项目的配置文件，四大组件，权限申明</p>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>编写Unit Test测试用例的，项目自动化测试的另一种方式</p>
+<h3 id="gitigone"><a href="#gitigone" class="headerlink" title=".gitigone"></a>.gitigone</h3><p>将app模块内的指定的目录或文件排除在版本控制之外</p>
+<h3 id="app-iml"><a href="#app-iml" class="headerlink" title="app.iml"></a>app.iml</h3><p>intellij idea自动生成，无需关心或修改</p>
+<h3 id="build-gradle-1"><a href="#build-gradle-1" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>app模块的gradle构建脚本，会指定很多项目构建相关的配置</p>
+<h3 id="proguard-rules-pro"><a href="#proguard-rules-pro" class="headerlink" title="proguard-rules.pro"></a>proguard-rules.pro</h3><p>指定项目代码的混淆规则</p>
+<h2 id="详解build-gradle文件"><a href="#详解build-gradle文件" class="headerlink" title="详解build.gradle文件"></a>详解build.gradle文件</h2><p>Android Studio采用Gradle构建项目，Gradle使用了一种基于Groovy的领域特定语言（DSL）来声明项目设置，摒弃了传统基于XML（如Ant和Maven）的各种繁琐配置。</p>
+<h3 id="外层目录下的build-gradle文件"><a href="#外层目录下的build-gradle文件" class="headerlink" title="外层目录下的build.gradle文件"></a>外层目录下的build.gradle文件</h3><p>1.两处repositories的闭包中都声明了jcenter()这行配置，jcenter是一个代码托管仓库，很多Android开源项目都会选择将代码托管到jcenter上，声明这行配置后，我们就可以在项目中轻松引用任何jcenter上的开源项目了。</p>
+<p>2.dependencies闭包中使用classpath声明一个Gradle插件，这是因为Gradle并不是专门为构建Android项目而开发的，java、C++等很多项目都可以使用Gradle来构建。因此如果我们想要使用它来构建Android项目，则需要声明com.android.tools.build:gradle:2.2.0这个插件。最后的数字是插件的版本号。</p>
+<h3 id="app目录下的build-gradle文件"><a href="#app目录下的build-gradle文件" class="headerlink" title="app目录下的build.gradle文件"></a>app目录下的build.gradle文件</h3><p>1.第一行应用了一个插件，一般有两种值可选：com.android.application表示是一个应用程序模块，com.android.library表示是一个库模块。两者的最大区别在于一个是可以直接运行的，一个只能作为代码库依附于别的应用程序模块来运行。</p>
+<p>2.大的android闭包，可以配置项目构建的各种属性。compileSdkVersion用于指定项目的编译版本。buildToolsVersion用于指定项目构建工具的版本。</p>
+<p>3.android闭包中的defaultConfig闭包，可以对项目更多细节进行配置。applicationId用于指定项目包名。minSdkVersion指定项目最低兼容的Android系统版本。targetSdkVersion表示你在该目标版本上已经做了充分的测试，系统将会为你的应用程序启用一些最新的功能和特性。versionCode用于指定项目的版本号，versionName用于指定项目的版本名，这两个属性在生成安装文件的时候非常重要。</p>
+<p>4.android闭包中的buildTypes闭包，用于指定生成安装文件的相关配置，通常只会有两个子闭包，一个是debug用于指定生成测试版安装文件的配置，一个是release用于指定生成正式版安装文件的配置。debug闭包是可以忽略不写的。release闭包的具体内容，minifyEnabled用于指定是否对项目的代码进行混淆，true表示混淆，false表示不混淆。proguardFiles用于指定混淆时使用的规则文件，这里指定了两个文件，第一个proguard-android.txt是在Android SDK目录下的，里面是所有项目通用的混淆规则。第二个proguard-rules.pro是在当前项目的根目录下的，里面可以编写当前项目特有的混淆规则。</p>
+<p>5.dependencies闭包，它可以指定当前项目所有的依赖关系。通常Android Studio项目一共有三种依赖方式：本地依赖、库依赖、远程依赖。本地依赖可以对本地的jar包或目录添加依赖关系，库依赖可以对项目中的库模块添加依赖关系，远程依赖则可以对jcenter库上的开源项目添加依赖关系。第一行的compile fileTree就是一个本地依赖声明，它表示将libs目录下所有.jar后缀的文件都添加到项目的构建路径中。第二行的compile则是远程依赖声明，com.android.support:appcompat-v7:24.2.1就是一个标准的远程依赖库格式，其中com.android.support是域名部分，用于和其他公司的库做区分；appcompat-v7是组名称，用于和同一个公司中不同的库做区分；24.2.1是版本号，用于和同一库不同版本做区分。加上这句声明后，Gradle在构建项目时会首先检查一下本地是否已有这个库的缓存，没有的话则会自动去联网下载，然后再添加到项目的构建路径当中。库依赖的基本格式是compile project后面加上要依赖库的名称，如compile project(‘:helper’)。</p>
 
     </div>
 </div>
@@ -215,10 +218,17 @@ ssh-add ~/.ssh/id_rsa
 <div class="cube-article-nav">
     <ul>
         
+        <li class="prev">
+            <a href="/2019/03/06/HEXO总结/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                HEXO总结
+            </a>
+        </li>
+        
         
         <li class="next">
-            <a href="/2019/03/06/HEXO总结/">
-                HEXO总结
+            <a href="/2018/01/25/二分查找/">
+                二分查找
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -411,7 +421,7 @@ ssh-add ~/.ssh/id_rsa
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android/">#Android</a>
         </div>
         
@@ -421,12 +431,12 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Code/">#Code</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -451,7 +461,7 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/读书笔记/">#读书笔记</a>
         </div>
         
@@ -497,7 +507,7 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android/">#Android</a>
         </div>
         
@@ -522,7 +532,7 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/DP/">#DP</a>
         </div>
         
@@ -537,7 +547,7 @@ ssh-add ~/.ssh/id_rsa
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Internet/">#Internet</a>
         </div>
         
