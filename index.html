@@ -163,6 +163,229 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Broadcast">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/11/第一行代码笔记-Broadcast/">第一行代码笔记-Broadcast</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-11
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Broadcast/" class="cube-excerpt-tag-link">#Broadcast</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1.分类"></a>1.分类</h3><h4 id="1-1-1标准广播"><a href="#1-1-1标准广播" class="headerlink" title="1.1.1标准广播"></a>1.1.1标准广播</h4><p>是一种完全异步执行的广播，广播发出之后，所有的广播接收器几乎都会在同一时刻接收到这条广播消息，他们之间没有任何先后顺序而言。广播效率比较高，但无法被截断。</p>
+<h4 id="1-1-2有序广播"><a href="#1-1-2有序广播" class="headerlink" title="1.1.2有序广播"></a>1.1.2有序广播</h4><p>一种同步执行的广播，广播发出之后，同一时刻只会有一个广播接收器能够收到这条消息。这个广播接收器的逻辑执行完成后，广播才会继续传递。此时的广播接收器是有先后顺序的，优先级高的广播接收器就可以先收到广播消息，并且前边的广播接收器还可以截断正在传递的广播，这样后面的广播接收器就无法收到广播消息了。</p>
+<h4 id="1-2-1动态注册"><a href="#1-2-1动态注册" class="headerlink" title="1.2.1动态注册"></a>1.2.1动态注册</h4><pre><code>private IntentFilter intentFilter;
+
+private NetworkChangeReceiver networkChangeReceiver;
+
+@Override
+protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    intentFilter = new IntentFilter();
+    intentFilter.addAction(&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;);
+    networkChangeReceiver = new NetworkChangeReceiver();
+    registerReceiver(networkChangeReceiver, intentFilter);
+}
+
+@Override
+protected void onDestroy(){
+    super.onDestroy();
+    unregisterReceiver(networkChangeReceiver);
+}
+
+class NetworkChangeReceiver extends BroadcastReceiver{
+
+    @Override
+    public void onReceiver(Context context,Intent intent){
+        ConnectivityManager connectionManager = (ConnectivityManager)
+            getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectionManager.getActiveNetworkInfo();
+        if(networkInfo != null &amp;&amp; networkInfo.isAvailble()){
+            Toast.makeText(context,&quot;network is available&quot;,Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context,&quot;network is unavailable&quot;,Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+</code></pre><h4 id="1-2-2静态注册"><a href="#1-2-2静态注册" class="headerlink" title="1.2.2静态注册"></a>1.2.2静态注册</h4><h4 id="1-2-3区别"><a href="#1-2-3区别" class="headerlink" title="1.2.3区别:"></a>1.2.3区别:</h4><p>动态注册的广播接收器可以自由地控制注册与注销，在灵活性方面有很大的优势，但是它也存在着一个缺点，即必须要在程序启动之后才能接收到广播。静态注册的manifest里，Exported属性表示是否允许这个广播接收器接收本程序以外的广播。Enable属性表示是否启用这个广播接收器。</p>
+<h3 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2.注意事项:"></a>2.注意事项:</h3><p>不要在onReceiver()方法中添加过多的逻辑或者进行任何的耗时操作，因为在广播接收器中是不允许开启线程的，当onReceiver()方法运行了较长时间而没有结束时，程序就会报错。因此广播接收器更多的是扮演一种打开程序其他组件的角色，比如创建一条状态栏通知，启动一个服务等等。</p>
+<h3 id="3-发送自定义广播"><a href="#3-发送自定义广播" class="headerlink" title="3.发送自定义广播"></a>3.发送自定义广播</h3><h4 id="3-1发送标准广播"><a href="#3-1发送标准广播" class="headerlink" title="3.1发送标准广播"></a>3.1发送标准广播</h4><pre><code>Intent intent = new Intent(&quot;xxxx&quot;);
+sendBroadcast(intent);
+</code></pre><p>由于广播是使用Intent进行传递的，因此可以在Intent中携带一些数据传递给广播接收器。</p>
+<h4 id="3-2发送有序广播"><a href="#3-2发送有序广播" class="headerlink" title="3.2发送有序广播"></a>3.2发送有序广播</h4><pre><code>Intent intent = new Intent(&quot;xxxx&quot;);
+sendOrderBroadcast(intent，null);
+
+&lt;intent-filter android:priority=&quot;100&quot;&gt;
+    &lt;action android:name=&quot;xxxx&quot;/&gt;
+&lt;/intent-filter&gt;
+</code></pre><p>sendOrderBroadcast,第一个参数仍是Intent，第二个参数是一个与权限相关的字符串，这里传入null就可以了。android:priority给广播接收器设置优先级，优先级高的可以选择是否允许广播继续传播，abortBroadcast()。</p>
+<h4 id="3-3本地广播"><a href="#3-3本地广播" class="headerlink" title="3.3本地广播"></a>3.3本地广播</h4><pre><code>private IntentFilter intentFilter;
+
+private LocalReceiver localReceiver;
+
+private LocalBroadcastManager localBroadcastManager;
+
+@Override
+protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    //获取实例
+    localBroadcastManager = LocalBroadcastManager.getInstance(this);
+    Button button = (Button)findViewById(R.id.button);
+    button.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(&quot;xxxx&quot;);
+            //发送本地广播
+            localBroadcastManager.sendBroadcast(intent);
+        }
+    });
+    intentFilter = new IntentFilter();
+    intentFilter.addAction(&quot;xxxx&quot;);
+    localReceiver = new LocalReceiver();
+    //注册本地广播接收器
+    localBroadcastManager.registerReceiver(localReceiver, intentFilter);
+}
+
+@Override
+protected void onDestroy(){
+    super.onDestroy();
+    localBroadcastManager.unregisterReceiver(localReceiver);
+}
+
+class LocalReceiver extends BroadcastReceiver{
+
+    @Override
+    public void onReceiver(Context context,Intent intent){
+        Toast.makeText(context,&quot;xxxxx&quot;,Toast.LENGTH_SHORT).show();
+    }
+}
+</code></pre><p>本地广播无法通过静态注册的方式来接收。本地广播的优势：1.可以明确知道正在发送的广播不会离开我们的程序，因此不必担心机密数据泄露。2.其他的程序无法将广播发送到我们程序的内部，因此不需要担心会有安全漏洞的隐患。3.发送本地广播比发送系统全局广播将会更加高效。</p>
+<h3 id="4-强制下线功能"><a href="#4-强制下线功能" class="headerlink" title="4.强制下线功能"></a>4.强制下线功能</h3><p>广播接收是在BaseAvtivity中实现的，因为静态注册的广播无法弹出UI控件。在onResume()和onPause()方法里注册和取消注册Receiver。因为始终需要保证只有处于栈顶的活动才能接收到这条强制下线广播，非栈顶的活动不应该也没必要去接收这条广播，所以在onResume()和onPause()方法里就很好的解决了这个问题，当一个活动失去栈顶位置的时候就自动取消广播接收器的注册。</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/11/第一行代码笔记-Broadcast/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Fragment">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/10/第一行代码笔记-Fragment/">第一行代码笔记-Fragment</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-10
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Fragment，限定符/" class="cube-excerpt-tag-link">#Fragment，限定符</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h4 id="1-动态添加"><a href="#1-动态添加" class="headerlink" title="1.动态添加"></a>1.动态添加</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><pre><code>&lt;fragment 
+    android:id=&quot;@+id/left_fragment&quot;
+    android:name=&quot;com.example.fragmenttest.LeftFragment&quot;
+    android:layout_width=&quot;0dp&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:layout_weight=&quot;1&quot;/&gt;
+
+&lt;fragmentLayout 
+    android:id=&quot;@+id/right_fragment&quot;
+    android:layout_width=&quot;0dp&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:layout_weight=&quot;1&quot;/&gt;
+</code></pre><h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><pre><code>@Override
+protected void onCreate(Bundle saveInstanceState) {
+    super.onCreate(saveInstanceState);
+    setContentView(R.layout.activity_main);
+    //直接取得Fragment里的控件
+    Button button = (Button)findViewById(R.id.button);
+    button.setOnClickListener(this);
+    replaceFragment(new RightFragment);
+}
+
+@Override
+public void onClick(View v) {
+    switch(v.getId()) {
+        case R.id.button:
+            replaceFragment(new AnotherRightFragment());
+            break;
+        fefault:
+            break;
+    }
+}
+
+private void replaceFragment(Fragment fragment) {
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction transaction = fragmentManager.beginTransaction();
+    transaction.replace(R.id.right_layout,fragment);
+    transaction.commit();
+}
+</code></pre><h4 id="2-返回栈"><a href="#2-返回栈" class="headerlink" title="2.返回栈"></a>2.返回栈</h4><pre><code>transaction.addToBackStack(null);
+transaction.commit();
+</code></pre><p>接收一个名字用于描述返回栈的状态，一般传入null即可。</p>
+<h4 id="3-碎片和活动之间的通信"><a href="#3-碎片和活动之间的通信" class="headerlink" title="3.碎片和活动之间的通信"></a>3.碎片和活动之间的通信</h4><h5 id="3-1活动获得碎片实例"><a href="#3-1活动获得碎片实例" class="headerlink" title="3.1活动获得碎片实例"></a>3.1活动获得碎片实例</h5><pre><code>RightFragment rightFragment = (RightFragment)getFragmentManager()
+    .findFragmentById(R.id.right_fragment);
+</code></pre><h5 id="3-2碎片获得活动实例"><a href="#3-2碎片获得活动实例" class="headerlink" title="3.2碎片获得活动实例"></a>3.2碎片获得活动实例</h5><pre><code>MainActivity activity = (MainActivity)getActivity();
+</code></pre><h4 id="4-生命周期"><a href="#4-生命周期" class="headerlink" title="4.生命周期"></a>4.生命周期</h4><h5 id="4-1状态和回调"><a href="#4-1状态和回调" class="headerlink" title="4.1状态和回调"></a>4.1状态和回调</h5><ul>
+<li>运行状态：当一个碎片是可见的，并且它所关联的活动正处于运行状态时，该碎片也处于运行状态。</li>
+<li>暂停状态：当一个活动进入暂停状态时（由于另一个未占满屏幕的活动被添加到了栈顶），与它相关联的可见碎片就会进入到暂停状态。</li>
+<li>停止状态：当一个活动进入停止状态时，与他相关联的碎片就会进入到停止状态，或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前调用addToBackStack()方法，这时碎片也会进入到停止状态。总的来说，进入停止状态的碎片对用户来说是完全不可见的，有时候会被系统回收。</li>
+<li>销毁状态：碎片总是依附活动而存在，因此当活动被销毁时，当与它相关联的碎片就会进入到销毁状态。或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前没有调用addToBackStack()方法，这时的碎片也会进入到销毁状态。</li>
+</ul>
+<p>附加的回调方法，onAttach()：当碎片和活动建立关联的时候调用。onCreateView()：为碎片创建视图（加载布局）时调用。onActivityCreated()：确保与碎片关联的活动一定已经创建完毕的时候调用。onDestroyView():当与碎片关联的视图被移除的时候调用。onDetach():当碎片和活动解除关联的时候调用。</p>
+<h5 id="4-2体验生命周期"><a href="#4-2体验生命周期" class="headerlink" title="4.2体验生命周期"></a>4.2体验生命周期</h5><ul>
+<li>第一次加载时候，依次执行：onAttatch()、onCreate()、onCreateView()、onActivityCreated()、onStart()、onResume()方法。</li>
+<li>替换后进入停止状态，执行onPause()、onStop()、onDestroyView()。如果addToBackStack没有调用，此时会进入销毁状态，onDestroy()和onDetach()会执行。</li>
+<li>按返回键重新回到运行状态，因此onActivityCreated()、onStart()和onResume()方法会得到执行。onCreate()和onCreateView()方法并不会执行，因为我们借助addToBackStack()方法使得RightFragment和它的视图并没有销毁。</li>
+<li>再次按下返回键退出应用，依次执行onPause()、onStop()、onDestroyView()、onDestroy()、onDetach()，最终活动和碎片一起销毁。</li>
+</ul>
+<p>碎片中可以使用onSaveInstanceState()来保数据，在onCreate()、onCreateView()、onActivityCreated()这三个方法可以重新得到。</p>
+<h4 id="5-Android常见的限定符"><a href="#5-Android常见的限定符" class="headerlink" title="5.Android常见的限定符"></a>5.Android常见的限定符</h4><h5 id="大小："><a href="#大小：" class="headerlink" title="大小："></a>大小：</h5><ul>
+<li>small,提供给小屏幕设备的资源</li>
+<li>normal，提供给中等屏幕设备的资源</li>
+<li>large，提供给大屏幕设备的资源</li>
+<li>xlarge，提供给超大屏幕设备的资源</li>
+</ul>
+<h5 id="分辨率："><a href="#分辨率：" class="headerlink" title="分辨率："></a>分辨率：</h5><ul>
+<li>ldpi,提供给低分辨率设备的资源(120dpi以下)</li>
+<li>mdpi,提供给中等分辨率设备的资源(120dpi~160dpi)</li>
+<li>hdpi，提供给高分辨率设备的资源(160dpi~240dpi)</li>
+<li>xhdpi，提供给超高分辨率设备的资源(240dpi~320dpi)</li>
+<li>xxhdpi，提供给超超高分辨率设备的资源(320dpi~480dpi)</li>
+</ul>
+<h5 id="方向："><a href="#方向：" class="headerlink" title="方向："></a>方向：</h5><ul>
+<li>land,提供给横屏设备的资源</li>
+<li>port,提供给竖屏设备的资源</li>
+</ul>
+<h5 id="最小宽度限定符"><a href="#最小宽度限定符" class="headerlink" title="最小宽度限定符:"></a>最小宽度限定符:</h5><p>如layout-sw600dp,当屏幕宽度大于600dp的设备时，会加载layout-sw600dp下的布局，小于时加载默认的布局。</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/10/第一行代码笔记-Fragment/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-RecyclerView">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/03/09/第一行代码笔记-RecyclerView/">第一行代码笔记-RecyclerView</a></h1>
@@ -182,7 +405,8 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><h5 id="gradle添加依赖"><a href="#gradle添加依赖" class="headerlink" title="gradle添加依赖"></a>gradle添加依赖</h5><h4 id="编写适配器"><a href="#编写适配器" class="headerlink" title="编写适配器"></a>编写适配器</h4><pre><code>public class FruitAdapter extends RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;{
+           <h4 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1.基本用法"></a>1.基本用法</h4><p>gradle添加依赖</p>
+<h4 id="2-编写适配器"><a href="#2-编写适配器" class="headerlink" title="2.编写适配器"></a>2.编写适配器</h4><pre><code>public class FruitAdapter extends RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;{
 
     private List&lt;Fruit&gt; mFruitList;
 
@@ -283,9 +507,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <blockquote>
-<p>比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。</p>
-</blockquote>
+           <p>比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。</p>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -304,11 +526,35 @@ public View getView(int position,View convertView,ViewGroup parent) {
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Intent/" class="cube-excerpt-tag-link">#Intent</a>
+                <a href="/tags/Button/" class="cube-excerpt-tag-link">#Button</a>
                 
-                <a href="/tags/startActivityForResult/" class="cube-excerpt-tag-link">#startActivityForResult</a>
+                <a href="/tags/EditText/" class="cube-excerpt-tag-link">#EditText</a>
                 
-                <a href="/tags/onSaveInstanceState/" class="cube-excerpt-tag-link">#onSaveInstanceState</a>
+                <a href="/tags/ImageView/" class="cube-excerpt-tag-link">#ImageView</a>
+                
+                <a href="/tags/ProgressBar/" class="cube-excerpt-tag-link">#ProgressBar</a>
+                
+                <a href="/tags/AlertDialog/" class="cube-excerpt-tag-link">#AlertDialog</a>
+                
+                <a href="/tags/ProgressDialog/" class="cube-excerpt-tag-link">#ProgressDialog</a>
+                
+                <a href="/tags/布局/" class="cube-excerpt-tag-link">#布局</a>
+                
+                <a href="/tags/LinearLayout/" class="cube-excerpt-tag-link">#LinearLayout</a>
+                
+                <a href="/tags/RelativeLayout/" class="cube-excerpt-tag-link">#RelativeLayout</a>
+                
+                <a href="/tags/FrameLayout/" class="cube-excerpt-tag-link">#FrameLayout</a>
+                
+                <a href="/tags/PercentFrameLayout/" class="cube-excerpt-tag-link">#PercentFrameLayout</a>
+                
+                <a href="/tags/PercentRelativeLayout/" class="cube-excerpt-tag-link">#PercentRelativeLayout</a>
+                
+                <a href="/tags/AbsoluteLayout/" class="cube-excerpt-tag-link">#AbsoluteLayout</a>
+                
+                <a href="/tags/TableLayout/" class="cube-excerpt-tag-link">#TableLayout</a>
+                
+                <a href="/tags/ActionBar/" class="cube-excerpt-tag-link">#ActionBar</a>
                 
             </div>
         </div>
@@ -316,12 +562,8 @@ public View getView(int position,View convertView,ViewGroup parent) {
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1.Android常用控件"></a>1.Android常用控件</h3><h4 id="1-1Button"><a href="#1-1Button" class="headerlink" title="1.1Button"></a>1.1Button</h4><blockquote>
-<p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
-</blockquote>
-<h4 id="1-2EditText"><a href="#1-2EditText" class="headerlink" title="1.2EditText"></a>1.2EditText</h4><blockquote>
-<p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
-</blockquote>
+           <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1.Android常用控件"></a>1.Android常用控件</h3><h4 id="1-1Button"><a href="#1-1Button" class="headerlink" title="1.1Button"></a>1.1Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
+<h4 id="1-2EditText"><a href="#1-2EditText" class="headerlink" title="1.2EditText"></a>1.2EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -340,11 +582,13 @@ public View getView(int position,View convertView,ViewGroup parent) {
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
+                <a href="/tags/隐式Intent/" class="cube-excerpt-tag-link">#隐式Intent</a>
+                
                 <a href="/tags/startActivityForResult/" class="cube-excerpt-tag-link">#startActivityForResult</a>
                 
                 <a href="/tags/onSaveInstanceState/" class="cube-excerpt-tag-link">#onSaveInstanceState</a>
                 
-                <a href="/tags/隐式Intent/" class="cube-excerpt-tag-link">#隐式Intent</a>
+                <a href="/tags/0-9/" class="cube-excerpt-tag-link">#0.9</a>
                 
             </div>
         </div>
@@ -352,14 +596,10 @@ public View getView(int position,View convertView,ViewGroup parent) {
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="1-更多隐式Intent的用法"><a href="#1-更多隐式Intent的用法" class="headerlink" title="1.更多隐式Intent的用法"></a>1.更多隐式Intent的用法</h3><blockquote>
-<p>使用隐式Intent，不仅可以启动自己程序内的活动，还可以启动其他程序的活动，这使得Android多个应用程序之间的功能共享成为了可能。</p>
-</blockquote>
+           <h3 id="1-更多隐式Intent的用法"><a href="#1-更多隐式Intent的用法" class="headerlink" title="1.更多隐式Intent的用法"></a>1.更多隐式Intent的用法</h3><p>使用隐式Intent，不仅可以启动自己程序内的活动，还可以启动其他程序的活动，这使得Android多个应用程序之间的功能共享成为了可能。</p>
 <h4 id="例：展示网页代码"><a href="#例：展示网页代码" class="headerlink" title="例：展示网页代码"></a>例：展示网页代码</h4><pre><code>Intent intent = new Intent(Intent.ACTION_VIEW);
 intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
-</code></pre><blockquote>
-<p>首先指定Intent的action是Intent.ACTION_VIEW，这是一个Android系统内置动作，其常量值为android.intent.action.VIEW，然后通过Uri.parse()方法，将一个网址字符串解析成一个Uri对象，再调用Intent的setData()方法将这个Uri对象传递进去。</p>
-</blockquote>
+</code></pre>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -386,39 +626,9 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h3><blockquote>
-<p>Android Studio自动生成，无需关心也不要手动编辑。</p>
-</blockquote>
-<h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><blockquote>
-<p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p>
-</blockquote>
-<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><blockquote>
-<p>在编译时自动生成的文件</p>
-</blockquote>
-<h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><blockquote>
-<p>包含gradle wrapper的配置文件</p>
-</blockquote>
-<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><blockquote>
-<p>将指定的目录或文件排除在版本控制之外</p>
-</blockquote>
-<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><blockquote>
-<p>项目全局的gradle构建脚本</p>
-</blockquote>
-<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><blockquote>
-<p>全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本</p>
-</blockquote>
-<h3 id="gradlew和gradlew-bat"><a href="#gradlew和gradlew-bat" class="headerlink" title="gradlew和gradlew.bat"></a>gradlew和gradlew.bat</h3><blockquote>
-<p>用来在命令行界面中执行gradle命令，前者在Linux或Mac系统使用，后者在Windows系统使用</p>
-</blockquote>
-<h3 id="xxx-iml"><a href="#xxx-iml" class="headerlink" title="xxx.iml"></a>xxx.iml</h3><blockquote>
-<p>iml文件是所有intellij idea项目都会自动生成的一个文件，用于标识这是一个intellij idea项目，不需要修改</p>
-</blockquote>
-<h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><blockquote>
-<p>用于指定本机中的Android SDK路径，通常自动生成，不需要修改。</p>
-</blockquote>
-<h3 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h3><blockquote>
-<p>用于指定项目中所引入的模块，通常自动完成</p>
-</blockquote>
+           <h2 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1.项目结构"></a>1.项目结构</h2><h4 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h4><p>Android Studio自动生成，无需关心也不要手动编辑。</p>
+<h4 id="app"><a href="#app" class="headerlink" title="app"></a>app</h4><p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p>
+<h4 id="build"><a href="#build" class="headerlink" title="build"></a>build</h4><p>在编译时自动生成的文件</p>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -437,7 +647,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/环境配置/" class="cube-excerpt-tag-link">#环境配置</a>
+                <a href="/tags/SSH/" class="cube-excerpt-tag-link">#SSH</a>
                 
             </div>
         </div>
@@ -471,8 +681,6 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Blog/" class="cube-excerpt-tag-link">#Blog</a>
-                
                 <a href="/tags/HEXO/" class="cube-excerpt-tag-link">#HEXO</a>
                 
             </div>
@@ -503,84 +711,6 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-书单">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/书单/">书单</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/书单/" class="cube-excerpt-tag-link">#书单</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="Android书"><a href="#Android书" class="headerlink" title="Android书"></a>Android书</h3><ul>
-<li>第一行代码（第一版）</li>
-<li>Android编程权威指南（第二版）</li>
-<li>第一行代码（第二版）</li>
-<li>Android编程权威指南（第三版）</li>
-<li>Android群英传</li>
-<li>Android开发进阶从小工到专家</li>
-<li>Android应用开发进阶</li>
-<li>Android进阶之光</li>
-<li>Android进阶解密</li>
-<li>Android高级进阶</li>
-<li>Android开发艺术探索</li>
-<li>Android组件化架构</li>
-<li>深入理解Android内核设计思想</li>
-<li>Android音视频开发</li>
-</ul>
-<h3 id="Android工具书"><a href="#Android工具书" class="headerlink" title="Android工具书"></a>Android工具书</h3><ul>
-<li>Android Studio实战</li>
-<li>Android群英传神兵利器</li>
-</ul>
-<h3 id="Android面试"><a href="#Android面试" class="headerlink" title="Android面试"></a>Android面试</h3><ul>
-<li>Android面试宝典</li>
-</ul>
-<h3 id="Android优化"><a href="#Android优化" class="headerlink" title="Android优化"></a>Android优化</h3><ul>
-<li>APP研发录</li>
-</ul>
-<h3 id="Java书"><a href="#Java书" class="headerlink" title="Java书"></a>Java书</h3><ul>
-<li>Java程序设计</li>
-<li>Head First Java</li>
-<li>Java核心技术 卷I</li>
-<li>Effective Java</li>
-</ul>
-<h3 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a>Kotlin</h3><ul>
-<li>Kotlin程序开发入门精要</li>
-</ul>
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><ul>
-<li>编程小白的第一本Python入门书</li>
-</ul>
-<h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><ul>
-<li>设计模式之禅</li>
-<li>Android源码设计模式解析与实战</li>
-</ul>
-<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><ul>
-<li>深入理解计算机系统</li>
-</ul>
-<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><ul>
-<li>深入理解计算机网络</li>
-</ul>
-<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><ul>
-<li>啊哈算法</li>
-</ul>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/书单/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -597,11 +727,17 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
             </li>
             
         
+            
+            <li class="cube-pagination-index">
+                <a href="/page/2">2</a>
+            </li>
+            
+        
     
 
     
-    <li class="cube-pagination-next disabled">
-        <span>下一页 »</span>
+    <li class="cube-pagination-next">
+        <a href="/page/2/">下一页 »</a>
     </li>
     
 </ul>
@@ -670,8 +806,8 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>9</span>文章</a>
-        <a class="count tags"><span>12</span>标签</a>
+        <a class="count articles"><span>11</span>文章</a>
+        <a class="count tags"><span>28</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -712,10 +848,10 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
+                        <a href="/2018/03/11/第一行代码笔记-Broadcast/" title="第一行代码笔记-Broadcast">第一行代码笔记-Broadcast</a>
                     </p>
                     <p class="date">
-                        2018-03-09
+                        2018-03-11
                     </p>
                 </div>
             </div>
@@ -730,7 +866,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/09/第一行代码笔记-ListView/" title="第一行代码笔记-ListView">第一行代码笔记-ListView</a>
+                    <a href="/2018/03/10/第一行代码笔记-Fragment/" title="第一行代码笔记-Fragment">第一行代码笔记-Fragment</a>
                 </p>
             </div>
         </li>
@@ -743,7 +879,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/08/第一行代码笔记-自定义view/" title="第一行代码笔记-自定义view">第一行代码笔记-自定义view</a>
+                    <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
                 </p>
             </div>
         </li>
@@ -756,7 +892,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/08/第一行代码笔记-Android基础控件布局/" title="第一行代码笔记-Android基础控件布局">第一行代码笔记-Android基础控件布局</a>
+                    <a href="/2018/03/09/第一行代码笔记-ListView/" title="第一行代码笔记-ListView">第一行代码笔记-ListView</a>
                 </p>
             </div>
         </li>
@@ -769,7 +905,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/07/第一行代码笔记-Android基础用法/" title="第一行代码笔记-Android基础用法">第一行代码笔记-Android基础用法</a>
+                    <a href="/2018/03/08/第一行代码笔记-自定义view/" title="第一行代码笔记-自定义view">第一行代码笔记-自定义view</a>
                 </p>
             </div>
         </li>
@@ -788,12 +924,12 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/环境配置/">#环境配置</a>
+            <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
@@ -802,7 +938,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
@@ -824,32 +960,102 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/Blog/">#Blog</a>
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/书单/">#书单</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Intent/">#Intent</a>
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
@@ -864,7 +1070,17 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
@@ -878,7 +1094,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
