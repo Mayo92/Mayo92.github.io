@@ -183,15 +183,15 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="1-StartActivity"><a href="#1-StartActivity" class="headerlink" title="1. StartActivity"></a>1. StartActivity</h3><pre><code>//如果启动ThirdActivity需要两个参数，封装一个方法使ThirdActivity所需要的数据全部都在方法参数中体现出来了
-public static void actionStart(Context context,String data1,String data2){
+        <h3 id="1-StartActivity"><a href="#1-StartActivity" class="headerlink" title="1. StartActivity"></a>1. StartActivity</h3><pre><code>public static void actionStart(Context context,String data1,String data2){
 
     Intent intent=new Intent(context,ThirdActivity.class);
     intent.putExtra(&quot;param1&quot;,data1);
     intent.putExtra(&quot;param2&quot;,data2);
     context.startActivity(intent);
 }
-</code></pre><a id="more"></a>
+</code></pre><p>如果启动ThirdActivity需要两个参数，封装一个方法使ThirdActivity所需要的数据全部都在方法参数中体现出来了</p>
+<a id="more"></a>
 <h3 id="2-BaseActivity"><a href="#2-BaseActivity" class="headerlink" title="2. BaseActivity"></a>2. BaseActivity</h3><h4 id="2-1-获得当前活动名称"><a href="#2-1-获得当前活动名称" class="headerlink" title="2.1 获得当前活动名称"></a>2.1 获得当前活动名称</h4><pre><code>getClass.getSimpleName();
 </code></pre><h4 id="2-2-退出应用"><a href="#2-2-退出应用" class="headerlink" title="2.2 退出应用"></a>2.2 退出应用</h4><h5 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h5><pre><code>public class ActivityCollector {
 
@@ -460,23 +460,13 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/书单/">#书单</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -486,7 +476,17 @@ public void onClick(View v{
         
         
         <div class="cube-box ">
+            <a href="/categories/书单/">#书单</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -500,7 +500,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -510,7 +510,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
@@ -526,7 +526,7 @@ public void onClick(View v{
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -536,13 +536,18 @@ public void onClick(View v{
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
@@ -553,11 +558,6 @@ public void onClick(View v{
         
         <div class="cube-box ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
@@ -587,17 +587,12 @@ public void onClick(View v{
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -606,13 +601,8 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/字符流/">#字符流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/字节流/">#字节流</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
@@ -622,16 +612,11 @@ public void onClick(View v{
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/文件/">#文件</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -641,8 +626,23 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/字符流/">#字符流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/字节流/">#字节流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
@@ -661,7 +661,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -676,12 +676,12 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -691,7 +691,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -701,7 +701,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -711,7 +711,7 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -721,12 +721,12 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -741,13 +741,23 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
@@ -762,47 +772,12 @@ public void onClick(View v{
         
         
         <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/线程/">#线程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
         
@@ -826,7 +801,47 @@ public void onClick(View v{
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/集合框架/">#集合框架</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -851,7 +866,12 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
@@ -866,28 +886,8 @@ public void onClick(View v{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/集合框架/">#集合框架</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>

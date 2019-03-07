@@ -181,9 +181,103 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h4 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class AppManager &#123;</span><br><span class="line"></span><br><span class="line">    //有内存泄漏的问题：</span><br><span class="line">//    private static AppManager instance;</span><br><span class="line">//    private Context context;</span><br><span class="line">//    private AppManager(Context context) &#123;</span><br><span class="line">//        this.context = context;</span><br><span class="line">//    &#125;</span><br><span class="line">//    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">//        if (instance == null) &#123;</span><br><span class="line">//传入的Activity回收时由于被单例持有无法回收</span><br><span class="line">//            instance = new AppManager(context);</span><br><span class="line">//        &#125;</span><br><span class="line">//        return instance;</span><br><span class="line">//    &#125;</span><br><span class="line">//    修复内存泄漏的写法：</span><br><span class="line">    private static AppManager instance;</span><br><span class="line">    private Context context;</span><br><span class="line">    private AppManager(Context context) &#123;</span><br><span class="line">        this.context = context.getApplicationContext();// 使用Application 的context</span><br><span class="line">    &#125;</span><br><span class="line">    public static AppManager getInstance(Context context) &#123;</span><br><span class="line">        if (instance == null) &#123;</span><br><span class="line">            instance = new AppManager(context);</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="匿名内部类handler"><a href="#匿名内部类handler" class="headerlink" title="匿名内部类handler"></a>匿名内部类handler</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    //容易造成内存泄漏的写法：</span><br><span class="line">//非静态内部类</span><br><span class="line">//    private Handler mHandler = new Handler() &#123;</span><br><span class="line">//        @Override</span><br><span class="line">//        public void handleMessage(Message msg) &#123;</span><br><span class="line">//            //...</span><br><span class="line">//        &#125;</span><br><span class="line">//    &#125;;</span><br><span class="line">//</span><br><span class="line">//    @Override</span><br><span class="line">//    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">//        super.onCreate(savedInstanceState);</span><br><span class="line">//        setContentView(R.layout.activity_main);</span><br><span class="line">//        loadData();</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    private void loadData() &#123;</span><br><span class="line">//        //...request</span><br><span class="line">//        Message message = Message.obtain();</span><br><span class="line">//        mHandler.sendMessage(message);</span><br><span class="line">//    &#125;</span><br><span class="line">//</span><br><span class="line">//    static class TestResource &#123;</span><br><span class="line">//该静态实例持有activity的引用，内存资源得不到正常回收，应该设为静态内部类</span><br><span class="line">//        private static final String TAG = &quot;&quot;;</span><br><span class="line">//        //...</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">//    修复内存泄漏的方法：</span><br><span class="line">//1.设为静态内部类2.在handler内部持有外部类Activity的弱引用</span><br><span class="line">    private MyHandler mHandler = new MyHandler(this);</span><br><span class="line">    private TextView mTextView ;</span><br><span class="line">    private static class MyHandler extends Handler &#123;</span><br><span class="line">        private WeakReference&lt;Context&gt; reference;</span><br><span class="line">        public MyHandler(Context context) &#123;</span><br><span class="line">            reference = new WeakReference&lt;&gt;(context);</span><br><span class="line">        &#125;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            MainActivity activity = (MainActivity) reference.get();</span><br><span class="line">            if(activity != null)&#123;</span><br><span class="line">//                activity.mTextView.setText(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void loadData() &#123;</span><br><span class="line">        //...request</span><br><span class="line">        Message message = Message.obtain();</span><br><span class="line">        mHandler.sendMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        mHandler.removeCallbacksAndMessages(null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h4><pre><code>public class AppManager {
+
+    //有内存泄漏的问题：
+    private static AppManager instance;
+    private Context context;
+    private AppManager(Context context) {
+        this.context = context;
+    }
+    public static AppManager getInstance(Context context) {
+        if (instance == null) {
+//传入的Activity回收时由于被单例持有无法回收
+            instance = new AppManager(context);
+        }
+        return instance;
+    }
+</code></pre><hr>
+<pre><code>    //修复内存泄漏的写法：
+    private static AppManager instance;
+    private Context context;
+    private AppManager(Context context) {
+        this.context = context.getApplicationContext();// 使用Application 的context
+    }
+    public static AppManager getInstance(Context context) {
+        if (instance == null) {
+            instance = new AppManager(context);
+        }
+        return instance;
+    }
+}
+</code></pre><a id="more"></a>
+<h4 id="匿名内部类handler"><a href="#匿名内部类handler" class="headerlink" title="匿名内部类handler"></a>匿名内部类handler</h4><pre><code>public class MainActivity extends AppCompatActivity {
+    //容易造成内存泄漏的写法：
+    //非静态内部类
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            //...
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        loadData();
+    }
+
+    private void loadData() {
+        //...request
+        Message message = Message.obtain();
+        mHandler.sendMessage(message);
+    }
+
+    static class TestResource {
+    //该静态实例持有activity的引用，内存资源得不到正常回收，应该设为静态内部类
+//        private static final String TAG = &quot;&quot;;
+//        //...
+    }
+</code></pre><hr>
+<pre><code>    //修复内存泄漏的方法：
+    //1.设为静态内部类2.在handler内部持有外部类Activity的弱引用
+    private MyHandler mHandler = new MyHandler(this);
+    private TextView mTextView ;
+    private static class MyHandler extends Handler {
+        private WeakReference&lt;Context&gt; reference;
+        public MyHandler(Context context) {
+            reference = new WeakReference&lt;&gt;(context);
+        }
+        @Override
+        public void handleMessage(Message msg) {
+            MainActivity activity = (MainActivity) reference.get();
+            if(activity != null){
+                    //activity.mTextView.setText(&quot;&quot;);
+            }
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        loadData();
+    }
+
+    private void loadData() {
+        //...request
+        Message message = Message.obtain();
+        mHandler.sendMessage(message);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mHandler.removeCallbacksAndMessages(null);
+    }
+}
+</code></pre>
     </div>
 </div>
 
@@ -393,33 +487,23 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/书单/">#书单</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/操作系统/">#操作系统</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -429,7 +513,17 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/书单/">#书单</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -443,7 +537,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -453,7 +547,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
@@ -469,7 +563,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -479,28 +573,28 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
@@ -530,7 +624,17 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -540,36 +644,11 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/字符流/">#字符流</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/字节流/">#字节流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件/">#文件</a>
         </div>
         
@@ -589,6 +668,21 @@
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/字符流/">#字符流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/字节流/">#字节流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
@@ -599,7 +693,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -609,7 +703,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -619,12 +713,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -664,7 +758,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
@@ -684,27 +778,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
@@ -715,37 +799,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/线程/">#线程</a>
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler/">#Handler</a>
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/前台服务/">#前台服务</a>
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -754,7 +823,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -764,53 +833,33 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
+            <a href="/tags/线程/">#线程</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
+            <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
+            <a href="/tags/Service/">#Service</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/JSON/">#JSON</a>
+            <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
         
@@ -830,7 +879,52 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
         </div>
         
     </div>

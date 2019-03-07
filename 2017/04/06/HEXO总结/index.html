@@ -207,13 +207,13 @@
 hexo g
 hexo d
 </code></pre><h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http://你的用户名.github.io"></a>打开<a href="http://你的用户名.github.io" target="_blank" rel="noopener">http://你的用户名.github.io</a></h5><h4 id="3-安装主题"><a href="#3-安装主题" class="headerlink" title="3. 安装主题"></a>3. 安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><pre><code>$ git clone https://github.com/iissnan/hexo-theme-next themes/next
-</code></pre><h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><pre><code>hexo clean           //清除缓存文件 (db.json) 和已生成的静态文件 (public)
-hexo g             //生成缓存和静态文件
-hexo d             //重新部署到服务器
+</code></pre><h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><pre><code>hexo clean //清除缓存文件 (db.json) 和已生成的静态文件 (public)
+hexo g //生成缓存和静态文件
+hexo d //重新部署到服务器
 </code></pre><h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称"></a>修改blog/_config.yml文件和blog/themes/next/_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog/themes/next/ 下执行命令 git pull 更新主题"></a>cd 到 blog/themes/next/ 下执行命令 git pull 更新主题</h5><h4 id="4-新建与更新博客"><a href="#4-新建与更新博客" class="headerlink" title="4. 新建与更新博客"></a>4. 新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><pre><code>hexo new &apos;filename&apos;
-</code></pre><h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg/source/_posts/下面会看到新建的博客"></a>在bolg/source/_posts/下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre><code>title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot;  #博文题目
-date: 2014-11-21 11:25:38      #生成时间
-tags:                    #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]
+</code></pre><h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg/source/_posts/下面会看到新建的博客"></a>在bolg/source/_posts/下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre><code>title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot; #博文题目
+date: 2014-11-21 11:25:38 #生成时间
+tags: #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]
 - tag1
 - tag2
 - tag3
@@ -431,7 +431,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -447,26 +447,26 @@ hexo d
         
         
         <div class="cube-box ">
-            <a href="/categories/书单/">#书单</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/书单/">#书单</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/操作系统/">#操作系统</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -476,17 +476,17 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/网络/">#网络</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
@@ -502,18 +502,13 @@ hexo d
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
@@ -522,18 +517,23 @@ hexo d
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
@@ -547,7 +547,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
@@ -557,8 +557,13 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -568,37 +573,17 @@ hexo d
         
         
         <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/字符流/">#字符流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/字节流/">#字节流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
@@ -623,6 +608,21 @@ hexo d
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/字符流/">#字符流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/字节流/">#字节流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -642,7 +642,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -672,17 +672,17 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -712,7 +712,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -722,22 +722,12 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
@@ -748,37 +738,22 @@ hexo d
         
         
         <div class="cube-box ">
+            <a href="/tags/运行时权限/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/线程/">#线程</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
         
@@ -792,58 +767,38 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/VideoView/">#VideoView</a>
+            <a href="/tags/线程/">#线程</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/WebView/">#WebView</a>
+            <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/XML/">#XML</a>
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
         
@@ -863,7 +818,52 @@ hexo d
         
         
         <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
         </div>
         
     </div>
