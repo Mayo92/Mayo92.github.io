@@ -183,98 +183,6 @@
         
         
            <h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1.分类"></a>1.分类</h3><h4 id="1-1-1标准广播"><a href="#1-1-1标准广播" class="headerlink" title="1.1.1标准广播"></a>1.1.1标准广播</h4><p>是一种完全异步执行的广播，广播发出之后，所有的广播接收器几乎都会在同一时刻接收到这条广播消息，他们之间没有任何先后顺序而言。广播效率比较高，但无法被截断。</p>
-<h4 id="1-1-2有序广播"><a href="#1-1-2有序广播" class="headerlink" title="1.1.2有序广播"></a>1.1.2有序广播</h4><p>一种同步执行的广播，广播发出之后，同一时刻只会有一个广播接收器能够收到这条消息。这个广播接收器的逻辑执行完成后，广播才会继续传递。此时的广播接收器是有先后顺序的，优先级高的广播接收器就可以先收到广播消息，并且前边的广播接收器还可以截断正在传递的广播，这样后面的广播接收器就无法收到广播消息了。</p>
-<h4 id="1-2-1动态注册"><a href="#1-2-1动态注册" class="headerlink" title="1.2.1动态注册"></a>1.2.1动态注册</h4><pre><code>private IntentFilter intentFilter;
-
-private NetworkChangeReceiver networkChangeReceiver;
-
-@Override
-protected void onCreate(Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-    intentFilter = new IntentFilter();
-    intentFilter.addAction(&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;);
-    networkChangeReceiver = new NetworkChangeReceiver();
-    registerReceiver(networkChangeReceiver, intentFilter);
-}
-
-@Override
-protected void onDestroy(){
-    super.onDestroy();
-    unregisterReceiver(networkChangeReceiver);
-}
-
-class NetworkChangeReceiver extends BroadcastReceiver{
-
-    @Override
-    public void onReceiver(Context context,Intent intent){
-        ConnectivityManager connectionManager = (ConnectivityManager)
-            getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectionManager.getActiveNetworkInfo();
-        if(networkInfo != null &amp;&amp; networkInfo.isAvailble()){
-            Toast.makeText(context,&quot;network is available&quot;,Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context,&quot;network is unavailable&quot;,Toast.LENGTH_SHORT).show();
-        }
-    }
-}
-</code></pre><h4 id="1-2-2静态注册"><a href="#1-2-2静态注册" class="headerlink" title="1.2.2静态注册"></a>1.2.2静态注册</h4><h4 id="1-2-3区别"><a href="#1-2-3区别" class="headerlink" title="1.2.3区别:"></a>1.2.3区别:</h4><p>动态注册的广播接收器可以自由地控制注册与注销，在灵活性方面有很大的优势，但是它也存在着一个缺点，即必须要在程序启动之后才能接收到广播。静态注册的manifest里，Exported属性表示是否允许这个广播接收器接收本程序以外的广播。Enable属性表示是否启用这个广播接收器。</p>
-<h3 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2.注意事项:"></a>2.注意事项:</h3><p>不要在onReceiver()方法中添加过多的逻辑或者进行任何的耗时操作，因为在广播接收器中是不允许开启线程的，当onReceiver()方法运行了较长时间而没有结束时，程序就会报错。因此广播接收器更多的是扮演一种打开程序其他组件的角色，比如创建一条状态栏通知，启动一个服务等等。</p>
-<h3 id="3-发送自定义广播"><a href="#3-发送自定义广播" class="headerlink" title="3.发送自定义广播"></a>3.发送自定义广播</h3><h4 id="3-1发送标准广播"><a href="#3-1发送标准广播" class="headerlink" title="3.1发送标准广播"></a>3.1发送标准广播</h4><pre><code>Intent intent = new Intent(&quot;xxxx&quot;);
-sendBroadcast(intent);
-</code></pre><p>由于广播是使用Intent进行传递的，因此可以在Intent中携带一些数据传递给广播接收器。</p>
-<h4 id="3-2发送有序广播"><a href="#3-2发送有序广播" class="headerlink" title="3.2发送有序广播"></a>3.2发送有序广播</h4><pre><code>Intent intent = new Intent(&quot;xxxx&quot;);
-sendOrderBroadcast(intent，null);
-
-&lt;intent-filter android:priority=&quot;100&quot;&gt;
-    &lt;action android:name=&quot;xxxx&quot;/&gt;
-&lt;/intent-filter&gt;
-</code></pre><p>sendOrderBroadcast,第一个参数仍是Intent，第二个参数是一个与权限相关的字符串，这里传入null就可以了。android:priority给广播接收器设置优先级，优先级高的可以选择是否允许广播继续传播，abortBroadcast()。</p>
-<h4 id="3-3本地广播"><a href="#3-3本地广播" class="headerlink" title="3.3本地广播"></a>3.3本地广播</h4><pre><code>private IntentFilter intentFilter;
-
-private LocalReceiver localReceiver;
-
-private LocalBroadcastManager localBroadcastManager;
-
-@Override
-protected void onCreate(Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-
-    //获取实例
-    localBroadcastManager = LocalBroadcastManager.getInstance(this);
-    Button button = (Button)findViewById(R.id.button);
-    button.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(&quot;xxxx&quot;);
-            //发送本地广播
-            localBroadcastManager.sendBroadcast(intent);
-        }
-    });
-    intentFilter = new IntentFilter();
-    intentFilter.addAction(&quot;xxxx&quot;);
-    localReceiver = new LocalReceiver();
-    //注册本地广播接收器
-    localBroadcastManager.registerReceiver(localReceiver, intentFilter);
-}
-
-@Override
-protected void onDestroy(){
-    super.onDestroy();
-    localBroadcastManager.unregisterReceiver(localReceiver);
-}
-
-class LocalReceiver extends BroadcastReceiver{
-
-    @Override
-    public void onReceiver(Context context,Intent intent){
-        Toast.makeText(context,&quot;xxxxx&quot;,Toast.LENGTH_SHORT).show();
-    }
-}
-</code></pre><p>本地广播无法通过静态注册的方式来接收。本地广播的优势：1.可以明确知道正在发送的广播不会离开我们的程序，因此不必担心机密数据泄露。2.其他的程序无法将广播发送到我们程序的内部，因此不需要担心会有安全漏洞的隐患。3.发送本地广播比发送系统全局广播将会更加高效。</p>
-<h3 id="4-强制下线功能"><a href="#4-强制下线功能" class="headerlink" title="4.强制下线功能"></a>4.强制下线功能</h3><p>广播接收是在BaseAvtivity中实现的，因为静态注册的广播无法弹出UI控件。在onResume()和onPause()方法里注册和取消注册Receiver。因为始终需要保证只有处于栈顶的活动才能接收到这条强制下线广播，非栈顶的活动不应该也没必要去接收这条广播，所以在onResume()和onPause()方法里就很好的解决了这个问题，当一个活动失去栈顶位置的时候就自动取消广播接收器的注册。</p>
-
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -313,72 +221,7 @@ class LocalReceiver extends BroadcastReceiver{
     android:layout_width=&quot;0dp&quot;
     android:layout_height=&quot;match_parent&quot;
     android:layout_weight=&quot;1&quot;/&gt;
-</code></pre><h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><pre><code>@Override
-protected void onCreate(Bundle saveInstanceState) {
-    super.onCreate(saveInstanceState);
-    setContentView(R.layout.activity_main);
-    //直接取得Fragment里的控件
-    Button button = (Button)findViewById(R.id.button);
-    button.setOnClickListener(this);
-    replaceFragment(new RightFragment);
-}
-
-@Override
-public void onClick(View v) {
-    switch(v.getId()) {
-        case R.id.button:
-            replaceFragment(new AnotherRightFragment());
-            break;
-        fefault:
-            break;
-    }
-}
-
-private void replaceFragment(Fragment fragment) {
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction transaction = fragmentManager.beginTransaction();
-    transaction.replace(R.id.right_layout,fragment);
-    transaction.commit();
-}
-</code></pre><h4 id="2-返回栈"><a href="#2-返回栈" class="headerlink" title="2.返回栈"></a>2.返回栈</h4><pre><code>transaction.addToBackStack(null);
-transaction.commit();
-</code></pre><p>接收一个名字用于描述返回栈的状态，一般传入null即可。</p>
-<h4 id="3-碎片和活动之间的通信"><a href="#3-碎片和活动之间的通信" class="headerlink" title="3.碎片和活动之间的通信"></a>3.碎片和活动之间的通信</h4><h5 id="3-1活动获得碎片实例"><a href="#3-1活动获得碎片实例" class="headerlink" title="3.1活动获得碎片实例"></a>3.1活动获得碎片实例</h5><pre><code>RightFragment rightFragment = (RightFragment)getFragmentManager()
-    .findFragmentById(R.id.right_fragment);
-</code></pre><h5 id="3-2碎片获得活动实例"><a href="#3-2碎片获得活动实例" class="headerlink" title="3.2碎片获得活动实例"></a>3.2碎片获得活动实例</h5><pre><code>MainActivity activity = (MainActivity)getActivity();
-</code></pre><h4 id="4-生命周期"><a href="#4-生命周期" class="headerlink" title="4.生命周期"></a>4.生命周期</h4><h5 id="4-1状态和回调"><a href="#4-1状态和回调" class="headerlink" title="4.1状态和回调"></a>4.1状态和回调</h5><ul>
-<li>运行状态：当一个碎片是可见的，并且它所关联的活动正处于运行状态时，该碎片也处于运行状态。</li>
-<li>暂停状态：当一个活动进入暂停状态时（由于另一个未占满屏幕的活动被添加到了栈顶），与它相关联的可见碎片就会进入到暂停状态。</li>
-<li>停止状态：当一个活动进入停止状态时，与他相关联的碎片就会进入到停止状态，或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前调用addToBackStack()方法，这时碎片也会进入到停止状态。总的来说，进入停止状态的碎片对用户来说是完全不可见的，有时候会被系统回收。</li>
-<li>销毁状态：碎片总是依附活动而存在，因此当活动被销毁时，当与它相关联的碎片就会进入到销毁状态。或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前没有调用addToBackStack()方法，这时的碎片也会进入到销毁状态。</li>
-</ul>
-<p>附加的回调方法，onAttach()：当碎片和活动建立关联的时候调用。onCreateView()：为碎片创建视图（加载布局）时调用。onActivityCreated()：确保与碎片关联的活动一定已经创建完毕的时候调用。onDestroyView():当与碎片关联的视图被移除的时候调用。onDetach():当碎片和活动解除关联的时候调用。</p>
-<h5 id="4-2体验生命周期"><a href="#4-2体验生命周期" class="headerlink" title="4.2体验生命周期"></a>4.2体验生命周期</h5><ul>
-<li>第一次加载时候，依次执行：onAttatch()、onCreate()、onCreateView()、onActivityCreated()、onStart()、onResume()方法。</li>
-<li>替换后进入停止状态，执行onPause()、onStop()、onDestroyView()。如果addToBackStack没有调用，此时会进入销毁状态，onDestroy()和onDetach()会执行。</li>
-<li>按返回键重新回到运行状态，因此onActivityCreated()、onStart()和onResume()方法会得到执行。onCreate()和onCreateView()方法并不会执行，因为我们借助addToBackStack()方法使得RightFragment和它的视图并没有销毁。</li>
-<li>再次按下返回键退出应用，依次执行onPause()、onStop()、onDestroyView()、onDestroy()、onDetach()，最终活动和碎片一起销毁。</li>
-</ul>
-<p>碎片中可以使用onSaveInstanceState()来保数据，在onCreate()、onCreateView()、onActivityCreated()这三个方法可以重新得到。</p>
-<h4 id="5-Android常见的限定符"><a href="#5-Android常见的限定符" class="headerlink" title="5.Android常见的限定符"></a>5.Android常见的限定符</h4><h5 id="大小："><a href="#大小：" class="headerlink" title="大小："></a>大小：</h5><ul>
-<li>small,提供给小屏幕设备的资源</li>
-<li>normal，提供给中等屏幕设备的资源</li>
-<li>large，提供给大屏幕设备的资源</li>
-<li>xlarge，提供给超大屏幕设备的资源</li>
-</ul>
-<h5 id="分辨率："><a href="#分辨率：" class="headerlink" title="分辨率："></a>分辨率：</h5><ul>
-<li>ldpi,提供给低分辨率设备的资源(120dpi以下)</li>
-<li>mdpi,提供给中等分辨率设备的资源(120dpi~160dpi)</li>
-<li>hdpi，提供给高分辨率设备的资源(160dpi~240dpi)</li>
-<li>xhdpi，提供给超高分辨率设备的资源(240dpi~320dpi)</li>
-<li>xxhdpi，提供给超超高分辨率设备的资源(320dpi~480dpi)</li>
-</ul>
-<h5 id="方向："><a href="#方向：" class="headerlink" title="方向："></a>方向：</h5><ul>
-<li>land,提供给横屏设备的资源</li>
-<li>port,提供给竖屏设备的资源</li>
-</ul>
-<h5 id="最小宽度限定符"><a href="#最小宽度限定符" class="headerlink" title="最小宽度限定符:"></a>最小宽度限定符:</h5><p>如layout-sw600dp,当屏幕宽度大于600dp的设备时，会加载layout-sw600dp下的布局，小于时加载默认的布局。</p>
-
+</code></pre>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -924,21 +767,21 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/书单/">#书单</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
@@ -960,12 +803,12 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
@@ -974,7 +817,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -999,17 +842,17 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -1024,7 +867,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1034,7 +877,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -1044,7 +887,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
