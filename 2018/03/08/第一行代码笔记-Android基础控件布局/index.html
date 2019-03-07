@@ -209,15 +209,15 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1.Android常用控件"></a>1.Android常用控件</h3><h4 id="1-1Button"><a href="#1-1Button" class="headerlink" title="1.1Button"></a>1.1Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
-<h4 id="1-2EditText"><a href="#1-2EditText" class="headerlink" title="1.2EditText"></a>1.2EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
+        <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1. Android常用控件"></a>1. Android常用控件</h3><h4 id="1-1-Button"><a href="#1-1-Button" class="headerlink" title="1.1 Button"></a>1.1 Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
+<h4 id="1-2-EditText"><a href="#1-2-EditText" class="headerlink" title="1.2 EditText"></a>1.2 EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
 <a id="more"></a>
-<h4 id="1-3ImageView"><a href="#1-3ImageView" class="headerlink" title="1.3ImageView"></a>1.3ImageView</h4><p>代码设置资源，imageView.setImageResource(R.drawable.img);</p>
-<h4 id="1-4ProgressBar"><a href="#1-4ProgressBar" class="headerlink" title="1.4ProgressBar"></a>1.4ProgressBar</h4><p>可以给ProgressBar指定不同的样式，刚刚是圆形进度条，通过style属性可以将它指定成水平进度条，也可设置其他类型，style=”?android:attr/progressBarStyleHorizonal”,android:max=”100”</p>
+<h4 id="1-3-ImageView"><a href="#1-3-ImageView" class="headerlink" title="1.3 ImageView"></a>1.3 ImageView</h4><p>代码设置资源，imageView.setImageResource(R.drawable.img);</p>
+<h4 id="1-4-ProgressBar"><a href="#1-4-ProgressBar" class="headerlink" title="1.4 ProgressBar"></a>1.4 ProgressBar</h4><p>可以给ProgressBar指定不同的样式，刚刚是圆形进度条，通过style属性可以将它指定成水平进度条，也可设置其他类型，style=”?android:attr/progressBarStyleHorizonal”,android:max=”100”</p>
 <pre><code>int progress = progressBar.getProgress();
 progress = progress + 10;
 progressBar.setProgress(progress);
-</code></pre><h4 id="1-5AlertDialog"><a href="#1-5AlertDialog" class="headerlink" title="1.5AlertDialog"></a>1.5AlertDialog</h4><pre><code>AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+</code></pre><h4 id="1-5-AlertDialog"><a href="#1-5-AlertDialog" class="headerlink" title="1.5 AlertDialog"></a>1.5 AlertDialog</h4><pre><code>AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
 dialog.setTitle(&quot;This is Dialog&quot;);
 dialog.setMessage(&quot;Something important.&quot;);
 dialog.setCancelable(false);
@@ -236,18 +236,18 @@ dialog.setNegativeButton(&quot;Cancel&quot;, new DialogInterface.
         }
     });    
 dialog.show();
-</code></pre><h4 id="1-6ProgressDialog"><a href="#1-6ProgressDialog" class="headerlink" title="1.6ProgressDialog"></a>1.6ProgressDialog</h4><pre><code>ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+</code></pre><h4 id="1-6-ProgressDialog"><a href="#1-6-ProgressDialog" class="headerlink" title="1.6 ProgressDialog"></a>1.6 ProgressDialog</h4><pre><code>ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
 progressDialog.setTitle(&quot;&quot;);
 progressDialog.setMessage(&quot;&quot;);
 progressDialog.setCancelable(true);
 progressDialog.show();    
-</code></pre><h3 id="2-基本布局"><a href="#2-基本布局" class="headerlink" title="2.基本布局"></a>2.基本布局</h3><h4 id="2-1线性布局LinearLayout"><a href="#2-1线性布局LinearLayout" class="headerlink" title="2.1线性布局LinearLayout"></a>2.1线性布局LinearLayout</h4><p>如果排列方向是horizontal，内部控件就不能将宽度指定为match_parent，这样的化单独一个控件就会将整个水平方向占满，其他控件就没有可放置的位置了。同理vertical，内部控件就不能将高度指定为match_parent。</p>
+</code></pre><h3 id="2-基本布局"><a href="#2-基本布局" class="headerlink" title="2. 基本布局"></a>2. 基本布局</h3><h4 id="2-1-线性布局LinearLayout"><a href="#2-1-线性布局LinearLayout" class="headerlink" title="2.1 线性布局LinearLayout"></a>2.1 线性布局LinearLayout</h4><p>如果排列方向是horizontal，内部控件就不能将宽度指定为match_parent，这样的化单独一个控件就会将整个水平方向占满，其他控件就没有可放置的位置了。同理vertical，内部控件就不能将高度指定为match_parent。</p>
 <p>android:gravity用于指定文字在控件中的对齐方式，而android:layout_gravity用于指定控件在布局中的对齐方式。需要注意，当LinearLayout的排列方向是horizontal时，只有垂直方向上的对齐方式才会生效，因为此时水平方向上的长度是不固定的，每添加一个控件水平方向上的长度都会改变，因而无法指定该方向上的对齐方式。同理，为vertical时，只有水平方向上的对齐方式才会生效。</p>
 <p>一个weight为1，另一个width为wrap_content时，第一个会占满除了另一个的位置</p>
-<h4 id="2-2相对布局RelativeLayout"><a href="#2-2相对布局RelativeLayout" class="headerlink" title="2.2相对布局RelativeLayout"></a>2.2相对布局RelativeLayout</h4><h4 id="2-3帧布局FrameLayout"><a href="#2-3帧布局FrameLayout" class="headerlink" title="2.3帧布局FrameLayout"></a>2.3帧布局FrameLayout</h4><p>layout_gravity属性来指定控件在布局中的对齐方式</p>
-<h4 id="2-4百分比布局PercentFrameLayout和PercentRelativeLayout"><a href="#2-4百分比布局PercentFrameLayout和PercentRelativeLayout" class="headerlink" title="2.4百分比布局PercentFrameLayout和PercentRelativeLayout"></a>2.4百分比布局PercentFrameLayout和PercentRelativeLayout</h4><p>LinearLayout不支持。gradle文件中添加com.android.support:percent。使用app:layout_widthPercent属性以及app:layout_heightPercent。</p>
-<h4 id="2-5绝对布局AbsoluteLayout"><a href="#2-5绝对布局AbsoluteLayout" class="headerlink" title="2.5绝对布局AbsoluteLayout"></a>2.5绝对布局AbsoluteLayout</h4><h4 id="2-6TableLayout"><a href="#2-6TableLayout" class="headerlink" title="2.6TableLayout"></a>2.6TableLayout</h4><h3 id="3-引入布局"><a href="#3-引入布局" class="headerlink" title="3.引入布局"></a>3.引入布局</h3><p>android:layout_margin这个属性，它可以指定控件在上下左右方向上偏移的距离，当然也可以使用android:layout_marginLeft或android:layout_marginTop等属性来单独指定控件在某个方向上偏移的距离。</p>
-<h4 id="4-隐藏ActionBar"><a href="#4-隐藏ActionBar" class="headerlink" title="4.隐藏ActionBar"></a>4.隐藏ActionBar</h4><h5 id="onCreate方法中"><a href="#onCreate方法中" class="headerlink" title="onCreate方法中:"></a>onCreate方法中:</h5><pre><code>ActionBar actionBar = getSupportActionBar();
+<h4 id="2-2-相对布局RelativeLayout"><a href="#2-2-相对布局RelativeLayout" class="headerlink" title="2.2 相对布局RelativeLayout"></a>2.2 相对布局RelativeLayout</h4><h4 id="2-3-帧布局FrameLayout"><a href="#2-3-帧布局FrameLayout" class="headerlink" title="2.3 帧布局FrameLayout"></a>2.3 帧布局FrameLayout</h4><p>layout_gravity属性来指定控件在布局中的对齐方式</p>
+<h4 id="2-4-百分比布局PercentFrameLayout和PercentRelativeLayout"><a href="#2-4-百分比布局PercentFrameLayout和PercentRelativeLayout" class="headerlink" title="2.4 百分比布局PercentFrameLayout和PercentRelativeLayout"></a>2.4 百分比布局PercentFrameLayout和PercentRelativeLayout</h4><p>LinearLayout不支持。gradle文件中添加com.android.support:percent。使用app:layout_widthPercent属性以及app:layout_heightPercent。</p>
+<h4 id="2-5-绝对布局AbsoluteLayout"><a href="#2-5-绝对布局AbsoluteLayout" class="headerlink" title="2.5 绝对布局AbsoluteLayout"></a>2.5 绝对布局AbsoluteLayout</h4><h4 id="2-6-TableLayout"><a href="#2-6-TableLayout" class="headerlink" title="2.6 TableLayout"></a>2.6 TableLayout</h4><h3 id="3-引入布局"><a href="#3-引入布局" class="headerlink" title="3. 引入布局"></a>3. 引入布局</h3><p>android:layout_margin这个属性，它可以指定控件在上下左右方向上偏移的距离，当然也可以使用android:layout_marginLeft或android:layout_marginTop等属性来单独指定控件在某个方向上偏移的距离。</p>
+<h4 id="4-隐藏ActionBar"><a href="#4-隐藏ActionBar" class="headerlink" title="4. 隐藏ActionBar"></a>4. 隐藏ActionBar</h4><h5 id="onCreate方法中"><a href="#onCreate方法中" class="headerlink" title="onCreate方法中:"></a>onCreate方法中:</h5><pre><code>ActionBar actionBar = getSupportActionBar();
 if(actionBar != null){
     actionBar.hide();
 }
@@ -344,8 +344,8 @@ if(actionBar != null){
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>13</span>文章</a>
-        <a class="count tags"><span>34</span>标签</a>
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>50</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -386,10 +386,10 @@ if(actionBar != null){
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
+                        <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
                     </p>
                     <p class="date">
-                        2018-03-13
+                        2018-03-16
                     </p>
                 </div>
             </div>
@@ -404,7 +404,7 @@ if(actionBar != null){
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
                 </p>
             </div>
         </li>
@@ -417,7 +417,7 @@ if(actionBar != null){
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/11/第一行代码笔记-Broadcast/" title="第一行代码笔记-Broadcast">第一行代码笔记-Broadcast</a>
+                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
                 </p>
             </div>
         </li>
@@ -430,7 +430,7 @@ if(actionBar != null){
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/10/第一行代码笔记-Fragment/" title="第一行代码笔记-Fragment">第一行代码笔记-Fragment</a>
+                    <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
                 </p>
             </div>
         </li>
@@ -443,7 +443,7 @@ if(actionBar != null){
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
+                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
                 </p>
             </div>
         </li>
@@ -481,7 +481,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -502,7 +502,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
@@ -512,7 +512,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -532,12 +532,12 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -552,7 +552,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -582,12 +582,12 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
@@ -602,7 +602,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -622,7 +622,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
@@ -643,6 +643,61 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -652,17 +707,42 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/自定义view/">#自定义view</a>
         </div>
         

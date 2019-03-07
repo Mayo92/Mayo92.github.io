@@ -187,11 +187,11 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>持久化技术就是指那些将内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据仍然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在瞬时状态和持久状态之间进行转换。</p>
+        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>持久化技术就是指那些将内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据仍然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在瞬时状态和持久状态之间进行转换。</p>
 <a id="more"></a>
 <p>Android主要提供3中方式用于简单地实现数据持久化功能，即文件存储、SharedPreference存储、数据库存储。还可以存储在手机SD卡中，不过其他三种更加安全也更加简单。</p>
-<h3 id="2-文件存储"><a href="#2-文件存储" class="headerlink" title="2.文件存储"></a>2.文件存储</h3><p>不对存储的内容进行任何的格式化处理，所有数据都是原封不动地保存到文件中的，因而比较适合用于存储一些简单的文本数据或二进制数据。如果要使用文件存储的方式来保存一些较为复杂的文本数据，就需要定义一套自己的格式规范，这样可以方便之后将数据从文件中重新解析出来。</p>
-<h4 id="2-1将数据存储到文件中"><a href="#2-1将数据存储到文件中" class="headerlink" title="2.1将数据存储到文件中"></a>2.1将数据存储到文件中</h4><p>Context类提供了一个openFileOutput()方法，可以用于将数据存储到指定的文件中。这里接收到两个参数，第一个参数是文件名，，在文件创建的时候使用的就是这个名称，注意这里离指定的文件名不可包含路径，因为所有的文件都是默认存储到/data/data/<packagename>/files/目录下的。第二个参数是文件的操作模式，主要有两种模式可选，MORDE_PRIVATE和MODE_APPENDE。MORDE_PRIVATE是默认的操作模式，表示指定同样文件名的时候，所写入的内容将会覆盖原文件中的内容。MODE_APPENDE则表示如果该文件已存在，就往文件里追加内容，不存在就创建新文件。openFileOutput()方法返回的是一个FileOutputStream对象，得到了这个对象之后就可以使用java流的方式将数据写入到文件中了。</packagename></p>
+<h3 id="2-文件存储"><a href="#2-文件存储" class="headerlink" title="2. 文件存储"></a>2. 文件存储</h3><p>不对存储的内容进行任何的格式化处理，所有数据都是原封不动地保存到文件中的，因而比较适合用于存储一些简单的文本数据或二进制数据。如果要使用文件存储的方式来保存一些较为复杂的文本数据，就需要定义一套自己的格式规范，这样可以方便之后将数据从文件中重新解析出来。</p>
+<h4 id="2-1-将数据存储到文件中"><a href="#2-1-将数据存储到文件中" class="headerlink" title="2.1 将数据存储到文件中"></a>2.1 将数据存储到文件中</h4><p>Context类提供了一个openFileOutput()方法，可以用于将数据存储到指定的文件中。这里接收到两个参数，第一个参数是文件名，，在文件创建的时候使用的就是这个名称，注意这里离指定的文件名不可包含路径，因为所有的文件都是默认存储到/data/data/<packagename>/files/目录下的。第二个参数是文件的操作模式，主要有两种模式可选，MORDE_PRIVATE和MODE_APPENDE。MORDE_PRIVATE是默认的操作模式，表示指定同样文件名的时候，所写入的内容将会覆盖原文件中的内容。MODE_APPENDE则表示如果该文件已存在，就往文件里追加内容，不存在就创建新文件。openFileOutput()方法返回的是一个FileOutputStream对象，得到了这个对象之后就可以使用java流的方式将数据写入到文件中了。</packagename></p>
 <pre><code>public void save(){
     String data = &quot;Data to save&quot;;
     FileOutputStream out = null;
@@ -212,7 +212,7 @@
         }
     }
 }
-</code></pre><h4 id="2-2从文件中读取数据"><a href="#2-2从文件中读取数据" class="headerlink" title="2.2从文件中读取数据"></a>2.2从文件中读取数据</h4><p>Context类提供一个openFileInput()方法,用于从文件中读取数据。接收一个参数，即要读取的文件名，然后系统会自动到/data/data/<package name="">/files/目录下去加载这个文件，并返回一个FileInputStream对象。</package></p>
+</code></pre><h4 id="2-2-从文件中读取数据"><a href="#2-2-从文件中读取数据" class="headerlink" title="2.2 从文件中读取数据"></a>2.2 从文件中读取数据</h4><p>Context类提供一个openFileInput()方法,用于从文件中读取数据。接收一个参数，即要读取的文件名，然后系统会自动到/data/data/<package name="">/files/目录下去加载这个文件，并返回一个FileInputStream对象。</package></p>
 <pre><code>public String load(){
     FileInputStream in = null;
     BufferedReader reader = null;
@@ -237,8 +237,8 @@
     }
     return content.toString();
 }
-</code></pre><h3 id="3-SharedPreferences存储"><a href="#3-SharedPreferences存储" class="headerlink" title="3.SharedPreferences存储"></a>3.SharedPreferences存储</h3><p>使用键值对的方式来存储数据。</p>
-<h4 id="3-1将数据存储到SharedPreferences中"><a href="#3-1将数据存储到SharedPreferences中" class="headerlink" title="3.1将数据存储到SharedPreferences中"></a>3.1将数据存储到SharedPreferences中</h4><h5 id="Android主要提供3种方法用于得到SharedPreferences对象"><a href="#Android主要提供3种方法用于得到SharedPreferences对象" class="headerlink" title="Android主要提供3种方法用于得到SharedPreferences对象:"></a>Android主要提供3种方法用于得到SharedPreferences对象:</h5><p>1.Context中的getSharedPreferences()方法。接收两个参数，第一个用于指定SharedPreferences文件的名称，如果指定的文件不存在则会创建一个，SharedPreferences文件都是存放在/data/data/<package name="">/shared_prefs/目录下的。第二个参数用于指定操作模式，目前只有MODE_PRiVATE这一种模式可选，和直接传入0效果相同，表示只有当年的应用才可以对这个SharedPreferences文件进行读写。</package></p>
+</code></pre><h3 id="3-SharedPreferences存储"><a href="#3-SharedPreferences存储" class="headerlink" title="3. SharedPreferences存储"></a>3. SharedPreferences存储</h3><p>使用键值对的方式来存储数据。</p>
+<h4 id="3-1-将数据存储到SharedPreferences中"><a href="#3-1-将数据存储到SharedPreferences中" class="headerlink" title="3.1 将数据存储到SharedPreferences中"></a>3.1 将数据存储到SharedPreferences中</h4><h5 id="Android主要提供3种方法用于得到SharedPreferences对象"><a href="#Android主要提供3种方法用于得到SharedPreferences对象" class="headerlink" title="Android主要提供3种方法用于得到SharedPreferences对象:"></a>Android主要提供3种方法用于得到SharedPreferences对象:</h5><p>1.Context中的getSharedPreferences()方法。接收两个参数，第一个用于指定SharedPreferences文件的名称，如果指定的文件不存在则会创建一个，SharedPreferences文件都是存放在/data/data/<package name="">/shared_prefs/目录下的。第二个参数用于指定操作模式，目前只有MODE_PRiVATE这一种模式可选，和直接传入0效果相同，表示只有当年的应用才可以对这个SharedPreferences文件进行读写。</package></p>
 <p>2.Activity中的getSharedPreferences()方法。只接收一个参数即操作模式，会自动将当前活动的类名作为SharedPreferences的文件名。</p>
 <p>3.PreferenceManager类中的getDefaultSharedPreference()方法。这是一个静态方法，接收一个Context对象，并自动使用当前应用程序的包名作为前缀来命名SharedPreferences文件。</p>
 <h5 id="向SharedPreferences文件中存储数据分为3步"><a href="#向SharedPreferences文件中存储数据分为3步" class="headerlink" title="向SharedPreferences文件中存储数据分为3步:"></a>向SharedPreferences文件中存储数据分为3步:</h5><ul>
@@ -246,8 +246,8 @@
 <li>向SharedPreferences.Editor对象中添加数据</li>
 <li>调用apply()方法将添加的数据提交</li>
 </ul>
-<h4 id="3-2从SharedPreferences中读取数据"><a href="#3-2从SharedPreferences中读取数据" class="headerlink" title="3.2从SharedPreferences中读取数据"></a>3.2从SharedPreferences中读取数据</h4><p>SharedPreferences对象中提供了一系列的get方法，用于对存储的数据进行读取。</p>
-<h3 id="4-SQLite数据库存储"><a href="#4-SQLite数据库存储" class="headerlink" title="4.SQLite数据库存储"></a>4.SQLite数据库存储</h3><h4 id="4-1创建数据库"><a href="#4-1创建数据库" class="headerlink" title="4.1创建数据库"></a>4.1创建数据库</h4><p>SQLiteOpenHelper可以简单的对数据库进行创建和升级。它是一个抽象类，需要创建一个自己的帮助类去继承它。有两个抽象方法，onCreate()和onUpgrade()，必须重写这两个方法，实现创建、升级数据库的逻辑。</p>
+<h4 id="3-2-从SharedPreferences中读取数据"><a href="#3-2-从SharedPreferences中读取数据" class="headerlink" title="3.2 从SharedPreferences中读取数据"></a>3.2 从SharedPreferences中读取数据</h4><p>SharedPreferences对象中提供了一系列的get方法，用于对存储的数据进行读取。</p>
+<h3 id="4-SQLite数据库存储"><a href="#4-SQLite数据库存储" class="headerlink" title="4. SQLite数据库存储"></a>4. SQLite数据库存储</h3><h4 id="4-1-创建数据库"><a href="#4-1-创建数据库" class="headerlink" title="4.1 创建数据库"></a>4.1 创建数据库</h4><p>SQLiteOpenHelper可以简单的对数据库进行创建和升级。它是一个抽象类，需要创建一个自己的帮助类去继承它。有两个抽象方法，onCreate()和onUpgrade()，必须重写这两个方法，实现创建、升级数据库的逻辑。</p>
 <p>SQLiteOpenHelper还有两个非常重要的实例方法，getReadableDatabase()和getWritebleDatabase()。这个两个方法都可以创建或者打开一个现有的数据库（如果数据库已存在则打开否则创建），返回一个可对数据库进行读写操作的对象。不同的是，当数据库不可写入的时候（如磁盘空间已满）, getReadableDatabase()方法返回的对象将以只读的方式打开数据库,getWriteableDatabase()将出现异常。</p>
 <p>SQLiteOpenHelper有两个构造方法可以重写，一般使用参数少的，接收四个参数，第一个是Context，第二个是数据库名，第三个是允许我们在查询数据的时候返回一个自定义Cursor，一般出入null。第四个参数表示当前数据库的版本号，用于升级操作。构建出实例之后，再调用getReadableDatabase()或getWritebleDatabase()方法就可以创建数据库了，文件放在/data/data/<package name="">/databases/目录下。此时，重写的onCreate()方法会得到执行，所以通常会在这里处理一些创建表的逻辑。</package></p>
 <h5 id="创建一个BookStore-db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列"><a href="#创建一个BookStore-db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列" class="headerlink" title="创建一个BookStore.db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列:"></a>创建一个BookStore.db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列:</h5><pre><code>create table Book (
@@ -308,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
 }
 </code></pre><p>点击事件调用了getWritebleDatabase()方法，检测到当前程序没有这个数据库，会创建这个数据库并调用MyDatabaseHelper中的onCreate()方法,再次点击不会创建了。</p>
 <p>adb shell后cd到数据库目录，有两个文件，一个是BookStore.db，另一个是BookStore.db-journal则是让数据库能支持事务而产生的临时日志文件，通常这个文件大小为0。sqlite3加数据库名称可以打开数据库。输入.table可以看有哪些表，其中android_metadata表是每个数据库都会自动生成的。输入.schema可以查看他们的建表语句。输入.exit或.quit退出数据库编辑，再输入.exit就可以退出控制台了。</p>
-<h4 id="4-2升级数据库"><a href="#4-2升级数据库" class="headerlink" title="4.2升级数据库"></a>4.2升级数据库</h4><h5 id="添加Category表用于记录图书的分类"><a href="#添加Category表用于记录图书的分类" class="headerlink" title="添加Category表用于记录图书的分类:"></a>添加Category表用于记录图书的分类:</h5><pre><code>create table Category (
+<h4 id="4-2-升级数据库"><a href="#4-2-升级数据库" class="headerlink" title="4.2 升级数据库"></a>4.2 升级数据库</h4><h5 id="添加Category表用于记录图书的分类"><a href="#添加Category表用于记录图书的分类" class="headerlink" title="添加Category表用于记录图书的分类:"></a>添加Category表用于记录图书的分类:</h5><pre><code>create table Category (
     id integer primary key autoincrement,
     category_name text,
     category_code integer)
@@ -370,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-</code></pre><h4 id="4-3添加数据"><a href="#4-3添加数据" class="headerlink" title="4.3添加数据"></a>4.3添加数据</h4><p>对数据的操作无非是四种,CRUD。C是Create添加，R是Retrieve查询，U是Update更新，D是Delete删除。SQL命令中，添加使用insert，查询使用selete，更新使用uodate，删除使用delete。</p>
+</code></pre><h4 id="4-3-添加数据"><a href="#4-3-添加数据" class="headerlink" title="4.3 添加数据"></a>4.3 添加数据</h4><p>对数据的操作无非是四种,CRUD。C是Create添加，R是Retrieve查询，U是Update更新，D是Delete删除。SQL命令中，添加使用insert，查询使用selete，更新使用uodate，删除使用delete。</p>
 <p>SQLiteOpenHelper的getReadableDatabase()和getWritebleDatabase()方法不仅可以创建和升级数据库，还会返回一个SQLiteDatabase对象，借助这个对象就可以进行CRUD操作了。</p>
 <p>SQLiteDatabase提供一个insert()方法，接收三个参数，第一个是表名，第二个参数用于在未指定添加数据的情况下给某些可为空的列自动赋值NULL，一般用不到这个功能，直接传入null即可。第三个参数是一个ContentValues对象，提供一系列的put()方法进行重载，用于向ContentValues中添加数据，只需要将表中的每个列名及相应的待添加数据传入即可。</p>
 <pre><code>SQLiteDatabase db = dbHelper.getWritebleDatabase();
@@ -388,16 +388,16 @@ values.put(&quot;author&quot;,&quot;Dan Brown&quot;);
 values.put(&quot;pages&quot;,510);
 values.put(&quot;price&quot;,19.95);
 db.insert(&quot;Book&quot;,null,values);
-</code></pre><h4 id="4-4更新数据"><a href="#4-4更新数据" class="headerlink" title="4.4更新数据"></a>4.4更新数据</h4><p>SQLiteDatabase提供一个update()方法,接收四个参数，第一个参数是表名，第二个参数是一个ContentValues对象，第三个及第四个都用于约束更新某一行或某几行中的数据，不指定的话默认所有。</p>
+</code></pre><h4 id="4-4-更新数据"><a href="#4-4-更新数据" class="headerlink" title="4.4 更新数据"></a>4.4 更新数据</h4><p>SQLiteDatabase提供一个update()方法,接收四个参数，第一个参数是表名，第二个参数是一个ContentValues对象，第三个及第四个都用于约束更新某一行或某几行中的数据，不指定的话默认所有。</p>
 <pre><code>SQLiteDatabase db = dbHelper.getWritebleDatabase();
 ContentValues values = new ContentValues();
 values.put(&quot;price&quot;,10.99);
 db.update(&quot;Book&quot;,values,&quot;name=?&quot;,new String[]{&quot;The Da Vinci code&quot;});
 </code></pre><p>第三个参数是SQL语句的where部分，表示更新所有name等于?的行，而?是一个占位符，可以通过第四个参数提供的一个字符串数组为第三个参数中的每个占位符指定相应的内容。</p>
-<h4 id="4-5删除数据"><a href="#4-5删除数据" class="headerlink" title="4.5删除数据"></a>4.5删除数据</h4><p>SQLiteDatabase提供一个delete()方法，接收三个参数，第一个参数是表名，第二个及第三个都用于约束删除某一行或某几行中的数据，不指定的话默认删除所有行。</p>
+<h4 id="4-5-删除数据"><a href="#4-5-删除数据" class="headerlink" title="4.5 删除数据"></a>4.5 删除数据</h4><p>SQLiteDatabase提供一个delete()方法，接收三个参数，第一个参数是表名，第二个及第三个都用于约束删除某一行或某几行中的数据，不指定的话默认删除所有行。</p>
 <pre><code>SQLiteDatabase db = dbHelper.getWritebleDatabase();
 db.delete(&quot;Book&quot;,&quot;pages&gt;?&quot;,new String[]{&quot;500&quot;});
-</code></pre><h4 id="4-6查询数据"><a href="#4-6查询数据" class="headerlink" title="4.6查询数据"></a>4.6查询数据</h4><p>SQLiteDatabase提供一个query()方法,接收七个参数，第一个参数是表名；第二个参数用于指定去查询哪几列，如果不指定默认查询所有列；第三个及第四个都用于约束查询某一行或某几行中的数据，不指定的话默认查询所有行；第五个参数用于指定需要去group by的列，不指定则表示不对查询结果进行group by操作；第六个参数用于对group by之后的数据进行进一步的过滤，不指定则表示不进行过滤；第七个参数用于指定查询结果的排序方式，不指定则表示使用默认的排序方式。</p>
+</code></pre><h4 id="4-6-查询数据"><a href="#4-6-查询数据" class="headerlink" title="4.6 查询数据"></a>4.6 查询数据</h4><p>SQLiteDatabase提供一个query()方法,接收七个参数，第一个参数是表名；第二个参数用于指定去查询哪几列，如果不指定默认查询所有列；第三个及第四个都用于约束查询某一行或某几行中的数据，不指定的话默认查询所有行；第五个参数用于指定需要去group by的列，不指定则表示不对查询结果进行group by操作；第六个参数用于对group by之后的数据进行进一步的过滤，不指定则表示不进行过滤；第七个参数用于指定查询结果的排序方式，不指定则表示使用默认的排序方式。</p>
 <p><img src="/Users/yaoluyang/Desktop/书的截图/屏幕快照 2018-05-17 17.42.12.png" alt="Alt Image Text" title="Optional Title"></p>
 <p>query()方法会返回一个Cursor对象，查询到的所有数据都将从这个对象中取出。</p>
 <pre><code>SQLiteDatabase db = dbHelper.getWritebleDatabase();
@@ -413,7 +413,7 @@ if(cursor.moveToFirst()){
     } while (cursor.moveToNext());
 } 
 cursor.close();
-</code></pre><h4 id="4-7使用SQL操作数据库"><a href="#4-7使用SQL操作数据库" class="headerlink" title="4.7使用SQL操作数据库"></a>4.7使用SQL操作数据库</h4><h5 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h5><pre><code>db.execSQL(&quot;insert into Book (name,author,pages,price) values(?,?,?,?)&quot;,
+</code></pre><h4 id="4-7-使用SQL操作数据库"><a href="#4-7-使用SQL操作数据库" class="headerlink" title="4.7 使用SQL操作数据库"></a>4.7 使用SQL操作数据库</h4><h5 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h5><pre><code>db.execSQL(&quot;insert into Book (name,author,pages,price) values(?,?,?,?)&quot;,
             new String[] {&quot;xxxx&quot;,&quot;xxxx&quot;,&quot;xxxx&quot;,&quot;xxxx&quot;});
 </code></pre><h5 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h5><pre><code>db.execSQL(&quot;update Book set price = ? where name = ?&quot;,
             new String[]{&quot;xxxx&quot;,&quot;xxxx&quot;});
@@ -512,8 +512,8 @@ cursor.close();
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>13</span>文章</a>
-        <a class="count tags"><span>34</span>标签</a>
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>50</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -554,10 +554,10 @@ cursor.close();
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
+                        <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
                     </p>
                     <p class="date">
-                        2018-03-13
+                        2018-03-16
                     </p>
                 </div>
             </div>
@@ -572,7 +572,7 @@ cursor.close();
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
                 </p>
             </div>
         </li>
@@ -585,7 +585,7 @@ cursor.close();
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/11/第一行代码笔记-Broadcast/" title="第一行代码笔记-Broadcast">第一行代码笔记-Broadcast</a>
+                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
                 </p>
             </div>
         </li>
@@ -598,7 +598,7 @@ cursor.close();
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/10/第一行代码笔记-Fragment/" title="第一行代码笔记-Fragment">第一行代码笔记-Fragment</a>
+                    <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
                 </p>
             </div>
         </li>
@@ -611,7 +611,7 @@ cursor.close();
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
+                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
                 </p>
             </div>
         </li>
@@ -680,7 +680,7 @@ cursor.close();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -690,7 +690,7 @@ cursor.close();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -720,7 +720,7 @@ cursor.close();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -730,17 +730,17 @@ cursor.close();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -755,12 +755,12 @@ cursor.close();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -805,8 +805,63 @@ cursor.close();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
@@ -825,8 +880,33 @@ cursor.close();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
         </div>
         
         

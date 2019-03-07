@@ -181,7 +181,7 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h2 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1.项目结构"></a>1.项目结构</h2><h4 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h4><p>Android Studio自动生成，无需关心也不要手动编辑。</p>
+        <h2 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1. 项目结构"></a>1. 项目结构</h2><h4 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h4><p>Android Studio自动生成，无需关心也不要手动编辑。</p>
 <h4 id="app"><a href="#app" class="headerlink" title="app"></a>app</h4><p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p>
 <h4 id="build"><a href="#build" class="headerlink" title="build"></a>build</h4><p>在编译时自动生成的文件</p>
 <a id="more"></a>
@@ -193,7 +193,7 @@
 <h4 id="xxx-iml"><a href="#xxx-iml" class="headerlink" title="xxx.iml"></a>xxx.iml</h4><p>iml文件是所有intellij idea项目都会自动生成的一个文件，用于标识这是一个intellij idea项目，不需要修改</p>
 <h4 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h4><p>用于指定本机中的Android SDK路径，通常自动生成，不需要修改。</p>
 <h4 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h4><p>用于指定项目中所引入的模块，通常自动完成</p>
-<h2 id="2-APP目录结构"><a href="#2-APP目录结构" class="headerlink" title="2.APP目录结构"></a>2.APP目录结构</h2><h4 id="build-1"><a href="#build-1" class="headerlink" title="build"></a>build</h4><p>主要包含一些在编译时自动生成的文件，不需要过多关心</p>
+<h2 id="2-APP目录结构"><a href="#2-APP目录结构" class="headerlink" title="2. APP目录结构"></a>2. APP目录结构</h2><h4 id="build-1"><a href="#build-1" class="headerlink" title="build"></a>build</h4><p>主要包含一些在编译时自动生成的文件，不需要过多关心</p>
 <h4 id="libs"><a href="#libs" class="headerlink" title="libs"></a>libs</h4><p>项目中用到了第三方jar包，放到这个目录下都会被自动添加到构建路径里去</p>
 <h4 id="androidTest"><a href="#androidTest" class="headerlink" title="androidTest"></a>androidTest</h4><p>用来编写测试用例，进行自动化测试</p>
 <h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><p>Java代码的地方</p>
@@ -204,7 +204,7 @@
 <h4 id="app-iml"><a href="#app-iml" class="headerlink" title="app.iml"></a>app.iml</h4><p>intellij idea自动生成，无需关心或修改</p>
 <h4 id="build-gradle-1"><a href="#build-gradle-1" class="headerlink" title="build.gradle"></a>build.gradle</h4><p>app模块的gradle构建脚本，会指定很多项目构建相关的配置</p>
 <h4 id="proguard-rules-pro"><a href="#proguard-rules-pro" class="headerlink" title="proguard-rules.pro"></a>proguard-rules.pro</h4><p>指定项目代码的混淆规则</p>
-<h2 id="3-详解build-gradle文件"><a href="#3-详解build-gradle文件" class="headerlink" title="3.详解build.gradle文件"></a>3.详解build.gradle文件</h2><p>Android Studio采用Gradle构建项目，Gradle使用了一种基于Groovy的领域特定语言（DSL）来声明项目设置，摒弃了传统基于XML（如Ant和Maven）的各种繁琐配置。</p>
+<h2 id="3-详解build-gradle文件"><a href="#3-详解build-gradle文件" class="headerlink" title="3. 详解build.gradle文件"></a>3. 详解build.gradle文件</h2><p>Android Studio采用Gradle构建项目，Gradle使用了一种基于Groovy的领域特定语言（DSL）来声明项目设置，摒弃了传统基于XML（如Ant和Maven）的各种繁琐配置。</p>
 <h3 id="外层目录下的build-gradle文件"><a href="#外层目录下的build-gradle文件" class="headerlink" title="外层目录下的build.gradle文件"></a>外层目录下的build.gradle文件</h3><p>1.两处repositories的闭包中都声明了jcenter()这行配置，jcenter是一个代码托管仓库，很多Android开源项目都会选择将代码托管到jcenter上，声明这行配置后，我们就可以在项目中轻松引用任何jcenter上的开源项目了。</p>
 <p>2.dependencies闭包中使用classpath声明一个Gradle插件，这是因为Gradle并不是专门为构建Android项目而开发的，java、C++等很多项目都可以使用Gradle来构建。因此如果我们想要使用它来构建Android项目，则需要声明com.android.tools.build:gradle:2.2.0这个插件。最后的数字是插件的版本号。</p>
 <h3 id="app目录下的build-gradle文件"><a href="#app目录下的build-gradle文件" class="headerlink" title="app目录下的build.gradle文件"></a>app目录下的build.gradle文件</h3><p>1.第一行应用了一个插件，一般有两种值可选：com.android.application表示是一个应用程序模块，com.android.library表示是一个库模块。两者的最大区别在于一个是可以直接运行的，一个只能作为代码库依附于别的应用程序模块来运行。</p>
@@ -305,8 +305,8 @@
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>13</span>文章</a>
-        <a class="count tags"><span>34</span>标签</a>
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>50</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -347,10 +347,10 @@
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
+                        <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
                     </p>
                     <p class="date">
-                        2018-03-13
+                        2018-03-16
                     </p>
                 </div>
             </div>
@@ -365,7 +365,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
                 </p>
             </div>
         </li>
@@ -378,7 +378,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/11/第一行代码笔记-Broadcast/" title="第一行代码笔记-Broadcast">第一行代码笔记-Broadcast</a>
+                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
                 </p>
             </div>
         </li>
@@ -391,7 +391,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/10/第一行代码笔记-Fragment/" title="第一行代码笔记-Fragment">第一行代码笔记-Fragment</a>
+                    <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
                 </p>
             </div>
         </li>
@@ -404,7 +404,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
+                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
                 </p>
             </div>
         </li>
@@ -422,7 +422,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -432,7 +432,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/书单/">#书单</a>
         </div>
         
@@ -463,22 +463,22 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/书/">#书</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -488,7 +488,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -513,7 +513,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -523,7 +523,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -533,7 +533,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -553,12 +553,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -583,7 +583,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
@@ -593,7 +593,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
@@ -604,6 +604,61 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -613,13 +668,38 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
         </div>
         
         

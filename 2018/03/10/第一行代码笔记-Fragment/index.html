@@ -181,7 +181,7 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h4 id="1-动态添加"><a href="#1-动态添加" class="headerlink" title="1.动态添加"></a>1.动态添加</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><pre><code>&lt;fragment 
+        <h4 id="1-动态添加"><a href="#1-动态添加" class="headerlink" title="1. 动态添加"></a>1. 动态添加</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><pre><code>&lt;fragment 
     android:id=&quot;@+id/left_fragment&quot;
     android:name=&quot;com.example.fragmenttest.LeftFragment&quot;
     android:layout_width=&quot;0dp&quot;
@@ -221,27 +221,27 @@ private void replaceFragment(Fragment fragment) {
     transaction.replace(R.id.right_layout,fragment);
     transaction.commit();
 }
-</code></pre><h4 id="2-返回栈"><a href="#2-返回栈" class="headerlink" title="2.返回栈"></a>2.返回栈</h4><pre><code>transaction.addToBackStack(null);
+</code></pre><h4 id="2-返回栈"><a href="#2-返回栈" class="headerlink" title="2. 返回栈"></a>2. 返回栈</h4><pre><code>transaction.addToBackStack(null);
 transaction.commit();
 </code></pre><p>接收一个名字用于描述返回栈的状态，一般传入null即可。</p>
-<h4 id="3-碎片和活动之间的通信"><a href="#3-碎片和活动之间的通信" class="headerlink" title="3.碎片和活动之间的通信"></a>3.碎片和活动之间的通信</h4><h5 id="3-1活动获得碎片实例"><a href="#3-1活动获得碎片实例" class="headerlink" title="3.1活动获得碎片实例"></a>3.1活动获得碎片实例</h5><pre><code>RightFragment rightFragment = (RightFragment)getFragmentManager()
+<h4 id="3-碎片和活动之间的通信"><a href="#3-碎片和活动之间的通信" class="headerlink" title="3. 碎片和活动之间的通信"></a>3. 碎片和活动之间的通信</h4><h5 id="3-1-活动获得碎片实例"><a href="#3-1-活动获得碎片实例" class="headerlink" title="3.1 活动获得碎片实例"></a>3.1 活动获得碎片实例</h5><pre><code>RightFragment rightFragment = (RightFragment)getFragmentManager()
     .findFragmentById(R.id.right_fragment);
-</code></pre><h5 id="3-2碎片获得活动实例"><a href="#3-2碎片获得活动实例" class="headerlink" title="3.2碎片获得活动实例"></a>3.2碎片获得活动实例</h5><pre><code>MainActivity activity = (MainActivity)getActivity();
-</code></pre><h4 id="4-生命周期"><a href="#4-生命周期" class="headerlink" title="4.生命周期"></a>4.生命周期</h4><h5 id="4-1状态和回调"><a href="#4-1状态和回调" class="headerlink" title="4.1状态和回调"></a>4.1状态和回调</h5><ul>
+</code></pre><h5 id="3-2-碎片获得活动实例"><a href="#3-2-碎片获得活动实例" class="headerlink" title="3.2 碎片获得活动实例"></a>3.2 碎片获得活动实例</h5><pre><code>MainActivity activity = (MainActivity)getActivity();
+</code></pre><h4 id="4-生命周期"><a href="#4-生命周期" class="headerlink" title="4. 生命周期"></a>4. 生命周期</h4><h5 id="4-1-状态和回调"><a href="#4-1-状态和回调" class="headerlink" title="4.1 状态和回调"></a>4.1 状态和回调</h5><ul>
 <li>运行状态：当一个碎片是可见的，并且它所关联的活动正处于运行状态时，该碎片也处于运行状态。</li>
 <li>暂停状态：当一个活动进入暂停状态时（由于另一个未占满屏幕的活动被添加到了栈顶），与它相关联的可见碎片就会进入到暂停状态。</li>
 <li>停止状态：当一个活动进入停止状态时，与他相关联的碎片就会进入到停止状态，或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前调用addToBackStack()方法，这时碎片也会进入到停止状态。总的来说，进入停止状态的碎片对用户来说是完全不可见的，有时候会被系统回收。</li>
 <li>销毁状态：碎片总是依附活动而存在，因此当活动被销毁时，当与它相关联的碎片就会进入到销毁状态。或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前没有调用addToBackStack()方法，这时的碎片也会进入到销毁状态。</li>
 </ul>
 <p>附加的回调方法，onAttach()：当碎片和活动建立关联的时候调用。onCreateView()：为碎片创建视图（加载布局）时调用。onActivityCreated()：确保与碎片关联的活动一定已经创建完毕的时候调用。onDestroyView():当与碎片关联的视图被移除的时候调用。onDetach():当碎片和活动解除关联的时候调用。</p>
-<h5 id="4-2体验生命周期"><a href="#4-2体验生命周期" class="headerlink" title="4.2体验生命周期"></a>4.2体验生命周期</h5><ul>
+<h5 id="4-2-体验生命周期"><a href="#4-2-体验生命周期" class="headerlink" title="4.2 体验生命周期"></a>4.2 体验生命周期</h5><ul>
 <li>第一次加载时候，依次执行：onAttatch()、onCreate()、onCreateView()、onActivityCreated()、onStart()、onResume()方法。</li>
 <li>替换后进入停止状态，执行onPause()、onStop()、onDestroyView()。如果addToBackStack没有调用，此时会进入销毁状态，onDestroy()和onDetach()会执行。</li>
 <li>按返回键重新回到运行状态，因此onActivityCreated()、onStart()和onResume()方法会得到执行。onCreate()和onCreateView()方法并不会执行，因为我们借助addToBackStack()方法使得RightFragment和它的视图并没有销毁。</li>
 <li>再次按下返回键退出应用，依次执行onPause()、onStop()、onDestroyView()、onDestroy()、onDetach()，最终活动和碎片一起销毁。</li>
 </ul>
 <p>碎片中可以使用onSaveInstanceState()来保数据，在onCreate()、onCreateView()、onActivityCreated()这三个方法可以重新得到。</p>
-<h4 id="5-Android常见的限定符"><a href="#5-Android常见的限定符" class="headerlink" title="5.Android常见的限定符"></a>5.Android常见的限定符</h4><h5 id="大小："><a href="#大小：" class="headerlink" title="大小："></a>大小：</h5><ul>
+<h4 id="5-Android常见的限定符"><a href="#5-Android常见的限定符" class="headerlink" title="5. Android常见的限定符"></a>5. Android常见的限定符</h4><h5 id="大小："><a href="#大小：" class="headerlink" title="大小："></a>大小：</h5><ul>
 <li>small,提供给小屏幕设备的资源</li>
 <li>normal，提供给中等屏幕设备的资源</li>
 <li>large，提供给大屏幕设备的资源</li>
@@ -352,8 +352,8 @@ transaction.commit();
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>13</span>文章</a>
-        <a class="count tags"><span>34</span>标签</a>
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>50</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -394,10 +394,10 @@ transaction.commit();
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
+                        <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
                     </p>
                     <p class="date">
-                        2018-03-13
+                        2018-03-16
                     </p>
                 </div>
             </div>
@@ -412,7 +412,7 @@ transaction.commit();
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
                 </p>
             </div>
         </li>
@@ -425,7 +425,7 @@ transaction.commit();
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/11/第一行代码笔记-Broadcast/" title="第一行代码笔记-Broadcast">第一行代码笔记-Broadcast</a>
+                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
                 </p>
             </div>
         </li>
@@ -438,7 +438,7 @@ transaction.commit();
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/10/第一行代码笔记-Fragment/" title="第一行代码笔记-Fragment">第一行代码笔记-Fragment</a>
+                    <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
                 </p>
             </div>
         </li>
@@ -451,7 +451,7 @@ transaction.commit();
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
+                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
                 </p>
             </div>
         </li>
@@ -469,7 +469,7 @@ transaction.commit();
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -484,7 +484,7 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
@@ -505,7 +505,7 @@ transaction.commit();
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
@@ -520,7 +520,7 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -530,7 +530,7 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -540,12 +540,12 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -555,12 +555,12 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -580,12 +580,12 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -615,7 +615,7 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
@@ -625,7 +625,7 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -635,12 +635,12 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
@@ -651,6 +651,61 @@ transaction.commit();
         
         
         <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -660,13 +715,38 @@ transaction.commit();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
         </div>
         
         

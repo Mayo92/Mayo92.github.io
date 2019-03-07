@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>第一行代码笔记-Service | 赞美の心</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">MayoのBlog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">MayoのBlog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">第一行代码笔记-Service</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-03-16
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/线程/">#线程</a>
+    
+    <a href="/tags/Handler/">#Handler</a>
+    
+    <a href="/tags/AsyncTask/">#AsyncTask</a>
+    
+    <a href="/tags/Service/">#Service</a>
+    
+    <a href="/tags/前台服务/">#前台服务</a>
+    
+    <a href="/tags/IntentService/">#IntentService</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="1-是什么"><a href="#1-是什么" class="headerlink" title="1. 是什么"></a>1. 是什么</h3><p>是Android实现程序后台运行的解决方案，适合执行那些不需要和用户交互且还要长期运行的项目。不依赖任何用户界面，即使切换到后台或打开另一个程序，服务仍然能够正常运行。当应用程序进程被杀掉时，所有依赖于该进程的服务也会停止运行。默认运行在主线程中。</p>
+<h3 id="2-Android多线程编程"><a href="#2-Android多线程编程" class="headerlink" title="2. Android多线程编程"></a>2. Android多线程编程</h3><h4 id="2-1-线程的基本用法"><a href="#2-1-线程的基本用法" class="headerlink" title="2.1 线程的基本用法"></a>2.1 线程的基本用法</h4><h5 id="2-1-1-继承的方式耦合度有点高"><a href="#2-1-1-继承的方式耦合度有点高" class="headerlink" title="2.1.1 继承的方式耦合度有点高"></a>2.1.1 继承的方式耦合度有点高</h5><pre><code>class MyThread extends Thread {
+
+    @Override
+    public void run() {
+
+    }
+}
+
+new MyThread().start();
+</code></pre><h5 id="2-1-2-Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象"><a href="#2-1-2-Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象" class="headerlink" title="2.1.2 Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象"></a>2.1.2 Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象</h5><pre><code>class MyThread implements Runnable {
+
+    @Override
+    public void run() {
+
+    }
+}
+
+MyThread myThread = new MyThread();
+new Thread(myThread).start();
+</code></pre><h5 id="2-1-3-匿名类"><a href="#2-1-3-匿名类" class="headerlink" title="2.1.3 匿名类"></a>2.1.3 匿名类</h5><pre><code>new Thread(new Runnable(){
+
+    @Override
+    public void run() {
+
+    }
+}).start();
+</code></pre><h4 id="2-2-在子线程中更新UI"><a href="#2-2-在子线程中更新UI" class="headerlink" title="2.2 在子线程中更新UI"></a>2.2 在子线程中更新UI</h4><pre><code>public static final int UPDATE_TEXT = 1;
+
+private Handler handler = new Handler() {
+
+    public void handleMessage(Message msg){
+        switch(msg.what) {
+            case UPDATE_TEXT:
+                //更新UI
+                break;
+            default:
+                break;
+        }
+    }
+};
+
+Message message = new Message();
+message.what = UPDATE_TEXT;
+handler.sendMessage(message);
+</code></pre><h4 id="2-3-解析异步消息处理机制"><a href="#2-3-解析异步消息处理机制" class="headerlink" title="2.3 解析异步消息处理机制"></a>2.3 解析异步消息处理机制</h4><p>Message是在线程之间传递的消息，可以在内部携带少量的信息，用于不同线程之间交换数据。除了使用what，还可以使用arg1和arg2字段来携带一些整数据，使用obj字段携带一个Object对象。</p>
+<p>handler主要用于发送消息和处理消息。使用sendMessage()后，最终传递到handleMessage()方法中。</p>
+<p>MessageQueue消息队列，主要用于存放所有通过Handler发送的消息，这部分消息会一直存在于消息队列中，等待被处理。每个线程中只会有一个MessageQueue对象。</p>
+<p>Looper是每个线程中MessageQueue的管家，调用Looper的loop()方法后，就会进入一个无限循环中，每当发现一个MessageQueue中存在一条消息就会将它取出，并传递到Handler的handleMessage()方法中。每个线程只有一个Looper对象。</p>
+<p><img src="/Users/yaoluyang/Desktop/书的截图/屏幕快照 2018-06-01 16.04.33.png" alt="Alt Image Text" title="Optional Title"></p>
+<p>runOnUiThread()方法其实是一个异步消息处理机制的接口封装，背后原理一致。</p>
+<h4 id="2-4-使用AsyncTask"><a href="#2-4-使用AsyncTask" class="headerlink" title="2.4 使用AsyncTask"></a>2.4 使用AsyncTask</h4><p>AsyncTask是一个抽象类，如果我们想使用它就必须创建一个类继承它，需指定3个泛型参数</p>
+<ul>
+<li>Params，执行AsyncTask时需要传入的参数，可用于在后台任务中使用</li>
+<li>Progress，后台任务执行时，如果需要在界面上显示当前的进度，则使用这里指定的泛型作为进度单位</li>
+<li><p>Result，当任务执行完毕之后，需要对结果进行返回，则使用这里指定的泛型作为返回值类型</p>
+<p>  class DownloadTask extends AsyncTask<void,integer,boolean> {<br>  }</void,integer,boolean></p>
+</li>
+</ul>
+<p>第一个指定为Void表示执行AsyncTask的时候不需要传入参数给后台任务。第二个指定为Integer，表示使用整形数据作为进度显示单位。第三个指定为Boolean，表示使用布尔类型数据来反馈执行结果。</p>
+<h5 id="需重写4个方法"><a href="#需重写4个方法" class="headerlink" title="需重写4个方法"></a>需重写4个方法</h5><h5 id="onPreExecute"><a href="#onPreExecute" class="headerlink" title="onPreExecute():"></a>onPreExecute():</h5><p>在后台任务开始执行之前调用，用于进行一些界面上的初始化操作，如显示进度条对话框等</p>
+<h5 id="doInBackground-Params…"><a href="#doInBackground-Params…" class="headerlink" title="doInBackground(Params…):"></a>doInBackground(Params…):</h5><p>所有代码都在子线程中运行，在这里处理所有耗时任务。任务一旦完成通过return语句将任务的执行结果返回。如果AsyncTask的第三个泛型参数为Void，则可以不返回任务执行的结果。这个方法不可以进行UI操作，如果需要更新UI如反馈当前任务的执行进度，可以调用publishProgress(Progress…)方法来完成。</p>
+<h5 id="onProgressUpdate-Progress…"><a href="#onProgressUpdate-Progress…" class="headerlink" title="onProgressUpdate(Progress…):"></a>onProgressUpdate(Progress…):</h5><p>当调用了publishProgress(Progress…)后，这个方法会很快被调用，该方法携带的参数就是在后台任务中传递过来的。在这个方法中可以对UI进行操作，利用参数的数值可以对界面元素进行相应的更新。</p>
+<h5 id="onPostExecute-Result"><a href="#onPostExecute-Result" class="headerlink" title="onPostExecute(Result):"></a>onPostExecute(Result):</h5><p>当后台任务执行完毕并通过return语句返回时，这个方法很快会被调用。返回的数据会作为参数传递到此方法中，可以利用返回的数据进行一些UI操作，如提醒任务执行结果，以及关闭进度条等。</p>
+<pre><code>class DownloadTask extends AsyncTask&lt;Void,Integer,Boolean&gt; {
+
+    @Override
+    protected void onPreExecute() {
+        progressDialog.show();
+    }
+
+    @Override
+    protected Boolean doInBackground(Void... params) {
+        try {
+            while(true) {
+                int downloadPercent = doDownload();
+                publishProgress(downloadPercent);
+                if(downloadPercent &gt;= 100) {
+                    break;
+                }
+            }
+        } catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        //更新下载进度
+        progressDialog.setMessage(&quot;Download&quot; + values[0] + &quot;%&quot;);
+    }
+
+    @Override
+    protected void onPostExecute(Boolean result) {
+        progressDialog.dismiss();
+        //下载结果
+        if(result){
+        }else {
+        }
+    }
+}
+
+new DownloadTask().execute();
+</code></pre><h3 id="3-服务的基本用法"><a href="#3-服务的基本用法" class="headerlink" title="3. 服务的基本用法"></a>3. 服务的基本用法</h3><h4 id="3-1-定义一个服务"><a href="#3-1-定义一个服务" class="headerlink" title="3.1 定义一个服务"></a>3.1 定义一个服务</h4><p>manifest中Exported表示是否允许除了当前应用之外的其他应用访问这个服务，Enabled表示是否启动这个服务。onBind()是唯一的抽象方法必须实现。</p>
+<pre><code>public class MyService extends Service {
+
+    public MyService(){
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        throw new UnsupportedOperationException(&quot;Not yet implemented&quot;);
+    } 
+
+    @Override
+    public void onCreate() {
+        super. onCreate();
+    }
+
+    @Override
+    public void onStartCommand(Intent intent,int flags,int startId) {
+        return super. onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super. onDestroy();
+    }
+}
+</code></pre><p>onCreate服务创建的时候调用，onStartCommand每次服务启动的时候调用，多次启动服务只有onStartCommand会执行。onDestroy服务销毁的时候调用。</p>
+<h4 id="3-2-启动和停止服务"><a href="#3-2-启动和停止服务" class="headerlink" title="3.2 启动和停止服务"></a>3.2 启动和停止服务</h4><pre><code>Intent startIntent = new Intent(this, MyService.class);
+startService(startIntent);
+
+Intent stopIntent = new Intent(this,MyService.class);
+stopService(stopIntent);
+</code></pre><p>这是通过Activity来决定服务何时停止的，如果没有执行停止服务会一直处于运行状态。也可以在MyService的任一位置调用stopSelf()停止这个服务。</p>
+<h4 id="3-3-活动和服务进行通信-onBind"><a href="#3-3-活动和服务进行通信-onBind" class="headerlink" title="3.3 活动和服务进行通信 onBind()"></a>3.3 活动和服务进行通信 onBind()</h4><h5 id="下载示例"><a href="#下载示例" class="headerlink" title="下载示例"></a>下载示例</h5><pre><code>public class MyService extends Service {
+
+    private DownloadBinder mBinder = new DownloadBinder();
+
+    class DownloadBinder extends Binder {
+
+        public void startDownload() {
+        }
+
+        public int getProgress() {
+            return 0;
+        }
+    }
+
+    public MyService(){
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mBinder;
+    } 
+
+    @Override
+    public void onCreate() {
+        super. onCreate();
+    }
+
+    @Override
+    public void onStartCommand(Intent intent,int flags,int startId) {
+        return super. onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super. onDestroy();
+    }
+}
+</code></pre><h5 id="Activity代码"><a href="#Activity代码" class="headerlink" title="Activity代码"></a>Activity代码</h5><pre><code>private MyService.DownloadBinder downloadBinder;
+
+//绑定服务
+Intent bindIntent = new Intent(this,MyService.class);
+bindService(bindIntent,connection,BIND_AUTO_CREATE);
+
+//解绑服务
+unbindService(connection);
+
+private ServiceConnection connection = new ServiceConnection() {
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name,IBinder service{
+        downloadBinder = (MyService.DownloadBinder)service;
+        downloadBinder.startDownload();
+        downloadBinder.getProgress();
+    }
+}；
+</code></pre><p>BIND_AUTO_CREATE表示活动和服务进行绑定后自动创建服务，这会使得onCreate()方法执行，而onStartCommand()方法不执行。任何一个服务在整个应用程序范围内是通用的，即一个服务可以与多个Activity绑定，得到相同的DownloadBinder实例。</p>
+<h3 id="4-服务的生命周期"><a href="#4-服务的生命周期" class="headerlink" title="4. 服务的生命周期"></a>4. 服务的生命周期</h3><h5 id="startService-方法"><a href="#startService-方法" class="headerlink" title="startService()方法:"></a>startService()方法:</h5><p>回调onStartCommand()方法，如果没有创建过，onCreate()方法会先于onStartCommand()方法执行。之后一直运行，知道调用stopService()或者stopSelf()。不管调用多少次startService()，停止只需一次，调用onDestroy()方法。</p>
+<h5 id="bindService-方法"><a href="#bindService-方法" class="headerlink" title="bindService()方法:"></a>bindService()方法:</h5><p>回调onBind()方法，如果服务没有创建过，先执行onCreate()方法。调用方和服务之间的连接没有断开，服务就会一直执行。调用unbindeService()方法回调onDestroy()方法。</p>
+<h5 id="即调用了startService-方法，又调用了bindService-方法"><a href="#即调用了startService-方法，又调用了bindService-方法" class="headerlink" title="即调用了startService()方法，又调用了bindService()方法:"></a>即调用了startService()方法，又调用了bindService()方法:</h5><p>销毁时需要调用stopService()和unbindeService()，onDestroy()才会执行。</p>
+<h3 id="5-服务的更多技巧"><a href="#5-服务的更多技巧" class="headerlink" title="5. 服务的更多技巧"></a>5. 服务的更多技巧</h3><h4 id="5-1-使用前台服务"><a href="#5-1-使用前台服务" class="headerlink" title="5.1 使用前台服务"></a>5.1 使用前台服务</h4><p>当系统内存不足的时候，就可能会回收掉正在后台运行的服务，这时可以考虑前台服务。</p>
+<pre><code>public class MyService extends Service {
+
+    @Override
+    public void onCreate() {
+        super. onCreate();
+        Intent intent = new Intent(this,MainActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this,0,intent,0);
+        Notification notification = new NotificationCompat.Builder(this)
+            .setContentTitle(&quot;xxx&quot;)
+            .setContentText(&quot;xxx&quot;)
+            .setWhen(System.currentTimeMillis())
+            .setSmallIcon(R.mipmap.xxx)
+            .setLargeIcon(BitmapFactory.decodeResource(getResource(),
+                R.mipmap.xxx))
+            .setContentIntent(pi)
+            .builder();
+        startForeground(1, notification);
+    }
+    ...
+}
+</code></pre><p>构建出Notification对象后并没有使用NotificationManager来将通知显示出来，而是调用了startForeground()方法，接收两个参数，第一个是id，第二个是Notification对象。</p>
+<h4 id="5-2-使用IntentService"><a href="#5-2-使用IntentService" class="headerlink" title="5.2 使用IntentService"></a>5.2 使用IntentService</h4><p>一个异步的、会自动停止的服务。</p>
+<pre><code>public class MyIntentService extends IntentService {
+
+    public MyIntentService(){
+        //调用父类的有参构造函数
+        super(&quot;MyIntentService&quot;);
+    }
+
+    @Override
+    public void onHandleIntent(Intent intent) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super. onDestroy();
+    }
+}
+</code></pre><p>首先提供一个无参的构造函数，且必须在内部调用父类的有参构造函数。在子类实现onHandleIntent()这个抽象方法，这个方法中处理一些具体的逻辑且不用担心ANR问题。服务结束后自动停止。</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2018/03/15/第一行代码笔记-网络/">
+                第一行代码笔记-网络
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>50</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            
+            <div class="preview">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
+                <div class="info">
+                    <p class="title">
+                        <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
+                    </p>
+                    <p class="date">
+                        2018-03-16
+                    </p>
+                </div>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/环境配置/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/书单/">#书单</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/运行时权限/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

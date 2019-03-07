@@ -183,9 +183,9 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。</p>
+        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。</p>
 <a id="more"></a>
-<h3 id="2-运行时权限"><a href="#2-运行时权限" class="headerlink" title="2.运行时权限"></a>2.运行时权限</h3><h4 id="2-1机制详解"><a href="#2-1机制详解" class="headerlink" title="2.1机制详解"></a>2.1机制详解</h4><p>Android将所有的权限分为两类，一类是普通权限，一类是危险权限。危险权限表示那些可能会触及用户隐私或对设备安全性造成影响的权限，这部分需要由用户手动点击授权才可以，否则程序无法使用相应的功能，具体如下：</p>
+<h3 id="2-运行时权限"><a href="#2-运行时权限" class="headerlink" title="2. 运行时权限"></a>2. 运行时权限</h3><h4 id="2-1-机制详解"><a href="#2-1-机制详解" class="headerlink" title="2.1 机制详解"></a>2.1 机制详解</h4><p>Android将所有的权限分为两类，一类是普通权限，一类是危险权限。危险权限表示那些可能会触及用户隐私或对设备安全性造成影响的权限，这部分需要由用户手动点击授权才可以，否则程序无法使用相应的功能，具体如下：</p>
 <p><img src="/Users/yaoluyang/Desktop/书的截图/屏幕快照 2018-05-25 14.52.12.png" alt="Alt Image Text" title="Optional Title"></p>
 <p>表格中每个危险权限都属于一个权限组，我们在进行运行时权限处理时使用的是权限名，但用户一旦同意授权了，那么该权限所对应的权限组中所有的其他权限也会同时被授权。</p>
 <pre><code>if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
@@ -225,8 +225,8 @@ public void onRequestPermissionsResult(int requestCode,String[] permissions,int[
 </code></pre><p>第一步先判断用户是不是已经给过我们授权了，借助ContextCompat.checkSelfPermission()方法，接收两个参数，第一个Context，第二个具体的权限名。然后使用方法的返回值和PackageManager.PERMISSION_GRANTED做比较，相等说明用户已经授权，不等表示用户没有授权。</p>
 <p>没有授权的话，需调用ActivityCompat.requestPermissions方法向用户申请授权，接收三个参数，第一个是Activity实例，第二个是String数组，第三个是请求码，只要是唯一的值就可以了。</p>
 <p>最终回调到onRequestPermissionsResult()方法中，授权的结果会封装在grantResults参数中，在这里判断授权结果做响应的逻辑</p>
-<h3 id="3-访问其他程序中的数据"><a href="#3-访问其他程序中的数据" class="headerlink" title="3.访问其他程序中的数据"></a>3.访问其他程序中的数据</h3><p>内容提供器的用法一般有两种，一种是使用现有的内容提供器来读取和操作相应程序中的数据。另一种是创建自己的内容提供器给我们程序的数据提供外部访问接口。</p>
-<h4 id="3-1ContentResolver的基本用法"><a href="#3-1ContentResolver的基本用法" class="headerlink" title="3.1ContentResolver的基本用法"></a>3.1ContentResolver的基本用法</h4><p>Context的getContentResolver()获取到该类的实例。提供了一系列的方法用于对数据进行CRUD操作，其中insert()方法用于添加数据，update()方法用于更新数据，delete()方法用于删除数据，query()方法用于查询数据。</p>
+<h3 id="3-访问其他程序中的数据"><a href="#3-访问其他程序中的数据" class="headerlink" title="3. 访问其他程序中的数据"></a>3. 访问其他程序中的数据</h3><p>内容提供器的用法一般有两种，一种是使用现有的内容提供器来读取和操作相应程序中的数据。另一种是创建自己的内容提供器给我们程序的数据提供外部访问接口。</p>
+<h4 id="3-1-ContentResolver的基本用法"><a href="#3-1-ContentResolver的基本用法" class="headerlink" title="3.1 ContentResolver的基本用法"></a>3.1 ContentResolver的基本用法</h4><p>Context的getContentResolver()获取到该类的实例。提供了一系列的方法用于对数据进行CRUD操作，其中insert()方法用于添加数据，update()方法用于更新数据，delete()方法用于删除数据，query()方法用于查询数据。</p>
 <p>接收Uri参数，称为内容URI。内容URI给内容提供器中的数据建立了唯一的标识符，主要由两部分组成，authority和path。authority是用于对不同的应用程序做区分，一般采用包名的方式来进行命名。如com.example.app则为com.example.app.provider。path则是用于对同一应用程序中不同的表做区分，通常添加到authority后面。如有两张表，则为com.example.app.provider/table1和com.example.app.provider/table2。之后还需在字符串的头部加上协议声明。</p>
 <pre><code>content://com.example.app.provider/table1
 content://com.example.app.provider/table2
@@ -254,7 +254,7 @@ getContentResolver().insert(uri,values);
 values.put(&quot;column1&quot;,&quot;&quot;);
 getContentResolver().update(uri,values,&quot;column1 = ? and column2 = ?&quot;,new String[] {&quot;text&quot;,&quot;1&quot;});
 </code></pre><h5 id="使用ContentResolver的delete-方法删除这条数据"><a href="#使用ContentResolver的delete-方法删除这条数据" class="headerlink" title="使用ContentResolver的delete()方法删除这条数据"></a>使用ContentResolver的delete()方法删除这条数据</h5><pre><code>getContentResolver().delete(uri,&quot;column2 = ?&quot;,new String[]{&quot;1&quot;});
-</code></pre><h4 id="3-2读取系统联系人"><a href="#3-2读取系统联系人" class="headerlink" title="3.2读取系统联系人"></a>3.2读取系统联系人</h4><pre><code>Cursor cursor = null;
+</code></pre><h4 id="3-2-读取系统联系人"><a href="#3-2-读取系统联系人" class="headerlink" title="3.2 读取系统联系人"></a>3.2 读取系统联系人</h4><pre><code>Cursor cursor = null;
 try{
     //查询联系人数据
     cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null);
@@ -275,7 +275,7 @@ try{
         cursor.close();
     }
 }
-</code></pre><h3 id="4-创建自己的内容提供器"><a href="#4-创建自己的内容提供器" class="headerlink" title="4.创建自己的内容提供器"></a>4.创建自己的内容提供器</h3><h4 id="4-1创建内容提供器的步骤"><a href="#4-1创建内容提供器的步骤" class="headerlink" title="4.1创建内容提供器的步骤"></a>4.1创建内容提供器的步骤</h4><h5 id="新建一个类继承ContentProvider，实现6个抽象方法"><a href="#新建一个类继承ContentProvider，实现6个抽象方法" class="headerlink" title="新建一个类继承ContentProvider，实现6个抽象方法"></a>新建一个类继承ContentProvider，实现6个抽象方法</h5><pre><code>public class MyProvider extends ContentProvider {
+</code></pre><h3 id="4-创建自己的内容提供器"><a href="#4-创建自己的内容提供器" class="headerlink" title="4. 创建自己的内容提供器"></a>4. 创建自己的内容提供器</h3><h4 id="4-1-创建内容提供器的步骤"><a href="#4-1-创建内容提供器的步骤" class="headerlink" title="4.1 创建内容提供器的步骤"></a>4.1 创建内容提供器的步骤</h4><h5 id="新建一个类继承ContentProvider，实现6个抽象方法"><a href="#新建一个类继承ContentProvider，实现6个抽象方法" class="headerlink" title="新建一个类继承ContentProvider，实现6个抽象方法"></a>新建一个类继承ContentProvider，实现6个抽象方法</h5><pre><code>public class MyProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
@@ -395,7 +395,7 @@ public String getType(Uri uri) {
     return null;
 }
 </code></pre><p>所有CRUD操作都一定要匹配到相应的内容URI格式才能进行的，而我们不可能向UriMatcher中添加隐私数据的URI，所以这部分数据根本无法被外部程序访问到，安全问题也就不存在了。</p>
-<h4 id="4-2实现跨程序数据共享"><a href="#4-2实现跨程序数据共享" class="headerlink" title="4.2实现跨程序数据共享"></a>4.2实现跨程序数据共享</h4><pre><code>public class DatabaseProvider extends ContentProvider {
+<h4 id="4-2-实现跨程序数据共享"><a href="#4-2-实现跨程序数据共享" class="headerlink" title="4.2 实现跨程序数据共享"></a>4.2 实现跨程序数据共享</h4><pre><code>public class DatabaseProvider extends ContentProvider {
 
     public static final int BOOK_DIR = 0;
 
@@ -597,6 +597,13 @@ getContentResolver().delete(uri,null,null);
 <div class="cube-article-nav">
     <ul>
         
+        <li class="prev">
+            <a href="/2018/03/14/第一行代码笔记-多媒体/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                第一行代码笔记-多媒体
+            </a>
+        </li>
+        
         
         <li class="next">
             <a href="/2018/03/12/第一行代码笔记-数据存储/">
@@ -676,8 +683,8 @@ getContentResolver().delete(uri,null,null);
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>13</span>文章</a>
-        <a class="count tags"><span>34</span>标签</a>
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>50</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -718,10 +725,10 @@ getContentResolver().delete(uri,null,null);
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
+                        <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
                     </p>
                     <p class="date">
-                        2018-03-13
+                        2018-03-16
                     </p>
                 </div>
             </div>
@@ -736,7 +743,7 @@ getContentResolver().delete(uri,null,null);
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
                 </p>
             </div>
         </li>
@@ -749,7 +756,7 @@ getContentResolver().delete(uri,null,null);
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/11/第一行代码笔记-Broadcast/" title="第一行代码笔记-Broadcast">第一行代码笔记-Broadcast</a>
+                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
                 </p>
             </div>
         </li>
@@ -762,7 +769,7 @@ getContentResolver().delete(uri,null,null);
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/10/第一行代码笔记-Fragment/" title="第一行代码笔记-Fragment">第一行代码笔记-Fragment</a>
+                    <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
                 </p>
             </div>
         </li>
@@ -775,7 +782,7 @@ getContentResolver().delete(uri,null,null);
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/09/第一行代码笔记-RecyclerView/" title="第一行代码笔记-RecyclerView">第一行代码笔记-RecyclerView</a>
+                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
                 </p>
             </div>
         </li>
@@ -808,12 +815,12 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -844,7 +851,7 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -854,7 +861,7 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -864,12 +871,12 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -879,7 +886,7 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -889,7 +896,7 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -909,22 +916,22 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -975,6 +982,61 @@ getContentResolver().delete(uri,null,null);
         
         
         <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -991,6 +1053,31 @@ getContentResolver().delete(uri,null,null);
         
         <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
         </div>
         
         

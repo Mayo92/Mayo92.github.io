@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>第一行代码笔记-多媒体 | 赞美の心</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">MayoのBlog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">MayoのBlog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">第一行代码笔记-多媒体</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-03-14
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Notification/">#Notification</a>
+    
+    <a href="/tags/PendingIntent/">#PendingIntent</a>
+    
+    <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+    
+    <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+    
+    <a href="/tags/VideoView/">#VideoView</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="1-使用通知"><a href="#1-使用通知" class="headerlink" title="1. 使用通知"></a>1. 使用通知</h3><h4 id="1-1-基本用法"><a href="#1-1-基本用法" class="headerlink" title="1.1 基本用法"></a>1.1 基本用法</h4><p>可以在Activity，Service，广播接收器里创建，后两种比较常见。</p>
+<p>首先需要NotificationManager来对通知进行管理，使用Context的getSystemService()获取。</p>
+<pre><code>NotificationManager manager = (NotificationManager)
+getSystemService(Context.NOTIFICATION_SERVICE);
+</code></pre><a id="more"></a>
+<p>接下来使用Builder构造器来创建Notification对象，使用support-v4库中提供的一个NotificationCompat类。</p>
+<pre><code>Notification notification = new NotificationCompat.Builder(context).build();
+</code></pre><h5 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h5><pre><code>Notification notification = new NotificationCompat.Builder(context)
+    .setContentTitle(&quot;title&quot;)
+    .setContentText(&quot;text&quot;)
+    .setWhen(System.currentTimeMillis())
+    .setSmallIcon(R.drable.small_icon)
+    setLargeIcon(BitmapFactory.decodeResource(getResource(),
+        R.drable.large_icon))
+    .build();
+</code></pre><p>setWhen()指定通知被创建的时间，以毫秒为单位。setSmallIcon()用于设置通知的小图标，只能使用纯alpha图层的图片进行设置。</p>
+<p>调用NotificationManager的notify()方法就可以让通知显示出来。接收两个参数，第一个是id，要保证为每个通知所指定的id都是不同的。第二个参数是Notification对象。</p>
+<pre><code>manager.notify(1, notification);
+</code></pre><h4 id="1-2-PendingIntent"><a href="#1-2-PendingIntent" class="headerlink" title="1.2 PendingIntent"></a>1.2 PendingIntent</h4><p>可以用于启动活动、启动服务、发送广播等。Intent更加倾向于立即执行某个动作，而PendingIntent更加倾向于在某个合适的时机去执行某个动作。可以把PendingIntent简单的理解为延迟执行的Intent。</p>
+<p>提供getActivity()、getBroadcast()、getService()方法用于获取PendingIntent实例。第一个参数是Context，第二个一般用不到传入0即可，第三个是一个Intent对象，第四个用于确定PendingIntent的行为，有FLAG_ONE_SHOT、FLAG_NO_CREATE、FLAG_CANCEL_CURRENT、FLAG_UPDATE_CURRENT四种可选，通常传入0即可。</p>
+<p>NotificationCompat.Builder还可以再连缀一个setContentIntent()方法，当用户点击这条通知的时候就会执行相应的逻辑。</p>
+<h4 id="1-3-取消通知"><a href="#1-3-取消通知" class="headerlink" title="1.3 取消通知"></a>1.3 取消通知</h4><p>NotificationCompat.Builder再连缀一个setAutoCancel()方法，传入true时表示点击这个通知会自动取消掉。</p>
+<pre><code>.setAutoCancel(true);
+</code></pre><p>调用NotificationManager的cancel()方法，传入id</p>
+<pre><code>manager.cancel(1);
+</code></pre><h4 id="1-4-通知进阶"><a href="#1-4-通知进阶" class="headerlink" title="1.4 通知进阶"></a>1.4 通知进阶</h4><p>NotificationCompat.Builder的setSound()方法，可以在通知发出的时候播放一段音频，接收一个Uri参数</p>
+<pre><code>.setSound(Uri.fromFile(new File(&quot;/system/media/audio/ringtones/Luna.ogg&quot;)))
+</code></pre><p>vibrate使手机振动，接收长整型的数组，用于设置手机静止和振动的时长，以毫秒为单位，下标0表示手机静止的时长，下标1表示手机振动的时长，下标2表示手机静止的时长，以此类推。</p>
+<pre><code>.setVibrate(new long[] {0,1000,1000,1000})
+</code></pre><p>setLights()设置闪光灯，接收三个参数，第一个用于指定LED颜色，第二个亮起时长，毫秒单位，第三个LED暗去时长，毫秒单位。</p>
+<pre><code>.setLights(Color.GREEN,1000,1000)
+</code></pre><p>如果不想设置如上方法，可以使用默认效果</p>
+<pre><code>.setDefaults(NotificationCompat.DEFAULT_ALL)
+</code></pre><h4 id="1-5-高级功能"><a href="#1-5-高级功能" class="headerlink" title="1.5 高级功能"></a>1.5 高级功能</h4><p>setStyle()方法接受一个NotificationCompat.Style参数，这个参数用来构建具体的富文本信息的，如长文字、图片等。</p>
+<pre><code>.setStyle(new NotificationCompat.BigTextStyle().bigText(&quot;xxxxxx&quot;))
+
+.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(
+BitmapFactory.decodeResource(getResource(),R.drawable.big_image)))
+</code></pre><p>setPriority()方法，用于设置通知的重要程度。接受一个整形参数用于设置这条数据的重要程度，一共五个值可选，PRIORITY_DEFAULT默认的重要程度与不设置一样；PRIORITY_MIN表示最低的重要程度，系统可能只会在特定的场景才会显示这条通知，比如用户下拉状态栏的时候；PRIORITY_LOW较低的重要程度，系统可能会将这类通知缩小，或改变其显示的顺序，将其排在更重要的通知之后；PRIORITY_HIGH较高的重要程度，系统可能会将这类通知放大，或改变其显示的顺序，将其排在比较靠前的位置；PRIORITY_MAX最高的重要程度，这类通知必须要让用户立即看到，甚至需要用户做出响应操作。</p>
+<pre><code>. setPriority(NotificationCompat. PRIORITY_MAX)
+</code></pre><h3 id="2-调用摄像头和相册"><a href="#2-调用摄像头和相册" class="headerlink" title="2. 调用摄像头和相册"></a>2. 调用摄像头和相册</h3><h4 id="2-1-调用摄像头拍照"><a href="#2-1-调用摄像头拍照" class="headerlink" title="2.1 调用摄像头拍照"></a>2.1 调用摄像头拍照</h4><pre><code>public static final int TAKE_PHOTO = 1;
+
+//创建File对象，用于存储拍照后的照片
+File outputImage = new File(getExternalCacheDir(),
+    &quot;output_image.jpg&quot;);
+try{
+    if(outputImage.exists()){
+        outputImage.delete();
+    }
+    outputImage.createNewFile();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+if(Build.VERSION.SDK_INT &gt;= 24) {
+    imageUri = FileProvider.getUriForFile(MainActivity.this,
+        &quot;com.example.cameraalbumtest.fileprovider&quot;,outputImage);
+} else {
+    imageUri = Uri.fromFile(outputImage);
+}
+
+//启动相机程序
+Intent intent = new Intent(&quot;android.media.action.IMAGE_CAPTURE&quot;);
+intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
+startActivityForResult(intent,TAKE_PHOTO);
+
+@Override
+protected void onActivityResult(int requestCode,int resultCode,Intent data) {
+    switch (requestCode){
+        case TAKE_PHOTO:
+            if(resultCode == RESULT_OK){
+                try{
+                    //将拍摄的照片显示出来
+                    Bitmap bitmap = BitmapFactory.decodeStream(
+                        getContentResolver().openInputStream(imageUri));
+                    picture.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            break;
+        default:
+            break;
+    }
+}
+</code></pre><p>首先创建一个File对象，用于存放摄像头拍下的图片，命名为output_image.jpg，并存放在手机SD卡的应用关联缓存目录下，为SD卡中专门用于存放当前应用缓存数据的位置，调用getExternalCacheDir()可以得到这个目录，具体为/sdcard/Android/data/<package name="">/cache。为什么使用这个目录，因为6.0开始读写SD卡被列为了危险权限，使用应用缓存可以跳过申请权限。</package></p>
+<p>接下来，如果低于7.0调用Uri的fromFile()将File对象转换成Uri对象，这个Uri对象标志着output_image.jpg的本地真实路径。否则调用FileProvider的getUriForFile()方法，将File对象转换成一个封装过的Uri对象。接收三个参数，第一个Context，第二个可以是任意唯一的字符串，第三个File对象。因为7.0开始，直接使用本地真实路径的Uri被认为是不安全的，会抛出FileUriExposedException，而FileProvider则是一种特殊的内容提供器，使用和内容提供器类似的机制对数据进行保护，可以选择性地将封装过的Uri共享给外部，从而提高了应用的安全性。</p>
+<p>接下来构建一个Intent对象，action指定为android.media.action.IMAGE_CAPTURE，调用putExtra()指定图片的输出地址，填写刚刚得到的Uri对象。</p>
+<p>如果拍照成功，调用BitmapFactory的decodeStream()方法将图片解析成Bitmap对象，然后设置到ImageView中显示出来。</p>
+<pre><code>&lt;provider
+    android:name=&quot;android.support.v4.content.FileProvider&quot;
+    android:authorities=&quot;com.example.cameraalbumtest.fileprovider&quot;
+    android:expord=&quot;false&quot;
+    android:grantUriPermission=&quot;true&quot;&gt;
+    &lt;meta-data
+        android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
+        android:resource=&quot;@xml/file_paths&quot;/&gt;
+&lt;/provider&gt;
+</code></pre><p>android:name属性是固定的，android:authorities属性必须和刚刚 FileProvider.getUriForFile()第二个参数一致。meta-data指定Uri的共享路径，引用一个@xml/file_paths资源。</p>
+<h5 id="右击res创建xml目录，右击xml创建file-paths-xml文件如下："><a href="#右击res创建xml目录，右击xml创建file-paths-xml文件如下：" class="headerlink" title="右击res创建xml目录，右击xml创建file_paths.xml文件如下："></a>右击res创建xml目录，右击xml创建file_paths.xml文件如下：</h5><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;paths xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;external-path name=&quot;my_images&quot; path=&quot;&quot; /&gt;
+&lt;/paths&gt;
+</code></pre><p>xternal-path指定Uri共享的，name属性随便填，path属性表示共享的具体路径，空值表示将整个SD卡进行共享，当然也可以仅共享存放图片的路径。</p>
+<h4 id="2-2-从相册中选择照片"><a href="#2-2-从相册中选择照片" class="headerlink" title="2.2 从相册中选择照片"></a>2.2 从相册中选择照片</h4><pre><code>public static final int CHOOSE_PHOTO = 2;
+
+//检查权限
+if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
+    permission.WRITE_EXTERNAL_STORAGE) ! = PackageManager.PERMISSION_GRANTED){
+
+    ActivityCompat.requestPermissions(MainActivity.this,new
+        String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1)
+} else {
+    openAlbum();
+}
+
+//打开相册
+private void openAlbum(){
+    Intent intent = new Intent(&quot;android.intent.action.GET_CONTENT&quot;);
+    intent.setType(&quot;image/*&quot;);
+    startActivityForResult(intent, CHOOSE_PHOTO);
+}
+
+@Override
+public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults){
+
+    switch (requestCode){
+        case 1:
+            if(grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                openAlbum();
+            } else {
+                //拒绝了权限
+            }
+            break;
+        default:
+    }
+}
+
+@Override
+protected void onActivityResult(int requestCode,int resultCode,Intent data) {
+    switch (requestCode){
+        case CHOOSE_PHOTO:
+            if(resultCode == RESULT_OK){
+                //判断手机系统版本
+                if(Build.VERSION.SDK_INT &gt;= 19){
+                    //4.4及以上使用这个方法处理图片
+                    handleImageOnKitKat(data);
+                } else {
+                    handleImageBeforeKitKat(data);
+                }
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+@TargetApi(19)
+private void handleImageOnKitKat(Intent data) {
+
+    String imagePath = null;
+    Uri uri = data.getData();
+    if(DocumentsContract.isDocumentUri(this,uri)){
+        //如果是Document类型的Uri，则通过Document id处理
+        String docId = DocumentsContract.getDocumentId(uri);
+
+        if(&quot;com.android.providers.media.documents&quot;.equal(
+            uri.getAuthority())) {
+            //解析出数字格式的id
+            String id = docId.split(&quot;:&quot;)[1];
+            String selection = MediaStore.Images.Media._ID + &quot;=&quot; + id;
+            imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_
+                CONTENT_URI,selection);
+        } else if(&quot;com.android.providers.downloads.documents&quot;.equal(
+            uri.getAuthority())) {
+            Uri contentUri = ContentUris.withAppendedId(Uri.parse(
+                &quot;content://downloads/public_downloads&quot;),
+                Long.valueOf(docId));
+            imagePath = getImagePath(contentUri,null);
+        }
+    } else if(&quot;content&quot;.equalsIgnoreCase(uri.getScheme())) {
+        //如果是content类型的Uri，则使用普通方式处理
+        imagePath = getImagePath(uri,null);
+    } else if(&quot;file&quot;.equalsIgnoreCase(uri.getScheme())) {
+        //如果是file类型的Uri,直接获取图片路径即可
+        imagePath = uri.getPath();
+    }
+    //根据图片路径显示图片
+    displayImage(imagePath);
+}
+
+private void handleImageBeforeKitKat(Intent data){
+    Uri uri = data.getData();
+    String imagePath = getImagePath(uri,null);
+    displayImage(imagePath);
+}
+
+private String getImagePath(Uri uri,String selection) {
+    String path = null;
+    //通过Uri和selection来获取真实的图片路径
+    Cursor cursor = getContentResolver().query(uri,null,selection,null,null);
+    if(cursor != null){
+        if(cursor.moveToFirst()){
+            path = cursor.getString(cursor.getColumnIndex(
+                MediaStore.Images.Media.DATA));
+        }
+        cursor.close();
+    }
+    return path;
+}
+
+private void displayImage(String imagePath) {
+    if(imagePath != null){
+        Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+        picture.setImageBitmap(bitmap);
+    } else {
+
+    }
+}
+</code></pre><p>还需要根据项目需求先对照片进行适当的压缩，然后加载到内存中。</p>
+<h3 id="3-播放多媒体文件"><a href="#3-播放多媒体文件" class="headerlink" title="3. 播放多媒体文件"></a>3. 播放多媒体文件</h3><h4 id="3-1-播放音频-MediaPlayer"><a href="#3-1-播放音频-MediaPlayer" class="headerlink" title="3.1 播放音频 MediaPlayer"></a>3.1 播放音频 MediaPlayer</h4><p><img src="/Users/yaoluyang/Desktop/书的截图/屏幕快照 2018-05-31 15.24.24.png" alt="Alt Image Text" title="Optional Title"></p>
+<p>首先需要创建一个MediaPlayer对象，然后调用setDataSource()方法设置音频文件的路径，再调用prepare()方法使MediaPlayer进入准备状态，接下来使用start()方法就可以开始播放音频，调用pause()方法就会暂停播放，调用reset()方法停止播放。</p>
+<pre><code>private MediaPlayer mediaPlayer = new MediaPlayer();
+
+//检查权限
+if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
+    permission.WRITE_EXTERNAL_STORAGE) ! = PackageManager.PERMISSION_GRANTED){
+
+    ActivityCompat.requestPermissions(MainActivity.this,new
+        String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1)
+} else {
+    initMediaPlayer();
+}
+
+@Override
+public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults){
+
+    switch (requestCode){
+        case 1:
+            if(grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                initMediaPlayer();
+            } else {
+                //拒绝了权限
+                finish();
+            }
+            break;
+        default:
+    }
+}
+
+private void initMediaPlayer() {
+    try{
+        File file = new File(Environment.getExternalStorageDirectory(),
+            &quot;music.mp3&quot;);
+        //指定音频文件路径
+        mediaPlayer.setDataSource(file.getPath());
+        mediaPlayer.prepare();
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+}
+
+//播放
+if(!mediaPlayer.isPlaying()){
+    mediaPlayer.start();
+}
+
+//暂停播放
+if(mediaPlayer.isPlaying()){
+    mediaPlayer.pause();
+}
+
+//停止播放
+if(mediaPlayer.isPlaying()){
+    mediaPlayer.reset();
+    initMediaPlayer();
+}
+
+@Override
+protected void onDestroy(){
+    super.onDestroy();
+    if(mediaPlayer != null){
+        mediaPlayer.stop();
+        mediaPlayer.release();
+    }
+}
+</code></pre><h4 id="3-2-播放视频-VideoView"><a href="#3-2-播放视频-VideoView" class="headerlink" title="3.2 播放视频 VideoView"></a>3.2 播放视频 VideoView</h4><p><img src="/Users/yaoluyang/Desktop/书的截图/屏幕快照 2018-05-31 15.45.36.png" alt="Alt Image Text" title="Optional Title"></p>
+<pre><code>private VideoView videoView;
+
+//检查权限
+if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
+    permission.WRITE_EXTERNAL_STORAGE) ! = PackageManager.PERMISSION_GRANTED){
+
+    ActivityCompat.requestPermissions(MainActivity.this,new
+        String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1)
+} else {
+    initVideoPath();
+}
+
+@Override
+public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults){
+
+    switch (requestCode){
+        case 1:
+            if(grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                initVideoPath();
+            } else {
+                //拒绝了权限
+                finish();
+            }
+            break;
+        default:
+    }
+}
+
+private void initVideoPath() {
+    File file = new File(Environment.getExternalStorageDirectory(),
+        &quot;movie.mp4&quot;);
+    //指定视频文件路径
+    videoView.setVideoPath(file.getPath());
+}
+
+//播放
+if(!videoView.isPlaying()){
+    videoView.start();
+}
+
+//暂停播放
+if(videoView.isPlaying()){
+    videoView.pause();
+}
+
+//重新播放
+if(videoView.isPlaying()){
+    mediaPlayer.resume();
+}
+
+@Override
+protected void onDestroy(){
+    super.onDestroy();
+    if(videoView != null){
+        videoView.suspend();
+    }
+}
+</code></pre><p>VideoView背后仍是使用MediaPlayer来对视频文件进行控制的。</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/03/15/第一行代码笔记-网络/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                第一行代码笔记-网络
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/03/13/第一行代码笔记-ContentProvider/">
+                第一行代码笔记-ContentProvider
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>16</span>文章</a>
+        <a class="count tags"><span>50</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            
+            <div class="preview">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
+                <div class="info">
+                    <p class="title">
+                        <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
+                    </p>
+                    <p class="date">
+                        2018-03-16
+                    </p>
+                </div>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/13/第一行代码笔记-ContentProvider/" title="第一行代码笔记-ContentProvider">第一行代码笔记-ContentProvider</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/03/12/第一行代码笔记-数据存储/" title="第一行代码笔记-数据存储">第一行代码笔记-数据存储</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/环境配置/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/书单/">#书单</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/运行时权限/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
