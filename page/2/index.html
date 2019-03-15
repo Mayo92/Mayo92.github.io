@@ -163,6 +163,69 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-RecyclerView">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/09/第一行代码笔记-RecyclerView/">第一行代码笔记-RecyclerView</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-09
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/RecyclerView/" class="cube-excerpt-tag-link">#RecyclerView</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h4 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h4><p>gradle添加依赖</p>
+<h4 id="2-编写适配器"><a href="#2-编写适配器" class="headerlink" title="2. 编写适配器"></a>2. 编写适配器</h4><pre><code>public class FruitAdapter extends RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;{
+
+    private List&lt;Fruit&gt; mFruitList;
+
+    static class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView fruitImage;
+
+        public ViewHolder(View view){
+            super(view);
+            fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
+        }
+    }
+
+    public FruitAdapter(List&lt;Fruit&gt; fruitList) {
+        mFruitList = fruitList;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+        View view = LayoutInflater.from(parent. getContext()).inflate(R.layout.fruit_item,parent,false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder,int position){
+        Fruit fruit = mFruitList.get(position);
+        holder.fruitImage.setImageResource(fruit.getImageId());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mFruitList.size();
+    }
+}
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/09/第一行代码笔记-RecyclerView/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-ListView">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/03/09/第一行代码笔记-ListView/">第一行代码笔记-ListView</a></h1>
@@ -552,37 +615,6 @@ resources.updateConfiguration(config, dm);
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-查找与排序">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/09/15/查找与排序/">查找与排序</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-09-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/二分查找/" class="cube-excerpt-tag-link">#二分查找</a>
-                
-                <a href="/tags/冒泡排序/" class="cube-excerpt-tag-link">#冒泡排序</a>
-                
-                <a href="/tags/选择排序/" class="cube-excerpt-tag-link">#选择排序</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h2 id="1-二分查找"><a href="#1-二分查找" class="headerlink" title="1. 二分查找"></a>1. 二分查找</h2><p>如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/09/15/查找与排序/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-7">
@@ -690,8 +722,8 @@ resources.updateConfiguration(config, dm);
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>37</span>文章</a>
-        <a class="count tags"><span>74</span>标签</a>
+        <a class="count articles"><span>38</span>文章</a>
+        <a class="count tags"><span>75</span>标签</a>
         <a class="count categories"><span>13</span>分类</a>
     </div>
 </div>
@@ -732,7 +764,7 @@ resources.updateConfiguration(config, dm);
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2018/03/18/第一行代码笔记-Git/" title="Git">Git</a>
+                        <a href="/2018/03/18/第一行代码笔记-MD/" title="第一行代码笔记-MD">第一行代码笔记-MD</a>
                     </p>
                     <p class="date">
                         2018-03-18
@@ -750,7 +782,7 @@ resources.updateConfiguration(config, dm);
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/17/第一行代码笔记-LBS/" title="第一行代码笔记-LBS">第一行代码笔记-LBS</a>
+                    <a href="/2018/03/18/第一行代码笔记-Git/" title="第一行代码笔记-Git">第一行代码笔记-Git</a>
                 </p>
             </div>
         </li>
@@ -763,7 +795,7 @@ resources.updateConfiguration(config, dm);
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
+                    <a href="/2018/03/17/第一行代码笔记-LBS/" title="第一行代码笔记-LBS">第一行代码笔记-LBS</a>
                 </p>
             </div>
         </li>
@@ -776,7 +808,7 @@ resources.updateConfiguration(config, dm);
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
+                    <a href="/2018/03/16/第一行代码笔记-Service/" title="第一行代码笔记-Service">第一行代码笔记-Service</a>
                 </p>
             </div>
         </li>
@@ -789,7 +821,7 @@ resources.updateConfiguration(config, dm);
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/03/14/第一行代码笔记-多媒体/" title="第一行代码笔记-多媒体">第一行代码笔记-多媒体</a>
+                    <a href="/2018/03/15/第一行代码笔记-网络/" title="第一行代码笔记-网络">第一行代码笔记-网络</a>
                 </p>
             </div>
         </li>
@@ -817,12 +849,12 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -832,7 +864,7 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
@@ -842,7 +874,7 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
@@ -867,7 +899,7 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
@@ -883,12 +915,12 @@ resources.updateConfiguration(config, dm);
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
@@ -908,8 +940,18 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
@@ -919,16 +961,6 @@ resources.updateConfiguration(config, dm);
         
         
         <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
@@ -938,23 +970,28 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/书/">#书</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -974,17 +1011,12 @@ resources.updateConfiguration(config, dm);
         
         
         <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -1004,26 +1036,21 @@ resources.updateConfiguration(config, dm);
         
         
         <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -1033,22 +1060,22 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -1068,18 +1095,23 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1098,17 +1130,37 @@ resources.updateConfiguration(config, dm);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
         <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -1119,12 +1171,7 @@ resources.updateConfiguration(config, dm);
         
         
         <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -1134,51 +1181,21 @@ resources.updateConfiguration(config, dm);
         
         
         <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/线程/">#线程</a>
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -1190,6 +1207,36 @@ resources.updateConfiguration(config, dm);
         
         <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
         
@@ -1210,16 +1257,6 @@ resources.updateConfiguration(config, dm);
         
         <div class="cube-box-bg ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         

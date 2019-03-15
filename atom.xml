@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-15T07:05:24.511Z</updated>
+  <updated>2019-03-15T07:30:17.790Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Git</title>
+    <title>第一行代码笔记-MD</title>
+    <link href="http://yoursite.com/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/"/>
+    <id>http://yoursite.com/2018/03/18/第一行代码笔记-MD/</id>
+    <published>2018-03-18T07:07:24.000Z</published>
+    <updated>2019-03-15T07:30:17.790Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Material Design" scheme="http://yoursite.com/tags/Material-Design/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一行代码笔记-Git</title>
     <link href="http://yoursite.com/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Git/"/>
     <id>http://yoursite.com/2018/03/18/第一行代码笔记-Git/</id>
     <published>2018-03-18T07:01:18.000Z</published>
-    <updated>2019-03-15T07:05:24.511Z</updated>
+    <updated>2019-03-15T07:07:02.126Z</updated>
     
     <content type="html"><![CDATA[<h3 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h3><p>提供一种可配性很强的机制来允许用户将指定的文件或目录排除在版本控制之外，它会检查代码仓库的目录下是否存在一个名为.gitignore的文件，存在的话会一行一行读取这个文件的内容，并把每一行指定的文件或目录排除在版本控制之外，文件或目录可以使用”*”通配符的。</p><p>AS在创建项目的时候会自动帮我们创建两个.gitignore文件，一个在根目录下，一个在app模块下。</p><p>配置完成之后，就可以提交代码，先使用add命令将所有文件进行添加</p><pre><code>git add .</code></pre><a id="more"></a>    <p>然后执行commit命令完成提交</p><pre><code>git commit -m &quot;first commit&quot;</code></pre><h3 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h3><h5 id="查看文件修改的情况"><a href="#查看文件修改的情况" class="headerlink" title="查看文件修改的情况"></a>查看文件修改的情况</h5><pre><code>git status</code></pre><h5 id="查看文件修改的内容"><a href="#查看文件修改的内容" class="headerlink" title="查看文件修改的内容"></a>查看文件修改的内容</h5><pre><code>git diff</code></pre><h5 id="查看某个文件修改的内容"><a href="#查看某个文件修改的内容" class="headerlink" title="查看某个文件修改的内容"></a>查看某个文件修改的内容</h5><pre><code>git diff app/src/main/java/com/example/providertest/MainActivity.java</code></pre><h3 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h3><h5 id="只要代码没有提交，所有修改的内容都是可以撤销的"><a href="#只要代码没有提交，所有修改的内容都是可以撤销的" class="headerlink" title="只要代码没有提交，所有修改的内容都是可以撤销的"></a>只要代码没有提交，所有修改的内容都是可以撤销的</h5><pre><code>git checkout app/src/main/java/com/example/providertest/MainActivity.java</code></pre><h5 id="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："><a href="#对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：" class="headerlink" title="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："></a>对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</h5><pre><code>git reset HEAD app/src/main/java/com/example/providertest/MainActivity.java</code></pre><h3 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h3><h5 id="每次提交记录都会包含提交id、提交人、提交日期、描述信息"><a href="#每次提交记录都会包含提交id、提交人、提交日期、描述信息" class="headerlink" title="每次提交记录都会包含提交id、提交人、提交日期、描述信息"></a>每次提交记录都会包含提交id、提交人、提交日期、描述信息</h5><pre><code>git log</code></pre><h5 id="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"><a href="#只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录" class="headerlink" title="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"></a>只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</h5><pre><code>git log 1fa380xxxxxxx -1</code></pre><h5 id="查看这条记录具体修改什么内容，在命令中加入-p参数"><a href="#查看这条记录具体修改什么内容，在命令中加入-p参数" class="headerlink" title="查看这条记录具体修改什么内容，在命令中加入-p参数"></a>查看这条记录具体修改什么内容，在命令中加入-p参数</h5><pre><code>git log 1fa380xxxxxxx -1 -p</code></pre><h3 id="分支的作用"><a href="#分支的作用" class="headerlink" title="分支的作用"></a>分支的作用</h3><p>在现有代码的基础上开辟一个分叉口，使得代码可以在主干线和分支线上同时进行开发，且互相不会影响。</p><p><img src="/Users/yaoluyang/Desktop/书的截图/屏幕快照 2019-03-15 14.31.17.png" alt="Alt Image Text" title="Optional Title"></p><p>查看当前版本库中有哪些分支，前面有*说明代码在哪个分支上：</p><pre><code>git branch</code></pre><p>创建一个分支,名为version1.0：</p><pre><code>git branch version1.0</code></pre><p>切换到version1.0这个分支：</p><pre><code>git checkout version1.0</code></pre><p>在version1.0分支上修改并提交的代码将不会影响到master分支，同理，master分支上修改并提交的代码也不会影响到version1.0分支，最好的办法是使用merge命令来完成合并操作：</p><pre><code>git checkout mastergit merge version1.0</code></pre><p>这两行代码就可以在version1.0分支上修改并提交的内容合并到master分支，合并后可能存在代码冲突的情况，需要自行修改</p><p>删除分支：</p><pre><code>git branch -D version1.0</code></pre><h3 id="与远程版本库协作"><a href="#与远程版本库协作" class="headerlink" title="与远程版本库协作"></a>与远程版本库协作</h3><p>养成经常从版本库获取最新代码的习惯</p><p>将代码下载到本地：</p><pre><code>git clone https://github.com/example/test.git</code></pre><p>本地修改的内容同步到远程版本库：</p><pre><code>git push origin master</code></pre><p>origin部分指定的是远程版本库的Git地址，master部分指定的是同步到哪一个分支，上述命令就完成了将本地代码同步到<a href="https://github.com/example/test.git这个版本库的master分支上的功能。" target="_blank" rel="noopener">https://github.com/example/test.git这个版本库的master分支上的功能。</a></p><p>将远程版本库上的修改同步到本地，Git提供两种命令完成此功能，分别是fetch和pull，fetch的语法规则和push差不多，如下所示：</p><pre><code>git fetch origin master</code></pre><p>执行上述命令后，会将远程版本库上的代码同步到本地，同步下来的代码不会合并到任何分支上去，而是会存放到一个origin/master分支上，这时我们可以通过diff命令来查看远程版本库上到底修改了哪些东西：</p><pre><code>git diff origin/master</code></pre><p>再调用merge命令将origin/master分支上的修改合并到主分支上即可：</p><pre><code>git merge origin/master</code></pre><p>pull命令则是相当于将fetch和merge这两个命令放在一起执行了，它可以从远程版本库上获取最新的代码合并到本地：</p><pre><code>git pull origin master</code></pre>]]></content>
     
@@ -656,32 +676,6 @@ resources.updateConfiguration(config, dm);
     
     
       <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>查找与排序</title>
-    <link href="http://yoursite.com/2017/09/15/%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%8E%92%E5%BA%8F/"/>
-    <id>http://yoursite.com/2017/09/15/查找与排序/</id>
-    <published>2017-09-15T07:27:00.000Z</published>
-    <updated>2019-03-07T09:27:02.884Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-二分查找"><a href="#1-二分查找" class="headerlink" title="1. 二分查找"></a>1. 二分查找</h2><p>如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p><a id="more"></a><h3 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h3><p>1、设置三个变量记录角标:min、max、mid。min初始值为0，max为数组最大角标，mid为 (max+min)/2。     </p><p>2、查看mid角标的元素是否与待查找的值相等，如果相等，则直接返回角标值，程序终止执行。     </p><p>3、如果待查找的值小于角标为mid的元素值，那么说明待查找的元素的位置可能在min与mid角标之间。设 置max = mid - 1，mid = (max + min)/2，重复第1、2步的操作。     </p><p>4、如果待查找的值大于角标为mid的元素值，那么说明待查找的元素的位置可能在mid与max角标之间。设 置min = mid + 1，mid = (max + min)/2，重复第1、2步的操作。     </p><p>5、如果数组中不存在待查找的元素，那么按照如上流程，最终min角标值会大于max角标值，此时返回-1。</p><pre><code>public static int binarySearch(Integer[] srcArray, int des) {    //定义初始最小、最大索引    int low = 0;    int high = srcArray.length - 1;    //确保不会出现重复查找，越界    while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)        &amp;&amp; (high &lt;= srcArray.length - 1)) {        //计算出中间索引值        int middle = (high + low)/2 ;        if (des == srcArray[middle]) {            return middle;        //判断下限        } else if (des &lt; srcArray[middle]) {            high = middle - 1;        //判断上限        } else {            low = middle + 1;        }    }    //若没有，则返回-1    return -1;}</code></pre><h2 id="2-冒泡排序"><a href="#2-冒泡排序" class="headerlink" title="2. 冒泡排序"></a>2. 冒泡排序</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路:"></a>思路:</h3><p>1、首先在第一轮排序中，数组从第一个元素到倒数第二个元素依次与其右边的元素进行比较，如果左边的元 素大于右边的元素，那么两个元素就互换。     </p><p>2、经过第一轮比较，最大的元素就已经存储到数组最右边的结点中了。     </p><p>3、第二轮排序则是从第一个元素到倒数第三个元素依次与其右边的元素进行比较，如果左边的元素大于右边 的元素，那么两个元素就互换。</p><p>4、依照此方式，一直到只有第一和第二个元素互相比较而结束。</p><pre><code>public class BubbleSort{    public void sort(int[] a)    {        int temp = 0;        for (int i = a.length - 1; i &gt; 0; --i)        {            for (int j = 0; j &lt; i; ++j)            {                if (a[j + 1] &lt; a[j])                {                    temp = a[j];                    a[j] = a[j + 1];                    a[j + 1] = temp;                }            }        }    }}</code></pre><h2 id="3-选择排序"><a href="#3-选择排序" class="headerlink" title="3. 选择排序"></a>3. 选择排序</h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路:"></a>思路:</h3><p>1、首先拿数组第一个元素依次与除其自身外的其他每个元素顺序比较，如果第一个元素大于剩下的某个元 素，就互换内容。    </p><p>2、经过第一轮比较之后，此时，第一个元素就是数组中最小的元素。然后再拿第二个元素与除第一个元素和 其自身的元素进行比较，如果第二个元素大于剩下的某个元素，就互换内容。此时，第二个元素就是数组中倒数 第二小的元素。</p><p>3、依次类推，直到最后一个元素。</p><h3 id="高效做法："><a href="#高效做法：" class="headerlink" title="高效做法："></a>高效做法：</h3><p>只需要通过两个变量，一个记录最小值，一个记录最小值所在 的角标即可</p><pre><code>public static void selectSort(int[]a){    int minIndex=0;    int temp=0;    if((a==null)||(a.length==0))        return;    for(int i=0;i&lt;a.length-1;i++)    {        minIndex=i;//无序区的最小数据数组下标        for(intj=i+1;j&lt;a.length;j++)        {            //在无序区中找到最小数据并保存其数组下标            if(a[j]&lt;a[minIndex])            {                minIndex=j;            }        }        if(minIndex!=i)        {            //如果不是无序区的最小值位置不是默认的第一个数据，则交换之。            temp=a[i];            a[i]=a[minIndex];            a[minIndex]=temp;        }    }}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-二分查找&quot;&gt;&lt;a href=&quot;#1-二分查找&quot; class=&quot;headerlink&quot; title=&quot;1. 二分查找&quot;&gt;&lt;/a&gt;1. 二分查找&lt;/h2&gt;&lt;p&gt;如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="二分查找" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
-      <category term="冒泡排序" scheme="http://yoursite.com/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
-    
-      <category term="选择排序" scheme="http://yoursite.com/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
