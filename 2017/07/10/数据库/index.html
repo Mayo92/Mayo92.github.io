@@ -378,13 +378,20 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         <li>
             <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
             
-            <div class="normal">
+            
+            <div class="preview">
                 <p class="index first">
                     <span>1</span>
                 </p>
-                <p class="title">
-                    <a href="/2018/07/13/学习计划/" title="学习计划">学习计划</a>
-                </p>
+                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
+                <div class="info">
+                    <p class="title">
+                        <a href="/2018/07/13/学习计划/" title="学习计划">学习计划</a>
+                    </p>
+                    <p class="date">
+                        2018-07-13
+                    </p>
+                </div>
             </div>
             
         </li>
@@ -459,7 +466,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -469,22 +476,17 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/计划/">#计划</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
@@ -495,6 +497,11 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         
         
         <div class="cube-box ">
+            <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -531,11 +538,6 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -546,16 +548,21 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         
         
         <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
@@ -590,13 +597,8 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -605,8 +607,13 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -625,12 +632,12 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/数据库/">#数据库</a>
         </div>
         
@@ -640,7 +647,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -650,12 +657,12 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -665,7 +672,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -685,12 +692,12 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -700,7 +707,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -725,7 +732,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
@@ -736,16 +743,11 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -760,17 +762,22 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
@@ -780,7 +787,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
@@ -800,7 +807,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -810,12 +817,12 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
@@ -826,6 +833,26 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         
         
         <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -840,7 +867,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
@@ -851,36 +878,16 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         
         
         <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
@@ -900,7 +907,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
