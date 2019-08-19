@@ -223,13 +223,11 @@ categories: [cat1,cat2,cat3]
 </code></pre><h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><pre><code>hexo clean
 hexo g
 hexo d
-</code></pre><h4 id="5-Bug"><a href="#5-Bug" class="headerlink" title="5. Bug"></a>5. Bug</h4><h5 id="本地图片不显示"><a href="#本地图片不显示" class="headerlink" title="本地图片不显示"></a>本地图片不显示</h5><ul>
-<li>配置_config.yml里面的post_asset_folder:false这个选项设置为true。(不是主题配置)</li>
-<li>安装修改后的插件npm install <a href="https://github.com/7ym0n/hexo-asset-image" target="_blank" rel="noopener">https://github.com/7ym0n/hexo-asset-image</a> –save(hexo-asset-image插件hexo3版本后有问题)</li>
-<li>运行hexo new ‘filename’来生成md博文时，/source/_posts文件夹内除了’filename’.md文件还有一个同名的文件夹，把图片放入该文件</li>
-<li>最后添加图片<!--![](filename/图片名.jpg)-->不显示则使用<!--![](图片名.jpg)--></li>
-</ul>
-
+</code></pre><h4 id="5-Bug"><a href="#5-Bug" class="headerlink" title="5. Bug"></a>5. Bug</h4><h5 id="本地图片不显示"><a href="#本地图片不显示" class="headerlink" title="本地图片不显示"></a>本地图片不显示</h5><pre><code>1.配置_config.yml里面的post_asset_folder:false这个选项设置为true。(不是主题配置)
+2.安装修改后的插件npm install https://github.com/7ym0n/hexo-asset-image --save(hexo-asset-image插件hexo3版本后有问题)
+3.运行hexo new &apos;filename&apos;来生成md博文时，/source/_posts文件夹内除了&apos;filename&apos;.md文件还有一个同名的文件夹，把图片放入该文件
+4.最后添加图片![](filename/图片名.jpg)如不显示则使用![](图片名.jpg)，但这样本地则不会显示
+</code></pre>
     </div>
 </div>
 
@@ -445,12 +443,12 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/计划/">#计划</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
@@ -466,12 +464,12 @@ hexo d
         
         
         <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+            <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
@@ -501,13 +499,18 @@ hexo d
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -521,18 +524,13 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
@@ -551,18 +549,18 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/IntentService/">#IntentService</a>
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
@@ -571,12 +569,12 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
@@ -591,13 +589,8 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/定时任务/">#定时任务</a>
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -607,31 +600,21 @@ hexo d
         
         
         <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/二分查找/">#二分查找</a>
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/冒泡排序/">#冒泡排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/选择排序/">#选择排序</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/文件/">#文件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -646,7 +629,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -656,7 +639,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
@@ -666,12 +649,12 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -706,12 +689,27 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/冒泡排序/">#冒泡排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -721,18 +719,8 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
+            <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
@@ -746,23 +734,23 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+        <div class="cube-box ">
+            <a href="/tags/运行时权限/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -771,7 +759,17 @@ hexo d
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -781,12 +779,12 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
@@ -806,7 +804,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -816,8 +814,13 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -826,7 +829,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -836,13 +839,8 @@ hexo d
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
@@ -851,7 +849,7 @@ hexo d
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -867,12 +865,12 @@ hexo d
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
+            <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/集合框架/">#集合框架</a>
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
