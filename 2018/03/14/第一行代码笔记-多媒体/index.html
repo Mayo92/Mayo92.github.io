@@ -627,8 +627,8 @@ protected void onDestroy(){
     
     <div class="count">
         <a class="count articles"><span>43</span>文章</a>
-        <a class="count tags"><span>80</span>标签</a>
-        <a class="count categories"><span>16</span>分类</a>
+        <a class="count tags"><span>81</span>标签</a>
+        <a class="count categories"><span>18</span>分类</a>
     </div>
 </div>
 
@@ -660,13 +660,20 @@ protected void onDestroy(){
         <li>
             <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
             
-            <div class="normal">
+            
+            <div class="preview">
                 <p class="index first">
                     <span>1</span>
                 </p>
-                <p class="title">
-                    <a href="/2019/08/29/星球Android入门-四大组件/" title="星球Android入门-四大组件">星球Android入门-四大组件</a>
-                </p>
+                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
+                <div class="info">
+                    <p class="title">
+                        <a href="/2019/08/29/星球Android入门-四大组件/" title="星球Android入门-四大组件">星球Android入门-四大组件</a>
+                    </p>
+                    <p class="date">
+                        2019-08-29
+                    </p>
+                </div>
             </div>
             
         </li>
@@ -736,7 +743,7 @@ protected void onDestroy(){
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
@@ -746,7 +753,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
@@ -756,13 +763,13 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/环境配置/">#环境配置</a>
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -776,7 +783,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
@@ -787,12 +794,22 @@ protected void onDestroy(){
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
@@ -811,7 +828,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -827,17 +844,7 @@ protected void onDestroy(){
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -848,11 +855,21 @@ protected void onDestroy(){
         
         
         <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Bitmap/">#Bitmap</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
@@ -862,18 +879,18 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Java变量/">#Java变量</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
@@ -917,12 +934,12 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -932,7 +949,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Plan/">#Plan</a>
         </div>
         
@@ -942,13 +959,18 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/文件/">#文件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/四大组件/">#四大组件</a>
         </div>
         
         
@@ -957,7 +979,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/冒泡排序/">#冒泡排序</a>
         </div>
         
@@ -992,17 +1014,17 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -1062,7 +1084,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
@@ -1077,12 +1099,12 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
@@ -1097,12 +1119,12 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
@@ -1112,27 +1134,27 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
@@ -1157,12 +1179,12 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
@@ -1172,7 +1194,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -1182,7 +1204,7 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
@@ -1192,12 +1214,12 @@ protected void onDestroy(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
@@ -1208,7 +1230,7 @@ protected void onDestroy(){
         
         
         <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1218,11 +1240,11 @@ protected void onDestroy(){
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/面试/">#面试</a>
         </div>
         
