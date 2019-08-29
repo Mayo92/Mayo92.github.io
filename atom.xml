@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-19T07:17:59.828Z</updated>
+  <updated>2019-08-29T03:57:02.444Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown</title>
+    <link href="http://yoursite.com/2019/08/19/Markdown/"/>
+    <id>http://yoursite.com/2019/08/19/Markdown/</id>
+    <published>2019-08-19T03:41:30.000Z</published>
+    <updated>2019-08-29T03:57:02.444Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>基于MacDown</em></p><h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><pre><code>粗体 **xxx** 斜体 *xxx*标题 # ## ### #### ##### ######图片 ![Alt Image Text](path/or/url/to.jpg &quot;Optional Title&quot;)次序列表 -分层列表 &gt; &gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt;&gt;引用 &gt;代码块 tab换行 两个空格后return分割线 ---链接或邮箱 &lt;https://www.baidu.com&gt;或[百度](https://www.baidu.com)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;em&gt;基于MacDown&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;常见用法&quot;&gt;&lt;a href=&quot;#常见用法&quot; class=&quot;headerlink&quot; title=&quot;常见用法&quot;&gt;&lt;/a&gt;常见用法&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;粗体 **xxx** 
+斜体 *xxx*
+标题 # ##
+      
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://yoursite.com/categories/Blog/"/>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>Html</title>
@@ -642,57 +670,6 @@ intent.setData(Uri.parse(&amp;quot;http://www.baidu.com&amp;quot;));
     
     
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内存泄漏</title>
-    <link href="http://yoursite.com/2018/01/25/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
-    <id>http://yoursite.com/2018/01/25/内存泄漏/</id>
-    <published>2018-01-25T06:00:11.000Z</published>
-    <updated>2019-03-07T09:50:40.226Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h4><pre><code>public class AppManager {    //有内存泄漏的问题：    private static AppManager instance;    private Context context;    private AppManager(Context context) {        this.context = context;    }    public static AppManager getInstance(Context context) {        if (instance == null) {//传入的Activity回收时由于被单例持有无法回收            instance = new AppManager(context);        }        return instance;    }</code></pre><hr><pre><code>    //修复内存泄漏的写法：    private static AppManager instance;    private Context context;    private AppManager(Context context) {        this.context = context.getApplicationContext();// 使用Application 的context    }    public static AppManager getInstance(Context context) {        if (instance == null) {            instance = new AppManager(context);        }        return instance;    }}</code></pre><a id="more"></a><h4 id="匿名内部类handler"><a href="#匿名内部类handler" class="headerlink" title="匿名内部类handler"></a>匿名内部类handler</h4><pre><code>public class MainActivity extends AppCompatActivity {    //容易造成内存泄漏的写法：    //非静态内部类    private Handler mHandler = new Handler() {        @Override        public void handleMessage(Message msg) {            //...        }    };    @Override    protected void onCreate(Bundle savedInstanceState) {        super.onCreate(savedInstanceState);        setContentView(R.layout.activity_main);        loadData();    }    private void loadData() {        //...request        Message message = Message.obtain();        mHandler.sendMessage(message);    }    static class TestResource {    //该静态实例持有activity的引用，内存资源得不到正常回收，应该设为静态内部类//        private static final String TAG = &quot;&quot;;//        //...    }</code></pre><hr><pre><code>    //修复内存泄漏的方法：    //1.设为静态内部类2.在handler内部持有外部类Activity的弱引用    private MyHandler mHandler = new MyHandler(this);    private TextView mTextView ;    private static class MyHandler extends Handler {        private WeakReference&lt;Context&gt; reference;        public MyHandler(Context context) {            reference = new WeakReference&lt;&gt;(context);        }        @Override        public void handleMessage(Message msg) {            MainActivity activity = (MainActivity) reference.get();            if(activity != null){                    //activity.mTextView.setText(&quot;&quot;);            }        }    }    @Override    protected void onCreate(Bundle savedInstanceState) {        super.onCreate(savedInstanceState);        setContentView(R.layout.activity_main);        loadData();    }    private void loadData() {        //...request        Message message = Message.obtain();        mHandler.sendMessage(message);    }    @Override    protected void onDestroy() {        super.onDestroy();        mHandler.removeCallbacksAndMessages(null);    }}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;单例&quot;&gt;&lt;a href=&quot;#单例&quot; class=&quot;headerlink&quot; title=&quot;单例&quot;&gt;&lt;/a&gt;单例&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;public class AppManager {
-
-    //有内存泄漏的问题：
-    private static AppManager instance;
-    private Context context;
-    private AppManager(Context context) {
-        this.context = context;
-    }
-    public static AppManager getInstance(Context context) {
-        if (instance == null) {
-//传入的Activity回收时由于被单例持有无法回收
-            instance = new AppManager(context);
-        }
-        return instance;
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;    //修复内存泄漏的写法：
-    private static AppManager instance;
-    private Context context;
-    private AppManager(Context context) {
-        this.context = context.getApplicationContext();// 使用Application 的context
-    }
-    public static AppManager getInstance(Context context) {
-        if (instance == null) {
-            instance = new AppManager(context);
-        }
-        return instance;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Android优化" scheme="http://yoursite.com/categories/Android%E4%BC%98%E5%8C%96/"/>
-    
-    
-      <category term="内存泄漏" scheme="http://yoursite.com/tags/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
     
   </entry>
   
