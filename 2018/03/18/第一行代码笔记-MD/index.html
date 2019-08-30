@@ -182,6 +182,7 @@
     <div class="cube-article-content cube-markdown">
         
         <h2 id="什么是Material-Design"><a href="#什么是Material-Design" class="headerlink" title="什么是Material Design"></a>什么是Material Design</h2><p>界面设计语言，包含视觉、运动、交互效果。开发人员使用Design Support库即可。</p>
+<a id="more"></a>
 <h2 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h2><p>官方已经不建议使用ActionBar了，推荐使用Toolbar。<br>Toolbar不仅继承了ActionBar的所有功能，而且灵活性很高，可以配合其他控件完成一些Material Design的效果。</p>
 <h3 id="为什么默认会显示ActionBar"><a href="#为什么默认会显示ActionBar" class="headerlink" title="为什么默认会显示ActionBar"></a>为什么默认会显示ActionBar</h3><p>这是根据项目的主题而来的，从AndroidManifest.xml的android:theme找到res/values/styles.xml，找到主题的parent是Theme.AppCompat.Light.DarkActionBar，这个DarkActionBar是一个深色的ActionBar主题，所以才会出现ActionBar。  </p>
 <p>指定不带ActionBar的主题，通常有Theme.AppCompat.NoActionBar和Theme.AppCompat.Light.NoActionBar这两种主题可选。其中Theme.AppCompat.NoActionBar表示深色主题，界面主体为深色，陪衬颜色为淡色。Theme.AppCompat.Light.NoActionBar表示淡色主题，界面主体为淡色，陪衬颜色为深色。  </p>
@@ -196,7 +197,52 @@
     android:background=&quot;?attr/colorPrimary&quot;
     android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;
     app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;/&gt;
-</code></pre>
+</code></pre><p>使用了xmlns:android命名空间，之后可以使用app:attribute这样的写法了。因为Material Design是Android5.0出现的，而很多Material属性在5.0之前的系统不存在，为了兼容，不能使用android: attribute，而应该使用app:attribute。</p>
+<p>这里的高度为actionBar的高度。由于在style.xml中将程序主题指定成了淡色，因此Toolbar也是淡色，而Toolbar上面的各个元素会自动使用深色，为了和主题颜色区分。但这样很难看。这里使用android:theme，使Toolbar单独使用深色主题，但这样如果Toolbar里有菜单按钮，那么弹出来的也是深色主题，这样也难看，所以使用app:popupTheme属性单独将弹出来的菜单指定淡色主题。</p>
+<p>添加Toolbar，在onCreate()里</p>
+<pre><code>Toolbar toobar = findViewById(R.id. toobar);
+setSupportActionBar(toobar);
+</code></pre><p>修改标题栏显示文字内容，在manifest中</p>
+<pre><code>&lt;Activity
+    android:label=&quot;Fruits&quot;&gt;
+&lt;/Activity&gt;
+</code></pre><p>如果没有指定，会默认使用application中指定的label内容，即应用名称。</p>
+<p>添加action按钮，res/menu下创建toolbar.xml</p>
+<pre><code>&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;
+
+    &lt;item
+        android:id=&quot;@+id/backup&quot;
+        android:icon=&quot;@drawable/ic_ backup&quot;
+        android:title=&quot;backup&quot;
+        app:showAsAction=&quot;alawys&quot;/&gt;
+    &lt;item
+        android:id=&quot;@+id/delete&quot;
+        android:icon=&quot;@drawable/ic_ delete&quot;
+        android:title=&quot;delete&quot;
+        app:showAsAction=&quot;ifRoom&quot;/&gt;
+    &lt;item
+        android:id=&quot;@+id/settings&quot;
+        android:icon=&quot;@drawable/ic_ settings&quot;
+        android:title=&quot;settings&quot;
+        app:showAsAction=&quot;never&quot;/&gt;
+&lt;/menu&gt;
+</code></pre><p>app:showAsAction指定按钮显示位置，alawys永远显示，如果屏幕空间不够则不显示；ifRoom表示屏幕空间够显示，不够不显示；never永远显示在菜单中。注意，Toolbar中的action按钮只会显示图标，菜单中的action按钮只会显示文字。</p>
+<pre><code>public boolean onCreateOptionsMenu(Menu menu){
+    getMenuInflater().inflate(R.menu.toolbar,menu);
+    return true;
+}
+
+@Override
+public boolean onOptionsItemSeleted(MenuItem item){
+    switch(item.getItemId()){
+        case R.id.backup:
+        .....
+    }
+    return true;
+}
+</code></pre><h2 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h2><h3 id="DrawerLayout"><a href="#DrawerLayout" class="headerlink" title="DrawerLayout"></a>DrawerLayout</h3><p>所谓滑动菜单就是将一些菜单选项隐藏，然后可以通过滑动的方式将菜单显示出来，这种方式即节省了屏幕空间，又实现了非常好的动画效果，是Material Design中推荐的做法。</p>
+
     </div>
 </div>
 
@@ -406,18 +452,18 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
+            <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
@@ -441,13 +487,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/操作系统/">#操作系统</a>
+        <div class="cube-box ">
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -456,23 +502,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
+            <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
+            <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
@@ -481,13 +522,18 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
@@ -512,23 +558,18 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
@@ -537,28 +578,23 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Html/">#Html</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
@@ -567,18 +603,28 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/IntentService/">#IntentService</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
@@ -588,16 +634,21 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/内存划分/">#内存划分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -608,7 +659,27 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/二分查找/">#二分查找</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/冒泡排序/">#冒泡排序</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
@@ -618,42 +689,7 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/二分查找/">#二分查找</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/冒泡排序/">#冒泡排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/选择排序/">#选择排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -662,17 +698,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -682,7 +718,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
@@ -722,7 +758,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
@@ -733,11 +769,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/文件/">#文件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -753,6 +794,11 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
@@ -777,17 +823,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
@@ -797,33 +838,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
@@ -837,7 +858,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
@@ -852,7 +873,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -867,8 +888,33 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
@@ -892,11 +938,6 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
@@ -909,6 +950,11 @@
         
         <div class="cube-box ">
             <a href="/tags/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
     </div>
