@@ -188,7 +188,8 @@
         <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。</p>
 <a id="more"></a>
 <h3 id="2-运行时权限"><a href="#2-运行时权限" class="headerlink" title="2. 运行时权限"></a>2. 运行时权限</h3><h4 id="2-1-机制详解"><a href="#2-1-机制详解" class="headerlink" title="2.1 机制详解"></a>2.1 机制详解</h4><p>Android将所有的权限分为两类，一类是普通权限，一类是危险权限。危险权限表示那些可能会触及用户隐私或对设备安全性造成影响的权限，这部分需要由用户手动点击授权才可以，否则程序无法使用相应的功能，具体如下：</p>
-<p><img src="第一行代码笔记-ContentProvider/1.png" alt=""></p>
+<!--![](第一行代码笔记-ContentProvider/1.png)-->
+<p><img src="1.png" alt=""></p>
 <p>表格中每个危险权限都属于一个权限组，我们在进行运行时权限处理时使用的是权限名，但用户一旦同意授权了，那么该权限所对应的权限组中所有的其他权限也会同时被授权。</p>
 <pre><code>if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
     permission.CALL_PHONE) ! = PackageManager.PERMISSION_GRANTED){
@@ -239,7 +240,8 @@ content://com.example.app.provider/table2
     selection,
     selectionArgs,
     sortOrder);
-</code></pre><p><img src="第一行代码笔记-ContentProvider/2.png" alt=""></p>
+</code></pre><!--![](第一行代码笔记-ContentProvider/2.png)-->
+<p><img src="2.png" alt=""></p>
 <h5 id="通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据"><a href="#通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据" class="headerlink" title="通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据"></a>通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据</h5><pre><code>if(crsor != null) {
 
     while(cursor.moveToNext()){
@@ -803,37 +805,22 @@ getContentResolver().delete(uri,null,null);
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Java基础/">#Java基础</a>
+            <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
+            <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
@@ -843,7 +830,17 @@ getContentResolver().delete(uri,null,null);
         
         
         <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
+            <a href="/categories/环境配置/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/计划/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -852,12 +849,17 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -872,7 +874,7 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/网络/">#网络</a>
         </div>
         
@@ -904,7 +906,12 @@ getContentResolver().delete(uri,null,null);
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
@@ -919,22 +926,12 @@ getContentResolver().delete(uri,null,null);
         
         
         <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
@@ -943,27 +940,32 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
+            <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
@@ -973,23 +975,18 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Markdown/">#Markdown</a>
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -1008,18 +1005,8 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/文件/">#文件</a>
+            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -1028,12 +1015,22 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/四大组件/">#四大组件</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1043,7 +1040,7 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
@@ -1054,11 +1051,16 @@ getContentResolver().delete(uri,null,null);
         
         
         <div class="cube-box ">
+            <a href="/tags/文件/">#文件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -1088,7 +1090,7 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -1118,23 +1120,13 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/ActionBar/">#ActionBar</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+            <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
@@ -1148,13 +1140,23 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
@@ -1178,23 +1180,23 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -1218,17 +1220,17 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
@@ -1243,33 +1245,8 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1293,7 +1270,32 @@ getContentResolver().delete(uri,null,null);
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         

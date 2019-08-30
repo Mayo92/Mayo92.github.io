@@ -187,7 +187,8 @@
 <a id="more"></a>
 <h3 id="百度SDK"><a href="#百度SDK" class="headerlink" title="百度SDK"></a>百度SDK</h3><h4 id="申请API-Key"><a href="#申请API-Key" class="headerlink" title="申请API Key"></a>申请API Key</h4><p>去百度地图开放平台创建应用，</p>
 <h5 id="获取SHA1"><a href="#获取SHA1" class="headerlink" title="获取SHA1"></a>获取SHA1</h5><p>指的是打包程序时所用签名文件的SHA1指纹，打开Android Studio任意项目，点击右侧状态栏的Gradle–项目名–:app–Tasks–android,signingReport这个Task就可以用来查看签名文件信息，双击查看。</p>
-<p><img src="第一行代码笔记-LBS/1.png" alt=""></p>
+<!--![](第一行代码笔记-LBS/1.png)-->
+<p><img src="1.png" alt=""></p>
 <p>这是使用debug.keystore文件所生成的指纹，这是Android自动生成的一个用于测试的签名文件。获取正式的签名文件指纹，在触cmd中输入</p>
 <pre><code>keytool -list -v -keystore &lt;签名文件路径&gt;
 </code></pre><h4 id="使用百度定位"><a href="#使用百度定位" class="headerlink" title="使用百度定位"></a>使用百度定位</h4><h5 id="LBS-SDK"><a href="#LBS-SDK" class="headerlink" title="LBS SDK"></a>LBS SDK</h5><p>libs目录下的内容分为两部分，BaiduLBS_Android.jar这个文件是Java层要使用到的，其他子目录下的so文件是Native层要用到的。so文件是用c/c++编写，然后再用NDK编译出来的。</p>
@@ -429,22 +430,27 @@ baiduMap.setMyLocationData(locationData);
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/Java基础/">#Java基础</a>
+            <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
@@ -458,18 +464,8 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/操作系统/">#操作系统</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
@@ -479,11 +475,16 @@ baiduMap.setMyLocationData(locationData);
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -530,7 +531,12 @@ baiduMap.setMyLocationData(locationData);
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
@@ -544,23 +550,13 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
@@ -574,28 +570,18 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
+            <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/IntentService/">#IntentService</a>
+            <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
@@ -605,21 +591,31 @@ baiduMap.setMyLocationData(locationData);
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
@@ -629,13 +625,18 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/字节流/">#字节流</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -644,13 +645,8 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Plan/">#Plan</a>
+        <div class="cube-box ">
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -664,12 +660,12 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/冒泡排序/">#冒泡排序</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
@@ -679,12 +675,17 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Button/">#Button</a>
+        <div class="cube-box ">
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -724,12 +725,12 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -754,27 +755,17 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -785,6 +776,16 @@ baiduMap.setMyLocationData(locationData);
         
         
         <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -805,22 +806,22 @@ baiduMap.setMyLocationData(locationData);
         
         
         <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
@@ -839,12 +840,12 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
@@ -854,48 +855,23 @@ baiduMap.setMyLocationData(locationData);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -920,11 +896,36 @@ baiduMap.setMyLocationData(locationData);
         
         
         <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
+            <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/集合框架/">#集合框架</a>
         </div>
         

@@ -241,7 +241,8 @@ handler.sendMessage(message);
 <p>handler主要用于发送消息和处理消息。使用sendMessage()后，最终传递到handleMessage()方法中。</p>
 <p>MessageQueue消息队列，主要用于存放所有通过Handler发送的消息，这部分消息会一直存在于消息队列中，等待被处理。每个线程中只会有一个MessageQueue对象。</p>
 <p>Looper是每个线程中MessageQueue的管家，调用Looper的loop()方法后，就会进入一个无限循环中，每当发现一个MessageQueue中存在一条消息就会将它取出，并传递到Handler的handleMessage()方法中。每个线程只有一个Looper对象。</p>
-<p><img src="第一行代码笔记-Service/1.png" alt=""></p>
+<!--![](第一行代码笔记-Service/1.png)-->
+<p><img src="1.png" alt=""></p>
 <p>runOnUiThread()方法其实是一个异步消息处理机制的接口封装，背后原理一致。</p>
 <h4 id="2-4-使用AsyncTask"><a href="#2-4-使用AsyncTask" class="headerlink" title="2.4 使用AsyncTask"></a>2.4 使用AsyncTask</h4><p>AsyncTask是一个抽象类，如果我们想使用它就必须创建一个类继承它，需指定3个泛型参数</p>
 <ul>
@@ -644,17 +645,12 @@ private ServiceConnection connection = new ServiceConnection() {
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Java基础/">#Java基础</a>
+            <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
@@ -664,11 +660,21 @@ private ServiceConnection connection = new ServiceConnection() {
         
         
         <div class="cube-box ">
+            <a href="/categories/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
         </div>
         
@@ -679,7 +685,7 @@ private ServiceConnection connection = new ServiceConnection() {
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
@@ -689,16 +695,11 @@ private ServiceConnection connection = new ServiceConnection() {
         
         
         <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -713,7 +714,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/网络/">#网络</a>
         </div>
         
@@ -728,7 +729,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -745,17 +746,27 @@ private ServiceConnection connection = new ServiceConnection() {
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
+            <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Bitmap/">#Bitmap</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -765,32 +776,12 @@ private ServiceConnection connection = new ServiceConnection() {
         
         
         <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Html/">#Html</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
@@ -799,8 +790,18 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/SSH/">#SSH</a>
+        <div class="cube-box ">
+            <a href="/tags/Java变量/">#Java变量</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
@@ -814,23 +815,18 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Markdown/">#Markdown</a>
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -849,8 +845,13 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -860,16 +861,11 @@ private ServiceConnection connection = new ServiceConnection() {
         
         
         <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/四大组件/">#四大组件</a>
         </div>
         
@@ -884,13 +880,18 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -924,7 +925,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -944,7 +945,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -954,7 +955,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -969,22 +970,12 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -994,8 +985,18 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
@@ -1019,8 +1020,8 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
@@ -1029,13 +1030,13 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -1049,7 +1050,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -1064,7 +1065,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -1084,8 +1085,28 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
@@ -1099,7 +1120,7 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
@@ -1109,32 +1130,12 @@ private ServiceConnection connection = new ServiceConnection() {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
