@@ -200,7 +200,7 @@
 </code></pre><p>使用了xmlns:android命名空间，之后可以使用app:attribute这样的写法了。因为Material Design是Android5.0出现的，而很多Material属性在5.0之前的系统不存在，为了兼容，不能使用android: attribute，而应该使用app:attribute。</p>
 <p>这里的高度为actionBar的高度。由于在style.xml中将程序主题指定成了淡色，因此Toolbar也是淡色，而Toolbar上面的各个元素会自动使用深色，为了和主题颜色区分。但这样很难看。这里使用android:theme，使Toolbar单独使用深色主题，但这样如果Toolbar里有菜单按钮，那么弹出来的也是深色主题，这样也难看，所以使用app:popupTheme属性单独将弹出来的菜单指定淡色主题。</p>
 <p>添加Toolbar，在onCreate()里</p>
-<pre><code>Toolbar toobar = findViewById(R.id. toobar);
+<pre><code>Toolbar toobar = findViewById(R.id.toobar);
 setSupportActionBar(toobar);
 </code></pre><p>修改标题栏显示文字内容，在manifest中</p>
 <pre><code>&lt;Activity
@@ -242,7 +242,52 @@ public boolean onOptionsItemSeleted(MenuItem item){
     return true;
 }
 </code></pre><h2 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h2><h3 id="DrawerLayout"><a href="#DrawerLayout" class="headerlink" title="DrawerLayout"></a>DrawerLayout</h3><p>所谓滑动菜单就是将一些菜单选项隐藏，然后可以通过滑动的方式将菜单显示出来，这种方式即节省了屏幕空间，又实现了非常好的动画效果，是Material Design中推荐的做法。</p>
+<p>DrawerLayout是一个布局，允许放入两个直接子控件，第一个控件是主屏幕显示的内容，第二个子控件是滑动菜单显示的内容。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.v4.widget.DrawerLayout 
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:id=&quot;@+id/drawerLayout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
 
+    &lt;FrameLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_heiht=&quot;?attr/actionBarSize&quot;
+            android:background=&quot;?attr/colorPrimary&quot;
+            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;
+            app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;/&gt;
+    &lt;/FrameLayout&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_gravity=&quot;start&quot;/&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;
+</code></pre><p>DrawerLayout没有限制只能使用固定的控件。第二个控件android:layout_gravity是必须的，需要告诉DrawerLayout滑动菜单是在屏幕的左边还是右边.left左边，right右边，start会根据系统语言进行判断。</p>
+<p>向左滑动菜单或点击菜单以外的区域，都可以让菜单关闭。</p>
+<p>在Toolbar最左边加一个导航按钮，防止用户不知道屏幕左边是可以拖动的。</p>
+<p>在onCreate()中添加</p>
+<pre><code>Toolbar toobar = findViewById(R.id.toobar);
+setSupportActionBar(toobar);
+mDrawerLayout = findViewById(R.id.drawerLayout);
+ActionBar actionBar = getSupportActionBar();
+if(actionBar != null){
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+}
+</code></pre><p>在onOptionsItemSeleted()中添加</p>
+<pre><code>case android.R.id.home:
+    mDrawerLayout.openDrawer(GravityCompat.START);
+    break;
+</code></pre><p>getSupportActionBar()得到ActionBar实例，具体实现是由Toolbar来完成的。setDisplayHomeAsUpEnabled()方法让导航按钮显示出来，调用setHomeAsUpIndicator()方法设置一个导航按钮图标。实际上，Toolbar最左侧的按钮就叫做HomeAsUp按钮，它默认的图标是一个返回按钮，返回上一个活动。这里我们将它默认的样式和作用进行了修改。</p>
+<p>HomeAsUp的ID永远都是android.R.id.home。调用openDrawer()方法将滑动菜单显示出来，需传入一个Gravity参数，为了与XML一致，这里传入了GravityCompat.START。</p>
+<h3 id="NavigationView"><a href="#NavigationView" class="headerlink" title="NavigationView"></a>NavigationView</h3>
     </div>
 </div>
 
@@ -453,12 +498,12 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
+            <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Android基础/">#Android基础</a>
+            <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
@@ -473,6 +518,11 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -483,17 +533,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/操作系统/">#操作系统</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
@@ -503,11 +543,16 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
+            <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -517,18 +562,8 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
         </div>
         
         
@@ -537,7 +572,17 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -553,12 +598,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -568,8 +608,8 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -584,6 +624,11 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Html/">#Html</a>
         </div>
         
@@ -593,12 +638,12 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
@@ -608,12 +653,12 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
@@ -623,23 +668,18 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/书/">#书</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -649,12 +689,22 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/字节流/">#字节流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -668,18 +718,13 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/四大组件/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -693,7 +738,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
@@ -703,7 +748,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -713,7 +758,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -723,7 +768,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -738,7 +783,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -753,12 +798,12 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -773,12 +818,12 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -804,6 +849,11 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -813,17 +863,12 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
@@ -834,17 +879,17 @@ public boolean onOptionsItemSeleted(MenuItem item){
         
         
         <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -853,7 +898,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
@@ -863,7 +908,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
@@ -873,12 +918,12 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
@@ -898,7 +943,7 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -918,12 +963,17 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -933,13 +983,13 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/JSON/">#JSON</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
@@ -948,13 +998,8 @@ public boolean onOptionsItemSeleted(MenuItem item){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
     </div>
