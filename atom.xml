@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-11T02:19:04.996Z</updated>
+  <updated>2019-09-11T02:22:51.313Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,15 @@
     <link href="http://yoursite.com/2019/08/29/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8-%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/"/>
     <id>http://yoursite.com/2019/08/29/星球Android入门-四大组件/</id>
     <published>2019-08-29T04:00:41.000Z</published>
-    <updated>2019-09-11T02:19:04.996Z</updated>
+    <updated>2019-09-11T02:22:51.313Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>onCreate() -&gt; onStart() -&gt; onResume() -&gt; onPause()  -&gt; onStop()  -&gt; onDestroy()</code></pre><p><img src="1.jpg" alt=""></p><ul><li>启动Activity：系统先调用onCreate(),然后调用onStart()，最后调用onResume()方法，Activity进入运行状态。</li><li>当Activity被其他Activity覆盖(DialogActivity)或者锁屏：系统调用onPause()方法，暂停当前Activity的执行。</li><li>当前Activity由被覆盖状态回到前台或者解锁屏：系统调用onResume()方法，再次进入运行状态。</li><li>当前Activity转到新的Activity界面或按Home键回到主页，退居后台：系统先调用onPause()方法，然后调用onStop()方法，进入停滞状态。</li><li>用户后退回到此Activity：系统会先调用onRestart()方法，然后调用onStart()方法，最后调用onResume()方法，再次进入运行状态。</li><li>当前Activity处于覆盖状态或者后台不可见状态，即第2步和第4步，当前系统内存不足时，杀死当前Activity，当用户回退当前Activity：再次调用onCreate()方法、onStart()方法、onResume()方法，进入运行状态。</li><li>当用户退出当前Activity：系统先调用onPause()方法，然后调用onStop()方法，最后调用onDestroy()方法，结束当前Activity。</li></ul><ul><li>onRestart()：表示当前Activity正在重新启动，一般情况下，当前Activity从不可见状态重新变成可见状态，onRestart()方法就会被调用。这种情形一般是用户行为导致的，比如用户按Home键切换到桌面然后重新打开APP或者从新Activity按back键</li><li>onStart()：Activity可见了，但是还没出现在前台，还无法和用户交互。</li><li>onPause()：表示Activity正在停止，此时可以做一些存储数据、停止动画等工作，不能太耗时，因为这会影响新Activity的显示。onPause()必须先执行完，新的Activity的onResume()才会执行。</li></ul><ul><li>从Activity是否可见来说，onStart()和onStop()是配对的，从Activity是否在前台来说，onResume()和onPause()是配对的。</li><li>旧Activity先onPause()，然后新Activity再启动。</li></ul><p><em>注意：当Activity弹出dialog对话框的时候，Activity不会回调onPause()。而当Activity启动dialog风格的Activity时候，此Activity会回调onPause()函数</em></p><h3 id="异常情况下的生命周期"><a href="#异常情况下的生命周期" class="headerlink" title="异常情况下的生命周期"></a>异常情况下的生命周期</h3><h4 id="资源相关的系统配置发生改变导致Activity被杀死并重新创建"><a href="#资源相关的系统配置发生改变导致Activity被杀死并重新创建" class="headerlink" title="资源相关的系统配置发生改变导致Activity被杀死并重新创建"></a>资源相关的系统配置发生改变导致Activity被杀死并重新创建</h4><p>如当前Activity处于竖屏状态，如果突然旋转屏幕，由于系统配置发生了改变，在默认情况下，Activity会被销毁并且重新创建，也可以组织系统重新创建我们的Activity。</p><p><img src="2.jpg" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>onCreate() -&gt; onStart() -&gt; onResume() -&gt; onPause()  -&gt; onStop()  -&gt; onDestroy()</code></pre><a id="more"></a><p><img src="1.png" alt=""></p><ul><li>启动Activity：系统先调用onCreate(),然后调用onStart()，最后调用onResume()方法，Activity进入运行状态。</li><li>当Activity被其他Activity覆盖(DialogActivity)或者锁屏：系统调用onPause()方法，暂停当前Activity的执行。</li><li>当前Activity由被覆盖状态回到前台或者解锁屏：系统调用onResume()方法，再次进入运行状态。</li><li>当前Activity转到新的Activity界面或按Home键回到主页，退居后台：系统先调用onPause()方法，然后调用onStop()方法，进入停滞状态。</li><li>用户后退回到此Activity：系统会先调用onRestart()方法，然后调用onStart()方法，最后调用onResume()方法，再次进入运行状态。</li><li>当前Activity处于覆盖状态或者后台不可见状态，即第2步和第4步，当前系统内存不足时，杀死当前Activity，当用户回退当前Activity：再次调用onCreate()方法、onStart()方法、onResume()方法，进入运行状态。</li><li>当用户退出当前Activity：系统先调用onPause()方法，然后调用onStop()方法，最后调用onDestroy()方法，结束当前Activity。</li></ul><ul><li>onRestart()：表示当前Activity正在重新启动，一般情况下，当前Activity从不可见状态重新变成可见状态，onRestart()方法就会被调用。这种情形一般是用户行为导致的，比如用户按Home键切换到桌面然后重新打开APP或者从新Activity按back键</li><li>onStart()：Activity可见了，但是还没出现在前台，还无法和用户交互。</li><li>onPause()：表示Activity正在停止，此时可以做一些存储数据、停止动画等工作，不能太耗时，因为这会影响新Activity的显示。onPause()必须先执行完，新的Activity的onResume()才会执行。</li></ul><ul><li>从Activity是否可见来说，onStart()和onStop()是配对的，从Activity是否在前台来说，onResume()和onPause()是配对的。</li><li>旧Activity先onPause()，然后新Activity再启动。</li></ul><p><em>注意：当Activity弹出dialog对话框的时候，Activity不会回调onPause()。而当Activity启动dialog风格的Activity时候，此Activity会回调onPause()函数</em></p><h3 id="异常情况下的生命周期"><a href="#异常情况下的生命周期" class="headerlink" title="异常情况下的生命周期"></a>异常情况下的生命周期</h3><h4 id="资源相关的系统配置发生改变导致Activity被杀死并重新创建"><a href="#资源相关的系统配置发生改变导致Activity被杀死并重新创建" class="headerlink" title="资源相关的系统配置发生改变导致Activity被杀死并重新创建"></a>资源相关的系统配置发生改变导致Activity被杀死并重新创建</h4><p>如当前Activity处于竖屏状态，如果突然旋转屏幕，由于系统配置发生了改变，在默认情况下，Activity会被销毁并且重新创建，也可以组织系统重新创建我们的Activity。</p><p><img src="2.png" alt=""></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;Activity&quot;&gt;&lt;a href=&quot;#Activity&quot; class=&quot;headerlink&quot; title=&quot;Activity&quot;&gt;&lt;/a&gt;Activity&lt;/h2&gt;&lt;h3 id=&quot;生命周期&quot;&gt;&lt;a href=&quot;#生命周期&quot; class=&quot;headerlink&quot; 
-      
+      &lt;h2 id=&quot;Activity&quot;&gt;&lt;a href=&quot;#Activity&quot; class=&quot;headerlink&quot; title=&quot;Activity&quot;&gt;&lt;/a&gt;Activity&lt;/h2&gt;&lt;h3 id=&quot;生命周期&quot;&gt;&lt;a href=&quot;#生命周期&quot; class=&quot;headerlink&quot; title=&quot;生命周期&quot;&gt;&lt;/a&gt;生命周期&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;onCreate() -&amp;gt; onStart() -&amp;gt; onResume() -&amp;gt; 
+onPause()  -&amp;gt; onStop()  -&amp;gt; onDestroy()
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
