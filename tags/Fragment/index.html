@@ -12,7 +12,7 @@
     
     
     
-    <title>星球Android入门-四大组件 | 赞美の心</title>
+    <title>标签: Fragment | 赞美の心</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,85 +162,29 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <div class="cube-article">
-    <h1 class="title">星球Android入门-四大组件</h1>
+            <style>
+    @media(max-width: 768px) {
+        body {
+            background-color: #fff!important;
+        }
+    }
+</style>
+<div class="cube-archives">
     
-    <div class="cube-article-header">
-        <div class="cube-article-date">
-            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-            <!-- moment.js对象 -->
-            2019-08-29
-        </div>
-        <div class="cube-article-tags">
-    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-    
-    <a href="/tags/四大组件/">#四大组件</a>
-    
-</div>
+    <div class="cube-archive" style="margin-top: 0;">
+        <h1 class="title">Fragment</h1>
+        
+        <ul class="posts">
+            
+            <li class="post">
+                <a href="/2019/08/29/星球Android入门-Activity/">星球Android入门-Activity</a>
+            </li>
+            
+        </ul>
+        
     </div>
     
-    <div class="cube-article-content cube-markdown">
-        
-        <h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>onCreate() -&gt; onStart() -&gt; onResume() -&gt; 
-onPause()  -&gt; onStop()  -&gt; onDestroy()
-</code></pre><a id="more"></a>
-<p><img src="1.png" alt=""></p>
-<ul>
-<li>启动Activity：系统先调用onCreate(),然后调用onStart()，最后调用onResume()方法，Activity进入运行状态。</li>
-<li>当Activity被其他Activity覆盖(DialogActivity)或者锁屏：系统调用onPause()方法，暂停当前Activity的执行。</li>
-<li>当前Activity由被覆盖状态回到前台或者解锁屏：系统调用onResume()方法，再次进入运行状态。</li>
-<li>当前Activity转到新的Activity界面或按Home键回到主页，退居后台：系统先调用onPause()方法，然后调用onStop()方法，进入停滞状态。</li>
-<li>用户后退回到此Activity：系统会先调用onRestart()方法，然后调用onStart()方法，最后调用onResume()方法，再次进入运行状态。</li>
-<li>当前Activity处于覆盖状态或者后台不可见状态，即第2步和第4步，当前系统内存不足时，杀死当前Activity，当用户回退当前Activity：再次调用onCreate()方法、onStart()方法、onResume()方法，进入运行状态。</li>
-<li>当用户退出当前Activity：系统先调用onPause()方法，然后调用onStop()方法，最后调用onDestroy()方法，结束当前Activity。</li>
-</ul>
-<ul>
-<li>onRestart()：表示当前Activity正在重新启动，一般情况下，当前Activity从不可见状态重新变成可见状态，onRestart()方法就会被调用。这种情形一般是用户行为导致的，比如用户按Home键切换到桌面然后重新打开APP或者从新Activity按back键</li>
-<li>onStart()：Activity可见了，但是还没出现在前台，还无法和用户交互。</li>
-<li>onPause()：表示Activity正在停止，此时可以做一些存储数据、停止动画等工作，不能太耗时，因为这会影响新Activity的显示。onPause()必须先执行完，新的Activity的onResume()才会执行。</li>
-</ul>
-<ul>
-<li>从Activity是否可见来说，onStart()和onStop()是配对的，从Activity是否在前台来说，onResume()和onPause()是配对的。</li>
-<li>旧Activity先onPause()，然后新Activity再启动。</li>
-</ul>
-<p><em>注意：当Activity弹出dialog对话框的时候，Activity不会回调onPause()。而当Activity启动dialog风格的Activity时候，此Activity会回调onPause()函数</em></p>
-<h3 id="异常情况下的生命周期"><a href="#异常情况下的生命周期" class="headerlink" title="异常情况下的生命周期"></a>异常情况下的生命周期</h3><h4 id="资源相关的系统配置发生改变导致Activity被杀死并重新创建"><a href="#资源相关的系统配置发生改变导致Activity被杀死并重新创建" class="headerlink" title="资源相关的系统配置发生改变导致Activity被杀死并重新创建"></a>资源相关的系统配置发生改变导致Activity被杀死并重新创建</h4><p>如当前Activity处于竖屏状态，如果突然旋转屏幕，由于系统配置发生了改变，在默认情况下，Activity会被销毁并且重新创建，也可以组织系统重新创建我们的Activity。</p>
-<p><img src="2.png" alt=""></p>
-<p>系统配置发生改变之后，Activity会销毁，其onPause()、onStop()、onDestroy()均会被调用，由于Activity是在异常状况下终止的，系统会调用onSaveInstance()来保存当前Activity状态，这个方法的调用时机是在onStop()之前，与onPause()没有既定的时序关系，当Activity重新创建后，系统会调用onRestoreInstanceState()，并且把Activity销毁时onSaveInstance()方法保存的Bundle对象作为参数同时传递给onRestoreInstanceState()和onCreate()方法。onRestoreInstanceState()在onStart()后回调。</p>
-<p>同时，在onSaveInstance()和onRestoreInstanceState()方法中，系统自动为我们做了一些恢复工作，如：文本框(EditeText)中用户输入的数据，ListView滚动的位置等，这些view相关的状态，系统都能够默认为我们恢复。查看view源码，和Activity一样，每个view都有onSaveInstance()和onRestoreInstanceState()方法。</p>
-<p><img src="3.png" alt=""></p>
-<p><strong>Android9测试onSaveInstance()在onStop()之后</strong></p>
-<h4 id="资源内存不足导致低优先级的Activity被杀死"><a href="#资源内存不足导致低优先级的Activity被杀死" class="headerlink" title="资源内存不足导致低优先级的Activity被杀死"></a>资源内存不足导致低优先级的Activity被杀死</h4><p>这里的情况与前面的数据存储与恢复是一致的。</p>
-<p>Activity按照优先级从高到低可以分为如下3种：</p>
-<ul>
-<li>前台Activity—-正在和用户交互的Activity，优先级最高。</li>
-<li>可见但非前台Activity—-如Activity中弹出一个对话框，导致Activity可见但位于后台无法与用户直接交互。</li>
-<li>后台Activity—-已经被暂停的Activity，如执行了onStop()，优先级最低。</li>
-</ul>
-<p><em>防止重建Activity：Activity指定configChange属性不让系统重建Activity，android : configChanges = “orientation”</em></p>
-<h3 id="Activity与Fragment生命周期关系"><a href="#Activity与Fragment生命周期关系" class="headerlink" title="Activity与Fragment生命周期关系"></a>Activity与Fragment生命周期关系</h3><h4 id="创建过程"><a href="#创建过程" class="headerlink" title="创建过程"></a>创建过程</h4>
-    </div>
 </div>
-
-<div class="cube-article-nav">
-    <ul>
-        
-        
-        <li class="next">
-            <a href="/2019/08/15/Html/">
-                Html
-                <i class="cube-icon cube-next" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-<!-- TODO 根据theme.comment的内容进行入口选择 -->
-
-
-
         </div>
         <div class="cube-right">
             
@@ -305,8 +249,8 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
     
     <div class="count">
         <a class="count articles"><span>43</span>文章</a>
-        <a class="count tags"><span>81</span>标签</a>
-        <a class="count categories"><span>18</span>分类</a>
+        <a class="count tags"><span>82</span>标签</a>
+        <a class="count categories"><span>19</span>分类</a>
     </div>
 </div>
 
@@ -346,7 +290,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2019/08/29/星球Android入门-四大组件/" title="星球Android入门-四大组件">星球Android入门-四大组件</a>
+                        <a href="/2019/08/29/星球Android入门-Activity/" title="星球Android入门-Activity">星球Android入门-Activity</a>
                     </p>
                     <p class="date">
                         2019-08-29
@@ -436,12 +380,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
@@ -452,12 +396,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -466,18 +410,13 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+            <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
@@ -486,27 +425,37 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/网络/">#网络</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -533,27 +482,27 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
@@ -567,7 +516,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
@@ -587,7 +536,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
@@ -598,12 +547,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
@@ -617,6 +566,11 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
@@ -627,57 +581,37 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/文件/">#文件</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/四大组件/">#四大组件</a>
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/二分查找/">#二分查找</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/冒泡排序/">#冒泡排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/选择排序/">#选择排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -692,22 +626,22 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -722,12 +656,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -757,13 +691,33 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/二分查找/">#二分查找</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/冒泡排序/">#冒泡排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -777,12 +731,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
@@ -798,16 +752,16 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
@@ -822,7 +776,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
@@ -837,28 +791,8 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
@@ -888,36 +822,56 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/集合框架/">#集合框架</a>
         </div>
         

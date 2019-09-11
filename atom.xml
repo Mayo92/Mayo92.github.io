@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-11T03:50:29.609Z</updated>
+  <updated>2019-09-11T03:55:09.652Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>星球Android入门-四大组件</title>
-    <link href="http://yoursite.com/2019/08/29/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8-%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/"/>
-    <id>http://yoursite.com/2019/08/29/星球Android入门-四大组件/</id>
+    <title>星球Android入门-Activity</title>
+    <link href="http://yoursite.com/2019/08/29/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8-Activity/"/>
+    <id>http://yoursite.com/2019/08/29/星球Android入门-Activity/</id>
     <published>2019-08-29T04:00:41.000Z</published>
-    <updated>2019-09-11T03:50:29.609Z</updated>
+    <updated>2019-09-11T03:55:09.652Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>onCreate() -&gt; onStart() -&gt; onResume() -&gt; onPause()  -&gt; onStop()  -&gt; onDestroy()</code></pre><a id="more"></a><p><img src="1.png" alt=""></p><ul><li>启动Activity：系统先调用onCreate(),然后调用onStart()，最后调用onResume()方法，Activity进入运行状态。</li><li>当Activity被其他Activity覆盖(DialogActivity)或者锁屏：系统调用onPause()方法，暂停当前Activity的执行。</li><li>当前Activity由被覆盖状态回到前台或者解锁屏：系统调用onResume()方法，再次进入运行状态。</li><li>当前Activity转到新的Activity界面或按Home键回到主页，退居后台：系统先调用onPause()方法，然后调用onStop()方法，进入停滞状态。</li><li>用户后退回到此Activity：系统会先调用onRestart()方法，然后调用onStart()方法，最后调用onResume()方法，再次进入运行状态。</li><li>当前Activity处于覆盖状态或者后台不可见状态，即第2步和第4步，当前系统内存不足时，杀死当前Activity，当用户回退当前Activity：再次调用onCreate()方法、onStart()方法、onResume()方法，进入运行状态。</li><li>当用户退出当前Activity：系统先调用onPause()方法，然后调用onStop()方法，最后调用onDestroy()方法，结束当前Activity。</li></ul><ul><li>onRestart()：表示当前Activity正在重新启动，一般情况下，当前Activity从不可见状态重新变成可见状态，onRestart()方法就会被调用。这种情形一般是用户行为导致的，比如用户按Home键切换到桌面然后重新打开APP或者从新Activity按back键</li><li>onStart()：Activity可见了，但是还没出现在前台，还无法和用户交互。</li><li>onPause()：表示Activity正在停止，此时可以做一些存储数据、停止动画等工作，不能太耗时，因为这会影响新Activity的显示。onPause()必须先执行完，新的Activity的onResume()才会执行。</li></ul><ul><li>从Activity是否可见来说，onStart()和onStop()是配对的，从Activity是否在前台来说，onResume()和onPause()是配对的。</li><li>旧Activity先onPause()，然后新Activity再启动。</li></ul><p><em>注意：当Activity弹出dialog对话框的时候，Activity不会回调onPause()。而当Activity启动dialog风格的Activity时候，此Activity会回调onPause()函数</em></p><h3 id="异常情况下的生命周期"><a href="#异常情况下的生命周期" class="headerlink" title="异常情况下的生命周期"></a>异常情况下的生命周期</h3><h4 id="资源相关的系统配置发生改变导致Activity被杀死并重新创建"><a href="#资源相关的系统配置发生改变导致Activity被杀死并重新创建" class="headerlink" title="资源相关的系统配置发生改变导致Activity被杀死并重新创建"></a>资源相关的系统配置发生改变导致Activity被杀死并重新创建</h4><p>如当前Activity处于竖屏状态，如果突然旋转屏幕，由于系统配置发生了改变，在默认情况下，Activity会被销毁并且重新创建，也可以组织系统重新创建我们的Activity。</p><p><img src="2.png" alt=""></p><p>系统配置发生改变之后，Activity会销毁，其onPause()、onStop()、onDestroy()均会被调用，由于Activity是在异常状况下终止的，系统会调用onSaveInstance()来保存当前Activity状态，这个方法的调用时机是在onStop()之前，与onPause()没有既定的时序关系，当Activity重新创建后，系统会调用onRestoreInstanceState()，并且把Activity销毁时onSaveInstance()方法保存的Bundle对象作为参数同时传递给onRestoreInstanceState()和onCreate()方法。onRestoreInstanceState()在onStart()后回调。</p><p>同时，在onSaveInstance()和onRestoreInstanceState()方法中，系统自动为我们做了一些恢复工作，如：文本框(EditeText)中用户输入的数据，ListView滚动的位置等，这些view相关的状态，系统都能够默认为我们恢复。查看view源码，和Activity一样，每个view都有onSaveInstance()和onRestoreInstanceState()方法。</p><p><img src="3.png" alt=""></p><p><strong>Android9测试onSaveInstance()在onStop()之后</strong></p><h4 id="资源内存不足导致低优先级的Activity被杀死"><a href="#资源内存不足导致低优先级的Activity被杀死" class="headerlink" title="资源内存不足导致低优先级的Activity被杀死"></a>资源内存不足导致低优先级的Activity被杀死</h4><p>这里的情况与前面的数据存储与恢复是一致的。</p><p>Activity按照优先级从高到低可以分为如下3种：</p><ul><li>前台Activity—-正在和用户交互的Activity，优先级最高。</li><li>可见但非前台Activity—-如Activity中弹出一个对话框，导致Activity可见但位于后台无法与用户直接交互。</li><li>后台Activity—-已经被暂停的Activity，如执行了onStop()，优先级最低。</li></ul><p><em>防止重建Activity：Activity指定configChange属性不让系统重建Activity，android : configChanges = “orientation”</em></p><h3 id="Activity与Fragment生命周期关系"><a href="#Activity与Fragment生命周期关系" class="headerlink" title="Activity与Fragment生命周期关系"></a>Activity与Fragment生命周期关系</h3><h4 id="创建过程"><a href="#创建过程" class="headerlink" title="创建过程"></a>创建过程</h4>]]></content>
     
@@ -37,8 +37,12 @@ onPause()  -&amp;gt; onStop()  -&amp;gt; onDestroy()
     
       <category term="Android基础" scheme="http://yoursite.com/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/"/>
     
+      <category term="四大组件" scheme="http://yoursite.com/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/"/>
     
-      <category term="四大组件" scheme="http://yoursite.com/tags/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/"/>
+    
+      <category term="Activity" scheme="http://yoursite.com/tags/Activity/"/>
+    
+      <category term="Fragment" scheme="http://yoursite.com/tags/Fragment/"/>
     
   </entry>
   
