@@ -287,7 +287,11 @@ if(actionBar != null){
     break;
 </code></pre><p>getSupportActionBar()得到ActionBar实例，具体实现是由Toolbar来完成的。setDisplayHomeAsUpEnabled()方法让导航按钮显示出来，调用setHomeAsUpIndicator()方法设置一个导航按钮图标。实际上，Toolbar最左侧的按钮就叫做HomeAsUp按钮，它默认的图标是一个返回按钮，返回上一个活动。这里我们将它默认的样式和作用进行了修改。</p>
 <p>HomeAsUp的ID永远都是android.R.id.home。调用openDrawer()方法将滑动菜单显示出来，需传入一个Gravity参数，为了与XML一致，这里传入了GravityCompat.START。</p>
-<h3 id="NavigationView"><a href="#NavigationView" class="headerlink" title="NavigationView"></a>NavigationView</h3>
+<h3 id="NavigationView"><a href="#NavigationView" class="headerlink" title="NavigationView"></a>NavigationView</h3><p>可以在滑动菜单也定制任意的布局，不过谷歌提供了NavigationView。NavigationView是Design Support库中提供的一个控件，不仅严格按照MD的要求设计，而且可以将滑动菜单页的实现变得非常简单。</p>
+<pre><code>compile &apos;com.android.support:design:24.2.1&apos;
+compile &apos;de.hdodenhof:circleimageview:2.1.0&apos;
+</code></pre><p>这里添加了依赖，第一行是Design Support库，</p>
+
     </div>
 </div>
 
@@ -497,18 +501,13 @@ if(actionBar != null){
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/categories/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
@@ -518,7 +517,7 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
@@ -528,12 +527,17 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/操作系统/">#操作系统</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
@@ -542,18 +546,13 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
@@ -562,12 +561,17 @@ if(actionBar != null){
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -598,7 +602,37 @@ if(actionBar != null){
     <div class="cube-boxs">
         
         
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/Bitmap/">#Bitmap</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java初识/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -609,37 +643,12 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Html/">#Html</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Java初识/">#Java初识</a>
+            <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
@@ -648,13 +657,8 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Markdown/">#Markdown</a>
+            <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
@@ -668,28 +672,23 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -704,7 +703,7 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -714,37 +713,17 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
+            <a href="/tags/四大组件/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/二分查找/">#二分查找</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/冒泡排序/">#冒泡排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/选择排序/">#选择排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -768,22 +747,22 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -798,12 +777,12 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -813,13 +792,33 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/二分查找/">#二分查找</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/冒泡排序/">#冒泡排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -828,7 +827,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -854,11 +853,21 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
@@ -868,8 +877,8 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
@@ -884,11 +893,6 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
@@ -933,7 +937,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
@@ -964,27 +968,27 @@ if(actionBar != null){
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -998,7 +1002,7 @@ if(actionBar != null){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/面试/">#面试</a>
         </div>
         
