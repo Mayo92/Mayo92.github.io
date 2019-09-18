@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-18T09:45:46.231Z</updated>
+  <updated>2019-09-18T09:56:13.007Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,13 @@
     <link href="http://yoursite.com/2019/05/31/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8-Service/"/>
     <id>http://yoursite.com/2019/05/31/星球Android入门-Service/</id>
     <published>2019-05-31T13:54:31.000Z</published>
-    <updated>2019-09-18T09:45:46.231Z</updated>
+    <updated>2019-09-18T09:56:13.007Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="本地服务（LocalService）"><a href="#本地服务（LocalService）" class="headerlink" title="本地服务（LocalService）"></a>本地服务（LocalService）</h3><p>调用者和service在同一个进程里，所以运行在主进程的main线程中。所以不能进行耗时操作，可以采用在service里面创建一个Thread来执行任务。service影响的是进程的生命周期，讨论与Thread的区别没有意义。<br>任何 Activity 都可以控制同一 Service，而系统也只会创建一个对应 Service 的实例。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="本地服务（LocalService）"><a href="#本地服务（LocalService）" class="headerlink" title="本地服务（LocalService）"></a>本地服务（LocalService）</h3><p>调用者和service在同一个进程里，所以运行在主进程的main线程中。所以不能进行耗时操作，可以采用在service里面创建一个Thread来执行任务。<br>service影响的是进程的生命周期，讨论与Thread的区别没有意义。<br>任何 Activity 都可以控制同一 Service，而系统也只会创建一个对应 Service 的实例。</p><a id="more"></a><h3 id="两种启动方式"><a href="#两种启动方式" class="headerlink" title="两种启动方式"></a>两种启动方式</h3><h4 id="第一种startService"><a href="#第一种startService" class="headerlink" title="第一种startService"></a>第一种startService</h4><p>步骤：</p><ul><li>定义一个类继承service</li><li>manifest.xml文件中配置service</li><li>使用context的startService(Intent)方法启动service</li><li>不在使用时，调用stopService(Intent)方法停止服务</li></ul><p>生命周期：</p><pre><code>onCreate() -- &gt; onStartCommand() -- &gt; onDestory()</code></pre><p><strong>注意:</strong>如果服务已经开启，不会重复回调onCreate()方法，如果再次调用context.startService()方法，service而是会调用onStart()或者onStartCommand()方法。停止服务需要调用context.stopService()方法，服务停止的时候回调onDestory被销毁。</p><p><strong>特点:</strong>一旦服务开启就跟调用者（开启者）没有任何关系了。调用者退出了，调用者挂了，服务还在后台长期的运行，调用者不能调用服务里面的方法。</p><h4 id="第二种bind"><a href="#第二种bind" class="headerlink" title="第二种bind"></a>第二种bind</h4><p>步骤：</p><ul><li>定义一个类继承Service</li><li>在manifest.xml文件中注册service</li><li>使用context的bindService(Intent,ServiceConnection,int)方法启动service</li><li>不再使用时，调用unbindService(ServiceConnection)方法停止该服务</li></ul><p>生命周期：</p><pre><code>onCreate() -- &gt; onBind() --&gt; onUnbind() -- &gt; onDestory()</code></pre><p><strong>注意：</strong>绑定服务不会调用onStart()或者onStartCommand()方法</p><p><strong>特点:</strong>bind的方式开启服务，绑定服务，调用者挂了，服务也会跟着挂掉。绑定者可以调用服务里面的方法。</p><p><strong>例子：</strong></p><p>定义一个类继承service</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;Service&quot;&gt;&lt;a href=&quot;#Service&quot; class=&quot;headerlink&quot; title=&quot;Service&quot;&gt;&lt;/a&gt;Service&lt;/h2&gt;&lt;h3 id=&quot;本地服务（LocalService）&quot;&gt;&lt;a href=&quot;#本地服务（LocalServi
-      
+      &lt;h2 id=&quot;Service&quot;&gt;&lt;a href=&quot;#Service&quot; class=&quot;headerlink&quot; title=&quot;Service&quot;&gt;&lt;/a&gt;Service&lt;/h2&gt;&lt;h3 id=&quot;本地服务（LocalService）&quot;&gt;&lt;a href=&quot;#本地服务（LocalService）&quot; class=&quot;headerlink&quot; title=&quot;本地服务（LocalService）&quot;&gt;&lt;/a&gt;本地服务（LocalService）&lt;/h3&gt;&lt;p&gt;调用者和service在同一个进程里，所以运行在主进程的main线程中。所以不能进行耗时操作，可以采用在service里面创建一个Thread来执行任务。&lt;br&gt;service影响的是进程的生命周期，讨论与Thread的区别没有意义。&lt;br&gt;任何 Activity 都可以控制同一 Service，而系统也只会创建一个对应 Service 的实例。&lt;/p&gt;
     
     </summary>
     
