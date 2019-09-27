@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-18T09:56:13.007Z</updated>
+  <updated>2019-09-27T02:13:52.647Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>音视频_FFMPEG简介</title>
+    <link href="http://yoursite.com/2019/09/27/%E9%9F%B3%E8%A7%86%E9%A2%91_FFMPEG%E7%AE%80%E4%BB%8B/"/>
+    <id>http://yoursite.com/2019/09/27/音视频_FFMPEG简介/</id>
+    <published>2019-09-27T02:10:40.000Z</published>
+    <updated>2019-09-27T02:13:52.647Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="音视频" scheme="http://yoursite.com/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/"/>
+    
+    
+      <category term="FFMPEG" scheme="http://yoursite.com/tags/FFMPEG/"/>
+    
+  </entry>
   
   <entry>
     <title>星球Android入门-Service</title>
@@ -612,32 +630,6 @@ public View getView(int position,View convertView,ViewGroup parent) {
     
     
       <category term="ListView" scheme="http://yoursite.com/tags/ListView/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一行代码笔记-自定义view</title>
-    <link href="http://yoursite.com/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E8%87%AA%E5%AE%9A%E4%B9%89view/"/>
-    <id>http://yoursite.com/2018/03/08/第一行代码笔记-自定义view/</id>
-    <published>2018-03-08T14:24:26.000Z</published>
-    <updated>2019-08-19T07:13:49.513Z</updated>
-    
-    <content type="html"><![CDATA[<p>比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。</p><a id="more"></a><pre><code>public class TitleLayout extends LinearLayout {    public TitleLayout(Context context,AttributeSet attrs){        super(context,attrs);        LayoutInflater.from(context).inflate(R.layout.title,this);        Button titleBack = (Button)findViewById(R.id.title_back);        titleBack.setOnClickListener(new OnClickListener(){            @Override            public void onClick(View v) {                ((Activity)getContext()).finish();            }        })    }} </code></pre><p>重写LinearLayout中带有两个参数的构造函数，在布局中引入TitleLayout控件就会调用这个构造函数，然后在构造函数中需要对标题栏布局进行动态加载，这就要借助LayoutInflater来实现了。通过LayoutInflater的from()方法可以构建出一个LayoutInflater对象，然后调用inflate()方法就可以动态加载一个布局文件，inflate()方法接受两个参数，第一个参数是要加载的布局文件id，这里我们传入R.layout.title，第二个参数是给加载好的布局再添加一个父容器，这里我们想要指定为TitleLayout，于是直接传入this。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Android基础" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="自定义view" scheme="http://yoursite.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/"/>
     
   </entry>
   
