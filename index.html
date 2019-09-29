@@ -337,6 +337,40 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-Gradle-核心语法">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/05/19/Gradle-核心语法/">Gradle-核心语法</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-05-19
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Gradle语法/" class="cube-excerpt-tag-link">#Gradle语法</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>第一节的文件类型</p>
+<h2 id="基础语法讲解"><a href="#基础语法讲解" class="headerlink" title="基础语法讲解"></a>基础语法讲解</h2><h3 id="变量详解"><a href="#变量详解" class="headerlink" title="变量详解"></a>变量详解</h3><h4 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h4><pre><code>int x = 10
+println x.class
+
+double y = 3.14
+println y.class
+</code></pre><p><img src="1.png" alt=""></p>
+<p>Groovy中没有基本类型变量，所有类型都是对象类型</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/05/19/Gradle-核心语法/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Gradle--开发环境搭建">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/05/18/Gradle-开发环境搭建/">Gradle--开发环境搭建</a></h1>
@@ -421,37 +455,6 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/03/18/第一行代码笔记-MD/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Git">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/18/第一行代码笔记-Git/">第一行代码笔记-Git</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-18
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Git/" class="cube-excerpt-tag-link">#Git</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h3><p>提供一种可配性很强的机制来允许用户将指定的文件或目录排除在版本控制之外，它会检查代码仓库的目录下是否存在一个名为.gitignore的文件，存在的话会一行一行读取这个文件的内容，并把每一行指定的文件或目录排除在版本控制之外，文件或目录可以使用”*”通配符的。</p>
-<p>AS在创建项目的时候会自动帮我们创建两个.gitignore文件，一个在根目录下，一个在app模块下。</p>
-<p>配置完成之后，就可以提交代码，先使用add命令将所有文件进行添加</p>
-<pre><code>git add .
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/18/第一行代码笔记-Git/">阅读全文</a>
     </footer>
 </div>
 
@@ -568,8 +571,8 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>49</span>文章</a>
-        <a class="count tags"><span>89</span>标签</a>
+        <a class="count articles"><span>50</span>文章</a>
+        <a class="count tags"><span>90</span>标签</a>
         <a class="count categories"><span>23</span>分类</a>
     </div>
 </div>
@@ -685,7 +688,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
@@ -695,7 +698,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -705,13 +708,8 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Java基础/">#Java基础</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/Kotlin/">#Kotlin</a>
+            <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
@@ -721,12 +719,22 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
@@ -737,11 +745,6 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
         </div>
         
         
@@ -766,12 +769,17 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
@@ -780,17 +788,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
@@ -817,6 +820,16 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
@@ -827,17 +840,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
@@ -857,22 +865,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Markdown/">#Markdown</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
@@ -886,8 +884,23 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -896,7 +909,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
@@ -911,7 +924,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VPN/">#VPN</a>
         </div>
         
@@ -921,13 +934,18 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
+        <div class="cube-box ">
+            <a href="/tags/字符流/">#字符流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/字节流/">#字节流</a>
         </div>
         
         
@@ -937,27 +955,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/字符流/">#字符流</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/字节流/">#字节流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -966,8 +964,13 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -978,6 +981,11 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         <div class="cube-box ">
             <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service/">#Service</a>
         </div>
         
         
@@ -1006,22 +1014,22 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -1046,7 +1054,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1066,17 +1074,17 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -1091,12 +1099,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
@@ -1131,8 +1139,13 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -1142,7 +1155,22 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
         
@@ -1156,7 +1184,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -1171,17 +1199,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -1201,12 +1224,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
@@ -1222,12 +1245,12 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         
         
         <div class="cube-box ">
-            <a href="/tags/集合框架/">#集合框架</a>
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
+            <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
         
@@ -1236,23 +1259,8 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/线程/">#线程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/前台服务/">#前台服务</a>
+            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>

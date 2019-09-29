@@ -167,6 +167,35 @@ onPause()  -&amp;gt; onStop()  -&amp;gt; onDestroy()
   </entry>
   
   <entry>
+    <title>Gradle-核心语法</title>
+    <link href="http://yoursite.com/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/05/19/Gradle-核心语法/</id>
+    <published>2018-05-19T02:32:11.000Z</published>
+    <updated>2019-09-29T10:25:32.490Z</updated>
+    
+    <content type="html"><![CDATA[<p>第一节的文件类型</p><h2 id="基础语法讲解"><a href="#基础语法讲解" class="headerlink" title="基础语法讲解"></a>基础语法讲解</h2><h3 id="变量详解"><a href="#变量详解" class="headerlink" title="变量详解"></a>变量详解</h3><h4 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h4><pre><code>int x = 10println x.classdouble y = 3.14println y.class</code></pre><p><img src="1.png" alt=""></p><p>Groovy中没有基本类型变量，所有类型都是对象类型</p><a id="more"></a><h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><h5 id="强类型定义方法"><a href="#强类型定义方法" class="headerlink" title="强类型定义方法"></a>强类型定义方法</h5><p>像Java一样，直接定义int类型、double类型等，声明这个变量的时候把类型确定了</p><h5 id="弱类型def定义方法"><a href="#弱类型def定义方法" class="headerlink" title="弱类型def定义方法"></a>弱类型def定义方法</h5><pre><code>def x1 = 11println x1.classdef y1 = 3.1415println y1.classdef name = &apos;ss&apos;println name.class</code></pre><p><img src="2.png" alt=""></p><p>根据后面的值就可以推断出变量的类型，编译器会自动推断</p><h5 id="两种方式使用场景"><a href="#两种方式使用场景" class="headerlink" title="两种方式使用场景"></a>两种方式使用场景</h5><p>如果这个变量只用于自己而不会使用其他类或其他应用模块，推荐定义成def。如果这个变量要用于其他模块或者其他类，推荐使用强类型定义方式，因为不能动态的转换成其他类型，保证外接传给我们的值一定是正确的，反之调用方会疑惑</p><pre><code>def x1 = 11x1 = &apos;test&apos;println x1.class</code></pre><p><img src="3.png" alt=""></p><p>def声明的变量可以随时改变类型，相当于Object类型</p><h3 id="字符串详解"><a href="#字符串详解" class="headerlink" title="字符串详解"></a>字符串详解</h3><p><img src="4.png" alt=""></p><h4 id="常用的三种定义方式"><a href="#常用的三种定义方式" class="headerlink" title="常用的三种定义方式"></a>常用的三种定义方式</h4><h5 id="单引号定义"><a href="#单引号定义" class="headerlink" title="单引号定义"></a>单引号定义</h5><p>内容就是字符串的内容，且不能更改。特殊字符跟Java一样，通过\转义</p><pre><code>def name = &apos;a single string&apos;print name.class</code></pre><p><img src="5.png" alt=""></p><h5 id="三引号定义"><a href="#三引号定义" class="headerlink" title="三引号定义"></a>三引号定义</h5><pre><code>def thupleName = &apos;&apos;&apos;three single string&apos;&apos;&apos;println thupleName.class</code></pre><p><img src="5.png" alt=""></p><p>可以直接指定格式，有格式的建议使用三引号</p><pre><code>def thupleName2 = &apos;&apos;&apos;line oneline twoline three&apos;&apos;&apos;println thupleName2</code></pre><p><img src="6.png" alt=""></p><p>可以添加一个反斜杠，让格式更统一</p><pre><code>def thupleName2 = &apos;&apos;&apos;\line oneline twoline three&apos;&apos;&apos;</code></pre><h5 id="双引号定义"><a href="#双引号定义" class="headerlink" title="双引号定义"></a>双引号定义</h5><p>最常用，可扩展字符串</p><pre><code>def doubleName = &quot;common string&quot;println doubleName.class</code></pre><p><img src="5.png" alt=""></p><pre><code>def name2 = &quot;zz&quot;def hello = &quot;hello:${name2}&quot;println helloprintln hello.class</code></pre><p><img src="7.png" alt=""></p><p>可以使用${}扩展，并且如果有扩展表达式就改变了类型，{}可以是任意的表达式</p><pre><code>def sum = &quot;sum of 2 and 3 equals ${2 + 3}&quot;println sum</code></pre><p><img src="8.png" alt=""></p><h5 id="两种类型可以互相转换"><a href="#两种类型可以互相转换" class="headerlink" title="两种类型可以互相转换"></a>两种类型可以互相转换</h5><p>String与GString可以相互传递，相互调用</p><pre><code>def sum = &quot;sum of 2 and 3 equals ${2 + 3}&quot;def result = echo(sum)println resultprintln result.classString echo(String message){    return message}</code></pre><p><img src="9.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;第一节的文件类型&lt;/p&gt;
+&lt;h2 id=&quot;基础语法讲解&quot;&gt;&lt;a href=&quot;#基础语法讲解&quot; class=&quot;headerlink&quot; title=&quot;基础语法讲解&quot;&gt;&lt;/a&gt;基础语法讲解&lt;/h2&gt;&lt;h3 id=&quot;变量详解&quot;&gt;&lt;a href=&quot;#变量详解&quot; class=&quot;headerlink&quot; title=&quot;变量详解&quot;&gt;&lt;/a&gt;变量详解&lt;/h3&gt;&lt;h4 id=&quot;变量的类型&quot;&gt;&lt;a href=&quot;#变量的类型&quot; class=&quot;headerlink&quot; title=&quot;变量的类型&quot;&gt;&lt;/a&gt;变量的类型&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;int x = 10
+println x.class
+
+double y = 3.14
+println y.class
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Groovy中没有基本类型变量，所有类型都是对象类型&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Gradle" scheme="http://yoursite.com/categories/Gradle/"/>
+    
+    
+      <category term="Gradle语法" scheme="http://yoursite.com/tags/Gradle%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Gradle--开发环境搭建</title>
     <link href="http://yoursite.com/2018/05/18/Gradle-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2018/05/18/Gradle-开发环境搭建/</id>
@@ -592,44 +621,6 @@ getSystemService(Context.NOTIFICATION_SERVICE);
     
     
       <category term="RecyclerView" scheme="http://yoursite.com/tags/RecyclerView/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一行代码笔记-ListView</title>
-    <link href="http://yoursite.com/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ListView/"/>
-    <id>http://yoursite.com/2018/03/09/第一行代码笔记-ListView/</id>
-    <published>2018-03-08T23:13:44.000Z</published>
-    <updated>2019-08-19T07:15:15.048Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>public FruitAdapter(Context context,int textViewResourceId,                        List&lt;Fruit&gt; objects) {    super(context, textViewResourceId, objects);    resourceId = textViewResourceId;     }@Overridepublic View getView(int position,View convertView,ViewGroup parent) {    Fruit fruit = getItem(position); //获取当前的Fruit实例    View view = LayoutInflater.from(getContext()).inflate(resorced,parent,false);    ...}</code></pre><a id="more"></a><p>重写父类的一组构造方法，用于将上下文、ListView子项布局的id和数据都传递进来。getView方法在每个子项被滚动到屏幕内的时候会被调用，使用LayoutInflater来为这个子项加载我们传入的布局。LayoutInflater的inflate()方法接收三个参数，第三个参数指定false，表示只让我们在父布局中声明的layout属性生效，但不为这个View添加父布局。因为一旦有父布局就不能再添加到ListView中了。</p><h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><pre><code>View view;ViewHolder viewHolder;if(convertView == null){    view = LayoutInflater.from(getContext()).inflate(resorced,parent,false);    viewHolder = new ViewHolder();    viewHolder.fruitImage = (ImageView)view.findViewById(...);    view.setTag(viewHolder);} else {    view = convertView;    viewHolder = (ViewHolder)view.getTag();}viewHolder.fruitImage.setImageResource(fruit.getImageId());......class ViewHolder {    ImageView fruitImage;}</code></pre><h4 id="点击事件"><a href="#点击事件" class="headerlink" title="点击事件"></a>点击事件</h4><pre><code>listView.setOnItemClick</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;pre&gt;&lt;code&gt;public FruitAdapter(Context context,int textViewResourceId,
-                        List&amp;lt;Fruit&amp;gt; objects) {
-    super(context, textViewResourceId, objects);
-    resourceId = textViewResourceId;     
-}
-
-@Override
-public View getView(int position,View convertView,ViewGroup parent) {
-    Fruit fruit = getItem(position); //获取当前的Fruit实例
-    View view = LayoutInflater.from(getContext()).inflate(resorced,parent,false);
-    ...
-}
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Android基础" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="ListView" scheme="http://yoursite.com/tags/ListView/"/>
     
   </entry>
   
