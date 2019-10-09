@@ -290,8 +290,58 @@ println str.isNumber()
 </code></pre><p><img src="19.png" alt=""></p>
 <pre><code>//类型转换
 def str3 = &apos;1111&apos;
-println str3.toInteger()
+println str3.toInteger().class
 </code></pre><p><img src="20.png" alt="">    </p>
+<h3 id="逻辑控制详解"><a href="#逻辑控制详解" class="headerlink" title="逻辑控制详解"></a>逻辑控制详解</h3><p><img src="21.png" alt=""></p>
+<p>switch/case、for循环不一样，关注这两个即可</p>
+<pre><code>def x = 1.23
+def result
+switch (x){
+    case &apos;foo&apos;:
+        result = &apos;found foo&apos;
+        break
+    case &apos;bar&apos;:
+        result = &apos;bar&apos;
+        break
+    case [4,5,6,&apos;inlist&apos;]://列表
+        result = &apos;list&apos;
+        break
+    case 12..30://范围
+        result = &apos;range&apos;
+        break
+    case Integer:
+        result = &apos;Integer&apos;
+        break
+    case BigDecimal:
+        result = &apos;BigDecimal&apos;
+        break
+    default:
+        result = &apos;default&apos;
+}
+
+println result
+</code></pre><p><img src="22.png" alt=""></p>
+<pre><code>//对范围的循环
+def sum = 0
+for (i in 0..9){
+    sum += i
+}
+println sum
+</code></pre><p><img src="23.png" alt=""></p>
+<pre><code>//对list循环
+sum = 0
+for (i in [0,1,2,3,4,5,6,7,8,9]){
+    sum += i
+}
+println sum
+</code></pre><p><img src="23.png" alt=""></p>
+<pre><code>//对map的循环
+sum = 0
+for (i in [&apos;lili&apos;:1,&apos;lucy&apos;:2,&apos;luck&apos;:3]){
+    sum += i.value
+}
+println sum
+</code></pre><p><img src="24.png" alt=""></p>
 
     </div>
 </div>
@@ -502,23 +552,13 @@ println str3.toInteger()
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/Gradle/">#Gradle</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Java基础/">#Java基础</a>
+            <a href="/categories/Gradle/">#Gradle</a>
         </div>
         
         
@@ -527,7 +567,27 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
@@ -538,7 +598,7 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
@@ -547,23 +607,13 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Kotlin/">#Kotlin</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
@@ -572,13 +622,13 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
+            <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
@@ -588,12 +638,17 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/音视频/">#音视频</a>
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/网络/">#网络</a>
         </div>
         
         
@@ -602,17 +657,12 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -629,17 +679,7 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
@@ -649,12 +689,12 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
@@ -663,38 +703,18 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
         </div>
         
         
@@ -704,11 +724,31 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/Java变量/">#Java变量</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
@@ -734,31 +774,16 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -769,12 +794,22 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -783,18 +818,8 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Activity/">#Activity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
         
@@ -814,11 +839,26 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -833,27 +873,27 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -868,12 +908,12 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -893,8 +933,18 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -908,7 +958,7 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -919,11 +969,11 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -939,17 +989,12 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -959,12 +1004,12 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
@@ -973,17 +1018,17 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
@@ -993,12 +1038,12 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -1014,31 +1059,11 @@ println str3.toInteger()
         
         
         <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -1048,7 +1073,7 @@ println str3.toInteger()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/JSON/">#JSON</a>
         </div>
         
@@ -1059,17 +1084,42 @@ println str3.toInteger()
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/集合框架/">#集合框架</a>
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
         

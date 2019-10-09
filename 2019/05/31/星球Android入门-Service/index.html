@@ -182,6 +182,7 @@
     <div class="cube-article-content cube-markdown">
         
         <h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="本地服务（LocalService）"><a href="#本地服务（LocalService）" class="headerlink" title="本地服务（LocalService）"></a>本地服务（LocalService）</h3><p>调用者和service在同一个进程里，所以运行在主进程的main线程中。所以不能进行耗时操作，可以采用在service里面创建一个Thread来执行任务。<br>service影响的是进程的生命周期，讨论与Thread的区别没有意义。<br>任何 Activity 都可以控制同一 Service，而系统也只会创建一个对应 Service 的实例。</p>
+<p>本地service不涉及进程间通信</p>
 <a id="more"></a>
 <h3 id="两种启动方式"><a href="#两种启动方式" class="headerlink" title="两种启动方式"></a>两种启动方式</h3><h4 id="第一种startService"><a href="#第一种startService" class="headerlink" title="第一种startService"></a>第一种startService</h4><p>步骤：</p>
 <ul>
@@ -207,7 +208,257 @@
 <p><strong>特点:</strong>bind的方式开启服务，绑定服务，调用者挂了，服务也会跟着挂掉。绑定者可以调用服务里面的方法。</p>
 <p><strong>例子：</strong></p>
 <p>定义一个类继承service</p>
+<pre><code>public class MyService extends Service {
 
+    private String TAG = &quot;MyService&quot;;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.i(TAG,&quot;onCreate&quot;);
+    }
+
+    @Override
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
+        Log.i(TAG,&quot;onStart&quot;);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.i(TAG,&quot;onStartCommand&quot;);
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    //绑定服务时调用这个方法，返回一个IBinder对象
+    @Override
+    public IBinder onBind(Intent intent) {
+            Log.i(TAG,&quot;onBind&quot;);
+        return new MyBinder();
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        Log.i(TAG,&quot;onUnbind&quot;);
+        return super.onUnbind(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG,&quot;onDestroy&quot;);
+    }
+
+    public interface MyIBinder{
+        void test();
+    }
+
+    public class MyBinder extends Binder implements MyIBinder{
+
+        public void stopService(ServiceConnection serviceConnection){
+            unbindService(serviceConnection);
+        }
+
+        @Override
+        public void test() {
+            for (int i=0;i&lt;20;i++){
+                Log.i(TAG,&quot;test&quot;+i);
+            }
+        }
+    }
+}
+</code></pre><p>在manifest.xml文件中注册service</p>
+<pre><code>&lt;service android:name=&quot;.MyService&quot; android:exported=&quot;true&quot;&gt;
+     &lt;intent-filter&gt;
+         &lt;action android:name=&quot;com.yly.yservice&quot;/&gt;
+         &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;
+     &lt;/intent-filter&gt;
+&lt;/service&gt;
+</code></pre><p>绑定自定义的service</p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    private String TAG = &quot;MyService&quot;;
+    private Button mButton1,mButton2;
+    private MyService.MyBinder mMyBinder;
+    private ServiceConnection mServiceConnection;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mButton1 = findViewById(R.id.button);
+        mButton2 = findViewById(R.id.button2);
+
+        mButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mServiceConnection = new MyServiceConnection();
+                Intent intent = new Intent(MainActivity.this,MyService.class);
+                //startService(intent);
+                bindService(intent,mServiceConnection,BIND_AUTO_CREATE);
+        }
+        });
+
+        mButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                unbindService(mServiceConnection);
+            }
+        });
+    }
+
+    class MyServiceConnection implements ServiceConnection {
+
+        //这里的第二个参数IBinder就是Service中的onBind方法返回的
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.i(TAG, &quot;onServiceConnected&quot;);
+            mMyBinder = (MyService.MyBinder) iBinder;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            Log.i(TAG, &quot;onServiceDisconnected&quot;);
+        }
+    }
+}
+</code></pre><p>startService输出日志：</p>
+<p><img src="1.png" alt=""></p>
+<p>bindService 输出日志：</p>
+<p><img src="2.png" alt=""></p>
+<h3 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h3><p>IntentService是Service的子类，比普通的Service增加了额外的功能。</p>
+<p>先看Service本身存在两个问题：</p>
+<ul>
+<li>Service不会专门启动一条单独的进程，Service与它所在应用位于同一个进程中</li>
+<li>Service也不是专门一条新线程，因此不应该在Service中直接处理耗时的任务</li>
+</ul>
+<p>IntentService特征:</p>
+<ul>
+<li>会创建独立的worker线程来处理所有的Intent请求</li>
+<li>会创建独立的worker线程来处理onHandleIntent()方法实现的代码，无需处理多线程问题</li>
+<li>所有请求处理完成后，IntentService会自动停止，无需调用stopSelf()方法停止Service</li>
+<li>为Service的onBind()提供默认实现，返回null</li>
+<li>为Service的onStartCommand提供默认实现，将请求Intent添加到队列中</li>
+</ul>
+<h3 id="绑定远程服务-aidl文件的使用"><a href="#绑定远程服务-aidl文件的使用" class="headerlink" title="绑定远程服务(aidl文件的使用)"></a>绑定远程服务(aidl文件的使用)</h3><p>远程服务是位于另一个项目中的一个对外开放的服务，区别于本地服务。</p>
+<ul>
+<li>远程服务：调用者和服务在不同的工程代码里面</li>
+<li>本地服务：调用者和服务在同一个工程代码里面</li>
+</ul>
+<p>绑定远程服务的步骤:</p>
+<ul>
+<li>在服务的内部创建一个内部类，提供一个方法，可以间接调用服务的方法</li>
+<li>把暴露的接口文件的扩展名改为.aidl文件 去掉访问修饰符</li>
+<li>实现服务的onbind方法，继承Bander和实现aidl定义的接口，提供给外界可调用的方法</li>
+<li>在activity 中绑定服务。bindService()</li>
+<li>在服务成功绑定的时候会回调 onServiceConnected方法 传递一个 IBinder对象</li>
+<li>aidl定义的接口.Stub.asInterface(binder) 调用接口里面的方法</li>
+</ul>
+<p>.aidl：android interface definition language 安卓接口定义语言。<br>aidl文件都是公有的，没有访问权限修饰符。</p>
+<p><strong>例子</strong></p>
+<p><em>远程服务的程序：</em></p>
+<p>定义一个Service</p>
+<pre><code>public class MyService extends Service {
+
+    public MyService(){}
+
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        //返回MyBind对象
+        return new MyBinder();
+    }
+
+    /**
+     * 直接继承IMyBinder.Stub
+     */
+    private class MyBinder extends IMyBinder.Stub {
+
+        @Override
+        public void invokeMethodInMyService() throws RemoteException {
+            methodInMyService();
+        }
+    }
+
+    private void methodInMyService() {
+        Looper.prepare();
+        Toast.makeText(getApplicationContext(), &quot;服务里的方法执行了。。。&quot;,
+            Toast.LENGTH_SHORT).show();
+        Looper.loop();
+    }
+}
+</code></pre><p>创建IMyBinder.aidl文件，工具会自动生成一个IMyBinder的接口。</p>
+<pre><code>interface IMyBinder {
+
+     void invokeMethodInMyService();
+
+}
+</code></pre><p>在Manifes.xml件中进行配置</p>
+<pre><code>&lt;service android:name=&quot;.MyService&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.yly.myservice&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+</code></pre><p><em>调用远程服务的程序：</em></p>
+<p>创建一个和远程服务程序的MyBinder.aidl一样的文件（包括包名），拷贝即可</p>
+<p>绑定服务，调用方法</p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    private Button mButton1,mButton2;
+
+    private IMyBinder mIMyBinder;
+
+    private MyConn mMyConn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mButton1 = findViewById(R.id.button1);
+        mButton2 = findViewById(R.id.button2);
+
+        mButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(&quot;com.yly.myservice&quot;);
+                intent.setPackage(&quot;com.yly.aidlservice&quot;);
+                mMyConn = new MyConn();
+                bindService(intent,mMyConn,BIND_AUTO_CREATE);
+            }
+        });
+
+        mButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    mIMyBinder.invokeMethodInMyService();
+            } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private class MyConn implements ServiceConnection {
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            //通过Stub得到接口类型
+            mIMyBinder = IMyBinder.Stub.asInterface(iBinder);
+            Log.e(&quot;xxx&quot;,&quot;绑定成功&quot;);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    }
+}
+</code></pre>
     </div>
 </div>
 
@@ -428,6 +679,11 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -437,8 +693,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/">#前端</a>
+        <div class="cube-box ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
@@ -447,13 +708,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
@@ -462,28 +723,8 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Kotlin/">#Kotlin</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
@@ -493,7 +734,17 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
@@ -503,17 +754,7 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
@@ -522,7 +763,17 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
         <div class="cube-box ">
+            <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
@@ -543,18 +794,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
+            <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
@@ -564,22 +805,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
@@ -593,28 +829,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
@@ -624,6 +850,21 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java变量/">#Java变量</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
@@ -638,7 +879,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
@@ -649,7 +890,7 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -658,22 +899,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -684,7 +910,7 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -694,22 +920,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/文件/">#文件</a>
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Activity/">#Activity</a>
+            <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Fragment/">#Fragment</a>
+        <div class="cube-box ">
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -723,13 +949,28 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Service/">#Service</a>
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
         
@@ -738,12 +979,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -753,7 +994,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -768,22 +1009,22 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -793,7 +1034,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -803,13 +1044,23 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -833,8 +1084,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
@@ -843,23 +1094,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
@@ -868,18 +1109,23 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
@@ -898,7 +1144,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
@@ -908,7 +1154,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
@@ -918,42 +1164,22 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -973,13 +1199,28 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/集合框架/">#集合框架</a>
+        <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -989,6 +1230,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/集合框架/">#集合框架</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/面试/">#面试</a>
         </div>
         
