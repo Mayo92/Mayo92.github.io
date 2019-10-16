@@ -211,125 +211,6 @@
         
         
            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h3><p>大多数情况下相当于java的基本类型boolean，只有在必要情况下才会装箱成java的装箱类型Boolean，但是这已经交给编译器来决定了，不需要我们关心。</p>
-<p><img src="1.png" alt=""></p>
-<pre><code>val aBoolean:Boolean = true
-val anotherBoolean:Boolean = false
-</code></pre><h3 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h3><p>包括整形和浮点型，byte一般被当成数据流而不是整数当成二进制来看</p>
-<p><img src="2.png" alt=""></p>
-<pre><code>val anInt:Int = 8
-val anotherInt:Int = 0xFF
-val moreInt:Int = 0b00000011
-val maxInt:Int = Int.MAX_VALUE
-val minInt:Int = Int.MIN_VALUE
-
-val aLong:Long = 1417469149149817984
-val anotherLong:Long = 123
-val maxLong:Long = Long.MAX_VALUE
-val minLong:Long = Long.MIN_VALUE
-
-val aFloat:Float=2.0F
-val anotherFloat=1E3f
-val maxFloat:Float= Float.MAX_VALUE
-val minFloat:Float= Float.MIN_VALUE
-
-val aDouble:Double=3.0
-val anotherDouble:Double=3.1415926
-val maxDouble:Double= Double.MAX_VALUE
-val minDouble:Double= Double.MIN_VALUE
-
-val aShort:Short=127
-val maxShort:Short= Short.MAX_VALUE
-val minShort:Short= Short.MIN_VALUE
-
-val maxByte:Byte= Byte.MAX_VALUE
-val minByte:Byte= Byte.MIN_VALUE
-
-fun main(args: Array&lt;String&gt;) {
-    println(anotherInt)
-    println(moreInt)
-    println(maxInt)
-    println(Math.pow(2.0,31.0)-1)
-    println(minInt)
-    println(-Math.pow(2.0,31.0))
-
-    println(maxLong)
-    println(Math.pow(2.0,63.0)-1)
-    println(minLong)
-    println(-Math.pow(2.0,63.0))
-
-    println(aFloat)
-    println(anotherFloat)
-    println(maxFloat)
-    //最小的非0正数，是正数，真正的最小值是-Float.MAX_VALUE
-    println(minFloat)
-
-    println(aDouble)
-    println(anotherDouble)
-    println(maxDouble)
-    //最小的非0正数，是正数，真正的最小值是-Double.MAX_VALUE
-    println(minDouble)
-
-    println(aShort)
-    println(maxShort)
-    println(minShort)
-
-    println(maxByte)
-    println(minByte)
-}
-</code></pre><p><img src="3.png" alt=""></p>
-<h3 id="拆箱装箱"><a href="#拆箱装箱" class="headerlink" title="拆箱装箱"></a>拆箱装箱</h3><p>Kotlin不需要关心装箱与非装箱</p>
-<h3 id="Char数据类型"><a href="#Char数据类型" class="headerlink" title="Char数据类型"></a>Char数据类型</h3><p><img src="4.png" alt=""></p>
-<pre><code>val aChar:Char=&apos;0&apos;
-val bChar:Char=&apos;中&apos;
-//\u表示Unicode编码
-val cChar:Char=&apos;\u000f&apos;
-
-fun main(args: Array&lt;String&gt;) {
-    println(aChar)
-    println(bChar)
-    println(cChar)
-}
-</code></pre><p><img src="6.png" alt=""></p>
-<p>转义字符</p>
-<p><img src="5.png" alt=""></p>
-<h3 id="基础数据类型转换"><a href="#基础数据类型转换" class="headerlink" title="基础数据类型转换"></a>基础数据类型转换</h3><p>不可以隐式转换</p>
-<p><img src="7.png" alt=""></p>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><img src="8.png" alt=""></p>
-<p><img src="9.png" alt=""></p>
-<pre><code>val string:String=&quot;Hello&quot;
-val fromChars:String=String(charArrayOf(&apos;H&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;))
-
-fun main(args: Array&lt;String&gt;) {
-    //equals
-    println(string == fromChars)
-    //对象是否相等，相当于java的==
-    println(string === fromChars)
-
-    println(&quot;你好&quot;+ string)
-
-    val arg1:Int=1
-    val arg2:Int=2
-    println(&quot;$arg1+$arg2 = ${arg1+arg2}&quot;)
-
-    val say:String=&quot;hello \&quot;krido\&quot;&quot;
-    println(say)
-
-    val salary:Int=1000
-    //打印$1000
-    println(&quot;$$salary&quot;)
-    //打印$salary
-    println(&quot;\$salary&quot;)
-
-    //原始字符串，与groovy差不多，$不能转义与相邻的字符串加空格解决
-    val rawString:String=&quot;&quot;&quot;
-        /t
-        /n
-        \\\$$$\$ salary
-    &quot;&quot;&quot;
-    println(rawString)
-    println(rawString.length)
-}
-</code></pre>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -829,7 +710,7 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -855,7 +736,7 @@ println y.class
         
         
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
+            <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
@@ -864,8 +745,8 @@ println y.class
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
@@ -874,12 +755,12 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
@@ -899,7 +780,7 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
@@ -909,33 +790,33 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/Animation/">#Animation</a>
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/View/">#View</a>
+            <a href="/categories/星球Android入门/Android基础/Animation/">#Animation</a>
         </div>
         
         
@@ -945,16 +826,16 @@ println y.class
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/View/">#View</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
@@ -981,12 +862,12 @@ println y.class
         
         
         <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
+            <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
+            <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
@@ -995,8 +876,13 @@ println y.class
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
@@ -1006,7 +892,7 @@ println y.class
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
@@ -1020,17 +906,12 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
@@ -1040,7 +921,7 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
@@ -1050,17 +931,17 @@ println y.class
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
@@ -1070,23 +951,23 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SSR/">#SSR</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -1100,7 +981,7 @@ println y.class
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
@@ -1110,18 +991,13 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/字节流/">#字节流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -1132,6 +1008,11 @@ println y.class
         
         <div class="cube-box ">
             <a href="/tags/文件/">#文件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -1161,16 +1042,26 @@ println y.class
         
         
         <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Animation/">#Animation</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/View/">#View</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1180,13 +1071,13 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/网络/">#网络</a>
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1220,7 +1111,7 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -1255,18 +1146,13 @@ println y.class
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1280,7 +1166,7 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -1295,16 +1181,6 @@ println y.class
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
@@ -1316,7 +1192,7 @@ println y.class
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
@@ -1325,8 +1201,13 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -1336,16 +1217,21 @@ println y.class
         
         
         <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
@@ -1355,17 +1241,12 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
@@ -1390,38 +1271,18 @@ println y.class
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
         </div>
         
         
@@ -1436,17 +1297,37 @@ println y.class
         
         
         <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/集合框架/">#集合框架</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>
