@@ -342,7 +342,93 @@ for (i in [&apos;lili&apos;:1,&apos;lucy&apos;:2,&apos;luck&apos;:3]){
 }
 println sum
 </code></pre><p><img src="24.png" alt=""></p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="groovy中闭包基础详解"><a href="#groovy中闭包基础详解" class="headerlink" title="groovy中闭包基础详解"></a>groovy中闭包基础详解</h3><p><img src="25.png" alt=""></p>
+<h4 id="闭包定义及调用"><a href="#闭包定义及调用" class="headerlink" title="闭包定义及调用"></a>闭包定义及调用</h4><p>闭包就是一段代码块</p>
+<pre><code>def clouser = { println &apos;hello groovy!&apos; }
+//执行
+clouser.call()
+//第二种调用
+clouser()
+</code></pre><p><img src="26.png" alt=""></p>
+<h4 id="闭包参数"><a href="#闭包参数" class="headerlink" title="闭包参数"></a>闭包参数</h4><p>-&gt;之前为参数部分，-&gt;之后为闭包体</p>
+<pre><code>def clouser = {String name  -&gt; println &quot;hello ${name}&quot; }
+clouser.call(&apos;groovy&apos;)
+clouser(&apos;groovy&apos;)
+</code></pre><p><img src="27.png" alt=""></p>
+<p>多个参数</p>
+<pre><code>def clouser = {String name,int age  -&gt; println &quot;hello ${name},My age is ${age}&quot; }
+def name = &apos;groovy&apos;
+clouser(name,4)
+</code></pre><p><img src="28.png" alt=""></p>
+<p>默认参数it,所有闭包都有的默认参数，不需要显示申明</p>
+<pre><code>def clouser = {println &quot;hello ${it}&quot; }
+def name = &apos;groovy&apos;
+clouser(name)
+</code></pre><p><img src="29.png" alt=""></p>
+<h4 id="闭包返回值"><a href="#闭包返回值" class="headerlink" title="闭包返回值"></a>闭包返回值</h4><p>闭包一定会有返回值，下面代码return改为println后，返回值为null</p>
+<pre><code>//def clouser = {String name  -&gt; return   &quot;hello ${name}&quot; }
+def clouser = {String name  -&gt; println  &quot;hello ${name}&quot; }
+def result = clouser(&apos;groovy&apos;)
+println result
+</code></pre><p><img src="30.png" alt=""></p>
+<h3 id="groovy中闭包使用详解"><a href="#groovy中闭包使用详解" class="headerlink" title="groovy中闭包使用详解"></a>groovy中闭包使用详解</h3><p><img src="31.png" alt=""></p>
+<h4 id="与基本类型的结合使用"><a href="#与基本类型的结合使用" class="headerlink" title="与基本类型的结合使用"></a>与基本类型的结合使用</h4><p>可以在DefaultGroovyMethods方法中查看实现</p>
+<p>闭包作为方法参数的最后一个可以不写在括号里</p>
+<p>阶乘方法</p>
+<pre><code>int x = fab(5)
+println x
+int y = fab2(5)
+println y
 
+//求指定number的阶乘
+int fab(int number) {
+    int result = 1
+    1.upto(number , { num -&gt; result *= num})
+    return result
+}
+
+int fab2 (int number){
+    int result = 1
+    number.downto(1) {num -&gt; result*= num}
+    return result
+}
+</code></pre><p><img src="32.png" alt=""></p>
+<p>累计求和方法</p>
+<pre><code>//times方法起始值始终是0
+int call (int number) {
+    int result = 0
+    number.times {
+        num -&gt; result+=num
+    }
+    return result
+}
+//0加到4
+int z = call(5)
+println z
+</code></pre><p><img src="33.png" alt=""></p>
+<h4 id="与String结合使用"><a href="#与String结合使用" class="headerlink" title="与String结合使用"></a>与String结合使用</h4><p>each遍历，each的返回值还是str的值（调用者本身）</p>
+<pre><code>String str = &apos;the 2 and 3 is 5&apos;
+str.each {print it}
+</code></pre><p><img src="34.png" alt=""></p>
+<p>find方法，查找符合条件的第一个,闭包是一个Boolean类型返回值</p>
+<pre><code>println str.find {it.isNumber()}
+</code></pre><p><img src="35.png" alt=""></p>
+<p>findAll方法,遍历字符串找到所有符合的放到集合里，闭包是一个Boolean类型返回值</p>
+<pre><code>def list = str.findAll {it.isNumber()}
+println list.toListString()
+</code></pre><p><img src="36.png" alt=""></p>
+<p>any方法，只要满足条件就返回true，闭包是一个Boolean类型返回值</p>
+<pre><code>def result = str.any { it.isNumber() }
+println result
+</code></pre><p><img src="37.png" alt=""></p>
+<p>every方法，每一项都满足返回true，闭包是一个Boolean类型返回值</p>
+<pre><code>println str.every {it.isNumber()}
+</code></pre><p><img src="38.png" alt=""></p>
+<p>collect方法，将字符串的每一个元素都应用闭包，会产生一个新的结果，将结果添加到list返回</p>
+<pre><code>def list2 = str.collect {it.toUpperCase()}
+println list2.toListString()
+</code></pre><p><img src="39.png" alt=""></p>
+<h4 id="与数据结构结合使用"><a href="#与数据结构结合使用" class="headerlink" title="与数据结构结合使用"></a>与数据结构结合使用</h4><h4 id="与文件等结合使用"><a href="#与文件等结合使用" class="headerlink" title="与文件等结合使用"></a>与文件等结合使用</h4><h3 id="groovy中闭包进阶详解"><a href="#groovy中闭包进阶详解" class="headerlink" title="groovy中闭包进阶详解"></a>groovy中闭包进阶详解</h3>
     </div>
 </div>
 
@@ -435,9 +521,9 @@ println sum
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>53</span>文章</a>
-        <a class="count tags"><span>92</span>标签</a>
-        <a class="count categories"><span>25</span>分类</a>
+        <a class="count articles"><span>56</span>文章</a>
+        <a class="count tags"><span>95</span>标签</a>
+        <a class="count categories"><span>28</span>分类</a>
     </div>
 </div>
 
@@ -495,7 +581,7 @@ println sum
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/02/星球Android入门-布局和控件/" title="星球Android入门-布局和控件">星球Android入门-布局和控件</a>
+                    <a href="/2019/06/05/星球Android入门-网络/" title="星球Android入门-网络">星球Android入门-网络</a>
                 </p>
             </div>
         </li>
@@ -508,7 +594,7 @@ println sum
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/02/星球Android入门-ContentProvider/" title="星球Android入门-ContentProvider">星球Android入门-ContentProvider</a>
+                    <a href="/2019/06/04/星球Android入门-动画和手势/" title="星球Android入门-动画和手势">星球Android入门-动画和手势</a>
                 </p>
             </div>
         </li>
@@ -521,7 +607,7 @@ println sum
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/01/星球Android入门-BroadcastReceiver/" title="星球Android入门-BroadcastReceiver">星球Android入门-BroadcastReceiver</a>
+                    <a href="/2019/06/03/星球Android入门-简单自定义View/" title="星球Android入门-简单自定义View">星球Android入门-简单自定义View</a>
                 </p>
             </div>
         </li>
@@ -534,7 +620,7 @@ println sum
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/05/31/星球Android入门-Service/" title="星球Android入门-Service">星球Android入门-Service</a>
+                    <a href="/2019/06/02/星球Android入门-布局和控件/" title="星球Android入门-布局和控件">星球Android入门-布局和控件</a>
                 </p>
             </div>
         </li>
@@ -562,7 +648,7 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -582,8 +668,8 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
@@ -593,16 +679,11 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
@@ -613,11 +694,16 @@ println sum
         
         
         <div class="cube-box ">
+            <a href="/categories/计划/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
@@ -637,18 +723,18 @@ println sum
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
+            <a href="/categories/网络/">#网络</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
@@ -663,16 +749,31 @@ println sum
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/Animation/">#Animation</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/View/">#View</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
@@ -688,12 +789,12 @@ println sum
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -704,17 +805,22 @@ println sum
         
         
         <div class="cube-box ">
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
@@ -723,13 +829,8 @@ println sum
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
@@ -739,11 +840,6 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
@@ -754,7 +850,7 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+            <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
@@ -764,22 +860,7 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/IntentService/">#IntentService</a>
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
@@ -799,11 +880,21 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
@@ -814,7 +905,7 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -829,17 +920,22 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
+            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -848,7 +944,7 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Activity/">#Activity</a>
         </div>
         
@@ -859,22 +955,42 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Animation/">#Animation</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/View/">#View</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/网络/">#网络</a>
         </div>
         
         
@@ -888,7 +1004,7 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
@@ -928,7 +1044,7 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -943,7 +1059,7 @@ println sum
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -953,7 +1069,7 @@ println sum
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -973,7 +1089,7 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -994,11 +1110,6 @@ println sum
         
         
         <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
@@ -1013,37 +1124,37 @@ println sum
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
@@ -1059,6 +1170,11 @@ println sum
         
         
         <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -1068,7 +1184,7 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -1078,28 +1194,8 @@ println sum
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
@@ -1108,7 +1204,7 @@ println sum
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -1124,6 +1220,26 @@ println sum
         
         
         <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
@@ -1133,18 +1249,18 @@ println sum
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/FFMPEG/">#FFMPEG</a>
+            <a href="/tags/面试/">#面试</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         
     </div>
