@@ -191,6 +191,152 @@
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-Kotlin-数据类型">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/09/18/Kotlin-数据类型/">Kotlin-数据类型</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-09-18
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Kotlin数据类型/" class="cube-excerpt-tag-link">#Kotlin数据类型</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h3><p>大多数情况下相当于java的基本类型boolean，只有在必要情况下才会装箱成java的装箱类型Boolean，但是这已经交给编译器来决定了，不需要我们关心。</p>
+<p><img src="1.png" alt=""></p>
+<pre><code>val aBoolean:Boolean = true
+val anotherBoolean:Boolean = false
+</code></pre><h3 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h3><p>包括整形和浮点型，byte一般被当成数据流而不是整数当成二进制来看</p>
+<p><img src="2.png" alt=""></p>
+<pre><code>val anInt:Int = 8
+val anotherInt:Int = 0xFF
+val moreInt:Int = 0b00000011
+val maxInt:Int = Int.MAX_VALUE
+val minInt:Int = Int.MIN_VALUE
+
+val aLong:Long = 1417469149149817984
+val anotherLong:Long = 123
+val maxLong:Long = Long.MAX_VALUE
+val minLong:Long = Long.MIN_VALUE
+
+val aFloat:Float=2.0F
+val anotherFloat=1E3f
+val maxFloat:Float= Float.MAX_VALUE
+val minFloat:Float= Float.MIN_VALUE
+
+val aDouble:Double=3.0
+val anotherDouble:Double=3.1415926
+val maxDouble:Double= Double.MAX_VALUE
+val minDouble:Double= Double.MIN_VALUE
+
+val aShort:Short=127
+val maxShort:Short= Short.MAX_VALUE
+val minShort:Short= Short.MIN_VALUE
+
+val maxByte:Byte= Byte.MAX_VALUE
+val minByte:Byte= Byte.MIN_VALUE
+
+fun main(args: Array&lt;String&gt;) {
+    println(anotherInt)
+    println(moreInt)
+    println(maxInt)
+    println(Math.pow(2.0,31.0)-1)
+    println(minInt)
+    println(-Math.pow(2.0,31.0))
+
+    println(maxLong)
+    println(Math.pow(2.0,63.0)-1)
+    println(minLong)
+    println(-Math.pow(2.0,63.0))
+
+    println(aFloat)
+    println(anotherFloat)
+    println(maxFloat)
+    //最小的非0正数，是正数，真正的最小值是-Float.MAX_VALUE
+    println(minFloat)
+
+    println(aDouble)
+    println(anotherDouble)
+    println(maxDouble)
+    //最小的非0正数，是正数，真正的最小值是-Double.MAX_VALUE
+    println(minDouble)
+
+    println(aShort)
+    println(maxShort)
+    println(minShort)
+
+    println(maxByte)
+    println(minByte)
+}
+</code></pre><p><img src="3.png" alt=""></p>
+<h3 id="拆箱装箱"><a href="#拆箱装箱" class="headerlink" title="拆箱装箱"></a>拆箱装箱</h3><p>Kotlin不需要关心装箱与非装箱</p>
+<h3 id="Char数据类型"><a href="#Char数据类型" class="headerlink" title="Char数据类型"></a>Char数据类型</h3><p><img src="4.png" alt=""></p>
+<pre><code>val aChar:Char=&apos;0&apos;
+val bChar:Char=&apos;中&apos;
+//\u表示Unicode编码
+val cChar:Char=&apos;\u000f&apos;
+
+fun main(args: Array&lt;String&gt;) {
+    println(aChar)
+    println(bChar)
+    println(cChar)
+}
+</code></pre><p><img src="6.png" alt=""></p>
+<p>转义字符</p>
+<p><img src="5.png" alt=""></p>
+<h3 id="基础数据类型转换"><a href="#基础数据类型转换" class="headerlink" title="基础数据类型转换"></a>基础数据类型转换</h3><p>不可以隐式转换</p>
+<p><img src="7.png" alt=""></p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><img src="8.png" alt=""></p>
+<p><img src="9.png" alt=""></p>
+<pre><code>val string:String=&quot;Hello&quot;
+val fromChars:String=String(charArrayOf(&apos;H&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;))
+
+fun main(args: Array&lt;String&gt;) {
+    //equals
+    println(string == fromChars)
+    //对象是否相等，相当于java的==
+    println(string === fromChars)
+
+    println(&quot;你好&quot;+ string)
+
+    val arg1:Int=1
+    val arg2:Int=2
+    println(&quot;$arg1+$arg2 = ${arg1+arg2}&quot;)
+
+    val say:String=&quot;hello \&quot;krido\&quot;&quot;
+    println(say)
+
+    val salary:Int=1000
+    //打印$1000
+    println(&quot;$$salary&quot;)
+    //打印$salary
+    println(&quot;\$salary&quot;)
+
+    //原始字符串，与groovy差不多，$不能转义与相邻的字符串加空格解决
+    val rawString:String=&quot;&quot;&quot;
+        /t
+        /n
+        \\\$$$\$ salary
+    &quot;&quot;&quot;
+    println(rawString)
+    println(rawString.length)
+}
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/09/18/Kotlin-数据类型/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Kotlin--简介">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/09/18/Kotlin-简介/">Kotlin--简介</a></h1>
@@ -441,44 +587,6 @@ println y.class
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-网络">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/15/第一行代码笔记-网络/">第一行代码笔记-网络</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/HttpURLConnection/" class="cube-excerpt-tag-link">#HttpURLConnection</a>
-                
-                <a href="/tags/WebView/" class="cube-excerpt-tag-link">#WebView</a>
-                
-                <a href="/tags/OkHttp/" class="cube-excerpt-tag-link">#OkHttp</a>
-                
-                <a href="/tags/XML/" class="cube-excerpt-tag-link">#XML</a>
-                
-                <a href="/tags/JSON/" class="cube-excerpt-tag-link">#JSON</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="1-WebView"><a href="#1-WebView" class="headerlink" title="1. WebView"></a>1. WebView</h3><pre><code>webView.getSettings().setJavaScriptEnabled(true);
-webView.setWebViewClient(new WebViewClient());
-webView.loadUrl(&quot;http://www.baidu.com&quot;);
-</code></pre><p>getSettings()方法可以设置一些浏览器的属性，这里只调用了setJavaScriptEnabled()方法使得WebView支持JavaScript脚本。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/15/第一行代码笔记-网络/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -594,8 +702,8 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>56</span>文章</a>
-        <a class="count tags"><span>95</span>标签</a>
+        <a class="count articles"><span>57</span>文章</a>
+        <a class="count tags"><span>96</span>标签</a>
         <a class="count categories"><span>28</span>分类</a>
     </div>
 </div>
@@ -711,7 +819,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
@@ -721,38 +829,28 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Java基础/">#Java基础</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Kotlin/">#Kotlin</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
@@ -762,16 +860,26 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         
         <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
@@ -781,7 +889,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -796,18 +904,18 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/网络/">#网络</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/网络/">#网络</a>
+            <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
@@ -816,7 +924,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
@@ -831,11 +939,6 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/网络/">#网络</a>
         </div>
@@ -846,7 +949,12 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
@@ -862,7 +970,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -878,12 +986,12 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+            <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
@@ -893,17 +1001,12 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
@@ -913,12 +1016,17 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         
         <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
@@ -932,7 +1040,12 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
@@ -942,22 +1055,27 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
@@ -972,17 +1090,12 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
@@ -992,23 +1105,23 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/字节流/">#字节流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -1027,7 +1140,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
@@ -1037,7 +1150,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
@@ -1058,16 +1171,6 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/网络/">#网络</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1077,8 +1180,13 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/网络/">#网络</a>
         </div>
         
         
@@ -1092,7 +1200,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -1112,7 +1220,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -1137,7 +1245,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -1162,7 +1270,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -1172,7 +1280,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -1193,6 +1301,11 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         
         <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -1202,7 +1315,7 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
@@ -1219,36 +1332,6 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         <div class="cube-box ">
             <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
@@ -1272,28 +1355,53 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
         <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1318,22 +1426,27 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
         
         
         <div class="cube-box ">
-            <a href="/tags/集合框架/">#集合框架</a>
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/集合框架/">#集合框架</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
     </div>

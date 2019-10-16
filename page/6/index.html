@@ -163,6 +163,62 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-Handler">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/05/25/Handler/">Handler</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-05-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Handler两种使用方法/" class="cube-excerpt-tag-link">#Handler两种使用方法</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="Handler两种使用方法"><a href="#Handler两种使用方法" class="headerlink" title="Handler两种使用方法"></a>Handler两种使用方法</h2><h3 id="第一种方法Post"><a href="#第一种方法Post" class="headerlink" title="第一种方法Post"></a>第一种方法Post</h3><pre><code>public class PostActivity extends Activity {
+
+    private Handler mHandler = new Handler();
+
+    class DownloadThread extends Thread{
+
+        @Override
+        public void run() {
+
+            super.run();
+            try{
+
+                Thread.sleep(5000);
+                Runnable runnable = new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        //更新UI
+                    }
+                };
+                mHandler.post(runnable);
+            } catch (InterruptedException e) {
+
+                e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/05/25/Handler/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Service">
     <header class="cube-excerpt-header">
         <h1><a href="/2017/05/20/Service/">Service</a></h1>
@@ -521,8 +577,8 @@
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>56</span>文章</a>
-        <a class="count tags"><span>95</span>标签</a>
+        <a class="count articles"><span>57</span>文章</a>
+        <a class="count tags"><span>96</span>标签</a>
         <a class="count categories"><span>28</span>分类</a>
     </div>
 </div>
@@ -649,6 +705,11 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
@@ -659,17 +720,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/Kotlin/">#Kotlin</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
@@ -679,12 +730,17 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/计划/">#计划</a>
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
@@ -693,7 +749,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
@@ -708,7 +764,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -724,6 +780,11 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/音视频/">#音视频</a>
         </div>
         
@@ -734,11 +795,6 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -748,18 +804,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/Animation/">#Animation</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/View/">#View</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+            <a href="/categories/星球Android入门/Android基础/View/">#View</a>
         </div>
         
         
@@ -770,6 +821,11 @@
         
         <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
         
@@ -794,7 +850,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
@@ -805,12 +861,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+            <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
@@ -820,17 +876,12 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Gradle语法/">#Gradle语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
@@ -840,36 +891,46 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Java初识/">#Java初识</a>
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Java初识/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java变量/">#Java变量</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
@@ -879,23 +940,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/IntentService/">#IntentService</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
@@ -904,7 +950,22 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
         <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
@@ -924,18 +985,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/字节流/">#字节流</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Plan/">#Plan</a>
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/定时任务/">#定时任务</a>
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -964,12 +1025,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
@@ -979,18 +1040,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/View/">#View</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/网络/">#网络</a>
         </div>
         
         
@@ -1004,8 +1055,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/网络/">#网络</a>
         </div>
         
         
@@ -1024,7 +1080,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -1044,7 +1100,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -1054,7 +1110,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1089,7 +1145,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -1119,6 +1175,11 @@
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
@@ -1129,7 +1190,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
@@ -1150,6 +1211,26 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/线程/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
@@ -1180,31 +1261,11 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/线程/">#线程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -1214,22 +1275,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -1245,6 +1301,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
@@ -1254,13 +1320,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
     </div>
