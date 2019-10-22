@@ -300,6 +300,35 @@ onPause()  -&amp;gt; onStop()  -&amp;gt; onDestroy()
   </entry>
   
   <entry>
+    <title>Kotlin-程序结构</title>
+    <link href="http://yoursite.com/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/"/>
+    <id>http://yoursite.com/2018/09/19/Kotlin-程序结构/</id>
+    <published>2018-09-19T09:12:15.000Z</published>
+    <updated>2019-10-22T10:03:52.541Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><h3 id="常量与变量-val-var"><a href="#常量与变量-val-var" class="headerlink" title="常量与变量(val,var)"></a>常量与变量(val,var)</h3><h4 id="什么是常量"><a href="#什么是常量" class="headerlink" title="什么是常量"></a>什么是常量</h4><ul><li>val = value，值类型</li><li>类似Java的final</li><li>不可能重复赋值</li><li>举例：</li></ul><p>运行时常量：val x = getX()</p><p>编译期常量：const val x = 2</p><a id="more"></a><h4 id="什么是变量"><a href="#什么是变量" class="headerlink" title="什么是变量"></a>什么是变量</h4><ul><li>var = variable</li><li>举例：</li></ul><p>var x = “Hello”//定义变量</p><p>x = “Hi”//再次赋值</p><h4 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h4><ul><li>编译器可以推导的类型</li></ul><p>val string = “Hello”//推导出String类型</p><p>val int = 5//Int类型</p><p>var x = getString()+5//String类型</p><h4 id="val与final"><a href="#val与final" class="headerlink" title="val与final"></a>val与final</h4><p>字节码不一样，java的final变量为编译期常量，编译器编译的时候就能知道这个变量是什么他的值是什么，只要用到这个变量的地方编译器一律对这个变量的引用换成他的值，这样代码运行效率会高一些</p><p>不加const的val定义的常量，虽然不可变但实际还是一个变量，不是编译期常量，编译器在编译期的时候不能确定它的值到底是什么，运行时还是可以用类似反射这样的手段去修改它的值</p><p>加上const则为编译期常量，这时与java的final完全一样</p><p>编译期就赋值</p><p><img src="1.png" alt=""></p><p>没有改变，值还是”HelloWorld”</p><p><img src="2.png" alt=""></p><p>去掉fianl之后需重新赋值</p><p><img src="3.png" alt=""></p><p>不加const没有直接赋值成”HelloWorld”</p><p><img src="4.png" alt=""></p><p>加了const后</p><p><img src="5.png" alt=""></p><h3 id="函数（function）"><a href="#函数（function）" class="headerlink" title="函数（function）"></a>函数（function）</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;程序结构&quot;&gt;&lt;a href=&quot;#程序结构&quot; class=&quot;headerlink&quot; title=&quot;程序结构&quot;&gt;&lt;/a&gt;程序结构&lt;/h2&gt;&lt;h3 id=&quot;常量与变量-val-var&quot;&gt;&lt;a href=&quot;#常量与变量-val-var&quot; class=&quot;headerlink&quot; title=&quot;常量与变量(val,var)&quot;&gt;&lt;/a&gt;常量与变量(val,var)&lt;/h3&gt;&lt;h4 id=&quot;什么是常量&quot;&gt;&lt;a href=&quot;#什么是常量&quot; class=&quot;headerlink&quot; title=&quot;什么是常量&quot;&gt;&lt;/a&gt;什么是常量&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;val = value，值类型&lt;/li&gt;
+&lt;li&gt;类似Java的final&lt;/li&gt;
+&lt;li&gt;不可能重复赋值&lt;/li&gt;
+&lt;li&gt;举例：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;运行时常量：val x = getX()&lt;/p&gt;
+&lt;p&gt;编译期常量：const val x = 2&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="http://yoursite.com/categories/Kotlin/"/>
+    
+    
+      <category term="Kotlin程序结构" scheme="http://yoursite.com/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Kotlin-数据类型</title>
     <link href="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
     <id>http://yoursite.com/2018/09/18/Kotlin-数据类型/</id>
@@ -506,42 +535,6 @@ println y.class
     
     
       <category term="LBS" scheme="http://yoursite.com/tags/LBS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一行代码笔记-Service</title>
-    <link href="http://yoursite.com/2018/03/16/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Service/"/>
-    <id>http://yoursite.com/2018/03/16/第一行代码笔记-Service/</id>
-    <published>2018-03-16T03:52:11.000Z</published>
-    <updated>2019-08-30T07:59:31.201Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-是什么"><a href="#1-是什么" class="headerlink" title="1. 是什么"></a>1. 是什么</h3><p>是Android实现程序后台运行的解决方案，适合执行那些不需要和用户交互且还要长期运行的项目。不依赖任何用户界面，即使切换到后台或打开另一个程序，服务仍然能够正常运行。当应用程序进程被杀掉时，所有依赖于该进程的服务也会停止运行。默认运行在主线程中。</p><a id="more"></a><h3 id="2-Android多线程编程"><a href="#2-Android多线程编程" class="headerlink" title="2. Android多线程编程"></a>2. Android多线程编程</h3><h4 id="2-1-线程的基本用法"><a href="#2-1-线程的基本用法" class="headerlink" title="2.1 线程的基本用法"></a>2.1 线程的基本用法</h4><h5 id="2-1-1-继承的方式耦合度有点高"><a href="#2-1-1-继承的方式耦合度有点高" class="headerlink" title="2.1.1 继承的方式耦合度有点高"></a>2.1.1 继承的方式耦合度有点高</h5><pre><code>class MyThread extends Thread {    @Override    public void run() {    }}new MyThread().start();</code></pre><h5 id="2-1-2-Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象"><a href="#2-1-2-Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象" class="headerlink" title="2.1.2 Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象"></a>2.1.2 Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象</h5><pre><code>class MyThread implements Runnable {    @Override    public void run() {    }}MyThread myThread = new MyThread();new Thread(myThread).start();</code></pre><h5 id="2-1-3-匿名类"><a href="#2-1-3-匿名类" class="headerlink" title="2.1.3 匿名类"></a>2.1.3 匿名类</h5><pre><code>new Thread(new Runnable(){    @Override    public void run() {    }}).start();</code></pre><h4 id="2-2-在子线程中更新UI"><a href="#2-2-在子线程中更新UI" class="headerlink" title="2.2 在子线程中更新UI"></a>2.2 在子线程中更新UI</h4><pre><code>public static final int UPDATE_TEXT = 1;private Handler handler = new Handler() {    public void handleMessage(Message msg){        switch(msg.what) {            case UPDATE_TEXT:                //更新UI                break;            default:                break;        }    }};Message message = new Message();message.what = UPDATE_TEXT;handler.sendMessage(message);</code></pre><h4 id="2-3-解析异步消息处理机制"><a href="#2-3-解析异步消息处理机制" class="headerlink" title="2.3 解析异步消息处理机制"></a>2.3 解析异步消息处理机制</h4><p>Message是在线程之间传递的消息，可以在内部携带少量的信息，用于不同线程之间交换数据。除了使用what，还可以使用arg1和arg2字段来携带一些整数据，使用obj字段携带一个Object对象。</p><p>handler主要用于发送消息和处理消息。使用sendMessage()后，最终传递到handleMessage()方法中。</p><p>MessageQueue消息队列，主要用于存放所有通过Handler发送的消息，这部分消息会一直存在于消息队列中，等待被处理。每个线程中只会有一个MessageQueue对象。</p><p>Looper是每个线程中MessageQueue的管家，调用Looper的loop()方法后，就会进入一个无限循环中，每当发现一个MessageQueue中存在一条消息就会将它取出，并传递到Handler的handleMessage()方法中。每个线程只有一个Looper对象。</p><!--![](第一行代码笔记-Service/1.png)--><p><img src="1.png" alt=""></p><p>runOnUiThread()方法其实是一个异步消息处理机制的接口封装，背后原理一致。</p><h4 id="2-4-使用AsyncTask"><a href="#2-4-使用AsyncTask" class="headerlink" title="2.4 使用AsyncTask"></a>2.4 使用AsyncTask</h4><p>AsyncTask是一个抽象类，如果我们想使用它就必须创建一个类继承它，需指定3个泛型参数</p><ul><li>Params，执行AsyncTask时需要传入的参数，可用于在后台任务中使用</li><li>Progress，后台任务执行时，如果需要在界面上显示当前的进度，则使用这里指定的泛型作为进度单位</li><li><p>Result，当任务执行完毕之后，需要对结果进行返回，则使用这里指定的泛型作为返回值类型</p><p>  class DownloadTask extends AsyncTask<void,integer,boolean> {<br>  }</void,integer,boolean></p></li></ul><p>第一个指定为Void表示执行AsyncTask的时候不需要传入参数给后台任务。第二个指定为Integer，表示使用整形数据作为进度显示单位。第三个指定为Boolean，表示使用布尔类型数据来反馈执行结果。</p><h5 id="需重写4个方法"><a href="#需重写4个方法" class="headerlink" title="需重写4个方法"></a>需重写4个方法</h5><h5 id="onPreExecute"><a href="#onPreExecute" class="headerlink" title="onPreExecute():"></a>onPreExecute():</h5><p>在后台任务开始执行之前调用，用于进行一些界面上的初始化操作，如显示进度条对话框等</p><h5 id="doInBackground-Params…"><a href="#doInBackground-Params…" class="headerlink" title="doInBackground(Params…):"></a>doInBackground(Params…):</h5><p>所有代码都在子线程中运行，在这里处理所有耗时任务。任务一旦完成通过return语句将任务的执行结果返回。如果AsyncTask的第三个泛型参数为Void，则可以不返回任务执行的结果。这个方法不可以进行UI操作，如果需要更新UI如反馈当前任务的执行进度，可以调用publishProgress(Progress…)方法来完成。</p><h5 id="onProgressUpdate-Progress…"><a href="#onProgressUpdate-Progress…" class="headerlink" title="onProgressUpdate(Progress…):"></a>onProgressUpdate(Progress…):</h5><p>当调用了publishProgress(Progress…)后，这个方法会很快被调用，该方法携带的参数就是在后台任务中传递过来的。在这个方法中可以对UI进行操作，利用参数的数值可以对界面元素进行相应的更新。</p><h5 id="onPostExecute-Result"><a href="#onPostExecute-Result" class="headerlink" title="onPostExecute(Result):"></a>onPostExecute(Result):</h5><p>当后台任务执行完毕并通过return语句返回时，这个方法很快会被调用。返回的数据会作为参数传递到此方法中，可以利用返回的数据进行一些UI操作，如提醒任务执行结果，以及关闭进度条等。</p><pre><code>class DownloadTask extends AsyncTask&lt;Void,Integer,Boolean&gt; {    @Override    protected void onPreExecute() {        progressDialog.show();    }    @Override    protected Boolean doInBackground(Void... params) {        try {            while(true) {                int downloadPercent = doDownload();                publishProgress(downloadPercent);                if(downloadPercent &gt;= 100) {                    break;                }            }        } catch (Exception e){            return false;        }        return true;    }    @Override    protected void onProgressUpdate(Integer... values) {        //更新下载进度        progressDialog.setMessage(&quot;Download&quot; + values[0] + &quot;%&quot;);    }    @Override    protected void onPostExecute(Boolean result) {        progressDialog.dismiss();        //下载结果        if(result){        }else {        }    }}new DownloadTask().execute();</code></pre><h3 id="3-服务的基本用法"><a href="#3-服务的基本用法" class="headerlink" title="3. 服务的基本用法"></a>3. 服务的基本用法</h3><h4 id="3-1-定义一个服务"><a href="#3-1-定义一个服务" class="headerlink" title="3.1 定义一个服务"></a>3.1 定义一个服务</h4><p>manifest中Exported表示是否允许除了当前应用之外的其他应用访问这个服务，Enabled表示是否启动这个服务。onBind()是唯一的抽象方法必须实现。</p><pre><code>public class MyService extends Service {    public MyService(){    }    @Override    public IBinder onBind(Intent intent) {        throw new UnsupportedOperationException(&quot;Not yet implemented&quot;);    }     @Override    public void onCreate() {        super. onCreate();    }    @Override    public void onStartCommand(Intent intent,int flags,int startId) {        return super. onStartCommand(intent, flags, startId);    }    @Override    public void onDestroy() {        super. onDestroy();    }}</code></pre><p>onCreate服务创建的时候调用，onStartCommand每次服务启动的时候调用，多次启动服务只有onStartCommand会执行。onDestroy服务销毁的时候调用。</p><h4 id="3-2-启动和停止服务"><a href="#3-2-启动和停止服务" class="headerlink" title="3.2 启动和停止服务"></a>3.2 启动和停止服务</h4><pre><code>Intent startIntent = new Intent(this, MyService.class);startService(startIntent);Intent stopIntent = new Intent(this,MyService.class);stopService(stopIntent);</code></pre><p>这是通过Activity来决定服务何时停止的，如果没有执行停止服务会一直处于运行状态。也可以在MyService的任一位置调用stopSelf()停止这个服务。</p><h4 id="3-3-活动和服务进行通信-onBind"><a href="#3-3-活动和服务进行通信-onBind" class="headerlink" title="3.3 活动和服务进行通信 onBind()"></a>3.3 活动和服务进行通信 onBind()</h4><h5 id="下载示例"><a href="#下载示例" class="headerlink" title="下载示例"></a>下载示例</h5><pre><code>public class MyService extends Service {    private DownloadBinder mBinder = new DownloadBinder();    class DownloadBinder extends Binder {        public void startDownload() {        }        public int getProgress() {            return 0;        }    }    public MyService(){    }    @Override    public IBinder onBind(Intent intent) {        return mBinder;    }     @Override    public void onCreate() {        super. onCreate();    }    @Override    public void onStartCommand(Intent intent,int flags,int startId) {        return super. onStartCommand(intent, flags, startId);    }    @Override    public void onDestroy() {        super. onDestroy();    }}</code></pre><h5 id="Activity代码"><a href="#Activity代码" class="headerlink" title="Activity代码"></a>Activity代码</h5><pre><code>private MyService.DownloadBinder downloadBinder;//绑定服务Intent bindIntent = new Intent(this,MyService.class);bindService(bindIntent,connection,BIND_AUTO_CREATE);//解绑服务unbindService(connection);private ServiceConnection connection = new ServiceConnection() {    @Override    public void onServiceDisconnected(ComponentName name) {    }    @Override    public void onServiceConnected(ComponentName name,IBinder service{        downloadBinder = (MyService.DownloadBinder)service;        downloadBinder.startDownload();        downloadBinder.getProgress();    }}；</code></pre><p>BIND_AUTO_CREATE表示活动和服务进行绑定后自动创建服务，这会使得onCreate()方法执行，而onStartCommand()方法不执行。任何一个服务在整个应用程序范围内是通用的，即一个服务可以与多个Activity绑定，得到相同的DownloadBinder实例。</p><h3 id="4-服务的生命周期"><a href="#4-服务的生命周期" class="headerlink" title="4. 服务的生命周期"></a>4. 服务的生命周期</h3><h5 id="startService-方法"><a href="#startService-方法" class="headerlink" title="startService()方法:"></a>startService()方法:</h5><p>回调onStartCommand()方法，如果没有创建过，onCreate()方法会先于onStartCommand()方法执行。之后一直运行，知道调用stopService()或者stopSelf()。不管调用多少次startService()，停止只需一次，调用onDestroy()方法。</p><h5 id="bindService-方法"><a href="#bindService-方法" class="headerlink" title="bindService()方法:"></a>bindService()方法:</h5><p>回调onBind()方法，如果服务没有创建过，先执行onCreate()方法。调用方和服务之间的连接没有断开，服务就会一直执行。调用unbindeService()方法回调onDestroy()方法。</p><h5 id="即调用了startService-方法，又调用了bindService-方法"><a href="#即调用了startService-方法，又调用了bindService-方法" class="headerlink" title="即调用了startService()方法，又调用了bindService()方法:"></a>即调用了startService()方法，又调用了bindService()方法:</h5><p>销毁时需要调用stopService()和unbindeService()，onDestroy()才会执行。</p><h3 id="5-服务的更多技巧"><a href="#5-服务的更多技巧" class="headerlink" title="5. 服务的更多技巧"></a>5. 服务的更多技巧</h3><h4 id="5-1-使用前台服务"><a href="#5-1-使用前台服务" class="headerlink" title="5.1 使用前台服务"></a>5.1 使用前台服务</h4><p>当系统内存不足的时候，就可能会回收掉正在后台运行的服务，这时可以考虑前台服务。</p><pre><code>public class MyService extends Service {    @Override    public void onCreate() {        super. onCreate();        Intent intent = new Intent(this,MainActivity.class);        PendingIntent pi = PendingIntent.getActivity(this,0,intent,0);        Notification notification = new NotificationCompat.Builder(this)            .setContentTitle(&quot;xxx&quot;)            .setContentText(&quot;xxx&quot;)            .setWhen(System.currentTimeMillis())            .setSmallIcon(R.mipmap.xxx)            .setLargeIcon(BitmapFactory.decodeResource(getResource(),                R.mipmap.xxx))            .setContentIntent(pi)            .builder();        startForeground(1, notification);    }    ...}</code></pre><p>构建出Notification对象后并没有使用NotificationManager来将通知显示出来，而是调用了startForeground()方法，接收两个参数，第一个是id，第二个是Notification对象。</p><h4 id="5-2-使用IntentService"><a href="#5-2-使用IntentService" class="headerlink" title="5.2 使用IntentService"></a>5.2 使用IntentService</h4><p>一个异步的、会自动停止的服务。</p><pre><code>public class MyIntentService extends IntentService {    public MyIntentService(){        //调用父类的有参构造函数        super(&quot;MyIntentService&quot;);    }    @Override    public void onHandleIntent(Intent intent) {    }    @Override    public void onDestroy() {        super. onDestroy();    }}</code></pre><p>首先提供一个无参的构造函数，且必须在内部调用父类的有参构造函数。在子类实现onHandleIntent()这个抽象方法，这个方法中处理一些具体的逻辑且不用担心ANR问题。服务结束后自动停止。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;1-是什么&quot;&gt;&lt;a href=&quot;#1-是什么&quot; class=&quot;headerlink&quot; title=&quot;1. 是什么&quot;&gt;&lt;/a&gt;1. 是什么&lt;/h3&gt;&lt;p&gt;是Android实现程序后台运行的解决方案，适合执行那些不需要和用户交互且还要长期运行的项目。不依赖任何用户界面，即使切换到后台或打开另一个程序，服务仍然能够正常运行。当应用程序进程被杀掉时，所有依赖于该进程的服务也会停止运行。默认运行在主线程中。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Android基础" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="IntentService" scheme="http://yoursite.com/tags/IntentService/"/>
-    
-      <category term="Service" scheme="http://yoursite.com/tags/Service/"/>
-    
-      <category term="线程" scheme="http://yoursite.com/tags/%E7%BA%BF%E7%A8%8B/"/>
-    
-      <category term="Handler" scheme="http://yoursite.com/tags/Handler/"/>
-    
-      <category term="AsyncTask" scheme="http://yoursite.com/tags/AsyncTask/"/>
-    
-      <category term="前台服务" scheme="http://yoursite.com/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/"/>
     
   </entry>
   
