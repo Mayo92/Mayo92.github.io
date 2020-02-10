@@ -163,6 +163,128 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-ListView">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/09/第一行代码笔记-ListView/">第一行代码笔记-ListView</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-09
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/ListView/" class="cube-excerpt-tag-link">#ListView</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <pre><code>public FruitAdapter(Context context,int textViewResourceId,
+                        List&lt;Fruit&gt; objects) {
+    super(context, textViewResourceId, objects);
+    resourceId = textViewResourceId;     
+}
+
+@Override
+public View getView(int position,View convertView,ViewGroup parent) {
+    Fruit fruit = getItem(position); //获取当前的Fruit实例
+    View view = LayoutInflater.from(getContext()).inflate(resorced,parent,false);
+    ...
+}
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/09/第一行代码笔记-ListView/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-自定义view">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/08/第一行代码笔记-自定义view/">第一行代码笔记-自定义view</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-08
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/自定义view/" class="cube-excerpt-tag-link">#自定义view</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>比如标题栏中的返回按钮，其实不管在哪一个活动中，这个按钮的功能都是相同的，即销毁当前活动，而如果在每一个活动中都需要重新注册一遍返回按钮的点击事件，无疑会增加很多重复的代码，这种情况最好使用自定义控件来解决。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/08/第一行代码笔记-自定义view/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Android基础控件布局">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/08/第一行代码笔记-Android基础控件布局/">第一行代码笔记-Android基础控件布局</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-08
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Button/" class="cube-excerpt-tag-link">#Button</a>
+                
+                <a href="/tags/EditText/" class="cube-excerpt-tag-link">#EditText</a>
+                
+                <a href="/tags/ImageView/" class="cube-excerpt-tag-link">#ImageView</a>
+                
+                <a href="/tags/ProgressBar/" class="cube-excerpt-tag-link">#ProgressBar</a>
+                
+                <a href="/tags/AlertDialog/" class="cube-excerpt-tag-link">#AlertDialog</a>
+                
+                <a href="/tags/ProgressDialog/" class="cube-excerpt-tag-link">#ProgressDialog</a>
+                
+                <a href="/tags/布局/" class="cube-excerpt-tag-link">#布局</a>
+                
+                <a href="/tags/LinearLayout/" class="cube-excerpt-tag-link">#LinearLayout</a>
+                
+                <a href="/tags/RelativeLayout/" class="cube-excerpt-tag-link">#RelativeLayout</a>
+                
+                <a href="/tags/FrameLayout/" class="cube-excerpt-tag-link">#FrameLayout</a>
+                
+                <a href="/tags/PercentFrameLayout/" class="cube-excerpt-tag-link">#PercentFrameLayout</a>
+                
+                <a href="/tags/PercentRelativeLayout/" class="cube-excerpt-tag-link">#PercentRelativeLayout</a>
+                
+                <a href="/tags/AbsoluteLayout/" class="cube-excerpt-tag-link">#AbsoluteLayout</a>
+                
+                <a href="/tags/TableLayout/" class="cube-excerpt-tag-link">#TableLayout</a>
+                
+                <a href="/tags/ActionBar/" class="cube-excerpt-tag-link">#ActionBar</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1. Android常用控件"></a>1. Android常用控件</h3><h4 id="1-1-Button"><a href="#1-1-Button" class="headerlink" title="1.1 Button"></a>1.1 Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
+<h4 id="1-2-EditText"><a href="#1-2-EditText" class="headerlink" title="1.2 EditText"></a>1.2 EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/08/第一行代码笔记-Android基础控件布局/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Android基础用法">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/03/07/第一行代码笔记-Android基础用法/">第一行代码笔记-Android基础用法</a></h1>
@@ -430,104 +552,6 @@ resources.updateConfiguration(config, dm);
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-查找与排序">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/09/15/查找与排序/">查找与排序</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-09-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/二分查找/" class="cube-excerpt-tag-link">#二分查找</a>
-                
-                <a href="/tags/冒泡排序/" class="cube-excerpt-tag-link">#冒泡排序</a>
-                
-                <a href="/tags/选择排序/" class="cube-excerpt-tag-link">#选择排序</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h2 id="1-二分查找"><a href="#1-二分查找" class="headerlink" title="1. 二分查找"></a>1. 二分查找</h2><p>如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/09/15/查找与排序/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-单例模式">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/09/12/单例模式/">单例模式</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-09-12
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/单例模式/" class="cube-excerpt-tag-link">#单例模式</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="饿汉试"><a href="#饿汉试" class="headerlink" title="饿汉试"></a>饿汉试</h3><pre><code>//设立静态变量，直接创建实例  
-private static MySingleton2 mySingleton = new MySingleton2();  
-
-private MySingleton2(){  
-    //私有化构造函数  
-    System.out.println(&quot;--&gt;饿汉式单例模式开始调用构造函数&quot;);  
-}  
-
-//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  
-public static MySingleton2 getInstance(){  
-    System.out.println(&quot;--&gt;饿汉式单例模式开始调用公有方法返回实例&quot;);  
-    return mySingleton;  
-} 
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/09/12/单例模式/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-内存划分">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/09/05/内存划分/">内存划分</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-09-05
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/内存划分/" class="cube-excerpt-tag-link">#内存划分</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="1-寄存器"><a href="#1-寄存器" class="headerlink" title="1. 寄存器"></a>1. 寄存器</h3><h3 id="2-本地方法区"><a href="#2-本地方法区" class="headerlink" title="2. 本地方法区"></a>2. 本地方法区</h3><h3 id="3-方法区："><a href="#3-方法区：" class="headerlink" title="3. 方法区："></a>3. 方法区：</h3><p>成员变量存储在堆内存的对象中，所以也叫对象的特有数据。静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据。 </p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/09/05/内存划分/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -643,7 +667,7 @@ public static MySingleton2 getInstance(){
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>57</span>文章</a>
+        <a class="count articles"><span>60</span>文章</a>
         <a class="count tags"><span>95</span>标签</a>
         <a class="count categories"><span>26</span>分类</a>
     </div>
@@ -760,13 +784,18 @@ public static MySingleton2 getInstance(){
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -776,16 +805,11 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
@@ -796,16 +820,26 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
         <div class="cube-box ">
+            <a href="/categories/计划/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/操作系统/">#操作系统</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
@@ -815,13 +849,8 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -830,18 +859,13 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
+            <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
@@ -850,32 +874,17 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -887,6 +896,21 @@ public static MySingleton2 getInstance(){
         
         <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
     </div>
@@ -902,16 +926,6 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
@@ -922,27 +936,27 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle语法/">#Gradle语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -952,26 +966,31 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
@@ -982,7 +1001,7 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+            <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
         
@@ -992,12 +1011,12 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/Markdown/">#Markdown</a>
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
@@ -1007,12 +1026,32 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -1022,17 +1061,32 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/字节流/">#字节流</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -1047,11 +1101,6 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Activity/">#Activity</a>
         </div>
         
@@ -1067,6 +1116,16 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1076,22 +1135,12 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -1101,7 +1150,7 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -1126,7 +1175,7 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -1136,7 +1185,7 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1161,13 +1210,8 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
@@ -1197,7 +1241,7 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
+            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
@@ -1206,22 +1250,7 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -1231,12 +1260,27 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
@@ -1251,32 +1295,47 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/IntentService/">#IntentService</a>
+            <a href="/tags/Notification/">#Notification</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -1292,31 +1351,6 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
@@ -1326,7 +1360,7 @@ public static MySingleton2 getInstance(){
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
@@ -1336,18 +1370,18 @@ public static MySingleton2 getInstance(){
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/集合框架/">#集合框架</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
         </div>
         
         
@@ -1357,22 +1391,12 @@ public static MySingleton2 getInstance(){
         
         
         <div class="cube-box ">
-            <a href="/tags/VPS/">#VPS</a>
+            <a href="/tags/面试/">#面试</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
     </div>
