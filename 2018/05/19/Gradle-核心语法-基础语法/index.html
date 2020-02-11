@@ -181,8 +181,8 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <p>第一节的文件类型</p>
-<h2 id="基础语法讲解"><a href="#基础语法讲解" class="headerlink" title="基础语法讲解"></a>基础语法讲解</h2><h3 id="变量详解"><a href="#变量详解" class="headerlink" title="变量详解"></a>变量详解</h3><h4 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h4><pre><code>int x = 10
+        <h2 id="基础语法讲解"><a href="#基础语法讲解" class="headerlink" title="基础语法讲解"></a>基础语法讲解</h2><h2 id="1-变量详解"><a href="#1-变量详解" class="headerlink" title="1.变量详解"></a>1.变量详解</h2><p><img src="0.png" alt=""></p>
+<h3 id="1-1-变量的类型"><a href="#1-1-变量的类型" class="headerlink" title="1.1 变量的类型"></a>1.1 变量的类型</h3><pre><code>int x = 10
 println x.class
 
 double y = 3.14
@@ -190,8 +190,8 @@ println y.class
 </code></pre><a id="more"></a>
 <p><img src="1.png" alt=""></p>
 <p>Groovy中没有基本类型变量，所有类型都是对象类型</p>
-<h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><h5 id="强类型定义方法"><a href="#强类型定义方法" class="headerlink" title="强类型定义方法"></a>强类型定义方法</h5><p>像Java一样，直接定义int类型、double类型等，声明这个变量的时候把类型确定了</p>
-<h5 id="弱类型def定义方法"><a href="#弱类型def定义方法" class="headerlink" title="弱类型def定义方法"></a>弱类型def定义方法</h5><pre><code>def x1 = 11
+<h3 id="1-2-变量的定义"><a href="#1-2-变量的定义" class="headerlink" title="1.2 变量的定义"></a>1.2 变量的定义</h3><h4 id="强类型定义方法"><a href="#强类型定义方法" class="headerlink" title="强类型定义方法"></a>强类型定义方法</h4><p>像Java一样，直接定义int类型、double类型等，声明这个变量的时候把类型确定了</p>
+<h4 id="弱类型def定义方法"><a href="#弱类型def定义方法" class="headerlink" title="弱类型def定义方法"></a>弱类型def定义方法</h4><pre><code>def x1 = 11
 println x1.class
 
 def y1 = 3.1415
@@ -201,18 +201,18 @@ def name = &apos;ss&apos;
 println name.class
 </code></pre><p><img src="2.png" alt=""></p>
 <p>根据后面的值就可以推断出变量的类型，编译器会自动推断</p>
-<h5 id="两种方式使用场景"><a href="#两种方式使用场景" class="headerlink" title="两种方式使用场景"></a>两种方式使用场景</h5><p>如果这个变量只用于自己而不会使用其他类或其他应用模块，推荐定义成def。如果这个变量要用于其他模块或者其他类，推荐使用强类型定义方式，因为不能动态的转换成其他类型，保证外接传给我们的值一定是正确的，反之调用方会疑惑</p>
+<h4 id="两种方式使用场景"><a href="#两种方式使用场景" class="headerlink" title="两种方式使用场景"></a>两种方式使用场景</h4><p>如果这个变量只用于自己而不会使用其他类或其他应用模块，推荐定义成def。如果这个变量要用于其他模块或者其他类，推荐使用强类型定义方式，因为不能动态的转换成其他类型，保证外接传给我们的值一定是正确的，反之调用方会疑惑</p>
 <pre><code>def x1 = 11
 x1 = &apos;test&apos;
 println x1.class
 </code></pre><p><img src="3.png" alt=""></p>
 <p>def声明的变量可以随时改变类型，相当于Object类型</p>
-<h3 id="字符串详解"><a href="#字符串详解" class="headerlink" title="字符串详解"></a>字符串详解</h3><p><img src="4.png" alt=""></p>
-<h4 id="常用的三种定义方式"><a href="#常用的三种定义方式" class="headerlink" title="常用的三种定义方式"></a>常用的三种定义方式</h4><h5 id="单引号定义"><a href="#单引号定义" class="headerlink" title="单引号定义"></a>单引号定义</h5><p>内容就是字符串的内容，且不能更改。特殊字符跟Java一样，通过\转义</p>
+<h2 id="2-字符串详解"><a href="#2-字符串详解" class="headerlink" title="2.字符串详解"></a>2.字符串详解</h2><p><img src="4.png" alt=""></p>
+<h3 id="2-1-常用的三种定义方式"><a href="#2-1-常用的三种定义方式" class="headerlink" title="2.1 常用的三种定义方式"></a>2.1 常用的三种定义方式</h3><h4 id="单引号定义"><a href="#单引号定义" class="headerlink" title="单引号定义"></a>单引号定义</h4><p>内容就是字符串的内容，且不能更改。特殊字符跟Java一样，通过\转义</p>
 <pre><code>def name = &apos;a single string&apos;
 print name.class
 </code></pre><p><img src="5.png" alt=""></p>
-<h5 id="三引号定义"><a href="#三引号定义" class="headerlink" title="三引号定义"></a>三引号定义</h5><pre><code>def thupleName = &apos;&apos;&apos;three single string&apos;&apos;&apos;
+<h4 id="三引号定义"><a href="#三引号定义" class="headerlink" title="三引号定义"></a>三引号定义</h4><pre><code>def thupleName = &apos;&apos;&apos;three single string&apos;&apos;&apos;
 println thupleName.class
 </code></pre><p><img src="5.png" alt=""></p>
 <p>可以直接指定格式，有格式的建议使用三引号</p>
@@ -228,7 +228,7 @@ line one
 line two
 line three
 &apos;&apos;&apos;
-</code></pre><h5 id="双引号定义"><a href="#双引号定义" class="headerlink" title="双引号定义"></a>双引号定义</h5><p>最常用，可扩展字符串</p>
+</code></pre><h4 id="双引号定义"><a href="#双引号定义" class="headerlink" title="双引号定义"></a>双引号定义</h4><p>最常用，可扩展字符串</p>
 <pre><code>def doubleName = &quot;common string&quot;
 println doubleName.class
 </code></pre><p><img src="5.png" alt=""></p>
@@ -241,7 +241,7 @@ println hello.class
 <pre><code>def sum = &quot;sum of 2 and 3 equals ${2 + 3}&quot;
 println sum
 </code></pre><p><img src="8.png" alt=""></p>
-<h5 id="两种类型可以互相转换"><a href="#两种类型可以互相转换" class="headerlink" title="两种类型可以互相转换"></a>两种类型可以互相转换</h5><p>String与GString可以相互传递，相互调用</p>
+<h4 id="两种类型可以互相转换"><a href="#两种类型可以互相转换" class="headerlink" title="两种类型可以互相转换"></a>两种类型可以互相转换</h4><p>String与GString可以相互传递，相互调用</p>
 <pre><code>def sum = &quot;sum of 2 and 3 equals ${2 + 3}&quot;
 
 def result = echo(sum)
@@ -252,49 +252,49 @@ String echo(String message){
     return message
 }
 </code></pre><p><img src="9.png" alt=""></p>
-<h3 id="字符串方法详解"><a href="#字符串方法详解" class="headerlink" title="字符串方法详解"></a>字符串方法详解</h3><p><img src="10.png" alt=""></p>
+<h3 id="2-2-字符串方法详解"><a href="#2-2-字符串方法详解" class="headerlink" title="2.2 字符串方法详解"></a>2.2 字符串方法详解</h3><p><img src="10.png" alt=""></p>
 <p><img src="11.png" alt=""></p>
 <p>方法的来源。java.lang.String与java一样。DefaultGroovyMethods是groovy对所有对象的扩展，不仅仅是String。StringGroovyMethods继承于DefaultGroovyMethods，重写了DefaultGroovyMethods中的许多方法，使得方法更适用于String去使用。重点学习StringGroovyMethods。</p>
-<p>这节主要学习StringGroovyMethods的普通类型参数方法</p>
-<pre><code>//对字符串填充，以字符串为中心两边去填充，后面的参数不传则以空格填充
+<p>这节主要学习StringGroovyMethods的普通类型参数方法（闭包在闭包章节学习）</p>
+<h4 id="center方法"><a href="#center方法" class="headerlink" title="center方法"></a>center方法</h4><pre><code>//对字符串填充，以字符串为中心两边去填充，后面的参数不传则以空格填充
 def str = &quot;groovy&quot;
 println str.center(8,&apos;a&apos;)
 </code></pre><p><img src="12.png" alt=""></p>
-<pre><code>//从左边开始填充
+<h4 id="padLeft、padRight方法"><a href="#padLeft、padRight方法" class="headerlink" title="padLeft、padRight方法"></a>padLeft、padRight方法</h4><pre><code>//从左边开始填充
 println str.padLeft(8,&apos;a&apos;)
 //从右边开始填充
 println str.padRight(8,&apos;a&apos;)
 </code></pre><p><img src="13.png" alt=""></p>
-<pre><code>//字符串比较
+<h4 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h4><pre><code>//字符串比较
 def str2 = &apos;Hello&apos;
 println str &gt; str2
 </code></pre><p><img src="14.png" alt=""></p>
-<pre><code>//索引
+<h4 id="索引方法"><a href="#索引方法" class="headerlink" title="索引方法"></a>索引方法</h4><pre><code>//索引
 println str[0]
 println str[0..1]
 </code></pre><p><img src="15.png" alt=""></p>
-<pre><code>def str = &quot;groovy Hello&quot;
+<h4 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h4><pre><code>def str = &quot;groovy Hello&quot;
 def str2 = &apos;Hello&apos;
 //减法，减去str中包含的str2，如没有str2则返回str
 //println str.minus(str2)
 println str - str2
 </code></pre><p><img src="16.png" alt=""></p>
-<pre><code>//逆向
+<h4 id="逆向操作"><a href="#逆向操作" class="headerlink" title="逆向操作"></a>逆向操作</h4><pre><code>//逆向
 println str.reverse()
 </code></pre><p><img src="17.png" alt=""></p>
-<pre><code>//首字母大写
+<h4 id="首字母大写"><a href="#首字母大写" class="headerlink" title="首字母大写"></a>首字母大写</h4><pre><code>//首字母大写
 println str.capitalize()
 </code></pre><p><img src="18.png" alt=""></p>
-<pre><code>//是否是数字类型字符串
+<h4 id="是否是数字类型"><a href="#是否是数字类型" class="headerlink" title="是否是数字类型"></a>是否是数字类型</h4><pre><code>//是否是数字类型字符串
 println str.isNumber()
 </code></pre><p><img src="19.png" alt=""></p>
-<pre><code>//类型转换
+<h4 id="类型转换方法"><a href="#类型转换方法" class="headerlink" title="类型转换方法"></a>类型转换方法</h4><pre><code>//类型转换
 def str3 = &apos;1111&apos;
 println str3.toInteger().class
 </code></pre><p><img src="20.png" alt="">    </p>
-<h3 id="逻辑控制详解"><a href="#逻辑控制详解" class="headerlink" title="逻辑控制详解"></a>逻辑控制详解</h3><p><img src="21.png" alt=""></p>
+<h2 id="3-逻辑控制详解"><a href="#3-逻辑控制详解" class="headerlink" title="3.逻辑控制详解"></a>3.逻辑控制详解</h2><p><img src="21.png" alt=""></p>
 <p>switch/case、for循环不一样，关注这两个即可</p>
-<pre><code>def x = 1.23
+<h3 id="3-1-switch-case"><a href="#3-1-switch-case" class="headerlink" title="3.1 switch/case"></a>3.1 switch/case</h3><pre><code>def x = 1.23
 def result
 switch (x){
     case &apos;foo&apos;:
@@ -321,289 +321,28 @@ switch (x){
 
 println result
 </code></pre><p><img src="22.png" alt=""></p>
-<pre><code>//对范围的循环
+<h3 id="3-2-for对范围的循环"><a href="#3-2-for对范围的循环" class="headerlink" title="3.2 for对范围的循环"></a>3.2 for对范围的循环</h3><pre><code>//对范围的循环
 def sum = 0
 for (i in 0..9){
     sum += i
 }
 println sum
 </code></pre><p><img src="23.png" alt=""></p>
-<pre><code>//对list循环
+<h3 id="3-3-for对list循环"><a href="#3-3-for对list循环" class="headerlink" title="3.3 for对list循环"></a>3.3 for对list循环</h3><pre><code>//对list循环
 sum = 0
 for (i in [0,1,2,3,4,5,6,7,8,9]){
     sum += i
 }
 println sum
 </code></pre><p><img src="23.png" alt=""></p>
-<pre><code>//对map的循环
+<h3 id="3-4-for对map的循环"><a href="#3-4-for对map的循环" class="headerlink" title="3.4 for对map的循环"></a>3.4 for对map的循环</h3><pre><code>//对map的循环
 sum = 0
 for (i in [&apos;lili&apos;:1,&apos;lucy&apos;:2,&apos;luck&apos;:3]){
     sum += i.value
 }
 println sum
 </code></pre><p><img src="24.png" alt=""></p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="groovy中闭包基础详解"><a href="#groovy中闭包基础详解" class="headerlink" title="groovy中闭包基础详解"></a>groovy中闭包基础详解</h3><p><img src="25.png" alt=""></p>
-<h4 id="闭包定义及调用"><a href="#闭包定义及调用" class="headerlink" title="闭包定义及调用"></a>闭包定义及调用</h4><p>闭包就是一段代码块</p>
-<pre><code>def clouser = { println &apos;hello groovy!&apos; }
-//执行
-clouser.call()
-//第二种调用
-clouser()
-</code></pre><p><img src="26.png" alt=""></p>
-<h4 id="闭包参数"><a href="#闭包参数" class="headerlink" title="闭包参数"></a>闭包参数</h4><p>-&gt;之前为参数部分，-&gt;之后为闭包体</p>
-<pre><code>def clouser = {String name  -&gt; println &quot;hello ${name}&quot; }
-clouser.call(&apos;groovy&apos;)
-clouser(&apos;groovy&apos;)
-</code></pre><p><img src="27.png" alt=""></p>
-<p>多个参数</p>
-<pre><code>def clouser = {String name,int age  -&gt; println &quot;hello ${name},My age is ${age}&quot; }
-def name = &apos;groovy&apos;
-clouser(name,4)
-</code></pre><p><img src="28.png" alt=""></p>
-<p>默认参数it,所有闭包都有的默认参数，不需要显示申明</p>
-<pre><code>def clouser = {println &quot;hello ${it}&quot; }
-def name = &apos;groovy&apos;
-clouser(name)
-</code></pre><p><img src="29.png" alt=""></p>
-<h4 id="闭包返回值"><a href="#闭包返回值" class="headerlink" title="闭包返回值"></a>闭包返回值</h4><p>闭包一定会有返回值，下面代码return改为println后，返回值为null</p>
-<pre><code>//def clouser = {String name  -&gt; return   &quot;hello ${name}&quot; }
-def clouser = {String name  -&gt; println  &quot;hello ${name}&quot; }
-def result = clouser(&apos;groovy&apos;)
-println result
-</code></pre><p><img src="30.png" alt=""></p>
-<h3 id="groovy中闭包使用详解"><a href="#groovy中闭包使用详解" class="headerlink" title="groovy中闭包使用详解"></a>groovy中闭包使用详解</h3><p><img src="31.png" alt=""></p>
-<h4 id="与基本类型的结合使用"><a href="#与基本类型的结合使用" class="headerlink" title="与基本类型的结合使用"></a>与基本类型的结合使用</h4><p>可以在DefaultGroovyMethods方法中查看实现</p>
-<p>闭包作为方法参数的最后一个可以不写在括号里</p>
-<p>阶乘方法</p>
-<pre><code>int x = fab(5)
-println x
-int y = fab2(5)
-println y
 
-//求指定number的阶乘
-int fab(int number) {
-    int result = 1
-    1.upto(number , { num -&gt; result *= num})
-    return result
-}
-
-int fab2 (int number){
-    int result = 1
-    number.downto(1) {num -&gt; result*= num}
-    return result
-}
-</code></pre><p><img src="32.png" alt=""></p>
-<p>累计求和方法</p>
-<pre><code>//times方法起始值始终是0
-int call (int number) {
-    int result = 0
-    number.times {
-        num -&gt; result+=num
-    }
-    return result
-}
-//0加到4
-int z = call(5)
-println z
-</code></pre><p><img src="33.png" alt=""></p>
-<h4 id="与String结合使用"><a href="#与String结合使用" class="headerlink" title="与String结合使用"></a>与String结合使用</h4><p>each遍历，each的返回值还是str的值（调用者本身）</p>
-<pre><code>String str = &apos;the 2 and 3 is 5&apos;
-str.each {print it}
-</code></pre><p><img src="34.png" alt=""></p>
-<p>find方法，查找符合条件的第一个,闭包是一个Boolean类型返回值</p>
-<pre><code>println str.find {it.isNumber()}
-</code></pre><p><img src="35.png" alt=""></p>
-<p>findAll方法,遍历字符串找到所有符合的放到集合里，闭包是一个Boolean类型返回值</p>
-<pre><code>def list = str.findAll {it.isNumber()}
-println list.toListString()
-</code></pre><p><img src="36.png" alt=""></p>
-<p>any方法，只要满足条件就返回true，闭包是一个Boolean类型返回值</p>
-<pre><code>def result = str.any { it.isNumber() }
-println result
-</code></pre><p><img src="37.png" alt=""></p>
-<p>every方法，每一项都满足返回true，闭包是一个Boolean类型返回值</p>
-<pre><code>println str.every {it.isNumber()}
-</code></pre><p><img src="38.png" alt=""></p>
-<p>collect方法，将字符串的每一个元素都应用闭包，会产生一个新的结果，将结果添加到list返回</p>
-<pre><code>def list2 = str.collect {it.toUpperCase()}
-println list2.toListString()
-</code></pre><p><img src="39.png" alt=""></p>
-<h4 id="与数据结构结合使用"><a href="#与数据结构结合使用" class="headerlink" title="与数据结构结合使用"></a>与数据结构结合使用</h4><h4 id="与文件等结合使用"><a href="#与文件等结合使用" class="headerlink" title="与文件等结合使用"></a>与文件等结合使用</h4><h3 id="groovy中闭包进阶详解"><a href="#groovy中闭包进阶详解" class="headerlink" title="groovy中闭包进阶详解"></a>groovy中闭包进阶详解</h3><p><img src="40.png" alt=""></p>
-<h4 id="三个重要的变量"><a href="#三个重要的变量" class="headerlink" title="三个重要的变量"></a>三个重要的变量</h4><pre><code>def scriptClouser = {
-    println &quot;scriptClouser this:&quot;+this
-    println &quot;scriptClouser owner:&quot;+owner
-    println &quot;scriptClouser delegate:&quot;+delegate
-}
-scriptClouser.call()
-</code></pre><p><img src="41.png" alt=""></p>
-<ul>
-<li>this：与java一样，代表闭包定义处的类，如上例指向脚本所对应的类</li>
-<li>owner：代表闭包定义处的类或者对象</li>
-<li><p>delegate：代表任意对象，有默认值与owner一致</p>
-<p> class Person {</p>
-<pre><code>def static classClouser = {
-    println &quot;classClouser this:&quot;+this
-    println &quot;classClouser owner:&quot;+owner
-    println &quot;classClouser delegate:&quot;+delegate
-}
-
-def static say() {
-    def classClouser = {
-        println &quot;methodClassClouser this:&quot;+this
-        println &quot;methodClassClouser owner:&quot;+owner
-        println &quot;methodClassClouser delegate:&quot;+delegate
-    }
-
-    classClouser.call()
-}
-</code></pre><p> }<br> Person.classClouser.call()<br> Person.say()</p>
-</li>
-</ul>
-<p><img src="42.png" alt=""></p>
-<p>上图指向的是类的字节码而不是对象，因为是static的</p>
-<pre><code>def outClouser = {
-    def innerClouser = {
-        println &quot;innerClouser this:&quot;+this
-        println &quot;innerClouser owner:&quot;+owner
-        println &quot;innerClouser delegate:&quot;+delegate
-    }
-    innerClouser.call()
-}
-outClouser.call()
-</code></pre><p><img src="43.png" alt=""></p>
-<p><strong>总结：</strong>大多数情况，三者一致。如果直接在类和方法中定义闭包，三个变量是一样的。如果再闭包中又嵌套定义一个闭包this与owner、delegate的值不一样，owner、delegate会指向离他最近的包的对象</p>
-<pre><code>Person p = new Person()
-def outClouser = {
-    def innerClouser = {
-        println &quot;innerClouser this:&quot;+this
-        println &quot;innerClouser owner:&quot;+owner
-        println &quot;innerClouser delegate:&quot;+delegate
-    }
-    innerClouser.delegate = p //修改默认的delegate
-    innerClouser.call()
-}
-outClouser.call()
-</code></pre><p><img src="44.png" alt=""></p>
-<p>人为修改delegate所指向的对象，delegate与owner不一样。this与owner不能修改</p>
-<h4 id="闭包委托策略（三个关键字的作用）"><a href="#闭包委托策略（三个关键字的作用）" class="headerlink" title="闭包委托策略（三个关键字的作用）"></a>闭包委托策略（三个关键字的作用）</h4><pre><code>class Student{
-    String name
-    def pretty = {
-        &quot;My name is ${name}&quot;
-    }
-    String toString(){
-        pretty.call()
-    }
-}
-class Teacher{
-    String name
-}
-def stu = new Student(name: &apos;krido&apos;)
-def tea = new Teacher(name: &apos;mayo&apos;)
-stu.pretty.delegate = tea
-//更改委托策略。
-stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
-println stu.toString()
-</code></pre><p><img src="45.png" alt=""></p>
-<pre><code>class Student{
-    String name
-    def pretty = {
-        &quot;My name is ${name}&quot;
-    }
-    String toString(){
-        pretty.call()
-    }
-}
-class Teacher{
-    String name1
-}
-def stu = new Student(name: &apos;krido&apos;)
-def tea = new Teacher(name1: &apos;mayo&apos;)
-stu.pretty.delegate = tea
-//更改委托策略
-stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
-println stu.toString()
-</code></pre><p><img src="46.png" alt=""></p>
-<p>因为tea中没有name，Closure.DELEGATE_FIRST找不到会去OWNER中寻找。如果上例改成DELEGATE_ONLY，会报错，因为没有找到name属性</p>
-<p>委托策略默认是OWNER_FIRST，表明闭包中的变量、方法等都是首先从OWNER对象所指向的对象处去寻找。一共有四组（OWNER_FIRST、DELEGATE_FIRST、OWNER_ONLY、DELEGATE_ONLY）</p>
-<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><h4 id="groovy中列表详解"><a href="#groovy中列表详解" class="headerlink" title="groovy中列表详解"></a>groovy中列表详解</h4><p><img src="47.png" alt=""></p>
-<p>列表声明和初始化</p>
-<pre><code>//def list = new ArrayList()//java定义方式
-def list = [1,2,3,4,5]
-println list.class
-println list.size()
-</code></pre><p><img src="48.png" alt=""></p>
-<p>列表占用了数组的定义，那么数组定义的两种方式如下</p>
-<pre><code>def array = [1,2,3,4,5] as int[]
-int[] array2 = [1,2,3,4,5]
-</code></pre><p>添加元素</p>
-<pre><code>list.add(6)
-list.leftShift(7)
-list &lt;&lt; 8
-println list.toString()
-def plusList = list + 9
-println plusList.toString()
-</code></pre><p><img src="49.png" alt=""></p>
-<p>删除元素</p>
-<pre><code>list.remove(7)//index为7
-list.remove((Object)7)//删除7元素
-list.removeAt(7)//index为7
-list.removeElement(6)//删除6元素
-list.removeAll{
-    return it % 2 == 0//删除偶数
-}
-println list - [6,7]//删除6、7元素
-println list.toString()
-</code></pre><p>列表排序</p>
-<pre><code>def sortList = [6,-3,9,2,-7,1,5]
-//java方法
-Collections.sort(sortList)
-//定义自定义排序规则，绝对值从小到大
-Comparator mc = {a,b -&gt; a == b ? 0 : Math.abs(a) &lt; Math.abs(b) ? -1 : 1}
-Collections.sort(sortList,mc)
-
-//groovy方法
-sortList.sort()
-sortList.sort{a,b -&gt; a==b ? 0 : Math.abs(a) &lt; Math.abs(b) ? 1 : -1}
-println sortList
-
-def sortStringList = [&apos;abc&apos;,&apos;z&apos;,&apos;Hello&apos;,&apos;groovy&apos;,&apos;java&apos;,&apos;kotlin&apos;]
-sortStringList.sort{it.size()}
-println sortStringList
-
-class Man{
-    String name
-    int age
-}
-def wang = new Man(name: &apos;wang&apos;,age: 18)
-def li = new Man(name: &apos;li&apos;,age: 36)
-def zhang = new Man(name: &apos;zhang&apos;,age: 23)
-def sortClassList = [wang,li,zhang]
-sortClassList.sort{it.age}
-println sortClassList
-</code></pre><p>列表查找</p>
-<pre><code>def findList = [-3,9,6,2,-7,1,5]
-//查找第一个偶数
-int result = findList.find {it % 2 == 0}
-println result
-//查找奇数
-def resultList = findList.findAll{it%2 != 0}
-println resultList.toListString()
-//是否有值为奇数b
-def resultBoolean = findList.any{it%2 != 0}
-println resultBoolean
-//是否都为偶数
-def resultBoolean2 = findList.every{it%2 == 0}
-println resultBoolean2
-//最大最小值
-println findList.max()
-println findList.min()
-//绝对值最大最小
-println findList.max{Math.abs(it)}
-println findList.min{Math.abs(it)}
-//统计次数，有多少个偶数
-def num = findList.count {it % 2 == 0}
-println num
-</code></pre><h4 id="groovy中映射详解"><a href="#groovy中映射详解" class="headerlink" title="groovy中映射详解"></a>groovy中映射详解</h4><h4 id="groovy中范围详解"><a href="#groovy中范围详解" class="headerlink" title="groovy中范围详解"></a>groovy中范围详解</h4>
     </div>
 </div>
 
@@ -823,17 +562,17 @@ println num
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
@@ -845,6 +584,11 @@ println num
         
         <div class="cube-box ">
             <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
@@ -868,13 +612,8 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
@@ -888,7 +627,7 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
@@ -904,6 +643,21 @@ println num
         
         
         <div class="cube-box ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -914,32 +668,17 @@ println num
         
         
         <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
     </div>
@@ -954,6 +693,21 @@ println num
     <div class="cube-boxs">
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
@@ -961,21 +715,6 @@ println num
         
         <div class="cube-box ">
             <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
@@ -989,8 +728,8 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -1000,7 +739,12 @@ println num
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
@@ -1009,13 +753,13 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
+        <div class="cube-box ">
+            <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
         
@@ -1030,7 +774,7 @@ println num
         
         
         <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
@@ -1039,12 +783,7 @@ println num
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
@@ -1069,12 +808,12 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SSR/">#SSR</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VPN/">#VPN</a>
         </div>
         
@@ -1089,7 +828,7 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
@@ -1099,7 +838,7 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -1114,13 +853,13 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/定时任务/">#定时任务</a>
+        <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -1139,7 +878,7 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
@@ -1149,7 +888,7 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
@@ -1164,8 +903,18 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1184,7 +933,7 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -1199,7 +948,7 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -1209,7 +958,7 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -1219,12 +968,12 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -1234,17 +983,17 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -1264,13 +1013,8 @@ println num
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -1279,18 +1023,13 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/ListView/">#ListView</a>
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
@@ -1305,16 +1044,21 @@ println num
         
         
         <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -1329,7 +1073,7 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前台服务/">#前台服务</a>
         </div>
         
@@ -1354,17 +1098,17 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -1374,12 +1118,17 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
@@ -1389,18 +1138,13 @@ println num
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1421,11 +1165,6 @@ println num
         
         <div class="cube-box-bg ">
             <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
     </div>
