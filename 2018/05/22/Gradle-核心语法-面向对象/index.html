@@ -181,7 +181,113 @@
     
     <div class="cube-article-content cube-markdown">
         
-        
+        <h2 id="1-类、接口等的定义和使用"><a href="#1-类、接口等的定义和使用" class="headerlink" title="1.类、接口等的定义和使用"></a>1.类、接口等的定义和使用</h2><h3 id="1-1-类"><a href="#1-1-类" class="headerlink" title="1.1 类"></a>1.1 类</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><pre><code>class Person{
+
+    String name
+    Integer age
+
+    //def表明返回的是object类型
+    def increaseAge(Integer years){
+        this.age += years
+    }
+}
+</code></pre><ol>
+<li>groovy中默认都是public类型，包括类、方法、变量等</li>
+<li>创建的类都继承GroovyObject接口，默认实现get/set方法（对应于getProperty/setProperty）等</li>
+</ol>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre><code>//不需要构造方法
+def person = new Person(name: &apos;krido&apos;,age: 18)
+println &quot;name is ${person.name},age is ${person.age}&quot;
+//无论是直接.还是调用get/set最终都是调用get/set
+println &quot;name is ${person.getName()},age is ${person.getAge()}&quot;
+</code></pre><p><img src="1.png" alt=""></p>
+<h3 id="1-2-接口"><a href="#1-2-接口" class="headerlink" title="1.2 接口"></a>1.2 接口</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><pre><code>//默认public
+interface Action {
+
+    void eat()
+
+    void drink()
+
+    void play()
+}
+</code></pre><p>Groovy接口不允许定义非public的方法</p>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>与Java一样</p>
+<h3 id="1-3-Trait"><a href="#1-3-Trait" class="headerlink" title="1.3 Trait"></a>1.3 Trait</h3><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><pre><code>trait DefaultAction {
+
+    abstract void eat()
+
+    void play(){
+        println &apos;i can play&apos;
+    }
+}
+</code></pre><p>与接口/抽象类相类似，区别是方法须有默认实现，不提供默认实现需加上abstract关键字</p>
+<h4 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h4><p>与接口一样</p>
+<h2 id="2-元编程"><a href="#2-元编程" class="headerlink" title="2.元编程"></a>2.元编程</h2><p>元编程就是编写的代码它所执行的时期，比如解释执行的JS，编译执行的Java，运行执行的Java反射。这节介绍Groovy运行执行的代码，Runtime。</p>
+<p><img src="2.png" alt=""></p>
+<h4 id="执行未定义的方法"><a href="#执行未定义的方法" class="headerlink" title="执行未定义的方法"></a>执行未定义的方法</h4><pre><code>def person = new Person(name: &apos;krido&apos;,age: 18)
+person.cry()
+</code></pre><p><img src="3.png" alt=""></p>
+<h4 id="实现invokeMethod方法（位于GroovyObject）"><a href="#实现invokeMethod方法（位于GroovyObject）" class="headerlink" title="实现invokeMethod方法（位于GroovyObject）"></a>实现invokeMethod方法（位于GroovyObject）</h4><pre><code>//一个方法找不到时，调用它代替
+//方法名，方法参数
+def invokeMethod(String name, Object args) {
+        return &quot;The method is ${name} and params is ${args}&quot;
+    }
+</code></pre><p><img src="4.png" alt="">    </p>
+<h4 id="实现methodMissing方法"><a href="#实现methodMissing方法" class="headerlink" title="实现methodMissing方法"></a>实现methodMissing方法</h4><pre><code>def methodMissing(String name, Object args){
+        return &quot;The method ${name} is missing&quot;
+    }    
+</code></pre><p><img src="5.png" alt=""></p>
+<h3 id="2-1-metaClass（位于DefaultGroovyMethods中）"><a href="#2-1-metaClass（位于DefaultGroovyMethods中）" class="headerlink" title="2.1 metaClass（位于DefaultGroovyMethods中）"></a>2.1 metaClass（位于DefaultGroovyMethods中）</h3><p>动态的添加属性和方法</p>
+<h4 id="为类动态添加属性"><a href="#为类动态添加属性" class="headerlink" title="为类动态添加属性"></a>为类动态添加属性</h4><pre><code>Person.metaClass.sex = &apos;male&apos;
+def person = new Person(name: &apos;krido&apos;,age: 18)
+println person.sex
+person.sex = &apos;female&apos;
+println person.sex
+</code></pre><p><img src="6.png" alt=""></p>
+<h4 id="为类动态添加方法"><a href="#为类动态添加方法" class="headerlink" title="为类动态添加方法"></a>为类动态添加方法</h4><pre><code>Person.metaClass.sex = &apos;male&apos;
+Person.metaClass.sexUppercase = { -&gt; sex.toUpperCase()}
+def person = new Person(name: &apos;krido&apos;,age: 18)
+println person.sexUppercase()
+</code></pre><p><img src="7.png" alt=""></p>
+<h4 id="为类动态添加静态属性或方法"><a href="#为类动态添加静态属性或方法" class="headerlink" title="为类动态添加静态属性或方法"></a>为类动态添加静态属性或方法</h4><pre><code>Person.metaClass.static.createPerson = {
+    String name,int age -&gt; new Person(name: name,age: age)
+}
+Person person1 = Person.createPerson(&apos;mayo&apos;,18)
+println person1.name + &apos; and &apos; + person1.age
+</code></pre><p><img src="8.png" alt=""></p>
+<h4 id="运行时的意义"><a href="#运行时的意义" class="headerlink" title="运行时的意义"></a>运行时的意义</h4><p>为final类提供新方法或者做框架的时候</p>
+<h4 id="全局注入属性和方法"><a href="#全局注入属性和方法" class="headerlink" title="全局注入属性和方法"></a>全局注入属性和方法</h4><p>使所有的脚本都可使用添加的属性或方法,ExpandoMetaClass.enableGlobally()</p>
+<p>入口类</p>
+<pre><code>class Entry {
+
+    static void main(String[] args) {
+        println &apos;应用程序正在启动。。。&apos;
+        ApplicationManager.init()
+        println &apos;应用程序初始化完成&apos;
+        def person = PersonManager.createPerson(&apos;krido&apos;,18)
+        println person.name + &quot; &quot; + person.age
+    }
+}
+</code></pre><p>模拟应用管理类</p>
+<pre><code>class ApplicationManager {
+
+    static void init(){
+        ExpandoMetaClass.enableGlobally()
+        Person.metaClass.static.createPerson = {
+            String name,int age -&gt;
+                new Person(name: name,age: age)
+        }
+    }
+}
+</code></pre><p>Person的管理类</p>
+<pre><code>class PersonManager {
+
+    static Person createPerson(String name,int age){
+        return Person.createPerson(name,age)
+    }
+}
+</code></pre><p><img src="9.png" alt=""></p>
+
     </div>
 </div>
 
@@ -391,7 +497,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
@@ -411,7 +517,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
@@ -441,28 +547,33 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
@@ -472,22 +583,17 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
@@ -506,13 +612,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
         
@@ -537,18 +643,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
+            <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
+        <div class="cube-box ">
+            <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
@@ -572,13 +678,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -592,12 +698,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
@@ -607,7 +713,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
@@ -617,8 +723,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
@@ -627,7 +738,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
@@ -638,16 +749,11 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SSR/">#SSR</a>
         </div>
         
@@ -667,17 +773,17 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -693,32 +799,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
         </div>
         
         
@@ -732,13 +823,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Layout/">#Layout</a>
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
         </div>
         
         
@@ -758,26 +854,6 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -792,7 +868,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -802,12 +878,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -837,12 +913,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
@@ -853,12 +929,37 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
+            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -868,27 +969,32 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
+            <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/LBS/">#LBS</a>
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/ListView/">#ListView</a>
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
@@ -897,12 +1003,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
@@ -917,7 +1023,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -952,18 +1058,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -982,12 +1083,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/JSON/">#JSON</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
