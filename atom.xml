@@ -362,6 +362,71 @@ onPause()  -&amp;gt; onStop()  -&amp;gt; onDestroy()
   </entry>
   
   <entry>
+    <title>Gradle-高级用法-文件操作</title>
+    <link href="http://yoursite.com/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2018/05/25/Gradle-高级用法-文件操作/</id>
+    <published>2018-05-25T12:15:56.000Z</published>
+    <updated>2020-02-12T12:20:47.845Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Gradle" scheme="http://yoursite.com/categories/Gradle/"/>
+    
+    
+      <category term="Gradle高级用法" scheme="http://yoursite.com/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle-高级用法-xml文件操作</title>
+    <link href="http://yoursite.com/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2018/05/24/Gradle-高级用法-xml文件操作/</id>
+    <published>2018-05-24T12:15:43.000Z</published>
+    <updated>2020-02-12T12:20:22.636Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Gradle" scheme="http://yoursite.com/categories/Gradle/"/>
+    
+    
+      <category term="Gradle高级用法" scheme="http://yoursite.com/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle-高级用法-json操作</title>
+    <link href="http://yoursite.com/2018/05/23/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-json%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2018/05/23/Gradle-高级用法-json操作/</id>
+    <published>2018-05-23T12:15:28.000Z</published>
+    <updated>2020-02-12T13:03:46.294Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-实体类转换成json"><a href="#1-实体类转换成json" class="headerlink" title="1.实体类转换成json"></a>1.实体类转换成json</h2><pre><code>def list = [new Person(name: &apos;John&apos;,age: 25),        new Person(name: &apos;Major&apos;,age: 26)]println JsonOutput.toJson(list)//带格式的输出def json = JsonOutput.toJson(list)println JsonOutput.prettyPrint(json)</code></pre><a id="more"></a><p><img src="1.png" alt=""></p><h2 id="2-json转换实体类"><a href="#2-json转换实体类" class="headerlink" title="2.json转换实体类"></a>2.json转换实体类</h2><pre><code>def jsonSlurper = new JsonSlurper()jsonSlurper.parse()jsonSlurper.parseText()</code></pre><p>也可以使用java第三方库，如gson</p><h2 id="3-网络请求例子"><a href="#3-网络请求例子" class="headerlink" title="3.网络请求例子"></a>3.网络请求例子</h2><pre><code>def getNetworkData(String url){    //发送HTTP请求    def connection = new URL(url).openConnection()    connection.setRequestMethod(&apos;GET&apos;)    connection.connect()    def response = connection.content.text    //json转换为实体对象    def jsonSlurper = new JsonSlurper()    return jsonSlurper.parseText(response)}def response = getNetworkData(&apos;http://co-api.51wnl.com/calendar/vacations?token=A2E0C3CDEA081D3BFC34F8FE23A15886&amp;type=1&amp;timestamp=1462377600&amp;client=ceshi&apos;)//可以直接调用对应的属性字段println response.status</code></pre><p><img src="2.png" alt=""></p><p><img src="3.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-实体类转换成json&quot;&gt;&lt;a href=&quot;#1-实体类转换成json&quot; class=&quot;headerlink&quot; title=&quot;1.实体类转换成json&quot;&gt;&lt;/a&gt;1.实体类转换成json&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;def list = [new Person(name: &amp;apos;John&amp;apos;,age: 25),
+        new Person(name: &amp;apos;Major&amp;apos;,age: 26)]
+
+println JsonOutput.toJson(list)
+//带格式的输出
+def json = JsonOutput.toJson(list)
+println JsonOutput.prettyPrint(json)
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Gradle" scheme="http://yoursite.com/categories/Gradle/"/>
+    
+    
+      <category term="Gradle高级用法" scheme="http://yoursite.com/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Gradle-核心语法-面向对象</title>
     <link href="http://yoursite.com/2018/05/22/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <id>http://yoursite.com/2018/05/22/Gradle-核心语法-面向对象/</id>
@@ -475,82 +540,6 @@ println y.class
     
     
       <category term="Gradle语法" scheme="http://yoursite.com/tags/Gradle%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle--开发环境搭建</title>
-    <link href="http://yoursite.com/2018/05/18/Gradle-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>http://yoursite.com/2018/05/18/Gradle-开发环境搭建/</id>
-    <published>2018-05-18T05:56:11.000Z</published>
-    <updated>2020-02-10T04:57:15.682Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-安装JDK环境"><a href="#1-安装JDK环境" class="headerlink" title="1.安装JDK环境"></a>1.安装JDK环境</h2><h2 id="2-下载groovySDK-解压到合适位置"><a href="#2-下载groovySDK-解压到合适位置" class="headerlink" title="2.下载groovySDK,解压到合适位置"></a>2.下载groovySDK,解压到合适位置</h2><p>打开<a href="https://groovy.apache.org/download.html" target="_blank" rel="noopener">https://groovy.apache.org/download.html</a>，注意系统版本的要求。下载好后，主要关注bin及doc文件夹</p><a id="more"></a><h4 id="bin"><a href="#bin" class="headerlink" title="bin"></a>bin</h4><p>主要包含命令，其中groovy与java一样，groovyc与javac一样，groovysh为解释执行groovy脚本</p><h4 id="doc"><a href="#doc" class="headerlink" title="doc"></a>doc</h4><p>主要是查看html下的api及documentation</p><h2 id="3-配置groovy环境变量"><a href="#3-配置groovy环境变量" class="headerlink" title="3.配置groovy环境变量"></a>3.配置groovy环境变量</h2><pre><code>open ~/.zshrc</code></pre><p>添加</p><pre><code># groovyexport PATH=${PATH}:/Users/yaoluyang/groovy-2.5.8/bin</code></pre><p>保存</p><pre><code>source ~/.zshrc</code></pre><p>查看是否成功</p><pre><code>groovy --version</code></pre><p>显示如下</p><p><img src="1.png" alt=""></p><h2 id="4-下载并安装IntelliJ-IDEA"><a href="#4-下载并安装IntelliJ-IDEA" class="headerlink" title="4.下载并安装IntelliJ IDEA"></a>4.下载并安装IntelliJ IDEA</h2><h2 id="5-在IDEA中配置groovy工程环境"><a href="#5-在IDEA中配置groovy工程环境" class="headerlink" title="5.在IDEA中配置groovy工程环境"></a>5.在IDEA中配置groovy工程环境</h2><p>新建groovy工程，点击create配置下载好的SDK位置</p><p><img src="2.png" alt=""></p><p>新建groovy文件并运行</p><p><img src="3.png" alt=""></p><p>查看out里面的Hello.class可以看到编译器是帮我们处理了的</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-安装JDK环境&quot;&gt;&lt;a href=&quot;#1-安装JDK环境&quot; class=&quot;headerlink&quot; title=&quot;1.安装JDK环境&quot;&gt;&lt;/a&gt;1.安装JDK环境&lt;/h2&gt;&lt;h2 id=&quot;2-下载groovySDK-解压到合适位置&quot;&gt;&lt;a href=&quot;#2-下载groovySDK-解压到合适位置&quot; class=&quot;headerlink&quot; title=&quot;2.下载groovySDK,解压到合适位置&quot;&gt;&lt;/a&gt;2.下载groovySDK,解压到合适位置&lt;/h2&gt;&lt;p&gt;打开&lt;a href=&quot;https://groovy.apache.org/download.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://groovy.apache.org/download.html&lt;/a&gt;，注意系统版本的要求。下载好后，主要关注bin及doc文件夹&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Gradle" scheme="http://yoursite.com/categories/Gradle/"/>
-    
-    
-      <category term="Gradle开发环境搭建" scheme="http://yoursite.com/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle--快速入门</title>
-    <link href="http://yoursite.com/2018/05/18/Gradle-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
-    <id>http://yoursite.com/2018/05/18/Gradle-快速入门/</id>
-    <published>2018-05-18T03:43:12.000Z</published>
-    <updated>2019-09-18T09:00:54.364Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="为什么要学习Gradle"><a href="#为什么要学习Gradle" class="headerlink" title="为什么要学习Gradle"></a>为什么要学习Gradle</h3><ul><li>这是一款全新的，功能最强大的构建工具，逼格更高，Maven、Ant能做的Gradle都能做，反之不能。</li><li>使用程序代替传统的XML配置，项目构建更加灵活</li><li>丰富的第三方插件，随心所欲的使用</li><li>完善Android、Java开发技术体系</li><li>提升自动化构建技术深度</li></ul><a id="more"></a><h3 id="Groovy概述"><a href="#Groovy概述" class="headerlink" title="Groovy概述"></a>Groovy概述</h3><h4 id="DSL介绍"><a href="#DSL介绍" class="headerlink" title="DSL介绍"></a>DSL介绍</h4><ul><li>全称domain specific language</li><li>常见的DSL语言及特点，MATLAB、UML、HTML等</li><li>DSL与通用编程语言的区别，解决某一特定领域内的问题</li><li>核心思想：求专不求全，解决特定问题</li></ul><h4 id="groovy介绍"><a href="#groovy介绍" class="headerlink" title="groovy介绍"></a>groovy介绍</h4><ul><li>是一种基于JVM的敏捷开发语言</li><li>结合了Python、Ruby和Smalltalk的许多强大的特性</li><li>groovy可以与Java完美结合，而且可以使用Java所有的库</li></ul><h4 id="groovy特性"><a href="#groovy特性" class="headerlink" title="groovy特性"></a>groovy特性</h4><ul><li>语法上支持动态类型、闭包等新一代语言特性</li><li>无缝集成所有已经存在的Java类库</li><li>即支持面向对象编程也支持面向过程编程</li></ul><h4 id="groovy优势"><a href="#groovy优势" class="headerlink" title="groovy优势"></a>groovy优势</h4><ul><li>一种更加敏捷的编程语言</li><li>入门非常容易，但功能强大</li><li>即可以作为编程语言也可以作为脚本语言</li><li>熟练掌握Java会非常容易掌握groovy</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;为什么要学习Gradle&quot;&gt;&lt;a href=&quot;#为什么要学习Gradle&quot; class=&quot;headerlink&quot; title=&quot;为什么要学习Gradle&quot;&gt;&lt;/a&gt;为什么要学习Gradle&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;这是一款全新的，功能最强大的构建工具，逼格更高，Maven、Ant能做的Gradle都能做，反之不能。&lt;/li&gt;
-&lt;li&gt;使用程序代替传统的XML配置，项目构建更加灵活&lt;/li&gt;
-&lt;li&gt;丰富的第三方插件，随心所欲的使用&lt;/li&gt;
-&lt;li&gt;完善Android、Java开发技术体系&lt;/li&gt;
-&lt;li&gt;提升自动化构建技术深度&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Gradle" scheme="http://yoursite.com/categories/Gradle/"/>
-    
-    
-      <category term="Gradle快速入门" scheme="http://yoursite.com/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一行代码笔记-Material Design</title>
-    <link href="http://yoursite.com/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/"/>
-    <id>http://yoursite.com/2018/03/18/第一行代码笔记-MD/</id>
-    <published>2018-03-18T07:07:24.000Z</published>
-    <updated>2019-09-10T02:03:01.558Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="什么是Material-Design"><a href="#什么是Material-Design" class="headerlink" title="什么是Material Design"></a>什么是Material Design</h2><p>界面设计语言，包含视觉、运动、交互效果。开发人员使用Design Support库即可。</p><a id="more"></a><h2 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h2><p>官方已经不建议使用ActionBar了，推荐使用Toolbar。<br>Toolbar不仅继承了ActionBar的所有功能，而且灵活性很高，可以配合其他控件完成一些Material Design的效果。</p><h3 id="为什么默认会显示ActionBar"><a href="#为什么默认会显示ActionBar" class="headerlink" title="为什么默认会显示ActionBar"></a>为什么默认会显示ActionBar</h3><p>这是根据项目的主题而来的，从AndroidManifest.xml的android:theme找到res/values/styles.xml，找到主题的parent是Theme.AppCompat.Light.DarkActionBar，这个DarkActionBar是一个深色的ActionBar主题，所以才会出现ActionBar。  </p><p>指定不带ActionBar的主题，通常有Theme.AppCompat.NoActionBar和Theme.AppCompat.Light.NoActionBar这两种主题可选。其中Theme.AppCompat.NoActionBar表示深色主题，界面主体为深色，陪衬颜色为淡色。Theme.AppCompat.Light.NoActionBar表示淡色主题，界面主体为淡色，陪衬颜色为深色。  </p><p>AppTheme中的属性重新，这里重写了colorPrimary、colorPrimaryDark、colorAccent这三个颜色属性，如下图：</p><!--![](第一行代码笔记-MD/1.png)--><p><img src="1.png" alt=""></p><p>除上述3个属性，还可以通过textColorPrimary、windowBackground和navigationBarColor等属性来控制更多的颜色。不过colorAccent这个属性比较难理解，它不只是用来指定这样一个按钮的颜色，更多的表达强调的意思，比如一些控件的选中状态也会使用colorAccent的颜色。</p><p>添加Toolbar</p><pre><code>&lt;android.support.v7.widget.Toolbar    android:layout_width=&quot;match_parent&quot;    android:layout_heiht=&quot;?attr/actionBarSize&quot;    android:background=&quot;?attr/colorPrimary&quot;    android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;    app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;/&gt;</code></pre><p>使用了xmlns:android命名空间，之后可以使用app:attribute这样的写法了。因为Material Design是Android5.0出现的，而很多Material属性在5.0之前的系统不存在，为了兼容，不能使用android: attribute，而应该使用app:attribute。</p><p>这里的高度为actionBar的高度。由于在style.xml中将程序主题指定成了淡色，因此Toolbar也是淡色，而Toolbar上面的各个元素会自动使用深色，为了和主题颜色区分。但这样很难看。这里使用android:theme，使Toolbar单独使用深色主题，但这样如果Toolbar里有菜单按钮，那么弹出来的也是深色主题，这样也难看，所以使用app:popupTheme属性单独将弹出来的菜单指定淡色主题。</p><p>添加Toolbar，在onCreate()里</p><pre><code>Toolbar toobar = findViewById(R.id.toobar);setSupportActionBar(toobar);</code></pre><p>修改标题栏显示文字内容，在manifest中</p><pre><code>&lt;Activity    android:label=&quot;Fruits&quot;&gt;&lt;/Activity&gt;</code></pre><p>如果没有指定，会默认使用application中指定的label内容，即应用名称。</p><p>添加action按钮，res/menu下创建toolbar.xml</p><pre><code>&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;    &lt;item        android:id=&quot;@+id/backup&quot;        android:icon=&quot;@drawable/ic_ backup&quot;        android:title=&quot;backup&quot;        app:showAsAction=&quot;alawys&quot;/&gt;    &lt;item        android:id=&quot;@+id/delete&quot;        android:icon=&quot;@drawable/ic_ delete&quot;        android:title=&quot;delete&quot;        app:showAsAction=&quot;ifRoom&quot;/&gt;    &lt;item        android:id=&quot;@+id/settings&quot;        android:icon=&quot;@drawable/ic_ settings&quot;        android:title=&quot;settings&quot;        app:showAsAction=&quot;never&quot;/&gt;&lt;/menu&gt;</code></pre><p>app:showAsAction指定按钮显示位置，alawys永远显示，如果屏幕空间不够则不显示；ifRoom表示屏幕空间够显示，不够不显示；never永远显示在菜单中。注意，Toolbar中的action按钮只会显示图标，菜单中的action按钮只会显示文字。</p><pre><code>public boolean onCreateOptionsMenu(Menu menu){    getMenuInflater().inflate(R.menu.toolbar,menu);    return true;}@Overridepublic boolean onOptionsItemSeleted(MenuItem item){    switch(item.getItemId()){        case R.id.backup:        .....    }    return true;}</code></pre><h2 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h2><h3 id="DrawerLayout"><a href="#DrawerLayout" class="headerlink" title="DrawerLayout"></a>DrawerLayout</h3><p>所谓滑动菜单就是将一些菜单选项隐藏，然后可以通过滑动的方式将菜单显示出来，这种方式即节省了屏幕空间，又实现了非常好的动画效果，是Material Design中推荐的做法。</p><p>DrawerLayout是一个布局，允许放入两个直接子控件，第一个控件是主屏幕显示的内容，第二个子控件是滑动菜单显示的内容。</p><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;android.support.v4.widget.DrawerLayout     xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;    android:id=&quot;@+id/drawerLayout&quot;    android:layout_width=&quot;match_parent&quot;    android:layout_height=&quot;match_parent&quot;&gt;    &lt;FrameLayout        android:layout_width=&quot;match_parent&quot;        android:layout_height=&quot;match_parent&quot;&gt;        &lt;android.support.v7.widget.Toolbar            android:layout_width=&quot;match_parent&quot;            android:layout_heiht=&quot;?attr/actionBarSize&quot;            android:background=&quot;?attr/colorPrimary&quot;            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;            app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;/&gt;    &lt;/FrameLayout&gt;    &lt;TextView        android:layout_width=&quot;match_parent&quot;        android:layout_height=&quot;match_parent&quot;        android:layout_gravity=&quot;start&quot;/&gt;&lt;/android.support.v4.widget.DrawerLayout&gt;</code></pre><p>DrawerLayout没有限制只能使用固定的控件。第二个控件android:layout_gravity是必须的，需要告诉DrawerLayout滑动菜单是在屏幕的左边还是右边.left左边，right右边，start会根据系统语言进行判断。</p><p>向左滑动菜单或点击菜单以外的区域，都可以让菜单关闭。</p><p>在Toolbar最左边加一个导航按钮，防止用户不知道屏幕左边是可以拖动的。</p><p>在onCreate()中添加</p><pre><code>Toolbar toobar = findViewById(R.id.toobar);setSupportActionBar(toobar);mDrawerLayout = findViewById(R.id.drawerLayout);ActionBar actionBar = getSupportActionBar();if(actionBar != null){    actionBar.setDisplayHomeAsUpEnabled(true);    actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);}</code></pre><p>在onOptionsItemSeleted()中添加</p><pre><code>case android.R.id.home:    mDrawerLayout.openDrawer(GravityCompat.START);    break;</code></pre><p>getSupportActionBar()得到ActionBar实例，具体实现是由Toolbar来完成的。setDisplayHomeAsUpEnabled()方法让导航按钮显示出来，调用setHomeAsUpIndicator()方法设置一个导航按钮图标。实际上，Toolbar最左侧的按钮就叫做HomeAsUp按钮，它默认的图标是一个返回按钮，返回上一个活动。这里我们将它默认的样式和作用进行了修改。</p><p>HomeAsUp的ID永远都是android.R.id.home。调用openDrawer()方法将滑动菜单显示出来，需传入一个Gravity参数，为了与XML一致，这里传入了GravityCompat.START。</p><h3 id="NavigationView"><a href="#NavigationView" class="headerlink" title="NavigationView"></a>NavigationView</h3><p>可以在滑动菜单也定制任意的布局，不过谷歌提供了NavigationView。NavigationView是Design Support库中提供的一个控件，不仅严格按照MD的要求设计，而且可以将滑动菜单页的实现变得非常简单。</p><pre><code>compile &apos;com.android.support:design:24.2.1&apos;compile &apos;de.hdodenhof:circleimageview:2.1.0&apos;</code></pre><p>这里添加了依赖，第一行是Design Support库，</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;什么是Material-Design&quot;&gt;&lt;a href=&quot;#什么是Material-Design&quot; class=&quot;headerlink&quot; title=&quot;什么是Material Design&quot;&gt;&lt;/a&gt;什么是Material Design&lt;/h2&gt;&lt;p&gt;界面设计语言，包含视觉、运动、交互效果。开发人员使用Design Support库即可。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Android基础" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="Material Design" scheme="http://yoursite.com/tags/Material-Design/"/>
     
   </entry>
   
