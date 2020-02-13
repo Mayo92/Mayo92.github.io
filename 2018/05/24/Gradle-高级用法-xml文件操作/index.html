@@ -181,7 +181,171 @@
     
     <div class="cube-article-content cube-markdown">
         
-        
+        <h2 id="1-如何解析一个xml格式数据"><a href="#1-如何解析一个xml格式数据" class="headerlink" title="1.如何解析一个xml格式数据"></a>1.如何解析一个xml格式数据</h2><p><img src="1.png" alt=""></p>
+<pre><code>final String xml = &apos;&apos;&apos;
+&lt;response version-api=&quot;2.0&quot;&gt;
+    &lt;value&gt;
+        &lt;books id=&quot;1&quot; classification=&quot;android&quot;&gt;
+            &lt;book available=&quot;20&quot; id=&quot;1&quot;&gt;
+                &lt;title&gt;疯狂Android讲义&lt;/title&gt;
+                &lt;author id=&quot;1&quot;&gt;李刚&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;book available=&quot;14&quot; id=&quot;2&quot;&gt;
+               &lt;title&gt;第一行代码&lt;/title&gt;
+               &lt;author id=&quot;2&quot;&gt;郭林&lt;/author&gt;
+           &lt;/book&gt;
+           &lt;book available=&quot;13&quot; id=&quot;3&quot;&gt;
+               &lt;title&gt;Android开发艺术探索&lt;/title&gt;
+               &lt;author id=&quot;3&quot;&gt;任玉刚&lt;/author&gt;
+           &lt;/book&gt;
+           &lt;book available=&quot;5&quot; id=&quot;4&quot;&gt;
+               &lt;title&gt;Android源码设计模式&lt;/title&gt;
+               &lt;author id=&quot;4&quot;&gt;何红辉&lt;/author&gt;
+           &lt;/book&gt;
+       &lt;/books&gt;
+       &lt;books id=&quot;2&quot; classification=&quot;web&quot;&gt;
+           &lt;book available=&quot;10&quot; id=&quot;1&quot;&gt;
+               &lt;title&gt;Vue从入门到精通&lt;/title&gt;
+               &lt;author id=&quot;4&quot;&gt;李刚&lt;/author&gt;
+           &lt;/book&gt;
+       &lt;/books&gt;
+   &lt;/value&gt;
+&lt;/response&gt;
+&apos;&apos;&apos;
+</code></pre><h3 id="1-1-获取值-获取属性"><a href="#1-1-获取值-获取属性" class="headerlink" title="1.1 获取值/获取属性"></a>1.1 获取值/获取属性</h3><pre><code>def xmlSlurper = new XmlSlurper()
+//response指向根节点
+def response = xmlSlurper.parseText(xml)
+println response.value.books[1].book[0].author
+//获取属性@
+println response.value.books[0].@classification
+</code></pre><p><img src="2.png" alt=""></p>
+<h3 id="1-2-遍历查找"><a href="#1-2-遍历查找" class="headerlink" title="1.2 遍历查找"></a>1.2 遍历查找</h3><pre><code>def list = []
+response.value.books.each {
+    books -&gt;
+        //对下面节点进行遍历
+        books.book.each{
+            book -&gt;
+                def author = book.author.text()
+                if(author.equals(&apos;李刚&apos;)){
+                    list.add(book.title.text())
+                }
+        }
+}
+println list.toListString()
+</code></pre><p><img src="3.png" alt=""></p>
+<h3 id="1-3-深度遍历（depthFirst-简写’-’）"><a href="#1-3-深度遍历（depthFirst-简写’-’）" class="headerlink" title="1.3 深度遍历（depthFirst()简写’**’）"></a>1.3 深度遍历（depthFirst()简写’**’）</h3><pre><code>response.depthFirst().findAll {
+    book -&gt; return book.author.text() == &apos;李刚&apos;
+}.each {
+    println it.title.text()
+}
+
+def list2 = []
+response.&apos;**&apos;.findAll {
+    book -&gt;
+        if(book.author.text() == &apos;李刚&apos;){
+            list2.add(book.title.text())
+        }
+}
+println list2.toListString()
+
+def books = response.depthFirst().findAll {
+    book -&gt; book.author.text() == &apos;李刚&apos;
+}.collect{
+    name -&gt; return name.title.text()
+}
+println books
+</code></pre><p><img src="4.png" alt=""></p>
+<p>遍历不会改变原来的集合，打印输出原来的集合不对</p>
+<h3 id="1-4-广度遍历（children-简写’-’）"><a href="#1-4-广度遍历（children-简写’-’）" class="headerlink" title="1.4 广度遍历（children()简写’*’）"></a>1.4 广度遍历（children()简写’*’）</h3><pre><code>def name = response.value.books.children().findAll{
+    //node.name()返回当前节点的名字
+    node -&gt; node.name() == &apos;book&apos; &amp;&amp; node.@id == &apos;2&apos;
+}.collect{
+    node -&gt; return node.title.text()
+}
+println name
+</code></pre><p><img src="5.png" alt=""></p>
+<h2 id="2-如何创建一个xml格式数据"><a href="#2-如何创建一个xml格式数据" class="headerlink" title="2.如何创建一个xml格式数据"></a>2.如何创建一个xml格式数据</h2><h3 id="2-1-直接写"><a href="#2-1-直接写" class="headerlink" title="2.1 直接写"></a>2.1 直接写</h3><pre><code>def sw = new StringWriter()
+def xmlBuilder = new MarkupBuilder(sw)//用来生成xml数据的核心类
+//根结点langs创建成功
+xmlBuilder.langs(type:&apos;current&apos;,count:&apos;3&apos;,mainstream: &apos;true&apos;){
+    //第一个language结点
+    language(flavor: &apos;static&apos;, version: &apos;1.5&apos;,){
+        //第一个age结点
+        age(&apos;18&apos;)
+    }
+    language(flavor: &apos;dynamic&apos;, version: &apos;1.6&apos;,){
+        age(&apos;10&apos;)
+    }
+    language(flavor: &apos;dynamic&apos;, version: &apos;1.9&apos;,&apos;JavaScript&apos;){}
+}
+println sw
+</code></pre><p><img src="6.png" alt=""></p>
+<h3 id="2-2-实体类转换"><a href="#2-2-实体类转换" class="headerlink" title="2.2 实体类转换"></a>2.2 实体类转换</h3><pre><code>//对应xml中的langs结点
+class Langs{
+    String type = &apos;current&apos;
+    int count = 3
+    boolean mainstream = true
+    def list = [new Language(flavor: &apos;static&apos;,version: &apos;1.5&apos;,value: &apos;java&apos;),
+            new Language(flavor: &apos;dynamic&apos;,version: &apos;1.6&apos;,value: &apos;groovy&apos;),
+            new Language(flavor: &apos;dynamic&apos;,version: &apos;1.9&apos;,value: &apos;JavaScript&apos;)]
+}
+//对应xml中的languang结点
+class Language{
+    String flavor
+    String version
+    String value
+}
+Langs langs = new Langs()
+xmlBuilder.langs(type:langs.type,count:langs.count,mainstream:langs.mainstream){
+    langs.list.each {
+        language(flavor:  it.flavor,version: it.version,it.value){
+            age(&apos;10&apos;)
+        }
+    }
+}
+println sw
+</code></pre><p><img src="7.png" alt=""></p>
+<h2 id="3-json转换成xml"><a href="#3-json转换成xml" class="headerlink" title="3.json转换成xml"></a>3.json转换成xml</h2><pre><code>def getNetworkData(String url){
+    //发送HTTP请求
+    def connection = new URL(url).openConnection()
+    connection.setRequestMethod(&apos;GET&apos;)
+    connection.connect()
+    def response = connection.content.text
+
+    //json转换为实体对象
+    def jsonSlurper = new JsonSlurper()
+    return jsonSlurper.parseText(response)
+}
+
+def response = getNetworkData(&apos;https://wanandroid.com/wxarticle/chapters/json&apos;)
+
+def list = response.data
+
+println list
+
+def sw = new StringWriter()
+
+def xmlBuilder = new MarkupBuilder(sw)
+
+xmlBuilder.datas(){
+    list.each{
+        a -&gt; data(){
+            children(a.children)
+            courseId(a.courseId)
+            id(a.id)
+            name(a.name)
+            order(a.order)
+            parentChapterId(a.parentChapterId)
+            userControlSetTop(a.userControlSetTop)
+            visible(a.visible)
+        }
+    }
+}
+
+println sw
+</code></pre><p>it有作用范围，闭包{}里    </p>
+<p><img src="8.png" alt=""></p>
+
     </div>
 </div>
 
@@ -402,22 +566,22 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
         </div>
         
         
@@ -437,12 +601,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
@@ -451,8 +610,13 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/操作系统/">#操作系统</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
@@ -476,13 +640,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
+            <a href="/categories/网络/">#网络</a>
         </div>
         
         
@@ -493,6 +652,11 @@
         
         <div class="cube-box ">
             <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
@@ -532,7 +696,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -542,7 +706,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
@@ -557,12 +721,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
@@ -572,27 +736,22 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Html/">#Html</a>
         </div>
         
@@ -603,7 +762,17 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Java初识/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java变量/">#Java变量</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
@@ -613,31 +782,21 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
@@ -652,7 +811,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SSR/">#SSR</a>
         </div>
         
@@ -662,13 +821,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/内存划分/">#内存划分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -682,18 +846,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
@@ -708,6 +862,11 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/文件/">#文件</a>
         </div>
         
@@ -717,28 +876,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/二分查找/">#二分查找</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/冒泡排序/">#冒泡排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/选择排序/">#选择排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
         </div>
         
         
@@ -752,8 +891,38 @@
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/二分查找/">#二分查找</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/冒泡排序/">#冒泡排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/选择排序/">#选择排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -767,7 +936,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -782,22 +951,22 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -807,7 +976,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -833,7 +1002,7 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -847,28 +1016,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
@@ -882,6 +1036,16 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
@@ -892,22 +1056,12 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
@@ -922,33 +1076,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
         </div>
         
         
@@ -973,11 +1102,51 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/集合框架/">#集合框架</a>
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/集合框架/">#集合框架</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -992,23 +1161,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/面试/">#面试</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/FFMPEG/">#FFMPEG</a>
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
     </div>
