@@ -276,7 +276,18 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           
+           <h2 id="1-Gradle基本概念"><a href="#1-Gradle基本概念" class="headerlink" title="1.Gradle基本概念"></a>1.Gradle基本概念</h2><h3 id="1-1-Gradle是什么，能做什么"><a href="#1-1-Gradle是什么，能做什么" class="headerlink" title="1.1 Gradle是什么，能做什么"></a>1.1 Gradle是什么，能做什么</h3><p><img src="1.png" alt=""></p>
+<p>是一种编程框架</p>
+<h3 id="1-2-Gradle优势"><a href="#1-2-Gradle优势" class="headerlink" title="1.2 Gradle优势"></a>1.2 Gradle优势</h3><ul>
+<li>灵活性</li>
+<li>粒度性（细化到了每一个Task，如Tinker通过打包过程生成补丁文件）</li>
+<li>扩展性（支持插件机制）</li>
+<li>兼容性（兼容ant、maven）</li>
+</ul>
+<h2 id="2-Gradle执行流程"><a href="#2-Gradle执行流程" class="headerlink" title="2.Gradle执行流程"></a>2.Gradle执行流程</h2><p><img src="2.png" alt=""></p>
+<p>loading就是Initialization阶段</p>
+<h2 id="3-Gradle生命周期监听"><a href="#3-Gradle生命周期监听" class="headerlink" title="3.Gradle生命周期监听"></a>3.Gradle生命周期监听</h2><p>//重新下载代码看视频，还没整理<br>三种监听方式</p>
+
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -395,7 +406,8 @@ println JsonOutput.prettyPrint(json)
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h2 id="1-类、接口等的定义和使用"><a href="#1-类、接口等的定义和使用" class="headerlink" title="1.类、接口等的定义和使用"></a>1.类、接口等的定义和使用</h2><h3 id="1-1-类"><a href="#1-1-类" class="headerlink" title="1.1 类"></a>1.1 类</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><pre><code>class Person{
+           <p>//groovy对象怎么跟ExpandoMetaClass联系的?methodMissing是哪里继承的?</p>
+<h2 id="1-类、接口等的定义和使用"><a href="#1-类、接口等的定义和使用" class="headerlink" title="1.类、接口等的定义和使用"></a>1.类、接口等的定义和使用</h2><h3 id="1-1-类"><a href="#1-1-类" class="headerlink" title="1.1 类"></a>1.1 类</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><pre><code>class Person{
 
     String name
     Integer age
@@ -465,7 +477,8 @@ println list.size()
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="25.png" alt=""></p>
+           <p>//委托策略的问题</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="25.png" alt=""></p>
 <h3 id="1-1-闭包定义及调用（与方法对比学习）"><a href="#1-1-闭包定义及调用（与方法对比学习）" class="headerlink" title="1.1 闭包定义及调用（与方法对比学习）"></a>1.1 闭包定义及调用（与方法对比学习）</h3><p>闭包就是一段代码块</p>
 <pre><code>def clouser = { println &apos;hello groovy!&apos; }
 //执行
@@ -727,7 +740,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
@@ -737,7 +750,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
@@ -747,18 +760,23 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -769,11 +787,6 @@ clouser()
         
         <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -792,12 +805,12 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
@@ -807,7 +820,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
@@ -817,7 +830,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
@@ -827,7 +840,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
@@ -853,7 +866,7 @@ clouser()
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -863,7 +876,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
@@ -878,32 +891,32 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
@@ -913,23 +926,18 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Html/">#Html</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
+            <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
@@ -939,22 +947,57 @@ clouser()
         
         
         <div class="cube-box ">
+            <a href="/tags/Java变量/">#Java变量</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存划分/">#内存划分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -968,47 +1011,12 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -1018,8 +1026,18 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -1028,13 +1046,18 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
@@ -1049,26 +1072,11 @@ clouser()
         
         
         <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1089,6 +1097,11 @@ clouser()
         
         
         <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -1098,7 +1111,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -1108,7 +1121,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -1138,7 +1151,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -1158,7 +1171,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
@@ -1173,7 +1186,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -1188,12 +1201,12 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
@@ -1203,7 +1216,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
@@ -1213,17 +1226,17 @@ clouser()
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
@@ -1233,7 +1246,7 @@ clouser()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
@@ -1248,7 +1261,32 @@ clouser()
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -1274,46 +1312,21 @@ clouser()
         
         
         <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/JSON/">#JSON</a>
         </div>
         
