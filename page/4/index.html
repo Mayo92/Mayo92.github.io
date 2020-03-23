@@ -163,6 +163,37 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-ContentProvider">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/13/第一行代码笔记-ContentProvider/">第一行代码笔记-ContentProvider</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-13
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/ContentProvider/" class="cube-excerpt-tag-link">#ContentProvider</a>
+                
+                <a href="/tags/运行时权限/" class="cube-excerpt-tag-link">#运行时权限</a>
+                
+                <a href="/tags/Android基础/" class="cube-excerpt-tag-link">#Android基础</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/13/第一行代码笔记-ContentProvider/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-数据存储">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/03/12/第一行代码笔记-数据存储/">第一行代码笔记-数据存储</a></h1>
@@ -512,62 +543,6 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-内存泄漏">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/内存泄漏/">内存泄漏</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/内存泄漏/" class="cube-excerpt-tag-link">#内存泄漏</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h4 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h4><pre><code>public class AppManager {
-
-    //有内存泄漏的问题：
-    private static AppManager instance;
-    private Context context;
-    private AppManager(Context context) {
-        this.context = context;
-    }
-    public static AppManager getInstance(Context context) {
-        if (instance == null) {
-//传入的Activity回收时由于被单例持有无法回收
-            instance = new AppManager(context);
-        }
-        return instance;
-    }
-</code></pre><hr>
-<pre><code>    //修复内存泄漏的写法：
-    private static AppManager instance;
-    private Context context;
-    private AppManager(Context context) {
-        this.context = context.getApplicationContext();// 使用Application 的context
-    }
-    public static AppManager getInstance(Context context) {
-        if (instance == null) {
-            instance = new AppManager(context);
-        }
-        return instance;
-    }
-}
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/内存泄漏/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -683,7 +658,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>64</span>文章</a>
+        <a class="count articles"><span>65</span>文章</a>
         <a class="count tags"><span>97</span>标签</a>
         <a class="count categories"><span>26</span>分类</a>
     </div>
@@ -805,23 +780,23 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
         </div>
         
         
@@ -836,27 +811,12 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/操作系统/">#操作系统</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -866,6 +826,21 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/操作系统/">#操作系统</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/计划/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
@@ -886,17 +861,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
@@ -906,21 +871,31 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -941,6 +916,16 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <div class="cube-boxs">
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Bitmap/">#Bitmap</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
@@ -952,12 +937,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
@@ -966,18 +946,8 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
         </div>
         
         
@@ -987,7 +957,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
@@ -997,12 +967,17 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+            <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -1017,6 +992,11 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
@@ -1026,18 +1006,13 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
         
@@ -1051,7 +1026,22 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
@@ -1072,26 +1062,6 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/IntentService/">#IntentService</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -1101,8 +1071,13 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Plan/">#Plan</a>
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -1112,27 +1087,17 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
@@ -1146,7 +1111,22 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Layout/">#Layout</a>
         </div>
         
@@ -1161,7 +1141,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
@@ -1171,12 +1151,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -1201,7 +1176,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
@@ -1211,7 +1186,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -1231,7 +1206,7 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -1246,12 +1221,12 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -1281,23 +1256,13 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
@@ -1307,16 +1272,21 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         
         
         <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -1326,13 +1296,18 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
@@ -1346,43 +1321,18 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1406,23 +1356,48 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/FFMPEG/">#FFMPEG</a>
+            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>
