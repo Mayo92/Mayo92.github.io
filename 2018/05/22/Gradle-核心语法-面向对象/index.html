@@ -181,7 +181,7 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <p>//groovy对象怎么跟ExpandoMetaClass联系的?methodMissing是哪里继承的?</p>
+        <p>//全局注入方法ExpandoMetaClass怎么跟groovy对象联系的?<br>//元编程里的methodMissing是哪里继承的，为什么所有类都可以写这个方法</p>
 <h2 id="1-类、接口等的定义和使用"><a href="#1-类、接口等的定义和使用" class="headerlink" title="1.类、接口等的定义和使用"></a>1.类、接口等的定义和使用</h2><h3 id="1-1-类"><a href="#1-1-类" class="headerlink" title="1.1 类"></a>1.1 类</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><pre><code>class Person{
 
     String name
@@ -197,7 +197,7 @@
 <li>groovy中默认都是public类型，包括类、方法、变量等</li>
 <li>创建的类都继承GroovyObject接口，默认实现get/set方法（对应于getProperty/setProperty）等</li>
 </ol>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre><code>//不需要构造方法
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre><code>//不需要构造方法，没设置值则为默认值
 def person = new Person(name: &apos;krido&apos;,age: 18)
 println &quot;name is ${person.name},age is ${person.age}&quot;
 //无论是直接.还是调用get/set最终都是调用get/set
@@ -239,7 +239,7 @@ def invokeMethod(String name, Object args) {
         return &quot;The method ${name} is missing&quot;
     }    
 </code></pre><p><img src="5.png" alt=""></p>
-<h3 id="2-1-metaClass（位于DefaultGroovyMethods中）"><a href="#2-1-metaClass（位于DefaultGroovyMethods中）" class="headerlink" title="2.1 metaClass（位于DefaultGroovyMethods中）"></a>2.1 metaClass（位于DefaultGroovyMethods中）</h3><p>动态的添加属性和方法</p>
+<h3 id="2-1-metaClass（位于DefaultGroovyMethods中，GroovyObject中有getMetaClass-、setMetaClass-，使用时-相当于get-set）"><a href="#2-1-metaClass（位于DefaultGroovyMethods中，GroovyObject中有getMetaClass-、setMetaClass-，使用时-相当于get-set）" class="headerlink" title="2.1 metaClass（位于DefaultGroovyMethods中，GroovyObject中有getMetaClass()、setMetaClass()，使用时.相当于get/set）"></a>2.1 metaClass（位于DefaultGroovyMethods中，GroovyObject中有getMetaClass()、setMetaClass()，使用时.相当于get/set）</h3><p>动态的添加属性和方法</p>
 <h4 id="为类动态添加属性"><a href="#为类动态添加属性" class="headerlink" title="为类动态添加属性"></a>为类动态添加属性</h4><pre><code>Person.metaClass.sex = &apos;male&apos;
 def person = new Person(name: &apos;krido&apos;,age: 18)
 println person.sex
@@ -382,9 +382,9 @@ println person1.name + &apos; and &apos; + person1.age
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>68</span>文章</a>
-        <a class="count tags"><span>101</span>标签</a>
-        <a class="count categories"><span>26</span>分类</a>
+        <a class="count articles"><span>69</span>文章</a>
+        <a class="count tags"><span>102</span>标签</a>
+        <a class="count categories"><span>27</span>分类</a>
     </div>
 </div>
 
@@ -424,10 +424,10 @@ println person1.name + &apos; and &apos; + person1.age
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2020/01/19/HTTP静态服务/" title="HTTP静态服务">HTTP静态服务</a>
+                        <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
                     </p>
                     <p class="date">
-                        2020-01-19
+                        2020-06-03
                     </p>
                 </div>
             </div>
@@ -442,7 +442,7 @@ println person1.name + &apos; and &apos; + person1.age
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
+                    <a href="/2020/01/19/HTTP静态服务/" title="HTTP静态服务">HTTP静态服务</a>
                 </p>
             </div>
         </li>
@@ -455,7 +455,7 @@ println person1.name + &apos; and &apos; + person1.age
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/27/音视频_FFMPEG简介/" title="音视频_FFMPEG简介">音视频_FFMPEG简介</a>
+                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
                 </p>
             </div>
         </li>
@@ -468,7 +468,7 @@ println person1.name + &apos; and &apos; + person1.age
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/02/星球Android入门-布局和控件/" title="星球Android入门-布局和控件">星球Android入门-布局和控件</a>
+                    <a href="/2019/09/27/音视频_FFMPEG简介/" title="音视频_FFMPEG简介">音视频_FFMPEG简介</a>
                 </p>
             </div>
         </li>
@@ -481,7 +481,7 @@ println person1.name + &apos; and &apos; + person1.age
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/02/星球Android入门-ContentProvider/" title="星球Android入门-ContentProvider">星球Android入门-ContentProvider</a>
+                    <a href="/2019/06/02/星球Android入门-布局和控件/" title="星球Android入门-布局和控件">星球Android入门-布局和控件</a>
                 </p>
             </div>
         </li>
@@ -505,6 +505,11 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
+            <a href="/categories/Android面试/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Gradle/">#Gradle</a>
         </div>
         
@@ -515,37 +520,32 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Kotlin/">#Kotlin</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -555,7 +555,12 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/设计模式/">#设计模式</a>
+            <a href="/categories/计划/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -564,28 +569,13 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
+            <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
@@ -594,18 +584,18 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
+            <a href="/categories/第一行代码/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
@@ -615,12 +605,27 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
@@ -640,7 +645,7 @@ println person1.name + &apos; and &apos; + person1.age
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -650,7 +655,7 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
@@ -660,13 +665,18 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Android面试/">#Android面试</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
@@ -680,7 +690,7 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
         </div>
         
@@ -691,12 +701,7 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
@@ -706,17 +711,17 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
         
@@ -726,21 +731,26 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
@@ -750,23 +760,43 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -785,18 +815,8 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPN/">#VPN</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -805,38 +825,38 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/定时任务/">#定时任务</a>
+            <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/字节流/">#字节流</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/文件/">#文件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -851,22 +871,12 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -895,7 +905,7 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -905,12 +915,12 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -925,7 +935,7 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -935,12 +945,12 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -965,8 +975,8 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -975,7 +985,7 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -991,16 +1001,11 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -1016,17 +1021,12 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
@@ -1036,17 +1036,27 @@ println person1.name + &apos; and &apos; + person1.age
         
         
         <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
         </div>
         
         
@@ -1070,7 +1080,7 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
@@ -1090,18 +1100,13 @@ println person1.name + &apos; and &apos; + person1.age
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
@@ -1137,6 +1142,11 @@ println person1.name + &apos; and &apos; + person1.age
         
         <div class="cube-box ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         

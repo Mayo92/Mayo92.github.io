@@ -181,8 +181,7 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <p>//委托策略的问题</p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="25.png" alt=""></p>
+        <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="25.png" alt=""></p>
 <h3 id="1-1-闭包定义及调用（与方法对比学习）"><a href="#1-1-闭包定义及调用（与方法对比学习）" class="headerlink" title="1.1 闭包定义及调用（与方法对比学习）"></a>1.1 闭包定义及调用（与方法对比学习）</h3><p>闭包就是一段代码块</p>
 <pre><code>def clouser = { println &apos;hello groovy!&apos; }
 //执行
@@ -215,6 +214,7 @@ println result
 <h2 id="2-groovy中闭包使用详解"><a href="#2-groovy中闭包使用详解" class="headerlink" title="2.groovy中闭包使用详解"></a>2.groovy中闭包使用详解</h2><p><img src="31.png" alt=""></p>
 <h3 id="2-1-与基本类型的结合使用"><a href="#2-1-与基本类型的结合使用" class="headerlink" title="2.1 与基本类型的结合使用"></a>2.1 与基本类型的结合使用</h3><p>可以在DefaultGroovyMethods方法中查看实现，参数的个数查看源码方法里call()的个数</p>
 <p>闭包作为方法参数的最后一个可以不写在括号里</p>
+<p>不用指定闭包参数类型，因为groovy是动态类型的，会在运行时自己推断</p>
 <h4 id="阶乘方法"><a href="#阶乘方法" class="headerlink" title="阶乘方法"></a>阶乘方法</h4><pre><code>int x = fab(5)
 println x
 int y = fab2(5)
@@ -277,7 +277,7 @@ scriptClouser.call()
 </code></pre><p><img src="41.png" alt=""></p>
 <ul>
 <li>this：与java一样，代表闭包定义处的类，如上例指向脚本所对应的类</li>
-<li>owner：代表闭包定义处的类或者对象</li>
+<li>owner：代表闭包定义处的类或者对象（如闭包内部还可以定义闭包，此时为闭包定义处的闭包）</li>
 <li>delegate：代表任意对象，有默认值与owner一致</li>
 </ul>
 <p>例子</p>
@@ -315,7 +315,7 @@ def outClouser = {
 }
 outClouser.call()
 </code></pre><p><img src="43.png" alt=""></p>
-<p><strong>总结：</strong>大多数情况，三者一致。如果直接在类和方法中定义闭包，三个变量是一样的。如果再闭包中又嵌套定义一个闭包this与owner、delegate的值不一样，owner、delegate会指向离他最近的包的对象</p>
+<p><strong>总结：</strong>大多数情况，三者一致。如果直接在类和方法中定义闭包，三个变量是一样的。如果再闭包中又嵌套定义一个闭包，this与owner、delegate的值不一样，owner、delegate会指向离他最近的闭包的对象</p>
 <pre><code>//修改delegate
 Person p = new Person()
 def outClouser = {
@@ -330,7 +330,7 @@ def outClouser = {
 outClouser.call()
 </code></pre><p><img src="44.png" alt=""></p>
 <p>人为修改delegate所指向的对象，delegate与owner不一样。this与owner不能修改</p>
-<h3 id="3-2-闭包委托策略（三个关键字的作用）"><a href="#3-2-闭包委托策略（三个关键字的作用）" class="headerlink" title="3.2 闭包委托策略（三个关键字的作用）"></a>3.2 闭包委托策略（三个关键字的作用）</h3><pre><code>class Student{
+<h3 id="3-2-闭包委托策略（三个关键字的作用）"><a href="#3-2-闭包委托策略（三个关键字的作用）" class="headerlink" title="3.2 闭包委托策略（三个关键字的作用）"></a>3.2 闭包委托策略（三个关键字的作用）</h3><h4 id="更改属性"><a href="#更改属性" class="headerlink" title="更改属性"></a>更改属性</h4><pre><code>class Student{
     String name
     def pretty = {
         &quot;My name is ${name}&quot;
@@ -345,7 +345,7 @@ class Teacher{
 def stu = new Student(name: &apos;krido&apos;)
 def tea = new Teacher(name: &apos;mayo&apos;)
 stu.pretty.delegate = tea
-//更改委托策略。
+//更改委托策略。改为delegate后，会去找tea的name，如果没有name属性，会从owner中去找，如果此时是DELEGATE_ONLY找不到则会报错
 stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
 println stu.toString()
 </code></pre><p><img src="45.png" alt=""></p>
@@ -368,8 +368,30 @@ stu.pretty.delegate = tea
 stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
 println stu.toString()
 </code></pre><p><img src="46.png" alt=""></p>
-<p>因为tea中没有name，Closure.DELEGATE_FIRST找不到会去OWNER中寻找。如果上例改成DELEGATE_ONLY，会报错，因为没有找到name属性</p>
+<p>改成name1后，因为tea中没有name，Closure.DELEGATE_FIRST找不到会去OWNER中寻找。如果上例改成DELEGATE_ONLY，会报错，因为tea没有找到name属性</p>
 <p>委托策略默认是OWNER_FIRST，表明闭包中的变量、方法等都是首先从OWNER对象所指向的对象处去寻找。一共有四组（OWNER_FIRST、DELEGATE_FIRST、OWNER_ONLY、DELEGATE_ONLY）</p>
+<p>通过不同的委托策略的指定，我们可以修改闭包所要调用的变量和方法</p>
+<h4 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h4><pre><code>class Student2{
+    def self = {
+        mySelf()
+    }
+
+    String mySelf(){
+        println(&quot;i&apos;m student&quot;)
+    }
+}
+class Teacher2{
+
+    String mySelf(){
+        println(&quot;i&apos;m teacher&quot;)
+    }
+}
+def stu2 = new Student2()
+def tea2 = new Teacher2()
+stu2.self.delegate = tea2
+stu2.self.resolveStrategy = Closure.DELEGATE_ONLY
+stu2.self()
+</code></pre><p>上面会输出”i’m teacher”</p>
 
     </div>
 </div>
@@ -463,9 +485,9 @@ println stu.toString()
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>68</span>文章</a>
-        <a class="count tags"><span>101</span>标签</a>
-        <a class="count categories"><span>26</span>分类</a>
+        <a class="count articles"><span>69</span>文章</a>
+        <a class="count tags"><span>102</span>标签</a>
+        <a class="count categories"><span>27</span>分类</a>
     </div>
 </div>
 
@@ -505,10 +527,10 @@ println stu.toString()
                 <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
                 <div class="info">
                     <p class="title">
-                        <a href="/2020/01/19/HTTP静态服务/" title="HTTP静态服务">HTTP静态服务</a>
+                        <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
                     </p>
                     <p class="date">
-                        2020-01-19
+                        2020-06-03
                     </p>
                 </div>
             </div>
@@ -523,7 +545,7 @@ println stu.toString()
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
+                    <a href="/2020/01/19/HTTP静态服务/" title="HTTP静态服务">HTTP静态服务</a>
                 </p>
             </div>
         </li>
@@ -536,7 +558,7 @@ println stu.toString()
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/27/音视频_FFMPEG简介/" title="音视频_FFMPEG简介">音视频_FFMPEG简介</a>
+                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
                 </p>
             </div>
         </li>
@@ -549,7 +571,7 @@ println stu.toString()
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/02/星球Android入门-布局和控件/" title="星球Android入门-布局和控件">星球Android入门-布局和控件</a>
+                    <a href="/2019/09/27/音视频_FFMPEG简介/" title="音视频_FFMPEG简介">音视频_FFMPEG简介</a>
                 </p>
             </div>
         </li>
@@ -562,7 +584,7 @@ println stu.toString()
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/02/星球Android入门-ContentProvider/" title="星球Android入门-ContentProvider">星球Android入门-ContentProvider</a>
+                    <a href="/2019/06/02/星球Android入门-布局和控件/" title="星球Android入门-布局和控件">星球Android入门-布局和控件</a>
                 </p>
             </div>
         </li>
@@ -580,12 +602,17 @@ println stu.toString()
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/Android面试/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Gradle/">#Gradle</a>
         </div>
         
@@ -596,12 +623,12 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/">#前端</a>
+        <div class="cube-box ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -615,18 +642,13 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -636,27 +658,37 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/categories/操作系统/">#操作系统</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
@@ -666,27 +698,7 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
@@ -695,13 +707,28 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/网络/">#网络</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
@@ -726,7 +753,7 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
@@ -736,13 +763,13 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+            <a href="/tags/Android面试/">#Android面试</a>
         </div>
         
         
@@ -752,11 +779,16 @@ println stu.toString()
         
         
         <div class="cube-box ">
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
         </div>
         
@@ -772,22 +804,22 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -797,12 +829,12 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
+            <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
+            <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
@@ -811,13 +843,13 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
+        <div class="cube-box ">
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
         
@@ -826,18 +858,8 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
@@ -847,22 +869,17 @@ println stu.toString()
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/IntentService/">#IntentService</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
@@ -882,31 +899,46 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存划分/">#内存划分</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
@@ -916,12 +948,22 @@ println stu.toString()
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/文件/">#文件</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
-            <a href="/tags/数据库/">#数据库</a>
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Activity/">#Activity</a>
         </div>
         
@@ -932,26 +974,16 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -976,7 +1008,7 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -991,7 +1023,7 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -1016,7 +1048,7 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1031,23 +1063,23 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -1061,18 +1093,13 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
@@ -1081,7 +1108,7 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -1091,23 +1118,18 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
@@ -1117,17 +1139,27 @@ println stu.toString()
         
         
         <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service/">#Service</a>
         </div>
         
         
@@ -1136,7 +1168,7 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -1156,12 +1188,12 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -1182,21 +1214,16 @@ println stu.toString()
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
@@ -1211,17 +1238,22 @@ println stu.toString()
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/面试/">#面试</a>
         </div>
         
