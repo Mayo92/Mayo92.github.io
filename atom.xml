@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-21T02:43:06.881Z</updated>
+  <updated>2020-07-21T09:19:15.902Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android面试-View绘制相关</title>
+    <link href="http://yoursite.com/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/"/>
+    <id>http://yoursite.com/2020/07/21/Android面试-View绘制相关/</id>
+    <published>2020-07-21T02:46:43.000Z</published>
+    <updated>2020-07-21T09:19:15.902Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="decorview、Window、surface等概念"><a href="#decorview、Window、surface等概念" class="headerlink" title="decorview、Window、surface等概念"></a>decorview、Window、surface等概念</h3><p><img src="1.png" alt=""></p><a id="more"></a><p>Activity接收到焦点，请求绘制UI布局，由Android的framework层处理，从根节点开始，对布局数依次测量绘制。每一个Activity都与一个window相关，用户界面通过window承载</p><p>PhoneWindow是window的唯一实现类，窗口是屏幕上用于绘制各种我们的UI布局当中元素以及响应我们用户输入事件的一个矩形的区域。Android中为窗口提供一个功能，独占一个surface实例的显示区域，每一个窗口的surface由WindowsManagerService系统服务来分配。可以把surface看成一个画布，应用可以通过canvas在上面作画，通过surface的surfaceFlinger将多块surface按照特定的顺序进行混合，然后会输出到framebuffer，这样用户界面就得以显示。</p><p>DecorView应用窗口的根容器，本质上是FrameLayout，有一个唯一的子View，垂直的LinearLayout，包含两个元素，ContentView是窗口内容相关的容器，也是一个FrameLayout，setcontentview就是设置它的子view</p><p><img src="2.png" alt=""></p><p>view的绘制由viewroot的实现类ViewRootImpl来负责，每一个DecorView都有一个相关联的viewroot对象，关联的关系通过windowmanager管理类来维护。关联后调用ViewRootImpl类的requestLayout()方法,完成用户界面布局的首次布局</p><p><img src="3.png" alt=""></p><p>通过向主线程发送消息，不断的遍历来完成每次的绘制过程</p><p><em>总结</em></p><ol><li>measure：判断是否需要重新计算view的大小</li><li>Layout：判断是否需要重新计算View的位置</li><li>draw：判断是否需要重新绘制view</li></ol><h3 id="测量过程-amp-measureSpec"><a href="#测量过程-amp-measureSpec" class="headerlink" title="测量过程&amp;measureSpec"></a>测量过程&amp;measureSpec</h3><p><img src="4.png" alt=""></p><p>计算view树各个view所要显示的内容大小，从measureHierarchy开始</p><p><img src="5.png" alt=""></p><p>getRootMeasureSpec获取宽高的根的MeasureSpec，这个根MeasureSpec代表DecorView宽高的信息，是一个约束信息，所有的宽高都要在这个限定范围内。</p><p><img src="6.png" alt=""></p><p>定义在view内的一个静态内部类，代表一个限定值，32位的整数，模式是高二位，低三十位代表测量模式下的测量尺寸。view或viewgroup他的模式都是由他自己view的Layoutparams和父view的MeasureSpec所一起结合构成的。</p><p>MeasureSpec有三个值，UNSPECIFIED，EXACTLY，AT_MOST</p><ul><li>UNSPECIFIED：父view不会对子view有任何的约束，子view可以达到你所希望的最大的尺寸，当然这个最大尺寸受屏幕限制也就是DecorView的限制，一般使用ListView是时候用到</li><li>EXACTLY：表示父视图为子视图指定了一个确定的尺寸，无论子view期望多大大小，它都必须在这个最大值的边界内。如match_parent，或者具体的dp值</li><li>AT_MOST：父视图为子视图指定了一个最大的尺寸，子view必须确保它所有的子子view都在这个范围内，这种情况下，父view无法确认子view的大小的，只能由子view自己根据需求计算大小，再回告给父view。如wrap_content</li></ul><p><img src="7.png" alt=""></p><p>获取了宽高的MeasureSpec之后，调用performMeasure方法进行下一步的计算。mView即DecorView，调用DecorView的measure方法来进行具体的测量过程。从上到下依次测量view树当中的view的大小然后进行计算和整合。</p><p><img src="8.png" alt=""></p><p><img src="9.png" alt=""></p><p><img src="10.png" alt=""></p><p>最终调用onMeasure方法，measure方法是final类型的不可以被覆写但是最终会调用onMeasure方法，onMeasure可以被覆写。所以自定义view的时候覆写onMeasure方法即可，参数为父视图对子视图宽和高的测量要求。setMeasuredDimension会得到具体的尺寸，这样测量阶段就结束了，这个方法是必须要调用的</p><h3 id="layout布局阶段-amp-FrameLayout"><a href="#layout布局阶段-amp-FrameLayout" class="headerlink" title="layout布局阶段&amp;FrameLayout"></a>layout布局阶段&amp;FrameLayout</h3><p><img src="11.png" alt=""></p><p>参数l表示view左边缘与你的父view左边缘的距离，其他同理</p><p><img src="12.png" alt=""></p><p>判断view的位置是否发生了改变，如果发生了，会在这两个方法选择一个进行重新赋值</p><p><img src="13.png" alt=""></p><p>对view的局部变换都是通过onLayout方法实现</p><p><img src="14.png" alt=""></p><p><img src="15.png" alt=""></p><p>view中这个方法为空，viewgroup中是抽象的，因为不同的布局管理器有不同的布局方式，需要自己去继承重写</p><p><img src="16.png" alt=""></p><p>FrameLayout调用了layoutChildren方法，摆放在这个父view中所有的子view的过程。</p><p>parentleft表示子view显示区域的左边到我们父view的左边的距离</p><p><img src="17.png" alt=""></p><p>获取layoutParams参数，宽高的MeasureSpec参数，这两者决定了子view所要摆放的距离。</p><p><img src="18.png" alt=""></p><p>根据子view的gravity属性对childLeft、childTop做不同的调整</p><p><img src="19.png" alt=""></p><p>调用子view的Layout对子view位置参数进行设置，这时便转到了view当中的layout方法</p><h3 id="draw阶段-amp-dispatchDraw实现"><a href="#draw阶段-amp-dispatchDraw实现" class="headerlink" title="draw阶段&amp;dispatchDraw实现"></a>draw阶段&amp;dispatchDraw实现</h3><p><img src="20.png" alt=""></p><p>分为6步，第二步与第五步不是强制性的，重点三四步。1绘制背景，3绘制自己的内容，4绘制子view的内容，6添加view的装饰。</p><p><img src="21.png" alt=""></p><p>onDraw方法，view与viewgroup都没实现，由自己实现。</p><p>dispatchDraw对当前view的所有子view进行绘制，view里是空实现，viewgroup中调用子view的draw方法进行绘制</p><h3 id="listview绘制和缓存原理：convertview／viewHolder"><a href="#listview绘制和缓存原理：convertview／viewHolder" class="headerlink" title="listview绘制和缓存原理：convertview／viewHolder"></a>listview绘制和缓存原理：convertview／viewHolder</h3><p>数据集合以动态滚动的方式展示到用户界面上的view。listview是一帧一帧绘制的，每一帧都会经历测量放置绘制</p><p><img src="22.png" alt=""></p><p>listview针对每一个Item要求Adapter返回一个view即getview方法，开始绘制的时候首先调用getCount方法得到listview的长度，根据返回的长度调用getview，然后一行一行绘制每一个Item，有多少项就会调用多少次getView方法来绘制每一项的界面</p><h3 id="listview的RecycleBin机制：缓存scrapView、fillActiveViews等"><a href="#listview的RecycleBin机制：缓存scrapView、fillActiveViews等" class="headerlink" title="listview的RecycleBin机制：缓存scrapView、fillActiveViews等"></a>listview的RecycleBin机制：缓存scrapView、fillActiveViews等</h3><p><img src="23.png" alt=""></p><p><img src="24.png" alt=""></p><p>RecycleBin是抽象listview即AbsListView的一个内部类</p><p><img src="25.png" alt=""></p><p>mActiveViews存储的是屏幕上的view，这些view是有可能被直接复用的。mScrapViews所有废弃类型的view，二维数组。mCurrentScrap表示当前被抛弃的view的list</p><p><img src="26.png" alt=""></p><p>为listview中每一种类型的数据项都建立一个RecycleBin机制，RecycleBin中的所有数据都放在mScrapViews中，大多数情况我们操作的是mCurrentScrap、mActiveViews</p><p><img src="27.png" alt=""></p><p>childCount表示要存储的view的数量，firstActivePosition第一个可见元素的坐标值。RecycleBin机制通过这个方法，将mActiveViews来存储view，根据传入的参数来将我们listview中的指定元素存储到mActiveViews中</p><p><img src="28.png" alt=""></p><p>从填充的数组中获取相应的数据，position表示在listview中的位置，会将position值转换成对应的数组下标值</p><p><img src="29.png" alt=""></p><p>将移除屏幕外的view进行缓存</p><h3 id="listview性能优化5个关键点"><a href="#listview性能优化5个关键点" class="headerlink" title="listview性能优化5个关键点"></a>listview性能优化5个关键点</h3><ol><li>convertview，缓存复用</li><li>viewHolder，避免频繁调用findviewbyid</li><li>getview中尽量少做耗时操作，滑动停止再加载耗时操作</li><li>listview中Item元素避免半透明，半透明在绘制的时候会集成大量的乘法运算，滑动的时候不同的重新绘制肯定会造成大量的计算操作</li><li>开启硬件加速</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;decorview、Window、surface等概念&quot;&gt;&lt;a href=&quot;#decorview、Window、surface等概念&quot; class=&quot;headerlink&quot; title=&quot;decorview、Window、surface等概念&quot;&gt;&lt;/a&gt;decorview、Window、surface等概念&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="面试" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="Android面试" scheme="http://yoursite.com/tags/Android%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Android面试-异步消息</title>
@@ -493,31 +515,6 @@ onPause()  -&amp;gt; onStop()  -&amp;gt; onDestroy()
     
     
       <category term="Kotlin简介" scheme="http://yoursite.com/tags/Kotlin%E7%AE%80%E4%BB%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle-生命周期</title>
-    <link href="http://yoursite.com/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
-    <id>http://yoursite.com/2018/05/26/Gradle-生命周期/</id>
-    <published>2018-05-26T03:48:20.000Z</published>
-    <updated>2020-03-05T06:22:45.886Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-Gradle基本概念"><a href="#1-Gradle基本概念" class="headerlink" title="1.Gradle基本概念"></a>1.Gradle基本概念</h2><h3 id="1-1-Gradle是什么，能做什么"><a href="#1-1-Gradle是什么，能做什么" class="headerlink" title="1.1 Gradle是什么，能做什么"></a>1.1 Gradle是什么，能做什么</h3><p><img src="1.png" alt=""></p><p>是一种编程框架</p><h3 id="1-2-Gradle优势"><a href="#1-2-Gradle优势" class="headerlink" title="1.2 Gradle优势"></a>1.2 Gradle优势</h3><ul><li>灵活性</li><li>粒度性（细化到了每一个Task，如Tinker通过打包过程生成补丁文件）</li><li>扩展性（支持插件机制）</li><li>兼容性（兼容ant、maven）</li></ul><h2 id="2-Gradle执行流程"><a href="#2-Gradle执行流程" class="headerlink" title="2.Gradle执行流程"></a>2.Gradle执行流程</h2><p><img src="2.png" alt=""></p><p>loading就是Initialization阶段</p><h2 id="3-Gradle生命周期监听"><a href="#3-Gradle生命周期监听" class="headerlink" title="3.Gradle生命周期监听"></a>3.Gradle生命周期监听</h2><p>//重新下载代码看视频，还没整理<br>三种监听方式</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1-Gradle基本概念&quot;&gt;&lt;a href=&quot;#1-Gradle基本概念&quot; class=&quot;headerlink&quot; title=&quot;1.Gradle基本概念&quot;&gt;&lt;/a&gt;1.Gradle基本概念&lt;/h2&gt;&lt;h3 id=&quot;1-1-Gradle是什么，能做什么&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-      <category term="Gradle" scheme="http://yoursite.com/categories/Gradle/"/>
-    
-    
-      <category term="Gradle生命周期" scheme="http://yoursite.com/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     
   </entry>
   
