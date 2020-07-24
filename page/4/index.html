@@ -163,6 +163,73 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-Gradle-核心语法-数据结构">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/05/21/Gradle-核心语法-数据结构/">Gradle-核心语法-数据结构</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-05-21
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Gradle语法/" class="cube-excerpt-tag-link">#Gradle语法</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h2 id="1-groovy中列表详解"><a href="#1-groovy中列表详解" class="headerlink" title="1.groovy中列表详解"></a>1.groovy中列表详解</h2><p><img src="47.png" alt=""></p>
+<h3 id="1-1-列表的定义"><a href="#1-1-列表的定义" class="headerlink" title="1.1 列表的定义"></a>1.1 列表的定义</h3><p>列表声明和初始化</p>
+<pre><code>//def list = new ArrayList()//java定义方式
+def list = [1,2,3,4,5]
+println list.class
+println list.size()
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/05/21/Gradle-核心语法-数据结构/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Gradle-核心语法-闭包">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/05/20/Gradle-核心语法-闭包/">Gradle-核心语法-闭包</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-05-20
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Gradle语法/" class="cube-excerpt-tag-link">#Gradle语法</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="25.png" alt=""></p>
+<h3 id="1-1-闭包定义及调用（与方法对比学习）"><a href="#1-1-闭包定义及调用（与方法对比学习）" class="headerlink" title="1.1 闭包定义及调用（与方法对比学习）"></a>1.1 闭包定义及调用（与方法对比学习）</h3><p>闭包就是一段代码块</p>
+<pre><code>def clouser = { println &apos;hello groovy!&apos; }
+//执行
+clouser.call()
+//第二种调用
+clouser()
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/05/20/Gradle-核心语法-闭包/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Gradle-核心语法-基础语法">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/05/19/Gradle-核心语法-基础语法/">Gradle-核心语法-基础语法</a></h1>
@@ -418,76 +485,6 @@ webView.loadUrl(&quot;http://www.baidu.com&quot;);
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-多媒体">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/14/第一行代码笔记-多媒体/">第一行代码笔记-多媒体</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-14
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Notification/" class="cube-excerpt-tag-link">#Notification</a>
-                
-                <a href="/tags/PendingIntent/" class="cube-excerpt-tag-link">#PendingIntent</a>
-                
-                <a href="/tags/摄像头和相册/" class="cube-excerpt-tag-link">#摄像头和相册</a>
-                
-                <a href="/tags/MediaPlayer/" class="cube-excerpt-tag-link">#MediaPlayer</a>
-                
-                <a href="/tags/VideoView/" class="cube-excerpt-tag-link">#VideoView</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="1-使用通知"><a href="#1-使用通知" class="headerlink" title="1. 使用通知"></a>1. 使用通知</h3><h4 id="1-1-基本用法"><a href="#1-1-基本用法" class="headerlink" title="1.1 基本用法"></a>1.1 基本用法</h4><p>可以在Activity，Service，广播接收器里创建，后两种比较常见。</p>
-<p>首先需要NotificationManager来对通知进行管理，使用Context的getSystemService()获取。</p>
-<pre><code>NotificationManager manager = (NotificationManager)
-getSystemService(Context.NOTIFICATION_SERVICE);
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/14/第一行代码笔记-多媒体/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-ContentProvider">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/13/第一行代码笔记-ContentProvider/">第一行代码笔记-ContentProvider</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-13
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/ContentProvider/" class="cube-excerpt-tag-link">#ContentProvider</a>
-                
-                <a href="/tags/运行时权限/" class="cube-excerpt-tag-link">#运行时权限</a>
-                
-                <a href="/tags/Android基础/" class="cube-excerpt-tag-link">#Android基础</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/13/第一行代码笔记-ContentProvider/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -603,8 +600,8 @@ getSystemService(Context.NOTIFICATION_SERVICE);
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>74</span>文章</a>
-        <a class="count tags"><span>105</span>标签</a>
+        <a class="count articles"><span>76</span>文章</a>
+        <a class="count tags"><span>107</span>标签</a>
         <a class="count categories"><span>27</span>分类</a>
     </div>
 </div>
@@ -676,7 +673,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/23/Gradle-其他模块及自定义Plugin/" title="Gradle-其他模块及自定义Plugin">Gradle-其他模块及自定义Plugin</a>
+                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
                 </p>
             </div>
         </li>
@@ -689,7 +686,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
+                    <a href="/2020/01/19/HTTP静态服务/" title="HTTP静态服务">HTTP静态服务</a>
                 </p>
             </div>
         </li>
@@ -702,7 +699,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/01/19/HTTP静态服务/" title="HTTP静态服务">HTTP静态服务</a>
+                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
                 </p>
             </div>
         </li>
@@ -720,22 +717,22 @@ getSystemService(Context.NOTIFICATION_SERVICE);
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/面试/">#面试</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Gradle/">#Gradle</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -750,7 +747,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
@@ -760,7 +757,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
@@ -770,7 +767,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/VPS/">#VPS</a>
         </div>
         
@@ -786,12 +783,12 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
+            <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/Android优化/">#Android优化</a>
+        <div class="cube-box ">
+            <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
@@ -801,42 +798,27 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/网络/">#网络</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
@@ -846,12 +828,27 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
     </div>
@@ -866,7 +863,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -876,18 +873,13 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android面试/">#Android面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
         </div>
         
         
@@ -896,13 +888,13 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
@@ -911,8 +903,18 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle之project/">#Gradle之project</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
@@ -942,12 +944,12 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
@@ -956,23 +958,23 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java变量/">#Java变量</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/Java初识/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Java运算符/">#Java运算符</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
+            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
         </div>
         
         
@@ -981,13 +983,13 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
+        <div class="cube-box ">
+            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
         
@@ -996,7 +998,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
         </div>
         
@@ -1007,32 +1009,17 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -1046,13 +1033,28 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
@@ -1062,11 +1064,16 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
+            <a href="/tags/单例模式/">#单例模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/字节流/">#字节流</a>
         </div>
         
@@ -1077,12 +1084,12 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
+            <a href="/tags/数据库/">#数据库</a>
         </div>
         
         
@@ -1092,11 +1099,11 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Activity/">#Activity</a>
         </div>
         
@@ -1107,7 +1114,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
@@ -1117,6 +1124,11 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Layout/">#Layout</a>
         </div>
         
@@ -1131,13 +1143,8 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1166,7 +1173,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
@@ -1176,17 +1183,17 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1196,7 +1203,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
@@ -1217,16 +1224,21 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
@@ -1236,8 +1248,13 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/运行时权限/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
@@ -1247,17 +1264,12 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
@@ -1267,16 +1279,11 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         
         
         <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
@@ -1286,12 +1293,12 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Handler/">#Handler</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
@@ -1321,7 +1328,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
@@ -1336,7 +1343,7 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
@@ -1346,42 +1353,42 @@ getSystemService(Context.NOTIFICATION_SERVICE);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/XML/">#XML</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/JSON/">#JSON</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/集合框架/">#集合框架</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         
