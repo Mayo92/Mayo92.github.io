@@ -291,8 +291,282 @@ class NativeBridge {
 <li>有输入有输出才是完整的调用</li>
 </ul>
 <p><img src="7.png" alt=""></p>
-<p>2-7开始看，没有代码，需要自己写一下</p>
+<p>Web代码</p>
+<pre><code>let id = 1
+const callbackMap = {}
+window.JSSDK = {
+  getWebEditTextValue(callbackId){
+    const editText = document.querySelector(&apos;#editText&apos;);
+    const inputValue = editText.value;
+    NativeBridge.receiveMessage(callbackId,value)
+  },
+  getNativeEditTextValue(callback){
+    const callbackId = id++
+    callbackMap[callbackId] = callback
+    NativeBridge.getNativeEditTextValue(callbackId)
+  },
+  receiveMessage(callbackId,value){
+    if(callbackMap[callbackId]){
+      callbackMap[callbackId](value)
+    }
+  }
+}
 
+////
+showBtn2.addEventListener(&apos;click&apos;, e =&gt; {
+    window.JSSDK.getNativeEditTextValue(value =&gt; window.alert(&apos;Native输入值:&apos;+value))
+})
+</code></pre><p>Native代码</p>
+<pre><code>showBtn2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            mNativeSDK.getWebEditTextValue(new Callback() {
+                @Override
+                public void invoke(String value) {
+                    Log.e(&quot;11&quot;,&quot;web输入值：&quot;+value);
+                }
+            });
+        }
+});
+
+////    
+interface Callback {
+    void invoke(String value);
+}
+
+class NativeSDK{
+
+    private Context mContext;
+    private int id = 1;
+    private Map&lt;Integer,Callback&gt; callbackMap = new HashMap&lt;&gt;();
+
+    NativeSDK(Context context){
+        mContext = context;
+    }
+
+    void getWebEditTextValue(Callback callback){
+        int callbackId = id++;
+        callbackMap.put(callbackId,callback);
+
+        final String jsCode = String.format(&quot;window.JSSDK.getWebEditTextValue(%s)&quot;,callbackId);
+        ((MainActivity)mContext).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ((MainActivity)mContext).webView.evaluateJavascript(jsCode, null);
+            }
+        });
+    }
+
+    void receiveMessage(int callbackId,String value){
+        if(callbackMap.containsKey(callbackId)){
+            callbackMap.get(callbackId).invoke(value);
+        }
+    }
+}
+
+///
+@JavascriptInterface
+public void getNativeEditTextValue(int callbackId) {
+        String vale = editText.getText().toString();
+        final String jsCode = String.format(&quot;window.JSSDK.receiveMessage(%s,&apos;%s&apos;)&quot;, callbackId,vale);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                webView.evaluateJavascript(jsCode, null);
+            }
+        });
+}
+
+@JavascriptInterface
+public void receiveMessage(int callbackId,String value){
+        ((MainActivity)ctx).mNativeSDK.receiveMessage(callbackId,value);
+}
+</code></pre><p>流程讲解：Native获取Web输入框的值，先调用NativeSDK里的getWebEditTextValue方法，跳转到Web端JSSDK里的getWebEditTextValue方法，跳转到Native端的receiveMessage方法，跳转到NativeSDK的receiveMessage方法，Map获取接口对象执行接口方法</p>
+<h3 id="JSBridge的开源实现"><a href="#JSBridge的开源实现" class="headerlink" title="JSBridge的开源实现"></a>JSBridge的开源实现</h3><ul>
+<li>JsBridge：拦截URL Schema</li>
+<li>DSBridge：注入JS API</li>
+</ul>
+<p><a href="https://github.com/wendux/DSBridge-Android" target="_blank" rel="noopener">DSBridge</a></p>
+<p>Native代码：</p>
+<pre><code>public class Main2Activity extends AppCompatActivity {
+
+    private DWebView webView;
+    private EditText editText;
+    private Button showBtn;
+    private Button refreshBtn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+
+        editText = findViewById(R.id.editText);
+        showBtn = findViewById(R.id.showBtn);
+        refreshBtn = findViewById(R.id.refreshBtn);
+        webView = findViewById(R.id.webview);
+
+        webView.loadUrl(&quot;http://192.168.0.121:8080&quot;);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebChromeClient(new WebChromeClient());
+        webView.addJavascriptObject(new JsApi(this),null);
+
+        showBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                webView.callHandler(&quot;getWebEditTextValue&quot;, null, new OnReturnValue&lt;String&gt;() {
+                    @Override
+                    public void onValue(String retValue) {
+                        Log.e(&quot;11&quot;,&quot;web输入值：&quot;+retValue);
+                    }
+                });
+            }
+        });
+    }
+
+    class JsApi{
+        private Context mContext;
+
+        JsApi(Context context){
+            mContext = context;
+        }
+
+        //for asynchronous invocation
+        @JavascriptInterface
+        public void getNativeEditTextValue(Object msg, CompletionHandler&lt;String&gt; handler) {
+            String value = ((Main2Activity)mContext).editText.getText().toString();
+            handler.complete(value);
+        }
+    }
+}
+</code></pre><p>Web端代码：</p>
+<pre><code>&lt;script src=&quot;https://unpkg.com/dsbridge@3.1.3/dist/dsbridge.js&quot;&gt; &lt;/script&gt;
+  &lt;script&gt;
+    dsBridge.register(&apos;getWebEditTextValue&apos;,() =&gt; {
+      const editText = document.querySelector(&apos;#editText&apos;);
+      return editText.value
+}    )
+
+    document.addEventListener(&apos;DOMContentLoaded&apos;, e =&gt; {
+      const showBtn = document.querySelector(&apos;#showBtn&apos;);
+      showBtn.addEventListener(&apos;click&apos;, e =&gt; {
+        dsBridge.call(&apos;getNativeEditTextValue&apos;,&apos;&apos;,value =&gt; {
+          window.alert(&apos;Native输入值：&apos;+value)
+        })
+      })
+    })
+  &lt;/script&gt;
+</code></pre><h2 id="混合APP实战"><a href="#混合APP实战" class="headerlink" title="混合APP实战"></a>混合APP实战</h2><h3 id="Web端HTTP请求存在的问题"><a href="#Web端HTTP请求存在的问题" class="headerlink" title="Web端HTTP请求存在的问题"></a>Web端HTTP请求存在的问题</h3><ul>
+<li>Web发送请求接口XMLHttpRequest和fetch</li>
+<li>浏览器同源政策CORS安全限制</li>
+<li>不够安全、无法优化网络</li>
+</ul>
+<h3 id="Web端跨域请求"><a href="#Web端跨域请求" class="headerlink" title="Web端跨域请求"></a>Web端跨域请求</h3><p><img src="8.png" alt=""></p>
+<p><img src="9.png" alt=""></p>
+<h3 id="原生HTTP请求优点"><a href="#原生HTTP请求优点" class="headerlink" title="原生HTTP请求优点"></a>原生HTTP请求优点</h3><ul>
+<li>没有浏览器跨域限制</li>
+<li>安全加密、签名校验</li>
+<li>弱网优化、流量优化</li>
+</ul>
+<h3 id="Web端跨域请求-1"><a href="#Web端跨域请求-1" class="headerlink" title="Web端跨域请求"></a>Web端跨域请求</h3><p><img src="10.png" alt=""></p>
+<h3 id="Native端沉浸式换肤"><a href="#Native端沉浸式换肤" class="headerlink" title="Native端沉浸式换肤"></a>Native端沉浸式换肤</h3><p><img src="11.png" alt=""></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>Native：</p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    private DWebView webView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        webView = findViewById(R.id.webView);
+        webView.addJavascriptObject(new JsApi(), null);
+        webView.loadUrl(&quot;http://10.43.101.59:8080&quot;);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        changeTheme(0xFFFF0000);
+        return true;
+    }
+
+    // 换肤
+    private void changeTheme (int color) {
+           // 状态栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        getWindow().setStatusBarColor(color);
+
+        // 标题栏
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
+
+        // 导航栏
+        getWindow().setNavigationBarColor(color);
+
+        // Web 网页的背景
+        webView.callHandler(&quot;changeTheme&quot;, new Object[]{color});
+    }
+
+    public class JsApi {
+        @JavascriptInterface
+        public void nativeRequest(Object params, CompletionHandler handler) {
+            try {
+                String url = ((JSONObject)params).getString(&quot;url&quot;);
+                String data = request(url);
+                handler.complete(data);
+            } catch (Exception e) {
+                handler.complete(e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        private String request(String urlSpec) throws Exception {
+            HttpURLConnection connection = (HttpURLConnection) new URL(urlSpec).openConnection();
+            connection.setRequestMethod(&quot;GET&quot;);
+            InputStream inputStream = connection.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuffer result = new StringBuffer();
+            String line;
+            while((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            reader.close();
+            connection.disconnect();
+            return result.toString();
+        }
+    }
+}
+</code></pre><p>Web端：</p>
+<pre><code>&lt;script&gt;
+    document.addEventListener(&apos;DOMContentLoaded&apos;, e =&gt; {
+          const urlTextEl = document.querySelector(&apos;#urlText&apos;)
+          const sendBtn = document.querySelector(&apos;#sendBtn&apos;)
+          const responseEl = document.querySelector(&apos;#response&apos;)
+          sendBtn.addEventListener(&apos;click&apos;, e =&gt; {
+            const url = urlTextEl.value
+            if (url) {
+                  // 清除旧数据
+                  responseEl.textContent = &apos;&apos;
+                  // 发送原生请求
+                  dsBridge.call(&quot;nativeRequest&quot;, {url: url}, data =&gt; {
+                    responseEl.textContent = data
+                  })
+            }
+          })
+    })
+
+    dsBridge.register(&quot;changeTheme&quot;, color =&gt; {
+          // android  0xFFFF0000   ARGB
+          // web 0xFF0000FF  RGBA
+          document.body.style.backgroundColor = &apos;#&apos; + (color &amp; 0x00FFFFFF).toString(16)
+    })
+  &lt;/script&gt;    
+</code></pre>
     </div>
 </div>
 
@@ -503,32 +777,17 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/categories/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/面试/">#面试</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/Gradle/">#Gradle</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
         </div>
         
         
@@ -538,11 +797,26 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/Kotlin/">#Kotlin</a>
         </div>
         
@@ -553,22 +827,7 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
@@ -577,18 +836,38 @@ class NativeBridge {
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/混合开发/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
@@ -602,8 +881,28 @@ class NativeBridge {
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
         
@@ -621,31 +920,6 @@ class NativeBridge {
             <a href="/categories/音视频/">#音视频</a>
         </div>
         
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
     </div>
 </div>
 
@@ -659,6 +933,11 @@ class NativeBridge {
         
         
         <div class="cube-box ">
+            <a href="/tags/Android面试/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -668,12 +947,7 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Android面试/">#Android面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
@@ -683,7 +957,7 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle之Task/">#Gradle之Task</a>
         </div>
         
@@ -704,11 +978,16 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
         </div>
         
@@ -718,28 +997,13 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
+            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
         </div>
         
         
@@ -749,7 +1013,17 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+            <a href="/tags/Java初识/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -759,12 +1033,7 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础语法/">#Java基础语法</a>
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
@@ -778,13 +1047,18 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
+        <div class="cube-box ">
+            <a href="/tags/Java基础语法/">#Java基础语法</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
         </div>
         
         
@@ -794,12 +1068,17 @@ class NativeBridge {
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
         
@@ -813,18 +1092,13 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
         </div>
         
         
@@ -833,13 +1107,28 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存划分/">#内存划分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -853,38 +1142,23 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/字符流/">#字符流</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/字节流/">#字节流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
         </div>
         
         
@@ -913,8 +1187,18 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service/">#Service</a>
         </div>
         
         
@@ -924,16 +1208,11 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/冒泡排序/">#冒泡排序</a>
         </div>
         
@@ -944,17 +1223,12 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
+            <a href="/tags/混合开发/">#混合开发</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/混合开发/">#混合开发</a>
+            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
@@ -964,16 +1238,16 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
         </div>
         
@@ -983,7 +1257,7 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
         </div>
         
@@ -994,41 +1268,11 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -1038,7 +1282,7 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -1053,12 +1297,12 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -1068,7 +1312,7 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1083,7 +1327,7 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -1099,17 +1343,47 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/隐式Intent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
@@ -1123,13 +1397,13 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
@@ -1138,12 +1412,17 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -1164,41 +1443,11 @@ class NativeBridge {
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -1218,22 +1467,47 @@ class NativeBridge {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
         <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
