@@ -186,15 +186,21 @@
 <p><img src="2.png" alt=""></p>
 <h4 id="1-1-2-类的构造"><a href="#1-1-2-类的构造" class="headerlink" title="1.1.2 类的构造"></a>1.1.2 类的构造</h4><p>由副构造器到主构造器</p>
 <p><img src="3.png" alt=""></p>
+<p>下图为副构造器</p>
 <p><img src="4.png" alt=""></p>
+<p>下图为主构造器，主构造器要求其他构造器必须调用它，实例化路径只有一条</p>
 <p><img src="5.png" alt=""></p>
+<p>constructor可以省略</p>
 <p><img src="6.png" alt=""></p>
+<p>可以同时对属性初始化</p>
 <p><img src="7.png" alt=""></p>
 <h4 id="1-1-3-类的实例化"><a href="#1-1-3-类的实例化" class="headerlink" title="1.1.3 类的实例化"></a>1.1.3 类的实例化</h4><p><img src="8.png" alt=""></p>
 <h3 id="1-2-接口"><a href="#1-2-接口" class="headerlink" title="1.2 接口"></a>1.2 接口</h3><h4 id="1-2-1-接口的定义"><a href="#1-2-1-接口的定义" class="headerlink" title="1.2.1 接口的定义"></a>1.2.1 接口的定义</h4><p><img src="9.png" alt=""></p>
 <h4 id="1-2-2-接口的实现"><a href="#1-2-2-接口的实现" class="headerlink" title="1.2.2 接口的实现"></a>1.2.2 接口的实现</h4><p><img src="10.png" alt=""></p>
-<h3 id="1-3-抽象类的定义"><a href="#1-3-抽象类的定义" class="headerlink" title="1.3 抽象类的定义"></a>1.3 抽象类的定义</h3><p><img src="11.png" alt=""></p>
-<h3 id="1-4-类的继承"><a href="#1-4-类的继承" class="headerlink" title="1.4 类的继承"></a>1.4 类的继承</h3><p><img src="12.png" alt=""></p>
+<h3 id="1-3-抽象类的定义"><a href="#1-3-抽象类的定义" class="headerlink" title="1.3 抽象类的定义"></a>1.3 抽象类的定义</h3><p>加上open可以覆写</p>
+<p><img src="11.png" alt=""></p>
+<h3 id="1-4-类的继承"><a href="#1-4-类的继承" class="headerlink" title="1.4 类的继承"></a>1.4 类的继承</h3><p>()表示构造方法</p>
+<p><img src="12.png" alt=""></p>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="抽象类AbsClass"><a href="#抽象类AbsClass" class="headerlink" title="抽象类AbsClass"></a>抽象类AbsClass</h4><pre><code>abstract class AbsClass {
     abstract fun absMethod()
 
@@ -210,7 +216,8 @@
 
     fun simpleMethod()
 }
-</code></pre><h4 id="SimpleClass与SimpleClass2"><a href="#SimpleClass与SimpleClass2" class="headerlink" title="SimpleClass与SimpleClass2"></a>SimpleClass与SimpleClass2</h4><pre><code>open class SimpleClass(var x:Int,val y:String): AbsClass(),Simple {
+</code></pre><h4 id="SimpleClass与SimpleClass2"><a href="#SimpleClass与SimpleClass2" class="headerlink" title="SimpleClass与SimpleClass2"></a>SimpleClass与SimpleClass2</h4><pre><code>//没有open不能被继承
+open class SimpleClass(var x:Int,val y:String): AbsClass(),Simple {
 
     val z:Long = 0L
 
@@ -247,7 +254,8 @@ println(simpleClass.z)
 simpleClass.y()
 simpleClass.zzz(&quot;&quot;)
 </code></pre><p><img src="13.png" alt=""></p>
-<h3 id="1-6-属性"><a href="#1-6-属性" class="headerlink" title="1.6 属性"></a>1.6 属性</h3><p><img src="14.png" alt=""></p>
+<h3 id="1-6-属性"><a href="#1-6-属性" class="headerlink" title="1.6 属性"></a>1.6 属性</h3><p>property = field+ getter + setter</p>
+<p><img src="14.png" alt=""></p>
 <p><img src="15.png" alt=""></p>
 <p><img src="16.png" alt=""></p>
 <h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p><img src="17.png" alt=""></p>
@@ -317,17 +325,19 @@ interface Guy{
         //定义默认行为
     }
 }
-</code></pre><h2 id="3-空类型安全"><a href="#3-空类型安全" class="headerlink" title="3.空类型安全"></a>3.空类型安全</h2><h3 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h3><p><img src="24.png" alt=""></p>
+</code></pre><h2 id="3-空类型安全"><a href="#3-空类型安全" class="headerlink" title="3.空类型安全"></a>3.空类型安全</h2><h3 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h3><p>加？表示可以为空</p>
+<p><img src="24.png" alt=""></p>
 <p><img src="25.png" alt=""></p>
 <p><img src="26.png" alt=""></p>
 <p><img src="27.png" alt=""></p>
-<h3 id="3-2-运算符"><a href="#3-2-运算符" class="headerlink" title="3.2 运算符"></a>3.2 运算符</h3><h4 id="3-2-1-（不常用）"><a href="#3-2-1-（不常用）" class="headerlink" title="3.2.1 !!（不常用）"></a>3.2.1 !!（不常用）</h4><p><img src="28.png" alt=""></p>
-<h4 id="3-2-2"><a href="#3-2-2" class="headerlink" title="3.2.2 ?."></a>3.2.2 ?.</h4><p><img src="29.png" alt=""></p>
+<h3 id="3-2-运算符"><a href="#3-2-运算符" class="headerlink" title="3.2 运算符"></a>3.2 运算符</h3><h4 id="3-2-1-（不常用）"><a href="#3-2-1-（不常用）" class="headerlink" title="3.2.1 !!（不常用）"></a>3.2.1 !!（不常用）</h4><p>假设确定传的值不为空</p>
+<p><img src="28.png" alt=""></p>
+<h4 id="3-2-2-安全访问"><a href="#3-2-2-安全访问" class="headerlink" title="3.2.2 安全访问 ?."></a>3.2.2 安全访问 ?.</h4><p><img src="29.png" alt=""></p>
 <p><img src="30.png" alt=""></p>
-<h4 id="3-2-3"><a href="#3-2-3" class="headerlink" title="3.2.3 ?:"></a>3.2.3 ?:</h4><p><img src="31.png" alt=""></p>
+<h4 id="3-2-3-elvis运算符"><a href="#3-2-3-elvis运算符" class="headerlink" title="3.2.3 elvis运算符 ?:"></a>3.2.3 elvis运算符 ?:</h4><p><img src="31.png" alt=""></p>
 <h3 id="3-3-继承关系"><a href="#3-3-继承关系" class="headerlink" title="3.3 继承关系"></a>3.3 继承关系</h3><p><img src="32.png" alt=""></p>
 <p><img src="33.png" alt=""></p>
-<h3 id="3-4-平台类型"><a href="#3-4-平台类型" class="headerlink" title="3.4 平台类型"></a>3.4 平台类型</h3><p>需要自己使用的时候注意</p>
+<h3 id="3-4-平台类型"><a href="#3-4-平台类型" class="headerlink" title="3.4 平台类型"></a>3.4 平台类型</h3><p>平台类型不能推断出是否为空需要自己使用的时候注意，平台类型客观存在不能主观定义</p>
 <p><img src="34.png" alt=""></p>
 <p><img src="35.png" alt=""></p>
 <p><img src="36.png" alt=""></p>
@@ -337,6 +347,7 @@ interface Guy{
 <p><img src="40.png" alt=""></p>
 <h3 id="4-2-Kotlin类型转换"><a href="#4-2-Kotlin类型转换" class="headerlink" title="4.2 Kotlin类型转换"></a>4.2 Kotlin类型转换</h3><p><img src="41.png" alt=""></p>
 <p><img src="42.png" alt=""></p>
+<p>第二个场景，空类型安全</p>
 <p><img src="43.png" alt=""></p>
 <h3 id="4-3-作用范围"><a href="#4-3-作用范围" class="headerlink" title="4.3 作用范围"></a>4.3 作用范围</h3><p><img src="44.png" alt=""></p>
 <p><img src="45.png" alt=""></p>
@@ -345,7 +356,8 @@ interface Guy{
 <h3 id="4-5-安全的类型转换"><a href="#4-5-安全的类型转换" class="headerlink" title="4.5 安全的类型转换"></a>4.5 安全的类型转换</h3><p><img src="48.png" alt=""></p>
 <p><img src="49.png" alt=""></p>
 <h3 id="4-6-编码建议"><a href="#4-6-编码建议" class="headerlink" title="4.6 编码建议"></a>4.6 编码建议</h3><p><img src="50.png" alt=""></p>
-<h2 id="5-小结"><a href="#5-小结" class="headerlink" title="5.小结"></a>5.小结</h2><p><img src="51.png" alt=""></p>
+<h2 id="5-案例"><a href="#5-案例" class="headerlink" title="5.案例"></a>5.案例</h2><p>查看Retrofit项目</p>
+<h2 id="6-小结"><a href="#6-小结" class="headerlink" title="6.小结"></a>6.小结</h2><p><img src="51.png" alt=""></p>
 
     </div>
 </div>
@@ -571,8 +583,8 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/Blog/">#Blog</a>
+        <div class="cube-box ">
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
@@ -582,11 +594,11 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
+            <a href="/categories/Blog/">#Blog</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
@@ -596,7 +608,7 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Kotlin/">#Kotlin</a>
         </div>
         
@@ -611,18 +623,18 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/操作系统/">#操作系统</a>
         </div>
         
         
@@ -642,12 +654,12 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/categories/混合开发/">#混合开发</a>
+            <a href="/categories/热修复插件化/">#热修复插件化</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/热修复插件化/">#热修复插件化</a>
+            <a href="/categories/混合开发/">#混合开发</a>
         </div>
         
         
@@ -667,21 +679,21 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
@@ -713,11 +725,6 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -733,17 +740,12 @@ interface Guy{
         
         
         <div class="cube-box ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
         </div>
         
         
@@ -753,7 +755,22 @@ interface Guy{
         
         
         <div class="cube-box ">
+            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle之project/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
@@ -768,27 +785,27 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
@@ -798,12 +815,7 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -838,11 +850,6 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
@@ -852,13 +859,8 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
         
@@ -868,21 +870,31 @@ interface Guy{
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java运算符/">#Java运算符</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/SSH/">#SSH</a>
         </div>
         
@@ -897,7 +909,7 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
@@ -907,23 +919,23 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/书/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/内存划分/">#内存划分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -937,12 +949,12 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
@@ -957,13 +969,8 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -972,27 +979,27 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1007,8 +1014,8 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/混合开发/">#混合开发</a>
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
@@ -1018,12 +1025,22 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
+            <a href="/tags/混合开发/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
+            <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
         </div>
         
         
@@ -1033,21 +1050,11 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/热修复插件化之版本管理/">#热修复插件化之版本管理</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
@@ -1092,7 +1099,7 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -1102,7 +1109,7 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1117,7 +1124,7 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -1133,11 +1140,16 @@ interface Guy{
         
         
         <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -1152,7 +1164,17 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
@@ -1168,27 +1190,12 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
@@ -1217,48 +1224,8 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
@@ -1267,7 +1234,7 @@ interface Guy{
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -1283,17 +1250,32 @@ interface Guy{
         
         
         <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/自定义view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/网络参考模型/">#网络参考模型</a>
         </div>
         
         
@@ -1303,7 +1285,37 @@ interface Guy{
         
         
         <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>
