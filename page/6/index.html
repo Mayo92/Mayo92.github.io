@@ -163,44 +163,6 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-网络">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/15/第一行代码笔记-网络/">第一行代码笔记-网络</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/HttpURLConnection/" class="cube-excerpt-tag-link">#HttpURLConnection</a>
-                
-                <a href="/tags/WebView/" class="cube-excerpt-tag-link">#WebView</a>
-                
-                <a href="/tags/OkHttp/" class="cube-excerpt-tag-link">#OkHttp</a>
-                
-                <a href="/tags/XML/" class="cube-excerpt-tag-link">#XML</a>
-                
-                <a href="/tags/JSON/" class="cube-excerpt-tag-link">#JSON</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="1-WebView"><a href="#1-WebView" class="headerlink" title="1. WebView"></a>1. WebView</h3><pre><code>webView.getSettings().setJavaScriptEnabled(true);
-webView.setWebViewClient(new WebViewClient());
-webView.loadUrl(&quot;http://www.baidu.com&quot;);
-</code></pre><p>getSettings()方法可以设置一些浏览器的属性，这里只调用了setJavaScriptEnabled()方法使得WebView支持JavaScript脚本。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/15/第一行代码笔记-网络/">阅读全文</a>
-    </footer>
-</div>
-
 <div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-多媒体">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/03/14/第一行代码笔记-多媒体/">第一行代码笔记-多媒体</a></h1>
@@ -555,6 +517,42 @@ public View getView(int position,View convertView,ViewGroup parent) {
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Android基础用法">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/03/07/第一行代码笔记-Android基础用法/">第一行代码笔记-Android基础用法</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-03-07
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/隐式Intent/" class="cube-excerpt-tag-link">#隐式Intent</a>
+                
+                <a href="/tags/startActivityForResult/" class="cube-excerpt-tag-link">#startActivityForResult</a>
+                
+                <a href="/tags/onSaveInstanceState/" class="cube-excerpt-tag-link">#onSaveInstanceState</a>
+                
+                <a href="/tags/0-9/" class="cube-excerpt-tag-link">#0.9</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="1-更多隐式Intent的用法"><a href="#1-更多隐式Intent的用法" class="headerlink" title="1. 更多隐式Intent的用法"></a>1. 更多隐式Intent的用法</h3><p>使用隐式Intent，不仅可以启动自己程序内的活动，还可以启动其他程序的活动，这使得Android多个应用程序之间的功能共享成为了可能。</p>
+<h4 id="例：展示网页代码"><a href="#例：展示网页代码" class="headerlink" title="例：展示网页代码"></a>例：展示网页代码</h4><pre><code>Intent intent = new Intent(Intent.ACTION_VIEW);
+intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/03/07/第一行代码笔记-Android基础用法/">阅读全文</a>
+    </footer>
+</div>
+
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -594,7 +592,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
                     <span>...</span>
                 </li>
                 <li class="cube-pagination-index">
-                    <a href="/page/10">10</a>
+                    <a href="/page/9">9</a>
                 </li>
         
     
@@ -670,9 +668,9 @@ public View getView(int position,View convertView,ViewGroup parent) {
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>96</span>文章</a>
-        <a class="count tags"><span>126</span>标签</a>
-        <a class="count categories"><span>29</span>分类</a>
+        <a class="count articles"><span>89</span>文章</a>
+        <a class="count tags"><span>119</span>标签</a>
+        <a class="count categories"><span>27</span>分类</a>
     </div>
 </div>
 
@@ -788,22 +786,17 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/categories/Android基础/">#Android基础</a>
+            <a href="/categories/面试/">#面试</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/面试/">#面试</a>
+            <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Gradle/">#Gradle</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -818,6 +811,11 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
@@ -827,13 +825,8 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/Kotlin/">#Kotlin</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -842,13 +835,8 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/操作系统/">#操作系统</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -858,6 +846,11 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
         </div>
         
@@ -867,28 +860,33 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/热修复插件化/">#热修复插件化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/混合开发/">#混合开发</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/热修复插件化/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/第一行代码/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
         </div>
         
         
@@ -903,7 +901,12 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
         
@@ -914,21 +917,6 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         <div class="cube-box ">
             <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
     </div>
@@ -943,13 +931,23 @@ public View getView(int position,View convertView,ViewGroup parent) {
     <div class="cube-boxs">
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/Android面试/">#Android面试</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
-            <a href="/tags/Android面试/">#Android面试</a>
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
@@ -959,6 +957,11 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
+            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle之Task/">#Gradle之Task</a>
         </div>
         
@@ -969,12 +972,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
         </div>
         
         
@@ -983,13 +981,13 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
+        <div class="cube-box ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
@@ -1003,18 +1001,8 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
+            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
         </div>
         
         
@@ -1023,28 +1011,23 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Html/">#Html</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Java变量/">#Java变量</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -1058,7 +1041,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java基础反射/">#Java基础反射</a>
         </div>
         
@@ -1068,8 +1051,18 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Java基础继承/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java基础多线程/">#Java基础多线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础集合/">#Java基础集合</a>
         </div>
         
         
@@ -1079,42 +1072,42 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
         </div>
         
         
@@ -1124,17 +1117,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
         </div>
         
         
@@ -1143,13 +1126,18 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+        <div class="cube-box ">
+            <a href="/tags/VPS/">#VPS</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
@@ -1164,27 +1152,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
@@ -1193,13 +1161,8 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/字符流/">#字符流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/字节流/">#字节流</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -1214,7 +1177,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/文件/">#文件</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -1224,12 +1187,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -1238,22 +1196,27 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Service/">#Service</a>
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1263,13 +1226,13 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
+            <a href="/tags/混合开发/">#混合开发</a>
         </div>
         
         
@@ -1279,7 +1242,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/混合开发/">#混合开发</a>
+            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
@@ -1313,22 +1276,12 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -1338,7 +1291,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -1348,7 +1301,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
@@ -1363,7 +1316,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
@@ -1383,18 +1336,28 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
         </div>
         
         
@@ -1403,7 +1366,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -1424,27 +1387,22 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+            <a href="/tags/运行时权限/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
@@ -1459,11 +1417,11 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -1473,7 +1431,7 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
@@ -1484,6 +1442,11 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -1513,6 +1476,11 @@ public View getView(int position,View convertView,ViewGroup parent) {
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/面试/">#面试</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
@@ -1534,41 +1502,26 @@ public View getView(int position,View convertView,ViewGroup parent) {
         
         
         <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/集合框架/">#集合框架</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         

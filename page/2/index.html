@@ -163,34 +163,6 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-Java初识">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/01/Java初识/">Java初识</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-03-01
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java初识/" class="cube-excerpt-tag-link">#Java初识</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h2 id="Java简介"><a href="#Java简介" class="headerlink" title="Java简介"></a>Java简介</h2><p>一门面向对象的程序设计语言</p>
-<h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><p>Java Virtual Machine，Java虚拟机，JVM是Java平台无关性实现的关键。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/01/Java初识/">阅读全文</a>
-    </footer>
-</div>
-
 <div class="cube-excerpt" id="cube-excerpt-Html">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/01/15/Html/">Html</a></h1>
@@ -297,96 +269,7 @@ npm -v
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h2 id="1-类的构造器"><a href="#1-类的构造器" class="headerlink" title="1.类的构造器"></a>1.类的构造器</h2><h3 id="1-1-构造器的基本写法"><a href="#1-1-构造器的基本写法" class="headerlink" title="1.1 构造器的基本写法"></a>1.1 构造器的基本写法</h3><p><img src="1.png" alt=""></p>
-<p><img src="2.png" alt=""></p>
-<p><img src="3.png" alt=""></p>
-<p><img src="4.png" alt=""></p>
-<h3 id="1-2-init块"><a href="#1-2-init块" class="headerlink" title="1.2 init块"></a>1.2 init块</h3><p>可以访问到构造器参数</p>
-<p><img src="5.png" alt=""></p>
-<p>可以写多个</p>
-<p><img src="6.png" alt=""></p>
-<p>多个会合并到一起</p>
-<p><img src="7.png" alt=""></p>
-<h3 id="1-3-属性必须初始化"><a href="#1-3-属性必须初始化" class="headerlink" title="1.3 属性必须初始化"></a>1.3 属性必须初始化</h3><p><img src="8.png" alt=""></p>
-<p><img src="9.png" alt=""></p>
-<p><img src="10.png" alt=""></p>
-<h3 id="1-4-继承父类"><a href="#1-4-继承父类" class="headerlink" title="1.4 继承父类"></a>1.4 继承父类</h3><p><img src="11.png" alt=""></p>
-<h3 id="1-5-副构造器"><a href="#1-5-副构造器" class="headerlink" title="1.5 副构造器"></a>1.5 副构造器</h3><p><img src="12.png" alt=""></p>
-<h3 id="1-6-不定义主构造器（不推荐）"><a href="#1-6-不定义主构造器（不推荐）" class="headerlink" title="1.6 不定义主构造器（不推荐）"></a>1.6 不定义主构造器（不推荐）</h3><p><img src="13.png" alt=""></p>
-<p><img src="14.png" alt=""></p>
-<p><img src="15.png" alt=""></p>
-<h3 id="1-7-主构造器默认参数（推荐）"><a href="#1-7-主构造器默认参数（推荐）" class="headerlink" title="1.7 主构造器默认参数（推荐）"></a>1.7 主构造器默认参数（推荐）</h3><p><img src="17.png" alt=""></p>
-<p>如果这个类是在java里使用，这块的重载希望java能看懂，在构造器前加一个@JvmOverloads就可以了。虽然在kotlin是默认参数的实现，但在java里当做函数重载</p>
-<p><img src="16.png" alt=""></p>
-<h3 id="1-8-构造同名的工厂函数"><a href="#1-8-构造同名的工厂函数" class="headerlink" title="1.8 构造同名的工厂函数"></a>1.8 构造同名的工厂函数</h3><p>工厂函数比构造器有更强的表现，工厂函数可以自定义名字</p>
-<p>我们可以定义一个类叫person，也可以定义一个函数也叫person</p>
-<p><img src="18.png" alt=""></p>
-<p><img src="19.png" alt=""></p>
-<p>采用跟类名一样的工厂函数的还有String</p>
-<h2 id="2-类与成员的可见性"><a href="#2-类与成员的可见性" class="headerlink" title="2.类与成员的可见性"></a>2.类与成员的可见性</h2><h3 id="2-1-可见性对比"><a href="#2-1-可见性对比" class="headerlink" title="2.1 可见性对比"></a>2.1 可见性对比</h3><p><img src="20.png" alt=""></p>
-<h3 id="2-2-修饰对象"><a href="#2-2-修饰对象" class="headerlink" title="2.2 修饰对象"></a>2.2 修饰对象</h3><p><img src="21.png" alt=""></p>
-<h3 id="2-3-模块的概念"><a href="#2-3-模块的概念" class="headerlink" title="2.3 模块的概念"></a>2.3 模块的概念</h3><ul>
-<li>InteLLIJ IDEA 模块</li>
-<li>Maven工程</li>
-<li>Gradle SourceSet</li>
-<li>Ant任务中一次调用<kotlinc>的文件</kotlinc></li>
-</ul>
-<p>编译kotlin代码，一定会用到kotlinc命令，在一次调用kotlinc命令的这一伙文件当中，他们就是一个模块</p>
-<p>直观的讲，大致可以认为是一个Jar包、一个aar</p>
-<h3 id="2-4-internal-VS-default"><a href="#2-4-internal-VS-default" class="headerlink" title="2.4 internal VS default"></a>2.4 internal VS default</h3><ul>
-<li>一般由SDK或公共组件开发者用于隐藏模块内部细节实现</li>
-<li>default可通过外部创建相同包名来访问，访问控制非常弱</li>
-<li>default会导致不同抽象层次的类聚集到相同包之下</li>
-<li>internal可方便处理内外隔离，提升模块代码内聚减少接口暴露</li>
-<li>internal修饰的kotlin类或成员在java当中可直接访问（名字会被改变，类是没什么问题函数名会被修改。Java访问internal是不生效的，不想让java访问的话，加上注解@JvmName(“%abc”)）</li>
-</ul>
-<p><img src="22.png" alt=""></p>
-<h3 id="2-5-构造器的可见性"><a href="#2-5-构造器的可见性" class="headerlink" title="2.5 构造器的可见性"></a>2.5 构造器的可见性</h3><p><img src="23.png" alt=""></p>
-<h3 id="2-6-属性的可见性"><a href="#2-6-属性的可见性" class="headerlink" title="2.6 属性的可见性"></a>2.6 属性的可见性</h3><p><img src="24.png" alt=""></p>
-<p><img src="25.png" alt=""></p>
-<p><img src="26.png" alt=""></p>
-<p><img src="27.png" alt=""></p>
-<p><img src="28.png" alt=""></p>
-<h3 id="2-7-顶级声明的可见性"><a href="#2-7-顶级声明的可见性" class="headerlink" title="2.7 顶级声明的可见性"></a>2.7 顶级声明的可见性</h3><ul>
-<li>顶级声明指文件内直接定义的属性、函数、类等</li>
-<li>顶级声明不支持protected</li>
-<li>顶级声明被private修饰表示文件内部可见</li>
-</ul>
-<h2 id="3-类属性的延迟初始化"><a href="#3-类属性的延迟初始化" class="headerlink" title="3.类属性的延迟初始化"></a>3.类属性的延迟初始化</h2><h3 id="3-1-为什么要延迟初始化"><a href="#3-1-为什么要延迟初始化" class="headerlink" title="3.1 为什么要延迟初始化"></a>3.1 为什么要延迟初始化</h3><ul>
-<li>类属性必须在构造时初始化</li>
-<li>某些成员只有在类构造之后才会被初始化</li>
-</ul>
-<h3 id="3-2-以Android的UI为例"><a href="#3-2-以Android的UI为例" class="headerlink" title="3.2 以Android的UI为例"></a>3.2 以Android的UI为例</h3><p><img src="29.png" alt=""></p>
-<p>Java代码</p>
-<p><img src="30.png" alt=""></p>
-<h4 id="方法一：初始化为null（不推荐）"><a href="#方法一：初始化为null（不推荐）" class="headerlink" title="方法一：初始化为null（不推荐）"></a>方法一：初始化为null（不推荐）</h4><p><img src="31.png" alt=""></p>
-<h4 id="方法二：使用lateinit（不推荐）"><a href="#方法二：使用lateinit（不推荐）" class="headerlink" title="方法二：使用lateinit（不推荐）"></a>方法二：使用lateinit（不推荐）</h4><p><img src="32.png" alt=""></p>
-<p><img src="33.png" alt=""></p>
-<p>注意事项</p>
-<ul>
-<li>lateinit会让编译器忽略变量的初始化，不支持Int等基本类型</li>
-<li>开发者必须能够在完全确定变量值的生命周期下使用lateinit</li>
-<li>不要在复杂的逻辑中使用lateinit，它只会让你的代码更脆弱</li>
-<li>kotlin1.2加入的判断lateinit属性是否初始化的API最好不要用</li>
-</ul>
-<h4 id="方法三：lazy（推荐）"><a href="#方法三：lazy（推荐）" class="headerlink" title="方法三：lazy（推荐）"></a>方法三：lazy（推荐）</h4><p><img src="34.png" alt=""></p>
-<h3 id="3-3-对比总结"><a href="#3-3-对比总结" class="headerlink" title="3.3 对比总结"></a>3.3 对比总结</h3><p><img src="35.png" alt=""></p>
-<h2 id="4-代理Delegate"><a href="#4-代理Delegate" class="headerlink" title="4.代理Delegate"></a>4.代理Delegate</h2><h3 id="4-1-代理是什么"><a href="#4-1-代理是什么" class="headerlink" title="4.1 代理是什么"></a>4.1 代理是什么</h3><p>我代替你实现它</p>
-<ol>
-<li>我：代理</li>
-<li>你：被代理的对象</li>
-<li>它：接口、属性</li>
-</ol>
-<ul>
-<li>接口代理：对象X代替当前类A实现接口B的方法</li>
-<li>属性代理：对象X代替属性a实现getter/setter方法</li>
-</ul>
-<h3 id="4-2-接口代理（用的比较少）"><a href="#4-2-接口代理（用的比较少）" class="headerlink" title="4.2 接口代理（用的比较少）"></a>4.2 接口代理（用的比较少）</h3><p><img src="36.png" alt=""></p>
-<p><img src="37.png" alt=""></p>
-<p>a和b编译器自动生成，c需要功能增强所以自己实现</p>
-<p><img src="38.png" alt=""></p>
-<p><img src="39.png" alt=""></p>
-<h3 id="4-3-属性代理-lazy"><a href="#4-3-属性代理-lazy" class="headerlink" title="4.3 属性代理-lazy"></a>4.3 属性代理-lazy</h3><h2 id="5-单例object"><a href="#5-单例object" class="headerlink" title="5.单例object"></a>5.单例object</h2><h2 id="6-内部类"><a href="#6-内部类" class="headerlink" title="6.内部类"></a>6.内部类</h2><h2 id="7-数据类data-class"><a href="#7-数据类data-class" class="headerlink" title="7.数据类data class"></a>7.数据类data class</h2><h2 id="8-枚举类enum-class"><a href="#8-枚举类enum-class" class="headerlink" title="8.枚举类enum class"></a>8.枚举类enum class</h2><h2 id="9-密封类sealed-class"><a href="#9-密封类sealed-class" class="headerlink" title="9.密封类sealed class"></a>9.密封类sealed class</h2><h2 id="10-内联类inline-class"><a href="#10-内联类inline-class" class="headerlink" title="10.内联类inline class"></a>10.内联类inline class</h2><h2 id="11-案例"><a href="#11-案例" class="headerlink" title="11.案例"></a>11.案例</h2><h2 id="12-小结"><a href="#12-小结" class="headerlink" title="12.小结"></a>12.小结</h2>
+           <h2 id="1-类的构造器"><a href="#1-类的构造器" class="headerlink" title="1.类的构造器"></a>1.类的构造器</h2><h3 id="1-1-构造器的基本写法"><a href="#1-1-构造器的基本写法" class="headerlink" title="1.1 构造器的基本写法"></a>1.1 构造器的基本写法</h3>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -529,6 +412,40 @@ npm -v
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-Kotlin-程序结构">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/09/19/Kotlin-程序结构/">Kotlin-程序结构</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-09-19
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Kotlin程序结构/" class="cube-excerpt-tag-link">#Kotlin程序结构</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><h3 id="常量与变量-val-var"><a href="#常量与变量-val-var" class="headerlink" title="常量与变量(val,var)"></a>常量与变量(val,var)</h3><h4 id="什么是常量"><a href="#什么是常量" class="headerlink" title="什么是常量"></a>什么是常量</h4><ul>
+<li>val = value，值类型</li>
+<li>类似Java的final</li>
+<li>不可能重复赋值</li>
+<li>举例：</li>
+</ul>
+<p>运行时常量：val x = getX()</p>
+<p>编译期常量：const val x = 2</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/09/19/Kotlin-程序结构/">阅读全文</a>
+    </footer>
+</div>
+
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -568,7 +485,7 @@ npm -v
                     <span>...</span>
                 </li>
                 <li class="cube-pagination-index">
-                    <a href="/page/10">10</a>
+                    <a href="/page/9">9</a>
                 </li>
         
     
@@ -644,9 +561,9 @@ npm -v
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>96</span>文章</a>
-        <a class="count tags"><span>126</span>标签</a>
-        <a class="count categories"><span>29</span>分类</a>
+        <a class="count articles"><span>89</span>文章</a>
+        <a class="count tags"><span>119</span>标签</a>
+        <a class="count categories"><span>27</span>分类</a>
     </div>
 </div>
 
@@ -762,26 +679,21 @@ npm -v
         
         
         <div class="cube-box ">
+            <a href="/categories/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/Gradle/">#Gradle</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/Blog/">#Blog</a>
         </div>
         
@@ -791,18 +703,28 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/Java基础/">#Java基础</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
@@ -812,26 +734,16 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/操作系统/">#操作系统</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
         </div>
         
@@ -841,18 +753,8 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/热修复插件化/">#热修复插件化</a>
         </div>
         
         
@@ -861,23 +763,43 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/categories/热修复插件化/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/网络/">#网络</a>
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
         
@@ -888,21 +810,6 @@ npm -v
         
         <div class="cube-box ">
             <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
     </div>
@@ -918,12 +825,22 @@ npm -v
         
         
         <div class="cube-box ">
+            <a href="/tags/Android面试/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android面试/">#Android面试</a>
+        <div class="cube-box ">
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
@@ -933,27 +850,17 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+        <div class="cube-box ">
+            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle之project/">#Gradle之project</a>
         </div>
         
         
@@ -962,8 +869,18 @@ npm -v
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/tags/Gradle总结/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
@@ -982,7 +899,22 @@ npm -v
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
@@ -992,37 +924,7 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java变量/">#Java变量</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Java基础IO/">#Java基础IO</a>
         </div>
         
@@ -1037,8 +939,13 @@ npm -v
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java基础语法/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础继承/">#Java基础继承</a>
         </div>
         
         
@@ -1048,37 +955,22 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Java基础集合/">#Java基础集合</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java运算符/">#Java运算符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
+            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
         
@@ -1087,8 +979,28 @@ npm -v
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
         </div>
         
         
@@ -1097,18 +1009,8 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
         </div>
         
         
@@ -1118,16 +1020,21 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+            <a href="/tags/VPS/">#VPS</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
+            <a href="/tags/SSR/">#SSR</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Service启动模式/">#Service启动模式</a>
         </div>
         
@@ -1137,28 +1044,8 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存划分/">#内存划分</a>
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
@@ -1168,12 +1055,7 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/字符流/">#字符流</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/字节流/">#字节流</a>
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -1182,13 +1064,13 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
@@ -1198,12 +1080,7 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+            <a href="/tags/文件/">#文件</a>
         </div>
         
         
@@ -1212,22 +1089,27 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
+        <div class="cube-box ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1237,13 +1119,13 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/选择排序/">#选择排序</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/混合开发/">#混合开发</a>
         </div>
         
         
@@ -1252,12 +1134,12 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/混合开发/">#混合开发</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
         </div>
         
@@ -1267,7 +1149,7 @@ npm -v
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
         </div>
         
@@ -1288,16 +1170,6 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
@@ -1307,17 +1179,17 @@ npm -v
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -1342,7 +1214,7 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1372,12 +1244,22 @@ npm -v
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -1397,17 +1279,7 @@ npm -v
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
@@ -1418,7 +1290,12 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
+            <a href="/tags/运行时权限/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
@@ -1433,7 +1310,7 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
+            <a href="/tags/Material-Design/">#Material Design</a>
         </div>
         
         
@@ -1447,7 +1324,7 @@ npm -v
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
@@ -1458,11 +1335,16 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/PendingIntent/">#PendingIntent</a>
         </div>
         
@@ -1487,7 +1369,12 @@ npm -v
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
         </div>
         
@@ -1508,11 +1395,6 @@ npm -v
         
         
         <div class="cube-box ">
-            <a href="/tags/网络参考模型/">#网络参考模型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/数据存储/">#数据存储</a>
         </div>
         
@@ -1527,22 +1409,12 @@ npm -v
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/SQLite数据库/">#SQLite数据库</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/集合框架/">#集合框架</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         
