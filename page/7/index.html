@@ -163,46 +163,18 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Android基础控件布局">
+<div class="cube-excerpt" id="cube-excerpt-Android入门-BroadcastReceiver">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/08/第一行代码笔记-Android基础控件布局/">第一行代码笔记-Android基础控件布局</a></h1>
+        <h1><a href="/2018/01/03/Android入门-BroadcastReceiver/">Android入门-BroadcastReceiver</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-08
+                2018-01-03
             </div>
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Button/" class="cube-excerpt-tag-link">#Button</a>
-                
-                <a href="/tags/EditText/" class="cube-excerpt-tag-link">#EditText</a>
-                
-                <a href="/tags/ImageView/" class="cube-excerpt-tag-link">#ImageView</a>
-                
-                <a href="/tags/ProgressBar/" class="cube-excerpt-tag-link">#ProgressBar</a>
-                
-                <a href="/tags/AlertDialog/" class="cube-excerpt-tag-link">#AlertDialog</a>
-                
-                <a href="/tags/ProgressDialog/" class="cube-excerpt-tag-link">#ProgressDialog</a>
-                
-                <a href="/tags/布局/" class="cube-excerpt-tag-link">#布局</a>
-                
-                <a href="/tags/LinearLayout/" class="cube-excerpt-tag-link">#LinearLayout</a>
-                
-                <a href="/tags/RelativeLayout/" class="cube-excerpt-tag-link">#RelativeLayout</a>
-                
-                <a href="/tags/FrameLayout/" class="cube-excerpt-tag-link">#FrameLayout</a>
-                
-                <a href="/tags/PercentFrameLayout/" class="cube-excerpt-tag-link">#PercentFrameLayout</a>
-                
-                <a href="/tags/PercentRelativeLayout/" class="cube-excerpt-tag-link">#PercentRelativeLayout</a>
-                
-                <a href="/tags/AbsoluteLayout/" class="cube-excerpt-tag-link">#AbsoluteLayout</a>
-                
-                <a href="/tags/TableLayout/" class="cube-excerpt-tag-link">#TableLayout</a>
-                
-                <a href="/tags/ActionBar/" class="cube-excerpt-tag-link">#ActionBar</a>
+                <a href="/tags/BroadcastReceiver/" class="cube-excerpt-tag-link">#BroadcastReceiver</a>
                 
             </div>
         </div>
@@ -210,33 +182,27 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="1-Android常用控件"><a href="#1-Android常用控件" class="headerlink" title="1. Android常用控件"></a>1. Android常用控件</h3><h4 id="1-1-Button"><a href="#1-1-Button" class="headerlink" title="1.1 Button"></a>1.1 Button</h4><p>系统会对Button中的所有英文字母进行自动大小写转换，如果这不是你想要的效果，使用如下配置来禁用这一默认特性：android:textAllCaps=”false”</p>
-<h4 id="1-2-EditText"><a href="#1-2-EditText" class="headerlink" title="1.2 EditText"></a>1.2 EditText</h4><p>android:maxLines=”2”指定EditText的最大行数为两行，这样当输入的内容超过两行时，文本就会向上滚动，而EditText则不会再继续拉伸。</p>
+           <h2 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h2><p>广播被分为两种不同的类型：“<strong>普通广播</strong>（Normal broadcasts）”和“<strong>有序广播</strong>（Ordered broadcasts）”。</p>
+<p>普通广播是完全异步的，可以在同一时刻（逻辑上）被所有接收者接收到，消息传递的效率比较高，但缺点是：接收者不能将处理结果传递给下一个接收者，并且无法终止广播Intent的传播；</p>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/08/第一行代码笔记-Android基础控件布局/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/03/Android入门-BroadcastReceiver/">阅读全文</a>
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Android基础用法">
+<div class="cube-excerpt" id="cube-excerpt-Android入门-Service">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/07/第一行代码笔记-Android基础用法/">第一行代码笔记-Android基础用法</a></h1>
+        <h1><a href="/2018/01/02/Android入门-Service/">Android入门-Service</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-07
+                2018-01-02
             </div>
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/隐式Intent/" class="cube-excerpt-tag-link">#隐式Intent</a>
-                
-                <a href="/tags/startActivityForResult/" class="cube-excerpt-tag-link">#startActivityForResult</a>
-                
-                <a href="/tags/onSaveInstanceState/" class="cube-excerpt-tag-link">#onSaveInstanceState</a>
-                
-                <a href="/tags/0-9/" class="cube-excerpt-tag-link">#0.9</a>
+                <a href="/tags/Service/" class="cube-excerpt-tag-link">#Service</a>
                 
             </div>
         </div>
@@ -244,29 +210,58 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="1-更多隐式Intent的用法"><a href="#1-更多隐式Intent的用法" class="headerlink" title="1. 更多隐式Intent的用法"></a>1. 更多隐式Intent的用法</h3><p>使用隐式Intent，不仅可以启动自己程序内的活动，还可以启动其他程序的活动，这使得Android多个应用程序之间的功能共享成为了可能。</p>
-<h4 id="例：展示网页代码"><a href="#例：展示网页代码" class="headerlink" title="例：展示网页代码"></a>例：展示网页代码</h4><pre><code>Intent intent = new Intent(Intent.ACTION_VIEW);
-intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
+           <h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="本地服务（LocalService）"><a href="#本地服务（LocalService）" class="headerlink" title="本地服务（LocalService）"></a>本地服务（LocalService）</h3><p>调用者和service在同一个进程里，所以运行在主进程的main线程中。所以不能进行耗时操作，可以采用在service里面创建一个Thread来执行任务。<br>service影响的是进程的生命周期，讨论与Thread的区别没有意义。<br>任何 Activity 都可以控制同一 Service，而系统也只会创建一个对应 Service 的实例。</p>
+<p>本地service不涉及进程间通信</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/02/Android入门-Service/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Android入门-Activity">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/01/Android入门-Activity/">Android入门-Activity</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-01
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Activity/" class="cube-excerpt-tag-link">#Activity</a>
+                
+                <a href="/tags/Fragment/" class="cube-excerpt-tag-link">#Fragment</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>onCreate() -&gt; onStart() -&gt; onResume() -&gt; 
+onPause()  -&gt; onStop()  -&gt; onDestroy()
 </code></pre>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/07/第一行代码笔记-Android基础用法/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2018/01/01/Android入门-Activity/">阅读全文</a>
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-第一行代码笔记-Android Studio">
+<div class="cube-excerpt" id="cube-excerpt-设计模式-单例">
     <header class="cube-excerpt-header">
-        <h1><a href="/2018/03/06/第一行代码笔记-Android-Studio/">第一行代码笔记-Android Studio</a></h1>
+        <h1><a href="/2017/05/01/设计模式-单例/">设计模式-单例</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-03-06
+                2017-05-01
             </div>
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Android-Studio/" class="cube-excerpt-tag-link">#Android Studio</a>
+                <a href="/tags/设计模式单例/" class="cube-excerpt-tag-link">#设计模式单例</a>
                 
             </div>
         </div>
@@ -274,320 +269,32 @@ intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h2 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1. 项目结构"></a>1. 项目结构</h2><h4 id="gradle和-idea‘’"><a href="#gradle和-idea‘’" class="headerlink" title=".gradle和.idea‘’"></a>.gradle和.idea‘’</h4><p>Android Studio自动生成，无需关心也不要手动编辑。</p>
-<h4 id="app"><a href="#app" class="headerlink" title="app"></a>app</h4><p>项目中的代码、资源等内容几乎都是放在这个目录下的。</p>
-<h4 id="build"><a href="#build" class="headerlink" title="build"></a>build</h4><p>在编译时自动生成的文件</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/03/06/第一行代码笔记-Android-Studio/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-内存泄漏">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/25/内存泄漏/">内存泄漏</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/内存泄漏/" class="cube-excerpt-tag-link">#内存泄漏</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h4 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h4><pre><code>public class AppManager {
-
-    //有内存泄漏的问题：
-    private static AppManager instance;
-    private Context context;
-    private AppManager(Context context) {
-        this.context = context;
-    }
-    public static AppManager getInstance(Context context) {
-        if (instance == null) {
-//传入的Activity回收时由于被单例持有无法回收
-            instance = new AppManager(context);
-        }
-        return instance;
-    }
-</code></pre><hr>
-<pre><code>    //修复内存泄漏的写法：
-    private static AppManager instance;
-    private Context context;
-    private AppManager(Context context) {
-        this.context = context.getApplicationContext();// 使用Application 的context
-    }
-    public static AppManager getInstance(Context context) {
-        if (instance == null) {
-            instance = new AppManager(context);
-        }
-        return instance;
-    }
-}
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/25/内存泄漏/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Android多语言">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/01/05/Android多语言/">Android多语言</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-01-05
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Android多语言/" class="cube-excerpt-tag-link">#Android多语言</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="一、-添加多语言资源在Values下"><a href="#一、-添加多语言资源在Values下" class="headerlink" title="一、 添加多语言资源在Values下"></a>一、 添加多语言资源在Values下</h3><h3 id="二、-更新Configuration中的locale属性"><a href="#二、-更新Configuration中的locale属性" class="headerlink" title="二、 更新Configuration中的locale属性"></a>二、 更新Configuration中的locale属性</h3><pre><code>//更改语言 返回主Activity即IsOpenLocationActivity
-Resources resources = LanguageActivity.this.getResources();
-DisplayMetrics dm = resources.getDisplayMetrics();
-Configuration config = resources.getConfiguration();
-// 应用用户选择语言
-config.locale = UtilTool.getLanguage();
-resources.updateConfiguration(config, dm);
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/01/05/Android多语言/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-查找与排序">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/09/15/查找与排序/">查找与排序</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-09-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/二分查找/" class="cube-excerpt-tag-link">#二分查找</a>
-                
-                <a href="/tags/冒泡排序/" class="cube-excerpt-tag-link">#冒泡排序</a>
-                
-                <a href="/tags/选择排序/" class="cube-excerpt-tag-link">#选择排序</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h2 id="1-二分查找"><a href="#1-二分查找" class="headerlink" title="1. 二分查找"></a>1. 二分查找</h2><p>如果一个数组是无序的，那么可以通过简单遍历查找的方式查找到某个元素所在的角标。但是如果一个数组 是有序的，那么就可以通过一种更高效的方式达到相同的目的，也就是二分查找。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/09/15/查找与排序/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-HttpURLConnection">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/07/15/HttpURLConnection/">HttpURLConnection</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-07-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/HttpURLConnection/" class="cube-excerpt-tag-link">#HttpURLConnection</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>获取HttpURLConnection实例，一般new出一个URL对象并且传入目标网络地址，再调用openConnection();</p>
-<pre><code>URL url = new URL(&quot;http://localhost:8080/TestHttpURLConnectionPro/index.jsp&quot;); 
-HttpURLConnection connection = (HttpURLConnection)url.openConnection(); 
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/07/15/HttpURLConnection/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Bitmap">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/07/12/Bitmap/">Bitmap</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-07-12
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Bitmap/" class="cube-excerpt-tag-link">#Bitmap</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <pre><code>public class BitmapUtils {
-
-    // 根据maxWidth, maxHeight计算最合适的inSampleSize
-    public static int calculateInSampleSize(
-        BitmapFactory.Options options, int reqWidth, int reqHeight) {
-
-            // Raw height and width of image
-            final int height = options.outHeight;
-            final int width = options.outWidth;
-            int inSampleSize = 1;
-
-            if (height &gt; reqHeight || width &gt; reqWidth) {
-
-                if (width &gt; height) {
-
-                    inSampleSize = Math.round((float)height / (float)reqHeight);
-                } else {
-
-                    inSampleSize = Math.round((float)width / (float)reqWidth);
-                }
-            }
-            return inSampleSize;
-        }
-
-    //缩略图
-    public static Bitmap thumbnail(String path,
-                               int maxWidth, int maxHeight, boolean autoRotate) {
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        // 获取这个图片的宽和高信息到options中, 此时返回bm为空
-        Bitmap bitmap = BitmapFactory.decodeFile(path, options);
-        options.inJustDecodeBounds = false;
-        // 计算缩放比
-        int sampleSize = calculateInSampleSize(options, maxWidth, maxHeight);
-        options.inSampleSize = sampleSize;
-        options.inPreferredConfig = Bitmap.Config.RGB_565;
-        options.inPurgeable = true;
-        options.inInputShareable = true;
-        if (bitmap != null &amp;&amp; !bitmap.isRecycled()) {
-            bitmap.recycle();
-        }
-        bitmap = BitmapFactory.decodeFile(path, options);
-        return bitmap;
-    }
-
-    //保存bitmap
-    public static String save(Bitmap bitmap,
-                           Bitmap.CompressFormat format, int quality, File destFile) {
-        try {
-            FileOutputStream out = new FileOutputStream(destFile);
-            if (bitmap.compress(format, quality, out)) {
-                out.flush();
-                out.close();
-            }
-            if (bitmap != null &amp;&amp; !bitmap.isRecycled()) {
-                bitmap.recycle();
-            }
-            return destFile.getAbsolutePath();
-        } catch (FileNotFoundException e) {
-        e.printStackTrace();
-        } catch (IOException e) {
-        e.printStackTrace();
-        }
-        return null;
-    }
-
-    // 保存到sd卡
-    public static String save(Bitmap bitmap,
-                           Bitmap.CompressFormat format, int quality, Context context) {
-        if (!Environment.getExternalStorageState()
-            .equals(Environment.MEDIA_MOUNTED)) {
-            return null;
-        }
-        File dir = new File(Environment.getExternalStorageDirectory()
-            + &quot;/&quot; + context.getPackageName() + &quot;/save/&quot;);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        File destFile = new File(dir, UUID.randomUUID().toString());
-        return save(bitmap, format, quality, destFile);
-    }
-}
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/07/12/Bitmap/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-数据库">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/07/10/数据库/">数据库</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-07-10
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/数据库/" class="cube-excerpt-tag-link">#数据库</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="SQL语句增删改查"><a href="#SQL语句增删改查" class="headerlink" title="SQL语句增删改查"></a>SQL语句增删改查</h3><ul>
-<li>增加信息：insert into 表名（字段列表）values（值列表）</li>
-<li>删除信息：delete from 表名 where 条件子句</li>
-<li>修改信息：update 表名 set 字段名 = 值 where 条件子句</li>
-<li>查询星系：select * from 表名</li>
+           <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<li>设计模式（Design pattern）是一套被反复使用、多人知晓的、经过分类编目的、代码设计经验的总结</li>
+<li>设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案</li>
+<li>项目中合理的使用设计模式可以完美的解决很多问题</li>
+<li>每种模式在现在中都有相应的原理来与之对应</li>
+<li>每一个模式描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案</li>
 </ul>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/07/10/数据库/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2017/05/01/设计模式-单例/">阅读全文</a>
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-定时任务Alarm">
+<div class="cube-excerpt" id="cube-excerpt-Java基础-泛型">
     <header class="cube-excerpt-header">
-        <h1><a href="/2017/07/02/定时任务Alarm/">定时任务Alarm</a></h1>
+        <h1><a href="/2017/04/30/Java基础-泛型/">Java基础-泛型</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-07-02
+                2017-04-30
             </div>
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/定时任务/" class="cube-excerpt-tag-link">#定时任务</a>
+                <a href="/tags/Java基础泛型/" class="cube-excerpt-tag-link">#Java基础泛型</a>
                 
             </div>
         </div>
@@ -595,41 +302,155 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="轮询服务"><a href="#轮询服务" class="headerlink" title="轮询服务"></a>轮询服务</h3><pre><code>public class LongRunningService extends Service {
-
-    @Override
-    public IBinder onBind(Intent intent) {
-
-        return null;
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-
-                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().toString());
-             }
-         }).start();
-
-        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数
-        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
-        Intent i = new Intent(this, AlarmReceiver.class);
-        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
-        //说明：set()方法需要传入三个参数
-        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
-        return super.onStartCommand(intent, flags, startId);
-   }
-}
-</code></pre>
+           <h3 id="为什么使用泛型"><a href="#为什么使用泛型" class="headerlink" title="为什么使用泛型"></a>为什么使用泛型</h3><p>在Java中增加泛型之前，泛型程序设计使用继承来实现的</p>
+<p>坏处：</p>
+<ul>
+<li>需要强制转换</li>
+<li>可向集合中添加任意类型的对象，存在风险</li>
+</ul>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/07/02/定时任务Alarm/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2017/04/30/Java基础-泛型/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java基础-注解">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/04/30/Java基础-注解/">Java基础-注解</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-04-30
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础注解/" class="cube-excerpt-tag-link">#Java基础注解</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><ul>
+<li>JDK1.5版本引入的一个特性</li>
+<li>可以声明在包、类、属性、方法、局部变量、方法参数等的前面，用来对这些元素进行说明、注释</li>
+</ul>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/04/30/Java基础-注解/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java基础-反射">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/04/29/Java基础-反射/">Java基础-反射</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-04-29
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础反射/" class="cube-excerpt-tag-link">#Java基础反射</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>JAVA反射机制是在运行状态中，对于任意一个类（class文件），都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象方法的功能称为java语言的反射机制。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/04/29/Java基础-反射/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java基础-网络编程">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/04/28/Java基础-网络编程/">Java基础-网络编程</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-04-28
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础网络编程/" class="cube-excerpt-tag-link">#Java基础网络编程</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="网络参考模型"><a href="#网络参考模型" class="headerlink" title="网络参考模型"></a>网络参考模型</h3><p>OSI（Open System Interconnection 开放系统互连）参考模型</p>
+<p>TCP/IP 参考模型</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/04/28/Java基础-网络编程/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java基础-IO">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/04/27/Java基础-IO/">Java基础-IO</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-04-27
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础IO/" class="cube-excerpt-tag-link">#Java基础IO</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="其他对象API"><a href="#其他对象API" class="headerlink" title="其他对象API"></a>其他对象API</h2><h3 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h3><p>System类中的字段和方法都是静态的</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/04/27/Java基础-IO/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java基础-集合">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/04/26/Java基础-集合/">Java基础-集合</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-04-26
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础集合/" class="cube-excerpt-tag-link">#Java基础集合</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h2><p>由来：对象用于封装特有数据，对象多了需要存储；如果对象的个数不确定，就使用集合容器进行存储。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/04/26/Java基础-集合/">阅读全文</a>
     </footer>
 </div>
 
@@ -668,12 +489,12 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                 </li>
                 
             
-                <li class="cube-pagination-ellipses">
-                    <span>...</span>
-                </li>
+                
                 <li class="cube-pagination-index">
-                    <a href="/page/10">10</a>
+                    <a href="/page/9">9</a>
                 </li>
+                
+            
         
     
 
@@ -748,9 +569,9 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>97</span>文章</a>
-        <a class="count tags"><span>126</span>标签</a>
-        <a class="count categories"><span>28</span>分类</a>
+        <a class="count articles"><span>86</span>文章</a>
+        <a class="count tags"><span>113</span>标签</a>
+        <a class="count categories"><span>25</span>分类</a>
     </div>
 </div>
 
@@ -859,7 +680,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/Android基础/">#Android基础</a>
+            <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
         
@@ -869,7 +690,17 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
@@ -879,27 +710,32 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Java基础/">#Java基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/服务器搭建/">#服务器搭建</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -914,52 +750,32 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/数据结构与算法/">#数据结构与算法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/热修复插件化/">#热修复插件化</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
+            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
+            <a href="/categories/混合开发/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
@@ -969,12 +785,12 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
+            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
@@ -983,18 +799,8 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
     </div>
@@ -1010,17 +816,17 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
+            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
@@ -1030,17 +836,22 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
+            <a href="/tags/Activity/">#Activity</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
+            <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Gradle之Task/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle之project/">#Gradle之project</a>
         </div>
         
         
@@ -1050,12 +861,12 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+        <div class="cube-box ">
+            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
@@ -1064,13 +875,13 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
+        <div class="cube-box ">
+            <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
@@ -1085,21 +896,16 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+            <a href="/tags/Html/">#Html</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
@@ -1110,12 +916,12 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
+            <a href="/tags/Java基础IO/">#Java基础IO</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础IO/">#Java基础IO</a>
+            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
         </div>
         
         
@@ -1124,13 +930,13 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
+        <div class="cube-box ">
+            <a href="/tags/Java基础语法/">#Java基础语法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础语法/">#Java基础语法</a>
+            <a href="/tags/Java基础多线程/">#Java基础多线程</a>
         </div>
         
         
@@ -1144,8 +950,8 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础多线程/">#Java基础多线程</a>
+        <div class="cube-box ">
+            <a href="/tags/Java基础异常/">#Java基础异常</a>
         </div>
         
         
@@ -1154,23 +960,23 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础注解/">#Java基础注解</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础继承/">#Java基础继承</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java基础异常/">#Java基础异常</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
         </div>
         
         
@@ -1180,27 +986,17 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
+            <a href="/tags/Java基础集合/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
         </div>
         
         
@@ -1210,12 +1006,17 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
+            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
         </div>
         
         
@@ -1225,7 +1026,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
         </div>
         
         
@@ -1234,23 +1035,13 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/IntentService/">#IntentService</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/UML/">#UML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -1269,8 +1060,8 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
         </div>
         
         
@@ -1279,93 +1070,23 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件/">#文件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Activity/">#Activity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment/">#Fragment</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/二分查找/">#二分查找</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/冒泡排序/">#冒泡排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/选择排序/">#选择排序</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/热修复插件化之ClassLoader/">#热修复插件化之ClassLoader</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
+            <a href="/tags/混合开发/">#混合开发</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
         </div>
         
         
@@ -1374,8 +1095,8 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
         </div>
         
         
@@ -1385,7 +1106,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
+            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
         </div>
         
         
@@ -1395,11 +1116,16 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
+            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Button/">#Button</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
@@ -1424,7 +1150,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -1454,7 +1180,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -1464,7 +1190,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ActionBar/">#ActionBar</a>
         </div>
         
@@ -1474,7 +1200,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -1484,7 +1210,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
@@ -1494,12 +1220,12 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -1515,12 +1241,12 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
+            <a href="/tags/LBS/">#LBS</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
+            <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
@@ -1529,7 +1255,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
@@ -1544,13 +1270,18 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AsyncTask/">#AsyncTask</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/前台服务/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
         </div>
         
         
@@ -1564,7 +1295,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -1574,7 +1305,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
@@ -1589,7 +1320,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
@@ -1600,12 +1331,27 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
+            <a href="/tags/设计模式单例/">#设计模式单例</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
         </div>
         
         
@@ -1619,13 +1365,8 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/设计模式单例/">#设计模式单例</a>
         </div>
         
         
@@ -1635,7 +1376,7 @@ HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         
         
         <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
     </div>
