@@ -163,95 +163,6 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-数据库">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/07/10/数据库/">数据库</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-07-10
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/数据库/" class="cube-excerpt-tag-link">#数据库</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="SQL语句增删改查"><a href="#SQL语句增删改查" class="headerlink" title="SQL语句增删改查"></a>SQL语句增删改查</h3><ul>
-<li>增加信息：insert into 表名（字段列表）values（值列表）</li>
-<li>删除信息：delete from 表名 where 条件子句</li>
-<li>修改信息：update 表名 set 字段名 = 值 where 条件子句</li>
-<li>查询星系：select * from 表名</li>
-</ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/07/10/数据库/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-定时任务Alarm">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/07/02/定时任务Alarm/">定时任务Alarm</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-07-02
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/定时任务/" class="cube-excerpt-tag-link">#定时任务</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="轮询服务"><a href="#轮询服务" class="headerlink" title="轮询服务"></a>轮询服务</h3><pre><code>public class LongRunningService extends Service {
-
-    @Override
-    public IBinder onBind(Intent intent) {
-
-        return null;
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-
-                Log.d(&quot;LongRunningService&quot;, &quot;executed at &quot; + new Date().toString());
-             }
-         }).start();
-
-        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        int anHour = 60 * 60 * 1000; // 这是一小时的毫秒数
-        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
-        Intent i = new Intent(this, AlarmReceiver.class);
-        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
-        //说明：set()方法需要传入三个参数
-        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
-        return super.onStartCommand(intent, flags, startId);
-   }
-}
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/07/02/定时任务Alarm/">阅读全文</a>
-    </footer>
-</div>
-
 <div class="cube-excerpt" id="cube-excerpt-文件存储">
     <header class="cube-excerpt-header">
         <h1><a href="/2017/06/25/文件存储/">文件存储</a></h1>
@@ -438,6 +349,101 @@
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-设计模式-单例">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/05/01/设计模式-单例/">设计模式-单例</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-05-01
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/设计模式单例/" class="cube-excerpt-tag-link">#设计模式单例</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<li>设计模式（Design pattern）是一套被反复使用、多人知晓的、经过分类编目的、代码设计经验的总结</li>
+<li>设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案</li>
+<li>项目中合理的使用设计模式可以完美的解决很多问题</li>
+<li>每种模式在现在中都有相应的原理来与之对应</li>
+<li>每一个模式描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案</li>
+</ul>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/05/01/设计模式-单例/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java基础-泛型">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/04/30/Java基础-泛型/">Java基础-泛型</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-04-30
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础泛型/" class="cube-excerpt-tag-link">#Java基础泛型</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="为什么使用泛型"><a href="#为什么使用泛型" class="headerlink" title="为什么使用泛型"></a>为什么使用泛型</h3><p>在Java中增加泛型之前，泛型程序设计使用继承来实现的</p>
+<p>坏处：</p>
+<ul>
+<li>需要强制转换</li>
+<li>可向集合中添加任意类型的对象，存在风险</li>
+</ul>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/04/30/Java基础-泛型/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Java基础-注解">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/04/30/Java基础-注解/">Java基础-注解</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-04-30
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Java基础注解/" class="cube-excerpt-tag-link">#Java基础注解</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><ul>
+<li>JDK1.5版本引入的一个特性</li>
+<li>可以声明在包、类、属性、方法、局部变量、方法参数等的前面，用来对这些元素进行说明、注释</li>
+</ul>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/04/30/Java基础-注解/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Java基础-反射">
     <header class="cube-excerpt-header">
         <h1><a href="/2017/04/29/Java基础-反射/">Java基础-反射</a></h1>
@@ -520,37 +526,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Java基础-集合">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/26/Java基础-集合/">Java基础-集合</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-26
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java基础集合/" class="cube-excerpt-tag-link">#Java基础集合</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h2 id="常用对象"><a href="#常用对象" class="headerlink" title="常用对象"></a>常用对象</h2><h3 id="String、StringBuffer和StringBuilder"><a href="#String、StringBuffer和StringBuilder" class="headerlink" title="String、StringBuffer和StringBuilder"></a>String、StringBuffer和StringBuilder</h3><h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>String特点：字符串对象一旦被初始化就不会被改变</p>
-<pre><code>String s1 =&quot;abc&quot;;
-String s2 =&quot;abc&quot;;
-System.out.println(s1 == s2);
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/26/Java基础-集合/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -570,12 +545,6 @@ System.out.println(s1 == s2);
             
                 
                 <li class="cube-pagination-index">
-                    <a href="/page/6">6</a>
-                </li>
-                
-            
-                
-                <li class="cube-pagination-index">
                     <a href="/page/7">7</a>
                 </li>
                 
@@ -589,6 +558,12 @@ System.out.println(s1 == s2);
                 
                 <li class="cube-pagination-index">
                     <a href="/page/9">9</a>
+                </li>
+                
+            
+                
+                <li class="cube-pagination-index">
+                    <a href="/page/10">10</a>
                 </li>
                 
             
@@ -666,9 +641,9 @@ System.out.println(s1 == s2);
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>89</span>文章</a>
-        <a class="count tags"><span>119</span>标签</a>
-        <a class="count categories"><span>27</span>分类</a>
+        <a class="count articles"><span>97</span>文章</a>
+        <a class="count tags"><span>126</span>标签</a>
+        <a class="count categories"><span>28</span>分类</a>
     </div>
 </div>
 
@@ -700,20 +675,13 @@ System.out.println(s1 == s2);
         <li>
             <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
             
-            
-            <div class="preview">
+            <div class="normal">
                 <p class="index first">
                     <span>1</span>
                 </p>
-                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
-                <div class="info">
-                    <p class="title">
-                        <a href="/2020/07/21/Android面试-View绘制相关/" title="Android面试-View绘制相关">Android面试-View绘制相关</a>
-                    </p>
-                    <p class="date">
-                        2020-07-21
-                    </p>
-                </div>
+                <p class="title">
+                    <a href="/2020/12/01/UML-依赖与关联关系/" title="UML-依赖与关联关系">UML-依赖与关联关系</a>
+                </p>
             </div>
             
         </li>
@@ -726,7 +694,7 @@ System.out.println(s1 == s2);
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/24/Android面试-异步消息/" title="Android面试-异步消息">Android面试-异步消息</a>
+                    <a href="/2020/12/01/UML-类与类的关系/" title="UML-类与类的关系">UML-类与类的关系</a>
                 </p>
             </div>
         </li>
@@ -739,7 +707,7 @@ System.out.println(s1 == s2);
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
+                    <a href="/2020/07/21/Android面试-View绘制相关/" title="Android面试-View绘制相关">Android面试-View绘制相关</a>
                 </p>
             </div>
         </li>
@@ -752,7 +720,7 @@ System.out.println(s1 == s2);
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
+                    <a href="/2020/06/24/Android面试-异步消息/" title="Android面试-异步消息">Android面试-异步消息</a>
                 </p>
             </div>
         </li>
@@ -765,7 +733,7 @@ System.out.println(s1 == s2);
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/27/音视频_FFMPEG简介/" title="音视频_FFMPEG简介">音视频_FFMPEG简介</a>
+                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
                 </p>
             </div>
         </li>
@@ -784,16 +752,16 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/categories/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/面试/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/Gradle/">#Gradle</a>
         </div>
         
@@ -803,18 +771,18 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/">#前端</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
@@ -829,27 +797,27 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/环境配置/">#环境配置</a>
+            <a href="/categories/UML/">#UML</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
+            <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/计划/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
@@ -858,13 +826,18 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/混合开发/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
@@ -879,32 +852,17 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+            <a href="/categories/设计模式/">#设计模式</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/音视频/">#音视频</a>
         </div>
         
         
@@ -914,7 +872,22 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/音视频/">#音视频</a>
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
     </div>
@@ -930,7 +903,12 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/Android面试/">#Android面试</a>
+            <a href="/tags/StartActivity/">#StartActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BaseActivity/">#BaseActivity</a>
         </div>
         
         
@@ -940,12 +918,7 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/StartActivity/">#StartActivity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BaseActivity/">#BaseActivity</a>
+            <a href="/tags/Android面试/">#Android面试</a>
         </div>
         
         
@@ -955,22 +928,17 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Gradle之project/">#Gradle之project</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
+            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
         </div>
         
         
@@ -980,12 +948,17 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
@@ -999,18 +972,18 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -1020,17 +993,7 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础IO/">#Java基础IO</a>
         </div>
         
         
@@ -1040,7 +1003,22 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java基础反射/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
         </div>
         
         
@@ -1049,18 +1027,33 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
+        <div class="cube-box ">
+            <a href="/tags/Java基础多态/">#Java基础多态</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Java基础字符串/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础多线程/">#Java基础多线程</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
+            <a href="/tags/Java基础泛型/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础注解/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础继承/">#Java基础继承</a>
         </div>
         
         
@@ -1069,12 +1062,12 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础异常/">#Java基础异常</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
@@ -1084,7 +1077,7 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
         </div>
         
@@ -1100,12 +1093,12 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
+            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
         
@@ -1119,12 +1112,42 @@ System.out.println(s1 == s2);
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/Markdown/">#Markdown</a>
+            <a href="/tags/Java基础集合/">#Java基础集合</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
@@ -1134,43 +1157,13 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/IntentService/">#IntentService</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/内存泄漏/">#内存泄漏</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -1180,11 +1173,21 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/数据库/">#数据库</a>
+            <a href="/tags/SSH/">#SSH</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/文件/">#文件</a>
         </div>
         
@@ -1194,7 +1197,7 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment/">#Fragment</a>
         </div>
         
@@ -1204,17 +1207,17 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/二分查找/">#二分查找</a>
         </div>
         
@@ -1229,7 +1232,12 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/混合开发/">#混合开发</a>
         </div>
         
@@ -1240,12 +1248,12 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
+            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
+            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
         </div>
         
         
@@ -1255,12 +1263,12 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
+            <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
         </div>
         
         
@@ -1269,8 +1277,13 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
+        <div class="cube-box ">
+            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1299,17 +1312,17 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressDialog/">#ProgressDialog</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
@@ -1339,23 +1352,13 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/ActionBar/">#ActionBar</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
         </div>
         
         
@@ -1369,12 +1372,12 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
@@ -1384,17 +1387,12 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
@@ -1405,11 +1403,16 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
@@ -1420,6 +1423,11 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/线程/">#线程</a>
         </div>
         
@@ -1440,11 +1448,6 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -1454,7 +1457,7 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/摄像头和相册/">#摄像头和相册</a>
         </div>
         
@@ -1469,13 +1472,28 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/文件存储/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1484,7 +1502,7 @@ System.out.println(s1 == s2);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/OkHttp/">#OkHttp</a>
         </div>
         
@@ -1500,27 +1518,17 @@ System.out.println(s1 == s2);
         
         
         <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+            <a href="/tags/设计模式单例/">#设计模式单例</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>

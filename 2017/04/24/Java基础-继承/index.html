@@ -181,26 +181,95 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="继承的特点"><a href="#继承的特点" class="headerlink" title="继承的特点"></a>继承的特点</h3><h4 id="定义继承需要注意"><a href="#定义继承需要注意" class="headerlink" title="定义继承需要注意"></a>定义继承需要注意</h4><p>不要仅为了获取其他类中某个功能而去继承，类与类之间要有所属( “is a”)关系</p>
+        <h3 id="继承的特点"><a href="#继承的特点" class="headerlink" title="继承的特点"></a>继承的特点</h3><ul>
+<li>利于代码复用</li>
+<li>缩短开发周期</li>
+</ul>
 <a id="more"></a>
-<h3 id="super关键字-amp-函数覆盖"><a href="#super关键字-amp-函数覆盖" class="headerlink" title="super关键字&amp;函数覆盖"></a>super关键字&amp;函数覆盖</h3><h4 id="函数两个特性"><a href="#函数两个特性" class="headerlink" title="函数两个特性"></a>函数两个特性</h4><ol>
+<p>描述</p>
+<ul>
+<li>一种类与类之间的关系</li>
+<li>使用已存在的类的定义作为基础建立新类</li>
+<li>新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性的继承父类</li>
+</ul>
+<p>父类：基类</p>
+<p>子类：派生类</p>
+<ul>
+<li>子类可以访问父类非私有成员</li>
+<li>父类不可以访问子类特有成员</li>
+</ul>
+<h4 id="定义继承需要注意"><a href="#定义继承需要注意" class="headerlink" title="定义继承需要注意"></a>定义继承需要注意</h4><p>不要仅为了获取其他类中某个功能而去继承，类与类之间要有所属( “is a”)关系</p>
+<h4 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h4><p>使用extends，只能继承一个父类</p>
+<h4 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h4><p>语法规则：</p>
+<ol>
+<li>返回值类型</li>
+<li>方法名</li>
+<li>参数类型、顺序、个数</li>
+</ol>
+<p>都要与父类继承的方法相同</p>
+<p>方法重写存在，属性重写不存在</p>
+<h3 id="super关键字-amp-方法重写"><a href="#super关键字-amp-方法重写" class="headerlink" title="super关键字&amp;方法重写"></a>super关键字&amp;方法重写</h3><h4 id="子类访问父类成员"><a href="#子类访问父类成员" class="headerlink" title="子类访问父类成员"></a>子类访问父类成员</h4><ul>
+<li>super.print() 父类成员方法</li>
+<li>super.name 父类属性</li>
+<li>super() 父类构造方法</li>
+</ul>
+<h4 id="函数两个特性"><a href="#函数两个特性" class="headerlink" title="函数两个特性"></a>函数两个特性</h4><ol>
 <li>重载，同一个类中</li>
 <li>覆盖，子类中，覆盖也称为重写，覆写，override</li>
 </ol>
-<h4 id="什么时候使用覆盖操作"><a href="#什么时候使用覆盖操作" class="headerlink" title="什么时候使用覆盖操作"></a>什么时候使用覆盖操作</h4><p>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以复写父类中的方法，这样，即沿袭了父类 的功能，又定义了子类特有的内容</p>
+<h4 id="方法重写与方法重载"><a href="#方法重写与方法重载" class="headerlink" title="方法重写与方法重载"></a>方法重写与方法重载</h4><p>方法重写：</p>
+<ul>
+<li>在满足继承关系的子类中</li>
+<li>返回值类型、方法名、参数类型、顺序、个数与父类相同</li>
+<li>访问修饰符的限定范围大于等于父类方法</li>
+</ul>
+<p>方法重载：</p>
+<ul>
+<li>在同一个类中</li>
+<li>方法名相同</li>
+<li>参数个数、顺序、类型不同</li>
+<li>返回值类型、访问修饰符任意</li>
+</ul>
+<h4 id="什么时候使用重写操作"><a href="#什么时候使用重写操作" class="headerlink" title="什么时候使用重写操作"></a>什么时候使用重写操作</h4><p>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以复写父类中的方法，这样，即沿袭了父类的功能，又定义了子类特有的内容</p>
 <ol>
-<li>父类中的私有方法不可以被覆盖</li>
-<li>父类为static的方法无法覆盖</li>
-<li>覆盖时，子类方法权限一定要大于等于父类方法权限</li>
+<li>父类中的私有方法不可以被重写</li>
+<li>父类为static的方法无法重写</li>
+<li>重写时，子类方法权限一定要大于等于父类方法权限</li>
+<li>重写方法的返回值应该与父类方法相同或者是父类方法返回值的子类</li>
+<li>静态方法和最终方法不能被重写。但静态方法在子类中可以通过隐藏父类方法的方式重新实现。</li>
+<li>父类的构造不能被继承、不能被重写</li>
 </ol>
 <h4 id="子父类中构造函数的特点"><a href="#子父类中构造函数的特点" class="headerlink" title="子父类中构造函数的特点"></a>子父类中构造函数的特点</h4><p>在子类构造函数执行时，发现父类构造函数也运行了。</p>
 <p>原因:在子类的构造函数中，第一行有一个默认的隐式语句:super();。</p>
 <p>注意:如果使用super(4);语句调用父类的其他构造函数，那么默认的父类构造函数将不会再被调用。</p>
+<h4 id="super"><a href="#super" class="headerlink" title="super"></a>super</h4><ul>
+<li>子类的构造的过程中必须调用其父类的构造方法</li>
+<li>如果子类的构造方法中没有没有显示调用父类的构造方法，则系统默认调用父类无参的构造方法</li>
+<li>如果子类构造方法中既没有显示调用父类的构造方法，而父类又没有无参的构造方法，则编译出错</li>
+<li>使用super调用父类指定构造方法，必须在子类的构造方法的第一行</li>
+</ul>
+<h4 id="super与this"><a href="#super与this" class="headerlink" title="super与this"></a>super与this</h4><p>this：当前对象的引用</p>
+<ul>
+<li>访问当前类的成员方法</li>
+<li>访问当前类的成员属性</li>
+<li>访问当前类的构造方法</li>
+<li>不能在静态方法中使用</li>
+</ul>
+<p>super：父类对象的引用</p>
+<ul>
+<li>访问父类的成员方法</li>
+<li>访问父类的成员属性</li>
+<li>访问父类的构造方法</li>
+<li>不能在静态方法中使用</li>
+</ul>
+<p>构造方法调用时，super与this不能同时出现</p>
 <h3 id="子类的实例化过程"><a href="#子类的实例化过程" class="headerlink" title="子类的实例化过程"></a>子类的实例化过程</h3><ol>
-<li>当父类中没有空参数的构造函数时，子类的构造函数必须通过this或者super语句指定要访问的构造函 数</li>
+<li>当父类中没有空参数的构造函数时，子类的构造函数必须通过this或者super语句指定要访问的构造函数</li>
 <li>子类构造函数中如果使用this调用了本类构造函数，那么默认的super();就没有了，因为super和this都只 能定义在第一行，所以只能有一个。但是可以保证的是，子类中肯定会有其他的构造函数访问父类的构造函数</li>
 <li>super语句必须要定义在子类构造函数的第一行!因为父类的初始化动作要先完成</li>
 </ol>
+<p><img src="2.png" alt=""></p>
+<p><img src="4.png" alt=""></p>
 <h3 id="总结-一个对象实例化过程，以Person-p-new-Person-为例"><a href="#总结-一个对象实例化过程，以Person-p-new-Person-为例" class="headerlink" title="总结 一个对象实例化过程，以Person p = new Person();为例"></a>总结 一个对象实例化过程，以Person p = new Person();为例</h3><ol>
 <li>JVM会读取指定的路径下的Person.class文件，并加载进内存，并会先加载Person的父类(如果有直接的父类的情况下)</li>
 <li>在内存中开辟空间，并分配地址</li>
@@ -211,116 +280,59 @@
 <li>再进行子类构造函数的特定初始化</li>
 <li>初始化完毕后，将地址值赋值给引用变量</li>
 </ol>
-<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><h4 id="为什么要用final修饰变量"><a href="#为什么要用final修饰变量" class="headerlink" title="为什么要用final修饰变量"></a>为什么要用final修饰变量</h4><p>在程序中如果一个数据是固定的。那么直接使用这个数据就可以了，但是这种阅读性差，所以应该给数据起个名称。而且这个变量名称的值不能变化，所以加上final固定</p>
-<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>Java中可以定义没有方法体的方法，该方法的具体实现由子类完成，该方法称为抽象方法，包含抽象方法的类就是抽象类</p>
-<h4 id="抽象类中是否有构造函数"><a href="#抽象类中是否有构造函数" class="headerlink" title="抽象类中是否有构造函数"></a>抽象类中是否有构造函数</h4><p>有，用于给子类对象进行初始化</p>
-<h4 id="抽象关键字abstract不可以和哪些关键字共存"><a href="#抽象关键字abstract不可以和哪些关键字共存" class="headerlink" title="抽象关键字abstract不可以和哪些关键字共存?"></a>抽象关键字abstract不可以和哪些关键字共存?</h4><p>private、static、final</p>
-<h4 id="抽象类中可不可以没有抽象方法"><a href="#抽象类中可不可以没有抽象方法" class="headerlink" title="抽象类中可不可以没有抽象方法"></a>抽象类中可不可以没有抽象方法</h4><p>可以，但是很少见。目的就是不让该类创建对象，AWT的适配器对象就是这种类。通常这个类中的方法 有方法体，但是却没有内容</p>
-<h4 id="抽象类和一般类的区别"><a href="#抽象类和一般类的区别" class="headerlink" title="抽象类和一般类的区别"></a>抽象类和一般类的区别</h4><p>相同点:抽象类和一般类都是用来描述事物的，都在内部定义了成员</p>
-<p>不同点:</p>
-<ol>
-<li>一般类有足够的信息描述事物。抽象类描述事物的信息有可能不足。</li>
-<li>一般类中不能定义抽象方法，只能定义非抽象方法。抽象类中可定义抽象方法，同时也可以定义非抽象方法。</li>
-<li>一般类可以被实例化。抽象类不可以被实例化。</li>
-</ol>
-<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口的出现将“多继承”通过另一种形式体现出来，即“多实现”。</p>
-<p>接口与接口之间是继承关系，而且接口可以多继承。</p>
-<h4 id="接口中的成员修饰符是固定的"><a href="#接口中的成员修饰符是固定的" class="headerlink" title="接口中的成员修饰符是固定的"></a>接口中的成员修饰符是固定的</h4><ul>
-<li>成员常量:public static final</li>
-<li>成员函数:public abstract</li>
-</ul>
-<p>由此得出结论，接口中的成员都是公共的权限。</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态性简单说就是一个对象对应着不同类型。</p>
-<p>体现：父类或者接口的引用指向或者接收自己的子类对象。</p>
-<p>好处：提高了代码的扩展性，前期定义的代码可以使用后期的内容。</p>
-<p>弊端：前期定义的内容不能使用(调用)后期子类的特有内容。</p>
-<p>注意：向上转型，将子类型隐藏。就不能使用子类的特有方法了。类型不能随意转换，否则可能会报出ClassCastException的异常。</p>
-<p>instanceof：用于判断对象的具体类型，只能用于引用数据类型判断，通常在向下转型前用于健壮性的判 断。</p>
-<h4 id="多态时，成员的特点"><a href="#多态时，成员的特点" class="headerlink" title="多态时，成员的特点"></a>多态时，成员的特点</h4><ol>
-<li>成员变量</li>
-</ol>
+<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><p>1.修饰类表示不能被继承</p>
+<p>2.修饰方法表示不允许被子类重写（可以被继承，不能修饰构造方法）</p>
+<p>3.修饰变量表示不允许被修改</p>
 <ul>
-<li>编译时:参考引用型变量所属的类中是否有调用的成员变量。有，编译通过，没有，编译失败。</li>
-<li>运行时:参考引用型变量所属的类中是否有调用的成员变量，并运行该所属类中的成员变量。</li>
-<li>简单说:编译和运行都参考等号的左边。</li>
+<li>方法内部的局部变量：在使用之前被初始化赋值即可</li>
+<li>类中成员变量：只能在定义时或构造代码块、构造方法中进行初始化</li>
+<li>基本数据类型变量：初始赋值之后不能更改</li>
+<li>引用类型变量：初始化之后不能再指向另一个对象，但指向的对象的内容是可变的</li>
 </ul>
-<ol>
-<li>成员函数(非静态)</li>
-</ol>
-<ul>
-<li>编译时:参考引用型变量所属的类中是否有调用的函数。有，编译通过。没有，编译失败。</li>
-<li>运行时:参考的是对象所属的类中是否有调用的函数。</li>
-<li>简单说:编译看左边，运行看右边。</li>
+<p>4.可以配合static使用</p>
+<p>5.使用final修饰可以提高性能，但会降低可扩展性</p>
+<h4 id="为什么要用final修饰变量"><a href="#为什么要用final修饰变量" class="headerlink" title="为什么要用final修饰变量"></a>为什么要用final修饰变量</h4><p>在程序中如果一个数据是固定的。那么直接使用这个数据就可以了，但是这种阅读性差，所以应该给数据起个名称。而且这个变量名称的值不能变化，所以加上final固定</p>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><ul>
+<li>是所有类的父类</li>
+<li>一个类没有使用extends关键字明确标识继承关系，则默认继承object类（包括数组）</li>
+<li>java中的每个类都可以使用object中定义的方法</li>
 </ul>
-<ol>
-<li>静态函数</li>
-</ol>
-<ul>
-<li>编译时:参考的是对象所属的类中是否有调用的函数。</li>
-<li>运行时:参考的是对象所属的类中是否有调用的函数。</li>
-<li>简单说:编译和运行看左边。</li>
-</ul>
-<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>分析事物时，发现该事物描述中还有事物，而且这个事物还在访问被描述事物的内容，这时候就定义 内部类。</p>
-<h4 id="内部类的位置"><a href="#内部类的位置" class="headerlink" title="内部类的位置"></a>内部类的位置</h4><p>内部类定义在成员位置上，可以被private、static成员修饰符修饰。被static修饰的内部类只能访问外部类中 的静态成员。</p>
-<p>如果内部类是静态的，相当于一个外部类。</p>
-<h4 id="如果内部类中定义了静态成员，该内部类也必须是静态的"><a href="#如果内部类中定义了静态成员，该内部类也必须是静态的" class="headerlink" title="如果内部类中定义了静态成员，该内部类也必须是静态的!"></a>如果内部类中定义了静态成员，该内部类也必须是静态的!</h4><p>解释：内部类要持有外部类的实例指针，换句话说，有外部实例才有内部类，内部类依附于外部类实例。</p>
-<p>静态成员和方法是什么意思？是独立于类实例存在的，这样就和内部类的特点有矛盾之处了：内部类是一个依附，有内部类就要有外部实例，然后静态成员是独立于实例存在的，所以两个概念不能放在一起</p>
-<h4 id="为什么内部类能直接访问外部类中的成员呢"><a href="#为什么内部类能直接访问外部类中的成员呢" class="headerlink" title="为什么内部类能直接访问外部类中的成员呢"></a>为什么内部类能直接访问外部类中的成员呢</h4><p>内部类持有了外部类的引用，外部类名.this。</p>
-<h4 id="内部类定义在局部位置上，也可以直接访问外部类中的成员"><a href="#内部类定义在局部位置上，也可以直接访问外部类中的成员" class="headerlink" title="内部类定义在局部位置上，也可以直接访问外部类中的成员"></a>内部类定义在局部位置上，也可以直接访问外部类中的成员</h4><p>同时可以访问所在局部中的局部变量，但必须是被final修饰的。</p>
-<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>前提：内部类可以继承或实现一个外部类或者接口。</p>
-<p>简单理解：就是建立一个带内容的外部类或者接口的子类匿名对象</p>
-<p>什么时候使用匿名内部类呢：通常使用方法是接口类型参数，并且该接口中的方法不超过三个，可以将匿名内部类作为参数传递。</p>
-<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><ol>
-<li>一般不可处理的:Error。是由jvm抛出的严重性问题。一般不针对性处理，直接修改程序</li>
-<li>可以处理的:Exception</li>
-</ol>
-<h4 id="Throwable中的方法"><a href="#Throwable中的方法" class="headerlink" title="Throwable中的方法"></a>Throwable中的方法</h4><ol>
-<li>getMessage():获取异常信息，返回字符串。</li>
-<li>toString():获取异常类名和异常信息，返回字符串。</li>
-<li>printStackTrace():获取异常类名和异常信息，以及异常出现在程序中的位置，返回值void。</li>
-<li>printStackTrace(PrintStream s):通常用该方法将异常内容保存在日志文件中，以便查阅。</li>
-</ol>
-<h4 id="throws和throw的区别"><a href="#throws和throw的区别" class="headerlink" title="throws和throw的区别"></a>throws和throw的区别</h4><ol>
-<li>throws用于标识函数暴露出的异常类，并且可以抛出多个，用逗号分隔。throw用于抛出异常对象。</li>
-<li>thorws用在函数上，后面跟异常类名。throw用在函数内，后面跟异常对象。</li>
-</ol>
-<h4 id="异常的分类"><a href="#异常的分类" class="headerlink" title="异常的分类"></a>异常的分类</h4><ol>
-<li>编译时被检测异常:只要是Exception和其子类都是，除了特殊子类RuntimeException体系</li>
-<li>编译时不检测异常(运行时异常):就是Exception中的RuntimeException和其子类</li>
-</ol>
-<p>自定义异常时，要么继承Exception，要么继承RuntimeException</p>
-<h4 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try catch finally"></a>try catch finally</h4><p>finally代码块只有一种情况不会被执行，就是在之前执行了System.exit(0)。</p>
-<p>处理过程：</p>
-<ul>
-<li>try中检测到异常会将异常对象传递给catch，catch捕获到异常进行处理。</li>
-<li>finally里通常用来关闭资源。比如:数据库资源，IO资源等。</li>
-<li>需要注意:try是一个独立的代码块，在其中定义的变量只在该变量块中有效。</li>
-<li>如果在try以外继续使用，需要在try外建立引用，在try中对其进行初始化。IO，Socket就会遇到。</li>
-</ul>
-<h4 id="异常处理的原则"><a href="#异常处理的原则" class="headerlink" title="异常处理的原则"></a>异常处理的原则</h4><ol>
-<li>函数内容如果抛出需要检测的异常，那么函数上必须要声明。否则，必须在函数内用try/catch捕捉，否则编译失败。</li>
-<li>如果调用到了声明异常的函数，要么try/catch，要么throws，否则编译失败。</li>
-<li>什么时候catch，什么时候throws呢?功能内容可以解决，用catch。解决不了，用throws告诉调用者，由调用者解决。</li>
-<li>一个功能如果抛出了多个异常，那么调用时，必须有对应多个catch进行针对性处理。内部有几个需要检测的异常，就抛几个异常，抛出几个，就catch几个。</li>
-</ol>
-<h4 id="try-catch-finally-代码块组合特点"><a href="#try-catch-finally-代码块组合特点" class="headerlink" title="try catch finally 代码块组合特点"></a>try catch finally 代码块组合特点</h4><ol>
-<li>try catch finally</li>
-<li>try catch(多个):当没有资源需要释放时，可以不用定义finally。</li>
-<li>try finally:异常无法直接catch处理，但是资源必须关闭。</li>
-</ol>
-<h4 id="异常的注意事项"><a href="#异常的注意事项" class="headerlink" title="异常的注意事项"></a>异常的注意事项</h4><ol>
-<li>RuntimeException以及其子类如果在函数中被throw抛出，可以不用在函数上声明</li>
-<li>子类在覆盖父类方法时，父类的方法如果抛出了异常，那么子类的方法只能抛出父类的异常或者该异常的子类</li>
-<li>如果父类抛出多个异常，那么子类只能抛出父类异常的子集</li>
-</ol>
-<p>子类覆盖父类只能抛出父类的异常或者子类的子集。如果父类的方法没有抛出异常，那么子类覆盖时绝对不能抛，就只能try。</p>
-<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p>==以及Object类的equals方法默认都是根据对象的哈希值判断两个对象是否相等。</p>
+<p><img src="5.png" alt=""></p>
+<p>==以及Object类的equals方法默认都是根据对象的哈希值判断两个对象是否相等。</p>
 <p>Object类的toString方法默认返回的内容是“对象所属的类名+@+对象的哈希值(十六进制)”。</p>
-<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>包与包之间的类进行访问，被访问的包中的类必须是public的，被访问的包中的类的方法也必须是public的。</p>
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><ul>
+<li>管理java文件</li>
+<li>解决同名文件冲突</li>
+</ul>
+<h4 id="定义包"><a href="#定义包" class="headerlink" title="定义包"></a>定义包</h4><p>语法：</p>
+<p>package 包名</p>
+<p>注意：</p>
+<ul>
+<li>必须放在java源文件中的第一行</li>
+<li>一个java源文件中只能有一个package语句</li>
+<li>包名全部英文小写</li>
+<li>命名方式：域名倒序+模块+功能</li>
+</ul>
+<h4 id="包名的推荐命名规范"><a href="#包名的推荐命名规范" class="headerlink" title="包名的推荐命名规范"></a>包名的推荐命名规范</h4><ul>
+<li>英文字母小写</li>
+<li>域名的倒写</li>
+<li>每个包内存储信息功能单一</li>
+</ul>
+<h4 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h4><p>语法：</p>
+<p>import 包名.类名（提高效率）</p>
+<p>import 包名.* 只能访问指定包下的类，无法访问子包下的类</p>
+<h4 id="常用系统包"><a href="#常用系统包" class="headerlink" title="常用系统包"></a>常用系统包</h4><ul>
+<li>java.lang 包含java语言基础的类（默认导入）</li>
+<li>java.util 包含java语言中各种工具类</li>
+<li>java.io 包含输入、输出相关功能的类</li>
+</ul>
+<p>import只是告诉编译器及解释器哪里可以找到类、变量、方法的定义，而没有将这些定义引入到代码中</p>
+<p>包与包之间的类进行访问，被访问的包中的类必须是public的，被访问的包中的类的方法也必须是public的。</p>
 <p>包之间的访问:被访问的包中的类权限必须是public的。</p>
 <p>类中的成员权限:public或者protected。</p>
 <p>protected是为其他包中的子类提供的一种权限。</p>
-<p><img src="1.png" alt=""></p>
+<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><p><img src="1.png" alt=""></p>
+<p><img src="3.png" alt=""></p>
 
     </div>
 </div>
@@ -329,9 +341,9 @@
     <ul>
         
         <li class="prev">
-            <a href="/2017/04/25/Java基础-多线程/">
+            <a href="/2017/04/24/Java基础-多态/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Java基础-多线程
+                Java基础-多态
             </a>
         </li>
         
@@ -414,9 +426,9 @@
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>89</span>文章</a>
-        <a class="count tags"><span>119</span>标签</a>
-        <a class="count categories"><span>27</span>分类</a>
+        <a class="count articles"><span>97</span>文章</a>
+        <a class="count tags"><span>126</span>标签</a>
+        <a class="count categories"><span>28</span>分类</a>
     </div>
 </div>
 
@@ -448,20 +460,13 @@
         <li>
             <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
             
-            
-            <div class="preview">
+            <div class="normal">
                 <p class="index first">
                     <span>1</span>
                 </p>
-                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
-                <div class="info">
-                    <p class="title">
-                        <a href="/2020/07/21/Android面试-View绘制相关/" title="Android面试-View绘制相关">Android面试-View绘制相关</a>
-                    </p>
-                    <p class="date">
-                        2020-07-21
-                    </p>
-                </div>
+                <p class="title">
+                    <a href="/2020/12/01/UML-依赖与关联关系/" title="UML-依赖与关联关系">UML-依赖与关联关系</a>
+                </p>
             </div>
             
         </li>
@@ -474,7 +479,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/24/Android面试-异步消息/" title="Android面试-异步消息">Android面试-异步消息</a>
+                    <a href="/2020/12/01/UML-类与类的关系/" title="UML-类与类的关系">UML-类与类的关系</a>
                 </p>
             </div>
         </li>
@@ -487,7 +492,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
+                    <a href="/2020/07/21/Android面试-View绘制相关/" title="Android面试-View绘制相关">Android面试-View绘制相关</a>
                 </p>
             </div>
         </li>
@@ -500,7 +505,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
+                    <a href="/2020/06/24/Android面试-异步消息/" title="Android面试-异步消息">Android面试-异步消息</a>
                 </p>
             </div>
         </li>
@@ -513,7 +518,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/27/音视频_FFMPEG简介/" title="音视频_FFMPEG简介">音视频_FFMPEG简介</a>
+                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
                 </p>
             </div>
         </li>
@@ -532,12 +537,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/面试/">#面试</a>
+            <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Android基础/">#Android基础</a>
+            <a href="/categories/面试/">#面试</a>
         </div>
         
         
@@ -551,18 +556,18 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端/">#前端</a>
         </div>
         
         
@@ -576,22 +581,17 @@
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/categories/VPS/">#VPS</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/Android优化/">#Android优化</a>
         </div>
         
@@ -602,17 +602,27 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
+            <a href="/categories/环境配置/">#环境配置</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/星球Android入门/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/数据结构与算法/">#数据结构与算法</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/混合开发/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
@@ -626,18 +636,28 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
+            <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面试记录/">#面试记录</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
         </div>
         
         
@@ -655,16 +675,6 @@
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
     </div>
 </div>
 
@@ -678,16 +688,6 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Android面试/">#Android面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
@@ -698,17 +698,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Bitmap/">#Bitmap</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
+            <a href="/tags/Android多语言/">#Android多语言</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
+            <a href="/tags/Android面试/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Bitmap/">#Bitmap</a>
         </div>
         
         
@@ -718,7 +718,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
+            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
         </div>
         
         
@@ -727,13 +732,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
+        <div class="cube-box ">
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
@@ -747,23 +757,8 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
         </div>
         
         
@@ -772,13 +767,18 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Java基础IO/">#Java基础IO</a>
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
@@ -788,7 +788,22 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础反射/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
         </div>
         
         
@@ -798,27 +813,42 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
+            <a href="/tags/Java基础多态/">#Java基础多态</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Java基础字符串/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Java基础多线程/">#Java基础多线程</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
+            <a href="/tags/Java基础泛型/">#Java基础泛型</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Java基础注解/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础继承/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础异常/">#Java基础异常</a>
         </div>
         
         
@@ -827,7 +857,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
         </div>
         
@@ -848,12 +878,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
+            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
         
@@ -868,22 +898,17 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础集合/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
@@ -897,13 +922,28 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/UML/">#UML</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/单例模式/">#单例模式</a>
+            <a href="/tags/定时任务/">#定时任务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
@@ -913,21 +953,21 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/数据库/">#数据库</a>
         </div>
         
@@ -947,12 +987,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
@@ -978,17 +1018,17 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/混合开发/">#混合开发</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/热修复插件化之ClassLoader/">#热修复插件化之ClassLoader</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
         </div>
         
         
@@ -998,12 +1038,12 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
+            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
+            <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
         </div>
         
         
@@ -1013,12 +1053,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之版本管理/">#热修复插件化之版本管理</a>
+            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
+            <a href="/tags/热修复插件化之版本管理/">#热修复插件化之版本管理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1027,17 +1077,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/EditText/">#EditText</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
@@ -1057,37 +1107,37 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LinearLayout/">#LinearLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/RelativeLayout/">#RelativeLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TableLayout/">#TableLayout</a>
         </div>
         
@@ -1098,16 +1148,6 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -1127,28 +1167,28 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -1162,8 +1202,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -1182,13 +1227,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -1207,7 +1247,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
@@ -1218,12 +1258,27 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/面试/">#面试</a>
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1248,27 +1303,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+            <a href="/tags/设计模式单例/">#设计模式单例</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>

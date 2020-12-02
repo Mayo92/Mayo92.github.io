@@ -182,19 +182,102 @@
     <div class="cube-article-content cube-markdown">
         
         <h3 id="多线程的概念"><a href="#多线程的概念" class="headerlink" title="多线程的概念"></a>多线程的概念</h3><p>System类的gc方法告诉垃圾回收器调用finalize方法，但不一定立即执行。</p>
+<h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><ul>
+<li>创建一个Thread类，或者一个Thread子类的对象</li>
+<li>创建一个实现Runnable接口的类的对象</li>
+<li>实现callable接口，重写call()方法，call()作为线程的执行体，具有返回值，并且可以对异常进行声明和抛出；使用start()方法来启动线程</li>
+</ul>
 <a id="more"></a>
+<h3 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h3><p>Thread是一个线程类，位于java.lang包下</p>
+<p><img src="11.png" alt=""></p>
+<p>常用方法:</p>
+<p><img src="12.png" alt=""></p>
 <p>可以通过Thread的getName方法获取线程的名称，名称格式:Thread-编号(从0开始)。Thread在创建的时候，该Thread就已经命名了</p>
+<h3 id="Runnable接口"><a href="#Runnable接口" class="headerlink" title="Runnable接口"></a>Runnable接口</h3><ul>
+<li>只有一个方法run()</li>
+<li>Runnable是Java中用以实现线程的接口</li>
+<li>任何实现线程功能的类都必须实现该接口</li>
+</ul>
 <h4 id="实现Runnable接口创建线程"><a href="#实现Runnable接口创建线程" class="headerlink" title="实现Runnable接口创建线程"></a>实现Runnable接口创建线程</h4><p>好处：</p>
 <ol>
 <li>将线程的任务从线程的子类中分离出来，进行了单独的封装，按照面向对象的思想将任务封装成对象。</li>
 <li>避免了Java单继承的局限性。所以，创建线程的这种方式较为常用。</li>
 </ol>
+<h4 id="为什么要实现Runnable接口"><a href="#为什么要实现Runnable接口" class="headerlink" title="为什么要实现Runnable接口"></a>为什么要实现Runnable接口</h4><ul>
+<li>Java不支持多继承</li>
+<li>不打算重写Thread类的其他方法</li>
+</ul>
+<h3 id="callable接口"><a href="#callable接口" class="headerlink" title="callable接口"></a>callable接口</h3><ul>
+<li>创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值</li>
+<li>创建Callable实现类的实例，使用FutureTask类来包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值</li>
+<li>使用FutureTask对象作为Thread对象的target创建并启动新线程</li>
+<li>调用FutureTask对象的get()方法来获得子线程执行结束后的返回值</li>
+</ul>
+<p><img src="15.png" alt=""></p>
+<p><img src="16.png" alt=""></p>
+<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><ul>
+<li>新建（New）</li>
+<li>可运行（Runnable）</li>
+<li>正在运行（Running）</li>
+<li>阻塞（Blocked）</li>
+<li>终止（Dead） </li>
+</ul>
+<h3 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h3><p><img src="13.png" alt=""></p>
+<h3 id="sleep方法应用"><a href="#sleep方法应用" class="headerlink" title="sleep方法应用"></a>sleep方法应用</h3><ul>
+<li>Thread类的方法，public static void sleep(long millis)</li>
+<li>作用：在指定的毫秒数内让正在执行的线程休眠（暂停执行）</li>
+<li>参数为休眠的时间，单位是毫秒</li>
+</ul>
+<h3 id="join方法应用"><a href="#join方法应用" class="headerlink" title="join方法应用"></a>join方法应用</h3><p>Thread类的方法，public final void join()</p>
+<ul>
+<li>作用：等待调用该方法的线程结束后才能执行</li>
+</ul>
+<p>Thread类的方法，public final void join(long millis)</p>
+<ul>
+<li>作用：等待该线程终止的最长时间为millis毫秒。</li>
+<li>如果millis为0则意味着要一直等下去。</li>
+</ul>
+<p><img src="7.png" alt=""></p>
+<h3 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h3><ul>
+<li>Java为线程类提供了10个优先级</li>
+<li>优先级可以用整数1-10表示，超过范围会抛出异常</li>
+<li>主线程默认优先级为5</li>
+</ul>
+<p>优先级常量</p>
+<ul>
+<li>MAX_PRIORITY：线程的最高优先级10</li>
+<li>MIN_PRIORITY：线程的最低优先级1</li>
+<li>NORM_PRIORITY：线程的默认优先级5</li>
+</ul>
+<p>优先级相关的方法</p>
+<p><img src="14.png" alt=""></p>
+<p><img src="8.png" alt=""></p>
+<h3 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h3><p>任务中通常都会有循环结构，只要控制住循环就可以结束任务。</p>
+<p>如果线程处于冻结状态，无法读取标记，可以使用interrupt方法将线程从冻结状态强制恢复到运行状态中来，让线程具备CPU的执行资格，强制会发生InterruptException，记得处理</p>
+<p><img src="5.png" alt=""></p>
+<h3 id="线程类的其他方法"><a href="#线程类的其他方法" class="headerlink" title="线程类的其他方法"></a>线程类的其他方法</h3><p>setDaemon方法</p>
+<p><img src="6.png" alt=""></p>
+<p>toString方法</p>
+<p><img src="9.png" alt=""></p>
+<p>yield方法</p>
+<p><img src="10.png" alt=""></p>
+<h3 id="多线程运行问题"><a href="#多线程运行问题" class="headerlink" title="多线程运行问题"></a>多线程运行问题</h3><ul>
+<li>各个线程是通过竞争CPU时间而获得运行机会的</li>
+<li>各线程什么时候得到CPU时间，占用多久，是不可预测的</li>
+<li>一个正在运行着的线程在什么地方被暂停是不确定的</li>
+</ul>
 <h3 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h3><h4 id="产生的原因"><a href="#产生的原因" class="headerlink" title="产生的原因"></a>产生的原因</h4><ol>
 <li>多个线程在操作共享的数据</li>
 <li>操作共享数据的线程代码有多条</li>
 </ol>
 <p>当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算，就会导致线程安全问题的产生。</p>
 <h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>思路：就是将多条操作共享数据的线程代码封装起来，当有线程在执行这些代码的时候，其他线程不可以参与运算。必须要当前线程把这些代码都执行完毕后，其他线程才可以参与运算。</p>
+<p>synchronized关键字用在</p>
+<ul>
+<li>成员方法</li>
+<li>静态方法</li>
+<li>语句块</li>
+</ul>
 <p>Java同步代码块的格式：</p>
 <pre><code>synchronized(对象){
     需要被同步的代码;
@@ -284,19 +367,6 @@ synchronized(sharedObject) {
 </ul>
 <p>示例：使用一个Lock、两个Condition</p>
 <p><img src="4.png" alt=""></p>
-<h4 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h4><p>任务中通常都会有循环结构，只要控制住循环就可以结束任务。</p>
-<p>如果线程处于冻结状态，无法读取标记，可以使用interrupt方法将线程从冻结状态强制恢复到运行状态中来，让线程具备CPU的执行资格，强制会发生InterruptException，记得处理</p>
-<p><img src="5.png" alt=""></p>
-<h4 id="线程类的其他方法"><a href="#线程类的其他方法" class="headerlink" title="线程类的其他方法"></a>线程类的其他方法</h4><p>setDaemon方法</p>
-<p><img src="6.png" alt=""></p>
-<p>join方法</p>
-<p><img src="7.png" alt=""></p>
-<p>setPriority方法</p>
-<p><img src="8.png" alt=""></p>
-<p>toString方法</p>
-<p><img src="9.png" alt=""></p>
-<p>yield方法</p>
-<p><img src="10.png" alt=""></p>
 
     </div>
 </div>
@@ -305,16 +375,16 @@ synchronized(sharedObject) {
     <ul>
         
         <li class="prev">
-            <a href="/2017/04/26/Java基础-集合/">
+            <a href="/2017/04/26/Java基础-字符串/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Java基础-集合
+                Java基础-字符串
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2017/04/24/Java基础-继承/">
-                Java基础-继承
+            <a href="/2017/04/24/Java基础-包装类/">
+                Java基础-包装类
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -390,9 +460,9 @@ synchronized(sharedObject) {
     <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
     
     <div class="count">
-        <a class="count articles"><span>89</span>文章</a>
-        <a class="count tags"><span>119</span>标签</a>
-        <a class="count categories"><span>27</span>分类</a>
+        <a class="count articles"><span>97</span>文章</a>
+        <a class="count tags"><span>126</span>标签</a>
+        <a class="count categories"><span>28</span>分类</a>
     </div>
 </div>
 
@@ -424,20 +494,13 @@ synchronized(sharedObject) {
         <li>
             <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
             
-            
-            <div class="preview">
+            <div class="normal">
                 <p class="index first">
                     <span>1</span>
                 </p>
-                <div class="image" style="background-image: url(http://ouo1ro65u.bkt.clouddn.com/图片预览.png);"></div>
-                <div class="info">
-                    <p class="title">
-                        <a href="/2020/07/21/Android面试-View绘制相关/" title="Android面试-View绘制相关">Android面试-View绘制相关</a>
-                    </p>
-                    <p class="date">
-                        2020-07-21
-                    </p>
-                </div>
+                <p class="title">
+                    <a href="/2020/12/01/UML-依赖与关联关系/" title="UML-依赖与关联关系">UML-依赖与关联关系</a>
+                </p>
             </div>
             
         </li>
@@ -450,7 +513,7 @@ synchronized(sharedObject) {
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/24/Android面试-异步消息/" title="Android面试-异步消息">Android面试-异步消息</a>
+                    <a href="/2020/12/01/UML-类与类的关系/" title="UML-类与类的关系">UML-类与类的关系</a>
                 </p>
             </div>
         </li>
@@ -463,7 +526,7 @@ synchronized(sharedObject) {
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
+                    <a href="/2020/07/21/Android面试-View绘制相关/" title="Android面试-View绘制相关">Android面试-View绘制相关</a>
                 </p>
             </div>
         </li>
@@ -476,7 +539,7 @@ synchronized(sharedObject) {
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2020/01/08/音视频-FFMPEG常用命令/" title="音视频_FFMPEG常用命令">音视频_FFMPEG常用命令</a>
+                    <a href="/2020/06/24/Android面试-异步消息/" title="Android面试-异步消息">Android面试-异步消息</a>
                 </p>
             </div>
         </li>
@@ -489,7 +552,7 @@ synchronized(sharedObject) {
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/27/音视频_FFMPEG简介/" title="音视频_FFMPEG简介">音视频_FFMPEG简介</a>
+                    <a href="/2020/06/03/Android面试-基础/" title="Android面试-基础">Android面试-基础</a>
                 </p>
             </div>
         </li>
@@ -508,12 +571,12 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/categories/面试/">#面试</a>
+            <a href="/categories/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/Android基础/">#Android基础</a>
+            <a href="/categories/面试/">#面试</a>
         </div>
         
         
@@ -527,12 +590,7 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/服务器搭建/">#服务器搭建</a>
         </div>
         
@@ -543,6 +601,11 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
@@ -553,7 +616,22 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Android优化/">#Android优化</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/计划/">#计划</a>
         </div>
         
         
@@ -563,21 +641,6 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Android优化/">#Android优化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/星球Android入门/">#星球Android入门</a>
         </div>
         
@@ -592,23 +655,18 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/热修复插件化/">#热修复插件化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        <div class="cube-box ">
+            <a href="/categories/热修复插件化/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/">#第一行代码</a>
         </div>
         
         
@@ -618,6 +676,26 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/设计模式/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/音视频/">#音视频</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面试记录/">#面试记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
         </div>
         
@@ -627,18 +705,8 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
+            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
     </div>
@@ -653,28 +721,38 @@ synchronized(sharedObject) {
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Android面试/">#Android面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android多语言/">#Android多语言</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/StartActivity/">#StartActivity</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/BaseActivity/">#BaseActivity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android多语言/">#Android多语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android面试/">#Android面试</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Bitmap/">#Bitmap</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle之project/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
         </div>
         
         
@@ -684,32 +762,22 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
+            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
+            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
@@ -728,13 +796,13 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Html/">#Html</a>
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
         </div>
         
         
@@ -743,38 +811,48 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler两种使用方法/">#Handler两种使用方法</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Java基础IO/">#Java基础IO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java初识/">#Java初识</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Java基础反射/">#Java基础反射</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础语法/">#Java基础语法</a>
+            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
+            <a href="/tags/Java基础语法/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础多态/">#Java基础多态</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础字符串/">#Java基础字符串</a>
         </div>
         
         
@@ -784,7 +862,17 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
+            <a href="/tags/Java基础泛型/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java基础注解/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java基础继承/">#Java基础继承</a>
         </div>
         
         
@@ -794,7 +882,7 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
+            <a href="/tags/Java基础异常/">#Java基础异常</a>
         </div>
         
         
@@ -808,12 +896,12 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
         </div>
         
@@ -824,7 +912,22 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
+            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
         </div>
         
         
@@ -833,18 +936,33 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
+        <div class="cube-box ">
+            <a href="/tags/Java基础集合/">#Java基础集合</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service启动模式/">#Service启动模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/定时任务/">#定时任务</a>
         </div>
         
         
@@ -864,27 +982,17 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Service启动模式/">#Service启动模式</a>
+            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/IntentService/">#IntentService</a>
+            <a href="/tags/书/">#书</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/单例模式/">#单例模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/内存泄漏/">#内存泄漏</a>
         </div>
         
         
@@ -894,16 +1002,6 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/定时任务/">#定时任务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/数据库/">#数据库</a>
         </div>
         
@@ -933,7 +1031,7 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Service/">#Service</a>
         </div>
         
@@ -954,6 +1052,11 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/混合开发/">#混合开发</a>
         </div>
         
@@ -964,12 +1067,12 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
+            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
+            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
         </div>
         
         
@@ -978,23 +1081,28 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/热修复插件化之版本管理/">#热修复插件化之版本管理</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
+            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
         </div>
         
         
@@ -1013,12 +1121,12 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ProgressBar/">#ProgressBar</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -1028,7 +1136,7 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -1043,7 +1151,7 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FrameLayout/">#FrameLayout</a>
         </div>
         
@@ -1053,12 +1161,12 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
         </div>
         
@@ -1074,16 +1182,6 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/隐式Intent/">#隐式Intent</a>
         </div>
         
@@ -1093,17 +1191,17 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Broadcast/">#Broadcast</a>
         </div>
         
@@ -1113,22 +1211,22 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/ListView/">#ListView</a>
         </div>
         
@@ -1138,8 +1236,13 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
         
@@ -1164,11 +1267,6 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Notification/">#Notification</a>
         </div>
         
@@ -1188,18 +1286,33 @@ synchronized(sharedObject) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
+            <a href="/tags/数据存储/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/面试/">#面试</a>
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
         
@@ -1224,27 +1337,17 @@ synchronized(sharedObject) {
         
         
         <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
+            <a href="/tags/设计模式单例/">#设计模式单例</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面试/">#面试</a>
         </div>
         
     </div>
