@@ -1,1487 +1,862 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Mayo">
     
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
     <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+<meta property="og:type" content="website">
+<meta property="og:title" content="妙妙屋">
+<meta property="og:url" content="http://yoursite.com/page/10/index.html">
+<meta property="og:site_name" content="妙妙屋">
+<meta property="og:description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="妙妙屋">
+<meta name="twitter:description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
     
+        <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
-    
-    
-    
-    
-    <title>妙妙屋</title>
-    <!-- inject:style -->
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <!-- endinject -->
-    <style>
-        .cube-loading {
-            top: 0;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('/images/lg/loading.gif') no-repeat center center;
-            background-color: rgba(0,0,0,.7);
-        }
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-        .cube-loading.out {
-            display: none;
-        }
-
-        .cube-loading:before {
-            display: block;
-            content: '加载中';
-            position: relative;
-            width: 100%;
-            top: 50%;
-            right: -50%;
-            color: #fff;
-        }
-
-        @media(max-width: 768px) {
-            .cube-loading:before {
-                font-size: 1.2em;
-                transform: translate(-24px,20px);
-                -webkit-transform: translate(-24px,20px);
-                -o-transform: translate(-24px,20px);
-                -ms-transform: translate(-24px,20px);
-            }
-        }
-
-        @media(min-width: 768px) {
-            .cube-loading:before {
-
-            }
-        }
-    </style>
+    <!-- custom head -->
     
+
 </head>
+
 <body>
-<div class="cube-body">
-    <nav id="cube-top-memu" class="cube-menu">
-    <ul class="cube-menu-collapse">
-        
-        <li>
-            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
-            <a href="/">首页</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
-            <a href="/archives">归档</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
-            <a href="/categories">分类</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
-            <a href="/tags">标签</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
-            <a href="/about-me">关于我</a>
-        </li>
-        
-    </ul>
-</nav>
-<nav class="cube-side-menu" id="cube-side-menu">
-    <ul class="cube-menu-list">
-        
-        <li>
-            <a class="lrc-control">开启歌词</a>
-        </li>
-        
-        <li>
-            <a class="scroll-to-top">回到顶部</a>
-        </li>
-    </ul>
-</nav>
-    <header class="cube-header" id="cube-header">
-    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
-    
-    <div class="cube-type">
-        <span class="cube-typed-title">Mayoの妙妙屋</span>
-        <span class="cube-typed-cursor">|</span>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mayo</h5>
+          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
+        </hgroup>
+      </div>
     </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">妙妙屋</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">妙妙屋</h1>
+        <h5 class="subtitle">
+            
+                ass♂we♂can
+            
+        </h5>
+    </div>
+
     
+
+
 </header>
 
-    <style>
-        nav.cube-menu:before {
-            content: '';
-            visibility: hidden;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 44px;
-        
-            filter: blur(5px);
-            -webkit-filter: blur(5px);
-        
-            z-index: -1;
-            background-image: url('/images/brand3.png');
-            background-repeat: no-repeat;
-            background-position: center -236px;
-            background-size: cover;
-            background-color: transparent;
-        }
+<div class="container body-wrap">
 
-        header.cube-background.cube-header-background {
-            visibility: hidden;
-            background-image: url('/images/brand3.png');
-            background-position: center -280px;
-        }
-    </style>
-    <header class="cube-background cube-header-background">
-        
-        <div class="cube-type">
-            <span class="cube-typed-title">Mayoの妙妙屋</span>
-            <span class="cube-typed-cursor">|</span>
-        </div>
-        
-    </header>
-    <div class="load-header-background"></div>
-    <script>
-        (function (window) {
-
-            window.headerModule = {}
-            window.headerModule.image = {
-                width: '500',
-                height: '352'
-            }
-
-        })(window)
-    </script>
+    <ul class="post-list">
     
-    <div class="cube-content">
-        <div class="cube-left">
-            
-<div class="cube-excerpt" id="cube-excerpt-Java基础-面向对象">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/23/Java基础-面向对象/">Java基础-面向对象</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-23
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java基础面向对象/" class="cube-excerpt-tag-link">#Java基础面向对象</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="面向对象概念"><a href="#面向对象概念" class="headerlink" title="面向对象概念"></a>面向对象概念</h3><h4 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h4><p>万物皆对象、客观存在的事物</p>
-<p>对象：用来描述客观事物的一个实体，由一组属性和方法构成</p>
-<h4 id="什么是面向对象"><a href="#什么是面向对象" class="headerlink" title="什么是面向对象"></a>什么是面向对象</h4><p>人关注对象，人关注事物信息</p>
-<h4 id="面向对象的特征"><a href="#面向对象的特征" class="headerlink" title="面向对象的特征"></a>面向对象的特征</h4><ol>
-<li>封装(encapsulation)</li>
-<li>继承(inheritance)</li>
-<li>多态(polymorphism)</li>
-</ol>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/23/Java基础-面向对象/">阅读全文</a>
-    </footer>
-</div>
+        <li class="post-list-item fade">
+            <article id="post-Java基础-面向对象"
+  class="article-card article-type-post" itemprop="blogPost">
 
-<div class="cube-excerpt" id="cube-excerpt-Java基础-基础语法">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/22/Java基础-基础语法/">Java基础-基础语法</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-22
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java基础语法/" class="cube-excerpt-tag-link">#Java基础语法</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
-<li>标识符可以由字母、数字、下划线(_)和美元符($)组成，不能以数字开头</li>
-<li>标识符严格区分大小写</li>
-<li>标识符不能是Java关键字和保留字</li>
-<li>标识符的命名最好能反映出其作用</li>
-</ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/22/Java基础-基础语法/">阅读全文</a>
-    </footer>
-</div>
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-23 16:15:55" datetime="2017-04-23T08:15:55.000Z"  itemprop="datePublished">2017-04-23</time>
 
-<div class="cube-excerpt" id="cube-excerpt-Java基础-初识">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/21/Java基础-初识/">Java基础-初识</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-21
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Java初识/" class="cube-excerpt-tag-link">#Java初识</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
         
-        
-           <h2 id="Java简介"><a href="#Java简介" class="headerlink" title="Java简介"></a>Java简介</h2><p>一门面向对象的程序设计语言</p>
-<h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><p>Java Virtual Machine，Java虚拟机，JVM是Java平台无关性实现的关键。</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/21/Java基础-初识/">阅读全文</a>
-    </footer>
-</div>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java基础/">Java基础</a></li></ul>
 
-<div class="cube-excerpt" id="cube-excerpt-面试记录">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/11/面试记录/">面试记录</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-11
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/面试/" class="cube-excerpt-tag-link">#面试</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="要看的"><a href="#要看的" class="headerlink" title="要看的"></a>要看的</h3><ul>
-<li>弘扬 https完全解析 okhttp封装</li>
-<li>uil 的imageloadconfigration调用的是getapplication的context</li>
-<li>ist array list</li>
-<li>注解 反射 IO</li>
-<li>布局一律用小写加下划线</li>
-<li>android中，用add的一般可以重复添加，set会覆盖之前的值</li>
-</ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/11/面试记录/">阅读全文</a>
-    </footer>
-</div>
 
-<div class="cube-excerpt" id="cube-excerpt-学习计划">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/10/学习计划/">学习计划</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-10
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Plan/" class="cube-excerpt-tag-link">#Plan</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="星球学习计划"><a href="#星球学习计划" class="headerlink" title="星球学习计划"></a>星球学习计划</h3><ul>
-<li>Android入门</li>
-<li>Android高级</li>
-<li>Android专家</li>
-<li>Web基础</li>
-<li>Flutter</li>
-<li>ReactNative</li>
-<li>小程序</li>
-<li>Java后端</li>
-</ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/10/学习计划/">阅读全文</a>
-    </footer>
-</div>
 
-<div class="cube-excerpt" id="cube-excerpt-书单">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/09/书单/">书单</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-09
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/书/" class="cube-excerpt-tag-link">#书</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="Android书"><a href="#Android书" class="headerlink" title="Android书"></a>Android书</h3><ul>
-<li>第一行代码（第一版）</li>
-<li>Android编程权威指南（第二版）</li>
-<li>第一行代码（第二版）</li>
-<li>Android编程权威指南（第三版）</li>
-<li>Android群英传</li>
-<li>Android开发进阶从小工到专家</li>
-<li>Android应用开发进阶</li>
-<li>Android进阶之光</li>
-<li>Android进阶解密</li>
-<li>Android高级进阶</li>
-<li>Android开发艺术探索</li>
-<li>Android组件化架构</li>
-<li>深入理解Android内核设计思想</li>
-<li>Android音视频开发</li>
-</ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/09/书单/">阅读全文</a>
-    </footer>
-</div>
+    </div>
 
-<div class="cube-excerpt" id="cube-excerpt-VPS">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/08/VPS/">VPS</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-08
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/VPS/" class="cube-excerpt-tag-link">#VPS</a>
-                
-                <a href="/tags/SSR/" class="cube-excerpt-tag-link">#SSR</a>
-                
-                <a href="/tags/VPN/" class="cube-excerpt-tag-link">#VPN</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p><em>vultr到期后换了Hostwinds</em></p>
-<h3 id="购买教程"><a href="#购买教程" class="headerlink" title="购买教程"></a>购买教程</h3><p><a href="https://www.vps234.com/hostwinds-purchase-tutorial/" target="_blank" rel="noopener">https://www.vps234.com/hostwinds-purchase-tutorial/</a></p>
-<h3 id="购买后"><a href="#购买后" class="headerlink" title="购买后"></a>购买后</h3><p><a href="https://www.vps234.com/usa-vps-hostwinds-tutorials-after-purchase/" target="_blank" rel="noopener">https://www.vps234.com/usa-vps-hostwinds-tutorials-after-purchase/</a></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/08/VPS/">阅读全文</a>
-    </footer>
-</div>
+    
 
-<div class="cube-excerpt" id="cube-excerpt-Markdown">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/07/Markdown/">Markdown</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-07
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Markdown/" class="cube-excerpt-tag-link">#Markdown</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/23/Java基础-面向对象/">Java基础-面向对象</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        面向对象概念什么是对象万物皆对象、客观存在的事物
+对象：用来描述客观事物的一个实体，由一组属性和方法构成
+什么是面向对象人关注对象，人关注事物信息
+面向对象的特征
+封装(encapsulation)
+继承(inheritance)
+多态(polymorphism)
+
+    
+
+        <a href="/2017/04/23/Java基础-面向对象/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
         
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础面向对象/">Java基础面向对象</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java基础-基础语法"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-22 16:15:55" datetime="2017-04-22T08:15:55.000Z"  itemprop="datePublished">2017-04-22</time>
+
         
-           <p><em>基于MacDown</em></p>
-<h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><pre><code>粗体 **xxx** 
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java基础/">Java基础</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/22/Java基础-基础语法/">Java基础-基础语法</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        标识符命名规则
+标识符可以由字母、数字、下划线(_)和美元符($)组成，不能以数字开头
+标识符严格区分大小写
+标识符不能是Java关键字和保留字
+标识符的命名最好能反映出其作用
+
+    
+
+        <a href="/2017/04/22/Java基础-基础语法/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础语法/">Java基础语法</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java基础-初识"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-21 16:15:55" datetime="2017-04-21T08:15:55.000Z"  itemprop="datePublished">2017-04-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java基础/">Java基础</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/21/Java基础-初识/">Java基础-初识</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Java简介一门面向对象的程序设计语言
+JVMJava Virtual Machine，Java虚拟机，JVM是Java平台无关性实现的关键。
+    
+
+        <a href="/2017/04/21/Java基础-初识/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java初识/">Java初识</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-面试记录"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-11 14:31:43" datetime="2017-04-11T06:31:43.000Z"  itemprop="datePublished">2017-04-11</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/面试记录/">面试记录</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/11/面试记录/">面试记录</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        要看的
+弘扬 https完全解析 okhttp封装
+uil 的imageloadconfigration调用的是getapplication的context
+ist array list
+注解 反射 IO
+布局一律用小写加下划线
+android中，用add的一般可以重复添加，set会覆盖之前的值
+
+    
+
+        <a href="/2017/04/11/面试记录/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-学习计划"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-10 10:54:07" datetime="2017-04-10T02:54:07.000Z"  itemprop="datePublished">2017-04-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计划/">计划</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/10/学习计划/">学习计划</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        星球学习计划
+Android入门
+Android高级
+Android专家
+Web基础
+Flutter
+ReactNative
+小程序
+Java后端
+
+    
+
+        <a href="/2017/04/10/学习计划/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plan/">Plan</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-书单"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-09 14:00:11" datetime="2017-04-09T06:00:11.000Z"  itemprop="datePublished">2017-04-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计划/">计划</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/09/书单/">书单</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Android书
+第一行代码（第一版）
+Android编程权威指南（第二版）
+第一行代码（第二版）
+Android编程权威指南（第三版）
+Android群英传
+Android开发进阶从小工到专家
+Android应用开发进阶
+Android进阶之光
+Android进阶解密
+Android高级进阶
+Android开发艺术探索
+Android组件化架构
+深入理解Android内核设计思想
+Android音视频开发
+
+    
+
+        <a href="/2017/04/09/书单/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书/">书</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-VPS"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-08 16:05:38" datetime="2017-04-08T08:05:38.000Z"  itemprop="datePublished">2017-04-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/VPS/">VPS</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/08/VPS/">VPS</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        vultr到期后换了Hostwinds
+购买教程https://www.vps234.com/hostwinds-purchase-tutorial/
+购买后https://www.vps234.com/usa-vps-hostwinds-tutorials-after-purchase/
+    
+
+        <a href="/2017/04/08/VPS/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSR/">SSR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPN/">VPN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Markdown"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-07 11:41:30" datetime="2017-04-07T03:41:30.000Z"  itemprop="datePublished">2017-04-07</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Blog/">Blog</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/07/Markdown/">Markdown</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        基于MacDown
+常见用法粗体 **xxx** 
 斜体 *xxx*
 标题 # ## ### #### ##### ######
-图片 ![Alt Image Text](path/or/url/to.jpg &quot;Optional Title&quot;)
+图片 {% image path/or/url/to.jpg 'Alt Image Text' 'Optional' %}
 次序列表 -
 分层列表 &gt; &gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt;&gt;
 引用 &gt;
-代码块 tab
-换行 两个空格后return
-分割线 ---
-链接或邮箱 &lt;https://www.baidu.com&gt;或[百度](https://www.baidu.com)
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/07/Markdown/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-SSH">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/06/SSH/">SSH</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-06
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/SSH/" class="cube-excerpt-tag-link">#SSH</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
-<li>检查是否存在</li>
-<li>不存在生成</li>
-<li>复制</li>
-</ul>
-<h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1. 检查是否存在"></a>1. 检查是否存在</h4><h5 id="1-1-输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1-输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1 输入id_rsa.pub 或 id_dsa.pub"></a>1.1 输入id_rsa.pub 或 id_dsa.pub</h5><pre><code>ls -al ~/.ssh
-# Lists the files in your .ssh directory, if they exist
-</code></pre>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/06/SSH/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-HEXO总结">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2017/04/06/HEXO总结/">HEXO总结</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2017-04-06
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/HEXO/" class="cube-excerpt-tag-link">#HEXO</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h4 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1. 准备环境"></a>1. 准备环境</h4><h5 id="安装nodejs，查看node版本："><a href="#安装nodejs，查看node版本：" class="headerlink" title="安装nodejs，查看node版本："></a>安装nodejs，查看node版本：</h5><pre><code>node -v
-</code></pre><h5 id="安装git，查看git版本："><a href="#安装git，查看git版本：" class="headerlink" title="安装git，查看git版本："></a>安装git，查看git版本：</h5><pre><code>git --version
-</code></pre><h5 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h5><h5 id="npm安装Hexo："><a href="#npm安装Hexo：" class="headerlink" title="npm安装Hexo："></a>npm安装Hexo：</h5><pre><code>sudo npm install -g hexo(官网有坑)
-</code></pre><h5 id="初始化，在指定目录创建所需要的文件："><a href="#初始化，在指定目录创建所需要的文件：" class="headerlink" title="初始化，在指定目录创建所需要的文件："></a>初始化，在指定目录创建所需要的文件：</h5><ul>
-<li>hexo init &lt;文件夹名称&gt; </li>
-<li>cd &lt;文件夹名称&gt; </li>
-<li>npm install</li>
-</ul>
-<h5 id="文件目录含义"><a href="#文件目录含义" class="headerlink" title="文件目录含义"></a>文件目录含义</h5><ul>
-<li>_config.yml 配置信息</li>
-<li>package.json 应用程序信息</li>
-<li>scaffolds 模板文件夹</li>
-<li>source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.</li>
-<li>themes 主题文件夹</li>
-</ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2017/04/06/HEXO总结/">阅读全文</a>
-    </footer>
-</div>
-
-
-
-<ul class="cube-pagination cube-pagination-9">
-    
-    <li class="cube-pagination-prev">
-        <a href="/page/9/">« 上一页</a>
-    </li>
-    
-    
-        
-                <li class="cube-pagination-index">
-                    <a href="/">1</a>
-                </li>
-                <li class="cube-pagination-ellipses">
-                    <span>...</span>
-                </li>
-            
-                
-                <li class="cube-pagination-index">
-                    <a href="/page/7">7</a>
-                </li>
-                
-            
-                
-                <li class="cube-pagination-index">
-                    <a href="/page/8">8</a>
-                </li>
-                
-            
-                
-                <li class="cube-pagination-index">
-                    <a href="/page/9">9</a>
-                </li>
-                
-            
-                
-                <li class="cube-pagination-index disabled">
-                    <span>10</span>
-                </li>
-                
-            
-        
+代码块 ta...
     
 
-    
-    <li class="cube-pagination-next disabled">
-        <span>下一页 »</span>
-    </li>
-    
-</ul>
-
-<!--其他组件后续添加-->
-        </div>
-        <div class="cube-right">
-            
-
-<div class="cube-search cube-sidebar" id="cube-search">
-    <div class="search-container">
-        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
-        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
-    </div>
-    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
-</div>
-<script>
-    (function (window) {
-        'use strict';
-        window.searchModule = {}
-        window.searchModule.JSONUrl = '/content.json'
-        window.searchModule.rootUrl = '/'
-    })(window)
-</script>
-<div class="cube-search-form">
-    <div class="cube-search-control">
-        <input type="text" placeholder="搜索" class="search-input">
-        <a class="close-button">
-            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        <a href="/2017/04/07/Markdown/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
-    <div class="cube-search-result"></div>
-</div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
 
-
-<div class="cube-author cube-sidebar" id="cube-author">
-    
-    
-    <style>
-        @media(min-width: 768px) {
-            .cube-author img {
-                margin-top: 40px;
-                margin-bottom: 10px;
-            }
-        }
-        @media(max-width: 1120px) and (min-width: 768px) {
-            .cube-author img {
-                width: 128px;
-                height: 128px;
-            }
-        }
-        @media(min-width: 1120px) {
-            .cube-author img {
-                width: 160px;
-                height: 160px;
-            }
-        }
-    </style>
-    
-    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
-    
-    
-    <span>Mayo</span>
-    
-    
-    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
-    
-    <div class="count">
-        <a class="count articles"><span>100</span>文章</a>
-        <a class="count tags"><span>114</span>标签</a>
-        <a class="count categories"><span>25</span>分类</a>
     </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-SSH"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-06 18:14:19" datetime="2017-04-06T10:14:19.000Z"  itemprop="datePublished">2017-04-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/环境配置/">环境配置</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/06/SSH/">SSH</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        步骤
+检查是否存在
+不存在生成
+复制
+
+1. 检查是否存在1.1 输入id_rsa.pub 或 id_dsa.publs -al ~/.ssh
+# Lists the files in your .ssh directory, if they exist
+
+    
+
+        <a href="/2017/04/06/SSH/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-HEXO总结"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-06 17:31:00" datetime="2017-04-06T09:31:00.000Z"  itemprop="datePublished">2017-04-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Blog/">Blog</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/06/HEXO总结/">HEXO总结</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        1. 准备环境安装nodejs，查看node版本：node -v
+安装git，查看git版本：git --version
+安装Xcodenpm安装Hexo：sudo npm install -g hexo(官网有坑)
+初始化，在指定目录创建所需要的文件：
+hexo init &lt;文件夹名称&gt; 
+cd &lt;文件夹名称&gt; 
+npm install
+
+文件目录含义
+_config.yml 配置信息
+package.json 应用程序信息
+scaffolds 模板文件夹
+source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.
+themes 主题文件夹
+
+    
+
+        <a href="/2017/04/06/HEXO总结/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HEXO/">HEXO</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    </div>
+</nav>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mayo &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/page/10/&title=妙妙屋&pic=http://yoursite.com/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/page/10/&title=妙妙屋&source=我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/page/10/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=妙妙屋&url=http://yoursite.com/page/10/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/page/10/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aQU4DMQwF0Ln/pUHqCoQ6fNtJWtCbVVVB+9zFl+3kuuLn4/H8fP31nfvn2V9eOx5cXNwxt/o1VeKzgvNPw8XFfRU3Ca9ncXYfc/c/TW7AxcV9T27S4uRl4+Li/j9uUgAuLu5f5ybDT3W10RuHls1quLi4A+5kYbrq9aH9Li4u7vhUYtUCdPKN3z4HFxf3CHc+kPSyM/mvQkeGi4u7lFsNmlWdRnOwwcXFPcJN6OWF5m0YJccwUUm4uLjbuHlIzQvrxehVrQwXF3fM7a05kssWk1KjMQwXF3cbd34xYnIZq7w6wcXFPcLtNSj5MqU6CEUeXFzczdzkcDSPpPyQNb9fUZjVcHFxl3KTOEvKWHsCEg0/uLi4G7irrkr0Dl97YxUuLu5ubr6wqK5B8yVsoSXCxcU9zs0DZU5PxqpoVsPFxd3ArTY6+aDSW4ss7stwcXFb3Mmgkh+yVtum6MomLi7uNu5kOZI3KM2z3+qqFBcXdyk3Ca882vJ+qtkM4eLiHuTmQZNHVS87fykVFxf3zbjVmKte7oyuX+Di4r4xt1pG8k4Ujri4uAe58y++X6BUF6O4uLiv5a5amPZ+gnzcwsXFPcL9BH8GUsFZJU+ZAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
 
-<div class="cube-music cube-sidebar" id="cube-music">
-    <div class="cube-player aplayer" id="cube-player"></div>
-</div>
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-    (function (window) {
-        window.musicModule = {}
-        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
-        window.musicModule.lrcConfig = {
-            open: '开启歌词',
-            close: '关闭歌词'
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'oh♂I'm♂fucking♂coming';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
         }
-    })(window)
+    });
+})();
 </script>
 
 
 
-<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
-    <div class="title">
-        <a>近期文章</a>
-    </div>
-    <ul class="list">
-        
-        
-        <li>
-            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
-            
-            <div class="normal">
-                <p class="index first">
-                    <span>1</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/08/02/Android高级面试-插件化和热修复2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
-                </p>
-            </div>
-            
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>2</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/08/01/Android高级面试-插件化和热修复/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>3</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/31/Android高级面试-内存优化/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>4</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/30/Android高级面试-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>5</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/29/Android高级面试-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
-                </p>
-            </div>
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-
-<div class="cube-categories cube-sidebar" id="cube-categories">
-    <div class="title">
-        <a href="/categories">分类</a>
-    </div>
-    <div class="cube-boxs">
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Gradle/">#Gradle</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Java基础/">#Java基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/">#前端</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Kotlin/">#Kotlin</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/UML/">#UML</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/热修复插件化/">#热修复插件化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
-    <div class="title">
-        <a href="/tags">标签云</a>
-    </div>
-    <div class="cube-boxs">
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Activity/">#Activity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment/">#Fragment</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Android面试/">#Android面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础IO/">#Java基础IO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础反射/">#Java基础反射</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础语法/">#Java基础语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础多态/">#Java基础多态</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础多线程/">#Java基础多线程</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础字符串/">#Java基础字符串</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础异常/">#Java基础异常</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础泛型/">#Java基础泛型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础注解/">#Java基础注解</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java面试/">#Java面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/UML/">#UML</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之ClassLoader/">#热修复插件化之ClassLoader</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之版本管理/">#热修复插件化之版本管理</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Button/">#Button</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/EditText/">#EditText</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ImageView/">#ImageView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ProgressBar/">#ProgressBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AlertDialog/">#AlertDialog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/LinearLayout/">#LinearLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/FrameLayout/">#FrameLayout</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/TableLayout/">#TableLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ActionBar/">#ActionBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/线程/">#线程</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/IntentService/">#IntentService</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/FFMPEG/">#FFMPEG</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/设计模式单例/">#设计模式单例</a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="cube-links cube-sidebar" id="cube-links">
-    <div class="title">
-        <a>个人链接</a>
-    </div>
-    <ul class="list">
-        
-        <li>
-            
-            
-            <img src="/images/GitHub.png">
-            
-            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
-        </li>
-        
-    </ul>
-</div>
-
-
-        </div>
-    </div>
-</div>
-<footer class="cube-footer">
-    
-© 2017 Mayo
-
-<br>
-Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
-</footer>
-<!-- inject:script -->
-<script src="/js/script.js"></script>
-<!-- endinject -->
-<div class="cube-loading out"></div>
 </body>
 </html>

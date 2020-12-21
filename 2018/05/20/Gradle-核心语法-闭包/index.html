@@ -1,187 +1,234 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Gradle-核心语法-闭包 | 妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Mayo">
     
-    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
-    
+    <meta name="theme-color" content="#3F51B5">
     
     
+    <meta name="keywords" content="Gradle语法">
+    <meta name="description" content="闭包1.groovy中闭包基础详解                                                                                                           1.1 闭包定义及调用（与方法对比学习）闭包就是一段代码块 def clouser = { println &amp;apos;hello groovy!&amp;ap">
+<meta name="keywords" content="Gradle语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle-核心语法-闭包">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/index.html">
+<meta property="og:site_name" content="妙妙屋">
+<meta property="og:description" content="闭包1.groovy中闭包基础详解                                                                                                           1.1 闭包定义及调用（与方法对比学习）闭包就是一段代码块 def clouser = { println &amp;apos;hello groovy!&amp;ap">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/25.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/26.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/27.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/28.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/29.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/30.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/31.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/32.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/33.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/34.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/35.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/36.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/37.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/38.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/39.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/40.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/41.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/42.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/43.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/44.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/45.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/46.png">
+<meta property="og:updated_time" content="2020-04-08T09:52:24.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle-核心语法-闭包">
+<meta name="twitter:description" content="闭包1.groovy中闭包基础详解                                                                                                           1.1 闭包定义及调用（与方法对比学习）闭包就是一段代码块 def clouser = { println &amp;apos;hello groovy!&amp;ap">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/25.png">
     
+        <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
-    
-    <title>Gradle-核心语法-闭包 | 妙妙屋</title>
-    <!-- inject:style -->
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <!-- endinject -->
-    <style>
-        .cube-loading {
-            top: 0;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('/images/lg/loading.gif') no-repeat center center;
-            background-color: rgba(0,0,0,.7);
-        }
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-        .cube-loading.out {
-            display: none;
-        }
-
-        .cube-loading:before {
-            display: block;
-            content: '加载中';
-            position: relative;
-            width: 100%;
-            top: 50%;
-            right: -50%;
-            color: #fff;
-        }
-
-        @media(max-width: 768px) {
-            .cube-loading:before {
-                font-size: 1.2em;
-                transform: translate(-24px,20px);
-                -webkit-transform: translate(-24px,20px);
-                -o-transform: translate(-24px,20px);
-                -ms-transform: translate(-24px,20px);
-            }
-        }
-
-        @media(min-width: 768px) {
-            .cube-loading:before {
-
-            }
-        }
-    </style>
+    <!-- custom head -->
     
+
 </head>
+
 <body>
-<div class="cube-body">
-    <nav id="cube-top-memu" class="cube-menu">
-    <ul class="cube-menu-collapse">
-        
-        <li>
-            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
-            <a href="/">首页</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
-            <a href="/archives">归档</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
-            <a href="/categories">分类</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
-            <a href="/tags">标签</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
-            <a href="/about-me">关于我</a>
-        </li>
-        
-    </ul>
-</nav>
-<nav class="cube-side-menu" id="cube-side-menu">
-    <ul class="cube-menu-list">
-        
-        <li>
-            <a class="lrc-control">开启歌词</a>
-        </li>
-        
-        <li>
-            <a class="scroll-to-top">回到顶部</a>
-        </li>
-    </ul>
-</nav>
-    <header class="cube-header" id="cube-header">
-    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
-    
-    <div class="cube-type">
-        <span class="cube-typed-title">Mayoの妙妙屋</span>
-        <span class="cube-typed-cursor">|</span>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mayo</h5>
+          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
+        </hgroup>
+      </div>
     </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Gradle-核心语法-闭包</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Gradle-核心语法-闭包</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-20T05:22:51.000Z" itemprop="datePublished" class="page-time">
+  2018-05-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
+
+
 </header>
 
-    <style>
-        nav.cube-menu:before {
-            content: '';
-            visibility: hidden;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 44px;
-        
-            filter: blur(5px);
-            -webkit-filter: blur(5px);
-        
-            z-index: -1;
-            background-image: url('/images/brand3.png');
-            background-repeat: no-repeat;
-            background-position: center -236px;
-            background-size: cover;
-            background-color: transparent;
-        }
 
-        header.cube-background.cube-header-background {
-            visibility: hidden;
-            background-image: url('/images/brand3.png');
-            background-position: center -280px;
-        }
-    </style>
-    <header class="cube-background cube-header-background">
-        
-        <div class="cube-type">
-            <span class="cube-typed-title">Mayoの妙妙屋</span>
-            <span class="cube-typed-cursor">|</span>
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包"><span class="post-toc-number">1.</span> <span class="post-toc-text">闭包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-groovy中闭包基础详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.groovy中闭包基础详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-闭包定义及调用（与方法对比学习）"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.1 闭包定义及调用（与方法对比学习）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-闭包参数"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2 闭包参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-闭包返回值"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.3 闭包返回值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-groovy中闭包使用详解"><span class="post-toc-number">3.</span> <span class="post-toc-text">2.groovy中闭包使用详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-与基本类型的结合使用"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">2.1 与基本类型的结合使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#阶乘方法"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">阶乘方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#累计求和方法"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">累计求和方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-与String结合使用"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.2 与String结合使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#each遍历"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">each遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#find方法"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">find方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#findAll方法"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">findAll方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#any方法"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">any方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#every方法"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">every方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#collect方法"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">collect方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-与数据结构结合使用（数据结构章节）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2.3 与数据结构结合使用（数据结构章节）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4-与文件等结合使用（文件章节）"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">2.4 与文件等结合使用（文件章节）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-groovy中闭包进阶详解（了解即可）"><span class="post-toc-number">4.</span> <span class="post-toc-text">3.groovy中闭包进阶详解（了解即可）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-三个重要的变量"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">3.1 三个重要的变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-闭包委托策略（三个关键字的作用）"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">3.2 闭包委托策略（三个关键字的作用）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#更改属性"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">更改属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#更改方法"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">更改方法</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Gradle-核心语法-闭包"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Gradle-核心语法-闭包</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-20 13:22:51" datetime="2018-05-20T05:22:51.000Z"  itemprop="datePublished">2018-05-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
         </div>
-        
-    </header>
-    <div class="load-header-background"></div>
-    <script>
-        (function (window) {
-
-            window.headerModule = {}
-            window.headerModule.image = {
-                width: '500',
-                height: '352'
-            }
-
-        })(window)
-    </script>
-    
-    <div class="cube-content">
-        <div class="cube-left">
-            <div class="cube-article">
-    <h1 class="title">Gradle-核心语法-闭包</h1>
-    
-    <div class="cube-article-header">
-        <div class="cube-article-date">
-            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-            <!-- moment.js对象 -->
-            2018-05-20
-        </div>
-        <div class="cube-article-tags">
-    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-    
-    <a href="/tags/Gradle语法/">#Gradle语法</a>
-    
-</div>
-    </div>
-    
-    <div class="cube-article-content cube-markdown">
-        
-        <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="25.png" alt=""></p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="25.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="1-1-闭包定义及调用（与方法对比学习）"><a href="#1-1-闭包定义及调用（与方法对比学习）" class="headerlink" title="1.1 闭包定义及调用（与方法对比学习）"></a>1.1 闭包定义及调用（与方法对比学习）</h3><p>闭包就是一段代码块</p>
 <pre><code>def clouser = { println &apos;hello groovy!&apos; }
 //执行
@@ -211,7 +258,13 @@ def clouser = {String name  -&gt; println  &quot;hello ${name}&quot; }
 def result = clouser(&apos;groovy&apos;)
 println result
 </code></pre><p><img src="30.png" alt=""></p>
-<h2 id="2-groovy中闭包使用详解"><a href="#2-groovy中闭包使用详解" class="headerlink" title="2.groovy中闭包使用详解"></a>2.groovy中闭包使用详解</h2><p><img src="31.png" alt=""></p>
+<h2 id="2-groovy中闭包使用详解"><a href="#2-groovy中闭包使用详解" class="headerlink" title="2.groovy中闭包使用详解"></a>2.groovy中闭包使用详解</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="31.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="2-1-与基本类型的结合使用"><a href="#2-1-与基本类型的结合使用" class="headerlink" title="2.1 与基本类型的结合使用"></a>2.1 与基本类型的结合使用</h3><p>可以在DefaultGroovyMethods方法中查看实现，参数的个数查看源码方法里call()的个数</p>
 <p>闭包作为方法参数的最后一个可以不写在括号里</p>
 <p>不用指定闭包参数类型，因为groovy是动态类型的，会在运行时自己推断</p>
@@ -259,7 +312,13 @@ println list.toListString()
 <h4 id="any方法"><a href="#any方法" class="headerlink" title="any方法"></a>any方法</h4><p>只要满足条件就返回true，闭包是一个Boolean类型返回值</p>
 <pre><code>def result = str.any { it.isNumber() }
 println result
-</code></pre><p><img src="37.png" alt=""></p>
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="37.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="every方法"><a href="#every方法" class="headerlink" title="every方法"></a>every方法</h4><p>每一项都满足返回true，闭包是一个Boolean类型返回值</p>
 <pre><code>println str.every {it.isNumber()}
 </code></pre><p><img src="38.png" alt=""></p>
@@ -267,7 +326,13 @@ println result
 <pre><code>def list2 = str.collect {it.toUpperCase()}
 println list2.toListString()
 </code></pre><p><img src="39.png" alt=""></p>
-<h3 id="2-3-与数据结构结合使用（数据结构章节）"><a href="#2-3-与数据结构结合使用（数据结构章节）" class="headerlink" title="2.3 与数据结构结合使用（数据结构章节）"></a>2.3 与数据结构结合使用（数据结构章节）</h3><h3 id="2-4-与文件等结合使用（文件章节）"><a href="#2-4-与文件等结合使用（文件章节）" class="headerlink" title="2.4 与文件等结合使用（文件章节）"></a>2.4 与文件等结合使用（文件章节）</h3><h2 id="3-groovy中闭包进阶详解（了解即可）"><a href="#3-groovy中闭包进阶详解（了解即可）" class="headerlink" title="3.groovy中闭包进阶详解（了解即可）"></a>3.groovy中闭包进阶详解（了解即可）</h2><p><img src="40.png" alt=""></p>
+<h3 id="2-3-与数据结构结合使用（数据结构章节）"><a href="#2-3-与数据结构结合使用（数据结构章节）" class="headerlink" title="2.3 与数据结构结合使用（数据结构章节）"></a>2.3 与数据结构结合使用（数据结构章节）</h3><h3 id="2-4-与文件等结合使用（文件章节）"><a href="#2-4-与文件等结合使用（文件章节）" class="headerlink" title="2.4 与文件等结合使用（文件章节）"></a>2.4 与文件等结合使用（文件章节）</h3><h2 id="3-groovy中闭包进阶详解（了解即可）"><a href="#3-groovy中闭包进阶详解（了解即可）" class="headerlink" title="3.groovy中闭包进阶详解（了解即可）"></a>3.groovy中闭包进阶详解（了解即可）</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="40.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="3-1-三个重要的变量"><a href="#3-1-三个重要的变量" class="headerlink" title="3.1 三个重要的变量"></a>3.1 三个重要的变量</h3><pre><code>def scriptClouser = {
     println &quot;scriptClouser this:&quot;+this
     println &quot;scriptClouser owner:&quot;+owner
@@ -314,7 +379,13 @@ def outClouser = {
     innerClouser.call()
 }
 outClouser.call()
-</code></pre><p><img src="43.png" alt=""></p>
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="43.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p><strong>总结：</strong>大多数情况，三者一致。如果直接在类和方法中定义闭包，三个变量是一样的。如果再闭包中又嵌套定义一个闭包，this与owner、delegate的值不一样，owner、delegate会指向离他最近的闭包的对象</p>
 <pre><code>//修改delegate
 Person p = new Person()
@@ -367,7 +438,13 @@ stu.pretty.delegate = tea
 //更改委托策略
 stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
 println stu.toString()
-</code></pre><p><img src="46.png" alt=""></p>
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="46.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>改成name1后，因为tea中没有name，Closure.DELEGATE_FIRST找不到会去OWNER中寻找。如果上例改成DELEGATE_ONLY，会报错，因为tea没有找到name属性</p>
 <p>委托策略默认是OWNER_FIRST，表明闭包中的变量、方法等都是首先从OWNER对象所指向的对象处去寻找。一共有四组（OWNER_FIRST、DELEGATE_FIRST、OWNER_ONLY、DELEGATE_ONLY）</p>
 <p>通过不同的委托策略的指定，我们可以修改闭包所要调用的变量和方法</p>
@@ -393,949 +470,308 @@ stu2.self.resolveStrategy = Closure.DELEGATE_ONLY
 stu2.self()
 </code></pre><p>上面会输出”i’m teacher”</p>
 
-    </div>
-</div>
-
-<div class="cube-article-nav">
-    <ul>
-        
-        <li class="prev">
-            <a href="/2018/05/21/Gradle-核心语法-数据结构/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Gradle-核心语法-数据结构
-            </a>
-        </li>
-        
-        
-        <li class="next">
-            <a href="/2018/05/19/Gradle-核心语法-基础语法/">
-                Gradle-核心语法-基础语法
-                <i class="cube-icon cube-next" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-<!-- TODO 根据theme.comment的内容进行入口选择 -->
-
-
-
         </div>
-        <div class="cube-right">
-            
 
-<div class="cube-search cube-sidebar" id="cube-search">
-    <div class="search-container">
-        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
-        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-08T09:52:24.010Z" itemprop="dateUpdated">2020-04-08 17:52:24</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/05/20/Gradle-核心语法-闭包/" target="_blank" rel="external">http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/</a>
+        
     </div>
-    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
-</div>
-<script>
-    (function (window) {
-        'use strict';
-        window.searchModule = {}
-        window.searchModule.JSONUrl = '/content.json'
-        window.searchModule.rootUrl = '/'
-    })(window)
-</script>
-<div class="cube-search-form">
-    <div class="cube-search-control">
-        <input type="text" placeholder="搜索" class="search-input">
-        <a class="close-button">
-            <i class="cube-icon cube-close" aria-hidden="true"></i>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpeg" alt="Mayo">
+            Mayo
         </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle语法/">Gradle语法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/&title=《Gradle-核心语法-闭包》 — 妙妙屋&pic=http://yoursite.com/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/&title=《Gradle-核心语法-闭包》 — 妙妙屋&source=闭包1.groovy中闭包基础详解
+                
+                    
+                    
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Gradle-核心语法-闭包》 — 妙妙屋&url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
     </div>
-    <div class="cube-search-result"></div>
-</div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/21/Gradle-核心语法-数据结构/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Gradle-核心语法-数据结构</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/19/Gradle-核心语法-基础语法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Gradle-核心语法-基础语法</h4>
+      </a>
+    </div>
+  
+</nav>
 
 
-<div class="cube-author cube-sidebar" id="cube-author">
+
     
-    
-    <style>
-        @media(min-width: 768px) {
-            .cube-author img {
-                margin-top: 40px;
-                margin-bottom: 10px;
-            }
-        }
-        @media(max-width: 1120px) and (min-width: 768px) {
-            .cube-author img {
-                width: 128px;
-                height: 128px;
-            }
-        }
-        @media(min-width: 1120px) {
-            .cube-author img {
-                width: 160px;
-                height: 160px;
-            }
-        }
-    </style>
-    
-    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
-    
-    
-    <span>Mayo</span>
-    
-    
-    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
-    
-    <div class="count">
-        <a class="count articles"><span>100</span>文章</a>
-        <a class="count tags"><span>114</span>标签</a>
-        <a class="count categories"><span>25</span>分类</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
 </div>
 
 
 
-<div class="cube-music cube-sidebar" id="cube-music">
-    <div class="cube-player aplayer" id="cube-player"></div>
 </div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mayo &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/&title=《Gradle-核心语法-闭包》 — 妙妙屋&pic=http://yoursite.com/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/&title=《Gradle-核心语法-闭包》 — 妙妙屋&source=闭包1.groovy中闭包基础详解
+                
+                    
+                    
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Gradle-核心语法-闭包》 — 妙妙屋&url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/20/Gradle-核心语法-闭包/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aW27rMAwFwOx/0y5wvwoUtg/JtLihR19GHpbGARiR1OsVj+Pf+H79fZx9/uyTZ9+9vucbBgYGxscyjsvxk3EGywEJJl8bBgbGcxh5kL2GXYfLJNRez3L6OgYGBkbv1sVHM5oLAwMDI0hHkwCdfxcDAwOjl8RWS2aTotsv5uIYGBgfyOg1Bv7m+tf7GxgYGP894yiO3rYv3xr2BgYGxm5G0p7MX58fsMjxr2RxGBgYixiTgxfzYxa9tugNBgMDYymjWvaaHJKYZNvR74CBgbGIMVlQ79350QoMDIxnMiYbtWqRrjfv9ZoxMDCewOgd28qXNd9o3gRfDAyM1YzrCXqbvKT0P0looxYmBgbGOkYSFicTRBMXZ8fAwHgao1fW76W41eeKgYGBkRe2kuVWW6G9huXN3hYDA2M1o1dQSxbUK6LljQoMDIynMXqltyTu9UpyUaDHwMBYzZikqZNUdl4djKqGGBgYixi9tHMemquby5s7Y2BgLGUcwahuznqbv+Qx3fwOGBgYqxlVWO/g12ihvX8MDAyMFYxeGO0lt9Wif3lDiYGBsZRxFMerOPJAXA3TGBgYz2FUFzS/rpbScjwGBsZuRhJke22ABFBNiQvRHQMDYx0jCbL5UYnkQeTpa6GRiYGB8XhGEnzf9VCqLU8MDAyMySGw6rGMvDv5hoCLgYHxUYy8WP+uel6vzRl1YjEwMNYx5glkr2BXxSRBHwMDYx3jC7IVf60HgLVDAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-    (function (window) {
-        window.musicModule = {}
-        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
-        window.musicModule.lrcConfig = {
-            open: '开启歌词',
-            close: '关闭歌词'
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'oh♂I'm♂fucking♂coming';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
         }
-    })(window)
+    });
+})();
 </script>
 
 
 
-<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
-    <div class="title">
-        <a>近期文章</a>
-    </div>
-    <ul class="list">
-        
-        
-        <li>
-            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
-            
-            <div class="normal">
-                <p class="index first">
-                    <span>1</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/08/02/Android高级面试-插件化和热修复2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
-                </p>
-            </div>
-            
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>2</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/08/01/Android高级面试-插件化和热修复/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>3</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/31/Android高级面试-内存优化/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>4</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/30/Android高级面试-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>5</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/29/Android高级面试-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
-                </p>
-            </div>
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-
-<div class="cube-categories cube-sidebar" id="cube-categories">
-    <div class="title">
-        <a href="/categories">分类</a>
-    </div>
-    <div class="cube-boxs">
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/Gradle/">#Gradle</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Java基础/">#Java基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/">#前端</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Kotlin/">#Kotlin</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/UML/">#UML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/热修复插件化/">#热修复插件化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
-    <div class="title">
-        <a href="/tags">标签云</a>
-    </div>
-    <div class="cube-boxs">
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Activity/">#Activity</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment/">#Fragment</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android面试/">#Android面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础IO/">#Java基础IO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础反射/">#Java基础反射</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础语法/">#Java基础语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础多态/">#Java基础多态</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础多线程/">#Java基础多线程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础字符串/">#Java基础字符串</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础异常/">#Java基础异常</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础泛型/">#Java基础泛型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础注解/">#Java基础注解</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java面试/">#Java面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/UML/">#UML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之ClassLoader/">#热修复插件化之ClassLoader</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之版本管理/">#热修复插件化之版本管理</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Button/">#Button</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/EditText/">#EditText</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ImageView/">#ImageView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ProgressBar/">#ProgressBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AlertDialog/">#AlertDialog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/LinearLayout/">#LinearLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/FrameLayout/">#FrameLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/TableLayout/">#TableLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ActionBar/">#ActionBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/线程/">#线程</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/IntentService/">#IntentService</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/FFMPEG/">#FFMPEG</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/设计模式单例/">#设计模式单例</a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="cube-links cube-sidebar" id="cube-links">
-    <div class="title">
-        <a>个人链接</a>
-    </div>
-    <ul class="list">
-        
-        <li>
-            
-            
-            <img src="/images/GitHub.png">
-            
-            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
-        </li>
-        
-    </ul>
-</div>
-
-
-        </div>
-    </div>
-</div>
-<footer class="cube-footer">
-    
-© 2017 Mayo
-
-<br>
-Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
-</footer>
-<!-- inject:script -->
-<script src="/js/script.js"></script>
-<!-- endinject -->
-<div class="cube-loading out"></div>
 </body>
 </html>

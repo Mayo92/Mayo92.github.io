@@ -1,187 +1,237 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android面试-开源框架 | 妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Mayo">
     
-    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
-    
+    <meta name="theme-color" content="#3F51B5">
     
     
+    <meta name="keywords" content="Android面试">
+    <meta name="description" content="OkHttp同步请求 生成一个OKHTTPClient对象 创建Request对象和response对象 通过call对象来操作请求 RealCall 执行完毕之后将同步请求从Dispatcher中移除">
+<meta name="keywords" content="Android面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试-开源框架">
+<meta property="og:url" content="http://yoursite.com/2020/07/24/Android面试-开源框架/index.html">
+<meta property="og:site_name" content="妙妙屋">
+<meta property="og:description" content="OkHttp同步请求 生成一个OKHTTPClient对象 创建Request对象和response对象 通过call对象来操作请求 RealCall 执行完毕之后将同步请求从Dispatcher中移除">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/7.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/8.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/9.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/10.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/12.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/13.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/14.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/15.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/18.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/19.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/16.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/17.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/25.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/20.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/21.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/22.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/23.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/24.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/26.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/27.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/28.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/29.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/30.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/31.png">
+<meta property="og:updated_time" content="2020-12-10T12:28:19.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android面试-开源框架">
+<meta name="twitter:description" content="OkHttp同步请求 生成一个OKHTTPClient对象 创建Request对象和response对象 通过call对象来操作请求 RealCall 执行完毕之后将同步请求从Dispatcher中移除">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/24/Android面试-开源框架/1.png">
     
+        <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
-    
-    <title>Android面试-开源框架 | 妙妙屋</title>
-    <!-- inject:style -->
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <!-- endinject -->
-    <style>
-        .cube-loading {
-            top: 0;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('/images/lg/loading.gif') no-repeat center center;
-            background-color: rgba(0,0,0,.7);
-        }
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-        .cube-loading.out {
-            display: none;
-        }
-
-        .cube-loading:before {
-            display: block;
-            content: '加载中';
-            position: relative;
-            width: 100%;
-            top: 50%;
-            right: -50%;
-            color: #fff;
-        }
-
-        @media(max-width: 768px) {
-            .cube-loading:before {
-                font-size: 1.2em;
-                transform: translate(-24px,20px);
-                -webkit-transform: translate(-24px,20px);
-                -o-transform: translate(-24px,20px);
-                -ms-transform: translate(-24px,20px);
-            }
-        }
-
-        @media(min-width: 768px) {
-            .cube-loading:before {
-
-            }
-        }
-    </style>
+    <!-- custom head -->
     
+
 </head>
+
 <body>
-<div class="cube-body">
-    <nav id="cube-top-memu" class="cube-menu">
-    <ul class="cube-menu-collapse">
-        
-        <li>
-            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
-            <a href="/">首页</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
-            <a href="/archives">归档</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
-            <a href="/categories">分类</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
-            <a href="/tags">标签</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
-            <a href="/about-me">关于我</a>
-        </li>
-        
-    </ul>
-</nav>
-<nav class="cube-side-menu" id="cube-side-menu">
-    <ul class="cube-menu-list">
-        
-        <li>
-            <a class="lrc-control">开启歌词</a>
-        </li>
-        
-        <li>
-            <a class="scroll-to-top">回到顶部</a>
-        </li>
-    </ul>
-</nav>
-    <header class="cube-header" id="cube-header">
-    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
-    
-    <div class="cube-type">
-        <span class="cube-typed-title">Mayoの妙妙屋</span>
-        <span class="cube-typed-cursor">|</span>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mayo</h5>
+          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
+        </hgroup>
+      </div>
     </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android面试-开源框架</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android面试-开源框架</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-24T02:46:43.000Z" itemprop="datePublished" class="page-time">
+  2020-07-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/面试/">面试</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
+
+
 </header>
 
-    <style>
-        nav.cube-menu:before {
-            content: '';
-            visibility: hidden;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 44px;
-        
-            filter: blur(5px);
-            -webkit-filter: blur(5px);
-        
-            z-index: -1;
-            background-image: url('/images/brand3.png');
-            background-repeat: no-repeat;
-            background-position: center -236px;
-            background-size: cover;
-            background-color: transparent;
-        }
 
-        header.cube-background.cube-header-background {
-            visibility: hidden;
-            background-image: url('/images/brand3.png');
-            background-position: center -280px;
-        }
-    </style>
-    <header class="cube-background cube-header-background">
-        
-        <div class="cube-type">
-            <span class="cube-typed-title">Mayoの妙妙屋</span>
-            <span class="cube-typed-cursor">|</span>
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OkHttp"><span class="post-toc-number">1.</span> <span class="post-toc-text">OkHttp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步请求"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">同步请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RealCall"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">RealCall</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">Dispatcher</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#okhttp异步请求"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">okhttp异步请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RealCall-1"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">RealCall</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">Dispatcher</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#okhttp内部线程池创建"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">okhttp内部线程池创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher-2"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Dispatcher</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ThreadPoolExecutor的execute方法"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">ThreadPoolExecutor的execute方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#okhttp调度器"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">okhttp调度器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RealCall里的AsyncCall的execute方法"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">RealCall里的AsyncCall的execute方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher里的finished方法"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">Dispatcher里的finished方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher里的promoteCalls方法"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">Dispatcher里的promoteCalls方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#retrofit"><span class="post-toc-number">2.</span> <span class="post-toc-text">retrofit</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用步骤"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">使用步骤</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#执行步骤"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">执行步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#retrofit类"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">retrofit类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#成员变量"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">成员变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CallAdapter类"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">CallAdapter类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build方法"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">build方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#create方法"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">create方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#eagerlyValidateMethods方法"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">eagerlyValidateMethods方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#loadServiceMethod方法"><span class="post-toc-number">2.1.6.</span> <span class="post-toc-text">loadServiceMethod方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#invoke里的adapt方法"><span class="post-toc-number">2.1.7.</span> <span class="post-toc-text">invoke里的adapt方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总结"><span class="post-toc-number">2.1.8.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ServiceMethod类"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ServiceMethod类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Builder方法"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">Builder方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build方法-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">build方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OkHttpCall类"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">OkHttpCall类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发送请求过程"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">发送请求过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ExecutorCallAdapterFactory类的enqueue方法"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">ExecutorCallAdapterFactory类的enqueue方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#OkHttpCall类-1"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">OkHttpCall类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Platform类"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">Platform类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结-1"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#缓存LRU"><span class="post-toc-number">3.</span> <span class="post-toc-text">缓存LRU</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LruCache类"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">LruCache类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#trimToSize方法"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">trimToSize方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#butterknife"><span class="post-toc-number">4.</span> <span class="post-toc-text">butterknife</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原理"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对性能的影响"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">对性能的影响</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Android面试-开源框架"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android面试-开源框架</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-24 10:46:43" datetime="2020-07-24T02:46:43.000Z"  itemprop="datePublished">2020-07-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/面试/">面试</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
         </div>
-        
-    </header>
-    <div class="load-header-background"></div>
-    <script>
-        (function (window) {
-
-            window.headerModule = {}
-            window.headerModule.image = {
-                width: '500',
-                height: '352'
-            }
-
-        })(window)
-    </script>
-    
-    <div class="cube-content">
-        <div class="cube-left">
-            <div class="cube-article">
-    <h1 class="title">Android面试-开源框架</h1>
-    
-    <div class="cube-article-header">
-        <div class="cube-article-date">
-            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-            <!-- moment.js对象 -->
-            2020-07-24
-        </div>
-        <div class="cube-article-tags">
-    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-    
-    <a href="/tags/Android面试/">#Android面试</a>
-    
-</div>
-    </div>
-    
-    <div class="cube-article-content cube-markdown">
-        
-        <h2 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h2><h3 id="同步请求"><a href="#同步请求" class="headerlink" title="同步请求"></a>同步请求</h3><ul>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h2><h3 id="同步请求"><a href="#同步请求" class="headerlink" title="同步请求"></a>同步请求</h3><ul>
 <li>生成一个OKHTTPClient对象</li>
 <li>创建Request对象和response对象</li>
 <li>通过call对象来操作请求</li>
@@ -192,9 +242,21 @@
 <h4 id="RealCall"><a href="#RealCall" class="headerlink" title="RealCall"></a>RealCall</h4><p>call的实现类RealCall</p>
 <p>if(executed)，每个call请求只能被执行一次</p>
 <p>finished方法，执行完请求后会从dispatcher调度器中移除</p>
-<p><img src="1.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="Dispatcher"><a href="#Dispatcher" class="headerlink" title="Dispatcher"></a>Dispatcher</h4><p>executed方法在双向队列中存放同步请求</p>
-<p><img src="2.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="okhttp异步请求"><a href="#okhttp异步请求" class="headerlink" title="okhttp异步请求"></a>okhttp异步请求</h3><ul>
 <li>生成一个OKHTTPClient对象</li>
 <li>创建Request对象</li>
@@ -203,31 +265,79 @@
 </ul>
 <h4 id="RealCall-1"><a href="#RealCall-1" class="headerlink" title="RealCall"></a>RealCall</h4><p>if(executed)，每个call请求只能被执行一次</p>
 <p>AsyncCall，runnable对象</p>
-<p><img src="3.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="Dispatcher-1"><a href="#Dispatcher-1" class="headerlink" title="Dispatcher"></a>Dispatcher</h4><p>首先判断，正在运行的异步任务和正在调度请求主机的最大数。如果都满足则存放到异步队列中，并且调用线程池的execute进行执行。如果不满足加入准备就绪的异步请求队列中。</p>
-<p><img src="4.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>maxRequests 线程最大并发数64</p>
 <p>maxRequestsPerHost 每个主机最大请求数5</p>
 <p>readyAsyncCalls 缓存等待的异步请求队列</p>
 <p>runningAsyncCalls 正在执行的异步请求队列</p>
 <p>runningSyncCalls 正在执行的同步请求队列</p>
-<p><img src="5.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="okhttp内部线程池创建"><a href="#okhttp内部线程池创建" class="headerlink" title="okhttp内部线程池创建"></a>okhttp内部线程池创建</h3><h4 id="Dispatcher-2"><a href="#Dispatcher-2" class="headerlink" title="Dispatcher"></a>Dispatcher</h4><p>线程池在Dispatcher里配置的</p>
 <p>SynchronousQueue 线程等待队列，同步队列，先来先服务，必须有一个移除了另一个才能插入</p>
-<p><img src="6.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="ThreadPoolExecutor的execute方法"><a href="#ThreadPoolExecutor的execute方法" class="headerlink" title="ThreadPoolExecutor的execute方法"></a>ThreadPoolExecutor的execute方法</h4><p>okhttp中线程池只起辅助作用，用来缓存线程，对线程进行并发控制以及执行时机进行调度的是Dispatcher</p>
-<p><img src="7.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="okhttp调度器"><a href="#okhttp调度器" class="headerlink" title="okhttp调度器"></a>okhttp调度器</h3><ul>
 <li>维护请求状态</li>
 <li>维护线程池</li>
 </ul>
 <p>异步请求的两个队列可以看成是生产者消费者模型，异步执行队列有空余，就从异步等待队列获取</p>
 <h4 id="RealCall里的AsyncCall的execute方法"><a href="#RealCall里的AsyncCall的execute方法" class="headerlink" title="RealCall里的AsyncCall的execute方法"></a>RealCall里的AsyncCall的execute方法</h4><p>finished，成功或失败都会回调</p>
-<p><img src="8.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="8.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="Dispatcher里的finished方法"><a href="#Dispatcher里的finished方法" class="headerlink" title="Dispatcher里的finished方法"></a>Dispatcher里的finished方法</h4><p>promoteCalls方法，根据正在执行队列的数量，对请求队列数量进行调整</p>
-<p><img src="9.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="9.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="Dispatcher里的promoteCalls方法"><a href="#Dispatcher里的promoteCalls方法" class="headerlink" title="Dispatcher里的promoteCalls方法"></a>Dispatcher里的promoteCalls方法</h4><p>根据条件是否加入队列并且执行</p>
-<p><img src="10.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="10.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h2 id="retrofit"><a href="#retrofit" class="headerlink" title="retrofit"></a>retrofit</h2><ul>
 <li>RESTful的HTTP网络请求框架的封装</li>
 <li>本质是OKHTTP完成，而retrofit仅负责网络请求接口的封装</li>
@@ -255,27 +365,87 @@
 <p>adapterFactories，适配器工厂集合，生产callAdapter网络请求适配器</p>
 <p>Executor，回调方法执行器，子线程切换到主线程</p>
 <p>validateEagerly，是否提前对接口中的注解进行转换</p>
-<p><img src="11.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="11.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="CallAdapter类"><a href="#CallAdapter类" class="headerlink" title="CallAdapter类"></a>CallAdapter类</h4><p>Factory是CallAdapter里的一个抽象类，默认有三种实现。作用是将默认的网络请求适配器OKHTTPCall转换成其他平台的适配器</p>
-<p><img src="12.png" alt=""></p>
-<p><img src="13.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="12.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="13.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="build方法"><a href="#build方法" class="headerlink" title="build方法"></a>build方法</h4><p>完成retrofit对象创建</p>
-<p><img src="14.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="14.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="create方法"><a href="#create方法" class="headerlink" title="create方法"></a>create方法</h4><p>创建网络请求接口实例</p>
 <p>根据标志位判断是否需要提前进行验证，是的话走到eagerlyValidateMethods方法</p>
-<p><img src="15.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="15.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>如果不是提前验证会动态解析，然后得到ServiceMethod对象，再存入到集合中，默认这样，延迟加载</p>
 <p>这里使用了动态代理，动态生成网络请求接口的代理类，交给InvocationHandler处理，由invoke方法执行网络拦截操作</p>
 <p>一旦调用getCall方法就会执行invoke方法，获取所有注解和方法，也就是ServiceMethod对象</p>
-<p><img src="18.png" alt=""></p>
-<p><img src="19.png" alt=""></p>
-<h4 id="eagerlyValidateMethods方法"><a href="#eagerlyValidateMethods方法" class="headerlink" title="eagerlyValidateMethods方法"></a>eagerlyValidateMethods方法</h4><p><img src="16.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="18.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="19.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="eagerlyValidateMethods方法"><a href="#eagerlyValidateMethods方法" class="headerlink" title="eagerlyValidateMethods方法"></a>eagerlyValidateMethods方法</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="16.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="loadServiceMethod方法"><a href="#loadServiceMethod方法" class="headerlink" title="loadServiceMethod方法"></a>loadServiceMethod方法</h4><p>对接口中的每一个方法进行解析，得到一个ServiceMethod对象（有唯一性，对应于网络请求接口方法），method为key传入对应的linkhashmap集合。</p>
 <p>由于每次获取接口实例，都是传入class对象，而class在进程中是唯一的，所以获取它的method实例也是唯一的</p>
-<p><img src="17.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="17.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>使用linkHashMap，是因为调用它的迭代器的next，返回的是最不经常使用的元素，LUR算法的实现</p>
 <h4 id="invoke里的adapt方法"><a href="#invoke里的adapt方法" class="headerlink" title="invoke里的adapt方法"></a>invoke里的adapt方法</h4><p>CallAdapter接口里的方法，有如下实现类，完成子线程主线程之间的切换</p>
-<p><img src="25.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="25.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
 <li>动态创建网络请求接口的实例</li>
 <li>创建ServiceMethod对象</li>
@@ -285,13 +455,37 @@
 </ul>
 <h3 id="ServiceMethod类"><a href="#ServiceMethod类" class="headerlink" title="ServiceMethod类"></a>ServiceMethod类</h3><p>包含了所有的网络请求参数</p>
 <p>ParameterHandlers，方法参数处理器</p>
-<p><img src="20.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="20.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="Builder方法"><a href="#Builder方法" class="headerlink" title="Builder方法"></a>Builder方法</h4><p>getAnnotations，获取网络请求接口方法里的注释</p>
 <p>getGennericParameterTypes，获取网络请求接口里的参数类型</p>
 <p>getParameterAnnotations，获取网络请求接口方法里的注解内容</p>
-<p><img src="21.png" alt=""></p>
-<h4 id="build方法-1"><a href="#build方法-1" class="headerlink" title="build方法"></a>build方法</h4><p><img src="22.png" alt=""></p>
-<p><img src="23.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="21.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="build方法-1"><a href="#build方法-1" class="headerlink" title="build方法"></a>build方法</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="22.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="23.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <ul>
 <li>根据返回值类型和方法以及方法的注解从retrofit对象网络请求适配器工厂集合和内容转换器工厂集合，分别获取网络请求适配器和数据转换器</li>
 <li>根据方法的标注对ServiceMethod的域进行赋值</li>
@@ -299,23 +493,59 @@
 </ul>
 <h3 id="OkHttpCall类"><a href="#OkHttpCall类" class="headerlink" title="OkHttpCall类"></a>OkHttpCall类</h3><p>包含了ServiceMethod对象</p>
 <p>rawCall，实际进行网络请求的类</p>
-<p><img src="24.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="24.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="发送请求过程"><a href="#发送请求过程" class="headerlink" title="发送请求过程"></a>发送请求过程</h3><ul>
 <li>对网络请求接口的方法中的每个参数利用对应ParameterHandler进行解析</li>
 <li>使用OkHttp的Request发送网络请求</li>
 <li>对返回的数据使用之前设置的数据转换器解析返回的数据</li>
 <li>进行线程切换在主线程处理返回的数据结果</li>
 </ul>
-<p><img src="26.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="26.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>enqueue方法</p>
 <h4 id="ExecutorCallAdapterFactory类的enqueue方法"><a href="#ExecutorCallAdapterFactory类的enqueue方法" class="headerlink" title="ExecutorCallAdapterFactory类的enqueue方法"></a>ExecutorCallAdapterFactory类的enqueue方法</h4><p>delegate是代理，交给okhttp去实现</p>
 <p>callbackExecutor，进行线程切换</p>
-<p><img src="27.png" alt=""></p>
-<h4 id="OkHttpCall类-1"><a href="#OkHttpCall类-1" class="headerlink" title="OkHttpCall类"></a>OkHttpCall类</h4><p><img src="28.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="27.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="OkHttpCall类-1"><a href="#OkHttpCall类-1" class="headerlink" title="OkHttpCall类"></a>OkHttpCall类</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="28.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>createRawCall方法</p>
-<p><img src="29.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="29.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="Platform类"><a href="#Platform类" class="headerlink" title="Platform类"></a>Platform类</h4><p>线程切换，默认的回调执行器是handler实现的</p>
-<p><img src="30.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="30.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>将HTTP请求抽象成java接口</li>
 <li>在接口里用注解来描述和配置网络请求参数</li>
@@ -326,7 +556,13 @@
 <h4 id="trimToSize方法"><a href="#trimToSize方法" class="headerlink" title="trimToSize方法"></a>trimToSize方法</h4><p>判断缓存是否已满，满了获取的是队尾的对象，删除队尾对象</p>
 <h2 id="butterknife"><a href="#butterknife" class="headerlink" title="butterknife"></a>butterknife</h2><p>一个依托Java的注解机制来实现辅助代码生成的框架</p>
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>编译时注解</p>
-<p><img src="31.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="31.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <ul>
 <li>扫描Java代码中所有的butterknife注解</li>
 <li>butterknifeProcessor 生成 <classname>$$ViewBinder</classname></li>
@@ -335,949 +571,310 @@
 </ul>
 <h4 id="对性能的影响"><a href="#对性能的影响" class="headerlink" title="对性能的影响"></a>对性能的影响</h4><p>在一些场景下，比如视图注入的过程中，你并不能优化 ButterKnife 的查找。比如一个我们需要找到一个父视图中的数个子视图，如果纯手工写，我们可以先找到父视图，在从父视图中查找子视图。而 ButterKnife 却要每次重新从根视图去查找，效率也是有所下降的。所以说ButterKnife对性能有一定的影响，并且引入了更多的类和方法，增加了安装包的大小。但是，对开发效率的提升也是显而易见的，较少代码冗余和findviewbyid等。</p>
 
-    </div>
-</div>
-
-<div class="cube-article-nav">
-    <ul>
-        
-        <li class="prev">
-            <a href="/2020/07/25/Android面试-异常及性能优化/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Android面试-异常及性能优化
-            </a>
-        </li>
-        
-        
-        <li class="next">
-            <a href="/2020/07/23/Android面试-热门前沿知识/">
-                Android面试-热门前沿知识
-                <i class="cube-icon cube-next" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-<!-- TODO 根据theme.comment的内容进行入口选择 -->
-
-
-
         </div>
-        <div class="cube-right">
-            
 
-<div class="cube-search cube-sidebar" id="cube-search">
-    <div class="search-container">
-        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
-        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-12-10T12:28:19.843Z" itemprop="dateUpdated">2020-12-10 20:28:19</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/07/24/Android面试-开源框架/" target="_blank" rel="external">http://yoursite.com/2020/07/24/Android面试-开源框架/</a>
+        
     </div>
-    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
-</div>
-<script>
-    (function (window) {
-        'use strict';
-        window.searchModule = {}
-        window.searchModule.JSONUrl = '/content.json'
-        window.searchModule.rootUrl = '/'
-    })(window)
-</script>
-<div class="cube-search-form">
-    <div class="cube-search-control">
-        <input type="text" placeholder="搜索" class="search-input">
-        <a class="close-button">
-            <i class="cube-icon cube-close" aria-hidden="true"></i>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpeg" alt="Mayo">
+            Mayo
         </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android面试/">Android面试</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/07/24/Android面试-开源框架/&title=《Android面试-开源框架》 — 妙妙屋&pic=http://yoursite.com/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/07/24/Android面试-开源框架/&title=《Android面试-开源框架》 — 妙妙屋&source=OkHttp同步请求
+生成一个OKHTTPClient对象
+创建Request对象和response对象
+通过call对象来操作请求
+RealCall
+执..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/07/24/Android面试-开源框架/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android面试-开源框架》 — 妙妙屋&url=http://yoursite.com/2020/07/24/Android面试-开源框架/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/07/24/Android面试-开源框架/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
     </div>
-    <div class="cube-search-result"></div>
-</div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/07/25/Android面试-异常及性能优化/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android面试-异常及性能优化</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/07/23/Android面试-热门前沿知识/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android面试-热门前沿知识</h4>
+      </a>
+    </div>
+  
+</nav>
 
 
-<div class="cube-author cube-sidebar" id="cube-author">
+
     
-    
-    <style>
-        @media(min-width: 768px) {
-            .cube-author img {
-                margin-top: 40px;
-                margin-bottom: 10px;
-            }
-        }
-        @media(max-width: 1120px) and (min-width: 768px) {
-            .cube-author img {
-                width: 128px;
-                height: 128px;
-            }
-        }
-        @media(min-width: 1120px) {
-            .cube-author img {
-                width: 160px;
-                height: 160px;
-            }
-        }
-    </style>
-    
-    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
-    
-    
-    <span>Mayo</span>
-    
-    
-    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
-    
-    <div class="count">
-        <a class="count articles"><span>100</span>文章</a>
-        <a class="count tags"><span>114</span>标签</a>
-        <a class="count categories"><span>25</span>分类</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
 </div>
 
 
 
-<div class="cube-music cube-sidebar" id="cube-music">
-    <div class="cube-player aplayer" id="cube-player"></div>
 </div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mayo &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/07/24/Android面试-开源框架/&title=《Android面试-开源框架》 — 妙妙屋&pic=http://yoursite.com/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/07/24/Android面试-开源框架/&title=《Android面试-开源框架》 — 妙妙屋&source=OkHttp同步请求
+生成一个OKHTTPClient对象
+创建Request对象和response对象
+通过call对象来操作请求
+RealCall
+执..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/07/24/Android面试-开源框架/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android面试-开源框架》 — 妙妙屋&url=http://yoursite.com/2020/07/24/Android面试-开源框架/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/07/24/Android面试-开源框架/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aS3LDMAwEUd//0soBHCs9QzpVApurlG2JelogxOf1wut6W/ff3v/m/qr3a7ctGTJkPJZBbne/PWevf/5xXxkyZBzA+PQo9wyOTO/An02GDBky0lvzwE0+kSFDhoyUQbbsrpIhQ4YMwiCBcv2ox0tvX8zFZciQ8UAGr7r//99f6W/IkCHjUYwrXKS4xoPjtWnJkCFjNmNvmYyEy5US3h97yZAhYzSjGwVLN9vVEiA7ypAhYxKDb8xvuhI6u7KdDBkyZjNI4b476u0t8JWdWBkyZIxg3B/aeMOSD2p0YxZB1VCGDBnjGF28IqX/dLSLl/NQzi1DhoxBDF57IwE3bV6uvNBfcnEZMmQMZZCH6MYvuiMmD7IffylDhozRDJJwpg+UBuX18QsZMmTMY3TpaIdZCdCoeSlDhoyhDNLCTA9qK4zu5cqQIeMcBr+AtwdI8pmW5IL/HjJkyBjBSENtWiDjYxndPWXIkHECY9ej8+SWh9E0nZYhQ8YJjC695CGyS5J5I0GGDBknMLpWYhooeUEtTnFlyJAxmpEmnGkzYNeREb1iGTJkjGNc4QreykIxLn0FMmTImM3gqwud3YBXmlTLkCHjBAYJsumARVqA64p6MmTIOI1B0kV+jEsxXRIbV+ZkyJBxDIOQ0pJcN3IhQ4YMGRvKW2GKy4O7DBkyzmTwJHZltCIN6EE4liFDxmhGlzqupKBdSCUFOBkyZIxj/ABC+2+FIuB6BgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-    (function (window) {
-        window.musicModule = {}
-        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
-        window.musicModule.lrcConfig = {
-            open: '开启歌词',
-            close: '关闭歌词'
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'oh♂I'm♂fucking♂coming';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
         }
-    })(window)
+    });
+})();
 </script>
 
 
 
-<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
-    <div class="title">
-        <a>近期文章</a>
-    </div>
-    <ul class="list">
-        
-        
-        <li>
-            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
-            
-            <div class="normal">
-                <p class="index first">
-                    <span>1</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/08/02/Android高级面试-插件化和热修复2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
-                </p>
-            </div>
-            
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>2</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/08/01/Android高级面试-插件化和热修复/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>3</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/31/Android高级面试-内存优化/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>4</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/30/Android高级面试-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
-                </p>
-            </div>
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>5</span>
-                </p>
-                <p class="title">
-                    <a href="/2020/07/29/Android高级面试-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
-                </p>
-            </div>
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-
-<div class="cube-categories cube-sidebar" id="cube-categories">
-    <div class="title">
-        <a href="/categories">分类</a>
-    </div>
-    <div class="cube-boxs">
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/">#星球Android入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/四大组件/">#四大组件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Gradle/">#Gradle</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Java基础/">#Java基础</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/">#前端</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Blog/">#Blog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Kotlin/">#Kotlin</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/环境配置/">#环境配置</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/UML/">#UML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/计划/">#计划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/热修复插件化/">#热修复插件化</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/">#第一行代码</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/面试记录/">#面试记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/音视频/">#音视频</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/设计模式/">#设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/">#读书笔记</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
-    <div class="title">
-        <a href="/tags">标签云</a>
-    </div>
-    <div class="cube-boxs">
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Activity/">#Activity</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Fragment/">#Fragment</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ContentProvider/">#ContentProvider</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Service/">#Service</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Layout/">#Layout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android面试/">#Android面试</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle之Task/">#Gradle之Task</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle其他模块及自定义Plugin/">#Gradle其他模块及自定义Plugin</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle之project/">#Gradle之project</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Gradle开发环境搭建/">#Gradle开发环境搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle总结/">#Gradle总结</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle语法/">#Gradle语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle高级用法/">#Gradle高级用法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Gradle生命周期/">#Gradle生命周期</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/服务器搭建/">#服务器搭建</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础IO/">#Java基础IO</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Html/">#Html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HEXO/">#HEXO</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础包装类/">#Java基础包装类</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java初识/">#Java初识</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础反射/">#Java基础反射</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Java基础语法/">#Java基础语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础多态/">#Java基础多态</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础多线程/">#Java基础多线程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础字符串/">#Java基础字符串</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础异常/">#Java基础异常</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础泛型/">#Java基础泛型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础继承/">#Java基础继承</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础注解/">#Java基础注解</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础集合/">#Java基础集合</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java基础面向对象/">#Java基础面向对象</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Java面试/">#Java面试</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Kotlin开发环境/">#Kotlin开发环境</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin数据类型/">#Kotlin数据类型</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin简介/">#Kotlin简介</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型初步/">#Kotlin类型初步</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin类型进阶/">#Kotlin类型进阶</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Kotlin表达式/">#Kotlin表达式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSH/">#SSH</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/UML/">#UML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/VPS/">#VPS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SSR/">#SSR</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VPN/">#VPN</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/书/">#书</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Plan/">#Plan</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之ClassLoader/">#热修复插件化之ClassLoader</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/混合开发/">#混合开发</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化Small/">#热修复插件化之插件化Small</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之插件化原理/">#热修复插件化之插件化原理</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之版本管理/">#热修复插件化之版本管理</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之虚拟机/">#热修复插件化之虚拟机</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android-Studio/">#Android Studio</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Button/">#Button</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/EditText/">#EditText</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ImageView/">#ImageView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ProgressBar/">#ProgressBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AlertDialog/">#AlertDialog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/LinearLayout/">#LinearLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/FrameLayout/">#FrameLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/TableLayout/">#TableLayout</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/ActionBar/">#ActionBar</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/隐式Intent/">#隐式Intent</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/0-9/">#0.9</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Broadcast/">#Broadcast</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/LBS/">#LBS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/ListView/">#ListView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/运行时权限/">#运行时权限</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Android基础/">#Android基础</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/RecyclerView/">#RecyclerView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Material-Design/">#Material Design</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/线程/">#线程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Handler/">#Handler</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/AsyncTask/">#AsyncTask</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/前台服务/">#前台服务</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/IntentService/">#IntentService</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Notification/">#Notification</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/PendingIntent/">#PendingIntent</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/摄像头和相册/">#摄像头和相册</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/VideoView/">#VideoView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/自定义view/">#自定义view</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/WebView/">#WebView</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/OkHttp/">#OkHttp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/XML/">#XML</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/JSON/">#JSON</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数据存储/">#数据存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文件存储/">#文件存储</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/SQLite数据库/">#SQLite数据库</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面试/">#面试</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/FFMPEG/">#FFMPEG</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/设计模式单例/">#设计模式单例</a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="cube-links cube-sidebar" id="cube-links">
-    <div class="title">
-        <a>个人链接</a>
-    </div>
-    <ul class="list">
-        
-        <li>
-            
-            
-            <img src="/images/GitHub.png">
-            
-            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
-        </li>
-        
-    </ul>
-</div>
-
-
-        </div>
-    </div>
-</div>
-<footer class="cube-footer">
-    
-© 2017 Mayo
-
-<br>
-Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
-</footer>
-<!-- inject:script -->
-<script src="/js/script.js"></script>
-<!-- endinject -->
-<div class="cube-loading out"></div>
 </body>
 </html>
