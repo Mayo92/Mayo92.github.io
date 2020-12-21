@@ -12,7 +12,7 @@
     
     
     
-    <title>标签: 热修复插件化之插件化Atlas | 妙妙屋</title>
+    <title>Android高级面试-插件化和热修复2 | 妙妙屋</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -162,29 +162,108 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">Android高级面试-插件化和热修复2</h1>
     
-    <div class="cube-archive" style="margin-top: 0;">
-        <h1 class="title">热修复插件化之插件化Atlas</h1>
-        
-        <ul class="posts">
-            
-            <li class="post">
-                <a href="/2018/04/08/热修复插件化-插件化Atlas/">热修复插件化-插件化Atlas</a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2020-08-02
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Android面试/">#Android面试</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h2 id="VirtualApk-如何实现插件化？"><a href="#VirtualApk-如何实现插件化？" class="headerlink" title="VirtualApk 如何实现插件化？"></a>VirtualApk 如何实现插件化？</h2><h3 id="题目剖析"><a href="#题目剖析" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
+<li>如何处理类加载</li>
+<li>如何处理资源加载和冲突</li>
+<li>如何对四大组件进行支持</li>
+</ul>
+<a id="more"></a>
+<h3 id="VirtualApk"><a href="#VirtualApk" class="headerlink" title="VirtualApk"></a>VirtualApk</h3><p><img src="63.png" alt=""></p>
+<p>跳转的这Activity要让插件看得见</p>
+<p><img src="64.png" alt=""></p>
+<p><img src="65.png" alt=""></p>
+<h3 id="如何加载运行插件的代码"><a href="#如何加载运行插件的代码" class="headerlink" title="如何加载运行插件的代码"></a>如何加载运行插件的代码</h3><p>插件classloader的父classloader，也就是parent是宿主的classloader，插件反射可以拿到宿主里的类</p>
+<p>Context是宿主的application</p>
+<p><img src="66.png" alt=""></p>
+<p><img src="67.png" alt=""></p>
+<p><img src="68.png" alt=""></p>
+<p>插入做了什么操作</p>
+<p><img src="69.png" alt=""></p>
+<p>插入的时候放到了后面，这样宿主的classloader就包含了所有的插件的classloader，拿宿主的PathClassloader加载类的时候，不仅可以加载宿主的类还可以加载插件的类</p>
+<p><img src="70.png" alt=""></p>
+<h3 id="DroidPlugin的超强隔离"><a href="#DroidPlugin的超强隔离" class="headerlink" title="DroidPlugin的超强隔离"></a>DroidPlugin的超强隔离</h3><p>插件宿主相互不可见</p>
+<p><img src="71.png" alt=""></p>
+<h3 id="如何处理插件资源"><a href="#如何处理插件资源" class="headerlink" title="如何处理插件资源"></a>如何处理插件资源</h3><p><img src="72.png" alt=""></p>
+<p>根据值不同，上面是大的资源，包含宿主及插件的资源。下面只能加载插件资源</p>
+<p><img src="73.png" alt=""></p>
+<h3 id="资源编译处理及过滤"><a href="#资源编译处理及过滤" class="headerlink" title="资源编译处理及过滤"></a>资源编译处理及过滤</h3><p><img src="74.png" alt=""></p>
+<p>Button1是为了保证资源的顺延</p>
+<p><img src="75.png" alt=""></p>
+<p>重复的去掉，不重复的改packageID（这里没有前移）</p>
+<p><img src="76.png" alt=""></p>
+<p>修改完之后，R文件的值也会被相应修改</p>
+<h4 id="存在的问题1"><a href="#存在的问题1" class="headerlink" title="存在的问题1"></a>存在的问题1</h4><p><img src="77.png" alt=""></p>
+<p><img src="78.png" alt=""></p>
+<p><img src="79.png" alt=""></p>
+<p><img src="80.png" alt=""></p>
+<p><img src="81.png" alt=""></p>
+<p>上面的方法仅限于java代码，下面的解决不了</p>
+<p><img src="82.png" alt=""></p>
+<h4 id="存在的问题2"><a href="#存在的问题2" class="headerlink" title="存在的问题2"></a>存在的问题2</h4><p><img src="83.png" alt=""></p>
+<h3 id="如何支持启动插件Activity"><a href="#如何支持启动插件Activity" class="headerlink" title="如何支持启动插件Activity"></a>如何支持启动插件Activity</h3><p><img src="84.png" alt=""></p>
+<p><img src="85.png" alt=""></p>
+<p><img src="86.png" alt=""></p>
+<p><img src="87.png" alt=""></p>
+<h4 id="启动插件Activity的问题"><a href="#启动插件Activity的问题" class="headerlink" title="启动插件Activity的问题"></a>启动插件Activity的问题</h4><p><img src="88.png" alt=""></p>
+<p><img src="89.png" alt=""></p>
+<h4 id="DroidPlugin如何处理这个问题"><a href="#DroidPlugin如何处理这个问题" class="headerlink" title="DroidPlugin如何处理这个问题"></a>DroidPlugin如何处理这个问题</h4><p>宿主的intent包装了一层插件的intent</p>
+<p><img src="90.png" alt=""></p>
+<h3 id="如何支持启动插件Service"><a href="#如何支持启动插件Service" class="headerlink" title="如何支持启动插件Service"></a>如何支持启动插件Service</h3><p><img src="91.png" alt=""></p>
+<p><img src="92.png" alt=""></p>
+<p>Service没有上面Activity的问题，intent里面也包装了一层</p>
+<p><img src="93.png" alt=""></p>
+<p><img src="94.png" alt=""></p>
+<h3 id="如何支持注册插件广播"><a href="#如何支持注册插件广播" class="headerlink" title="如何支持注册插件广播"></a>如何支持注册插件广播</h3><ul>
+<li>解析插件Manifest，静态广播转动态注册</li>
+<li>插件广播在宿主未运行时无法被外部唤醒</li>
+<li>系统限制只能静态注册的广播可在宿主预埋并代理</li>
+</ul>
+<h3 id="问答"><a href="#问答" class="headerlink" title="问答"></a>问答</h3><p>资源的final？</p>
+<p>1.对于一个整型来讲，加 final 之后，所有引用这个变量的地方都会编译时替换成值，而不是变量（或者说常量）本身。</p>
+<p>2.插件化通常的做法是把插件的 ClassLoader 的父 ClassLoader 设置为宿主的 ClassLoader，双亲委派机制，所以如果宿主存在跟插件一样的类，会优先加载宿主的，插件的那个类就会被忽略。</p>
+<p>明白了这两个点之后，插件因为不知道宿主的 id 的值，因此通过 1 来保持对变量的引用（而不是替换成插件的id的值），通过 2 来在运行时加载到正确的 id 的值。</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2020/08/01/Android高级面试-插件化和热修复/">
+                Android高级面试-插件化和热修复
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
         </div>
         <div class="cube-right">
             
@@ -363,7 +442,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/面试/">#面试</a>
         </div>
         
@@ -393,12 +472,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端/">#前端</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Java基础/">#Java基础</a>
         </div>
         
@@ -408,7 +487,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/星球Android入门/Android基础/布局/控件/">#控件</a>
         </div>
         
@@ -428,7 +507,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/VPS/">#VPS</a>
         </div>
         
@@ -438,7 +517,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/热修复插件化/">#热修复插件化</a>
         </div>
         
@@ -448,7 +527,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端/JavaWeb/">#JavaWeb</a>
         </div>
         
@@ -478,7 +557,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/第一行代码/读书笔记/Android基础/">#Android基础</a>
         </div>
         
@@ -504,7 +583,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ContentProvider/">#ContentProvider</a>
         </div>
         
@@ -514,7 +593,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android面试/">#Android面试</a>
         </div>
         
@@ -524,7 +603,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Layout/">#Layout</a>
         </div>
         
@@ -534,7 +613,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle之project/">#Gradle之project</a>
         </div>
         
@@ -544,7 +623,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle快速入门/">#Gradle快速入门</a>
         </div>
         
@@ -554,17 +633,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Gradle总结/">#Gradle总结</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle持续集成与打包/">#Gradle持续集成与打包</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Gradle语法/">#Gradle语法</a>
         </div>
         
@@ -594,7 +673,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/服务器搭建/">#服务器搭建</a>
         </div>
         
@@ -614,7 +693,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java基础语法/">#Java基础语法</a>
         </div>
         
@@ -629,7 +708,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java基础字符串/">#Java基础字符串</a>
         </div>
         
@@ -654,7 +733,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Java基础网络编程/">#Java基础网络编程</a>
         </div>
         
@@ -664,7 +743,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Java面试/">#Java面试</a>
         </div>
         
@@ -674,12 +753,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Kotlin函数进阶/">#Kotlin函数进阶</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin内置类型/">#Kotlin内置类型</a>
         </div>
         
@@ -699,7 +778,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Kotlin程序结构/">#Kotlin程序结构</a>
         </div>
         
@@ -724,7 +803,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
@@ -734,7 +813,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VPS/">#VPS</a>
         </div>
         
@@ -744,12 +823,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/VPN/">#VPN</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/书/">#书</a>
         </div>
         
@@ -764,7 +843,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/热修复插件化之插件化Atlas/">#热修复插件化之插件化Atlas</a>
         </div>
         
@@ -774,7 +853,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/热修复插件化之class、dex/">#热修复插件化之class、dex</a>
         </div>
         
@@ -794,7 +873,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/热修复插件化之热修复/">#热修复插件化之热修复</a>
         </div>
         
@@ -814,7 +893,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/ImageView/">#ImageView</a>
         </div>
         
@@ -824,7 +903,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/AlertDialog/">#AlertDialog</a>
         </div>
         
@@ -834,7 +913,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/布局/">#布局</a>
         </div>
         
@@ -854,7 +933,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
         </div>
         
@@ -894,7 +973,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/startActivityForResult/">#startActivityForResult</a>
         </div>
         
@@ -904,22 +983,22 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/0-9/">#0.9</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/运行时权限/">#运行时权限</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Android基础/">#Android基础</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Fragment，限定符/">#Fragment，限定符</a>
         </div>
         
@@ -929,7 +1008,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LBS/">#LBS</a>
         </div>
         
@@ -944,7 +1023,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/RecyclerView/">#RecyclerView</a>
         </div>
         
@@ -989,17 +1068,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/MediaPlayer/">#MediaPlayer</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/VideoView/">#VideoView</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/自定义view/">#自定义view</a>
         </div>
         
@@ -1014,7 +1093,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/文件存储/">#文件存储</a>
         </div>
         
@@ -1059,7 +1138,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/FFMPEG/">#FFMPEG</a>
         </div>
         
