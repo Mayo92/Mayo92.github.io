@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="妙妙屋">
 <meta property="og:description" content="1. 简介主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T07:58:03.885Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/13/第一行代码笔记-ContentProvider/1.png">
+<meta property="og:updated_time" content="2020-12-24T12:10:38.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一行代码笔记-ContentProvider">
 <meta name="twitter:description" content="1. 简介主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/13/第一行代码笔记-ContentProvider/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
@@ -155,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-运行时权限"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 运行时权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-机制详解"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 机制详解</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-运行时权限"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 运行时权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-机制详解"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 机制详解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-访问其他程序中的数据"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 访问其他程序中的数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-ContentResolver的基本用法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 ContentResolver的基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#将URI字符串解析为Uri对象"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">将URI字符串解析为Uri对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用Uri对象查询table表中的数据"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">使用Uri对象查询table表中的数据</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -184,13 +186,6 @@
             <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。</p>
 <a id="more"></a>
 <h3 id="2-运行时权限"><a href="#2-运行时权限" class="headerlink" title="2. 运行时权限"></a>2. 运行时权限</h3><h4 id="2-1-机制详解"><a href="#2-1-机制详解" class="headerlink" title="2.1 机制详解"></a>2.1 机制详解</h4><p>Android将所有的权限分为两类，一类是普通权限，一类是危险权限。危险权限表示那些可能会触及用户隐私或对设备安全性造成影响的权限，这部分需要由用户手动点击授权才可以，否则程序无法使用相应的功能，具体如下：</p>
-<!--<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="第一行代码笔记-ContentProvider/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>–&gt;
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -622,7 +617,7 @@ getContentResolver().delete(uri,null,null);
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-30T07:58:03.885Z" itemprop="dateUpdated">2019-08-30 15:58:03</time>
+    最后更新时间：<time datetime="2020-12-24T12:10:38.769Z" itemprop="dateUpdated">2020-12-24 20:10:38</time>
 </span><br>
 
 
