@@ -44,7 +44,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/04/25/Java基础-多线程/2.png">
 <meta property="og:image" content="http://yoursite.com/2017/04/25/Java基础-多线程/3.png">
 <meta property="og:image" content="http://yoursite.com/2017/04/25/Java基础-多线程/4.png">
-<meta property="og:updated_time" content="2020-12-02T09:14:52.023Z">
+<meta property="og:updated_time" content="2020-12-24T01:48:00.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础-多线程">
 <meta name="twitter:description" content="多线程的概念System类的gc方法告诉垃圾回收器调用finalize方法，但不一定立即执行。 线程的创建 创建一个Thread类，或者一个Thread子类的对象 创建一个实现Runnable接口的类的对象 实现callable接口，重写call()方法，call()作为线程的执行体，具有返回值，并且可以对异常进行声明和抛出；使用start()方法来启动线程">
@@ -459,7 +459,7 @@ synchronized(sharedObject) {
 <li>永远在while循环里而不是if语句下使用wait。这样，循环会在线程睡眠前后都检查wait的条件，并在条件实际上并未改变的情况下处理唤醒通知。</li>
 <li>永远在多线程间共享的对象（在生产者消费者模型里即缓冲区队列）上使用wait。</li>
 </ol>
-<p>连接<a href="https://www.cnblogs.com/liuyishi/p/10664429.html" target="_blank" rel="noopener"></a></p>
+<p><a href="https://www.cnblogs.com/liuyishi/p/10664429.html" target="_blank" rel="noopener">连接</a></p>
 <h4 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h4><p>同步代码块对锁的操作是隐式的。1.5以后将同步和锁封装成了对象，并将操作锁的隐式方法定义到了该对象中，将隐式动作变成了显示动作。</p>
 <p>Lock接口：出现替代了同步代码块或同步函数，将同步的隐式操作变成显示锁操作，同时更加灵活，可以一个锁加上多组监听器。</p>
 <ul>
@@ -488,7 +488,7 @@ synchronized(sharedObject) {
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-12-02T09:14:52.023Z" itemprop="dateUpdated">2020-12-02 17:14:52</time>
+    最后更新时间：<time datetime="2020-12-24T01:48:00.728Z" itemprop="dateUpdated">2020-12-24 09:48:00</time>
 </span><br>
 
 
