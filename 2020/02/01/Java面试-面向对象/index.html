@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/01/Java面试-面向对象/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/01/Java面试-面向对象/9.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/01/Java面试-面向对象/10.png">
-<meta property="og:updated_time" content="2020-12-03T08:44:02.779Z">
+<meta property="og:updated_time" content="2020-12-28T12:52:39.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面试-面向对象">
 <meta name="twitter:description" content="面向对象思想 从用户（终端用户、使用你代码的用户）角度思考问题 摒弃完全基于逻辑的思维">
@@ -302,12 +302,10 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="从List到List"><a href="#从List到List" class="headerlink" title="从List到List"></a>从List到List<t></t></h4><ul>
-<li>规定List中的元素只能是类型T</li>
-<li>ArrayLis<integer>，ArrayLis<string></string></integer></li>
-<li>LinkList<integer>，LinkList<string></string></integer></li>
-</ul>
-<p>T是对象才知道的，类是不知道的，所以static方法要加上T</p>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="从List到List"><a href="#从List到List" class="headerlink" title="从List到List"></a>从List到List<t></t></h4><pre><code>规定List中的元素只能是类型T
+ArrayLis&lt;Integer&gt;，ArrayLis&lt;String&gt;
+LinkList&lt;Integer&gt;，LinkList&lt;String&gt;
+</code></pre><p>T是对象才知道的，类是不知道的，所以static方法要加上T</p>
 <h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre><code>List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); //JDK1.7
 
 List&lt;Integer&gt; list = LinkedList.of(1,2,3);
@@ -319,12 +317,10 @@ Object.equals(emptyIntList , LinkedList.&lt;Integer&gt;newEmptyList())
 class ArrayList&lt;T&gt; {... //写在类定义上
 
 public &lt;V&gt; void printList(List&lt;V&gt; list) {... //写在方法定义上
-</code></pre><h4 id="Java-Type-Erasure"><a href="#Java-Type-Erasure" class="headerlink" title="Java Type Erasure"></a>Java Type Erasure</h4><ul>
-<li>早期java没有泛型</li>
-<li>为了兼容，在运行时将所有泛型内容Erase</li>
-<li>运行时，List,List&lt;&gt;没有区别</li>
-</ul>
-<h4 id="运行时如何知道泛型类型"><a href="#运行时如何知道泛型类型" class="headerlink" title="运行时如何知道泛型类型"></a>运行时如何知道泛型类型</h4><p>加上类型参数</p>
+</code></pre><h4 id="Java-Type-Erasure"><a href="#Java-Type-Erasure" class="headerlink" title="Java Type Erasure"></a>Java Type Erasure</h4><pre><code>早期java没有泛型
+为了兼容，在运行时将所有泛型内容Erase
+运行时，List,List&lt;&gt;没有区别
+</code></pre><h4 id="运行时如何知道泛型类型"><a href="#运行时如何知道泛型类型" class="headerlink" title="运行时如何知道泛型类型"></a>运行时如何知道泛型类型</h4><p>加上类型参数</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -332,19 +328,17 @@ public &lt;V&gt; void printList(List&lt;V&gt; list) {... //写在方法定义上
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<h4 id="Covariance"><a href="#Covariance" class="headerlink" title="Covariance"></a>Covariance</h4><ul>
-<li>ArrayList<integer>是List<integer>吗？  是的</integer></integer></li>
-<li>List<integer>是List<object>吗？  不是</object></integer></li>
-</ul>
-<figure class="image-bubble">
+<h4 id="Covariance"><a href="#Covariance" class="headerlink" title="Covariance"></a>Covariance</h4><pre><code>ArrayList&lt;Integer&gt;是List&lt;Integer&gt;吗？  是的
+List&lt;Integer&gt;是List&lt;Object&gt;吗？  不是
+</code></pre><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="9.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<p>把List<integer>转换成List<object></object></integer></p>
-<figure class="image-bubble">
+<pre><code>把List&lt;Integer&gt;转换成List&lt;Object&gt;
+</code></pre><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="10.png" alt="" title="">
@@ -365,7 +359,7 @@ public &lt;V&gt; void printList(List&lt;V&gt; list) {... //写在方法定义上
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-12-03T08:44:02.779Z" itemprop="dateUpdated">2020-12-03 16:44:02</time>
+    最后更新时间：<time datetime="2020-12-28T12:52:39.031Z" itemprop="dateUpdated">2020-12-28 20:52:39</time>
 </span><br>
 
 
