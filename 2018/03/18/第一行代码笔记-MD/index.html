@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="妙妙屋">
 <meta property="og:description" content="什么是Material Design界面设计语言，包含视觉、运动、交互效果。开发人员使用Design Support库即可。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-10T02:03:01.558Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/18/第一行代码笔记-MD/1.png">
+<meta property="og:updated_time" content="2020-12-24T12:59:24.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一行代码笔记-Material Design">
 <meta name="twitter:description" content="什么是Material Design界面设计语言，包含视觉、运动、交互效果。开发人员使用Design Support库即可。">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/18/第一行代码笔记-MD/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
@@ -155,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是Material-Design"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是Material Design</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Toolbar"><span class="post-toc-number">2.</span> <span class="post-toc-text">Toolbar</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么默认会显示ActionBar"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">为什么默认会显示ActionBar</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是Material-Design"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是Material Design</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Toolbar"><span class="post-toc-number">2.</span> <span class="post-toc-text">Toolbar</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么默认会显示ActionBar"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">为什么默认会显示ActionBar</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#滑动菜单"><span class="post-toc-number">3.</span> <span class="post-toc-text">滑动菜单</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DrawerLayout"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">DrawerLayout</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NavigationView"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">NavigationView</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -187,13 +189,6 @@
 <h3 id="为什么默认会显示ActionBar"><a href="#为什么默认会显示ActionBar" class="headerlink" title="为什么默认会显示ActionBar"></a>为什么默认会显示ActionBar</h3><p>这是根据项目的主题而来的，从AndroidManifest.xml的android:theme找到res/values/styles.xml，找到主题的parent是Theme.AppCompat.Light.DarkActionBar，这个DarkActionBar是一个深色的ActionBar主题，所以才会出现ActionBar。  </p>
 <p>指定不带ActionBar的主题，通常有Theme.AppCompat.NoActionBar和Theme.AppCompat.Light.NoActionBar这两种主题可选。其中Theme.AppCompat.NoActionBar表示深色主题，界面主体为深色，陪衬颜色为淡色。Theme.AppCompat.Light.NoActionBar表示淡色主题，界面主体为淡色，陪衬颜色为深色。  </p>
 <p>AppTheme中的属性重新，这里重写了colorPrimary、colorPrimaryDark、colorAccent这三个颜色属性，如下图：</p>
-<!--<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="第一行代码笔记-MD/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>–&gt;
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -303,7 +298,7 @@ if(actionBar != null){
 <pre><code>compile &apos;com.android.support:design:24.2.1&apos;
 compile &apos;de.hdodenhof:circleimageview:2.1.0&apos;
 </code></pre><p>这里添加了依赖，第一行是Design Support库，</p>
--->
+
         </div>
 
         <blockquote class="post-copyright">
@@ -311,7 +306,7 @@ compile &apos;de.hdodenhof:circleimageview:2.1.0&apos;
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-10T02:03:01.558Z" itemprop="dateUpdated">2019-09-10 10:03:01</time>
+    最后更新时间：<time datetime="2020-12-24T12:59:24.432Z" itemprop="dateUpdated">2020-12-24 20:59:24</time>
 </span><br>
 
 

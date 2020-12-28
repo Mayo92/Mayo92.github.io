@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="妙妙屋">
 <meta property="og:description" content="忽略文件提供一种可配性很强的机制来允许用户将指定的文件或目录排除在版本控制之外，它会检查代码仓库的目录下是否存在一个名为.gitignore的文件，存在的话会一行一行读取这个文件的内容，并把每一行指定的文件或目录排除在版本控制之外，文件或目录可以使用”*”通配符的。 AS在创建项目的时候会自动帮我们创建两个.gitignore文件，一个在根目录下，一个在app模块下。 配置完成之后，就可以提交代码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T07:58:24.469Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/18/第一行代码笔记-Git/1.png">
+<meta property="og:updated_time" content="2020-12-24T12:56:50.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一行代码笔记-Git">
 <meta name="twitter:description" content="忽略文件提供一种可配性很强的机制来允许用户将指定的文件或目录排除在版本控制之外，它会检查代码仓库的目录下是否存在一个名为.gitignore的文件，存在的话会一行一行读取这个文件的内容，并把每一行指定的文件或目录排除在版本控制之外，文件或目录可以使用”*”通配符的。 AS在创建项目的时候会自动帮我们创建两个.gitignore文件，一个在根目录下，一个在app模块下。 配置完成之后，就可以提交代码">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/18/第一行代码笔记-Git/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
@@ -155,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#忽略文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">忽略文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看修改内容"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看修改内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看文件修改的情况"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">查看文件修改的情况</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看文件修改的内容"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">查看文件修改的内容</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看某个文件修改的内容"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">查看某个文件修改的内容</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#撤销未提交的修改"><span class="post-toc-number">3.</span> <span class="post-toc-text">撤销未提交的修改</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#只要代码没有提交，所有修改的内容都是可以撤销的"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">只要代码没有提交，所有修改的内容都是可以撤销的</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看提交记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">查看提交记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#每次提交记录都会包含提交id、提交人、提交日期、描述信息"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">每次提交记录都会包含提交id、提交人、提交日期、描述信息</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看这条记录具体修改什么内容，在命令中加入-p参数"><span class="post-toc-number">4.0.3.</span> <span class="post-toc-text">查看这条记录具体修改什么内容，在命令中加入-p参数</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分支的作用"><span class="post-toc-number">5.</span> <span class="post-toc-text">分支的作用</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#忽略文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">忽略文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看修改内容"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看修改内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看文件修改的情况"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">查看文件修改的情况</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看文件修改的内容"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">查看文件修改的内容</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看某个文件修改的内容"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">查看某个文件修改的内容</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#撤销未提交的修改"><span class="post-toc-number">3.</span> <span class="post-toc-text">撤销未提交的修改</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#只要代码没有提交，所有修改的内容都是可以撤销的"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">只要代码没有提交，所有修改的内容都是可以撤销的</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看提交记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">查看提交记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#每次提交记录都会包含提交id、提交人、提交日期、描述信息"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">每次提交记录都会包含提交id、提交人、提交日期、描述信息</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看这条记录具体修改什么内容，在命令中加入-p参数"><span class="post-toc-number">4.0.3.</span> <span class="post-toc-text">查看这条记录具体修改什么内容，在命令中加入-p参数</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分支的作用"><span class="post-toc-number">5.</span> <span class="post-toc-text">分支的作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#与远程版本库协作"><span class="post-toc-number">6.</span> <span class="post-toc-text">与远程版本库协作</span></a></li></ol>
         </nav>
     </aside>
 
@@ -197,13 +199,6 @@
 </code></pre><h5 id="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"><a href="#只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录" class="headerlink" title="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"></a>只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</h5><pre><code>git log 1fa380xxxxxxx -1
 </code></pre><h5 id="查看这条记录具体修改什么内容，在命令中加入-p参数"><a href="#查看这条记录具体修改什么内容，在命令中加入-p参数" class="headerlink" title="查看这条记录具体修改什么内容，在命令中加入-p参数"></a>查看这条记录具体修改什么内容，在命令中加入-p参数</h5><pre><code>git log 1fa380xxxxxxx -1 -p
 </code></pre><h3 id="分支的作用"><a href="#分支的作用" class="headerlink" title="分支的作用"></a>分支的作用</h3><p>在现有代码的基础上开辟一个分叉口，使得代码可以在主干线和分支线上同时进行开发，且互相不会影响。</p>
-<!--<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="第一行代码笔记-Git/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>–&gt;
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -228,7 +223,7 @@ git merge version1.0
 <pre><code>git clone https://github.com/example/test.git
 </code></pre><p>本地修改的内容同步到远程版本库：</p>
 <pre><code>git push origin master
-</code></pre><p>origin部分指定的是远程版本库的Git地址，master部分指定的是同步到哪一个分支，上述命令就完成了将本地代码同步到<a href="https://github.com/example/test.git这个版本库的master分支上的功能。">https://github.com/example/test.git这个版本库的master分支上的功能。</a></p>
+</code></pre><p>origin部分指定的是远程版本库的Git地址，master部分指定的是同步到哪一个分支，上述命令就完成了将本地代码同步到<a href="https://github.com/example/test.git这个版本库的master分支上的功能。" target="_blank" rel="noopener">https://github.com/example/test.git这个版本库的master分支上的功能。</a></p>
 <p>将远程版本库上的修改同步到本地，Git提供两种命令完成此功能，分别是fetch和pull，fetch的语法规则和push差不多，如下所示：</p>
 <pre><code>git fetch origin master
 </code></pre><p>执行上述命令后，会将远程版本库上的代码同步到本地，同步下来的代码不会合并到任何分支上去，而是会存放到一个origin/master分支上，这时我们可以通过diff命令来查看远程版本库上到底修改了哪些东西：</p>
@@ -237,7 +232,7 @@ git merge version1.0
 <pre><code>git merge origin/master
 </code></pre><p>pull命令则是相当于将fetch和merge这两个命令放在一起执行了，它可以从远程版本库上获取最新的代码合并到本地：</p>
 <pre><code>git pull origin master
-</code></pre>-->
+</code></pre>
         </div>
 
         <blockquote class="post-copyright">
@@ -245,7 +240,7 @@ git merge version1.0
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-30T07:58:24.469Z" itemprop="dateUpdated">2019-08-30 15:58:24</time>
+    最后更新时间：<time datetime="2020-12-24T12:56:50.121Z" itemprop="dateUpdated">2020-12-24 20:56:50</time>
 </span><br>
 
 

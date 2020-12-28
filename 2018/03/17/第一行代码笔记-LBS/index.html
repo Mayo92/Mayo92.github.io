@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="妙妙屋">
 <meta property="og:description" content="简介基于位置的服务，Location Based Service。利用无线电通讯网络或者GPS等定位方式来确定移动设备所在的位置。 GPS定位是基于手机内置的GPS硬件直接和卫星交互来获取当前的经纬度信息，精确度非常高，缺点是只能在室外使用，室内基本无法接收到卫星信号。 网络定位根据手机当前网络附近的三个基站进行测试，计算出手机和每个基站的距离，再通过三角定位确定大概的位置，精度一般，室内外都可使">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T07:58:45.234Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/17/第一行代码笔记-LBS/1.png">
+<meta property="og:updated_time" content="2020-12-24T12:55:51.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一行代码笔记-LBS">
 <meta name="twitter:description" content="简介基于位置的服务，Location Based Service。利用无线电通讯网络或者GPS等定位方式来确定移动设备所在的位置。 GPS定位是基于手机内置的GPS硬件直接和卫星交互来获取当前的经纬度信息，精确度非常高，缺点是只能在室外使用，室内基本无法接收到卫星信号。 网络定位根据手机当前网络附近的三个基站进行测试，计算出手机和每个基站的距离，再通过三角定位确定大概的位置，精度一般，室内外都可使">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/17/第一行代码笔记-LBS/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
@@ -155,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#百度SDK"><span class="post-toc-number">2.</span> <span class="post-toc-text">百度SDK</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#申请API-Key"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">申请API Key</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取SHA1"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">获取SHA1</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#百度SDK"><span class="post-toc-number">2.</span> <span class="post-toc-text">百度SDK</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#申请API-Key"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">申请API Key</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取SHA1"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">获取SHA1</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用百度定位"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用百度定位</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#LBS-SDK"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">LBS SDK</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#确定自己位置的经纬度"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">确定自己位置的经纬度</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#选择定位模式"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">选择定位模式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#看得懂的位置信息"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">看得懂的位置信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用百度地图"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">使用百度地图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#让地图显示出来"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">让地图显示出来</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#移动到我的位置"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">移动到我的位置</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#让“我”显示在地图上"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">让“我”显示在地图上</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -187,13 +189,6 @@
 <a id="more"></a>
 <h3 id="百度SDK"><a href="#百度SDK" class="headerlink" title="百度SDK"></a>百度SDK</h3><h4 id="申请API-Key"><a href="#申请API-Key" class="headerlink" title="申请API Key"></a>申请API Key</h4><p>去百度地图开放平台创建应用，</p>
 <h5 id="获取SHA1"><a href="#获取SHA1" class="headerlink" title="获取SHA1"></a>获取SHA1</h5><p>指的是打包程序时所用签名文件的SHA1指纹，打开Android Studio任意项目，点击右侧状态栏的Gradle–项目名–:app–Tasks–android,signingReport这个Task就可以用来查看签名文件信息，双击查看。</p>
-<!--<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="第一行代码笔记-LBS/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>–&gt;
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -231,7 +226,7 @@ locationBuilder.longitude(116.404);
 </code></pre><p>MyLocationData.Builder类还提供了一个build()方法，当我们把要封装的信息都设置完成之后，只需调用它的build()方法，就会生成一个MyLocationData的实例，然后再将这个实例传入BaidMap的setMyLocationData()方法中，就可以让设备当前的位置显示在地图上了:</p>
 <pre><code>MyLocationData locationData = locationBuilder.build();
 baiduMap.setMyLocationData(locationData);
-</code></pre>-->
+</code></pre>
         </div>
 
         <blockquote class="post-copyright">
@@ -239,7 +234,7 @@ baiduMap.setMyLocationData(locationData);
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-30T07:58:45.234Z" itemprop="dateUpdated">2019-08-30 15:58:45</time>
+    最后更新时间：<time datetime="2020-12-24T12:55:51.986Z" itemprop="dateUpdated">2020-12-24 20:55:51</time>
 </span><br>
 
 

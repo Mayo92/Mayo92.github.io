@@ -29,7 +29,8 @@
 <meta property="og:description" content="1. 简介主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/03/13/第一行代码笔记-ContentProvider/1.png">
-<meta property="og:updated_time" content="2020-12-24T12:10:38.769Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/13/第一行代码笔记-ContentProvider/2.png">
+<meta property="og:updated_time" content="2020-12-24T12:36:37.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一行代码笔记-ContentProvider">
 <meta name="twitter:description" content="1. 简介主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。">
@@ -157,7 +158,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-运行时权限"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 运行时权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-机制详解"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 机制详解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-访问其他程序中的数据"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 访问其他程序中的数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-ContentResolver的基本用法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 ContentResolver的基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#将URI字符串解析为Uri对象"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">将URI字符串解析为Uri对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用Uri对象查询table表中的数据"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">使用Uri对象查询table表中的数据</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-运行时权限"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 运行时权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-机制详解"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 机制详解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-访问其他程序中的数据"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 访问其他程序中的数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-ContentResolver的基本用法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 ContentResolver的基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#将URI字符串解析为Uri对象"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">将URI字符串解析为Uri对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用Uri对象查询table表中的数据"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">使用Uri对象查询table表中的数据</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#向table1表添加一条数据"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">向table1表添加一条数据</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#更新这条添加的数据，把column1的值清空，可以借助ContentResolver的update-方法实现"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">更新这条添加的数据，把column1的值清空，可以借助ContentResolver的update()方法实现</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用ContentResolver的delete-方法删除这条数据"><span class="post-toc-number">3.1.6.</span> <span class="post-toc-text">使用ContentResolver的delete()方法删除这条数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-2-读取系统联系人"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2 读取系统联系人</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-创建自己的内容提供器"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 创建自己的内容提供器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-1-创建内容提供器的步骤"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">4.1 创建内容提供器的步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#新建一个类继承ContentProvider，实现6个抽象方法"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">新建一个类继承ContentProvider，实现6个抽象方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#content-com-example-app-provider-table1-1"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">content://com.example.app.provider/table1/1</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#一个能够匹配任意表的内容URI格式就可以写成："><span class="post-toc-number">4.1.3.</span> <span class="post-toc-text">一个能够匹配任意表的内容URI格式就可以写成：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#一个能够匹配table1表中任意一行数据的内容URI格式就可以写成："><span class="post-toc-number">4.1.4.</span> <span class="post-toc-text">一个能够匹配table1表中任意一行数据的内容URI格式就可以写成：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#getType-代码"><span class="post-toc-number">4.1.5.</span> <span class="post-toc-text">getType()代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-2-实现跨程序数据共享"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">4.2 实现跨程序数据共享</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#onCreate-方法"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">onCreate()方法:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#query-方法"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">query()方法:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#insert-方法"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">insert()方法:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#update-方法"><span class="post-toc-number">4.2.4.</span> <span class="post-toc-text">update()方法:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#delete-方法"><span class="post-toc-number">4.2.5.</span> <span class="post-toc-text">delete()方法:</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -243,20 +244,7 @@ content://com.example.app.provider/table2
     selection,
     selectionArgs,
     sortOrder);
-</code></pre><!--<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="第一行代码笔记-ContentProvider/2.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>–&gt;
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="2.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+</code></pre><p><img src="2.png" alt=""></p>
 <h5 id="通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据"><a href="#通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据" class="headerlink" title="通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据"></a>通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据</h5><pre><code>if(crsor != null) {
 
     while(cursor.moveToNext()){
@@ -391,7 +379,7 @@ try{
 <ul>
 <li>必须以vnd开头</li>
 <li>如果内容URI以路径结尾，则后面接android.cursor.dir/，如果内容URI以id结尾，则后接android.cursor.item/。</li>
-<li>最后接上vnd.<authority>.<path></li>
+<li>最后接上vnd.<authority>.<path></path></authority></li>
 </ul>
 <p>对于content://com.example.app.provider/table1，MIME类型为：</p>
 <pre><code>vnd.android.cursor.dir/vnd.com.example.app.provider.table1
@@ -609,7 +597,7 @@ getContentResolver().update(uri,values,null,null);
 //删除数据
 Uri uri = Uri.parse(&quot;content://com.example.databasetest.provider/book&quot; + newId);
 getContentResolver().delete(uri,null,null);
-</code></pre>-->
+</code></pre>
         </div>
 
         <blockquote class="post-copyright">
@@ -617,7 +605,7 @@ getContentResolver().delete(uri,null,null);
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-12-24T12:10:38.769Z" itemprop="dateUpdated">2020-12-24 20:10:38</time>
+    最后更新时间：<time datetime="2020-12-24T12:36:37.299Z" itemprop="dateUpdated">2020-12-24 20:36:37</time>
 </span><br>
 
 

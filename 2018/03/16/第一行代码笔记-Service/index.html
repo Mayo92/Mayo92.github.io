@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="妙妙屋">
 <meta property="og:description" content="1. 是什么是Android实现程序后台运行的解决方案，适合执行那些不需要和用户交互且还要长期运行的项目。不依赖任何用户界面，即使切换到后台或打开另一个程序，服务仍然能够正常运行。当应用程序进程被杀掉时，所有依赖于该进程的服务也会停止运行。默认运行在主线程中。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T07:59:31.201Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/第一行代码笔记-Service/1.png">
+<meta property="og:updated_time" content="2020-12-24T12:49:20.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一行代码笔记-Service">
 <meta name="twitter:description" content="1. 是什么是Android实现程序后台运行的解决方案，适合执行那些不需要和用户交互且还要长期运行的项目。不依赖任何用户界面，即使切换到后台或打开另一个程序，服务仍然能够正常运行。当应用程序进程被杀掉时，所有依赖于该进程的服务也会停止运行。默认运行在主线程中。">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/16/第一行代码笔记-Service/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
     
@@ -155,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-是什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 是什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Android多线程编程"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. Android多线程编程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-线程的基本用法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 线程的基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-1-1-继承的方式耦合度有点高"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">2.1.1 继承的方式耦合度有点高</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-1-2-Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">2.1.2 Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-1-3-匿名类"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">2.1.3 匿名类</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-在子线程中更新UI"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 在子线程中更新UI</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-3-解析异步消息处理机制"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">2.3 解析异步消息处理机制</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-是什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 是什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Android多线程编程"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. Android多线程编程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-线程的基本用法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 线程的基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-1-1-继承的方式耦合度有点高"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">2.1.1 继承的方式耦合度有点高</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-1-2-Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">2.1.2 Thread的构造函数接收一个Runnable参数，myThread正是一个实现了Runnable接口的对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-1-3-匿名类"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">2.1.3 匿名类</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-在子线程中更新UI"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 在子线程中更新UI</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-3-解析异步消息处理机制"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">2.3 解析异步消息处理机制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4-使用AsyncTask"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">2.4 使用AsyncTask</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#需重写4个方法"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">需重写4个方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#onPreExecute"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">onPreExecute():</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#doInBackground-Params…"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">doInBackground(Params…):</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#onProgressUpdate-Progress…"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">onProgressUpdate(Progress…):</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#onPostExecute-Result"><span class="post-toc-number">2.4.5.</span> <span class="post-toc-text">onPostExecute(Result):</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-服务的基本用法"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 服务的基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-定义一个服务"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 定义一个服务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-2-启动和停止服务"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2 启动和停止服务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-活动和服务进行通信-onBind"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.3 活动和服务进行通信 onBind()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#下载示例"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">下载示例</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Activity代码"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">Activity代码</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-服务的生命周期"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 服务的生命周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#startService-方法"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">startService()方法:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#bindService-方法"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">bindService()方法:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#即调用了startService-方法，又调用了bindService-方法"><span class="post-toc-number">4.0.3.</span> <span class="post-toc-text">即调用了startService()方法，又调用了bindService()方法:</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-服务的更多技巧"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. 服务的更多技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-1-使用前台服务"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">5.1 使用前台服务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-2-使用IntentService"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">5.2 使用IntentService</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -231,13 +233,6 @@ handler.sendMessage(message);
 <p>handler主要用于发送消息和处理消息。使用sendMessage()后，最终传递到handleMessage()方法中。</p>
 <p>MessageQueue消息队列，主要用于存放所有通过Handler发送的消息，这部分消息会一直存在于消息队列中，等待被处理。每个线程中只会有一个MessageQueue对象。</p>
 <p>Looper是每个线程中MessageQueue的管家，调用Looper的loop()方法后，就会进入一个无限循环中，每当发现一个MessageQueue中存在一条消息就会将它取出，并传递到Handler的handleMessage()方法中。每个线程只有一个Looper对象。</p>
-<!--<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="第一行代码笔记-Service/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>–&gt;
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -251,7 +246,7 @@ handler.sendMessage(message);
 <li>Params，执行AsyncTask时需要传入的参数，可用于在后台任务中使用</li>
 <li>Progress，后台任务执行时，如果需要在界面上显示当前的进度，则使用这里指定的泛型作为进度单位</li>
 <li><p>Result，当任务执行完毕之后，需要对结果进行返回，则使用这里指定的泛型作为返回值类型</p>
-<p>  class DownloadTask extends AsyncTask<Void,Integer,Boolean> {<br>  }</p>
+<p>  class DownloadTask extends AsyncTask<void,integer,boolean> {<br>  }</void,integer,boolean></p>
 </li>
 </ul>
 <p>第一个指定为Void表示执行AsyncTask的时候不需要传入参数给后台任务。第二个指定为Integer，表示使用整形数据作为进度显示单位。第三个指定为Boolean，表示使用布尔类型数据来反馈执行结果。</p>
@@ -436,7 +431,7 @@ private ServiceConnection connection = new ServiceConnection() {
     }
 }
 </code></pre><p>首先提供一个无参的构造函数，且必须在内部调用父类的有参构造函数。在子类实现onHandleIntent()这个抽象方法，这个方法中处理一些具体的逻辑且不用担心ANR问题。服务结束后自动停止。</p>
--->
+
         </div>
 
         <blockquote class="post-copyright">
@@ -444,7 +439,7 @@ private ServiceConnection connection = new ServiceConnection() {
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-30T07:59:31.201Z" itemprop="dateUpdated">2019-08-30 15:59:31</time>
+    最后更新时间：<time datetime="2020-12-24T12:49:20.682Z" itemprop="dateUpdated">2020-12-24 20:49:20</time>
 </span><br>
 
 
