@@ -1,62 +1,1805 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post-collapse.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>归档 | 妙妙屋</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
 
-{% block title %}{{ __('title.archive') }} | {{ config.title }}{% endblock %}
+        .cube-loading.out {
+            display: none;
+        }
 
-{% block page_class %}page-archive{% endblock %}
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
 
-{% block content %}
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
 
-  {#####################}
-  {### ARCHIVE BLOCK ###}
-  {#####################}
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+        @media(min-width: 768px) {
+            .cube-loading:before {
 
-      <span class="archive-page-counter">
-        {% set cheers %}
-        {% set posts_length = site.posts.length %}
-        {% if posts_length > 210 %} {% set cheers = 'excellent' %}
-          {% elif posts_length > 130 %} {% set cheers = 'great' %}
-          {% elif posts_length > 80 %} {% set cheers = 'good' %}
-          {% elif posts_length > 50 %} {% set cheers = 'nice' %}
-          {% elif posts_length > 30 %} {% set cheers = 'ok' %}
-        {% else %}
-          {% set cheers = 'um' %}
-        {% endif %}
-        {{ __('cheers.' + cheers) }}! {{ _p("counter.archive_posts", site.posts.length) }} {{ __('keep_on') }}
-      </span>
-
-      {% for post in page.posts %}
-
-        {# Show year #}
-        {% set year %}
-        {% set post.year = date(post.date, 'YYYY') %}
-
-        {% if post.year !== year %}
-          {% set year = post.year %}
-          <div class="collection-title">
-            <{% if theme.seo %}h2{% else %}h1{% endif %} class="archive-year" id="archive-year-{{ year }}">{{ year }}</{% if theme.seo %}h2{% else %}h1{% endif %}>
-          </div>
-        {% endif %}
-        {# endshow #}
-
-        {{ post_template.render(post) }}
-
-      {% endfor %}
-
+            }
+        }
+    </style>
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Mayoの妙妙屋</span>
+        <span class="cube-typed-cursor">|</span>
     </div>
-  </div>
-  {#########################}
-  {### END ARCHIVE BLOCK ###}
-  {#########################}
+    
+</header>
 
-  {% include '_partials/pagination.swig' %}
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
 
-{% endblock %}
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Mayoの妙妙屋</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <style>
+    @media(max-width: 768px) {
+        body {
+            background-color: #fff!important;
+        }
+    }
+</style>
+<div class="cube-archives">
+    
+        
+        <div class="cube-archive" style="margin-top: 0;">
+            
+                
+                   
+                            <h1 class="title">2020</h1>
+                            <ul class="posts">
+                   
+                            <li class="post">
+                                <a href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/">Android高级面试-插件化和热修复2</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/">Android高级面试-插件化和热修复</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/">Android高级面试-内存优化</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/">Android高级面试-Handler</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/">Android高级面试-Activity</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/28/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-JNI-%E7%BC%96%E7%A8%8B/">Android高级面试-JNI 编程</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/27/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">Android高级面试-并发编程</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/26/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Java/">Android高级面试-Java</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/25/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E5%B8%B8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android面试-异常及性能优化</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/">Android面试-开源框架</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/23/Android%E9%9D%A2%E8%AF%95-%E7%83%AD%E9%97%A8%E5%89%8D%E6%B2%BF%E7%9F%A5%E8%AF%86/">Android面试-热门前沿知识</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/22/Android%E9%9D%A2%E8%AF%95-%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/">Android面试-项目构建</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/">Android面试-View绘制相关</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/">Android面试-异步消息</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/">Android面试-基础</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/">Java面试-高级知识点</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/02/01/Java%E9%9D%A2%E8%AF%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Java面试-面向对象</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/">UML-依赖与关联关系</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/">UML-类与类的关系</a>
+                            </li>
+                
+            
+                
+                   
+                                </ul>
+                            </div>
+                        <div class="cube-archive">
+                        
+                            <h1 class="title">2019</h1>
+                            <ul class="posts">
+                   
+                            <li class="post">
+                                <a href="/2019/09/28/%E9%9F%B3%E8%A7%86%E9%A2%91-FFMPEG%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">音视频_FFMPEG常用命令</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2019/09/27/%E9%9F%B3%E8%A7%86%E9%A2%91_FFMPEG%E7%AE%80%E4%BB%8B/">音视频_FFMPEG简介</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2019/02/01/Html/">Html</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">混合开发基础入门</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2019/01/01/HTTP%E9%9D%99%E6%80%81%E6%9C%8D%E5%8A%A1/">HTTP静态服务</a>
+                            </li>
+                
+            
+                
+                   
+                                </ul>
+                            </div>
+                        <div class="cube-archive">
+                        
+                            <h1 class="title">2018</h1>
+                            <ul class="posts">
+                   
+                            <li class="post">
+                                <a href="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">Kotlin-类型进阶</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/24/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">Kotlin-函数进阶</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/23/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Kotlin-表达式</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">Kotlin-类型初步</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/21/Kotlin-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">Kotlin-内置类型</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Kotlin-开发环境搭建</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">Kotlin-程序结构</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Kotlin-数据类型</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/09/18/Kotlin-%E7%AE%80%E4%BB%8B/">Kotlin--简介</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/07/25/Gradle-%E6%80%BB%E7%BB%93/">Gradle-总结</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/07/24/Gradle-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">Gradle-持续集成与打包</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">Gradle-其他模块及自定义Plugin</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/06/13/Gradle-Task/">Gradle-Task</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/06/10/Gradle-project/">Gradle-project</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">Gradle-生命周期</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">Gradle-高级用法-文件操作</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">Gradle-高级用法-xml文件操作</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/23/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-json%E6%93%8D%E4%BD%9C/">Gradle-高级用法-json操作</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/22/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Gradle-核心语法-面向对象</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Gradle-核心语法-数据结构</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/">Gradle-核心语法-闭包</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Gradle-核心语法-基础语法</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/18/Gradle-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Gradle--开发环境搭建</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/05/18/Gradle-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Gradle--快速入门</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/08/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">热修复插件化-插件化Atlas</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/07/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96Small/">热修复插件化-插件化Small</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">热修复插件化-插件化原理</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/05/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">热修复插件化-版本管理</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/">热修复插件化-热修复</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/">热修复插件化-ClassLoader</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/">热修复插件化-虚拟机</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/04/01/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-class%E3%80%81dex%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/">热修复插件化-class、dex文件解析</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/">第一行代码笔记-Material Design</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Git/">第一行代码笔记-Git</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-LBS/">第一行代码笔记-LBS</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/16/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Service/">第一行代码笔记-Service</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/15/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C/">第一行代码笔记-网络</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/">第一行代码笔记-多媒体</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/13/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ContentProvider/">第一行代码笔记-ContentProvider</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/12/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">第一行代码笔记-数据存储</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/11/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Broadcast/">第一行代码笔记-Broadcast</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/10/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Fragment/">第一行代码笔记-Fragment</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-RecyclerView/">第一行代码笔记-RecyclerView</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ListView/">第一行代码笔记-ListView</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E8%87%AA%E5%AE%9A%E4%B9%89view/">第一行代码笔记-自定义view</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6%E5%B8%83%E5%B1%80/">第一行代码笔记-Android基础控件布局</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/07/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/">第一行代码笔记-Android基础用法</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/03/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android-Studio/">第一行代码笔记-Android Studio</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/01/05/Android%E5%85%A5%E9%97%A8-%E5%B8%83%E5%B1%80%E5%92%8C%E6%8E%A7%E4%BB%B6/">Android入门-布局和控件</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/01/04/Android%E5%85%A5%E9%97%A8-ContentProvider/">Android入门-ContentProvider</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/01/03/Android%E5%85%A5%E9%97%A8-BroadcastReceiver/">Android入门-BroadcastReceiver</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/">Android入门-Service</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/">Android入门-Activity</a>
+                            </li>
+                
+            
+                
+                   
+                                </ul>
+                            </div>
+                        <div class="cube-archive">
+                        
+                            <h1 class="title">2017</h1>
+                            <ul class="posts">
+                   
+                            <li class="post">
+                                <a href="/2017/05/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/">设计模式-单例</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/30/Java%E5%9F%BA%E7%A1%80-%E6%B3%9B%E5%9E%8B/">Java基础-泛型</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/30/Java%E5%9F%BA%E7%A1%80-%E6%B3%A8%E8%A7%A3/">Java基础-注解</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/29/Java%E5%9F%BA%E7%A1%80-%E5%8F%8D%E5%B0%84/">Java基础-反射</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/28/Java%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">Java基础-网络编程</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/">Java基础-IO</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/">Java基础-集合</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2/">Java基础-字符串</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java基础-多线程</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/">Java基础-包装类</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/">Java基础-异常</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E6%80%81/">Java基础-多态</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E7%BB%A7%E6%89%BF/">Java基础-继承</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/23/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Java基础-面向对象</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Java基础-基础语法</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/21/Java%E5%9F%BA%E7%A1%80-%E5%88%9D%E8%AF%86/">Java基础-初识</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/10/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/09/%E4%B9%A6%E5%8D%95/">书单</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/08/VPS/">VPS</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/07/Markdown/">Markdown</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/06/SSH/">SSH</a>
+                            </li>
+                
+            
+                
+                   
+                            <li class="post">
+                                <a href="/2017/04/06/HEXO%E6%80%BB%E7%BB%93/">HEXO总结</a>
+                            </li>
+                
+            
+                    </ul>
+                        </div>
+        
+    
+</div>
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>99</span>文章</a>
+        <a class="count tags"><span>113</span>标签</a>
+        <a class="count categories"><span>24</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/%E6%8E%A7%E4%BB%B6/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java%E5%9F%BA%E7%A1%80/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%A1%E5%88%92/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">#音视频</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android%E9%9D%A2%E8%AF%95/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E4%B9%8Bproject/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8BTask/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">#Gradle其他模块及自定义Plugin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%80%BB%E7%BB%93/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E8%AF%AD%E6%B3%95/">#Gradle语法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">#Gradle生命周期</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">#Gradle高级用法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8C%85%E8%A3%85%E7%B1%BB/">#Java基础包装类</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%88%9D%E8%AF%86/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E6%80%81/">#Java基础多态</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%9B%E5%9E%8B/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#Java基础多线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%BC%82%E5%B8%B8/">#Java基础异常</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">#Java基础网络编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Java基础面向对象</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%A8%E8%A7%A3/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BB%A7%E6%89%BF/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E9%9D%A2%E8%AF%95/">#Java面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">#Kotlin内置类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">#Kotlin函数进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%AE%80%E4%BB%8B/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">#Kotlin类型进阶</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E4%B9%A6/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Small/">#热修复插件化之插件化Small</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BClassLoader/">#热修复插件化之ClassLoader</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8Bclass%E3%80%81dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">#热修复插件化之插件化Atlas</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/">#热修复插件化之热修复</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">#热修复插件化之插件化原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">#热修复插件化之版本管理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E9%9A%90%E5%BC%8FIntent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment%EF%BC%8C%E9%99%90%E5%AE%9A%E7%AC%A6/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%BA%BF%E7%A8%8B/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">#设计模式单例</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

@@ -1,37 +1,1418 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>Java基础-IO | 妙妙屋</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
 
+        .cube-loading.out {
+            display: none;
+        }
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
 
-{% block page_class %}page-post-detail{% endblock %}
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
 
+        @media(min-width: 768px) {
+            .cube-loading:before {
 
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+            }
+        }
+    </style>
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Mayoの妙妙屋</span>
+        <span class="cube-typed-cursor">|</span>
     </div>
-  </div>
+    
+</header>
 
-{% endblock %}
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Mayoの妙妙屋</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Java基础-IO</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2017-04-27
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">#Java基础IO</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h2 id="其他对象API"><a href="#其他对象API" class="headerlink" title="其他对象API"></a>其他对象API</h2><h3 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h3><p>System类中的字段和方法都是静态的</p>
+<span id="more"></span>
+
+<p>long currentTimeMillis();获取当前时间的毫秒值，可以通过此方法检测程序的执行时间。</p>
+<p>Properties getProperties();确定当前的系统属性。Properties集合中存储的都是String类型的键和值。最好使用它自己的存储和取出的方法来完成元素的操作。</p>
+<h3 id="Runtime类"><a href="#Runtime类" class="headerlink" title="Runtime类"></a>Runtime类</h3><p>每个 Java 应用程序都有一个 Runtime 类实例，使应用程序能够与其运行的环境相连接。应用程序不能创建自己的 Runtime 类实例。</p>
+<p>Runtime：没有构造方法摘要，说明该类不可以创建对象。又发现还有非静态的方法，说明该类应该提供静态的返回该类对象的方法。而且只有一个，说明Runtime类使用了单例设计模式</p>
+<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><p>提供了操作数学运算的方法，都是静态的。</p>
+<p>ceil():返回大于参数的最小整数。</p>
+<p>floor():返回小于参数的最大整数。</p>
+<p>round():返回四舍五入的整数。</p>
+<p>pow(a,b):a的b次方。</p>
+<h3 id="Date、DateFormat类"><a href="#Date、DateFormat类" class="headerlink" title="Date、DateFormat类"></a>Date、DateFormat类</h3><h4 id="日期对象和毫秒值之间的转换"><a href="#日期对象和毫秒值之间的转换" class="headerlink" title="日期对象和毫秒值之间的转换"></a>日期对象和毫秒值之间的转换</h4><p>毫秒值–&gt;日期对象：</p>
+<ol>
+<li>. 通过Date对象的构造方法 new Date(timeMillis);</li>
+<li>还可以通过setTime设置。</li>
+</ol>
+<p>因为可以通过Date对象的方法对该日期中的各个字段（年月日等）进行操作</p>
+<p>日期对象–&gt;毫秒值：</p>
+<ol>
+<li>getTime方法。</li>
+</ol>
+<p>因为可以通过具体的数值进行运算。</p>
+<h4 id="对日期对象进行格式化："><a href="#对日期对象进行格式化：" class="headerlink" title="对日期对象进行格式化："></a>对日期对象进行格式化：</h4><p>将日期对象–&gt;日期格式的字符串。使用的是DateFormat类中的format方法。</p>
+<p><img src="/1.png"></p>
+<p>将日期格式的字符串–&gt;日期对象：使用的是DateFormat类中的prase方法。</p>
+<p><img src="/2.png"></p>
+<h3 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h3><p>Calendar 类是一个抽象类，它为特定瞬间与一组诸如YEAR、MONTH、DAY_OF_MONTH、HOUR等日历字段之间的转换提供了一些方法，并为操作日历字段（例如获得下星期的日期）提供了一些方法。</p>
+<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>IO流用来处理设备之间的数据传输。Java对数据的操作是通过流的方式。Java用于操作流的对象都在IO包中。</p>
+<p>输入流和输出流相对于内存设备而言。</p>
+<p>将外设中的数据读取到内存中：输入。将内存的数写入到外设中：输出。</p>
+<p>流按操作数据分为两种：字节流与字符流。</p>
+<p>字符流的由来：字节流读取文字字节数据后，不直接操作而是先查指定的编码表，获取对应的文字。再对这个文字进行操作。简单说：字节流+编码表。</p>
+<h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><p><img src="/27.png"></p>
+<h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><p><img src="/28.png"></p>
+<h3 id="IO流常用基类"><a href="#IO流常用基类" class="headerlink" title="IO流常用基类"></a>IO流常用基类</h3><p>字节流的抽象基类：InputStream，OutputStream。</p>
+<p>字符流的抽象基类：Reader，Writer。</p>
+<p>由这四个类派生出来的子类名称都是以其父类名作为子类名的后缀：InputStream的子类FileInputStream、Reader的子类FileReader</p>
+<h4 id="将一些文字存储到硬盘一个文件中"><a href="#将一些文字存储到硬盘一个文件中" class="headerlink" title="将一些文字存储到硬盘一个文件中"></a>将一些文字存储到硬盘一个文件中</h4><p><img src="/3.png"></p>
+<ol>
+<li>close方法只能用一次。</li>
+<li>流关闭以后不能，不能再调用write方法，否则会报异常错误</li>
+<li>如果FileWriter构造函数中加入true，可以实现对文件进行续写。</li>
+</ol>
+<h4 id="读取一个文文件"><a href="#读取一个文文件" class="headerlink" title="读取一个文文件"></a>读取一个文文件</h4><p>第一种读取方式：使用read()方法读取文本文件数据。</p>
+<p><img src="/4.png"></p>
+<p><img src="/5.png"></p>
+<p>第二种读取方式：使用read(char[])方法读取文本文件数据。</p>
+<p><img src="/6.png"></p>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>方式1：使用read()读取文本文件数据。</p>
+<p><img src="/7.png"></p>
+<p>方式2：使用read(char[])读取文本文件数据。</p>
+<p><img src="/8.png"></p>
+<h3 id="字符流的缓冲区"><a href="#字符流的缓冲区" class="headerlink" title="字符流的缓冲区"></a>字符流的缓冲区</h3><p>缓冲区的出现提高了对数据的读写效率。</p>
+<p>对应类：BufferedWriter、BufferedReader</p>
+<p>缓冲区要结合流才可以使用。</p>
+<p>作用：在流的基础上对流的功能进行了增强。</p>
+<p>写入换行使用BufferedWriter类中的newLine()方法。</p>
+<p>读取一行数据使用BufferedReader类中的readLine()方法。</p>
+<p>bufr.read():这个read方法是从缓冲区中读取字符数据，所以覆盖了父类中的read方法。</p>
+<p>bufr.readLine():另外开辟了一个缓冲区，存储的是原缓冲区一行的数据，不包含换行符。</p>
+<p>原理：使用了读取缓冲区的read方法，将读取到的字符进行缓冲并判断换行标记，将标记前的缓冲数据变成字符串返回。</p>
+<p>LineNumberReader：跟踪行号的缓冲字符输入流。此类定义了方法 setLineNumber(int) 和 getLineNumber()，它们可分别用于设置和获取当前行号。</p>
+<h3 id="装饰设计模式"><a href="#装饰设计模式" class="headerlink" title="装饰设计模式"></a>装饰设计模式</h3><p>对原有类进行了功能的改变，增强</p>
+<h4 id="装饰和继承"><a href="#装饰和继承" class="headerlink" title="装饰和继承"></a>装饰和继承</h4><p>装饰和继承都能实现一样的特点：进行功能的扩展增强。有什么区别呢？</p>
+<p>首先有一个继承体系：</p>
+<blockquote>
+<p>Writer</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>TextWriter:用于操作文本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>MediaWriter:用于操作媒体  </p>
+</blockquote>
+</blockquote>
+<p>如果想要对操作的动作进行效率的提高，按照面向对象，可以通过继承的方式对具体的对象进行功能的扩展，那么就需要加入缓冲技术</p>
+<blockquote>
+<p>Writer</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>TextWriter:用于操作文本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>BufferTextWriter:加入了缓冲技术的操作文本的对象</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>MediaWriter:用于操作媒体 </p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>BufferMediaWriter:加入了缓冲技术的操作媒体的对象</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>以上方式并不理想，如果这个体系需要再进行功能扩展，又多了更多流对象。</p>
+<p>这样就会发现只为提高功能，导致继承体系越来越臃肿，不够灵活。</p>
+<p>既然加入的都是同一种技术–缓冲。前一种是让缓冲和自己的流对象相结合。可以将缓冲进行单独的封装，哪个对象需要缓冲就将哪个对象和缓冲关联</p>
+<blockquote>
+<p>Writer</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>TextWriter:用于操作文本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>MediaWriter:用于操作媒体</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>BufferedWriter:用于提高效率</p>
+</blockquote>
+</blockquote>
+<p>装饰比继承灵活。</p>
+<p>特点：装饰类和被装饰类都必须所属同一个接口或者父类。</p>
+<h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><p>基本操作与字符流类相同。但它不仅可以操作字符，还可以操作其他媒体文件。</p>
+<h4 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h4><ul>
+<li>从文件系统中的某个文件中获得输入字节</li>
+<li>用于读取诸如图像数据之类的原始字节流</li>
+</ul>
+<p><img src="/31.png"></p>
+<h4 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h4><p><img src="/32.png"></p>
+<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><p><img src="/9.png"></p>
+<p><img src="/10.png"></p>
+<p><img src="/11.png"></p>
+<p>FileOutputStream、FileInputStream的flush方法内容为空，没有任何实现，调用没有意义。</p>
+<p>字节流的缓冲区：同样是提高了字节流的读写效率。</p>
+<h3 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h3><p>转换流的由来：字符流与字节流之间的桥梁，方便了字符流与字节流之间的操作</p>
+<p>转换流的应用：字节流中的数据都是字符时，转成字符流操作更高效。</p>
+<p>InputStreamReader：字节到字符的桥梁，解码。</p>
+<p>OutputStreamWriter：字符到字节的桥梁，编码。</p>
+<p><img src="/12.png"></p>
+<h3 id="流的操作规律"><a href="#流的操作规律" class="headerlink" title="流的操作规律"></a>流的操作规律</h3><p>1、明确源和目的</p>
+<p>源：InputStream Reader</p>
+<p>目的：OutputStream Writer</p>
+<p>2、明确数据是否是纯文本数据</p>
+<p>源：是纯文本：Reader 否：InputStream</p>
+<p>目的：是纯文本：Writer 否：OutputStream</p>
+<p>3、明确具体的设备</p>
+<p>源设备：硬盘：File、键盘：System.in、内存：数组、网络：Socket流</p>
+<p>目的设备：硬盘：File、控制台：System.out、内存：数组、网络：Socket流</p>
+<p>4、是否需要其他额外功能</p>
+<p>是否需要高效（缓冲区）：是，就加上buffer</p>
+<p><img src="/13.png"></p>
+<p>UTF-8编码，一个中文三个字节。</p>
+<h4 id="按照指定编码写字符到指定文件中"><a href="#按照指定编码写字符到指定文件中" class="headerlink" title="按照指定编码写字符到指定文件中"></a>按照指定编码写字符到指定文件中</h4><p>如果需求中已经明确指定了编码表。那就不可以使用FileWriter，因为FileWriter内部使用的默认的本地码表。只能使用其父类，OutputStreamWriter。</p>
+<p>OutputStreamWriter接收一个字节输出流对象，既然是操作文件，那么该对象应该是FileOutputStream。</p>
+<pre><code>OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;a.txt&quot;),charsetName);
+</code></pre>
+<p>需要高效：</p>
+<pre><code>BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(&quot;a.txt&quot;),charsetName));
+</code></pre>
+<h3 id="什么时候使用转换流"><a href="#什么时候使用转换流" class="headerlink" title="什么时候使用转换流"></a>什么时候使用转换流</h3><ol>
+<li>源或者目的对应的设备是字节流，但是操作的却是文本数据，可以使用转换作为桥梁，提高对文本操作的便捷</li>
+<li>一旦操作文本涉及到具体的指定编码表时，必须使用转换流</li>
+</ol>
+<h3 id="字符流-字节流继承体系简图"><a href="#字符流-字节流继承体系简图" class="headerlink" title="字符流&#x2F;字节流继承体系简图"></a>字符流&#x2F;字节流继承体系简图</h3><p><img src="/14.png"></p>
+<p><img src="/33.png"></p>
+<p><img src="/34.png"></p>
+<h4 id="字节流-1"><a href="#字节流-1" class="headerlink" title="字节流"></a>字节流</h4><p><img src="/15.png"></p>
+<p><img src="/29.png"></p>
+<p><img src="/30.png"></p>
+<h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>文件可认为是相关记录或放在一起的数据的集合</p>
+<p>File类用来将文件或者文件夹封装成对象，方便对文件与文件夹的属性信息进行操作。</p>
+<p>File对象可以作为参数传递给流的构造函数。</p>
+<p>流只能操作数据，不能操作文件。</p>
+<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><p><img src="/16.png"></p>
+<h4 id="File对象的常用方法："><a href="#File对象的常用方法：" class="headerlink" title="File对象的常用方法："></a>File对象的常用方法：</h4><p>1、获取</p>
+<p>获取文件名称、获取文件路径、获取文件大小、获取文件修改时间</p>
+<p><img src="/17.png"></p>
+<p>2、创建和删除</p>
+<p><img src="/18.png"></p>
+<p>3、判断</p>
+<p><img src="/19.png"></p>
+<p>4、重命名</p>
+<pre><code>boolean b = f1.renameTo(f2);
+</code></pre>
+<p>5、系统根目录和容量获取</p>
+<p><img src="/20.png"></p>
+<h4 id="list方法"><a href="#list方法" class="headerlink" title="list方法"></a>list方法</h4><ul>
+<li>获取目录下的文件以及文件夹的名称，包含隐藏文件</li>
+<li>调用list方法的File对象中封装的必须是目录，否则会产生NullPointerException</li>
+<li>如果访问的是系统级目录也会发生空指针异常</li>
+<li>如果目录存在但是没有内容，会返回一个数组，但是长度为0</li>
+</ul>
+<h4 id="筛选指定格式的文件"><a href="#筛选指定格式的文件" class="headerlink" title="筛选指定格式的文件"></a>筛选指定格式的文件</h4><p><img src="/21.png"></p>
+<pre><code>String[] names = dir.list( new SuffixFilter(&quot;.java&quot; ));
+</code></pre>
+<h4 id="筛选隐藏文件"><a href="#筛选隐藏文件" class="headerlink" title="筛选隐藏文件"></a>筛选隐藏文件</h4><p><img src="/22.png"></p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>函数自身直接或者间接的调用到了自身。</p>
+<p>一个功能在被重复使用，并每次使用时，参与运算的结果和上一次调用有关。这时可以用递归来解决问题。</p>
+<ol>
+<li>递归一定明确条件，否则容易栈溢出。</li>
+<li>注意一下递归的次数。</li>
+</ol>
+<h3 id="Properties集合"><a href="#Properties集合" class="headerlink" title="Properties集合"></a>Properties集合</h3><blockquote>
+<p>Map</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Hashtable</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Properties</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>特点：</p>
+<ol>
+<li>该集合中的键和值都是字符串类型。</li>
+<li>集合中的数据可以保存到流中，或者从流中获取。</li>
+<li>通常该集合用于操作以键值对形式存在的配置文件。</li>
+</ol>
+<h3 id="IO包中的其他类"><a href="#IO包中的其他类" class="headerlink" title="IO包中的其他类"></a>IO包中的其他类</h3><h4 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h4><p>PrintWriter与PrintStream：可以直接操作输入流和文件。</p>
+<p>PrintStream为其他输出流添加了功能，使它们能够方便地打印各种数据值表示形式。</p>
+<p>与其他输出流不同，PrintStream永远不会抛出IOException。</p>
+<p>PrintStream打印的所有字符都使用平台的默认字符编码转换为字节。</p>
+<p>在需要写入字符而不是写入字节的情况下，应该使用PrintWriter类。</p>
+<p>PrintStream：</p>
+<ol>
+<li>提供了打印方法可以对多种数据类型值进行打印，并保持数据的表示形式</li>
+<li>它不抛IOException</li>
+</ol>
+<p>构造函数接收三种类型的值</p>
+<ol>
+<li>字符串路径</li>
+<li>File对象</li>
+<li>字节输出流</li>
+</ol>
+<p>PrintWriter：字符打印流</p>
+<p>构造函数参数</p>
+<ol>
+<li>字符串路径</li>
+<li>File对象</li>
+<li>字节输出流</li>
+<li>字符输出流</li>
+</ol>
+<h4 id="序列流"><a href="#序列流" class="headerlink" title="序列流"></a>序列流</h4><p>SequenceInputStream：对多个流进行合并。</p>
+<p>文件切割</p>
+<p><img src="/23.png"></p>
+<h4 id="操作对象"><a href="#操作对象" class="headerlink" title="操作对象"></a>操作对象</h4><p>ObjectInputStream与ObjectOutputStream</p>
+<p>writeObject方法不能写入类及其所有超类型的瞬态和静态字段的值。</p>
+<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><p><img src="/24.png"></p>
+<p><img src="/25.png"></p>
+<p><img src="/26.png"></p>
+<h4 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h4><p>随机访问文件，自身具备读写的方法。</p>
+<p>通过skipBytes(int x),seek(int x)等方法来达到随机访问。</p>
+<p>特点：</p>
+<ol>
+<li>该对象即能读，又能写。</li>
+<li>该对象内部维护了一个byte数组，并通过指针可以操作数组中的元素。</li>
+<li>可以通过getFilePointer方法获取指针的位置，和通过seek方法设置指针的位置</li>
+<li>其实该对象就是将字节输入流和输出流进行了封装。</li>
+<li>该对象的源或者目的只能是文件。通过构造函数就可以看出。</li>
+</ol>
+<p>RandomAccessFile不是io体系中的子类。</p>
+<h4 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h4><p>PipedInputStream和PipedOutputStream：输入输出可以直接进行连接，通过结合线程使用。</p>
+<h4 id="操作基本数据类型"><a href="#操作基本数据类型" class="headerlink" title="操作基本数据类型"></a>操作基本数据类型</h4><p>DataInputStream与DataOutputStream</p>
+<h4 id="操作字节数组"><a href="#操作字节数组" class="headerlink" title="操作字节数组"></a>操作字节数组</h4><p>ByteArrayInputStream与ByteArrayOutputStream</p>
+<p>关闭字节数组输出输出流无效，因为它们没有调用底层资源，所有的操作都是在内存中完成的。</p>
+<h3 id="编码表"><a href="#编码表" class="headerlink" title="编码表"></a>编码表</h3><p>计算机只能识别二进制数据，早期由来是电信号。为了方便应用计算机，让它可以识别各个国家的文字。 就将各个国家的文字用数字来表示，并一一对应，形成一张表，这就是编码表。</p>
+<p>常见的编码表：</p>
+<ol>
+<li>ASCII：美国标准信息交换码，用一个字节的7位可以表示，能表示128个字符。其扩展使用8位表示，表示256个字符。</li>
+<li>ISO8859-1：拉丁码表。欧洲码表，用一个字节的8位表示。</li>
+<li>GB2312：中国的中文编码表。</li>
+<li>GBK：中国的中文编码表升级，融合了更多的中文文字符号。</li>
+<li>Unicode：国际标准码，融合了多种文字。所有文字都用两个字节来表示,Java语言使用的就是unicode</li>
+<li>UTF-8：最多用三个字节来表示一个字符。</li>
+</ol>
+<h4 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h4><p>字符集是一张码表，它规定了文字与数字的一一对应关系。与计算机的内部表示没有必然的联系。我们先不谈GB2312，GBK等等字符集，因为这些方案既包括了字符集，又包括了编码方案。</p>
+<h4 id="两种编码方式"><a href="#两种编码方式" class="headerlink" title="两种编码方式"></a>两种编码方式</h4><p>UTF-8：采用变长字节(1 ASCII, 2 希腊字母, 3 汉字, 4 平面符号) 表示，网络传输即使错了一个字节，不影响其他字节，而双字节只要一个错了，其他也错了。UTF-8最多可用到7个字节</p>
+<p>UTF-16：采用2字节，Unicode中不同部分的字符都同样基于现有的标准。这是为了便于转换。从0×0000到0×007F是ASCII字符，从0×0080到0×00FF是ISO-8859-1对ASCII的扩展。希腊字母表使用从0×0370到0×03FF 的代码，斯拉夫语使用从0×0400到0×04FF的代码，美国使用从0×0530到0×058F的代码，希伯来语使用从0×0590到0×05FF的代码。中国、日本和韩国的象形文字（总称为CJK）占用了从0×3000到0×9FFF的代码；由于0×00在c语言及操作系统文件名等中有特殊意义，故很多情况下需要UTF-8编码保存文本，去掉这个0×00。</p>
+<p>优缺点：</p>
+<ul>
+<li>UTF-8、UTF-16和UTF-32都可以表示有效编码空间(U+000000-U+10FFFF) 内的所有Unicode字符。</li>
+<li>使用UTF-8编码时ASCII字符只占1个字节，存储效率比较高，适用于拉丁字符较多的场合以节省空间。对于大多数非拉丁字符（如中文和日文）来说，UTF-16所需存储空间最小，每个字符只占2个字节。</li>
+<li>Windows NT内核是Unicode（UTF-16），采用UTF-16编码在调用系统API时无需转换，处理速度也比较快。采用UTF-16和UTF-32会有Big Endian和Little Endian之分，而UTF-8则没有字节顺序问题，所以UTF-8适合传输和通信。</li>
+<li>UTF-32采用4字节编码，一方面处理速度比较快，但另一方面也浪费了大量空间，影响输速度，因而很少使用。</li>
+</ul>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2017/04/28/Java%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Java基础-网络编程
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/">
+                Java基础-集合
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>99</span>文章</a>
+        <a class="count tags"><span>113</span>标签</a>
+        <a class="count categories"><span>24</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/%E6%8E%A7%E4%BB%B6/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java%E5%9F%BA%E7%A1%80/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%A1%E5%88%92/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">#音视频</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E9%9D%A2%E8%AF%95/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8Bproject/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8BTask/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">#Gradle其他模块及自定义Plugin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E6%80%BB%E7%BB%93/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E8%AF%AD%E6%B3%95/">#Gradle语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">#Gradle生命周期</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">#Gradle高级用法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8C%85%E8%A3%85%E7%B1%BB/">#Java基础包装类</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%88%9D%E8%AF%86/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E6%80%81/">#Java基础多态</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%9B%E5%9E%8B/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#Java基础多线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%BC%82%E5%B8%B8/">#Java基础异常</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">#Java基础网络编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Java基础面向对象</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%A8%E8%A7%A3/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BB%A7%E6%89%BF/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E9%9D%A2%E8%AF%95/">#Java面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">#Kotlin内置类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">#Kotlin函数进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%AE%80%E4%BB%8B/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">#Kotlin类型进阶</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E4%B9%A6/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Small/">#热修复插件化之插件化Small</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BClassLoader/">#热修复插件化之ClassLoader</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8Bclass%E3%80%81dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">#热修复插件化之插件化Atlas</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/">#热修复插件化之热修复</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">#热修复插件化之插件化原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">#热修复插件化之版本管理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E9%9A%90%E5%BC%8FIntent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment%EF%BC%8C%E9%99%90%E5%AE%9A%E7%AC%A6/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%BA%BF%E7%A8%8B/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">#设计模式单例</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

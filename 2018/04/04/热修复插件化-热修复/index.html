@@ -1,37 +1,1697 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>热修复插件化-热修复 | 妙妙屋</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
 
+        .cube-loading.out {
+            display: none;
+        }
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
 
-{% block page_class %}page-post-detail{% endblock %}
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
 
+        @media(min-width: 768px) {
+            .cube-loading:before {
 
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+            }
+        }
+    </style>
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Mayoの妙妙屋</span>
+        <span class="cube-typed-cursor">|</span>
     </div>
-  </div>
+    
+</header>
 
-{% endblock %}
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Mayoの妙妙屋</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">热修复插件化-热修复</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-04-04
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/">#热修复插件化之热修复</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="什么是热修复"><a href="#什么是热修复" class="headerlink" title="什么是热修复"></a>什么是热修复</h3><p>动态修复或者更新APP的行为</p>
+<span id="more"></span>
+
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><p>不需要用户感知完成BUG修复以及小功能的更新</p>
+<h2 id="流行技术"><a href="#流行技术" class="headerlink" title="流行技术"></a>流行技术</h2><ul>
+<li>QQ空间的超级补丁方案</li>
+<li>微信的Tinker</li>
+<li>阿里的AndFix、dexposed</li>
+<li>美团的Robust、饿了么的migo、百度的hotfix。。。</li>
+</ul>
+<h2 id="技术对比"><a href="#技术对比" class="headerlink" title="技术对比"></a>技术对比</h2><p><img src="/1.png"></p>
+<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><ul>
+<li>需求是什么，需求是衡量一切的标准</li>
+<li>能满足需求的条件下，学习成本最低的</li>
+<li>学习成本	一样的情况下，优先选择大公司的方案</li>
+</ul>
+<h2 id="AndFix（已停止维护）"><a href="#AndFix（已停止维护）" class="headerlink" title="AndFix（已停止维护）"></a>AndFix（已停止维护）</h2><p>只能用于方法的替换</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><img src="/2.png"></p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p><img src="/3.png"></p>
+<h3 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h3><pre><code>compile &#39;com.alipay.euler:andfix:0.5.0@aar&#39;
+</code></pre>
+<p>如果引入的库，仅仅是提供java代码的使用，那么在对应的module下compile即可。如果还有自定义脚本，需要在根gradle中，引入classpath</p>
+<pre><code>public class AndFixPatchManager &#123;
+
+    private static AndFixPatchManager mInstance = null;
+
+    private static PatchManager mPatchManager = null;
+
+    public static AndFixPatchManager getInstance() &#123;
+        if (mInstance == null) &#123;
+            synchronized (AndFixPatchManager.class) &#123;
+                if (mInstance == null) &#123;
+                    mInstance = new AndFixPatchManager();
+                &#125;
+            &#125;
+        &#125;
+        return mInstance;
+    &#125;
+
+    //初始化AndFix方法
+    public void initPatch(Context context) &#123;
+        mPatchManager = new PatchManager(context);
+        mPatchManager.init(Utils.getVersionName(context));
+        mPatchManager.loadPatch();
+    &#125;
+
+    //加载我们的patch文件
+    public void addPatch(String path) &#123;
+        try &#123;
+            if (mPatchManager != null) &#123;
+                mPatchManager.addPatch(path);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>build一个有bug的old apk安装到手机</li>
+<li>分析问题解决bug后，build一个new apk</li>
+</ul>
+<p>代码</p>
+<pre><code>public class MainActivity extends AppCompatActivity &#123;
+
+    private static final String FILE_END = &quot;.apatch&quot;;
+    private String mPatchDir;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mPatchDir = getExternalCacheDir().getAbsolutePath()+&quot;/apatch/&quot;;
+        Log.e(&quot;yly&quot;,mPatchDir);
+
+        File file = new File(mPatchDir);
+        if(file == null || !file.exists())&#123;
+            file.mkdir();
+        &#125;
+    &#125;
+
+    public void createBug(View v)&#123;
+        print();
+    &#125;
+
+    public void fixBug(View v)&#123;
+        AndFixPatchManager.getInstance().addPatch(getPatchName());
+    &#125;
+
+    public void print()&#123;
+        String error = &quot;yly&quot;;
+        Log.e(&quot;yly&quot;,error);
+    &#125;
+
+    public String getPatchName() &#123;
+        return mPatchDir.concat(&quot;fix&quot;).concat(FILE_END);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="patch生成"><a href="#patch生成" class="headerlink" title="patch生成"></a>patch生成</h3><p>apkpatch-1.0.3文件夹</p>
+<p><img src="/4.png"></p>
+<p><img src="/5.png"></p>
+<p>命令保存为脚本，复制命令，创建create_patch.sh，粘贴命令，前面加上sh</p>
+<h3 id="patch安装"><a href="#patch安装" class="headerlink" title="patch安装"></a>patch安装</h3><h3 id="将AndFix组件化"><a href="#将AndFix组件化" class="headerlink" title="将AndFix组件化"></a>将AndFix组件化</h3><h4 id="组件化步骤"><a href="#组件化步骤" class="headerlink" title="组件化步骤"></a>组件化步骤</h4><p><img src="/6.png"></p>
+<p><img src="/7.png"></p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><pre><code>public class AndFixService extends Service &#123;
+    private static final String TAG = AndFixService.class.getSimpleName();
+    private static final String FILE_END = &quot;.apatch&quot;;
+    private static final int UPDATE_PATCH = 0x02;
+    private static final int DOWNLOAD_PATCH = 0x01;
+
+    private String mPatchFileDir;
+    private String mPatchFile;
+    private Handler mHandler = new Handler() &#123;
+
+        @Override
+    public void handleMessage(Message msg) &#123;
+            switch (msg.what) &#123;
+                case UPDATE_PATCH:
+                    checkPatchUpdate();
+                    break;
+                case DOWNLOAD_PATCH:
+                    downloadPatch();
+                    break;
+            &#125;
+        &#125;
+    &#125;;
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) &#123;
+        return null;
+    &#125;
+
+
+    @Override
+    public void onCreate() &#123;
+        super.onCreate();
+        init();
+    &#125;
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) &#123;
+        mHandler.sendEmptyMessage(UPDATE_PATCH);
+        return START_NOT_STICKY;
+    &#125;
+
+    //完成文件目录的构造
+    private void init() &#123;
+
+        mPatchFileDir = getExternalCacheDir().getAbsolutePath() + &quot;/apatch/&quot;;
+        File patchDir = new File(mPatchFileDir);
+
+        try &#123;
+            if (patchDir == null || !patchDir.exists()) &#123;
+                patchDir.mkdir();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+            stopSelf();
+        &#125;
+    &#125;
+
+    private BasePatch mBasePatchInfo;
+
+    //检查服务器是否有patch文件
+    private void checkPatchUpdate() &#123;
+        RequestCenter.requestPatchUpdateInfo(new DisposeDataListener() &#123;
+            @Override
+            public void onSuccess(Object responseObj) &#123;
+                mBasePatchInfo = (BasePatch) responseObj;
+                if (!TextUtils.isEmpty(mBasePatchInfo.data.downloadUrl)) &#123;
+                    //下载patch文件
+                    mHandler.sendEmptyMessage(DOWNLOAD_PATCH);
+                &#125; else &#123;
+                    stopSelf();
+                &#125;
+            &#125;
+
+            @Override
+            public void onFailure(Object reasonObj) &#123;
+                stopSelf();
+            &#125;
+        &#125;);
+    &#125;
+
+    //完成patch文件的下载
+    private void downloadPatch() &#123;
+        //初始化patch文件下载路径
+        mPatchFile = mPatchFileDir.concat(String.valueOf(System.currentTimeMillis())).
+            concat(FILE_END);
+
+        RequestCenter.downloadFile(mBasePatchInfo.data.downloadUrl, mPatchFile,
+                new DisposeDownloadListener() &#123;
+                    @Override
+                    public void onProgress(int progrss) &#123;
+                        Log.d(TAG, &quot;current progedss: &quot; + progrss);
+                    &#125;
+
+                    @Override
+                    public void onSuccess(Object responseObj) &#123;
+                        //将我们下载好的patch文件添加到我们的andfix中
+                        AndFixPatchManager.getInstance().addPatch(mPatchFile);
+                    &#125;
+
+                    @Override
+                    public void onFailure(Object reasonObj) &#123;
+                        stopSelf();
+                    &#125;
+                &#125;);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="AndFix源码"><a href="#AndFix源码" class="headerlink" title="AndFix源码"></a>AndFix源码</h3><p>入口：PatchManager（外观模式）</p>
+<p>AndFixManager，bug修复方法替换由它完成</p>
+<p>SortedSet<Patch> mPatchs，包含应用所有的patch文件</p>
+<p><img src="/8.png"></p>
+<p><img src="/9.png"></p>
+<p><img src="/10.png"></p>
+<p>Patch类</p>
+<p>Map&lt;String,List<String>&gt; mClassesMap 本次patch文件所有要修复的class的字符串</p>
+<p>解析用工具生成的patch文件</p>
+<p><img src="/11.png"></p>
+<p>添加进来以后，可以调用下面方法获取这个patch文件中所有要修复的class的绝对路径</p>
+<p><img src="/12.png"></p>
+<p>addPatch方法</p>
+<p><img src="/13.png"></p>
+<p>loadPatch方法（无参数的是遍历所有patch）</p>
+<p><img src="/14.png"></p>
+<p>fix方法，遍历dexFile找到要修复的class</p>
+<p><img src="/15.png"></p>
+<p>fixClass方法，反射找到所有的方法，通过注解找到哪些方法需要被替换</p>
+<p><img src="/16.png"></p>
+<p>replaceMethod方法</p>
+<p><img src="/17.png"></p>
+<p>Native方法</p>
+<p><img src="/18.png"></p>
+<p>总结：首先将文件都转换成patch，将patch所有的class通过名字转换成class字节码，寻找字节码中被注解的方法，最终通过JNI完成方法的替换</p>
+<h3 id="优劣"><a href="#优劣" class="headerlink" title="优劣"></a>优劣</h3><ul>
+<li>原理简单、集成简单、使用简单、即时生效</li>
+<li>只能修复方法级别的bug，极大的限制了使用场景</li>
+</ul>
+<h2 id="Tinker"><a href="#Tinker" class="headerlink" title="Tinker"></a>Tinker</h2><h3 id="核心原理"><a href="#核心原理" class="headerlink" title="核心原理"></a>核心原理</h3><ul>
+<li>基于Android原生的classloader，开发了自己的classloader</li>
+<li>基于Android原生的aapt，开发了自己的aapt</li>
+<li>微信团队基于Dex文件的格式，研发了DexDiff算法</li>
+</ul>
+<h3 id="集成与初始化"><a href="#集成与初始化" class="headerlink" title="集成与初始化"></a>集成与初始化</h3><ul>
+<li>gradle中添加Tinker依赖</li>
+<li>在代码中完成对Tinker初始化</li>
+</ul>
+<h3 id="patch生成方式"><a href="#patch生成方式" class="headerlink" title="patch生成方式"></a>patch生成方式</h3><ul>
+<li>命令行的方式</li>
+<li>gradle插件的方式</li>
+</ul>
+<h4 id="命令行的方式"><a href="#命令行的方式" class="headerlink" title="命令行的方式"></a>命令行的方式</h4><p>1.修改tinker_config里的参数</p>
+<p>修改application</p>
+<p><img src="/19.png"></p>
+<p>修改签名</p>
+<p><img src="/20.png"></p>
+<p>2.执行命令</p>
+<pre><code>java -jar tinker-patch-cli.jar -old old.apk -new new.apk -config tinker_config.xml -out output_path
+</code></pre>
+<p><img src="/21.png"></p>
+<h4 id="gradle插件的方式"><a href="#gradle插件的方式" class="headerlink" title="gradle插件的方式"></a>gradle插件的方式</h4><pre><code>def bakPath = file(&quot;$&#123;buildDir&#125;/bakApk/&quot;) //指定基准文件存放位置
+
+ext &#123;
+    tinkerEnable = true
+    tinkerOldApkPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+    tinkerID = &quot;1.0&quot;
+    tinkerApplyMappingPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+    tinkerApplyResourcePath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+    tinkerBuildFlavorDirectory = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+&#125;
+
+def buildWithTinker() &#123;
+    return ext.tinkerEnable
+&#125;
+
+def getOldApkPath() &#123;
+    return ext.tinkerOldApkPath
+&#125;
+
+def getApplyMappingPath() &#123;
+    return ext.tinkerApplyMappingPath
+&#125;
+
+def getApplyResourceMappingPath() &#123;
+    return ext.tinkerApplyResourcePath
+&#125;
+
+def getTinkerIdValue() &#123;
+    return ext.tinkerID
+&#125;
+
+def getTinkerBuildFlavorDirectory()&#123;
+    return ext.tinkerBuildFlavorDirectory
+&#125;
+
+if (buildWithTinker()) &#123;
+    //启用tinker
+    apply plugin: &#39;com.tencent.tinker.patch&#39;
+
+    //所有tinker相关的参数配置
+    tinkerPatch &#123;
+
+        oldApk = getOldApkPath() //指定old apk文件径
+
+        ignoreWarning = false   //不忽略tinker的警告，有则中止patch文件的生成
+
+        useSign = true  //强制patch文件也使用签名
+
+        tinkerEnable = buildWithTinker(); //指定是否启用tinker
+
+        buildConfig &#123;
+
+            applyMapping = getApplyMappingPath()  //指定old apk打包时所使用的混淆文件
+
+            applyResourceMapping = getApplyResourceMappingPath()  //指定old apk的资源文件
+
+            tinkerId = getTinkerIdValue() //指定TinkerID
+
+            keepDexApply = false
+        &#125;
+
+        dex &#123;
+
+            dexMode = &quot;jar&quot; //jar、raw
+            pattern = [&quot;classes*.dex&quot;, &quot;assets/secondary-dex-?.jar&quot;] //指定dex文件目录
+            loader = [&quot;com.imooc.tinker.MyTinkerApplication&quot;] //指定加载patch文件时用到的类
+        &#125;
+
+        lib &#123;
+
+            pattern = [&quot;libs/*/*.so&quot;]
+        &#125;
+
+        res &#123;
+
+            pattern = [&quot;res/*&quot;, &quot;assets/*&quot;, &quot;resources.arcs&quot;, &quot;AndoridManifest.xml&quot;] //指定tinker可以修改的资源路径
+
+            ignoreChange = [&quot;assets/sample_meta.txt&quot;] //指定不受影响的资源路径
+
+            largeModSize = 100 //资源修改大小默认值
+        &#125;
+
+        //patch相关信息
+        packageConfig &#123;
+
+            configField(&quot;patchMessage&quot;, &quot;fix the 1.0 version&#39;s bugs&quot;)
+
+            configField(&quot;patchVersion&quot;, &quot;1.0&quot;)
+        &#125;
+    &#125;
+
+    //判断当前项目是否配置多渠道
+    List&lt;String&gt; flavors = new ArrayList&lt;&gt;();
+    project.android.productFlavors.each &#123; flavor -&gt;
+        flavors.add(flavor.name)
+    &#125;
+    boolean hasFlavors = flavors.size() &gt; 0
+
+    /**
+     * 复制基准包和其它必须文件到指定目录
+     */
+    android.applicationVariants.all &#123; variant -&gt;
+        /**
+         * task type, you want to bak
+         */
+        def taskName = variant.name
+        def date = new Date().format(&quot;MMdd-HH-mm-ss&quot;)
+
+        tasks.all &#123;
+            if (&quot;assemble$&#123;taskName.capitalize()&#125;&quot;.equalsIgnoreCase(it.name)) &#123;
+
+                it.doLast &#123;
+                    copy &#123;
+                        def fileNamePrefix = &quot;$&#123;project.name&#125;-$&#123;variant.baseName&#125;&quot;
+                        def newFileNamePrefix = hasFlavors ? &quot;$&#123;fileNamePrefix&#125;&quot; : &quot;$&#123;fileNamePrefix&#125;-$&#123;date&#125;&quot;
+
+                        def destPath = hasFlavors ? file(&quot;$&#123;bakPath&#125;/$&#123;project.name&#125;-$&#123;date&#125;/$&#123;variant.flavorName&#125;&quot;) : bakPath
+                        from variant.outputs.outputFile
+                        into destPath
+                        rename &#123; String fileName -&gt;
+                            fileName.replace(&quot;$&#123;fileNamePrefix&#125;.apk&quot;, &quot;$&#123;newFileNamePrefix&#125;.apk&quot;)
+                        &#125;
+
+                        from &quot;$&#123;buildDir&#125;/outputs/mapping/$&#123;variant.dirName&#125;/mapping.txt&quot;
+                        into destPath
+                        rename &#123; String fileName -&gt;
+                            fileName.replace(&quot;mapping.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-mapping.txt&quot;)
+                        &#125;
+
+                        from &quot;$&#123;buildDir&#125;/intermediates/symbols/$&#123;variant.dirName&#125;/R.txt&quot;
+                        into destPath
+                        rename &#123; String fileName -&gt;
+                            fileName.replace(&quot;R.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-R.txt&quot;)
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    /**
+     * 多渠道
+     */
+    project.afterEvaluate &#123;
+        if (hasFlavors) &#123;
+            task(tinkerPatchAllFlavorRelease) &#123;
+                group = &#39;tinker&#39;
+                def originOldPath = getTinkerBuildFlavorDirectory()
+                for (String flavor : flavors) &#123;
+                    def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Release&quot;)
+                    dependsOn tinkerTask
+                    def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;ReleaseManifest&quot;)
+                    preAssembleTask.doFirst &#123;
+                        String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 15)
+                        //拼凑名字
+                        project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release.apk&quot;
+                        project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-mapping.txt&quot;
+                        project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-R.txt&quot;
+                    &#125;
+                &#125;
+            &#125;
+
+            task(tinkerPatchAllFlavorDebug) &#123;
+                group = &#39;tinker&#39;
+                def originOldPath = getTinkerBuildFlavorDirectory()
+                for (String flavor : flavors) &#123;
+                    def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Debug&quot;)
+                    dependsOn tinkerTask
+                    def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;DebugManifest&quot;)
+                    preAssembleTask.doFirst &#123;
+                        String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 13)
+                        project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug.apk&quot;
+                        project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-mapping.txt&quot;
+                        project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-R.txt&quot;
+                    &#125;
+
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p><img src="/22.png"></p>
+<h3 id="Tinker进阶"><a href="#Tinker进阶" class="headerlink" title="Tinker进阶"></a>Tinker进阶</h3><h4 id="如何支持多渠道打包"><a href="#如何支持多渠道打包" class="headerlink" title="如何支持多渠道打包"></a>如何支持多渠道打包</h4><p>app&#x2F;build.gradle下的android{}</p>
+<pre><code>//真正的多渠道脚本支持
+productFlavors &#123;
+
+    googleplayer &#123;
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;googleplayer&quot;]
+    &#125;
+
+    baidu &#123;
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]
+    &#125;
+
+    productFlavors.all &#123;
+        flavor -&gt; flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    &#125;
+&#125;
+</code></pre>
+<p>脚本看上面的“gradle插件的方式”</p>
+<h4 id="如何自定义Tinker行为"><a href="#如何自定义Tinker行为" class="headerlink" title="如何自定义Tinker行为"></a>如何自定义Tinker行为</h4><blockquote>
+<p>自定义PatchListener监听patch receiver事件</p>
+</blockquote>
+<p>DefaultPatchListener的patchCheck方法</p>
+<p><img src="/23.png"></p>
+<pre><code>//1.较验patch文件是否合法  2.启动Service去安装patch文件
+public class CustomPatchListener extends DefaultPatchListener &#123;
+
+    private String currentMD5;
+
+    public void setCurrentMD5(String md5Value) &#123;
+
+        this.currentMD5 = md5Value;
+    &#125;
+
+    public CustomPatchListener(Context context) &#123;
+        super(context);
+    &#125;
+
+    //拓展MD5校验
+    @Override
+    protected int patchCheck(String path) &#123;
+        //patch文件ms5较验
+        if (!Utils.isFileMD5Matched(path, currentMD5)) &#123;
+
+            return ShareConstants.ERROR_PATCH_DISABLE;
+        &#125;
+        
+        return super.patchCheck(path);
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>自定义TinkerResultService改变patch安装成功后行为</p>
+</blockquote>
+<p>DefaultTinkerResultService -&gt; AbstractResultService（onPatchResult） -&gt; IntentService</p>
+<p>DefaultTinkerResultService的onPatchResult方法</p>
+<p><img src="/24.png"></p>
+<pre><code>//本类的作用：决定在patch安装完以后的后续操作，默认实现是杀进程
+public class CustomResultService extends DefaultTinkerResultService &#123;
+    private static final String TAG = &quot;Tinker.SampleResultService&quot;;
+
+    //返回patch文件的最终安装结果
+    @Override
+    public void onPatchResult(PatchResult result) &#123;
+        if (result == null) &#123;
+            TinkerLog.e(TAG, &quot;DefaultTinkerResultService received null result!!!!&quot;);
+            return;
+        &#125;
+        TinkerLog.i(TAG, &quot;DefaultTinkerResultService received a result:%s &quot;, result.toString());
+
+        //first, we want to kill the recover process
+        TinkerServiceInternals.killTinkerPatchServiceProcess(getApplicationContext());
+
+        // if success and newPatch, it is nice to delete the raw file, and restart at once
+        // only main process can load an upgrade patch!
+        if (result.isSuccess) &#123;
+            deleteRawPatchFile(new File(result.rawPatchFilePath));
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>自定义行为后修改初始化方法</p>
+</blockquote>
+<pre><code>mPatchListener = new CustomPatchListener(getApplicationContext());
+
+    //补丁文件加载过程中可能出现所有异常的监听
+   LoadReporter loadReporter = new DefaultLoadReporter(getApplicationContext());
+   //合成阶段可能出现所有异常的监听
+   PatchReporter patchReporter = new DefaultPatchReporter(getApplicationContext());
+
+   AbstractPatch upgradePatchProcessor = new UpgradePatch();
+
+   TinkerInstaller.install(applicationLike,
+            loadReporter,
+            patchReporter,
+            mPatchListener,
+            CustomResultService.class,
+            upgradePatchProcessor); //完成Tinker初始化
+            
+</code></pre>
+<p>修改完成Patch文件的加载方法</p>
+<pre><code>public static void loadPatch(String path, String md5Value) &#123;
+    if (Tinker.isTinkerInstalled()) &#123;
+        mPatchListener.setCurrentMD5(md5Value);
+        TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), path);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Tinker源码"><a href="#Tinker源码" class="headerlink" title="Tinker源码"></a>Tinker源码</h3><p>1.TinkerInstaller（外观模式） 对 Tinker 的包装</p>
+<p>2.Tinker（构建+单例）</p>
+<p><img src="/25.png"></p>
+<p>3.TinkerInstaller.onReceiveUpgradePatch -&gt; PatchListener接口里的onPatchReceiver -&gt; DefaultPatchListener（onPatchReceiver）</p>
+<p><img src="/26.png"></p>
+<p>TinkerPatchService</p>
+<p><img src="/27.png"></p>
+<p><img src="/28.png"></p>
+<p><img src="/29.png"></p>
+<p>处理完毕后调用AbstractResultService（patch安装成功后行为）</p>
+<p>处理patch文件（tryPatch） -&gt; AbstractPatch -&gt; UpgradePatch</p>
+<p><img src="/30.png"></p>
+<p>tryRecoverDexFiles（dex文件合并） -&gt; DexPatchApplier</p>
+<p><img src="/31.png"></p>
+<p>通过这些算法计算每个区域的偏移量</p>
+<h3 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h3><ul>
+<li>目前版本(1.7.7)还不支持加固，以后的版本应该会支持</li>
+<li>不支持修改AndroidManifest.xml</li>
+<li>不支持新增四大组件、transition动画、桌面图标等</li>
+<li>部分三星Android-21机型不兼容</li>
+</ul>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/04/05/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                热修复插件化-版本管理
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/">
+                热修复插件化-ClassLoader
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>99</span>文章</a>
+        <a class="count tags"><span>113</span>标签</a>
+        <a class="count categories"><span>24</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/%E6%8E%A7%E4%BB%B6/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Java%E5%9F%BA%E7%A1%80/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E8%AE%A1%E5%88%92/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">#音视频</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android%E9%9D%A2%E8%AF%95/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E4%B9%8Bproject/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8BTask/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">#Gradle其他模块及自定义Plugin</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%80%BB%E7%BB%93/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E8%AF%AD%E6%B3%95/">#Gradle语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">#Gradle生命周期</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">#Gradle高级用法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8C%85%E8%A3%85%E7%B1%BB/">#Java基础包装类</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%88%9D%E8%AF%86/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E6%80%81/">#Java基础多态</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%9B%E5%9E%8B/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#Java基础多线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%BC%82%E5%B8%B8/">#Java基础异常</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">#Java基础网络编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Java基础面向对象</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%A8%E8%A7%A3/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BB%A7%E6%89%BF/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E9%9D%A2%E8%AF%95/">#Java面试</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">#Kotlin内置类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">#Kotlin函数进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%AE%80%E4%BB%8B/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">#Kotlin类型进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E4%B9%A6/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Small/">#热修复插件化之插件化Small</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BClassLoader/">#热修复插件化之ClassLoader</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8Bclass%E3%80%81dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">#热修复插件化之插件化Atlas</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/">#热修复插件化之热修复</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">#热修复插件化之插件化原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">#热修复插件化之版本管理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E9%9A%90%E5%BC%8FIntent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment%EF%BC%8C%E9%99%90%E5%AE%9A%E7%AC%A6/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%BA%BF%E7%A8%8B/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">#设计模式单例</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

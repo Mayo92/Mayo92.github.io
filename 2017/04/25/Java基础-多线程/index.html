@@ -1,37 +1,1311 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>Java基础-多线程 | 妙妙屋</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
 
+        .cube-loading.out {
+            display: none;
+        }
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
 
-{% block page_class %}page-post-detail{% endblock %}
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
 
+        @media(min-width: 768px) {
+            .cube-loading:before {
 
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+            }
+        }
+    </style>
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Mayoの妙妙屋</span>
+        <span class="cube-typed-cursor">|</span>
     </div>
-  </div>
+    
+</header>
 
-{% endblock %}
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Mayoの妙妙屋</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Java基础-多线程</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2017-04-25
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#Java基础多线程</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="多线程的概念"><a href="#多线程的概念" class="headerlink" title="多线程的概念"></a>多线程的概念</h3><p>System类的gc方法告诉垃圾回收器调用finalize方法，但不一定立即执行。</p>
+<h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><ul>
+<li>创建一个Thread类，或者一个Thread子类的对象</li>
+<li>创建一个实现Runnable接口的类的对象</li>
+<li>实现callable接口，重写call()方法，call()作为线程的执行体，具有返回值，并且可以对异常进行声明和抛出；使用start()方法来启动线程</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h3><p>Thread是一个线程类，位于java.lang包下</p>
+<p><img src="/11.png"></p>
+<p>常用方法:</p>
+<p><img src="/12.png"></p>
+<p>可以通过Thread的getName方法获取线程的名称，名称格式:Thread-编号(从0开始)。Thread在创建的时候，该Thread就已经命名了</p>
+<h3 id="Runnable接口"><a href="#Runnable接口" class="headerlink" title="Runnable接口"></a>Runnable接口</h3><ul>
+<li>只有一个方法run()</li>
+<li>Runnable是Java中用以实现线程的接口</li>
+<li>任何实现线程功能的类都必须实现该接口</li>
+</ul>
+<h4 id="实现Runnable接口创建线程"><a href="#实现Runnable接口创建线程" class="headerlink" title="实现Runnable接口创建线程"></a>实现Runnable接口创建线程</h4><p>好处：</p>
+<ol>
+<li>将线程的任务从线程的子类中分离出来，进行了单独的封装，按照面向对象的思想将任务封装成对象。</li>
+<li>避免了Java单继承的局限性。所以，创建线程的这种方式较为常用。</li>
+</ol>
+<h4 id="为什么要实现Runnable接口"><a href="#为什么要实现Runnable接口" class="headerlink" title="为什么要实现Runnable接口"></a>为什么要实现Runnable接口</h4><ul>
+<li>Java不支持多继承</li>
+<li>不打算重写Thread类的其他方法</li>
+</ul>
+<h3 id="callable接口"><a href="#callable接口" class="headerlink" title="callable接口"></a>callable接口</h3><ul>
+<li>创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值</li>
+<li>创建Callable实现类的实例，使用FutureTask类来包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值</li>
+<li>使用FutureTask对象作为Thread对象的target创建并启动新线程</li>
+<li>调用FutureTask对象的get()方法来获得子线程执行结束后的返回值</li>
+</ul>
+<p><img src="/15.png"></p>
+<p><img src="/16.png"></p>
+<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><ul>
+<li>新建（New）</li>
+<li>可运行（Runnable）</li>
+<li>正在运行（Running）</li>
+<li>阻塞（Blocked）</li>
+<li>终止（Dead）</li>
+</ul>
+<h3 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h3><p><img src="/13.png"></p>
+<h3 id="sleep方法应用"><a href="#sleep方法应用" class="headerlink" title="sleep方法应用"></a>sleep方法应用</h3><ul>
+<li>Thread类的方法，public static void sleep(long millis)</li>
+<li>作用：在指定的毫秒数内让正在执行的线程休眠（暂停执行）</li>
+<li>参数为休眠的时间，单位是毫秒</li>
+</ul>
+<h3 id="join方法应用"><a href="#join方法应用" class="headerlink" title="join方法应用"></a>join方法应用</h3><p>Thread类的方法，public final void join()</p>
+<ul>
+<li>作用：等待调用该方法的线程结束后才能执行</li>
+</ul>
+<p>Thread类的方法，public final void join(long millis)</p>
+<ul>
+<li>作用：等待该线程终止的最长时间为millis毫秒。</li>
+<li>如果millis为0则意味着要一直等下去。</li>
+</ul>
+<p><img src="/7.png"></p>
+<h3 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h3><ul>
+<li>Java为线程类提供了10个优先级</li>
+<li>优先级可以用整数1-10表示，超过范围会抛出异常</li>
+<li>主线程默认优先级为5</li>
+</ul>
+<p>优先级常量</p>
+<ul>
+<li>MAX_PRIORITY：线程的最高优先级10</li>
+<li>MIN_PRIORITY：线程的最低优先级1</li>
+<li>NORM_PRIORITY：线程的默认优先级5</li>
+</ul>
+<p>优先级相关的方法</p>
+<p><img src="/14.png"></p>
+<p><img src="/8.png"></p>
+<h3 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h3><p>任务中通常都会有循环结构，只要控制住循环就可以结束任务。</p>
+<p>如果线程处于冻结状态，无法读取标记，可以使用interrupt方法将线程从冻结状态强制恢复到运行状态中来，让线程具备CPU的执行资格，强制会发生InterruptException，记得处理</p>
+<p><img src="/5.png"></p>
+<h3 id="线程类的其他方法"><a href="#线程类的其他方法" class="headerlink" title="线程类的其他方法"></a>线程类的其他方法</h3><p>setDaemon方法</p>
+<p><img src="/6.png"></p>
+<p>toString方法</p>
+<p><img src="/9.png"></p>
+<p>yield方法</p>
+<p><img src="/10.png"></p>
+<h3 id="多线程运行问题"><a href="#多线程运行问题" class="headerlink" title="多线程运行问题"></a>多线程运行问题</h3><ul>
+<li>各个线程是通过竞争CPU时间而获得运行机会的</li>
+<li>各线程什么时候得到CPU时间，占用多久，是不可预测的</li>
+<li>一个正在运行着的线程在什么地方被暂停是不确定的</li>
+</ul>
+<h3 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h3><h4 id="产生的原因"><a href="#产生的原因" class="headerlink" title="产生的原因"></a>产生的原因</h4><ol>
+<li>多个线程在操作共享的数据</li>
+<li>操作共享数据的线程代码有多条</li>
+</ol>
+<p>当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算，就会导致线程安全问题的产生。</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>思路：就是将多条操作共享数据的线程代码封装起来，当有线程在执行这些代码的时候，其他线程不可以参与运算。必须要当前线程把这些代码都执行完毕后，其他线程才可以参与运算。</p>
+<p>synchronized关键字用在</p>
+<ul>
+<li>成员方法</li>
+<li>静态方法</li>
+<li>语句块</li>
+</ul>
+<p>Java同步代码块的格式：</p>
+<pre><code>synchronized(对象)&#123;
+    需要被同步的代码;
+&#125;
+</code></pre>
+<p>同步函数：在函数上加上synchronized修饰符即可</p>
+<p>同步函数和同步代码块的区别（建议使用同步代码块）：</p>
+<ol>
+<li>同步函数的锁是固定的this</li>
+<li>同步代码块的锁是任意的对象</li>
+</ol>
+<p>由于同步函数的锁是固定的this，同步代码块的锁是任意的对象，那么如果同步函数和同步代码块都使用this 作为锁，就可以实现同步</p>
+<p>静态的同步函数使用的锁是该函数所属字节码文件对象，可以用getClass方法获取，也可以用当前类名.class 表示。</p>
+<h4 id="多线程下的单例模式"><a href="#多线程下的单例模式" class="headerlink" title="多线程下的单例模式"></a>多线程下的单例模式</h4><p>饿汉式：不存在安全问题，因为不存在多个线程共同操作数据的情况</p>
+<pre><code>class Single&#123;
+    private static final Single s = new Single(); 
+    private Single()&#123;&#125;
+    public static Single getInstance()&#123;&#125; 
+&#125;
+</code></pre>
+<p>懒汉式：</p>
+<pre><code>class Single&#123;
+    private static Single s = null;
+    private Single()&#123;&#125;
+    public static Single getInstance()&#123;
+        if(s ==null)&#123;
+            synchronized(Single.class)&#123;
+                if(s == null)
+                    s = new Single();
+            &#125;
+        &#125;
+        return s;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>死锁常见情景之一：同步的嵌套</p>
+<p><img src="/1.png"></p>
+<p>当线程t1获取到obj对象锁执行同步代码块，线程t2获取到this对象锁执行show方法。同步代码块中的show方法因无法获取到this对象锁无法执行，show方法中的同步代码块因无法获取到obj对象锁无法执行，就会产生死锁</p>
+<h3 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h3><h4 id="涉及的方法"><a href="#涉及的方法" class="headerlink" title="涉及的方法"></a>涉及的方法</h4><p>等待&#x2F;唤醒机制涉及的方法：</p>
+<ol>
+<li>wait()：让线程处于冻结状态，被wait的线程会被存储到线程池中</li>
+<li>notify()：唤醒线程池中的一个线程（任何一个都有可能）</li>
+<li>notifyAll()：唤醒线程池中所有的线程</li>
+</ol>
+<p>PS：</p>
+<ul>
+<li>这些方法都必须定义在同步中，因为这些方法是用于操作线程状态的方法</li>
+<li>必须要明确到底操作的是哪个锁上的线程</li>
+<li>wait和sleep的区别。1.wait可以指定时间也可以不指定，sleep必须指定。2.在同步中，对CPU的执行权和锁的处理不同。wait释放执行权释放锁。sleep释放执行权不释放锁。</li>
+</ul>
+<p>为什么操作线程的方法定义在object类中，因为这些方法是监视器的方法，监视器其实就是锁，锁可以是任意的对象，任意的对象调用的方式一定在object类中。</p>
+<h4 id="多生产者多消费者"><a href="#多生产者多消费者" class="headerlink" title="多生产者多消费者"></a>多生产者多消费者</h4><p>线程0、1是生产者，2、3是消费者</p>
+<p>1.线程0获取到CPU执行权及锁，生产了烤鸭3298，将flag设置为true。然后，线程0又重新获取CPU权限，因flag为true，所以执行wait方法阻塞。线程1获取CPU权限，因为flag为true，所以执行wait方法阻塞。</p>
+<p><img src="/2.png"></p>
+<p>2.线程3获取CPU权限及锁，消费了烤鸭3298，将flag设置为false，然后线程0被唤醒，但没有获取锁。而线程3又获取CPU及锁，此时flag为false，所以线程3阻塞。然后线程2获取CPU执行权及锁，此时flag为false，所以线程2阻塞。</p>
+<p><img src="/3.png"></p>
+<p>3.线程0获取CPU权限及锁，生产烤鸭3299，然后又唤醒线程1获取CPU执行权及锁，生产烤鸭3300，不需要if判断（唤醒后从wait后执行），从而造成3299还没有消费就生产了3300的情况。</p>
+<p>由于if判断标记只有一次，会导致不该运行的线程运行了，会出现数据错误的情况，故修改成while判断标记，线程获取CPU执行权及锁后，将重新判断是否具备运行条件。</p>
+<p>notify方法只能唤醒一个线程，如果是本方唤醒了本方就没有意义，而且while+notify会导致死锁，notifyAll解决了本方线程一定会唤醒对方线程的问题。</p>
+<h4 id="生产者消费者模式中条件判断是使用while而不是if"><a href="#生产者消费者模式中条件判断是使用while而不是if" class="headerlink" title="生产者消费者模式中条件判断是使用while而不是if"></a>生产者消费者模式中条件判断是使用while而不是if</h4><p>永远在循环（loop）里调用 wait 和 notify，不是在 If 语句现在你知道wait应该永远在被synchronized的背景下和那个被多线程共享的对象上调用，下一个一定要记住的问题就是，你应该永远在while循环，而不是if语句中调用wait。因为线程是在某些条件下等待的——在我们的例子里，即“如果缓冲区队列是满的话，那么生产者线程应该等待”，你可能直觉就会写一个if语句。但if语句存在一些微妙的小问题，导致即使条件没被满足，你的线程你也有可能被错误地唤醒。所以如果你不在线程被唤醒后再次使用while循环检查唤醒条件是否被满足，你的程序就有可能会出错——例如在缓冲区为满的时候生产者继续生产数据，或者缓冲区为空的时候消费者开始消耗数据。所以记住，永远在while循环而不是if语句中使用wait！</p>
+<p>因为在多核处理器环境中，Signal唤醒操作可能会激活多于一个线程（阻塞在条件变量上的线程），使得多个调用等待的线程返回。所以用while循环对condition多次判断，可以避免这种假唤醒。</p>
+<p>基于以上认知，下面这个是使用wait和notify函数的规范代码模板：</p>
+<pre><code>// The standard idiom for calling the wait method in Java
+synchronized(sharedObject) &#123;
+    while(condition) &#123;
+        sharedObject.wait();
+        // (Releases lock, and reacquires on wakeup)
+&#125;
+// do action based upon condition e.g. take or put into queue
+&#125;
+</code></pre>
+<p>Ps:在while循环里使用wait的目的，是在线程被唤醒的前后都持续检查条件是否被满足。如果条件并未改变，wait被调用之前notify的唤醒通知就来了，那么这个线程并不能保证被唤醒，有可能会导致死锁问题。</p>
+<p>注意：</p>
+<ol>
+<li>永远在synchronized的方法或对象里使用wait、notify和notifyAll，不然Java虚拟机会生成 IllegalMonitorStateException。</li>
+<li>永远在while循环里而不是if语句下使用wait。这样，循环会在线程睡眠前后都检查wait的条件，并在条件实际上并未改变的情况下处理唤醒通知。</li>
+<li>永远在多线程间共享的对象（在生产者消费者模型里即缓冲区队列）上使用wait。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/liuyishi/p/10664429.html">连接</a></p>
+<h4 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h4><p>同步代码块对锁的操作是隐式的。1.5以后将同步和锁封装成了对象，并将操作锁的隐式方法定义到了该对象中，将隐式动作变成了显示动作。</p>
+<p>Lock接口：出现替代了同步代码块或同步函数，将同步的隐式操作变成显示锁操作，同时更加灵活，可以一个锁加上多组监听器。</p>
+<ul>
+<li>Lock()：获取锁</li>
+<li>unlocl()：释放锁，为了防止异常导致锁无法被关闭，所以锁的关闭要防止finally里</li>
+</ul>
+<p>Condition接口：替代了object中的wait、notify、notifyAll方法。将这些监视器方法单独进行了封装，变成Condition监视器对象，可以任意锁进行组合。</p>
+<ul>
+<li>Condition中的await相当于Object的wait</li>
+<li>Condition中的signal相当于Object的notify</li>
+<li>Condition中的signalAll相当于Object的notifyAll</li>
+</ul>
+<p>示例：使用一个Lock、两个Condition</p>
+<p><img src="/4.png"></p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Java基础-字符串
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/">
+                Java基础-包装类
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>99</span>文章</a>
+        <a class="count tags"><span>113</span>标签</a>
+        <a class="count categories"><span>24</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/%E6%8E%A7%E4%BB%B6/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java%E5%9F%BA%E7%A1%80/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%A1%E5%88%92/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">#音视频</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E9%9D%A2%E8%AF%95/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8Bproject/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E4%B9%8BTask/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">#Gradle其他模块及自定义Plugin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%80%BB%E7%BB%93/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E8%AF%AD%E6%B3%95/">#Gradle语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">#Gradle生命周期</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">#Gradle高级用法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8C%85%E8%A3%85%E7%B1%BB/">#Java基础包装类</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%88%9D%E8%AF%86/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E6%80%81/">#Java基础多态</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%9B%E5%9E%8B/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#Java基础多线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%BC%82%E5%B8%B8/">#Java基础异常</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">#Java基础网络编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Java基础面向对象</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%A8%E8%A7%A3/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BB%A7%E6%89%BF/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E9%9D%A2%E8%AF%95/">#Java面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">#Kotlin内置类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">#Kotlin函数进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%AE%80%E4%BB%8B/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">#Kotlin类型进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E4%B9%A6/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Small/">#热修复插件化之插件化Small</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BClassLoader/">#热修复插件化之ClassLoader</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8Bclass%E3%80%81dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">#热修复插件化之插件化Atlas</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/">#热修复插件化之热修复</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">#热修复插件化之插件化原理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">#热修复插件化之版本管理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E9%9A%90%E5%BC%8FIntent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Fragment%EF%BC%8C%E9%99%90%E5%AE%9A%E7%AC%A6/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%BA%BF%E7%A8%8B/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">#设计模式单例</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

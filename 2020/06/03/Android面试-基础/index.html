@@ -1,37 +1,1721 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>Android面试-基础 | 妙妙屋</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
 
+        .cube-loading.out {
+            display: none;
+        }
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
 
-{% block page_class %}page-post-detail{% endblock %}
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
 
+        @media(min-width: 768px) {
+            .cube-loading:before {
 
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+            }
+        }
+    </style>
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Mayoの妙妙屋</span>
+        <span class="cube-typed-cursor">|</span>
     </div>
-  </div>
+    
+</header>
 
-{% endblock %}
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Mayoの妙妙屋</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Android面试-基础</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2020-06-03
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Android%E9%9D%A2%E8%AF%95/">#Android面试</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><p>Activity是与用户交互的接口</p>
+<span id="more"></span>
+
+<h3 id="Activity任务栈"><a href="#Activity任务栈" class="headerlink" title="Activity任务栈"></a>Activity任务栈</h3><p><img src="/1.png"></p>
+<p>Android通过Activity栈管理Activity，Activity状态决定了它在栈中的位置</p>
+<h3 id="Activity四种形态"><a href="#Activity四种形态" class="headerlink" title="Activity四种形态"></a>Activity四种形态</h3><ol>
+<li>Active：Activity处于栈顶（栈顶，可见，与用户进行交互）</li>
+<li>Paused：可见但不可交互（数据、状态、成员变量都是存在的，内存不足时可能会被回收）</li>
+<li>Stopped：不可见</li>
+<li>Killed：系统回收掉</li>
+</ol>
+<h3 id="正常情况生命周期回调"><a href="#正常情况生命周期回调" class="headerlink" title="正常情况生命周期回调"></a>正常情况生命周期回调</h3><p><img src="/2.png"></p>
+<h3 id="异常情况生命周期回调"><a href="#异常情况生命周期回调" class="headerlink" title="异常情况生命周期回调"></a>异常情况生命周期回调</h3><ul>
+<li>onSaveInstanceState()</li>
+<li>onRestoreInstanceState()与onCreate()都可以进行数据恢复，但前者的Bundle数据一定不为空，所以不用进行非空判断</li>
+</ul>
+<h3 id="生命周期总结"><a href="#生命周期总结" class="headerlink" title="生命周期总结"></a>生命周期总结</h3><ol>
+<li>正常启动：onCreate()-onStart()-onResume()</li>
+<li>back回退：onPause()-onStop()-onDestroy()</li>
+<li>打开新Activity：onPause()-onStop()</li>
+<li>Activity异常：onSaveInstanceState()保存数据</li>
+<li>Activity重新创建：onRestoreInstanceState()</li>
+</ol>
+<h3 id="Activity之间通信"><a href="#Activity之间通信" class="headerlink" title="Activity之间通信"></a>Activity之间通信</h3><ol>
+<li>Intent&#x2F;Bundle</li>
+<li>类静态变量</li>
+<li>全局变量</li>
+</ol>
+<h3 id="Activity与Fragment通信"><a href="#Activity与Fragment通信" class="headerlink" title="Activity与Fragment通信"></a>Activity与Fragment通信</h3><h4 id="Activity将数据传递给Fragment"><a href="#Activity将数据传递给Fragment" class="headerlink" title="Activity将数据传递给Fragment"></a>Activity将数据传递给Fragment</h4><ol>
+<li>Bundle</li>
+<li>直接在Activity中定义方法</li>
+</ol>
+<p><img src="/3.png"></p>
+<p><img src="/4.png"></p>
+<p><img src="/5.png"></p>
+<h4 id="Fragment将数据传递给Activity"><a href="#Fragment将数据传递给Activity" class="headerlink" title="Fragment将数据传递给Activity"></a>Fragment将数据传递给Activity</h4><ol>
+<li>fragment中定义一个内部回调接口</li>
+<li>fragment的方法onAttach()</li>
+<li>调用onDeach方法，把传递进来的Activity对象释放掉</li>
+</ol>
+<p>Fragment</p>
+<pre><code>public class TestFragment extends Fragment implements View.OnClickListener &#123;
+
+    // 2.1 定义用来与外部activity交互，获取到宿主activity
+    private FragmentListener listener;
+
+    // 1 定义了所有activity必须实现的接口方法
+    public interface FragmentListener&#123;
+        void process(String str);
+    &#125;
+
+    @Override
+    public void onAttach(Activity activity) &#123;
+        super.onAttach(activity);
+
+        if(activity instanceof FragmentListener) &#123;
+            listener = (FragmentListener)activity; // 2.2 获取到宿主activity并赋值
+        &#125; else&#123;
+            throw new IllegalArgumentException(&quot;activity must implements FragmentListener&quot;);
+        &#125;
+    &#125;
+
+    @Override
+    public void onClick(View v) &#123;
+        listener.process(&quot;我是接口&quot;); //3.1 执行回调
+    &#125;
+
+    //把传递进来的activity对象释放掉，防止内存泄漏
+    @Override
+    public void onDetach() &#123;
+        super.onDetach();
+        listener = null;
+    &#125;
+&#125;
+</code></pre>
+<p>Activity</p>
+<pre><code>class MainActivity : AppCompatActivity(),TestFragment.FragmentListener &#123;
+
+    override fun process(str: String?) &#123;
+        TODO(&quot;not implemented&quot;) //To change body of created functions use File | Settings | File Templates.
+    &#125;
+
+    override fun onCreate(savedInstanceState: Bundle?) &#123;
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Activity与Service通信"><a href="#Activity与Service通信" class="headerlink" title="Activity与Service通信"></a>Activity与Service通信</h3><ol>
+<li>绑定服务，利用ServiceConnection类</li>
+<li>简单通信，利用Intent进行传值</li>
+<li>定义一个callback接口来监听服务中的进程变化</li>
+</ol>
+<p>Service</p>
+<pre><code>public class MyService extends Service &#123;
+
+    public String data = &quot;服务器正在执行&quot;;
+
+    public MyService() &#123;
+    &#125;
+
+    public class Binder extends android.os.Binder&#123;
+        public void setData(String data)&#123;
+            MyService.this.data = data;
+        &#125;
+    &#125; 
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) &#123;
+        return new Binder();
+    &#125;
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) &#123;
+        return super.onStartCommand(intent, flags, startId);
+    &#125;
+
+    @Override
+    public void onDestroy() &#123;
+        super.onDestroy();
+    &#125;
+
+    @Override
+    public boolean onUnbind(Intent intent) &#123;
+        return super.onUnbind(intent);
+    &#125;
+&#125;
+</code></pre>
+<p>Activity</p>
+<pre><code>public class ServiceActivity extends AppCompatActivity implements ServiceConnection &#123;
+
+    public MyService.Binder binder = null;//①
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+
+        if (binder != null)
+            binder.setData(&quot;启动服务了&quot;);//③
+    &#125;
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) &#123;
+        binder = (MyService.Binder)service;//②
+    &#125;
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) &#123;
+
+    &#125;
+&#125;
+</code></pre>
+<p>Callback方案</p>
+<p>Service</p>
+<pre><code>public class MyService2 extends Service &#123;
+
+    private Callback callback;
+    public String data = &quot;服务器正在执行&quot;;
+
+    public void setCallback(Callback callback) &#123;
+        this.callback = callback;
+    &#125;
+
+    public Callback getCallback() &#123;
+        return callback;
+    &#125;
+
+    public interface Callback &#123;
+        void onDataChange(String data);
+    &#125;
+
+    public class Binder extends android.os.Binder &#123;
+        public void setData(String data) &#123;
+            MyService2.this.data = data;
+        &#125;
+
+        public MyService2 getMyService() &#123;
+            return MyService2.this;
+        &#125;
+    &#125;
+
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) &#123;
+        return new Binder();
+    &#125;
+&#125;
+</code></pre>
+<p>Activity</p>
+<pre><code>public class ServiceActivity2 extends AppCompatActivity implements ServiceConnection &#123;
+
+    public MyService2.Binder myBinder = null;
+
+    private Handler hander = new Handler()&#123;
+        @Override
+        public void handleMessage(Message msg) &#123;
+            super.handleMessage(msg);
+        &#125;
+    &#125;;
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) &#123;
+        myBinder = (MyService2.Binder) service;
+        myBinder.getMyService().setCallback(new MyService2.Callback()&#123;
+            @Override
+            public void onDataChange(String data) &#123;
+                Message msg = new Message();
+                Bundle b = new Bundle();
+                b.putString(&quot;data&quot;,data);
+                msg.setData(b);
+                hander.sendMessage(msg);
+            &#125;
+        &#125;);
+    &#125;
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) &#123;
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Activity启动模式"><a href="#Activity启动模式" class="headerlink" title="Activity启动模式"></a>Activity启动模式</h3><ol>
+<li>standard</li>
+<li>singleTop</li>
+<li>singleTask</li>
+<li>singleInstance</li>
+</ol>
+<h4 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h4><p><img src="/6.png"></p>
+<p>图片有误，最上面的实例应该是新的</p>
+<ol>
+<li>系统默认使用该模式启动Activity</li>
+<li>每次启动都会重新创建一个新的实例</li>
+<li>调用它的onCreate()-onStart()-onResume()</li>
+</ol>
+<h4 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h4><p><img src="/7.png"></p>
+<p><img src="/8.png"></p>
+<ol>
+<li>当前栈中已有该Activity实例并且位于栈顶时，onNewIntent()</li>
+<li>当前栈中已有该Activity实例但不在栈顶，创建新的实例</li>
+<li>当前栈中不存在该Activity实例，创建</li>
+</ol>
+<p>应用场景：</p>
+<ul>
+<li>IM对话框</li>
+<li>新闻客户端推送</li>
+</ul>
+<h4 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h4><p><img src="/9.png"></p>
+<ol>
+<li>首先根据taskAffinity（任务相关性，对默认及singleTop没有影响）去寻找当前是否存在一个对应名字的任务栈，一般情况为包名</li>
+<li>如果不存在，则会创建新的Task栈，创建新的Activity实例</li>
+<li>如果存在，则得到该任务栈，查找该任务栈中是否存在该Activity实例</li>
+<li>存在则弹出其上方Activity实例并调用onNewIntent()，不存在则创建</li>
+</ol>
+<p>可以将不同APP的Activity设置相同的taskAffinity，这样两个不同APP的Activity会被放入同一个任务栈中</p>
+<p>应用场景：应用的主界面</p>
+<h4 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h4><p><img src="/10.png"></p>
+<p><img src="/11.png"></p>
+<ol>
+<li>具有全局唯一性</li>
+<li>如果在启动这样的Activity时，已存在了一个实例，会把他调度到前台复用</li>
+<li>具有独占性（独自占有一个Task任务栈）</li>
+</ol>
+<p>应用场景：呼叫来电界面</p>
+<h3 id="Service和线程的区别和应用场景"><a href="#Service和线程的区别和应用场景" class="headerlink" title="Service和线程的区别和应用场景"></a>Service和线程的区别和应用场景</h3><p>Thread程序执行的最小单元，分配CPU的基本单位</p>
+<p>Service是Android的一种机制，是运行在主线程上的</p>
+<h4 id="Thread生命周期"><a href="#Thread生命周期" class="headerlink" title="Thread生命周期"></a>Thread生命周期</h4><ol>
+<li>新建</li>
+<li>就绪</li>
+<li>运行</li>
+<li>死亡</li>
+<li>阻塞</li>
+</ol>
+<p>缺点：无法控制</p>
+<h4 id="Service生命周期"><a href="#Service生命周期" class="headerlink" title="Service生命周期"></a>Service生命周期</h4><ol>
+<li>onCreate</li>
+<li>onStart</li>
+<li>onDestroy</li>
+<li>onBind</li>
+<li>onUnbind</li>
+</ol>
+<h3 id="如何管理Service生命周期"><a href="#如何管理Service生命周期" class="headerlink" title="如何管理Service生命周期"></a>如何管理Service生命周期</h3><p><img src="/12.png"></p>
+<ul>
+<li>startService，多次启动onCreate()只会调用一次，onStartCommand()调用的次数与startService保持一致</li>
+<li>stopService,一个Service被启动且被绑定，在没有解绑的情况下，stopService无法停止服务</li>
+<li>bindService，可以绑定已经使用startService启动的服务</li>
+</ul>
+<h3 id="IntentService和Service的异同"><a href="#IntentService和Service的异同" class="headerlink" title="IntentService和Service的异同"></a>IntentService和Service的异同</h3><p>不建议在Service中编写耗时的逻辑和操作，否则会引起ANR</p>
+<h4 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h4><ol>
+<li>IntentService内部有一个工作线程handlerThread来处理耗时操作</li>
+<li>IntentService是继承并处理异步请求的类</li>
+<li>内有一个工作线程来处理耗时操作</li>
+<li>IntentService内部	则是通过消息的方式发送给HandlerThread的，然后由Handler中的Looper来处理消息</li>
+</ol>
+<p>源码：</p>
+<p>onCreate()方法</p>
+<p><img src="/13.png"></p>
+<p>ServiceHandler继承Handler，传入的对象为Looper，Looper与HandlerThread绑定，ServiceHandler就持有了HandlerThread的Looper，便可执行异步任务</p>
+<p>onStart()方法（onStartCommand-onStart）</p>
+<p><img src="/14.png"></p>
+<p>ServiceHandler发送消息，这个消息最终交给HandlerThread去处理，本质是Looper从消息队列取出消息然后调用ServiceHandler进行处理</p>
+<p>ServiceHandler</p>
+<p><img src="/15.png"></p>
+<p><img src="/16.png"></p>
+<p>任务全部完成销毁</p>
+<h3 id="启动和绑定Service服务先后次序问题"><a href="#启动和绑定Service服务先后次序问题" class="headerlink" title="启动和绑定Service服务先后次序问题"></a>启动和绑定Service服务先后次序问题</h3><p>服务的状态有启动状态和绑定状态，实际情况中一个服务可能有多种状态，但Android只会为一个服务创建一个实例对象，具体分为如下两种情况：</p>
+<ol>
+<li>先绑定服务后启动服务</li>
+<li>先启动服务后绑定服务</li>
+</ol>
+<p>第一种，如果当前Service实例先以绑定状态运行了再以运行状态运行，绑定服务将会转为启动服务运行状态，这时候如果之前绑定服务的Activity销毁了也不会影响服务运行，只有调用停止服务的指令才会销毁服务</p>
+<p>第二种，即使Activity解除绑定了，服务依然按启动服务的生命周期在后台运行，直到调用stopService()服务才会被销毁</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>启动服务优先级比绑定服务要高</li>
+<li>服务在其托管进程的主线程运行（UI线程）</li>
+</ol>
+<h3 id="序列化：Parcelable和Serializable差异"><a href="#序列化：Parcelable和Serializable差异" class="headerlink" title="序列化：Parcelable和Serializable差异"></a>序列化：Parcelable和Serializable差异</h3><ul>
+<li>序列化：内存中对象-&gt;磁盘（或其他介质）</li>
+<li>反序列化：磁盘中对象-&gt;内存</li>
+</ul>
+<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><p><img src="/17.png"></p>
+<p>serialVersionUID的作用，序列化操作的时候系统会把当前类的UID写到序列化的文件中，当反序列化的时候系统会检测文件中的UID，判断是否一致，一致说明序列化的版本和当前类的版本是一样的，就可以反序列化。Serializable在内存开销上比较大</p>
+<h4 id="Parcelable"><a href="#Parcelable" class="headerlink" title="Parcelable"></a>Parcelable</h4><pre><code>public class ParcableImplement implements Parcelable &#123;
+
+    public int id;
+    public String name;
+
+    public ParcableImplement() &#123;
+    &#125;
+
+    protected ParcableImplement(Parcel in) &#123;
+        this.id = in.readInt();
+        this.name = in.readString();
+    &#125;
+
+    //当前对象的内容描述,一般返回0即可
+    @Override
+    public int describeContents() &#123;
+        return 0;
+    &#125;
+
+    //将当前对象写入序列化结构中
+    @Override
+    public void writeToParcel(Parcel dest, int flags) &#123;
+        dest.writeInt(this.id);
+        dest.writeString(this.name);
+    &#125;
+
+    /**
+     * public static final一个都不能少，内部对象CREATOR的名称也不能改变，必须全部大写。
+     * 重写接口中的两个方法：
+     * createFromParcel(Parcel in) 实现从Parcel容器中读取传递数据值,封装成Parcelable对象返回逻辑层，
+     * newArray(int size) 创建一个类型为T，长度为size的数组，供外部类反序列化本类数组使用。
+     */
+    public static final Creator&lt;ParcableImplement&gt; CREATOR = new Creator&lt;ParcableImplement&gt;() &#123;
+    
+        //从序列化后的对象中创建原始对象
+        @Override
+        public ParcableImplement createFromParcel(Parcel source) &#123;
+            return new ParcableImplement(source);
+        &#125;
+
+        //创建指定长度的原始对象数组
+        @Override
+        public ParcableImplement[] newArray(int size) &#123;
+            return new ParcableImplement[size];
+        &#125;
+    &#125;;
+&#125;
+</code></pre>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>两者的实现差异</li>
+<li>两者效率上的对比，Parcelable内存开销更小。内存中传递数据，如Activity之间传递数据，AIDL之间传递数据更推荐Parcelable。对象序列化到存储设备中一般推荐使用Serializable，也可以防止Android不同版本之间的差异</li>
+</ul>
+<h3 id="binder应用：AIDL如何创建"><a href="#binder应用：AIDL如何创建" class="headerlink" title="binder应用：AIDL如何创建"></a>binder应用：AIDL如何创建</h3><p>AIDL是Android接口定义语言，是进程间通信(IPC)机制，Android中一个进程通常无法访问另一个进程的内存，这时可以使用AIDL来定义客户端服务端进程通信机制，是两者都认可的一种接口</p>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ol>
+<li>创建AIDL：实体对象、新建AIDL文件、make工程</li>
+<li>服务端：新建Service、创建Binder对象、定义方法</li>
+<li>客户端：实现ServiceConnection、BindService</li>
+</ol>
+<p>Person</p>
+<pre><code>public class Person implements Parcelable &#123;
+
+    private String mName;
+
+    public Person(String name) &#123;
+        mName = name;
+    &#125;
+
+    protected Person(Parcel in) &#123;
+        this.mName = in.readString();
+    &#125;
+
+    @Override
+    public int describeContents() &#123;
+        return 0;
+    &#125;
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) &#123;
+        dest.writeString(this.mName);
+    &#125;
+
+    public static final Creator&lt;Person&gt; CREATOR = new Creator&lt;Person&gt;() &#123;
+        @Override
+        public Person createFromParcel(Parcel source) &#123;
+            return new Person(source);
+        &#125;
+
+        @Override
+        public Person[] newArray(int size) &#123;
+            return new Person[size];
+        &#125;
+    &#125;;
+
+    @Override
+    public String toString() &#123;
+        return &quot;Person&#123;&quot; +
+                &quot;mName=&#39;&quot; + mName + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<p>Person.aidl</p>
+<pre><code>package com.yly.interviewbat.aidlxuexi;
+
+// Declare any non-default types here with import statements
+
+parcelable Person;
+</code></pre>
+<p>IMyAidlInterface.aidl</p>
+<pre><code>package com.yly.interviewbat;
+
+//可以理解为Person.aidl文件，通过它来映射对应的实体类
+import com.yly.interviewbat.aidlxuexi.Person;
+
+// Declare any non-default types here with import statements
+
+interface IMyAidlInterface &#123;
+    void addPerson(in Person person);
+
+    List&lt;Person&gt; getPersonList();
+&#125;
+</code></pre>
+<p>MyAidlService服务端</p>
+<pre><code>public class MyAidlService extends Service &#123;
+
+    private final String TAG = this.getClass().getSimpleName();
+
+    private ArrayList&lt;Person&gt; mPersons;
+
+    /**
+     * 创建生成的本地 Binder 对象，实现 AIDL 制定的方法
+     */
+    private IBinder mIBinder = new IMyAidlInterface.Stub() &#123;
+
+        @Override
+        public void addPerson(Person person) throws RemoteException &#123;
+            mPersons.add(person);
+        &#125;
+
+        @Override
+        public List&lt;Person&gt; getPersonList() throws RemoteException &#123;
+            return mPersons;
+        &#125;
+    &#125;;
+
+    /**
+     * 客户端与服务端绑定时的回调，返回 mIBinder 后客户端就可以通过它远程调用服务端的方法，即实现了通讯
+     *
+     * @param intent
+     * @return
+     */
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) &#123;
+        mPersons = new ArrayList&lt;&gt;();
+        Log.d(TAG, &quot;MyAidlService onBind&quot;);
+        return mIBinder;
+    &#125;
+&#125;
+</code></pre>
+<p>MyServiceActivity客户端</p>
+<pre><code>public class MyServiceActivity extends Activity &#123;
+
+    private Button mBtn;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mBtn = findViewById(R.id.btn);
+        mBtn.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View v) &#123;
+                Intent intent1 = new Intent(getApplicationContext(), MyAidlService.class);
+                bindService(intent1, mConnection, BIND_AUTO_CREATE);
+                addPerson();
+            &#125;
+        &#125;);
+
+    &#125;
+
+    private IMyAidlInterface mAidl;
+
+    private ServiceConnection mConnection = new ServiceConnection() &#123;
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) &#123;
+            //连接后拿到 Binder，转换成 AIDL，在不同进程会返回个代理
+            mAidl = IMyAidlInterface.Stub.asInterface(service);
+        &#125;
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) &#123;
+            mAidl = null;
+        &#125;
+    &#125;;
+
+    List&lt;Person&gt; personList;
+
+    public void addPerson() &#123;
+        Random random = new Random();
+        Person person = new Person(&quot;&quot; + random.nextInt(10));
+
+        try &#123;
+            mAidl.addPerson(person);
+            personList = mAidl.getPersonList();
+        &#125; catch (RemoteException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="binder机制通信：AIDL生成java文件详细分析"><a href="#binder机制通信：AIDL生成java文件详细分析" class="headerlink" title="binder机制通信：AIDL生成java文件详细分析"></a>binder机制通信：AIDL生成java文件详细分析</h3><p>使用Binder机制，简化进程间通信开发的操作</p>
+<p>aidl帮我们生成的Binder对象，同时生成跨平台接口转换类Stub以及在不同进程客户端拿到的代码Proxy</p>
+<p>服务端和客户端是各有一个代理</p>
+<h4 id="extends-android-os-IInterface"><a href="#extends-android-os-IInterface" class="headerlink" title="extends android.os.IInterface"></a>extends android.os.IInterface</h4><p>进程间通信接口，服务端实现接口，客户端调用接口，asBinder()方法返回当前接口所关联的Binder对象</p>
+<h4 id="Stub-extends-android-os-Binder"><a href="#Stub-extends-android-os-Binder" class="headerlink" title="Stub extends android.os.Binder"></a>Stub extends android.os.Binder</h4><p>Binder类的包装类。</p>
+<p>类中定义了DESCRIPTOR，是唯一的标识，一般为包名的完整路径。</p>
+<p>attachInterface方法让当前接口与Binder绑定。</p>
+<p>asInterface方法，将IBinder对象转换为接口类型（用于返回给客户端），如果不存在（不在一个进程）会创建一个代理（Proxy方法），如果本地存在，调用queryLocalInterface方法通过查询DESCRIPTOR标识查找。</p>
+<p>onTransact方法，做所有代理操作的方法，根据code来查找，如TRANSACTION_addPerson</p>
+<h4 id="代理类，Proxy-implements-com-yly-interviewbat-IMyAidlInterface"><a href="#代理类，Proxy-implements-com-yly-interviewbat-IMyAidlInterface" class="headerlink" title="代理类，Proxy implements com.yly.interviewbat.IMyAidlInterface"></a>代理类，Proxy implements com.yly.interviewbat.IMyAidlInterface</h4><p>不在同一个进程返回</p>
+<p>asBinder方法，获取远端代理的Binder对象</p>
+<p>mRemote.transact(Stub.TRANSACTION_addPerson, _data, _reply, 0)方法，利用远端的Binder对象从服务端获取数据</p>
+<h3 id="广播：静态-动态注册使用、特点、应用场景"><a href="#广播：静态-动态注册使用、特点、应用场景" class="headerlink" title="广播：静态&amp;动态注册使用、特点、应用场景"></a>广播：静态&amp;动态注册使用、特点、应用场景</h3><p>动态注册代码</p>
+<pre><code>// 选择在Activity生命周期方法中的onResume()中注册
+@Override
+protected void onResume() &#123;
+    super.onResume();
+
+    // 1. 实例化BroadcastReceiver子类 &amp;  IntentFilter
+    mBroadcastReceiver = new MyBroadcastReceiver();
+    IntentFilter intentFilter = new IntentFilter();
+
+    // 2. 设置接收广播的类型
+    intentFilter.addAction(CONNECTIVITY_SERVICE);
+
+    // 3. 动态注册：调用Context的registerReceiver（）方法
+    registerReceiver(mBroadcastReceiver, intentFilter);
+&#125;
+
+
+// 注册广播后，要在相应位置记得销毁广播
+// 即在onPause() 中unregisterReceiver(mBroadcastReceiver)
+// 当此Activity实例化时，会动态将MyBroadcastReceiver注册到系统中
+// 当此Activity销毁时，动态注册的MyBroadcastReceiver将不再接收到相应的广播。
+@Override
+protected void onPause() &#123;
+    super.onPause();
+    //销毁在onResume()方法中的广播
+    unregisterReceiver(mBroadcastReceiver);
+&#125;
+</code></pre>
+<p>根据Activity生命周期，onPause()方法在Activity被销毁之前一定会被执行，而某些情况如内存不足销毁，onStop()及onDestroy()不一定会被执行，所以在onPause()方法注销广播，防止内存泄漏</p>
+<ol>
+<li>自动回调onReceive()方法</li>
+<li>广播接收器运行在UI线程</li>
+</ol>
+<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><ul>
+<li>静态：在AndroidManifest.xml里通过<receiver>标签声明</li>
+<li>动态：在代码里调用Context.registerReceiver</li>
+</ul>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>静态：常驻进程中，不受组件生命周期影响</li>
+<li>动态：跟随组件的生命周期变化</li>
+</ul>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li>静态：需要时刻监听广播</li>
+<li>动态：需要在特定的时刻接受广播</li>
+</ul>
+<h3 id="webview安全漏洞"><a href="#webview安全漏洞" class="headerlink" title="webview安全漏洞"></a>webview安全漏洞</h3><h4 id="常见的坑"><a href="#常见的坑" class="headerlink" title="常见的坑"></a>常见的坑</h4><p>1.API16及以前版本存在远程代码执行安全漏洞，源于程序没有正确限制使用Webview.addJavascriptInterface方法，远程攻击者可以通过使用Java Reflection API利用该漏洞执行任意Java对象方法</p>
+<p>2.webview在布局文件中的使用：在其他容器中时，先remove其中的webview，然后再调用webview的removeallviews和destroy方法，这样不会导致内存泄漏</p>
+<p>3.jsbridge</p>
+<p>4.webviewClient.onPageFinished–&gt;webChromeClient.onProgressChanged</p>
+<p>5.后台耗电，webview会自己开启线程，没有很好的销毁webview</p>
+<p>6.webview硬件加速导致页面渲染的问题，出现页面加载白块同时页面闪烁的情况</p>
+<h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><p>webview会关联Activity，而webview执行的操作是在新的线程当中，Activity的生命周期跟这个线程的生命周期不一样，会导致一直持有Activity的引用</p>
+<p>1.独立进程，简单暴力，可能涉及进程间通信</p>
+<p>2.动态添加webview，对传入webview中使用的Context使用弱引用，动态添加即在布局创建一个ViewGroup用来放置Webview，Activity创建时add进来，停止时remove掉</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Android面试-异步消息
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/">
+                Java面试-高级知识点
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>99</span>文章</a>
+        <a class="count tags"><span>113</span>标签</a>
+        <a class="count categories"><span>24</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/%E6%8E%A7%E4%BB%B6/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java%E5%9F%BA%E7%A1%80/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%A1%E5%88%92/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">#音视频</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Android%E9%9D%A2%E8%AF%95/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8Bproject/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8BTask/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">#Gradle其他模块及自定义Plugin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%80%BB%E7%BB%93/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E8%AF%AD%E6%B3%95/">#Gradle语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">#Gradle生命周期</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">#Gradle高级用法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8C%85%E8%A3%85%E7%B1%BB/">#Java基础包装类</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%88%9D%E8%AF%86/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E6%80%81/">#Java基础多态</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%9B%E5%9E%8B/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#Java基础多线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%BC%82%E5%B8%B8/">#Java基础异常</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">#Java基础网络编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Java基础面向对象</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%A8%E8%A7%A3/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BB%A7%E6%89%BF/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E9%9D%A2%E8%AF%95/">#Java面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">#Kotlin内置类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">#Kotlin函数进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%AE%80%E4%BB%8B/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">#Kotlin类型进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E4%B9%A6/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Small/">#热修复插件化之插件化Small</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BClassLoader/">#热修复插件化之ClassLoader</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8Bclass%E3%80%81dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">#热修复插件化之插件化Atlas</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/">#热修复插件化之热修复</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">#热修复插件化之插件化原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">#热修复插件化之版本管理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E9%9A%90%E5%BC%8FIntent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment%EF%BC%8C%E9%99%90%E5%AE%9A%E7%AC%A6/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%BA%BF%E7%A8%8B/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">#设计模式单例</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

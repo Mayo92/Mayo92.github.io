@@ -1,37 +1,1551 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Mayo">
+    
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    
+    
+    
+    
+    
+    
+    <title>第一行代码笔记-ContentProvider | 妙妙屋</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
 
+        .cube-loading.out {
+            display: none;
+        }
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
 
-{% block page_class %}page-post-detail{% endblock %}
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
 
+        @media(min-width: 768px) {
+            .cube-loading:before {
 
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+            }
+        }
+    </style>
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Mayoの妙妙屋</span>
+        <span class="cube-typed-cursor">|</span>
     </div>
-  </div>
+    
+</header>
 
-{% endblock %}
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/brand3.png');
+            background-repeat: no-repeat;
+            background-position: center -236px;
+            background-size: cover;
+            background-color: transparent;
+        }
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/brand3.png');
+            background-position: center -280px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Mayoの妙妙屋</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '500',
+                height: '352'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">第一行代码笔记-ContentProvider</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-03-13
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/ContentProvider/">#ContentProvider</a>
+    
+    <a href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/">#运行时权限</a>
+    
+    <a href="/tags/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>主要用于在不同的应用程序之间实现数据共享的功能。提供一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。可以选择只对哪一部分数据进行共享，从而保证我们程序中的隐私数据不会有泄漏的风险。</p>
+<span id="more"></span>
+
+<h3 id="2-运行时权限"><a href="#2-运行时权限" class="headerlink" title="2. 运行时权限"></a>2. 运行时权限</h3><h4 id="2-1-机制详解"><a href="#2-1-机制详解" class="headerlink" title="2.1 机制详解"></a>2.1 机制详解</h4><p>Android将所有的权限分为两类，一类是普通权限，一类是危险权限。危险权限表示那些可能会触及用户隐私或对设备安全性造成影响的权限，这部分需要由用户手动点击授权才可以，否则程序无法使用相应的功能，具体如下：</p>
+<p><img src="/1.png"></p>
+<p>表格中每个危险权限都属于一个权限组，我们在进行运行时权限处理时使用的是权限名，但用户一旦同意授权了，那么该权限所对应的权限组中所有的其他权限也会同时被授权。</p>
+<pre><code>if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
+    permission.CALL_PHONE) ! = PackageManager.PERMISSION_GRANTED)&#123;
+    
+    ActivityCompat.requestPermissions(MainActivity.this,new
+        String[]&#123;Manifest.permission.CALL_PHONE&#125;,1)
+&#125; else &#123;
+    call();
+&#125;
+
+private void call()&#123;
+    
+    try&#123;
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(&quot;tel:10086&quot;));
+        startActivity(intent);
+    &#125; else (SecurityException e)&#123;
+        e.printStackTrace();
+    &#125;
+&#125;
+
+@Override
+public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults)&#123;
+
+    switch (requestCode)&#123;
+        case 1:
+            if(grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED)&#123;
+                call();
+            &#125; else &#123;
+                //拒绝了权限
+            &#125;
+            break;
+        default:
+    &#125;
+&#125;
+</code></pre>
+<p>第一步先判断用户是不是已经给过我们授权了，借助ContextCompat.checkSelfPermission()方法，接收两个参数，第一个Context，第二个具体的权限名。然后使用方法的返回值和PackageManager.PERMISSION_GRANTED做比较，相等说明用户已经授权，不等表示用户没有授权。</p>
+<p>没有授权的话，需调用ActivityCompat.requestPermissions方法向用户申请授权，接收三个参数，第一个是Activity实例，第二个是String数组，第三个是请求码，只要是唯一的值就可以了。</p>
+<p>最终回调到onRequestPermissionsResult()方法中，授权的结果会封装在grantResults参数中，在这里判断授权结果做响应的逻辑</p>
+<h3 id="3-访问其他程序中的数据"><a href="#3-访问其他程序中的数据" class="headerlink" title="3. 访问其他程序中的数据"></a>3. 访问其他程序中的数据</h3><p>内容提供器的用法一般有两种，一种是使用现有的内容提供器来读取和操作相应程序中的数据。另一种是创建自己的内容提供器给我们程序的数据提供外部访问接口。</p>
+<h4 id="3-1-ContentResolver的基本用法"><a href="#3-1-ContentResolver的基本用法" class="headerlink" title="3.1 ContentResolver的基本用法"></a>3.1 ContentResolver的基本用法</h4><p>Context的getContentResolver()获取到该类的实例。提供了一系列的方法用于对数据进行CRUD操作，其中insert()方法用于添加数据，update()方法用于更新数据，delete()方法用于删除数据，query()方法用于查询数据。</p>
+<p>接收Uri参数，称为内容URI。内容URI给内容提供器中的数据建立了唯一的标识符，主要由两部分组成，authority和path。authority是用于对不同的应用程序做区分，一般采用包名的方式来进行命名。如com.example.app则为com.example.app.provider。path则是用于对同一应用程序中不同的表做区分，通常添加到authority后面。如有两张表，则为com.example.app.provider&#x2F;table1和com.example.app.provider&#x2F;table2。之后还需在字符串的头部加上协议声明。</p>
+<pre><code>content://com.example.app.provider/table1
+content://com.example.app.provider/table2
+</code></pre>
+<h5 id="将URI字符串解析为Uri对象"><a href="#将URI字符串解析为Uri对象" class="headerlink" title="将URI字符串解析为Uri对象"></a>将URI字符串解析为Uri对象</h5><pre><code>Uri uri = Uri.parse(&quot;content://com.example.app.provider/table1&quot;)
+</code></pre>
+<h5 id="使用Uri对象查询table表中的数据"><a href="#使用Uri对象查询table表中的数据" class="headerlink" title="使用Uri对象查询table表中的数据"></a>使用Uri对象查询table表中的数据</h5><pre><code>Cursor cursor = getContentResolver().query(
+    uri,
+    projection,
+    selection,
+    selectionArgs,
+    sortOrder);
+</code></pre>
+<p><img src="/2.png"></p>
+<h5 id="通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据"><a href="#通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据" class="headerlink" title="通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据"></a>通过移动游标的位置来遍历Cursor的所有行，然后再取出每一行中相对应列的数据</h5><pre><code>if(crsor != null) &#123;
+    
+    while(cursor.moveToNext())&#123;
+        String column1 = cursor.getString(cursor.getColumnIndex(&quot;column1&quot;));
+        int column2 = cursor.getInt(cursor.getColumnIndex(&quot;column2&quot;));
+    &#125;
+    cursor.close();
+&#125;
+</code></pre>
+<h5 id="向table1表添加一条数据"><a href="#向table1表添加一条数据" class="headerlink" title="向table1表添加一条数据"></a>向table1表添加一条数据</h5><pre><code>ContentValues values = new ContentValues();
+values.put(&quot;column1&quot;,&quot;text&quot;);
+values.put(&quot;column2&quot;,1);
+getContentResolver().insert(uri,values);
+</code></pre>
+<h5 id="更新这条添加的数据，把column1的值清空，可以借助ContentResolver的update-方法实现"><a href="#更新这条添加的数据，把column1的值清空，可以借助ContentResolver的update-方法实现" class="headerlink" title="更新这条添加的数据，把column1的值清空，可以借助ContentResolver的update()方法实现"></a>更新这条添加的数据，把column1的值清空，可以借助ContentResolver的update()方法实现</h5><pre><code>ContentValues values = new ContentValues();
+values.put(&quot;column1&quot;,&quot;&quot;);
+getContentResolver().update(uri,values,&quot;column1 = ? and column2 = ?&quot;,new String[] &#123;&quot;text&quot;,&quot;1&quot;&#125;);
+</code></pre>
+<h5 id="使用ContentResolver的delete-方法删除这条数据"><a href="#使用ContentResolver的delete-方法删除这条数据" class="headerlink" title="使用ContentResolver的delete()方法删除这条数据"></a>使用ContentResolver的delete()方法删除这条数据</h5><pre><code>getContentResolver().delete(uri,&quot;column2 = ?&quot;,new String[]&#123;&quot;1&quot;&#125;);
+</code></pre>
+<h4 id="3-2-读取系统联系人"><a href="#3-2-读取系统联系人" class="headerlink" title="3.2 读取系统联系人"></a>3.2 读取系统联系人</h4><pre><code>Cursor cursor = null;
+try&#123;
+    //查询联系人数据
+    cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null);
+    if(cursor != null)&#123;
+        while(cursor.moveToNext())&#123;
+            //获取联系人姓名
+            String displayName = cursor.getString(cursor.getColumnIndex
+            (ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+            //获取联系人手机号
+            String number = cursor.getString(cursor.getColumnIndex
+            (ContactsContract.CommonDataKinds.Phone.NUMBER));
+        &#125;
+    &#125;
+&#125; catch (Exception e) &#123;
+    e.printStackTrace();
+&#125; finally &#123;
+    if(cursor != null)&#123;
+        cursor.close();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="4-创建自己的内容提供器"><a href="#4-创建自己的内容提供器" class="headerlink" title="4. 创建自己的内容提供器"></a>4. 创建自己的内容提供器</h3><h4 id="4-1-创建内容提供器的步骤"><a href="#4-1-创建内容提供器的步骤" class="headerlink" title="4.1 创建内容提供器的步骤"></a>4.1 创建内容提供器的步骤</h4><h5 id="新建一个类继承ContentProvider，实现6个抽象方法"><a href="#新建一个类继承ContentProvider，实现6个抽象方法" class="headerlink" title="新建一个类继承ContentProvider，实现6个抽象方法"></a>新建一个类继承ContentProvider，实现6个抽象方法</h5><pre><code>public class MyProvider extends ContentProvider &#123;
+
+    @Override
+    public boolean onCreate() &#123;
+        return false;
+    &#125;
+    
+    @Override
+    public Cursor query(Uri uri,String[] projection,String selection,String[]
+        selectionArgs,String sortOrder)&#123;
+        return null;	
+    &#125;
+    
+    @Override
+    public Uri insert(Uri uri,ContentValues values)&#123;
+        return null;
+    &#125;
+    
+    @Override
+    public int update(Uri uri,ContentValues values,String selection,String[]
+        slelectionArgs) &#123;
+        return 0;	
+    &#125;
+    
+    @Override
+    publlic int delete(Uri uri,String selection,String[] selectionArgs) &#123;
+        return 0;
+    &#125;
+    
+    @Override
+    public String getType(Uri uri) &#123;
+        return null;
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>onCreate()，初始化内容提供器的时候调用。通常在这里完成对数据库的创建和升级操作，返回true表示内容提供器初始化成功，false表示失败。只有当存在ContentResolver尝试访问我们程序的数据时，内容提供器才会被初始化。</li>
+<li>query()，从内容提供器中查询数据，使用uri参数来确定查询哪张表，projection参数用于确定查询哪些列，selection和selectionArgs参数用于约束查询哪些行，sortOrder参数用于对结果进行排序，查询结果存放在Cursor对象中返回。</li>
+<li>insert()，向内容提供器添加一条数据。使用uri参数来确定要添加到的表，待添加的数据保存在values参数中。添加完成后，返回一个用于表示这条新纪录的URI。</li>
+<li>update()，更新内容提供器中已有的数据。使用uri参数来确定更新哪一张表中的数据，新数据保存在values参数中，selection和selectionArgs参数用于约束更新哪些行，受影响的行数将作为返回值返回。</li>
+<li>delete()，从内容提供器中删除数据，使用uri参数来确定删除哪一张表中的数据，selection和selectionArgs参数用于约束删除哪些行，被删除的行数将作为返回值返回。</li>
+<li>getType()，根据传入的内容URI来返回相应的MIME类型。</li>
+</ul>
+<h5 id="content-com-example-app-provider-table1-1"><a href="#content-com-example-app-provider-table1-1" class="headerlink" title="content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1&#x2F;1"></a>content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1&#x2F;1</h5><p>表示调用方期望访问的是com.example.app.provider这个应用的table1表中id为1的数据。</p>
+<p>内容URI的格式主要就是以上两种，以路径结尾就表示期望访问该表中的所有数据，以id结尾就表示期望访问该表中拥有相应id的数据。我们可以使用通配符的方式来分别匹配这两种格式的内容URI，规则如下：</p>
+<pre><code>*：表示匹配任意长度的任意字符串
+#：表示匹配任意长度的数字
+</code></pre>
+<h5 id="一个能够匹配任意表的内容URI格式就可以写成："><a href="#一个能够匹配任意表的内容URI格式就可以写成：" class="headerlink" title="一个能够匹配任意表的内容URI格式就可以写成："></a>一个能够匹配任意表的内容URI格式就可以写成：</h5><pre><code>content://com.example.app.provider/*
+</code></pre>
+<h5 id="一个能够匹配table1表中任意一行数据的内容URI格式就可以写成："><a href="#一个能够匹配table1表中任意一行数据的内容URI格式就可以写成：" class="headerlink" title="一个能够匹配table1表中任意一行数据的内容URI格式就可以写成："></a>一个能够匹配table1表中任意一行数据的内容URI格式就可以写成：</h5><pre><code>content://com.example.app.provider/table1/#
+</code></pre>
+<p>借助UriMatcher这个类就可以轻松地实现匹配内容URI的功能。UriMatcher提供一个addURI()方法，这个方法接受三个参数，可以分别把authority、path、一个自定义代码传进去。当调用UriMatcher的match()方法时，就可以将一个Uri对象传入，返回值是某个能够匹配这个Uri对象所对应的自定义代码，利用这个代码，就可以判断出调用方希望访问哪张表中的数据了。</p>
+<pre><code>public class MyProvider extends ContentProvider &#123;
+
+    public static final int TABLE1_DIR = 0;
+
+    public static final int TABLE1_ITEM = 1;
+    
+    public static final int TABLE2_DIR = 2;
+    
+    public static final int TABLE2_ITEM = 3;
+    
+    private static UriMatcher uriMatcher;
+    
+    static&#123;
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(&quot;com.example.app.provider&quot;,&quot;table1&quot;, TABLE1_DIR);
+        uriMatcher.addURI(&quot;com.example.app.provider&quot;,&quot;table1/#&quot;, TABLE1_ITEM);
+        uriMatcher.addURI(&quot;com.example.app.provider&quot;,&quot;table2&quot;, TABLE2_DIR);
+        uriMatcher.addURI(&quot;com.example.app.provider&quot;,&quot;table2/#&quot;, TABLE1_ITEM);
+    &#125;
+    
+    @Override
+    public Cursor query(Uri uri,String[] projection,String selection,String[]
+        selectionArgs,String sortOrder)&#123;
+        switch(uriMatcher.match(uri))&#123;
+        
+            case TABLE1_DIR:
+                //查询table1表中的所有数据
+                break;
+            case TABLE1_ITEM:
+                //查询table1表中的单条数据
+                break;
+            case TABLE2_DIR:
+                //查询table2表中的所有数据
+                break;
+            case TABLE2_ITEM:
+                //查询table2表中的单条数据
+                break;
+            default:
+                break;
+        &#125;
+    &#125;
+    
+&#125;
+</code></pre>
+<p>调用addURI()方法，将期望匹配的内容URI格式传递进去，注意这里传入的路径参数是可以使用通配符的，然后当query()方法被调用的时候，就会通过UriMatcher的match()方法对传入的Uri对象进行匹配,如果发现UriMatcher中的某个内容URI格式成功匹配了该Uri对象，则会返回相对应的自定义代码，然后就可以判断出调用方期望访问的到底是什么数据了。</p>
+<p>getType()方法，是所有内容提供器都必须提供的一个方法，用于获取Uri对象所对应的MIME类型，一个内容URI所对应的MIME字符串主要由三部分组成</p>
+<ul>
+<li>必须以vnd开头</li>
+<li>如果内容URI以路径结尾，则后面接android.cursor.dir&#x2F;，如果内容URI以id结尾，则后接android.cursor.item&#x2F;。</li>
+<li>最后接上vnd.<authority>.<path></li>
+</ul>
+<p>对于content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1，MIME类型为：</p>
+<pre><code>vnd.android.cursor.dir/vnd.com.example.app.provider.table1
+</code></pre>
+<p>对于content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1&#x2F;1，MIME类型为：</p>
+<pre><code>vnd.android.cursor.item/vnd.com.example.app.provider.table1
+</code></pre>
+<h5 id="getType-代码"><a href="#getType-代码" class="headerlink" title="getType()代码"></a>getType()代码</h5><pre><code>@Override
+public String getType(Uri uri) &#123;
+    switch(uriMatcher.match(uri))&#123;
+        case TABLE1_DIR:
+                return &quot;vnd.android.cursor.dir/vnd.com.example.app.provider.table1&quot;;
+            case TABLE1_ITEM:
+                return &quot;vnd.android.cursor.item/vnd.com.example.app.provider.table1&quot;;
+            case TABLE2_DIR:
+                return &quot;vnd.android.cursor.dir/vnd.com.example.app.provider.table2&quot;;
+            case TABLE2_ITEM:
+                return &quot;vnd.android.cursor.item/vnd.com.example.app.provider.table2&quot;;
+            default:
+                break;
+    &#125;
+    return null;
+&#125;
+</code></pre>
+<p>所有CRUD操作都一定要匹配到相应的内容URI格式才能进行的，而我们不可能向UriMatcher中添加隐私数据的URI，所以这部分数据根本无法被外部程序访问到，安全问题也就不存在了。</p>
+<h4 id="4-2-实现跨程序数据共享"><a href="#4-2-实现跨程序数据共享" class="headerlink" title="4.2 实现跨程序数据共享"></a>4.2 实现跨程序数据共享</h4><pre><code>public class DatabaseProvider extends ContentProvider &#123;
+
+    public static final int BOOK_DIR = 0;
+
+    public static final int BOOK_ITEM = 1;
+    
+    public static final int CATEGORY_DIR = 2;
+    
+    public static final int CATEGORY_ITEM = 3;
+    
+    public static final String AUTHORITY = &quot;com.example.databasetest.provider&quot;
+    
+    private static UriMatcher uriMatcher;
+    
+    private MyDatabaseHelper dbHelper;
+    
+    static&#123;
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(AUTHORITY,&quot;book&quot;, BOOK_DIR);
+        uriMatcher.addURI(AUTHORITY,&quot;book/#&quot;, BOOK_ITEM);
+        uriMatcher.addURI(AUTHORITY,&quot;category&quot;, CATEGORY_DIR);
+        uriMatcher.addURI(AUTHORITY,&quot;category/#&quot;, CATEGORY_ITEM);
+    &#125;
+    
+    @Override
+    public boolean onCreate() &#123;
+        dbHelper = new MyDatabaseHelper(getContext(),&quot;BookStore.db&quot;,null,2);
+        return true;
+    &#125;
+    
+    @Override
+    public Cursor query(Uri uri,String[] projection,String selection,String[]
+        selectionArgs,String sortOrder)&#123;
+        
+        //查询数据
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = null;
+        switch(uriMatcher.match(uri))&#123;
+            case BOOK_DIR:
+                cursor = db.query(&quot;Book&quot;,projection,selection, selectionArgs,null,null,sortOrder);
+                break;
+            case BOOK_ITEM:
+                String bookId = uri.getPathSegments().get(1);
+                cursor = db.query(&quot;Book&quot;,projection,&quot;id=?&quot;,new String[] &#123;bookId&#125;,
+                null,null,sortOrder);
+                break;
+            case CATEGORY_DIR:
+                cursor = db.query(&quot;Category&quot;,projection,selection, selectionArgs,null,null,sortOrder);
+                break;
+            case CATEGORY_ITEM:
+                String categoryId = uri.getPathSegments().get(1);
+                cursor = db.query(&quot;Category&quot;,projection,&quot;id=?&quot;,new String[] &#123;categoryId&#125;,
+                null,null,sortOrder);
+                break;
+            default:
+                break;
+        &#125;
+        return cursor;
+    &#125;
+    
+    @Override
+    public Uri insert(Uri uri,ContentValues values)&#123;
+        //添加数据
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Uri uriReturn = null;
+        switch(uriMatcher.match(uri))&#123;
+            case BOOK_DIR:
+            case BOOK_ITEM:
+                long newBookId = db.insert(&quot;Book&quot;,null,values);
+                uriReturn = Uri.parse(&quot;content://&quot;+&quot;AUTHORITY&quot;+&quot;/book/&quot;+
+                newBookId);
+                break;
+            case CATEGORY_DIR:
+            case CATEGORY_ITEM:
+                long newCategoryId = db.insert(&quot;Category&quot;,null,values);
+                uriReturn = Uri.parse(&quot;content://&quot;+&quot;AUTHORITY&quot;+&quot;/category/&quot;+
+                newCategoryId);
+                break;
+            default:
+                break;
+        &#125;
+        return uriReturn;
+    &#125;
+    
+    @Override
+    public int update(Uri uri,ContentValues values,String selection,String[]
+        slelectionArgs) &#123;
+        //更新数据
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int updatedRows = 0;
+        switch(uriMatcher.match(uri))&#123;
+            case BOOK_DIR:
+                updateRows = db.update(&quot;Book&quot;,values,selection, slelectionArgs);
+                break;
+            case BOOK_ITEM:
+                String bookId = uri.getPathSegments().get(1);
+                updateRows = db.update(&quot;Book&quot;,values,&quot;id = ?&quot;,new String[]
+                &#123;bookId&#125;);
+                break;
+            case CATEGORY_DIR:
+                updateRows = db.update(&quot;Category&quot;,values,selection, slelectionArgs);
+                break;
+            case CATEGORY_ITEM:
+                String categoryId = uri.getPathSegments().get(1);
+                updateRows = db.update(&quot;Category&quot;,values,&quot;id = ?&quot;,new String[]
+                &#123;categoryId&#125;);
+                break;
+            default:
+                break;
+        &#125;
+        return updateRows;	
+    &#125;
+    
+    @Override
+    publlic int delete(Uri uri,String selection,String[] selectionArgs) &#123;
+        //删除数据
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int deleteRows = 0;
+        switch(uriMatcher.match(uri))&#123;
+            case BOOK_DIR:
+                deleteRows = db.delete(&quot;Book&quot;,selection, slelectionArgs);
+                break;
+            case BOOK_ITEM:
+                String bookId = uri.getPathSegments().get(1);
+                deleteRows = db.delete(&quot;Book&quot;,&quot;id = ?&quot;,new String[] &#123;bookId&#125;);
+                break;
+            case CATEGORY_DIR:
+                deleteRows = db.delete(&quot;Category&quot;,selection, slelectionArgs);
+                break;
+            case CATEGORY_ITEM:
+                String categoryId = uri.getPathSegments().get(1);
+                deleteRows = db.delete(&quot;Category&quot;,&quot;id = ?&quot;,new String[] &#123;categoryId&#125;);
+                break;
+            default:
+                break;
+        &#125;
+        return deleteRows;
+    &#125;
+    
+    @Override
+    public String getType(Uri uri) &#123;
+        switch(uriMatcher.match(uri))&#123;
+            case BOOK_DIR:
+                return &quot;vnd.android.cursor.dir/vnd.com.example.databasetest.provider.book&quot;;
+            case BOOK_ITEM:
+                return &quot;vnd.android.cursor.item/vnd.com.example.databasetest.provider.book&quot;;
+            case CATEGORY_DIR:
+                return &quot;vnd.android.cursor.dir/vnd.com.example.databasetest.provider.category&quot;;
+            case CATEGORY_ITEM:
+                return &quot;vnd.android.cursor.item/vnd.com.example.databasetest.provider.category&quot;;
+        &#125;
+        return null;
+    &#125;
+
+&#125;
+</code></pre>
+<h5 id="onCreate-方法"><a href="#onCreate-方法" class="headerlink" title="onCreate()方法:"></a>onCreate()方法:</h5><p>创建一个MyDatabaseHelper的实例，返回true表示内容提供器初始化成功，这时数据库就完成了创建或升级操作。</p>
+<h5 id="query-方法"><a href="#query-方法" class="headerlink" title="query()方法:"></a>query()方法:</h5><p>先获取SQLiteDatabase的实例，然后根据传入的Uri参数判断出用户想要访问的哪张表，再调用SQLiteDatabase的query()进行查询，并且将Cursor对象返回。uri的getPathSegments()方法，会将内容URI权限之后的部分以”&#x2F;“符号进行分割，并且把分割后的结果放到一个字符串列表中，这个列表的第0个位置存放的就是路径，第一个位置存放的就是id了。</p>
+<h5 id="insert-方法"><a href="#insert-方法" class="headerlink" title="insert()方法:"></a>insert()方法:</h5><p>先获取SQLiteDatabase的实例，然后根据传入的Uri参数判断出用户想要往哪张表添加数据，再调用SQLiteDatabase的insert()方法进行添加就可以了。需要返回一个表示这条新增数据的URI，所以还需调用Uri.parse()方法将一个内容URI解析成Uri对象，这个内容URI是以新增数据的id结尾的。</p>
+<h5 id="update-方法"><a href="#update-方法" class="headerlink" title="update()方法:"></a>update()方法:</h5><p>先获取SQLiteDatabase的实例，然后根据传入的Uri参数判断出用户想要更新哪张表的数据，再调用SQLiteDatabase的update()方法进行添加就可以了，返回受影响的行数。</p>
+<h5 id="delete-方法"><a href="#delete-方法" class="headerlink" title="delete()方法:"></a>delete()方法:</h5><p>先获取SQLiteDatabase的实例，然后根据传入的Uri参数判断出用户想要删除哪张表的数据，再调用SQLiteDatabase的delete()方法进行添加就可以了，返回被删除的行数。</p>
+<p>另外需要在manifest里注册，android:authorities属性指定DatabaseProvider的authority，enabled和exported属性表示允许DatabaseProvider被其他应用程序进行访问。</p>
+<pre><code>//添加数据
+Uri uri = Uri.parse(&quot;content://com.example.databasetest.provider/book&quot;);
+ContentValues values = new ContentValues();
+values.put(&quot;name&quot;,&quot;xxxx&quot;);
+values.put(&quot;author&quot;,&quot;xxxx&quot;);
+values.put(&quot;pages&quot;,1040);
+values.put(&quot;price&quot;,22.85);
+Uri newUri = getContentResolver().insert(uri,values);
+newId = newUri.getPathSegments().get(1);
+
+//查询数据
+Uri uri = Uri.parse(&quot;content://com.example.databasetest.provider/book&quot;);
+Cursor cursor = getContentResolver().query(uri,null,null,null,null);
+if(cursor != null)&#123;
+    while(cursor.moveToNext())&#123;
+        String name = cursor.getString(cursor.getColumnIndex(&quot;name&quot;));
+        String author = cursor.getString(cursor.getColumnIndex(&quot;author&quot;));
+        int pages = cursor.getInt(cursor.getColumnIndex(&quot;pages&quot;));
+        double price = cursor.getDouble(cursor.getColumnIndex(&quot;price&quot;));
+    &#125;
+    cursor.close();
+&#125;
+
+//更新数据
+Uri uri = Uri.parse(&quot;content://com.example.databasetest.provider/book&quot; + newId);
+ContentValues values = new ContentValues();
+values.put(&quot;name&quot;,&quot;xxxx&quot;);
+values.put(&quot;pages&quot;,1216);
+values.put(&quot;price&quot;,24.05);
+getContentResolver().update(uri,values,null,null);
+
+//删除数据
+Uri uri = Uri.parse(&quot;content://com.example.databasetest.provider/book&quot; + newId);
+getContentResolver().delete(uri,null,null);
+</code></pre>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/03/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                第一行代码笔记-多媒体
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/03/12/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
+                第一行代码笔记-数据存储
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpeg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Mayo</span>
+    
+    
+    <a title="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生</a>
+    
+    <div class="count">
+        <a class="count articles"><span>99</span>文章</a>
+        <a class="count tags"><span>113</span>标签</a>
+        <a class="count categories"><span>24</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/" title="Android高级面试-插件化和热修复2">Android高级面试-插件化和热修复2</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/" title="Android高级面试-插件化和热修复">Android高级面试-插件化和热修复</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/" title="Android高级面试-内存优化">Android高级面试-内存优化</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/" title="Android高级面试-Handler">Android高级面试-Handler</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/" title="Android高级面试-Activity">Android高级面试-Activity</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">#星球Android入门</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/">#面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">#四大组件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/%E6%8E%A7%E4%BB%B6/">#控件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Gradle/">#Gradle</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Blog/">#Blog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Java%E5%9F%BA%E7%A1%80/">#Java基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaWeb/">#JavaWeb</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Kotlin/">#Kotlin</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">#环境配置</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E8%AE%A1%E5%88%92/">#计划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96/">#热修复插件化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">#第一行代码</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">#读书笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">#音视频</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/ContentProvider/">#ContentProvider</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/BroadcastReceiver/">#BroadcastReceiver</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Activity/">#Activity</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Fragment/">#Fragment</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Layout/">#Layout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E9%9D%A2%E8%AF%95/">#Android面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Service/">#Service</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E4%B9%8Bproject/">#Gradle之project</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E4%B9%8BTask/">#Gradle之Task</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">#Gradle其他模块及自定义Plugin</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#Gradle开发环境搭建</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">#Gradle快速入门</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">#Gradle持续集成与打包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E6%80%BB%E7%BB%93/">#Gradle总结</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Gradle%E8%AF%AD%E6%B3%95/">#Gradle语法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">#Gradle生命周期</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">#Gradle高级用法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">#服务器搭建</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HEXO/">#HEXO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Html/">#Html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84/">#Java基础反射</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">#Java基础IO</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8C%85%E8%A3%85%E7%B1%BB/">#Java基础包装类</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">#Java基础语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%88%9D%E8%AF%86/">#Java初识</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E6%80%81/">#Java基础多态</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%9B%E5%9E%8B/">#Java基础泛型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/">#Java基础字符串</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#Java基础多线程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E5%BC%82%E5%B8%B8/">#Java基础异常</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">#Java基础网络编程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Java基础面向对象</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%A8%E8%A7%A3/">#Java基础注解</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BB%A7%E6%89%BF/">#Java基础继承</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88/">#Java基础集合</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Java%E9%9D%A2%E8%AF%95/">#Java面试</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">#Kotlin开发环境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">#Kotlin内置类型</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">#Kotlin函数进阶</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#Kotlin数据类型</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Kotlin%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#Kotlin表达式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">#Kotlin程序结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%AE%80%E4%BB%8B/">#Kotlin简介</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">#Kotlin类型初步</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">#Kotlin类型进阶</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SSH/">#SSH</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/UML/">#UML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPS/">#VPS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SSR/">#SSR</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VPN/">#VPN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E4%B9%A6/">#书</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">#混合开发</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Small/">#热修复插件化之插件化Small</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BClassLoader/">#热修复插件化之ClassLoader</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Plan/">#Plan</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8Bclass%E3%80%81dex/">#热修复插件化之class、dex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">#热修复插件化之插件化Atlas</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/">#热修复插件化之热修复</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">#热修复插件化之插件化原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android-Studio/">#Android Studio</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">#热修复插件化之版本管理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA/">#热修复插件化之虚拟机</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/">#运行时权限</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Android%E5%9F%BA%E7%A1%80/">#Android基础</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E9%9A%90%E5%BC%8FIntent/">#隐式Intent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/startActivityForResult/">#startActivityForResult</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/onSaveInstanceState/">#onSaveInstanceState</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/0-9/">#0.9</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Button/">#Button</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EditText/">#EditText</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ImageView/">#ImageView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressBar/">#ProgressBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/AlertDialog/">#AlertDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ProgressDialog/">#ProgressDialog</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%B8%83%E5%B1%80/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LinearLayout/">#LinearLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/RelativeLayout/">#RelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FrameLayout/">#FrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentFrameLayout/">#PercentFrameLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PercentRelativeLayout/">#PercentRelativeLayout</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AbsoluteLayout/">#AbsoluteLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TableLayout/">#TableLayout</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ActionBar/">#ActionBar</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Broadcast/">#Broadcast</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Fragment%EF%BC%8C%E9%99%90%E5%AE%9A%E7%AC%A6/">#Fragment，限定符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ListView/">#ListView</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/RecyclerView/">#RecyclerView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E7%BA%BF%E7%A8%8B/">#线程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Handler/">#Handler</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/AsyncTask/">#AsyncTask</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/">#前台服务</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/IntentService/">#IntentService</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LBS/">#LBS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Material-Design/">#Material Design</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">#数据存储</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">#文件存储</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SharedPreferences/">#SharedPreferences</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">#SQLite数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/">#自定义view</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/WebView/">#WebView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HttpURLConnection/">#HttpURLConnection</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/OkHttp/">#OkHttp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/XML/">#XML</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/JSON/">#JSON</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Notification/">#Notification</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/PendingIntent/">#PendingIntent</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C/">#摄像头和相册</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/MediaPlayer/">#MediaPlayer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VideoView/">#VideoView</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">#设计模式单例</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/FFMPEG/">#FFMPEG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="/images/GitHub.png">
+            
+            <a href="https://github.com/Mayo92" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Mayo
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
