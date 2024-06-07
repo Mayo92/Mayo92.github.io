@@ -1,216 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Android面试-基础 | 妙妙屋 | ass♂we♂can</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="Android面试">
-    <meta name="description" content="ActivityActivity是与用户交互的接口">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android面试-基础">
-<meta property="og:url" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="ActivityActivity是与用户交互的接口">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/2.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/3.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/4.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/5.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/7.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/8.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/9.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/10.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/11.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/12.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/13.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/14.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/15.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/16.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/17.png">
-<meta property="article:published_time" content="2020-06-03T08:28:56.000Z">
-<meta property="article:modified_time" content="2020-12-29T03:11:53.000Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Android面试">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/1.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity"><span class="toc-text">Activity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E4%BB%BB%E5%8A%A1%E6%A0%88"><span class="toc-text">Activity任务栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E5%9B%9B%E7%A7%8D%E5%BD%A2%E6%80%81"><span class="toc-text">Activity四种形态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%B8%B8%E6%83%85%E5%86%B5%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%9E%E8%B0%83"><span class="toc-text">正常情况生命周期回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%9E%E8%B0%83"><span class="toc-text">异常情况生命周期回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93"><span class="toc-text">生命周期总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">Activity之间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E4%B8%8EFragment%E9%80%9A%E4%BF%A1"><span class="toc-text">Activity与Fragment通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%BB%99Fragment"><span class="toc-text">Activity将数据传递给Fragment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fragment%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%BB%99Activity"><span class="toc-text">Fragment将数据传递给Activity</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E4%B8%8EService%E9%80%9A%E4%BF%A1"><span class="toc-text">Activity与Service通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">Activity启动模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#standard"><span class="toc-text">standard</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#singleTop"><span class="toc-text">singleTop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#singleTask"><span class="toc-text">singleTask</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#singleInstance"><span class="toc-text">singleInstance</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">Service和线程的区别和应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Thread%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Thread生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Service%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Service生命周期</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86Service%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">如何管理Service生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IntentService%E5%92%8CService%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-text">IntentService和Service的异同</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IntentService"><span class="toc-text">IntentService</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%92%8C%E7%BB%91%E5%AE%9AService%E6%9C%8D%E5%8A%A1%E5%85%88%E5%90%8E%E6%AC%A1%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="toc-text">启动和绑定Service服务先后次序问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9AParcelable%E5%92%8CSerializable%E5%B7%AE%E5%BC%82"><span class="toc-text">序列化：Parcelable和Serializable差异</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Serializable"><span class="toc-text">Serializable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Parcelable"><span class="toc-text">Parcelable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binder%E5%BA%94%E7%94%A8%EF%BC%9AAIDL%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA"><span class="toc-text">binder应用：AIDL如何创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-text">实现步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binder%E6%9C%BA%E5%88%B6%E9%80%9A%E4%BF%A1%EF%BC%9AAIDL%E7%94%9F%E6%88%90java%E6%96%87%E4%BB%B6%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="toc-text">binder机制通信：AIDL生成java文件详细分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extends-android-os-IInterface"><span class="toc-text">extends android.os.IInterface</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stub-extends-android-os-Binder"><span class="toc-text">Stub extends android.os.Binder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E7%B1%BB%EF%BC%8CProxy-implements-com-yly-interviewbat-IMyAidlInterface"><span class="toc-text">代理类，Proxy implements com.yly.interviewbat.IMyAidlInterface</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD%EF%BC%9A%E9%9D%99%E6%80%81-%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E4%BD%BF%E7%94%A8%E3%80%81%E7%89%B9%E7%82%B9%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">广播：静态&amp;动态注册使用、特点、应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webview%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E"><span class="toc-text">webview安全漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9D%91"><span class="toc-text">常见的坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-text">内存泄漏</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android面试-基础
+        </h2>
       </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Android面试-基础</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Android面试-基础</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2020-06-03T08:28:56.000Z" itemprop="datePublished" class="page-time">
-  2020-06-03
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity"><span class="post-toc-number">1.</span> <span class="post-toc-text">Activity</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E4%BB%BB%E5%8A%A1%E6%A0%88"><span class="post-toc-number">2.</span> <span class="post-toc-text">Activity任务栈</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E5%9B%9B%E7%A7%8D%E5%BD%A2%E6%80%81"><span class="post-toc-number">3.</span> <span class="post-toc-text">Activity四种形态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AD%A3%E5%B8%B8%E6%83%85%E5%86%B5%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%9E%E8%B0%83"><span class="post-toc-number">4.</span> <span class="post-toc-text">正常情况生命周期回调</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%9E%E8%B0%83"><span class="post-toc-number">5.</span> <span class="post-toc-text">异常情况生命周期回调</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93"><span class="post-toc-number">6.</span> <span class="post-toc-text">生命周期总结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="post-toc-number">7.</span> <span class="post-toc-text">Activity之间通信</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E4%B8%8EFragment%E9%80%9A%E4%BF%A1"><span class="post-toc-number">8.</span> <span class="post-toc-text">Activity与Fragment通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Activity%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%BB%99Fragment"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">Activity将数据传递给Fragment</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Fragment%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%BB%99Activity"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">Fragment将数据传递给Activity</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E4%B8%8EService%E9%80%9A%E4%BF%A1"><span class="post-toc-number">9.</span> <span class="post-toc-text">Activity与Service通信</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">10.</span> <span class="post-toc-text">Activity启动模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#standard"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">standard</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#singleTop"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">singleTop</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#singleTask"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">singleTask</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#singleInstance"><span class="post-toc-number">10.4.</span> <span class="post-toc-text">singleInstance</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Service%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-number">11.</span> <span class="post-toc-text">Service和线程的区别和应用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Thread%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">Thread生命周期</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Service%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">Service生命周期</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86Service%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="post-toc-number">12.</span> <span class="post-toc-text">如何管理Service生命周期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IntentService%E5%92%8CService%E7%9A%84%E5%BC%82%E5%90%8C"><span class="post-toc-number">13.</span> <span class="post-toc-text">IntentService和Service的异同</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IntentService"><span class="post-toc-number">13.1.</span> <span class="post-toc-text">IntentService</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E5%92%8C%E7%BB%91%E5%AE%9AService%E6%9C%8D%E5%8A%A1%E5%85%88%E5%90%8E%E6%AC%A1%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="post-toc-number">14.</span> <span class="post-toc-text">启动和绑定Service服务先后次序问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">14.1.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9AParcelable%E5%92%8CSerializable%E5%B7%AE%E5%BC%82"><span class="post-toc-number">15.</span> <span class="post-toc-text">序列化：Parcelable和Serializable差异</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Serializable"><span class="post-toc-number">15.1.</span> <span class="post-toc-text">Serializable</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Parcelable"><span class="post-toc-number">15.2.</span> <span class="post-toc-text">Parcelable</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="post-toc-number">15.3.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#binder%E5%BA%94%E7%94%A8%EF%BC%9AAIDL%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA"><span class="post-toc-number">16.</span> <span class="post-toc-text">binder应用：AIDL如何创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="post-toc-number">16.1.</span> <span class="post-toc-text">实现步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#binder%E6%9C%BA%E5%88%B6%E9%80%9A%E4%BF%A1%EF%BC%9AAIDL%E7%94%9F%E6%88%90java%E6%96%87%E4%BB%B6%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="post-toc-number">17.</span> <span class="post-toc-text">binder机制通信：AIDL生成java文件详细分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#extends-android-os-IInterface"><span class="post-toc-number">17.1.</span> <span class="post-toc-text">extends android.os.IInterface</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Stub-extends-android-os-Binder"><span class="post-toc-number">17.2.</span> <span class="post-toc-text">Stub extends android.os.Binder</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BB%A3%E7%90%86%E7%B1%BB%EF%BC%8CProxy-implements-com-yly-interviewbat-IMyAidlInterface"><span class="post-toc-number">17.3.</span> <span class="post-toc-text">代理类，Proxy implements com.yly.interviewbat.IMyAidlInterface</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B9%BF%E6%92%AD%EF%BC%9A%E9%9D%99%E6%80%81-%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E4%BD%BF%E7%94%A8%E3%80%81%E7%89%B9%E7%82%B9%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-number">18.</span> <span class="post-toc-text">广播：静态&amp;动态注册使用、特点、应用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="post-toc-number">18.1.</span> <span class="post-toc-text">使用方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9"><span class="post-toc-number">18.2.</span> <span class="post-toc-text">特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-number">18.3.</span> <span class="post-toc-text">应用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webview%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E"><span class="post-toc-number">19.</span> <span class="post-toc-text">webview安全漏洞</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9D%91"><span class="post-toc-number">19.1.</span> <span class="post-toc-text">常见的坑</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="post-toc-number">19.2.</span> <span class="post-toc-text">内存泄漏</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Android面试-基础"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Android面试-基础</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2020-06-03 16:28:56" datetime="2020-06-03T08:28:56.000Z"  itemprop="datePublished">2020-06-03</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><p>Activity是与用户交互的接口</p>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><p>Activity是与用户交互的接口</p>
 <span id="more"></span>
 
-<h3 id="Activity任务栈"><a href="#Activity任务栈" class="headerlink" title="Activity任务栈"></a>Activity任务栈</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="Activity任务栈"><a href="#Activity任务栈" class="headerlink" title="Activity任务栈"></a>Activity任务栈</h3><p><img src="/1.png"></p>
 <p>Android通过Activity栈管理Activity，Activity状态决定了它在栈中的位置</p>
 <h3 id="Activity四种形态"><a href="#Activity四种形态" class="headerlink" title="Activity四种形态"></a>Activity四种形态</h3><ol>
 <li>Active：Activity处于栈顶（栈顶，可见，与用户进行交互）</li>
@@ -218,14 +48,7 @@
 <li>Stopped：不可见</li>
 <li>Killed：系统回收掉</li>
 </ol>
-<h3 id="正常情况生命周期回调"><a href="#正常情况生命周期回调" class="headerlink" title="正常情况生命周期回调"></a>正常情况生命周期回调</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="2.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="正常情况生命周期回调"><a href="#正常情况生命周期回调" class="headerlink" title="正常情况生命周期回调"></a>正常情况生命周期回调</h3><p><img src="/2.png"></p>
 <h3 id="异常情况生命周期回调"><a href="#异常情况生命周期回调" class="headerlink" title="异常情况生命周期回调"></a>异常情况生命周期回调</h3><ul>
 <li>onSaveInstanceState()</li>
 <li>onRestoreInstanceState()与onCreate()都可以进行数据恢复，但前者的Bundle数据一定不为空，所以不用进行非空判断</li>
@@ -246,30 +69,9 @@
 <li>Bundle</li>
 <li>直接在Activity中定义方法</li>
 </ol>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="3.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="4.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="5.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/3.png"></p>
+<p><img src="/4.png"></p>
+<p><img src="/5.png"></p>
 <h4 id="Fragment将数据传递给Activity"><a href="#Fragment将数据传递给Activity" class="headerlink" title="Fragment将数据传递给Activity"></a>Fragment将数据传递给Activity</h4><ol>
 <li>fragment中定义一个内部回调接口</li>
 <li>fragment的方法onAttach()</li>
@@ -464,36 +266,15 @@
 <li>singleTask</li>
 <li>singleInstance</li>
 </ol>
-<h4 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="6.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h4><p><img src="/6.png"></p>
 <p>图片有误，最上面的实例应该是新的</p>
 <ol>
 <li>系统默认使用该模式启动Activity</li>
 <li>每次启动都会重新创建一个新的实例</li>
 <li>调用它的onCreate()-onStart()-onResume()</li>
 </ol>
-<h4 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="7.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="8.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h4><p><img src="/7.png"></p>
+<p><img src="/8.png"></p>
 <ol>
 <li>当前栈中已有该Activity实例并且位于栈顶时，onNewIntent()</li>
 <li>当前栈中已有该Activity实例但不在栈顶，创建新的实例</li>
@@ -504,14 +285,7 @@
 <li>IM对话框</li>
 <li>新闻客户端推送</li>
 </ul>
-<h4 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="9.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h4><p><img src="/9.png"></p>
 <ol>
 <li>首先根据taskAffinity（任务相关性，对默认及singleTop没有影响）去寻找当前是否存在一个对应名字的任务栈，一般情况为包名</li>
 <li>如果不存在，则会创建新的Task栈，创建新的Activity实例</li>
@@ -520,22 +294,8 @@
 </ol>
 <p>可以将不同APP的Activity设置相同的taskAffinity，这样两个不同APP的Activity会被放入同一个任务栈中</p>
 <p>应用场景：应用的主界面</p>
-<h4 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="10.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="11.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h4><p><img src="/10.png"></p>
+<p><img src="/11.png"></p>
 <ol>
 <li>具有全局唯一性</li>
 <li>如果在启动这样的Activity时，已存在了一个实例，会把他调度到前台复用</li>
@@ -559,14 +319,7 @@
 <li>onBind</li>
 <li>onUnbind</li>
 </ol>
-<h3 id="如何管理Service生命周期"><a href="#如何管理Service生命周期" class="headerlink" title="如何管理Service生命周期"></a>如何管理Service生命周期</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="12.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="如何管理Service生命周期"><a href="#如何管理Service生命周期" class="headerlink" title="如何管理Service生命周期"></a>如何管理Service生命周期</h3><p><img src="/12.png"></p>
 <ul>
 <li>startService，多次启动onCreate()只会调用一次，onStartCommand()调用的次数与startService保持一致</li>
 <li>stopService,一个Service被启动且被绑定，在没有解绑的情况下，stopService无法停止服务</li>
@@ -581,42 +334,14 @@
 </ol>
 <p>源码：</p>
 <p>onCreate()方法</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="13.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/13.png"></p>
 <p>ServiceHandler继承Handler，传入的对象为Looper，Looper与HandlerThread绑定，ServiceHandler就持有了HandlerThread的Looper，便可执行异步任务</p>
 <p>onStart()方法（onStartCommand-onStart）</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="14.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/14.png"></p>
 <p>ServiceHandler发送消息，这个消息最终交给HandlerThread去处理，本质是Looper从消息队列取出消息然后调用ServiceHandler进行处理</p>
 <p>ServiceHandler</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="15.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="16.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/15.png"></p>
+<p><img src="/16.png"></p>
 <p>任务全部完成销毁</p>
 <h3 id="启动和绑定Service服务先后次序问题"><a href="#启动和绑定Service服务先后次序问题" class="headerlink" title="启动和绑定Service服务先后次序问题"></a>启动和绑定Service服务先后次序问题</h3><p>服务的状态有启动状态和绑定状态，实际情况中一个服务可能有多种状态，但Android只会为一个服务创建一个实例对象，具体分为如下两种情况：</p>
 <ol>
@@ -633,14 +358,7 @@
 <li>序列化：内存中对象-&gt;磁盘（或其他介质）</li>
 <li>反序列化：磁盘中对象-&gt;内存</li>
 </ul>
-<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="17.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><p><img src="/17.png"></p>
 <p>serialVersionUID的作用，序列化操作的时候系统会把当前类的UID写到序列化的文件中，当反序列化的时候系统会检测文件中的UID，判断是否一致，一致说明序列化的版本和当前类的版本是一样的，就可以反序列化。Serializable在内存开销上比较大</p>
 <h4 id="Parcelable"><a href="#Parcelable" class="headerlink" title="Parcelable"></a>Parcelable</h4><pre><code>public class ParcableImplement implements Parcelable &#123;
 
@@ -921,183 +639,25 @@ protected void onPause() &#123;
 <p>1.独立进程，简单暴力，可能涉及进程间通信</p>
 <p>2.动态添加webview，对传入webview中使用的Context使用弱引用，动态添加即在布局创建一个ViewGroup用来放置Webview，Activity创建时add进来，停止时remove掉</p>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2020-12-29T03:11:53.000Z" itemprop="dateUpdated">2020-12-29 11:11:53</time>
-</span><br>
-
-
-        
+      </div>
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android%E9%9D%A2%E8%AF%95/" rel="tag">Android面试</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Android面试-异步消息</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Java面试-高级知识点</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </section>
 </article>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
-
-
-
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-})();
+  });
 </script>
-
-
-
 </body>
+
 </html>

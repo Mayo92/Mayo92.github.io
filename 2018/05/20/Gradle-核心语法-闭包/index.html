@@ -1,218 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Gradle-核心语法-闭包 | 妙妙屋 | ass♂we♂can</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="Gradle语法">
-    <meta name="description" content="闭包1.groovy中闭包基础详解                                                                                                            1.1 闭包定义及调用（与方法对比学习）闭包就是一段代码块 def clouser &#x3D; &#123; println &#39;hello groov">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Gradle-核心语法-闭包">
-<meta property="og:url" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="闭包1.groovy中闭包基础详解                                                                                                            1.1 闭包定义及调用（与方法对比学习）闭包就是一段代码块 def clouser &#x3D; &#123; println &#39;hello groov">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/25.png">
-<meta property="og:image" content="http://yoursite.com/26.png">
-<meta property="og:image" content="http://yoursite.com/27.png">
-<meta property="og:image" content="http://yoursite.com/28.png">
-<meta property="og:image" content="http://yoursite.com/29.png">
-<meta property="og:image" content="http://yoursite.com/30.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/31.png">
-<meta property="og:image" content="http://yoursite.com/32.png">
-<meta property="og:image" content="http://yoursite.com/33.png">
-<meta property="og:image" content="http://yoursite.com/34.png">
-<meta property="og:image" content="http://yoursite.com/35.png">
-<meta property="og:image" content="http://yoursite.com/36.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/37.png">
-<meta property="og:image" content="http://yoursite.com/38.png">
-<meta property="og:image" content="http://yoursite.com/39.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/40.png">
-<meta property="og:image" content="http://yoursite.com/41.png">
-<meta property="og:image" content="http://yoursite.com/42.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/43.png">
-<meta property="og:image" content="http://yoursite.com/44.png">
-<meta property="og:image" content="http://yoursite.com/45.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/46.png">
-<meta property="article:published_time" content="2018-05-20T05:22:51.000Z">
-<meta property="article:modified_time" content="2020-04-08T09:52:24.000Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Gradle语法">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/25.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-groovy%E4%B8%AD%E9%97%AD%E5%8C%85%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3"><span class="toc-text">1.groovy中闭包基础详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E9%97%AD%E5%8C%85%E5%AE%9A%E4%B9%89%E5%8F%8A%E8%B0%83%E7%94%A8%EF%BC%88%E4%B8%8E%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%EF%BC%89"><span class="toc-text">1.1 闭包定义及调用（与方法对比学习）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%97%AD%E5%8C%85%E5%8F%82%E6%95%B0"><span class="toc-text">1.2 闭包参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E9%97%AD%E5%8C%85%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">1.3 闭包返回值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-groovy%E4%B8%AD%E9%97%AD%E5%8C%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="toc-text">2.groovy中闭包使用详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%B8%8E%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">2.1 与基本类型的结合使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E4%B9%98%E6%96%B9%E6%B3%95"><span class="toc-text">阶乘方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%AF%E8%AE%A1%E6%B1%82%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">累计求和方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%B8%8EString%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">2.2 与String结合使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#each%E9%81%8D%E5%8E%86"><span class="toc-text">each遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#find%E6%96%B9%E6%B3%95"><span class="toc-text">find方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#findAll%E6%96%B9%E6%B3%95"><span class="toc-text">findAll方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#any%E6%96%B9%E6%B3%95"><span class="toc-text">any方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#every%E6%96%B9%E6%B3%95"><span class="toc-text">every方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#collect%E6%96%B9%E6%B3%95"><span class="toc-text">collect方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AB%A0%E8%8A%82%EF%BC%89"><span class="toc-text">2.3 与数据结构结合使用（数据结构章节）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E4%B8%8E%E6%96%87%E4%BB%B6%E7%AD%89%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%EF%BC%88%E6%96%87%E4%BB%B6%E7%AB%A0%E8%8A%82%EF%BC%89"><span class="toc-text">2.4 与文件等结合使用（文件章节）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-groovy%E4%B8%AD%E9%97%AD%E5%8C%85%E8%BF%9B%E9%98%B6%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="toc-text">3.groovy中闭包进阶详解（了解即可）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">3.1 三个重要的变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%97%AD%E5%8C%85%E5%A7%94%E6%89%98%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%89%E4%B8%AA%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%89"><span class="toc-text">3.2 闭包委托策略（三个关键字的作用）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E5%B1%9E%E6%80%A7"><span class="toc-text">更改属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E6%96%B9%E6%B3%95"><span class="toc-text">更改方法</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Gradle-核心语法-闭包
+        </h2>
       </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Gradle-核心语法-闭包</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Gradle-核心语法-闭包</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2018-05-20T05:22:51.000Z" itemprop="datePublished" class="page-time">
-  2018-05-20
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%97%AD%E5%8C%85"><span class="post-toc-number">1.</span> <span class="post-toc-text">闭包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-groovy%E4%B8%AD%E9%97%AD%E5%8C%85%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.groovy中闭包基础详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-%E9%97%AD%E5%8C%85%E5%AE%9A%E4%B9%89%E5%8F%8A%E8%B0%83%E7%94%A8%EF%BC%88%E4%B8%8E%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%EF%BC%89"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.1 闭包定义及调用（与方法对比学习）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-%E9%97%AD%E5%8C%85%E5%8F%82%E6%95%B0"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2 闭包参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-%E9%97%AD%E5%8C%85%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.3 闭包返回值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-groovy%E4%B8%AD%E9%97%AD%E5%8C%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="post-toc-number">3.</span> <span class="post-toc-text">2.groovy中闭包使用详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-%E4%B8%8E%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">2.1 与基本类型的结合使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%98%B6%E4%B9%98%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">阶乘方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B4%AF%E8%AE%A1%E6%B1%82%E5%92%8C%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">累计求和方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-%E4%B8%8EString%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.2 与String结合使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#each%E9%81%8D%E5%8E%86"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">each遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#find%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">find方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#findAll%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">findAll方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#any%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">any方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#every%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">every方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#collect%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">collect方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AB%A0%E8%8A%82%EF%BC%89"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2.3 与数据结构结合使用（数据结构章节）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4-%E4%B8%8E%E6%96%87%E4%BB%B6%E7%AD%89%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%EF%BC%88%E6%96%87%E4%BB%B6%E7%AB%A0%E8%8A%82%EF%BC%89"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">2.4 与文件等结合使用（文件章节）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-groovy%E4%B8%AD%E9%97%AD%E5%8C%85%E8%BF%9B%E9%98%B6%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="post-toc-number">4.</span> <span class="post-toc-text">3.groovy中闭包进阶详解（了解即可）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E5%8F%98%E9%87%8F"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">3.1 三个重要的变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-%E9%97%AD%E5%8C%85%E5%A7%94%E6%89%98%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%89%E4%B8%AA%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%89"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">3.2 闭包委托策略（三个关键字的作用）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9B%B4%E6%94%B9%E5%B1%9E%E6%80%A7"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">更改属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9B%B4%E6%94%B9%E6%96%B9%E6%B3%95"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">更改方法</span></a></li></ol></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Gradle-核心语法-闭包"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Gradle-核心语法-闭包</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2018-05-20 13:22:51" datetime="2018-05-20T05:22:51.000Z"  itemprop="datePublished">2018-05-20</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="25.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="/25.png"></p>
 <h3 id="1-1-闭包定义及调用（与方法对比学习）"><a href="#1-1-闭包定义及调用（与方法对比学习）" class="headerlink" title="1.1 闭包定义及调用（与方法对比学习）"></a>1.1 闭包定义及调用（与方法对比学习）</h3><p>闭包就是一段代码块</p>
 <pre><code>def clouser = &#123; println &#39;hello groovy!&#39; &#125;
 //执行
@@ -247,14 +72,7 @@ def result = clouser(&#39;groovy&#39;)
 println result
 </code></pre>
 <p><img src="/30.png"></p>
-<h2 id="2-groovy中闭包使用详解"><a href="#2-groovy中闭包使用详解" class="headerlink" title="2.groovy中闭包使用详解"></a>2.groovy中闭包使用详解</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="31.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h2 id="2-groovy中闭包使用详解"><a href="#2-groovy中闭包使用详解" class="headerlink" title="2.groovy中闭包使用详解"></a>2.groovy中闭包使用详解</h2><p><img src="/31.png"></p>
 <h3 id="2-1-与基本类型的结合使用"><a href="#2-1-与基本类型的结合使用" class="headerlink" title="2.1 与基本类型的结合使用"></a>2.1 与基本类型的结合使用</h3><p>可以在DefaultGroovyMethods方法中查看实现，参数的个数查看源码方法里call()的个数</p>
 <p>闭包作为方法参数的最后一个可以不写在括号里</p>
 <p>不用指定闭包参数类型，因为groovy是动态类型的，会在运行时自己推断</p>
@@ -308,14 +126,7 @@ println list.toListString()
 <pre><code>def result = str.any &#123; it.isNumber() &#125;
 println result
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="37.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/37.png"></p>
 <h4 id="every方法"><a href="#every方法" class="headerlink" title="every方法"></a>every方法</h4><p>每一项都满足返回true，闭包是一个Boolean类型返回值</p>
 <pre><code>println str.every &#123;it.isNumber()&#125;
 </code></pre>
@@ -325,14 +136,7 @@ println result
 println list2.toListString()
 </code></pre>
 <p><img src="/39.png"></p>
-<h3 id="2-3-与数据结构结合使用（数据结构章节）"><a href="#2-3-与数据结构结合使用（数据结构章节）" class="headerlink" title="2.3 与数据结构结合使用（数据结构章节）"></a>2.3 与数据结构结合使用（数据结构章节）</h3><h3 id="2-4-与文件等结合使用（文件章节）"><a href="#2-4-与文件等结合使用（文件章节）" class="headerlink" title="2.4 与文件等结合使用（文件章节）"></a>2.4 与文件等结合使用（文件章节）</h3><h2 id="3-groovy中闭包进阶详解（了解即可）"><a href="#3-groovy中闭包进阶详解（了解即可）" class="headerlink" title="3.groovy中闭包进阶详解（了解即可）"></a>3.groovy中闭包进阶详解（了解即可）</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="40.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="2-3-与数据结构结合使用（数据结构章节）"><a href="#2-3-与数据结构结合使用（数据结构章节）" class="headerlink" title="2.3 与数据结构结合使用（数据结构章节）"></a>2.3 与数据结构结合使用（数据结构章节）</h3><h3 id="2-4-与文件等结合使用（文件章节）"><a href="#2-4-与文件等结合使用（文件章节）" class="headerlink" title="2.4 与文件等结合使用（文件章节）"></a>2.4 与文件等结合使用（文件章节）</h3><h2 id="3-groovy中闭包进阶详解（了解即可）"><a href="#3-groovy中闭包进阶详解（了解即可）" class="headerlink" title="3.groovy中闭包进阶详解（了解即可）"></a>3.groovy中闭包进阶详解（了解即可）</h2><p><img src="/40.png"></p>
 <h3 id="3-1-三个重要的变量"><a href="#3-1-三个重要的变量" class="headerlink" title="3.1 三个重要的变量"></a>3.1 三个重要的变量</h3><pre><code>def scriptClouser = &#123;
     println &quot;scriptClouser this:&quot;+this
     println &quot;scriptClouser owner:&quot;+owner
@@ -384,14 +188,7 @@ def outClouser = &#123;
 &#125;
 outClouser.call()
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="43.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/43.png"></p>
 <p><strong>总结：</strong>大多数情况，三者一致。如果直接在类和方法中定义闭包，三个变量是一样的。如果再闭包中又嵌套定义一个闭包，this与owner、delegate的值不一样，owner、delegate会指向离他最近的闭包的对象</p>
 <pre><code>//修改delegate
 Person p = new Person()
@@ -447,14 +244,7 @@ stu.pretty.delegate = tea
 stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
 println stu.toString()
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="46.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/46.png"></p>
 <p>改成name1后，因为tea中没有name，Closure.DELEGATE_FIRST找不到会去OWNER中寻找。如果上例改成DELEGATE_ONLY，会报错，因为tea没有找到name属性</p>
 <p>委托策略默认是OWNER_FIRST，表明闭包中的变量、方法等都是首先从OWNER对象所指向的对象处去寻找。一共有四组（OWNER_FIRST、DELEGATE_FIRST、OWNER_ONLY、DELEGATE_ONLY）</p>
 <p>通过不同的委托策略的指定，我们可以修改闭包所要调用的变量和方法</p>
@@ -481,183 +271,25 @@ stu2.self()
 </code></pre>
 <p>上面会输出”i’m teacher”</p>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2020-04-08T09:52:24.000Z" itemprop="dateUpdated">2020-04-08 17:52:24</time>
-</span><br>
-
-
-        
+      </div>
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle%E8%AF%AD%E6%B3%95/" rel="tag">Gradle语法</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Gradle-核心语法-数据结构</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Gradle-核心语法-基础语法</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </section>
 </article>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
-
-
-
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-})();
+  });
 </script>
-
-
-
 </body>
+
 </html>

@@ -1,252 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Java面试-高级知识点 | 妙妙屋 | ass♂we♂can</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="Java面试">
-    <meta name="description" content="并行计算 将数据拆分到每个节点上    如何拆分 每个节点并行的计算出结果	每个节点要得到什么结果 将结果汇总    如何汇总">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java面试-高级知识点">
-<meta property="og:url" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="并行计算 将数据拆分到每个节点上    如何拆分 每个节点并行的计算出结果	每个节点要得到什么结果 将结果汇总    如何汇总">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/2.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/3.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/4.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/5.png">
-<meta property="og:image" content="http://yoursite.com/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/7.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/8.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/9.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/10.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/11.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/44.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/45.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/46.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/47.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/48.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/49.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/12.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/13.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/55.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/56.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/57.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/14.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/15.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/16.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/17.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/18.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/19.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/20.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/21.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/22.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/23.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/24.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/25.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/26.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/27.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/28.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/29.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/30.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/31.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/50.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/51.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/52.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/53.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/54.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/58.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/59.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/60.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/61.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/62.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/63.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/32.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/33.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/34.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/35.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/36.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/37.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/38.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/39.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/40.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/41.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/42.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/43.png">
-<meta property="article:published_time" content="2020-02-02T12:39:56.000Z">
-<meta property="article:modified_time" content="2020-12-15T10:19:31.000Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Java面试">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/1.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="妙妙屋" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97"><span class="toc-text">并行计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-text">外部排序分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">外部排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9%E5%AE%9E%E7%8E%B0"><span class="toc-text">归并节点实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BD%BF%E7%94%A8Iterable%E6%8E%A5%E5%8F%A3"><span class="toc-text">代码实现，使用Iterable接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#synchronize%E4%B8%8Evolatile"><span class="toc-text">synchronize与volatile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#synchronize%E4%B8%8Elock"><span class="toc-text">synchronize与lock</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sleep%E4%B8%8Ewait"><span class="toc-text">sleep与wait</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%88%86%E6%9E%90"><span class="toc-text">死锁分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%BF%85%E9%A1%BB%E5%90%8C%E6%97%B6%E6%BB%A1%E8%B6%B3"><span class="toc-text">死锁条件，必须同时满足</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%98%B2%E6%AD%A2"><span class="toc-text">死锁防止</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A5%BD%E5%A4%84"><span class="toc-text">好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8F%82%E6%95%B0"><span class="toc-text">线程池参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-Excutor-Framework"><span class="toc-text">Java Excutor Framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-text">网络编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ip%E4%B8%8E%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-text">ip与端口号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tcp-udp"><span class="toc-text">tcp&#x2F;udp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#URL"><span class="toc-text">URL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket"><span class="toc-text">Socket</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#socket%E6%A6%82%E5%BF%B5"><span class="toc-text">socket概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="toc-text">客户端连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="toc-text">服务端连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E7%9A%84IO%E6%8E%A5%E5%8F%A3"><span class="toc-text">Java的IO接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BB%E5%A1%9EIO%E7%9A%84%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B"><span class="toc-text">阻塞IO的通信模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NIO"><span class="toc-text">NIO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8Socket%E7%BC%96%E7%A8%8B"><span class="toc-text">服务器Socket编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#select%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">select模型的缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-text">Java类加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-text">类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">双亲委托模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-text">类加载过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java%E4%B8%AD%E5%A0%86%E4%B8%8E%E6%A0%88"><span class="toc-text">java中堆与栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-text">java运行时的内存分配策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB%EF%BC%88%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="toc-text">区别（内存分配角度）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-text">资源管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">java垃圾回收</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#java%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-text">java资源管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-text">C++资源管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">Java垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%A1%AE%E8%AE%A4%E5%9E%83%E5%9C%BE"><span class="toc-text">如何确认垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%A0%B9%E8%8A%82%E7%82%B9"><span class="toc-text">垃圾回收根节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95-Mark-and-sweep"><span class="toc-text">朴素的算法-Mark and sweep</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95-Compact"><span class="toc-text">朴素的算法-Compact</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95-Copy"><span class="toc-text">朴素的算法-Copy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#java%E5%88%86%E4%BB%A3%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="toc-text">java分代垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Minor-GC"><span class="toc-text">Minor GC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#java%E5%88%86%E4%BB%A3%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95-1"><span class="toc-text">java分代垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="toc-text">参数配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PermGen-space"><span class="toc-text">PermGen space</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PermGen-space-vs-Metaspace"><span class="toc-text">PermGen space vs Metaspace</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E8%B0%83%E8%AF%95"><span class="toc-text">垃圾回收的调试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">java内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E9%97%AE%E9%A2%98%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">出问题的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98"><span class="toc-text">内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#happens-before%E5%85%B3%E7%B3%BB"><span class="toc-text">happens-before关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%84%E5%AE%9A%E4%BB%A5%E4%B8%8B%E6%93%8D%E4%BD%9C%E5%BF%85%E9%A1%BB%E4%BF%9D%E8%AF%81happens-before%E5%85%B3%E7%B3%BB"><span class="toc-text">规定以下操作必须保证happens-before关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E4%B8%AD%E7%9A%84%E5%8F%8C%E9%87%8D%E9%94%81%E6%A8%A1%E5%BC%8F"><span class="toc-text">单例中的双重锁模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#checked-Exception-%E4%B8%8E-unchecked-Exception"><span class="toc-text">checked Exception 与 unchecked Exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8"><span class="toc-text">如何处理异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%B8%8D%E5%A4%84%E7%90%86checked-Exception"><span class="toc-text">如何不处理checked Exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">异常处理的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-text">注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#metadata"><span class="toc-text">metadata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%88%86%E7%B1%BB"><span class="toc-text">注解分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-support-Annotations"><span class="toc-text">Android support Annotations</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nullness"><span class="toc-text">Nullness</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resource-Type"><span class="toc-text">Resource Type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Threading"><span class="toc-text">Threading</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Oveeriding-Methods%E6%B3%A8%E8%A7%A3%EF%BC%9A-CallSuper"><span class="toc-text">Oveeriding Methods注解：@CallSuper</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-text">反射</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%97%B6%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">编译时类型和运行时类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A"><span class="toc-text">动态绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">反射是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-text">应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android%E4%B8%AD%E5%8F%8D%E5%B0%84"><span class="toc-text">Android中反射</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-text">服务器架构的演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-text">数据架构的演进</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java面试-高级知识点
+        </h2>
       </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Java面试-高级知识点</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Java面试-高级知识点</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2020-02-02T12:39:56.000Z" itemprop="datePublished" class="page-time">
-  2020-02-02
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97"><span class="post-toc-number">1.</span> <span class="post-toc-text">并行计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F%E5%88%86%E6%9E%90"><span class="post-toc-number">2.</span> <span class="post-toc-text">外部排序分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">归并排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">外部排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">归并节点实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BD%BF%E7%94%A8Iterable%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">代码实现，使用Iterable接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="post-toc-number">3.</span> <span class="post-toc-text">多线程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#synchronize%E4%B8%8Evolatile"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">synchronize与volatile</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#synchronize%E4%B8%8Elock"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">synchronize与lock</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sleep%E4%B8%8Ewait"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">sleep与wait</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AD%BB%E9%94%81%E5%88%86%E6%9E%90"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">死锁分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AD%BB%E9%94%81%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%BF%85%E9%A1%BB%E5%90%8C%E6%97%B6%E6%BB%A1%E8%B6%B3"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">死锁条件，必须同时满足</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AD%BB%E9%94%81%E9%98%B2%E6%AD%A2"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">死锁防止</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="post-toc-number">4.</span> <span class="post-toc-text">线程池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A5%BD%E5%A4%84"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">好处</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8F%82%E6%95%B0"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">线程池参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java-Excutor-Framework"><span class="post-toc-number">5.</span> <span class="post-toc-text">Java Excutor Framework</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="post-toc-number">6.</span> <span class="post-toc-text">网络编程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ip%E4%B8%8E%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">ip与端口号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#tcp-udp"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">tcp&#x2F;udp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#URL"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">URL</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Socket"><span class="post-toc-number">7.</span> <span class="post-toc-text">Socket</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#socket%E6%A6%82%E5%BF%B5"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">socket概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">客户端连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">服务端连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java%E7%9A%84IO%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">8.</span> <span class="post-toc-text">Java的IO接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%98%BB%E5%A1%9EIO%E7%9A%84%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B"><span class="post-toc-number">9.</span> <span class="post-toc-text">阻塞IO的通信模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NIO"><span class="post-toc-number">10.</span> <span class="post-toc-text">NIO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8Socket%E7%BC%96%E7%A8%8B"><span class="post-toc-number">11.</span> <span class="post-toc-text">服务器Socket编程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#select%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">select模型的缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="post-toc-number">12.</span> <span class="post-toc-text">Java类加载器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">是什么</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%A8%A1%E5%9E%8B"><span class="post-toc-number">12.3.</span> <span class="post-toc-text">双亲委托模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="post-toc-number">12.4.</span> <span class="post-toc-text">类加载过程</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java%E4%B8%AD%E5%A0%86%E4%B8%8E%E6%A0%88"><span class="post-toc-number">13.</span> <span class="post-toc-text">java中堆与栈</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#java%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="post-toc-number">13.1.</span> <span class="post-toc-text">java运行时的内存分配策略</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8C%BA%E5%88%AB%EF%BC%88%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="post-toc-number">13.2.</span> <span class="post-toc-text">区别（内存分配角度）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-number">14.</span> <span class="post-toc-text">资源管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="post-toc-number">14.1.</span> <span class="post-toc-text">java垃圾回收</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#java%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-number">14.2.</span> <span class="post-toc-text">java资源管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-number">14.3.</span> <span class="post-toc-text">C++资源管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="post-toc-number">15.</span> <span class="post-toc-text">Java垃圾回收</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E7%A1%AE%E8%AE%A4%E5%9E%83%E5%9C%BE"><span class="post-toc-number">15.1.</span> <span class="post-toc-text">如何确认垃圾</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%A0%B9%E8%8A%82%E7%82%B9"><span class="post-toc-number">15.2.</span> <span class="post-toc-text">垃圾回收根节点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95-Mark-and-sweep"><span class="post-toc-number">15.3.</span> <span class="post-toc-text">朴素的算法-Mark and sweep</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95-Compact"><span class="post-toc-number">15.4.</span> <span class="post-toc-text">朴素的算法-Compact</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95-Copy"><span class="post-toc-number">15.5.</span> <span class="post-toc-text">朴素的算法-Copy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#java%E5%88%86%E4%BB%A3%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="post-toc-number">15.6.</span> <span class="post-toc-text">java分代垃圾回收算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Minor-GC"><span class="post-toc-number">15.7.</span> <span class="post-toc-text">Minor GC</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#java%E5%88%86%E4%BB%A3%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95-1"><span class="post-toc-number">15.8.</span> <span class="post-toc-text">java分代垃圾回收算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="post-toc-number">15.9.</span> <span class="post-toc-text">参数配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PermGen-space"><span class="post-toc-number">15.10.</span> <span class="post-toc-text">PermGen space</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PermGen-space-vs-Metaspace"><span class="post-toc-number">15.11.</span> <span class="post-toc-text">PermGen space vs Metaspace</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="post-toc-number">15.12.</span> <span class="post-toc-text">常见问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E8%B0%83%E8%AF%95"><span class="post-toc-number">15.13.</span> <span class="post-toc-text">垃圾回收的调试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="post-toc-number">16.</span> <span class="post-toc-text">java内存模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BA%E9%97%AE%E9%A2%98%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="post-toc-number">16.1.</span> <span class="post-toc-text">出问题的原因</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%86%85%E5%AD%98"><span class="post-toc-number">16.2.</span> <span class="post-toc-text">内存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#happens-before%E5%85%B3%E7%B3%BB"><span class="post-toc-number">16.3.</span> <span class="post-toc-text">happens-before关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%AE%9A%E4%BB%A5%E4%B8%8B%E6%93%8D%E4%BD%9C%E5%BF%85%E9%A1%BB%E4%BF%9D%E8%AF%81happens-before%E5%85%B3%E7%B3%BB"><span class="post-toc-number">16.4.</span> <span class="post-toc-text">规定以下操作必须保证happens-before关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8D%95%E4%BE%8B%E4%B8%AD%E7%9A%84%E5%8F%8C%E9%87%8D%E9%94%81%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">16.5.</span> <span class="post-toc-text">单例中的双重锁模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="post-toc-number">17.</span> <span class="post-toc-text">异常处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#checked-Exception-%E4%B8%8E-unchecked-Exception"><span class="post-toc-number">17.1.</span> <span class="post-toc-text">checked Exception 与 unchecked Exception</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8"><span class="post-toc-number">17.2.</span> <span class="post-toc-text">如何处理异常</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E4%B8%8D%E5%A4%84%E7%90%86checked-Exception"><span class="post-toc-number">17.3.</span> <span class="post-toc-text">如何不处理checked Exception</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%9A%84%E5%8E%9F%E7%90%86"><span class="post-toc-number">17.4.</span> <span class="post-toc-text">异常处理的原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="post-toc-number">17.5.</span> <span class="post-toc-text">场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="post-toc-number">18.</span> <span class="post-toc-text">注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#metadata"><span class="post-toc-number">18.1.</span> <span class="post-toc-text">metadata</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%88%86%E7%B1%BB"><span class="post-toc-number">18.2.</span> <span class="post-toc-text">注解分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Android-support-Annotations"><span class="post-toc-number">19.</span> <span class="post-toc-text">Android support Annotations</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Nullness"><span class="post-toc-number">19.1.</span> <span class="post-toc-text">Nullness</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Resource-Type"><span class="post-toc-number">19.2.</span> <span class="post-toc-text">Resource Type</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Threading"><span class="post-toc-number">19.3.</span> <span class="post-toc-text">Threading</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Oveeriding-Methods%E6%B3%A8%E8%A7%A3%EF%BC%9A-CallSuper"><span class="post-toc-number">19.4.</span> <span class="post-toc-text">Oveeriding Methods注解：@CallSuper</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="post-toc-number">20.</span> <span class="post-toc-text">反射</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BC%96%E8%AF%91%E6%97%B6%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">20.1.</span> <span class="post-toc-text">编译时类型和运行时类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A"><span class="post-toc-number">20.2.</span> <span class="post-toc-text">动态绑定</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%8D%E5%B0%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-number">20.3.</span> <span class="post-toc-text">反射是什么</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8"><span class="post-toc-number">20.4.</span> <span class="post-toc-text">应用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Android%E4%B8%AD%E5%8F%8D%E5%B0%84"><span class="post-toc-number">20.5.</span> <span class="post-toc-text">Android中反射</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="post-toc-number">21.</span> <span class="post-toc-text">服务器架构的演进</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="post-toc-number">22.</span> <span class="post-toc-text">数据架构的演进</span></a></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Java面试-高级知识点"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Java面试-高级知识点</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2020-02-02 20:39:56" datetime="2020-02-02T12:39:56.000Z"  itemprop="datePublished">2020-02-02</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="并行计算"><a href="#并行计算" class="headerlink" title="并行计算"></a>并行计算</h3><ul>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="并行计算"><a href="#并行计算" class="headerlink" title="并行计算"></a>并行计算</h3><ul>
 <li>将数据拆分到每个节点上    如何拆分</li>
 <li>每个节点并行的计算出结果	每个节点要得到什么结果</li>
 <li>将结果汇总    如何汇总</li>
@@ -259,49 +50,14 @@
 <li>将数据分为左右两半，分别归并排序，再把两个有序数据合并</li>
 </ul>
 <h4 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h4><p>数据分成很多段</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="2.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/1.png"></p>
+<p><img src="/2.png"></p>
 <h4 id="归并节点实现"><a href="#归并节点实现" class="headerlink" title="归并节点实现"></a>归并节点实现</h4><p>堆结构，完全二叉树，根是最小的数</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="3.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/3.png"></p>
 <p>优先队列</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="4.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/4.png"></p>
 <p>归并节点要多大？存储一部分在内存里</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="5.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/5.png"></p>
 <h4 id="代码实现，使用Iterable接口"><a href="#代码实现，使用Iterable接口" class="headerlink" title="代码实现，使用Iterable接口"></a>代码实现，使用Iterable<T>接口</h4><ul>
 <li><p>提供可以不断获取下一个元素的能力</p>
 </li>
@@ -321,14 +77,7 @@
 <p>volatile只能一个值，synchronize是所有值但是性能更差</p>
 <h4 id="synchronize与lock"><a href="#synchronize与lock" class="headerlink" title="synchronize与lock"></a>synchronize与lock</h4><p>synchronize是JVM实现的是悲观锁，lock是java代码实现的是乐观锁</p>
 <h4 id="sleep与wait"><a href="#sleep与wait" class="headerlink" title="sleep与wait"></a>sleep与wait</h4><p>sleep阻塞执行不改变锁的状况，wait需要锁来控制</p>
-<h4 id="死锁分析"><a href="#死锁分析" class="headerlink" title="死锁分析"></a>死锁分析</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="7.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="死锁分析"><a href="#死锁分析" class="headerlink" title="死锁分析"></a>死锁分析</h4><p><img src="/7.png"></p>
 <ul>
 <li>在任何地方都可以线程切换，甚至在一句语句中间</li>
 <li>要尽力设想对自己最不利的情况</li>
@@ -355,14 +104,7 @@
 <li>创建线程开销大</li>
 <li>线程池：预先建立好线程，等待任务派发</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="8.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/8.png"></p>
 <h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><ul>
 <li>降低资源消耗</li>
 <li>提高响应速度</li>
@@ -378,57 +120,22 @@
 <li>任务派发</li>
 <li>利用Future检查任务结果</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="9.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="10.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="11.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/9.png"></p>
+<p><img src="/10.png"></p>
+<p><img src="/11.png"></p>
 <h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h4 id="ip与端口号"><a href="#ip与端口号" class="headerlink" title="ip与端口号"></a>ip与端口号</h4><p>ip：识别网络中的通讯实体。端口号：区分具体的通讯程序</p>
 <h4 id="tcp-udp"><a href="#tcp-udp" class="headerlink" title="tcp&#x2F;udp"></a>tcp&#x2F;udp</h4><p>tcp：面向连接的可靠传输协议，得到顺序的无差错数据流</p>
 <p>UDP：不能保证可靠性，传输效率高</p>
 <h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><p>统一的资源定位器</p>
 <h3 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h3><h4 id="socket概念"><a href="#socket概念" class="headerlink" title="socket概念"></a>socket概念</h4><p>大多数使用的都是基于tcp&#x2F;ip的</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="44.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/44.png"></p>
 <h4 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h4><ul>
 <li>创建socket对象</li>
 <li>连接建立后，通过输出流向服务器端发送请求信息</li>
 <li>通过输入流获取服务器响应的信息</li>
 <li>关闭响应资源</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="45.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/45.png"></p>
 <h4 id="服务端连接"><a href="#服务端连接" class="headerlink" title="服务端连接"></a>服务端连接</h4><ul>
 <li>创建ServerSocket对象，绑定监听端口</li>
 <li>通过accept()方法（阻塞方法）监听客户端请求</li>
@@ -436,14 +143,7 @@
 <li>通过输出流向客户端发送消息</li>
 <li>关闭资源</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="46.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/46.png"></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
 <li>创建ServerSocket和socket</li>
 <li>打开连接到socket的输入&#x2F;输出流</li>
@@ -456,55 +156,20 @@
 <li>基于磁盘操作的IO接口，File</li>
 <li>基于网络操作的IO接口，socket</li>
 </ul>
-<h3 id="阻塞IO的通信模型"><a href="#阻塞IO的通信模型" class="headerlink" title="阻塞IO的通信模型"></a>阻塞IO的通信模型</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="47.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="阻塞IO的通信模型"><a href="#阻塞IO的通信模型" class="headerlink" title="阻塞IO的通信模型"></a>阻塞IO的通信模型</h3><p><img src="/47.png"></p>
 <p>客户端很多的时候会创建大量线程，每个线程都占用空间及CPU，也带来频繁的上下文切换，加重CPU负担</p>
 <p>BIO数据在写入OutputStream或者从inputstream读取时都有可能会阻塞</p>
 <p>当前一些需要大量HTTP长连接的情况，无法满足</p>
-<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="48.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p><img src="/48.png"></p>
 <p>通信模型</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="49.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/49.png"></p>
 <h3 id="服务器Socket编程"><a href="#服务器Socket编程" class="headerlink" title="服务器Socket编程"></a>服务器Socket编程</h3><ul>
 <li>普通socket编程</li>
 <li>使用线程池并行处理客户请求</li>
 <li>使用java NIO异步处理客户请求（NIO就是java new IO）</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="12.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="13.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/12.png"></p>
+<p><img src="/13.png"></p>
 <p>一个服务器有线程池，假如线程只有三个，那么就做不了高并发。目前功能是输入123，服务器返回123，那么等待的地方有两个，一个是连接的过程，一个是等待输入的过程，NIO代码如下：</p>
 <pre><code>public class NioServer &#123;
 
@@ -585,35 +250,14 @@
 <li>启动类加载器</li>
 <li>所有其他类加载器</li>
 </ul>
-<h4 id="双亲委托模型"><a href="#双亲委托模型" class="headerlink" title="双亲委托模型"></a>双亲委托模型</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="55.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="56.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="双亲委托模型"><a href="#双亲委托模型" class="headerlink" title="双亲委托模型"></a>双亲委托模型</h4><p><img src="/55.png"></p>
+<h4 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h4><p><img src="/56.png"></p>
 <p>解析可以在初始化之后，使用和卸载是所有完了之后执行。</p>
 <p>第一步加载：通过一个类的全限定名来获取其定义的二进制字节流，将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构，在Java堆中生成一个代表这个类的java.lang.class对象作为对方法区中这些数据的访问入口</p>
 <p>第二步验证：为了确保class文件中的字节流包含的信息符合当前虚拟机的要求，文件格式、元数据、字节码、符号引用的验证</p>
 <p>第三步准备：基本数据类型不赋值会有默认值，局部变量必须赋值，对同时被static和final修饰的常量赋值，引用数据类型默认值null，数组初始化根据数据类型赋默认值</p>
 <p>第四步解析：类和接口解析，字段解析，类方法解析，接口方法解析</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="57.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/57.png"></p>
 <p>第五步初始化：执行类构造器方法</p>
 <h3 id="java中堆与栈"><a href="#java中堆与栈" class="headerlink" title="java中堆与栈"></a>java中堆与栈</h3><h4 id="java运行时的内存分配策略"><a href="#java运行时的内存分配策略" class="headerlink" title="java运行时的内存分配策略"></a>java运行时的内存分配策略</h4><ul>
 <li>静态存储区（方法区）：主要存放静态数据、全局static数据、常量。编译时分配好，运行时都存在</li>
@@ -631,46 +275,18 @@
 <li>内存会被回收，资源不会被释放</li>
 <li>如databaseConnection需要databaseConnection.close()来释放</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="14.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/14.png"></p>
 <p>小括号里的自动close</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="15.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/15.png"></p>
 <p>通常来说，很有可能我们的数据库connection对象里面只是一个数字。以前也称作handle啊，句柄啊。真正的内容在数据库驱动里面，或者被统一管理。所以垃圾回收了connection，只是把里面的这个handle回收掉。另一方面，服务器端也因为这个链接分配了资源，这些也不会被自动回收。所以需要调用close，让大家清理掉。</p>
 <h4 id="C-资源管理"><a href="#C-资源管理" class="headerlink" title="C++资源管理"></a>C++资源管理</h4><ul>
 <li>没有finally，没有try with resource</li>
 <li>有析构函数</li>
 </ul>
 <h3 id="Java垃圾回收"><a href="#Java垃圾回收" class="headerlink" title="Java垃圾回收"></a>Java垃圾回收</h3><p>java内存结构</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="16.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/16.png"></p>
 <p>java垃圾回收器</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="17.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/17.png"></p>
 <h4 id="如何确认垃圾"><a href="#如何确认垃圾" class="headerlink" title="如何确认垃圾"></a>如何确认垃圾</h4><ul>
 <li>引用计数？ 错（c++有些库是，开销大，循环依赖解决不了）</li>
 <li>是否从垃圾回收的根出发可见</li>
@@ -681,84 +297,28 @@
 <li>Native方法所引用的对象</li>
 <li>活动线程，等待中的Monitor（wait、notify、synchronized）</li>
 </ul>
-<h4 id="朴素的算法-Mark-and-sweep"><a href="#朴素的算法-Mark-and-sweep" class="headerlink" title="朴素的算法-Mark and sweep"></a>朴素的算法-Mark and sweep</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="18.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="朴素的算法-Mark-and-sweep"><a href="#朴素的算法-Mark-and-sweep" class="headerlink" title="朴素的算法-Mark and sweep"></a>朴素的算法-Mark and sweep</h4><p><img src="/18.png"></p>
 <p>碎片化严重</p>
-<h4 id="朴素的算法-Compact"><a href="#朴素的算法-Compact" class="headerlink" title="朴素的算法-Compact"></a>朴素的算法-Compact</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="19.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="朴素的算法-Compact"><a href="#朴素的算法-Compact" class="headerlink" title="朴素的算法-Compact"></a>朴素的算法-Compact</h4><p><img src="/19.png"></p>
 <p>算法性能损失大</p>
-<h4 id="朴素的算法-Copy"><a href="#朴素的算法-Copy" class="headerlink" title="朴素的算法-Copy"></a>朴素的算法-Copy</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="20.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="朴素的算法-Copy"><a href="#朴素的算法-Copy" class="headerlink" title="朴素的算法-Copy"></a>朴素的算法-Copy</h4><p><img src="/20.png"></p>
 <p>一分为二，可用内存少了</p>
 <h4 id="java分代垃圾回收算法"><a href="#java分代垃圾回收算法" class="headerlink" title="java分代垃圾回收算法"></a>java分代垃圾回收算法</h4><ul>
 <li>基础假设：大部分对象只存在很短的时间</li>
 <li>将内存分为新生代（存在时间短的），老生代（存在长的）</li>
 <li>将新生代分为Eden、survivor1、survivor2</li>
 </ul>
-<h4 id="Minor-GC"><a href="#Minor-GC" class="headerlink" title="Minor GC"></a>Minor GC</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="21.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="22.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="Minor-GC"><a href="#Minor-GC" class="headerlink" title="Minor GC"></a>Minor GC</h4><p><img src="/21.png"></p>
+<p><img src="/22.png"></p>
 <p>Eden+survivor1拷贝到survivor2或者Eden+survivor2拷贝到survivor1</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="23.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="24.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/23.png"></p>
+<p><img src="/24.png"></p>
 <h4 id="java分代垃圾回收算法-1"><a href="#java分代垃圾回收算法-1" class="headerlink" title="java分代垃圾回收算法"></a>java分代垃圾回收算法</h4><ul>
 <li>新生代存活	一定次数会被转入老生代</li>
 <li>Major&#x2F;Full GC会对老生代作GC</li>
 <li>老生代采用Compact算法</li>
 </ul>
-<h4 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="25.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h4><p><img src="/25.png"></p>
 <h4 id="PermGen-space"><a href="#PermGen-space" class="headerlink" title="PermGen space"></a>PermGen space</h4><p>permanent generation 持久代</p>
 <ul>
 <li>放置classloader读进来的class，除系统class外</li>
@@ -777,45 +337,17 @@
 <li>垃圾回收算法对内存划分成了哪些区域？</li>
 </ul>
 <h4 id="垃圾回收的调试"><a href="#垃圾回收的调试" class="headerlink" title="垃圾回收的调试"></a>垃圾回收的调试</h4><p>获取信息</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="26.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/26.png"></p>
 <p>查看信息</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="27.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/27.png"></p>
 <h3 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h3><p>描述多线程环境中线程与内存的关系</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="28.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/28.png"></p>
 <p>0,0可以出现，但是这种情况应该避免</p>
 <h4 id="出问题的原因"><a href="#出问题的原因" class="headerlink" title="出问题的原因"></a>出问题的原因</h4><ul>
 <li>乱序执行</li>
 <li>内存的可见性</li>
 </ul>
-<h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="29.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><p><img src="/29.png"></p>
 <h4 id="happens-before关系"><a href="#happens-before关系" class="headerlink" title="happens-before关系"></a>happens-before关系</h4><ul>
 <li>如果操作执行顺序具有先后性</li>
 <li>那么后执行的操作能够看到先执行的操作（在内存中）的结果</li>
@@ -829,22 +361,8 @@
 <li>传递性：happens-before关系满足传递性</li>
 </ul>
 <p>第一个第二个最重要</p>
-<h4 id="单例中的双重锁模式"><a href="#单例中的双重锁模式" class="headerlink" title="单例中的双重锁模式"></a>单例中的双重锁模式</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="30.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="checked-Exception-与-unchecked-Exception"><a href="#checked-Exception-与-unchecked-Exception" class="headerlink" title="checked Exception 与 unchecked Exception"></a>checked Exception 与 unchecked Exception</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="31.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="单例中的双重锁模式"><a href="#单例中的双重锁模式" class="headerlink" title="单例中的双重锁模式"></a>单例中的双重锁模式</h4><p><img src="/30.png"></p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="checked-Exception-与-unchecked-Exception"><a href="#checked-Exception-与-unchecked-Exception" class="headerlink" title="checked Exception 与 unchecked Exception"></a>checked Exception 与 unchecked Exception</h4><p><img src="/31.png"></p>
 <h4 id="如何处理异常"><a href="#如何处理异常" class="headerlink" title="如何处理异常"></a>如何处理异常</h4><ul>
 <li>写日志</li>
 <li>执行相关逻辑</li>
@@ -859,39 +377,11 @@
 <li>如果在执行方法的过程中抛出异常，则java虚拟机必须找到能捕获该异常的catch代码块</li>
 <li>当JVM追溯到调用栈的底部方法时，如果仍然没有找到处理该异常的代码块，1打印该方法调用栈的异常信息，2判断是否是主线程不是终止该线程</li>
 </ul>
-<h4 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="50.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h4><p><img src="/50.png"></p>
 <p>finally在return之前执行</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="51.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="52.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="53.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/51.png"></p>
+<p><img src="/52.png"></p>
+<p><img src="/53.png"></p>
 <h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p>Annotation就是Java提供了一种元程序中的元素关联任何信息和任何元数据（metadata）的途径和方法。</p>
 <p>基本规则：不能影响程序代码的执行，无论增加、删除Annotation，代码都始终如一执行</p>
 <h4 id="metadata"><a href="#metadata" class="headerlink" title="metadata"></a>metadata</h4><p>描述数据的数据</p>
@@ -916,14 +406,7 @@
 </ul>
 <h3 id="Android-support-Annotations"><a href="#Android-support-Annotations" class="headerlink" title="Android support Annotations"></a>Android support Annotations</h3><h4 id="Nullness"><a href="#Nullness" class="headerlink" title="Nullness"></a>Nullness</h4><p>@NonNull：不能为空</p>
 <p>@Nullable：可以为空</p>
-<h4 id="Resource-Type"><a href="#Resource-Type" class="headerlink" title="Resource Type"></a>Resource Type</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="54.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="Resource-Type"><a href="#Resource-Type" class="headerlink" title="Resource Type"></a>Resource Type</h4><p><img src="/54.png"></p>
 <h4 id="Threading"><a href="#Threading" class="headerlink" title="Threading"></a>Threading</h4><p>@WorkThread：子线程</p>
 <p>@UiThread：主线程</p>
 <h4 id="Oveeriding-Methods注解：-CallSuper"><a href="#Oveeriding-Methods注解：-CallSuper" class="headerlink" title="Oveeriding Methods注解：@CallSuper"></a>Oveeriding Methods注解：@CallSuper</h4><p>重新了父类方法又想以父类的方法调用</p>
@@ -937,344 +420,62 @@
 <li>对于调用引用实例的成员变量，无论是编译时还是运行时，均是调用编译时类型的成员变量</li>
 </ul>
 <h4 id="反射是什么"><a href="#反射是什么" class="headerlink" title="反射是什么"></a>反射是什么</h4><p>在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法，对于任意一个对象，都能够调用它的任意一个方法和属性</p>
-<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="58.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p><img src="/58.png"></p>
 <p>无参构造函数</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="59.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/59.png"></p>
 <p>有参构造函数</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="60.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/60.png"></p>
 <p>调用类方法</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="61.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/61.png"></p>
 <h4 id="Android中反射"><a href="#Android中反射" class="headerlink" title="Android中反射"></a>Android中反射</h4><p>调用资源</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="62.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/62.png"></p>
 <p>Activity启动过程中Activity的对象的创建</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="63.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/63.png"></p>
 <h3 id="服务器架构的演进"><a href="#服务器架构的演进" class="headerlink" title="服务器架构的演进"></a>服务器架构的演进</h3><p>三层架构</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="32.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/32.png"></p>
 <p>MVC</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="33.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/33.png"></p>
 <p>基于Ajax的前后端分离</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="34.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/34.png"></p>
 <p>基于node.js的前后端分离</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="35.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/35.png"></p>
 <p>后端SOA</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="36.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/36.png"></p>
 <p>微服务</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="37.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/37.png"></p>
 <h3 id="数据架构的演进"><a href="#数据架构的演进" class="headerlink" title="数据架构的演进"></a>数据架构的演进</h3><p>单个数据库</p>
 <p>根据领域来拆分</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="38.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/38.png"></p>
 <p>根据分区拆分</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="39.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/39.png"></p>
 <p>数据库读写分离</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="40.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/40.png"></p>
 <p>数据库读写分离+区域</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="41.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/41.png"></p>
 <p>加入缓存</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="42.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/42.png"></p>
 <p>添加搜索引擎</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="43.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-        </div>
+<p><img src="/43.png"></p>
 
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2020-12-15T10:19:31.000Z" itemprop="dateUpdated">2020-12-15 18:19:31</time>
-</span><br>
-
-
-        
+      </div>
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E9%9D%A2%E8%AF%95/" rel="tag">Java面试</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Android面试-基础</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2020/02/01/Java%E9%9D%A2%E8%AF%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Java面试-面向对象</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </section>
 </article>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
-
-
-
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-})();
+  });
 </script>
-
-
-
 </body>
+
 </html>
