@@ -1,379 +1,235 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>我的技术与生活——Android高级面试-Activity | 妙妙屋</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/css/public.css" />
-  <link rel="stylesheet" href="/css/layout.css" />
-  <link rel="stylesheet" href="/css/iconfont.css" />
-  <link rel="stylesheet" href="/css/APlayer.min.css" />
-  <script src="/js/APlayer.min.js"></script>
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.pjax.min.js"></script>
+    
 
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <script>
-    document.title = `我的技术与生活——Android高级面试-Activity`
-  </script>
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Android高级面试-Activity | 妙妙屋 | ass♂we♂can</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android面试">
+    <meta name="description" content="Activity 的启动流程是怎样的？题目剖析 与AMS如何交互 Activity的参数和结果如何传递 Activity如何实例化 Activity生命周期如何流转 Activity的窗口如何展示 Activity转场动画的实现机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android高级面试-Activity">
+<meta property="og:url" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/index.html">
+<meta property="og:site_name" content="妙妙屋">
+<meta property="og:description" content="Activity 的启动流程是怎样的？题目剖析 与AMS如何交互 Activity的参数和结果如何传递 Activity如何实例化 Activity生命周期如何流转 Activity的窗口如何展示 Activity转场动画的实现机制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/7.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/8.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/9.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/10.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/12.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/13.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/14.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/15.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/16.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/17.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/18.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/19.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/20.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/21.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/22.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/23.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/24.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/25.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/26.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/27.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/28.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/29.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/30.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/31.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/32.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/33.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/34.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/35.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/36.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/37.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/38.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/39.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/40.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/41.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/42.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/43.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/44.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/45.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/46.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/47.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/48.png">
+<meta property="article:published_time" content="2020-07-29T02:46:43.000Z">
+<meta property="article:modified_time" content="2020-12-19T05:23:11.000Z">
+<meta property="article:author" content="Mayo">
+<meta property="article:tag" content="Android面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/1.png">
+    
+    <link rel="shortcut icon" href="/">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<style>
-  .load {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(37, 35, 40);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 9999;
-  }
-  .load-circle {
-    width: 80px;
-    height: 80px;
-    border: 8px solid orange;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotate 1s linear infinite;
-    filter: drop-shadow(0 0 3px orange);
-  }
-  .load-circle-inner {
-    width: 40px;
-    height: 40px;
-    border: 8px solid orange;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: rotate-reverse .5s linear infinite;
-  }
-  .load-text {
-    margin-top: 20px;
-    font-size: 24px;
-    color: orange;
-    display: flex;
-  }
-  .load-text span {
-    margin: 0 5px;
-    text-shadow: 5px 5px 5px orange;
-    animation: move 1s linear infinite;
-  }
-  .load-text span:nth-child(1) {
-    animation-delay: -0.6s;
-  }
-  .load-text span:nth-child(2) {
-    animation-delay: -0.5s;
-  }
-  .load-text span:nth-child(3) {
-    animation-delay: -0.4s;
-  }
-  .load-text span:nth-child(4) {
-    animation-delay: -0.3s;
-  }
-  .load-text span:nth-child(5) {
-    animation-delay: -0.2s;
-  }
-  .load-text span:nth-child(6) {
-    animation-delay: -0.1s;
-  }
-  @keyframes rotate {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(360deg); }
-  }
-  @keyframes rotate-reverse {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(-360deg); }
-  }
-  @keyframes move {
-    0% { transform: translateY(0%) rotate(0) scale(1); }
-    20% { transform: translateY(20%) rotate(10deg) scale(1.2); }
-    80% { transform: translateY(-10%) rotate(-20deg) scale(.8);}
-    100% { transform: translateY(0) rotate(0) scale(1); }
-  }
-
-  .progress {
-    position: fixed;
-    left: 0; top: 0;
-    width: 0;
-    height: 3px;
-    background-color: green;
-    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .1s;
-    z-index: 9999;
-  }
-
-  .to-up {
-    animation: toUp .5s 1;
-  }
-  .gray {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    display: none;
-    pointer-events: none;
-    background-color: #000;
-    mix-blend-mode: color;
-  }
-  @keyframes toUp {
-    from { transform: translateY(15px); opacity: 0; }
-    to { transform: translateY(0) ; opacity: 1; }
-  }
-</style>
 <body>
-  <div id="load" class="load">
-    <div class="load-circle">
-      <div class="load-circle-inner"></div>
-    </div>
-    <p class="load-text">
-      <span>L</span>
-      <span>O</span>
-      <span>A</span>
-      <span>D</span>
-      <span>I</span>
-      <span>N</span>
-      <span>G</span>
-    </p>
-  </div>
-  <div id="container" class="container w-100 vh-100" style="display: none;">
-    <header class="header">
-  <div class="header-wrapper">
-    <div class="header-left">
-      <div class="header-search">
-        <input id="search-input" type="text" class="header-search--input" placeholder="请输入要检索的文章标题" />
-        <span id="search-btn" class="header-search--icon"><i class="iconfont icon-sousuo"></i></span>
-      </div>
-      <div id="search-layer" class="header-search--layer hidden">
-        <p class="title">
-          <span>以下是搜索内容：</span>
-          <span id="close-layer-btn">关闭</span>
-        </p>
-        <ul>
-        </ul>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mayo</h5>
+          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
+        </hgroup>
       </div>
     </div>
-    <div class="header-right">
-      <ul class="header-menu">
-        <li>
-          <a href="http://yoursite.com/">
-            <i class="header-menu--icon iconfont icon-shouye"></i>
-            <span class="header-menu--span">首页</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://yoursite.com/log">
-            <i class="header-menu--icon iconfont icon-rizhi"></i>
-            <span class="header-menu--span">日志</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://yoursite.com/link">
-            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
-            <span class="header-menu--span">友情链接</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://yoursite.com/about">
-            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
-            <span class="header-menu--span">关于我</span>
-          </a>
-        </li>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
       </ul>
     </div>
   </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android高级面试-Activity</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android高级面试-Activity</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-29T02:46:43.000Z" itemprop="datePublished" class="page-time">
+  2020-07-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
 </header>
 
-<script>
-  const ipt = document.querySelector('#search-input')
-  const btn = document.querySelector('#search-btn')
-  const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"Android入门-Activity","path":"2018/01/01/Android入门-Activity/"},{"title":"Android入门-ContentProvider","path":"2018/01/04/Android入门-ContentProvider/"},{"title":"Android入门-Service","path":"2018/01/02/Android入门-Service/"},{"title":"Android入门-BroadcastReceiver","path":"2018/01/03/Android入门-BroadcastReceiver/"},{"title":"Android入门-布局和控件","path":"2018/01/05/Android入门-布局和控件/"},{"title":"Android面试-View绘制相关","path":"2020/07/21/Android面试-View绘制相关/"},{"title":"Android面试-开源框架","path":"2020/07/24/Android面试-开源框架/"},{"title":"Android面试-基础","path":"2020/06/03/Android面试-基础/"},{"title":"Android面试-异步消息","path":"2020/06/24/Android面试-异步消息/"},{"title":"Android面试-异常及性能优化","path":"2020/07/25/Android面试-异常及性能优化/"},{"title":"Android面试-热门前沿知识","path":"2020/07/23/Android面试-热门前沿知识/"},{"title":"Android面试-项目构建","path":"2020/07/22/Android面试-项目构建/"},{"title":"Android高级面试-JNI 编程","path":"2020/07/28/Android高级面试-JNI-编程/"},{"title":"Android高级面试-Java","path":"2020/07/26/Android高级面试-Java/"},{"title":"Android高级面试-Activity","path":"2020/07/29/Android高级面试-Activity/"},{"title":"Android高级面试-Handler","path":"2020/07/30/Android高级面试-Handler/"},{"title":"Android高级面试-内存优化","path":"2020/07/31/Android高级面试-内存优化/"},{"title":"Android高级面试-插件化和热修复2","path":"2020/08/02/Android高级面试-插件化和热修复2/"},{"title":"Android高级面试-并发编程","path":"2020/07/27/Android高级面试-并发编程/"},{"title":"Android高级面试-插件化和热修复","path":"2020/08/01/Android高级面试-插件化和热修复/"},{"title":"Gradle-其他模块及自定义Plugin","path":"2018/06/23/Gradle-其他模块及自定义Plugin/"},{"title":"Gradle-Task","path":"2018/06/13/Gradle-Task/"},{"title":"Gradle--开发环境搭建","path":"2018/05/18/Gradle-开发环境搭建/"},{"title":"Gradle-project","path":"2018/06/10/Gradle-project/"},{"title":"Gradle-持续集成与打包","path":"2018/07/24/Gradle-持续集成与打包/"},{"title":"Gradle-核心语法-基础语法","path":"2018/05/19/Gradle-核心语法-基础语法/"},{"title":"Gradle-总结","path":"2018/07/25/Gradle-总结/"},{"title":"Gradle-核心语法-面向对象","path":"2018/05/22/Gradle-核心语法-面向对象/"},{"title":"Gradle--快速入门","path":"2018/05/18/Gradle-快速入门/"},{"title":"Gradle-核心语法-闭包","path":"2018/05/20/Gradle-核心语法-闭包/"},{"title":"Gradle-生命周期","path":"2018/05/26/Gradle-生命周期/"},{"title":"Gradle-高级用法-json操作","path":"2018/05/23/Gradle-高级用法-json操作/"},{"title":"Gradle-核心语法-数据结构","path":"2018/05/21/Gradle-核心语法-数据结构/"},{"title":"Gradle-高级用法-xml文件操作","path":"2018/05/24/Gradle-高级用法-xml文件操作/"},{"title":"HEXO总结","path":"2017/04/06/HEXO总结/"},{"title":"Gradle-高级用法-文件操作","path":"2018/05/25/Gradle-高级用法-文件操作/"},{"title":"Html","path":"2019/02/01/Html/"},{"title":"Java基础-IO","path":"2017/04/27/Java基础-IO/"},{"title":"Java基础-基础语法","path":"2017/04/22/Java基础-基础语法/"},{"title":"Java基础-初识","path":"2017/04/21/Java基础-初识/"},{"title":"HTTP静态服务","path":"2019/01/01/HTTP静态服务/"},{"title":"Java基础-多态","path":"2017/04/24/Java基础-多态/"},{"title":"Java基础-反射","path":"2017/04/29/Java基础-反射/"},{"title":"Java基础-包装类","path":"2017/04/24/Java基础-包装类/"},{"title":"Java基础-字符串","path":"2017/04/26/Java基础-字符串/"},{"title":"Java基础-泛型","path":"2017/04/30/Java基础-泛型/"},{"title":"Java基础-异常","path":"2017/04/24/Java基础-异常/"},{"title":"Java基础-多线程","path":"2017/04/25/Java基础-多线程/"},{"title":"Java基础-网络编程","path":"2017/04/28/Java基础-网络编程/"},{"title":"Java基础-注解","path":"2017/04/30/Java基础-注解/"},{"title":"Java基础-集合","path":"2017/04/26/Java基础-集合/"},{"title":"Java基础-继承","path":"2017/04/24/Java基础-继承/"},{"title":"Java基础-面向对象","path":"2017/04/23/Java基础-面向对象/"},{"title":"Java面试-高级知识点","path":"2020/02/02/Java面试-高级知识点/"},{"title":"Kotlin-内置类型","path":"2018/09/21/Kotlin-内置类型/"},{"title":"Java面试-面向对象","path":"2020/02/01/Java面试-面向对象/"},{"title":"Kotlin-程序结构","path":"2018/09/19/Kotlin-程序结构/"},{"title":"Kotlin-开发环境搭建","path":"2018/09/20/Kotlin-开发环境搭建/"},{"title":"Kotlin-函数进阶","path":"2018/09/24/Kotlin-函数进阶/"},{"title":"Kotlin-数据类型","path":"2018/09/18/Kotlin-数据类型/"},{"title":"Kotlin-表达式","path":"2018/09/23/Kotlin-表达式/"},{"title":"Kotlin-类型进阶","path":"2018/09/25/Kotlin-类型进阶/"},{"title":"Kotlin-类型初步","path":"2018/09/22/Kotlin-类型初步/"},{"title":"Markdown","path":"2017/04/07/Markdown/"},{"title":"Kotlin--简介","path":"2018/09/18/Kotlin-简介/"},{"title":"UML-类与类的关系","path":"2020/01/01/UML-类与类的关系/"},{"title":"UML-依赖与关联关系","path":"2020/01/02/UML-依赖与关联关系/"},{"title":"学习计划","path":"2017/04/10/学习计划/"},{"title":"书单","path":"2017/04/09/书单/"},{"title":"SSH","path":"2017/04/06/SSH/"},{"title":"VPS","path":"2017/04/08/VPS/"},{"title":"混合开发基础入门","path":"2019/01/02/混合开发基础入门/"},{"title":"热修复插件化-ClassLoader","path":"2018/04/03/热修复插件化-ClassLoader/"},{"title":"热修复插件化-class、dex文件解析","path":"2018/04/01/热修复插件化-class、dex文件解析/"},{"title":"热修复插件化-插件化Atlas","path":"2018/04/08/热修复插件化-插件化Atlas/"},{"title":"热修复插件化-插件化Small","path":"2018/04/07/热修复插件化-插件化Small/"},{"title":"热修复插件化-插件化原理","path":"2018/04/06/热修复插件化-插件化原理/"},{"title":"热修复插件化-热修复","path":"2018/04/04/热修复插件化-热修复/"},{"title":"热修复插件化-虚拟机","path":"2018/04/02/热修复插件化-虚拟机/"},{"title":"热修复插件化-版本管理","path":"2018/04/05/热修复插件化-版本管理/"},{"title":"第一行代码笔记-Android基础用法","path":"2018/03/07/第一行代码笔记-Android基础用法/"},{"title":"第一行代码笔记-Android Studio","path":"2018/03/06/第一行代码笔记-Android-Studio/"},{"title":"第一行代码笔记-Broadcast","path":"2018/03/11/第一行代码笔记-Broadcast/"},{"title":"第一行代码笔记-Android基础控件布局","path":"2018/03/08/第一行代码笔记-Android基础控件布局/"},{"title":"第一行代码笔记-Fragment","path":"2018/03/10/第一行代码笔记-Fragment/"},{"title":"第一行代码笔记-ContentProvider","path":"2018/03/13/第一行代码笔记-ContentProvider/"},{"title":"第一行代码笔记-Git","path":"2018/03/18/第一行代码笔记-Git/"},{"title":"第一行代码笔记-LBS","path":"2018/03/17/第一行代码笔记-LBS/"},{"title":"第一行代码笔记-ListView","path":"2018/03/09/第一行代码笔记-ListView/"},{"title":"第一行代码笔记-Service","path":"2018/03/16/第一行代码笔记-Service/"},{"title":"第一行代码笔记-Material Design","path":"2018/03/18/第一行代码笔记-MD/"},{"title":"第一行代码笔记-RecyclerView","path":"2018/03/09/第一行代码笔记-RecyclerView/"},{"title":"第一行代码笔记-数据存储","path":"2018/03/12/第一行代码笔记-数据存储/"},{"title":"第一行代码笔记-多媒体","path":"2018/03/14/第一行代码笔记-多媒体/"},{"title":"第一行代码笔记-网络","path":"2018/03/15/第一行代码笔记-网络/"},{"title":"第一行代码笔记-自定义view","path":"2018/03/08/第一行代码笔记-自定义view/"},{"title":"设计模式-单例","path":"2017/05/01/设计模式-单例/"},{"title":"音视频_FFMPEG常用命令","path":"2019/09/28/音视频-FFMPEG常用命令/"},{"title":"音视频_FFMPEG简介","path":"2019/09/27/音视频_FFMPEG简介/"}]`)
-  ipt.addEventListener('keyup', e => {
-    if (e.key === 'Enter') {
-      handleSearch()
-    }
-  })
-  btn.addEventListener('click', () => {
-    handleSearch()
-  })
 
-  document.querySelector('#close-layer-btn').addEventListener('click', () => {
-    layer.classList.toggle('hidden')
-  })
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activity-%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="post-toc-number">1.</span> <span class="post-toc-text">Activity 的启动流程是怎样的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目剖析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B7%A8%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">跨进程启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%86%85%E5%90%AF%E5%8A%A8"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">进程内启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Activity的参数传递</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BC%A0%E9%80%92%E5%A4%A7%E6%95%B0%E6%8D%AE"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">传递大数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Activity实例化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Fragment%E7%9A%84%E6%81%A2%E5%A4%8D"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">Fragment的恢复</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E7%AA%97%E5%8F%A3%E5%A6%82%E4%BD%95%E5%B1%95%E7%A4%BA"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Activity窗口如何展示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">Activity转场动画的实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E8%B7%A8App%E5%90%AF%E5%8A%A8-Activity%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9F"><span class="post-toc-number">2.</span> <span class="post-toc-text">如何跨App启动 Activity？有哪些注意事项？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B1%E4%BA%ABUID%E7%9A%84APP"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">共享UID的APP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8exported"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用exported</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8intentFilter"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">使用intentFilter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E5%85%81%E8%AE%B8%E5%A4%96%E9%83%A8%E5%90%AF%E5%8A%A8%E7%9A%84Activity%E5%8A%A0%E6%9D%83%E9%99%90"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">为允许外部启动的Activity加权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%BC%8F%E6%B4%9E"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">拒绝服务漏洞</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3-Activity-%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E4%BB%A5%E5%8F%8A%E6%8E%A5%E5%8F%A3%E5%A4%8D%E6%9D%82%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="post-toc-number">3.</span> <span class="post-toc-text">如何解决 Activity 参数传递的类型安全以及接口复杂的问题？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">题目剖析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88Activity%E7%9A%84%E5%8F%82%E6%95%B0%E5%AD%98%E5%9C%A8%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">为什么Activity的参数存在类型安全问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%94%9F%E6%88%90Builder"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">注解处理器生成Builder</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%94%9F%E6%88%90%E6%B3%A8%E5%85%A5%E9%80%BB%E8%BE%91"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">注解处理器生成注入逻辑</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E5%85%A5%E9%80%BB%E8%BE%91%E8%B0%83%E7%94%A8%E6%97%B6%E6%9C%BA"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">注入逻辑调用时机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%AF%E6%8C%81%E7%BB%93%E6%9E%9C%E8%BF%94%E5%9B%9E"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">支持结果返回</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%AF%E6%8C%81%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">支持更多的类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%AF%E6%8C%81%E6%9B%B4%E5%A4%9A%E5%8A%9F%E8%83%BD"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">支持更多功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%AF%E6%8C%81fragment"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">支持fragment</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Optional%E6%8F%90%E4%BE%9B%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">Optional提供默认值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">注解处理器程序的基本思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">注解处理器程序的开发注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%83%E7%BC%96%E7%A8%8B"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">元编程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BB%BB%E6%84%8F%E4%BD%8D%E7%BD%AE%E4%B8%BA%E5%BD%93%E5%89%8D-Activity-%E6%B7%BB%E5%8A%A0-View%EF%BC%9F"><span class="post-toc-number">4.</span> <span class="post-toc-text">如何在代码的任意位置为当前 Activity 添加 View？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">题目剖析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8DActivity"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">获取当前Activity</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">内存回收机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8%E3%80%81%E8%BD%AF%E5%BC%95%E7%94%A8%EF%BC%88%E5%BE%88%E5%B0%91%E7%94%A8%EF%BC%89"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">弱引用、软引用（很少用）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0view"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">添加view</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%B1%BB%E4%BC%BC%E5%BE%AE%E4%BF%A1%E5%8F%B3%E6%BB%91%E8%BF%94%E5%9B%9E%E7%9A%84%E6%95%88%E6%9E%9C%EF%BC%9F"><span class="post-toc-number">5.</span> <span class="post-toc-text">如何实现类似微信右滑返回的效果？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-3"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">题目剖析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fragment%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">Fragment的实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">Activity的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%9Atask"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">多task</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Activity%E6%A0%88%E8%8E%B7%E5%8F%96"><span class="post-toc-number">5.3.2.</span> <span class="post-toc-text">Activity栈获取</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Activity%E9%80%8F%E6%98%8E%E5%AF%B9%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="post-toc-number">5.3.3.</span> <span class="post-toc-text">Activity透明对生命周期的影响</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8E%B0%E6%9C%89%E6%96%B9%E6%A1%88%E5%8F%8A%E9%97%AE%E9%A2%98"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">现有方案及问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%94%A8%E6%8E%A5%E5%8F%A3%E4%BB%A3%E6%9B%BF%E7%88%B6%E7%B1%BB"><span class="post-toc-number">5.4.1.</span> <span class="post-toc-text">用接口代替父类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3%E9%80%8F%E6%98%8E%E7%8A%B6%E6%80%81"><span class="post-toc-number">5.4.2.</span> <span class="post-toc-text">动态切换窗口透明状态</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
 
-  function handleSearch() {
-    if (ipt.value.trim() === '') {
-      return
-    }
-    let html = ''
-    const targetPosts = posts.filter(post => post.title.includes(ipt.value))
-    targetPosts.forEach(post => {
-      html += `
-        <li>
-          <div>
-            <a href="/${post.path}">${post.title.replace(new RegExp(ipt.value), `<span>${ipt.value}</span>`)}</a>
-          </div>
-          <img src="${post.cover || '/imgs/default-cover.webp' }" />
-        </li>
-      `
-    })
-    if (html.trim () === '') {
-      html += '<p class="empty">没有搜索到内容</p>'
-    }
-    layer.querySelector('ul').innerHTML = html
-    layer.classList.remove('hidden')
-  }
-</script> 
-    <section id="main" class="main">
-      <div class="main-left-wrapper">
-<div class="main-left">
-  <div class="main-left--block">
-    <div class="main-left--info">
-      <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
-      <div class="main-left--intro">
-        <p class="main-left--name">Cola.</p>
-        <div class="main-left--tags">
-          <span class="main-left--tag">中二</span>
-          <span class="main-left--tag">宅</span>
+
+<article id="post-Android高级面试-Activity"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android高级面试-Activity</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-29 10:46:43" datetime="2020-07-29T02:46:43.000Z"  itemprop="datePublished">2020-07-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
         </div>
-      </div>
-    </div>
-  
-    <div>
-      <div class="main-left--motto">
-        <p>“花有重开日，人无再少年”</p>
-        <p>“一个简单普通的男孩”</p>
-      </div>
-      <div class="main-left--github">
-        <span class="line"></span>
-        <a href="https://github.com/Aizener"><i class="logo iconfont icon-github-fill"></i></a>
-        <span class="line"></span>
-      </div>
-      <div class="main-left--statics">
-        <a href="/categories">
-          <div>
-            <span>24</span>
-            <span>分类</span>
-          </div>
-        </a>
-        <a href="/tags">
-          <div>
-            <span>113</span>
-            <span>标签</span>
-          </div>
-        </a>
-        <a href="/archives">
-          <div>
-            <span>17 </span>
-            <span>归档</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="main-left--block">
-    <ul class="main-left--menu">
-      
-        <li>
-          <a href="/">
-            <span class="header-menu--span">小站首页</span>
-            <i class="header-menu--icon iconfont icon-shouye"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/log">
-            <span class="header-menu--span">个人日志</span>
-            <i class="header-menu--icon iconfont icon-rizhi"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/link">
-            <span class="header-menu--span">友情链接</span>
-            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/about">
-            <span class="header-menu--span">关于自己</span>
-            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/tools">
-            <span class="header-menu--span">我的工具</span>
-            <i class="header-menu--icon iconfont icon-gongju"></i>
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-
-  <div class="main-left--block">
-    <div class="main-left--site">
-      <h5 class="main-left--title">
-        <span>站点信息</span>
-        <i class="iconfont icon-zhandian"></i>
-      </h5>
-      <p class="main-left--subtitle">
-        <span>文章数目：</span>
-        <span>99 篇</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>最近动态：</span>
-        <span>3年前</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>上线时间：</span>
-        <span>843天</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>当前版本：</span>
-        <span>v1.0.2</span>
-      </p>
-    </div>
-  </div>
-</div></div>
-      <div id="main-container" class="main-container">
-
-
-  <link rel="stylesheet" href="/css/partial/article.css" />
-
-<div class="article-container">
-  <div class="article">
-    <h1 class="article-title">Android高级面试-Activity</h1>
-    <div class="article-info">
-      <div class="article-info--item">
-        <div class="article-info--info">
-          
-          <div class="article-info--categories">
-            <span>分类：</span>
-            <a class="category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
-          </div>
-          
-          
-          <div class="article-info--tags">
-            <span>标签：</span>
-            <a class="tag-link" href="/tags/Android%E9%9D%A2%E8%AF%95/" rel="tag">Android面试</a>
-          </div>
-          
-          <p class="article-info--date">日期：2020-07-29 10:46:43</p>
-        </div>
-        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
-      </div>
-    </div>
-    <article class="article-content markdown-body">
-      <h2 id="Activity-的启动流程是怎样的？"><a href="#Activity-的启动流程是怎样的？" class="headerlink" title="Activity 的启动流程是怎样的？"></a>Activity 的启动流程是怎样的？</h2><h3 id="题目剖析"><a href="#题目剖析" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Activity-的启动流程是怎样的？"><a href="#Activity-的启动流程是怎样的？" class="headerlink" title="Activity 的启动流程是怎样的？"></a>Activity 的启动流程是怎样的？</h2><h3 id="题目剖析"><a href="#题目剖析" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
 <li>与AMS如何交互</li>
 <li>Activity的参数和结果如何传递</li>
 <li>Activity如何实例化</li>
@@ -385,63 +241,273 @@
 
 <h3 id="跨进程启动"><a href="#跨进程启动" class="headerlink" title="跨进程启动"></a>跨进程启动</h3><p>AMP是AMS在通信过程中在客户端的一个代理</p>
 <p>APT是ApplicationThread在system_server端的代理</p>
-<p><img src="/1.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="进程内启动"><a href="#进程内启动" class="headerlink" title="进程内启动"></a>进程内启动</h3><p>画圈的地方是插件化hook的地方</p>
-<p><img src="/2.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="Activity的参数传递"><a href="#Activity的参数传递" class="headerlink" title="Activity的参数传递"></a>Activity的参数传递</h3><p>启动Activity有跨进程调用，通过Binder实现通信，Binder缓冲区有大小限制，跨进程的数据要序列化</p>
-<p><img src="/3.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="传递大数据"><a href="#传递大数据" class="headerlink" title="传递大数据"></a>传递大数据</h4><p>同一个进程的话，传递key即可，Model是共享的。跨进程的话可以，Model可以采用contentProvider等方式</p>
-<p><img src="/4.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>model看你是自己怎么设计了，一般生命周期比activity长就用全局的实例来管理就行了，这种一般如果需要共享，可以存到map中用字符串来索引。与activity生命周期一致的model一般不需要共享。</p>
 <h3 id="Activity实例化"><a href="#Activity实例化" class="headerlink" title="Activity实例化"></a>Activity实例化</h3><p>反射，newInstance()必须要有无参构造方法。所以Activity不应该写构造器。</p>
-<p><img src="/5.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>为什么activity创建要通过反射的方式而不是直接new的方式呢？</p>
 <p>因为他在编译的时候不知道你会启动哪个activity。至于为什么不让你自己new出来传给他，这也简单，因为系统可能随时会重新创建一个新的实例出来替换现在的(例如转屏)，它不希望activity实例的管理让开发者自己处理。</p>
 <h4 id="Fragment的恢复"><a href="#Fragment的恢复" class="headerlink" title="Fragment的恢复"></a>Fragment的恢复</h4><p>android:fragments是key，恢复的时候还是反射，所以fragment最好也不要写有参构造器</p>
-<p><img src="/6.png"></p>
-<h3 id="Activity窗口如何展示"><a href="#Activity窗口如何展示" class="headerlink" title="Activity窗口如何展示"></a>Activity窗口如何展示</h3><p><img src="/7.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="Activity窗口如何展示"><a href="#Activity窗口如何展示" class="headerlink" title="Activity窗口如何展示"></a>Activity窗口如何展示</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="Activity转场动画的实现"><a href="#Activity转场动画的实现" class="headerlink" title="Activity转场动画的实现"></a>Activity转场动画的实现</h3><p>原理：在播放动画之前或者实现页面跳转之前，先把需要实现转场的元素拿到然后把它的位置记录下来，捕捉位置、大小信息。然后跳转新页面，在新页面显示之前再把刚才捕捉到的元素位置应用到新页面的元素中</p>
-<p><img src="/8.png"></p>
-<p><img src="/9.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="8.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="9.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h2 id="如何跨App启动-Activity？有哪些注意事项？"><a href="#如何跨App启动-Activity？有哪些注意事项？" class="headerlink" title="如何跨App启动 Activity？有哪些注意事项？"></a>如何跨App启动 Activity？有哪些注意事项？</h2><h3 id="共享UID的APP"><a href="#共享UID的APP" class="headerlink" title="共享UID的APP"></a>共享UID的APP</h3><p>系统对于流量的计算等都是共享的</p>
-<p><img src="/10.png"></p>
-<p><img src="/11.png"></p>
-<h3 id="使用exported"><a href="#使用exported" class="headerlink" title="使用exported"></a>使用exported</h3><p><img src="/12.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="10.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="11.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="使用exported"><a href="#使用exported" class="headerlink" title="使用exported"></a>使用exported</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="12.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>在代码中为Activity设置了intent-filter，这会导致export的默认值被置为true，因此可以被外部启动。</p>
-<h3 id="使用intentFilter"><a href="#使用intentFilter" class="headerlink" title="使用intentFilter"></a>使用intentFilter</h3><p><img src="/13.png"></p>
+<h3 id="使用intentFilter"><a href="#使用intentFilter" class="headerlink" title="使用intentFilter"></a>使用intentFilter</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="13.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="为允许外部启动的Activity加权限"><a href="#为允许外部启动的Activity加权限" class="headerlink" title="为允许外部启动的Activity加权限"></a>为允许外部启动的Activity加权限</h3><p>B必须比A先安装</p>
-<p><img src="/14.png"></p>
-<h3 id="拒绝服务漏洞"><a href="#拒绝服务漏洞" class="headerlink" title="拒绝服务漏洞"></a>拒绝服务漏洞</h3><p><img src="/15.png"></p>
-<p><img src="/16.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="14.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="拒绝服务漏洞"><a href="#拒绝服务漏洞" class="headerlink" title="拒绝服务漏洞"></a>拒绝服务漏洞</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="15.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="16.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>解决方案，try catch</p>
-<p><img src="/17.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="17.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h2 id="如何解决-Activity-参数传递的类型安全以及接口复杂的问题？"><a href="#如何解决-Activity-参数传递的类型安全以及接口复杂的问题？" class="headerlink" title="如何解决 Activity 参数传递的类型安全以及接口复杂的问题？"></a>如何解决 Activity 参数传递的类型安全以及接口复杂的问题？</h2><h3 id="题目剖析-1"><a href="#题目剖析-1" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
 <li>类型安全：Bundle的K-V不能在编译期保证类型</li>
 <li>接口繁琐：启动Activity时参数和结果传递都依赖Intent</li>
 <li>怎么设计一个框架解决</li>
 </ul>
-<h3 id="为什么Activity的参数存在类型安全问题"><a href="#为什么Activity的参数存在类型安全问题" class="headerlink" title="为什么Activity的参数存在类型安全问题"></a>为什么Activity的参数存在类型安全问题</h3><p><img src="/18.png"></p>
-<h3 id="注解处理器生成Builder"><a href="#注解处理器生成Builder" class="headerlink" title="注解处理器生成Builder"></a>注解处理器生成Builder</h3><p><img src="/19.png"></p>
-<h3 id="注解处理器生成注入逻辑"><a href="#注解处理器生成注入逻辑" class="headerlink" title="注解处理器生成注入逻辑"></a>注解处理器生成注入逻辑</h3><p><img src="/20.png"></p>
+<h3 id="为什么Activity的参数存在类型安全问题"><a href="#为什么Activity的参数存在类型安全问题" class="headerlink" title="为什么Activity的参数存在类型安全问题"></a>为什么Activity的参数存在类型安全问题</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="18.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="注解处理器生成Builder"><a href="#注解处理器生成Builder" class="headerlink" title="注解处理器生成Builder"></a>注解处理器生成Builder</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="19.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="注解处理器生成注入逻辑"><a href="#注解处理器生成注入逻辑" class="headerlink" title="注解处理器生成注入逻辑"></a>注解处理器生成注入逻辑</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="20.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="注入逻辑调用时机"><a href="#注入逻辑调用时机" class="headerlink" title="注入逻辑调用时机"></a>注入逻辑调用时机</h3><p>onCreate</p>
-<p><img src="/21.png"></p>
-<p><img src="/22.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="21.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="22.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>onNewIntent</p>
-<p><img src="/23.png"></p>
-<h3 id="支持结果返回"><a href="#支持结果返回" class="headerlink" title="支持结果返回"></a>支持结果返回</h3><p><img src="/24.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="23.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="支持结果返回"><a href="#支持结果返回" class="headerlink" title="支持结果返回"></a>支持结果返回</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="24.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="支持更多的类型"><a href="#支持更多的类型" class="headerlink" title="支持更多的类型"></a>支持更多的类型</h3><p>把user里的字段一个一个传到Bundle，注入的时候再创建</p>
-<p><img src="/25.png"></p>
-<h3 id="支持更多功能"><a href="#支持更多功能" class="headerlink" title="支持更多功能"></a>支持更多功能</h3><p><img src="/26.png"></p>
-<h3 id="支持fragment"><a href="#支持fragment" class="headerlink" title="支持fragment"></a>支持fragment</h3><p><img src="/27.png"></p>
-<h3 id="Optional提供默认值"><a href="#Optional提供默认值" class="headerlink" title="Optional提供默认值"></a>Optional提供默认值</h3><p><img src="/28.png"></p>
-<h3 id="注解处理器程序的基本思路"><a href="#注解处理器程序的基本思路" class="headerlink" title="注解处理器程序的基本思路"></a>注解处理器程序的基本思路</h3><p><img src="/29.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="25.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="支持更多功能"><a href="#支持更多功能" class="headerlink" title="支持更多功能"></a>支持更多功能</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="26.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="支持fragment"><a href="#支持fragment" class="headerlink" title="支持fragment"></a>支持fragment</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="27.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="Optional提供默认值"><a href="#Optional提供默认值" class="headerlink" title="Optional提供默认值"></a>Optional提供默认值</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="28.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="注解处理器程序的基本思路"><a href="#注解处理器程序的基本思路" class="headerlink" title="注解处理器程序的基本思路"></a>注解处理器程序的基本思路</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="29.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="注解处理器程序的开发注意事项"><a href="#注解处理器程序的开发注意事项" class="headerlink" title="注解处理器程序的开发注意事项"></a>注解处理器程序的开发注意事项</h3><ul>
 <li>注意注解标注的类的继承关系</li>
 <li>注意注解标注的类为内部类的情况</li>
 <li>注意kotlin与java类型映射的问题</li>
 <li>把握好代码生成和直接依赖的边界</li>
 </ul>
-<h3 id="元编程"><a href="#元编程" class="headerlink" title="元编程"></a>元编程</h3><p><img src="/30.png"></p>
+<h3 id="元编程"><a href="#元编程" class="headerlink" title="元编程"></a>元编程</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="30.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h2 id="如何在代码的任意位置为当前-Activity-添加-View？"><a href="#如何在代码的任意位置为当前-Activity-添加-View？" class="headerlink" title="如何在代码的任意位置为当前 Activity 添加 View？"></a>如何在代码的任意位置为当前 Activity 添加 View？</h2><h3 id="题目剖析-2"><a href="#题目剖析-2" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
 <li>如何获取当前的Activity</li>
 <li>如何在不影响正常View展示的情况下添加view</li>
@@ -449,15 +515,57 @@
 <li>目的是什么？添加全局view是否合适</li>
 </ul>
 <h3 id="获取当前Activity"><a href="#获取当前Activity" class="headerlink" title="获取当前Activity"></a>获取当前Activity</h3><p>小心内存泄漏</p>
-<p><img src="/31.png"></p>
-<h3 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a>内存回收机制</h3><p><img src="/32.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="31.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a>内存回收机制</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="32.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="弱引用、软引用（很少用）"><a href="#弱引用、软引用（很少用）" class="headerlink" title="弱引用、软引用（很少用）"></a>弱引用、软引用（很少用）</h4><p>内存多的情况下，回收弱引用</p>
-<p><img src="/33.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="33.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>内存不多，都回收</p>
-<p><img src="/34.png"></p>
-<h3 id="添加view"><a href="#添加view" class="headerlink" title="添加view"></a>添加view</h3><p><img src="/35.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="34.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="添加view"><a href="#添加view" class="headerlink" title="添加view"></a>添加view</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="35.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>注意使用时机，可能为空</p>
-<p><img src="/36.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="36.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h2 id="如何实现类似微信右滑返回的效果？"><a href="#如何实现类似微信右滑返回的效果？" class="headerlink" title="如何实现类似微信右滑返回的效果？"></a>如何实现类似微信右滑返回的效果？</h2><h3 id="题目剖析-3"><a href="#题目剖析-3" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
 <li>Activity还是Fragment</li>
 <li>fragment实现简单，重点说Activity</li>
@@ -474,277 +582,278 @@
 <li>除了实现手势和动画之外，还要处理好window</li>
 </ul>
 <p>要改成true</p>
-<p><img src="/37.png"></p>
-<h4 id="多task"><a href="#多task" class="headerlink" title="多task"></a>多task</h4><p>B拍一张照片放到C的下面</p>
-<p><img src="/38.png"></p>
-<h4 id="Activity栈获取"><a href="#Activity栈获取" class="headerlink" title="Activity栈获取"></a>Activity栈获取</h4><p><img src="/39.png"></p>
-<p><img src="/40.png"></p>
-<h4 id="Activity透明对生命周期的影响"><a href="#Activity透明对生命周期的影响" class="headerlink" title="Activity透明对生命周期的影响"></a>Activity透明对生命周期的影响</h4><p><img src="/41.png"></p>
-<h3 id="现有方案及问题"><a href="#现有方案及问题" class="headerlink" title="现有方案及问题"></a>现有方案及问题</h3><p><img src="/42.png"></p>
-<p><img src="/43.png"></p>
-<h4 id="用接口代替父类"><a href="#用接口代替父类" class="headerlink" title="用接口代替父类"></a>用接口代替父类</h4><p><img src="/44.png"></p>
-<h4 id="动态切换窗口透明状态"><a href="#动态切换窗口透明状态" class="headerlink" title="动态切换窗口透明状态"></a>动态切换窗口透明状态</h4><p>因为是hide的，所以反射调用</p>
-<p><img src="/45.png"></p>
-<p><img src="/46.png"></p>
-<p><img src="/47.png"></p>
-<p><img src="/48.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="37.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 
-    </article>
-    
-    <div class="read-nums">
-      <!-- id 将作为查询条件 -->
-      <span id="2020/07/29/Android高级面试-Activity/" class="leancloud_visitors" data-flag-title="Your Article Title">
-        <em class="post-meta-item-text">浏览量</em>
-        <i class="leancloud-visitors-count"></i>
-      </span>
-    </div>
-    <div class="comments-intro">
-      <h2>评论区</h2>
-      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
-    </div>
-    <div id="vcomments" class="vcomments"></div>
-    
-  </div>
-  <div class="article-catelogue">
-    <div class="article-catelogue--wrapper">
-      <div class="catelogue catelogue-1">
-        <h3>目录</h3>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity-%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">Activity 的启动流程是怎样的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">题目剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8"><span class="toc-number">1.2.</span> <span class="toc-text">跨进程启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%86%85%E5%90%AF%E5%8A%A8"><span class="toc-number">1.3.</span> <span class="toc-text">进程内启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-number">1.4.</span> <span class="toc-text">Activity的参数传递</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E5%A4%A7%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.1.</span> <span class="toc-text">传递大数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text">Activity实例化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Fragment%E7%9A%84%E6%81%A2%E5%A4%8D"><span class="toc-number">1.5.1.</span> <span class="toc-text">Fragment的恢复</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E7%AA%97%E5%8F%A3%E5%A6%82%E4%BD%95%E5%B1%95%E7%A4%BA"><span class="toc-number">1.6.</span> <span class="toc-text">Activity窗口如何展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text">Activity转场动画的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%B7%A8App%E5%90%AF%E5%8A%A8-Activity%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">如何跨App启动 Activity？有哪些注意事项？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%ABUID%E7%9A%84APP"><span class="toc-number">2.1.</span> <span class="toc-text">共享UID的APP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8exported"><span class="toc-number">2.2.</span> <span class="toc-text">使用exported</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8intentFilter"><span class="toc-number">2.3.</span> <span class="toc-text">使用intentFilter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%85%81%E8%AE%B8%E5%A4%96%E9%83%A8%E5%90%AF%E5%8A%A8%E7%9A%84Activity%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-number">2.4.</span> <span class="toc-text">为允许外部启动的Activity加权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%BC%8F%E6%B4%9E"><span class="toc-number">2.5.</span> <span class="toc-text">拒绝服务漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3-Activity-%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E4%BB%A5%E5%8F%8A%E6%8E%A5%E5%8F%A3%E5%A4%8D%E6%9D%82%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">如何解决 Activity 参数传递的类型安全以及接口复杂的问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-1"><span class="toc-number">3.1.</span> <span class="toc-text">题目剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88Activity%E7%9A%84%E5%8F%82%E6%95%B0%E5%AD%98%E5%9C%A8%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">3.2.</span> <span class="toc-text">为什么Activity的参数存在类型安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%94%9F%E6%88%90Builder"><span class="toc-number">3.3.</span> <span class="toc-text">注解处理器生成Builder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%94%9F%E6%88%90%E6%B3%A8%E5%85%A5%E9%80%BB%E8%BE%91"><span class="toc-number">3.4.</span> <span class="toc-text">注解处理器生成注入逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E9%80%BB%E8%BE%91%E8%B0%83%E7%94%A8%E6%97%B6%E6%9C%BA"><span class="toc-number">3.5.</span> <span class="toc-text">注入逻辑调用时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%BB%93%E6%9E%9C%E8%BF%94%E5%9B%9E"><span class="toc-number">3.6.</span> <span class="toc-text">支持结果返回</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.7.</span> <span class="toc-text">支持更多的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E6%9B%B4%E5%A4%9A%E5%8A%9F%E8%83%BD"><span class="toc-number">3.8.</span> <span class="toc-text">支持更多功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81fragment"><span class="toc-number">3.9.</span> <span class="toc-text">支持fragment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optional%E6%8F%90%E4%BE%9B%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">3.10.</span> <span class="toc-text">Optional提供默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">3.11.</span> <span class="toc-text">注解处理器程序的基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.12.</span> <span class="toc-text">注解处理器程序的开发注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%BC%96%E7%A8%8B"><span class="toc-number">3.13.</span> <span class="toc-text">元编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BB%BB%E6%84%8F%E4%BD%8D%E7%BD%AE%E4%B8%BA%E5%BD%93%E5%89%8D-Activity-%E6%B7%BB%E5%8A%A0-View%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">如何在代码的任意位置为当前 Activity 添加 View？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-2"><span class="toc-number">4.1.</span> <span class="toc-text">题目剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8DActivity"><span class="toc-number">4.2.</span> <span class="toc-text">获取当前Activity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-number">4.3.</span> <span class="toc-text">内存回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8%E3%80%81%E8%BD%AF%E5%BC%95%E7%94%A8%EF%BC%88%E5%BE%88%E5%B0%91%E7%94%A8%EF%BC%89"><span class="toc-number">4.3.1.</span> <span class="toc-text">弱引用、软引用（很少用）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0view"><span class="toc-number">4.4.</span> <span class="toc-text">添加view</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%B1%BB%E4%BC%BC%E5%BE%AE%E4%BF%A1%E5%8F%B3%E6%BB%91%E8%BF%94%E5%9B%9E%E7%9A%84%E6%95%88%E6%9E%9C%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">如何实现类似微信右滑返回的效果？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-3"><span class="toc-number">5.1.</span> <span class="toc-text">题目剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fragment%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.2.</span> <span class="toc-text">Fragment的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.3.</span> <span class="toc-text">Activity的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9Atask"><span class="toc-number">5.3.1.</span> <span class="toc-text">多task</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity%E6%A0%88%E8%8E%B7%E5%8F%96"><span class="toc-number">5.3.2.</span> <span class="toc-text">Activity栈获取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity%E9%80%8F%E6%98%8E%E5%AF%B9%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">5.3.3.</span> <span class="toc-text">Activity透明对生命周期的影响</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E6%9C%89%E6%96%B9%E6%A1%88%E5%8F%8A%E9%97%AE%E9%A2%98"><span class="toc-number">5.4.</span> <span class="toc-text">现有方案及问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%8E%A5%E5%8F%A3%E4%BB%A3%E6%9B%BF%E7%88%B6%E7%B1%BB"><span class="toc-number">5.4.1.</span> <span class="toc-text">用接口代替父类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3%E9%80%8F%E6%98%8E%E7%8A%B6%E6%80%81"><span class="toc-number">5.4.2.</span> <span class="toc-text">动态切换窗口透明状态</span></a></li></ol></li></ol></li></ol>
-      </div>
-      
-        <div class="catelogue catelogue-2">
-          
-            <p>
-              <span>上一篇：</span>
-              <a href="/2020/07/30/Android高级面试-Handler/">Android高级面试-Handler</a>
-            </p>
-           
-          
-            <p>
-              <span>下一篇</span>
-              <a href="/2020/07/28/Android高级面试-JNI-编程/">Android高级面试-JNI 编程</a>
-            </p>
-          
+<h4 id="多task"><a href="#多task" class="headerlink" title="多task"></a>多task</h4><p>B拍一张照片放到C的下面</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="38.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="Activity栈获取"><a href="#Activity栈获取" class="headerlink" title="Activity栈获取"></a>Activity栈获取</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="39.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="40.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="Activity透明对生命周期的影响"><a href="#Activity透明对生命周期的影响" class="headerlink" title="Activity透明对生命周期的影响"></a>Activity透明对生命周期的影响</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="41.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="现有方案及问题"><a href="#现有方案及问题" class="headerlink" title="现有方案及问题"></a>现有方案及问题</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="42.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="43.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="用接口代替父类"><a href="#用接口代替父类" class="headerlink" title="用接口代替父类"></a>用接口代替父类</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="44.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="动态切换窗口透明状态"><a href="#动态切换窗口透明状态" class="headerlink" title="动态切换窗口透明状态"></a>动态切换窗口透明状态</h4><p>因为是hide的，所以反射调用</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="45.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="46.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="47.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="48.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
         </div>
-      
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-12-19T05:23:11.000Z" itemprop="dateUpdated">2020-12-19 13:23:11</time>
+</span><br>
+
+
+        
     </div>
-  </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpeg" alt="Mayo">
+            Mayo
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android%E9%9D%A2%E8%AF%95/" rel="tag">Android面试</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android高级面试-Handler</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/07/28/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-JNI-%E7%BC%96%E7%A8%8B/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android高级面试-JNI 编程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
 </div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mayo &copy; 2015 - 2024</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 
 <script>
-  // var定义，避免pjax重新进来造成的重复声明错误
-  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
-  new Valine({
-    el: '#vcomments',
-    appId: config.appId,
-    appKey: config.appKey,
-    placeholder: config.placeholder,
-    meta: config.meta,
-    recordIP: config.recordIP,
-    visitor: config.visitor,
-    enableQQ: config.enableQQ,
-    path: '2020/07/29/Android高级面试-Activity/'
-  })
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'oh♂I'm♂fucking♂coming';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
 </script>
 
 
-<script>
-  $(document).on('pjax:complete', function() {
-    const tocs = document.querySelector('.toc')
-    const links = tocs ? tocs.querySelectorAll('a') : []
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        const href = decodeURIComponent(e.href)
-        href.search(/#(.*)/)
-        const id = RegExp.$1
-        const target = document.querySelector('#' + id)
-        const top = target.offsetTop
-        document.documentElement.scrollTo({
-          top: top - 100,
-          behavior: 'smooth'
-        })
-        e.preventDefault()
-      })
-    })
-  })
-</script> 
 
-</div>
-      <div class="main-right-wrapper"><div class="main-right">
-  <div class="main-right--board">
-    <div class="main-right--title">
-      <h5>公告栏</h5>
-      <i class="iconfont icon-gonggao"></i>
-    </div>
-    <div class="main-right--content">
-      Hello~大噶好。唔系可乐爱宅着，欢迎你们来到我的博客小站，希望能在这里收获到有用的东西哦！ 
-    </div>
-  </div>
-
-  <div id="aplayer" class="main-right--music"></div>
-
-  <div class="operate-items">
-    <div class="operate-item backtop">
-      <i class="iconfont icon-huidaodingbu"></i>
-      <span>回到顶部</span>
-    </div>
-    
-    <div class="operate-item turn-comment hidden">
-      <i class="iconfont icon-pinglun"></i>
-      <span>查看评论</span>
-    </div>
-    
-  </div>
-
-  <div class="main-right--site">
-    <div class="main-right--power">
-      <p>Power By <a href="https://hexo.io/zh-cn/docs/">Hexo</a>.</p>
-      <p>Theme：<a href="https://github.com/Aizener/hexo-theme-cola">Cola.</a></p>
-    </div>
-    <p class="main-right--refer"><a href="https://beian.miit.gov.cn/#/Integrated/index">蜀ICP备2022005384号-1</a> </p>
-  </div>
-</div>
-
-<script>
-  function setOperateItem () {
-    const reg = /\d{4}\/\d{2}\/\d{2}\/.+/
-    const path = location.pathname
-    const operateDom = document.querySelector('.main-right .operate-items')
-    const commentDom = document.querySelector('.turn-comment')
-    const cateloguDom = document.querySelector('.article-catelogue > .article-catelogue--wrapper');
-
-    if (commentDom) {
-      if (reg.test(path) || path.match(/\/log\/.+/)) {
-        commentDom.classList.remove('hidden')
-        const newDom = operateDom.cloneNode(true);
-        const _backtopDom = newDom.querySelector('.backtop');
-        const _commentDom = newDom.querySelector('.turn-comment');
-        _backtopDom.addEventListener('click', () => backTopEvent());
-        _commentDom.addEventListener('click', () => commentDomEvent());
-        cateloguDom.appendChild(newDom);
-      } else {
-        commentDom.classList.add('hidden')
-      }
-    }
-  }
-
-  setOperateItem()
-  const musics = JSON.parse(`[{"name":"安河桥","artist":"宋冬野","url":"http://ting6.yymp3.net:82/new25/songdongye/11.mp3","cover":"https://img2.baidu.com/it/u=1260056724,1076343118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"卡布达","artist":"暂无","url":"music/kabuda.mp3","cover":"https://img2.baidu.com/it/u=705831265,2862720033&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"}]`)
-  const ap = new APlayer({
-    container: document.querySelector('#aplayer'),
-    audio: musics,
-  })
-
-  $(document).on('pjax:complete', function() {
-    setOperateItem()
-  })
-
-  document.querySelector('.backtop').addEventListener('click', () => {
-    backTopEvent();
-  })
-  const dom = document.querySelector('.turn-comment')
-  dom && dom.addEventListener('click', () => {
-    commentDomEvent();
-  })
-
-  function backTopEvent() {
-    document.documentElement.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
-
-  function commentDomEvent() {
-    const commentDom = document.querySelector('.comments-intro')
-    if (!commentDom) return
-    const top = commentDom.offsetTop, height = commentDom.offsetHeight
-    document.documentElement.scrollTo({
-      top: top - 2 * height,
-      behavior: 'smooth'
-    })
-  }
-</script></div>
-    </section>
-  </div>
-  <div id="progress" class="progress"></div>
-  <div id="gray" class="gray"></div>
-
-  <script>
-    function initScroll () {
-      document.addEventListener('scroll', () => {
-        const doc = document.documentElement
-        const scrollTop = doc.scrollTop
-        const pageHeight = doc.offsetHeight
-        const clientHeight = doc.clientHeight
-        const ratio = scrollTop / (pageHeight - clientHeight)
-        const progress = document.querySelector('#progress')
-        const avatarImg = document.querySelector('.main-left--avatar')
-        progress.style.width = (100 * ratio) + '%'
-        avatarImg.style.transform = `rotate(${360 * ratio}deg)`
-      })
-    }
-
-    const rootPath = "/"
-
-    const checkAndSetArticlePageLayout = () => {
-      const path = location.pathname.replace(rootPath, '');
-      if (
-        /^\/?\d{4}\/\d{2}\/\d{2}\/.*/.test(path) ||
-        /^log\/.+/.test(path)
-      ) {
-        $('.main-container, .main-right, .main-right-wrapper').addClass('is-article')
-      } else {
-        $('.main-container, .main-right, .main-right-wrapper').removeClass('is-article')
-      }
-    }
-
-    const gray = "none"
-    const setGrayStyle = () => {
-      if (gray === 'none') {
-        return
-      } else if (gray === 'index') {
-        location.pathname === '/' ? $('#gray').show() : $('#gray').hide()
-      } else if (gray === 'all') {
-        $('#gray').show()
-      }
-    }
-    setGrayStyle()
-
-
-    window.onload = function () {
-      checkAndSetArticlePageLayout()
-      setTimeout(() => {
-        $('#load').slideUp()
-        $('#container').slideToggle()
-        setTimeout(() => {
-          initScroll();
-        }, 500)
-      }, 500)
-    }
-    
-    let status = 0
-    // 对所有链接跳转事件绑定pjax容器container
-    $(document).pjax('a[target!=_blank]', '#main-container', {
-      container: '#main-container',
-      fragment: '#main-container',
-      timeout: 8000
-    })
-
-    $(document).on('pjax:start', function() {
-    })
-    $(document).on('pjax:complete', function() {
-      status = 0
-      $('.main-container').addClass('to-up').on('animationend', function() {
-        $(this).removeClass('to-up')
-      })
-      setGrayStyle()
-      checkAndSetArticlePageLayout()
-    })
-    $(document).on('pjax:popstate', function() {
-      status = -1
-      checkAndSetArticlePageLayout()
-    });
-  </script>
 </body>
 </html>
