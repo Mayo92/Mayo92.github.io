@@ -1,43 +1,379 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <title>妙妙屋</title>
-  <link rel="shortcut icon" href="/images/favicon.ico"> 
-<link rel="stylesheet" href="/css/style.css">
- 
-<script src="/js/jquery.js"></script>
- 
-<script src="/js/search.js"></script>
+  <meta charset="utf-8">
+  
+  <title>我的技术与生活——Gradle-高级用法-xml文件操作 | 妙妙屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/public.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/iconfont.css" />
+  <link rel="stylesheet" href="/css/APlayer.min.css" />
+  <script src="/js/APlayer.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.pjax.min.js"></script>
 
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    document.title = `我的技术与生活——Gradle-高级用法-xml文件操作`
+  </script>
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+<style>
+  .load {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(37, 35, 40);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+  }
+  .load-circle {
+    width: 80px;
+    height: 80px;
+    border: 8px solid orange;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 1s linear infinite;
+    filter: drop-shadow(0 0 3px orange);
+  }
+  .load-circle-inner {
+    width: 40px;
+    height: 40px;
+    border: 8px solid orange;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: rotate-reverse .5s linear infinite;
+  }
+  .load-text {
+    margin-top: 20px;
+    font-size: 24px;
+    color: orange;
+    display: flex;
+  }
+  .load-text span {
+    margin: 0 5px;
+    text-shadow: 5px 5px 5px orange;
+    animation: move 1s linear infinite;
+  }
+  .load-text span:nth-child(1) {
+    animation-delay: -0.6s;
+  }
+  .load-text span:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  .load-text span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+  .load-text span:nth-child(4) {
+    animation-delay: -0.3s;
+  }
+  .load-text span:nth-child(5) {
+    animation-delay: -0.2s;
+  }
+  .load-text span:nth-child(6) {
+    animation-delay: -0.1s;
+  }
+  @keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes rotate-reverse {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(-360deg); }
+  }
+  @keyframes move {
+    0% { transform: translateY(0%) rotate(0) scale(1); }
+    20% { transform: translateY(20%) rotate(10deg) scale(1.2); }
+    80% { transform: translateY(-10%) rotate(-20deg) scale(.8);}
+    100% { transform: translateY(0) rotate(0) scale(1); }
+  }
+
+  .progress {
+    position: fixed;
+    left: 0; top: 0;
+    width: 0;
+    height: 3px;
+    background-color: green;
+    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .1s;
+    z-index: 9999;
+  }
+
+  .to-up {
+    animation: toUp .5s 1;
+  }
+  .gray {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+    background-color: #000;
+    mix-blend-mode: color;
+  }
+  @keyframes toUp {
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0) ; opacity: 1; }
+  }
+</style>
 <body>
-  <article class="article-container">
-  <section class="header-container">
-  <a class="header-title" href="/">
-    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
-      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
-    </svg>
-    <span>妙妙屋</span>
-  </a>
-</section>
-  <section class="article-body">
-    <div class="post-toc">
-      <h3>本文目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E4%B8%80%E4%B8%AAxml%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">1.如何解析一个xml格式数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%8E%B7%E5%8F%96%E5%80%BC-%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7"><span class="toc-text">1.1 获取值&#x2F;获取属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%81%8D%E5%8E%86%E6%9F%A5%E6%89%BE"><span class="toc-text">1.2 遍历查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%B7%B1%E5%BA%A6%E9%81%8D%E5%8E%86%EF%BC%88depthFirst-%E7%AE%80%E5%86%99%E2%80%99-%E2%80%99%EF%BC%89"><span class="toc-text">1.3 深度遍历（depthFirst()简写’**’）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%B9%BF%E5%BA%A6%E9%81%8D%E5%8E%86%EF%BC%88children-%E7%AE%80%E5%86%99%E2%80%99-%E2%80%99%EF%BC%89"><span class="toc-text">1.4 广度遍历（children()简写’*’）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAxml%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">2.如何创建一个xml格式数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%9B%B4%E6%8E%A5%E5%86%99"><span class="toc-text">2.1 直接写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AE%9E%E4%BD%93%E7%B1%BB%E8%BD%AC%E6%8D%A2"><span class="toc-text">2.2 实体类转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-json%E8%BD%AC%E6%8D%A2%E6%88%90xml"><span class="toc-text">3.json转换成xml</span></a></li></ol>
+  <div id="load" class="load">
+    <div class="load-circle">
+      <div class="load-circle-inner"></div>
     </div>
-    <div class="post-container">
-      <div class="post-title">
-        <h2 class="title">
-          Gradle-高级用法-xml文件操作
-        </h2>
+    <p class="load-text">
+      <span>L</span>
+      <span>O</span>
+      <span>A</span>
+      <span>D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
+    </p>
+  </div>
+  <div id="container" class="container w-100 vh-100" style="display: none;">
+    <header class="header">
+  <div class="header-wrapper">
+    <div class="header-left">
+      <div class="header-search">
+        <input id="search-input" type="text" class="header-search--input" placeholder="请输入要检索的文章标题" />
+        <span id="search-btn" class="header-search--icon"><i class="iconfont icon-sousuo"></i></span>
       </div>
-      <div class="post-meta">
+      <div id="search-layer" class="header-search--layer hidden">
+        <p class="title">
+          <span>以下是搜索内容：</span>
+          <span id="close-layer-btn">关闭</span>
+        </p>
+        <ul>
+        </ul>
       </div>
-      <div class="post-content">
-        <h2 id="1-如何解析一个xml格式数据"><a href="#1-如何解析一个xml格式数据" class="headerlink" title="1.如何解析一个xml格式数据"></a>1.如何解析一个xml格式数据</h2><p><img src="/1.png"></p>
+    </div>
+    <div class="header-right">
+      <ul class="header-menu">
+        <li>
+          <a href="http://yoursite.com/">
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+            <span class="header-menu--span">首页</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://yoursite.com/log">
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+            <span class="header-menu--span">日志</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://yoursite.com/link">
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+            <span class="header-menu--span">友情链接</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://yoursite.com/about">
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+            <span class="header-menu--span">关于我</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const ipt = document.querySelector('#search-input')
+  const btn = document.querySelector('#search-btn')
+  const layer = document.querySelector('#search-layer')
+  const posts = JSON.parse(`[{"title":"Android入门-Activity","path":"2018/01/01/Android入门-Activity/"},{"title":"Android入门-ContentProvider","path":"2018/01/04/Android入门-ContentProvider/"},{"title":"Android入门-Service","path":"2018/01/02/Android入门-Service/"},{"title":"Android入门-BroadcastReceiver","path":"2018/01/03/Android入门-BroadcastReceiver/"},{"title":"Android入门-布局和控件","path":"2018/01/05/Android入门-布局和控件/"},{"title":"Android面试-View绘制相关","path":"2020/07/21/Android面试-View绘制相关/"},{"title":"Android面试-开源框架","path":"2020/07/24/Android面试-开源框架/"},{"title":"Android面试-基础","path":"2020/06/03/Android面试-基础/"},{"title":"Android面试-异步消息","path":"2020/06/24/Android面试-异步消息/"},{"title":"Android面试-异常及性能优化","path":"2020/07/25/Android面试-异常及性能优化/"},{"title":"Android面试-热门前沿知识","path":"2020/07/23/Android面试-热门前沿知识/"},{"title":"Android面试-项目构建","path":"2020/07/22/Android面试-项目构建/"},{"title":"Android高级面试-JNI 编程","path":"2020/07/28/Android高级面试-JNI-编程/"},{"title":"Android高级面试-Java","path":"2020/07/26/Android高级面试-Java/"},{"title":"Android高级面试-Activity","path":"2020/07/29/Android高级面试-Activity/"},{"title":"Android高级面试-Handler","path":"2020/07/30/Android高级面试-Handler/"},{"title":"Android高级面试-内存优化","path":"2020/07/31/Android高级面试-内存优化/"},{"title":"Android高级面试-插件化和热修复2","path":"2020/08/02/Android高级面试-插件化和热修复2/"},{"title":"Android高级面试-并发编程","path":"2020/07/27/Android高级面试-并发编程/"},{"title":"Android高级面试-插件化和热修复","path":"2020/08/01/Android高级面试-插件化和热修复/"},{"title":"Gradle-其他模块及自定义Plugin","path":"2018/06/23/Gradle-其他模块及自定义Plugin/"},{"title":"Gradle-Task","path":"2018/06/13/Gradle-Task/"},{"title":"Gradle--开发环境搭建","path":"2018/05/18/Gradle-开发环境搭建/"},{"title":"Gradle-project","path":"2018/06/10/Gradle-project/"},{"title":"Gradle-持续集成与打包","path":"2018/07/24/Gradle-持续集成与打包/"},{"title":"Gradle-核心语法-基础语法","path":"2018/05/19/Gradle-核心语法-基础语法/"},{"title":"Gradle-总结","path":"2018/07/25/Gradle-总结/"},{"title":"Gradle-核心语法-面向对象","path":"2018/05/22/Gradle-核心语法-面向对象/"},{"title":"Gradle--快速入门","path":"2018/05/18/Gradle-快速入门/"},{"title":"Gradle-核心语法-闭包","path":"2018/05/20/Gradle-核心语法-闭包/"},{"title":"Gradle-生命周期","path":"2018/05/26/Gradle-生命周期/"},{"title":"Gradle-高级用法-json操作","path":"2018/05/23/Gradle-高级用法-json操作/"},{"title":"Gradle-核心语法-数据结构","path":"2018/05/21/Gradle-核心语法-数据结构/"},{"title":"Gradle-高级用法-xml文件操作","path":"2018/05/24/Gradle-高级用法-xml文件操作/"},{"title":"HEXO总结","path":"2017/04/06/HEXO总结/"},{"title":"Gradle-高级用法-文件操作","path":"2018/05/25/Gradle-高级用法-文件操作/"},{"title":"Html","path":"2019/02/01/Html/"},{"title":"Java基础-IO","path":"2017/04/27/Java基础-IO/"},{"title":"Java基础-基础语法","path":"2017/04/22/Java基础-基础语法/"},{"title":"Java基础-初识","path":"2017/04/21/Java基础-初识/"},{"title":"HTTP静态服务","path":"2019/01/01/HTTP静态服务/"},{"title":"Java基础-多态","path":"2017/04/24/Java基础-多态/"},{"title":"Java基础-反射","path":"2017/04/29/Java基础-反射/"},{"title":"Java基础-包装类","path":"2017/04/24/Java基础-包装类/"},{"title":"Java基础-字符串","path":"2017/04/26/Java基础-字符串/"},{"title":"Java基础-泛型","path":"2017/04/30/Java基础-泛型/"},{"title":"Java基础-异常","path":"2017/04/24/Java基础-异常/"},{"title":"Java基础-多线程","path":"2017/04/25/Java基础-多线程/"},{"title":"Java基础-网络编程","path":"2017/04/28/Java基础-网络编程/"},{"title":"Java基础-注解","path":"2017/04/30/Java基础-注解/"},{"title":"Java基础-集合","path":"2017/04/26/Java基础-集合/"},{"title":"Java基础-继承","path":"2017/04/24/Java基础-继承/"},{"title":"Java基础-面向对象","path":"2017/04/23/Java基础-面向对象/"},{"title":"Java面试-高级知识点","path":"2020/02/02/Java面试-高级知识点/"},{"title":"Kotlin-内置类型","path":"2018/09/21/Kotlin-内置类型/"},{"title":"Java面试-面向对象","path":"2020/02/01/Java面试-面向对象/"},{"title":"Kotlin-程序结构","path":"2018/09/19/Kotlin-程序结构/"},{"title":"Kotlin-开发环境搭建","path":"2018/09/20/Kotlin-开发环境搭建/"},{"title":"Kotlin-函数进阶","path":"2018/09/24/Kotlin-函数进阶/"},{"title":"Kotlin-数据类型","path":"2018/09/18/Kotlin-数据类型/"},{"title":"Kotlin-表达式","path":"2018/09/23/Kotlin-表达式/"},{"title":"Kotlin-类型进阶","path":"2018/09/25/Kotlin-类型进阶/"},{"title":"Kotlin-类型初步","path":"2018/09/22/Kotlin-类型初步/"},{"title":"Markdown","path":"2017/04/07/Markdown/"},{"title":"Kotlin--简介","path":"2018/09/18/Kotlin-简介/"},{"title":"UML-类与类的关系","path":"2020/01/01/UML-类与类的关系/"},{"title":"UML-依赖与关联关系","path":"2020/01/02/UML-依赖与关联关系/"},{"title":"学习计划","path":"2017/04/10/学习计划/"},{"title":"书单","path":"2017/04/09/书单/"},{"title":"SSH","path":"2017/04/06/SSH/"},{"title":"VPS","path":"2017/04/08/VPS/"},{"title":"混合开发基础入门","path":"2019/01/02/混合开发基础入门/"},{"title":"热修复插件化-ClassLoader","path":"2018/04/03/热修复插件化-ClassLoader/"},{"title":"热修复插件化-class、dex文件解析","path":"2018/04/01/热修复插件化-class、dex文件解析/"},{"title":"热修复插件化-插件化Atlas","path":"2018/04/08/热修复插件化-插件化Atlas/"},{"title":"热修复插件化-插件化Small","path":"2018/04/07/热修复插件化-插件化Small/"},{"title":"热修复插件化-插件化原理","path":"2018/04/06/热修复插件化-插件化原理/"},{"title":"热修复插件化-热修复","path":"2018/04/04/热修复插件化-热修复/"},{"title":"热修复插件化-虚拟机","path":"2018/04/02/热修复插件化-虚拟机/"},{"title":"热修复插件化-版本管理","path":"2018/04/05/热修复插件化-版本管理/"},{"title":"第一行代码笔记-Android基础用法","path":"2018/03/07/第一行代码笔记-Android基础用法/"},{"title":"第一行代码笔记-Android Studio","path":"2018/03/06/第一行代码笔记-Android-Studio/"},{"title":"第一行代码笔记-Broadcast","path":"2018/03/11/第一行代码笔记-Broadcast/"},{"title":"第一行代码笔记-Android基础控件布局","path":"2018/03/08/第一行代码笔记-Android基础控件布局/"},{"title":"第一行代码笔记-Fragment","path":"2018/03/10/第一行代码笔记-Fragment/"},{"title":"第一行代码笔记-ContentProvider","path":"2018/03/13/第一行代码笔记-ContentProvider/"},{"title":"第一行代码笔记-Git","path":"2018/03/18/第一行代码笔记-Git/"},{"title":"第一行代码笔记-LBS","path":"2018/03/17/第一行代码笔记-LBS/"},{"title":"第一行代码笔记-ListView","path":"2018/03/09/第一行代码笔记-ListView/"},{"title":"第一行代码笔记-Service","path":"2018/03/16/第一行代码笔记-Service/"},{"title":"第一行代码笔记-Material Design","path":"2018/03/18/第一行代码笔记-MD/"},{"title":"第一行代码笔记-RecyclerView","path":"2018/03/09/第一行代码笔记-RecyclerView/"},{"title":"第一行代码笔记-数据存储","path":"2018/03/12/第一行代码笔记-数据存储/"},{"title":"第一行代码笔记-多媒体","path":"2018/03/14/第一行代码笔记-多媒体/"},{"title":"第一行代码笔记-网络","path":"2018/03/15/第一行代码笔记-网络/"},{"title":"第一行代码笔记-自定义view","path":"2018/03/08/第一行代码笔记-自定义view/"},{"title":"设计模式-单例","path":"2017/05/01/设计模式-单例/"},{"title":"音视频_FFMPEG常用命令","path":"2019/09/28/音视频-FFMPEG常用命令/"},{"title":"音视频_FFMPEG简介","path":"2019/09/27/音视频_FFMPEG简介/"}]`)
+  ipt.addEventListener('keyup', e => {
+    if (e.key === 'Enter') {
+      handleSearch()
+    }
+  })
+  btn.addEventListener('click', () => {
+    handleSearch()
+  })
+
+  document.querySelector('#close-layer-btn').addEventListener('click', () => {
+    layer.classList.toggle('hidden')
+  })
+
+  function handleSearch() {
+    if (ipt.value.trim() === '') {
+      return
+    }
+    let html = ''
+    const targetPosts = posts.filter(post => post.title.includes(ipt.value))
+    targetPosts.forEach(post => {
+      html += `
+        <li>
+          <div>
+            <a href="/${post.path}">${post.title.replace(new RegExp(ipt.value), `<span>${ipt.value}</span>`)}</a>
+          </div>
+          <img src="${post.cover || '/imgs/default-cover.webp' }" />
+        </li>
+      `
+    })
+    if (html.trim () === '') {
+      html += '<p class="empty">没有搜索到内容</p>'
+    }
+    layer.querySelector('ul').innerHTML = html
+    layer.classList.remove('hidden')
+  }
+</script> 
+    <section id="main" class="main">
+      <div class="main-left-wrapper">
+<div class="main-left">
+  <div class="main-left--block">
+    <div class="main-left--info">
+      <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
+      <div class="main-left--intro">
+        <p class="main-left--name">Cola.</p>
+        <div class="main-left--tags">
+          <span class="main-left--tag">中二</span>
+          <span class="main-left--tag">宅</span>
+        </div>
+      </div>
+    </div>
+  
+    <div>
+      <div class="main-left--motto">
+        <p>“花有重开日，人无再少年”</p>
+        <p>“一个简单普通的男孩”</p>
+      </div>
+      <div class="main-left--github">
+        <span class="line"></span>
+        <a href="https://github.com/Aizener"><i class="logo iconfont icon-github-fill"></i></a>
+        <span class="line"></span>
+      </div>
+      <div class="main-left--statics">
+        <a href="/categories">
+          <div>
+            <span>24</span>
+            <span>分类</span>
+          </div>
+        </a>
+        <a href="/tags">
+          <div>
+            <span>113</span>
+            <span>标签</span>
+          </div>
+        </a>
+        <a href="/archives">
+          <div>
+            <span>17 </span>
+            <span>归档</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-left--block">
+    <ul class="main-left--menu">
+      
+        <li>
+          <a href="/">
+            <span class="header-menu--span">小站首页</span>
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/log">
+            <span class="header-menu--span">个人日志</span>
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/link">
+            <span class="header-menu--span">友情链接</span>
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/about">
+            <span class="header-menu--span">关于自己</span>
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tools">
+            <span class="header-menu--span">我的工具</span>
+            <i class="header-menu--icon iconfont icon-gongju"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="main-left--block">
+    <div class="main-left--site">
+      <h5 class="main-left--title">
+        <span>站点信息</span>
+        <i class="iconfont icon-zhandian"></i>
+      </h5>
+      <p class="main-left--subtitle">
+        <span>文章数目：</span>
+        <span>99 篇</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>最近动态：</span>
+        <span>3年前</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>上线时间：</span>
+        <span>843天</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>当前版本：</span>
+        <span>v1.0.2</span>
+      </p>
+    </div>
+  </div>
+</div></div>
+      <div id="main-container" class="main-container">
+
+
+  <link rel="stylesheet" href="/css/partial/article.css" />
+
+<div class="article-container">
+  <div class="article">
+    <h1 class="article-title">Gradle-高级用法-xml文件操作</h1>
+    <div class="article-info">
+      <div class="article-info--item">
+        <div class="article-info--info">
+          
+          <div class="article-info--categories">
+            <span>分类：</span>
+            <a class="category-link" href="/categories/Gradle/">Gradle</a>
+          </div>
+          
+          
+          <div class="article-info--tags">
+            <span>标签：</span>
+            <a class="tag-link" href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/" rel="tag">Gradle高级用法</a>
+          </div>
+          
+          <p class="article-info--date">日期：2018-05-24 20:15:43</p>
+        </div>
+        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
+      </div>
+    </div>
+    <article class="article-content markdown-body">
+      <h2 id="1-如何解析一个xml格式数据"><a href="#1-如何解析一个xml格式数据" class="headerlink" title="1.如何解析一个xml格式数据"></a>1.如何解析一个xml格式数据</h2><p><img src="/1.png"></p>
 <span id="more"></span>
 
 <pre><code>final String xml = &#39;&#39;&#39;
@@ -212,25 +548,262 @@ println sw
 <p>it有作用范围，闭包{}里	</p>
 <p><img src="/8.png"></p>
 
-      </div>
+    </article>
+    
+    <div class="read-nums">
+      <!-- id 将作为查询条件 -->
+      <span id="2018/05/24/Gradle-高级用法-xml文件操作/" class="leancloud_visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">浏览量</em>
+        <i class="leancloud-visitors-count"></i>
+      </span>
     </div>
-  </section>
-</article>
-<!-- go-top -->
-<a id="goTop" class="go-top" type="button">
-  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
-    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
-  </svg>
-</a>
-<script>
-  goTop.addEventListener('click', function(e) {
-    document.querySelector('.post-container').scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  });
-</script>
-</body>
+    <div class="comments-intro">
+      <h2>评论区</h2>
+      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
+    </div>
+    <div id="vcomments" class="vcomments"></div>
+    
+  </div>
+  <div class="article-catelogue">
+    <div class="article-catelogue--wrapper">
+      <div class="catelogue catelogue-1">
+        <h3>目录</h3>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E4%B8%80%E4%B8%AAxml%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">1.如何解析一个xml格式数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%8E%B7%E5%8F%96%E5%80%BC-%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 获取值&#x2F;获取属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%81%8D%E5%8E%86%E6%9F%A5%E6%89%BE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 遍历查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%B7%B1%E5%BA%A6%E9%81%8D%E5%8E%86%EF%BC%88depthFirst-%E7%AE%80%E5%86%99%E2%80%99-%E2%80%99%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 深度遍历（depthFirst()简写’**’）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%B9%BF%E5%BA%A6%E9%81%8D%E5%8E%86%EF%BC%88children-%E7%AE%80%E5%86%99%E2%80%99-%E2%80%99%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 广度遍历（children()简写’*’）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAxml%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="toc-number">2.</span> <span class="toc-text">2.如何创建一个xml格式数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%9B%B4%E6%8E%A5%E5%86%99"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 直接写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AE%9E%E4%BD%93%E7%B1%BB%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 实体类转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-json%E8%BD%AC%E6%8D%A2%E6%88%90xml"><span class="toc-number">3.</span> <span class="toc-text">3.json转换成xml</span></a></li></ol>
+      </div>
+      
+        <div class="catelogue catelogue-2">
+          
+            <p>
+              <span>上一篇：</span>
+              <a href="/2018/05/25/Gradle-高级用法-文件操作/">Gradle-高级用法-文件操作</a>
+            </p>
+           
+          
+            <p>
+              <span>下一篇</span>
+              <a href="/2018/05/23/Gradle-高级用法-json操作/">Gradle-高级用法-json操作</a>
+            </p>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
 
+
+<script>
+  // var定义，避免pjax重新进来造成的重复声明错误
+  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
+  new Valine({
+    el: '#vcomments',
+    appId: config.appId,
+    appKey: config.appKey,
+    placeholder: config.placeholder,
+    meta: config.meta,
+    recordIP: config.recordIP,
+    visitor: config.visitor,
+    enableQQ: config.enableQQ,
+    path: '2018/05/24/Gradle-高级用法-xml文件操作/'
+  })
+</script>
+
+
+<script>
+  $(document).on('pjax:complete', function() {
+    const tocs = document.querySelector('.toc')
+    const links = tocs ? tocs.querySelectorAll('a') : []
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = decodeURIComponent(e.href)
+        href.search(/#(.*)/)
+        const id = RegExp.$1
+        const target = document.querySelector('#' + id)
+        const top = target.offsetTop
+        document.documentElement.scrollTo({
+          top: top - 100,
+          behavior: 'smooth'
+        })
+        e.preventDefault()
+      })
+    })
+  })
+</script> 
+
+</div>
+      <div class="main-right-wrapper"><div class="main-right">
+  <div class="main-right--board">
+    <div class="main-right--title">
+      <h5>公告栏</h5>
+      <i class="iconfont icon-gonggao"></i>
+    </div>
+    <div class="main-right--content">
+      Hello~大噶好。唔系可乐爱宅着，欢迎你们来到我的博客小站，希望能在这里收获到有用的东西哦！ 
+    </div>
+  </div>
+
+  <div id="aplayer" class="main-right--music"></div>
+
+  <div class="operate-items">
+    <div class="operate-item backtop">
+      <i class="iconfont icon-huidaodingbu"></i>
+      <span>回到顶部</span>
+    </div>
+    
+    <div class="operate-item turn-comment hidden">
+      <i class="iconfont icon-pinglun"></i>
+      <span>查看评论</span>
+    </div>
+    
+  </div>
+
+  <div class="main-right--site">
+    <div class="main-right--power">
+      <p>Power By <a href="https://hexo.io/zh-cn/docs/">Hexo</a>.</p>
+      <p>Theme：<a href="https://github.com/Aizener/hexo-theme-cola">Cola.</a></p>
+    </div>
+    <p class="main-right--refer"><a href="https://beian.miit.gov.cn/#/Integrated/index">蜀ICP备2022005384号-1</a> </p>
+  </div>
+</div>
+
+<script>
+  function setOperateItem () {
+    const reg = /\d{4}\/\d{2}\/\d{2}\/.+/
+    const path = location.pathname
+    const operateDom = document.querySelector('.main-right .operate-items')
+    const commentDom = document.querySelector('.turn-comment')
+    const cateloguDom = document.querySelector('.article-catelogue > .article-catelogue--wrapper');
+
+    if (commentDom) {
+      if (reg.test(path) || path.match(/\/log\/.+/)) {
+        commentDom.classList.remove('hidden')
+        const newDom = operateDom.cloneNode(true);
+        const _backtopDom = newDom.querySelector('.backtop');
+        const _commentDom = newDom.querySelector('.turn-comment');
+        _backtopDom.addEventListener('click', () => backTopEvent());
+        _commentDom.addEventListener('click', () => commentDomEvent());
+        cateloguDom.appendChild(newDom);
+      } else {
+        commentDom.classList.add('hidden')
+      }
+    }
+  }
+
+  setOperateItem()
+  const musics = JSON.parse(`[{"name":"安河桥","artist":"宋冬野","url":"http://ting6.yymp3.net:82/new25/songdongye/11.mp3","cover":"https://img2.baidu.com/it/u=1260056724,1076343118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"卡布达","artist":"暂无","url":"music/kabuda.mp3","cover":"https://img2.baidu.com/it/u=705831265,2862720033&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"}]`)
+  const ap = new APlayer({
+    container: document.querySelector('#aplayer'),
+    audio: musics,
+  })
+
+  $(document).on('pjax:complete', function() {
+    setOperateItem()
+  })
+
+  document.querySelector('.backtop').addEventListener('click', () => {
+    backTopEvent();
+  })
+  const dom = document.querySelector('.turn-comment')
+  dom && dom.addEventListener('click', () => {
+    commentDomEvent();
+  })
+
+  function backTopEvent() {
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  function commentDomEvent() {
+    const commentDom = document.querySelector('.comments-intro')
+    if (!commentDom) return
+    const top = commentDom.offsetTop, height = commentDom.offsetHeight
+    document.documentElement.scrollTo({
+      top: top - 2 * height,
+      behavior: 'smooth'
+    })
+  }
+</script></div>
+    </section>
+  </div>
+  <div id="progress" class="progress"></div>
+  <div id="gray" class="gray"></div>
+
+  <script>
+    function initScroll () {
+      document.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop
+        const pageHeight = doc.offsetHeight
+        const clientHeight = doc.clientHeight
+        const ratio = scrollTop / (pageHeight - clientHeight)
+        const progress = document.querySelector('#progress')
+        const avatarImg = document.querySelector('.main-left--avatar')
+        progress.style.width = (100 * ratio) + '%'
+        avatarImg.style.transform = `rotate(${360 * ratio}deg)`
+      })
+    }
+
+    const rootPath = "/"
+
+    const checkAndSetArticlePageLayout = () => {
+      const path = location.pathname.replace(rootPath, '');
+      if (
+        /^\/?\d{4}\/\d{2}\/\d{2}\/.*/.test(path) ||
+        /^log\/.+/.test(path)
+      ) {
+        $('.main-container, .main-right, .main-right-wrapper').addClass('is-article')
+      } else {
+        $('.main-container, .main-right, .main-right-wrapper').removeClass('is-article')
+      }
+    }
+
+    const gray = "none"
+    const setGrayStyle = () => {
+      if (gray === 'none') {
+        return
+      } else if (gray === 'index') {
+        location.pathname === '/' ? $('#gray').show() : $('#gray').hide()
+      } else if (gray === 'all') {
+        $('#gray').show()
+      }
+    }
+    setGrayStyle()
+
+
+    window.onload = function () {
+      checkAndSetArticlePageLayout()
+      setTimeout(() => {
+        $('#load').slideUp()
+        $('#container').slideToggle()
+        setTimeout(() => {
+          initScroll();
+        }, 500)
+      }, 500)
+    }
+    
+    let status = 0
+    // 对所有链接跳转事件绑定pjax容器container
+    $(document).pjax('a[target!=_blank]', '#main-container', {
+      container: '#main-container',
+      fragment: '#main-container',
+      timeout: 8000
+    })
+
+    $(document).on('pjax:start', function() {
+    })
+    $(document).on('pjax:complete', function() {
+      status = 0
+      $('.main-container').addClass('to-up').on('animationend', function() {
+        $(this).removeClass('to-up')
+      })
+      setGrayStyle()
+      checkAndSetArticlePageLayout()
+    })
+    $(document).on('pjax:popstate', function() {
+      status = -1
+      checkAndSetArticlePageLayout()
+    });
+  </script>
+</body>
 </html>

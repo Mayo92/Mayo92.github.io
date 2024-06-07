@@ -1,910 +1,848 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <title>妙妙屋</title>
-  <link rel="shortcut icon" href="/images/favicon.ico"> 
-<link rel="stylesheet" href="/css/style.css">
- 
-<script src="/js/jquery.js"></script>
- 
-<script src="/js/search.js"></script>
+  <meta charset="utf-8">
+  
+  <title>我的技术与生活——小站首页 | 妙妙屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/public.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/iconfont.css" />
+  <link rel="stylesheet" href="/css/APlayer.min.css" />
+  <script src="/js/APlayer.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.pjax.min.js"></script>
 
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    document.title = `我的技术与生活——小站首页`
+  </script>
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+<style>
+  .load {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(37, 35, 40);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+  }
+  .load-circle {
+    width: 80px;
+    height: 80px;
+    border: 8px solid orange;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 1s linear infinite;
+    filter: drop-shadow(0 0 3px orange);
+  }
+  .load-circle-inner {
+    width: 40px;
+    height: 40px;
+    border: 8px solid orange;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: rotate-reverse .5s linear infinite;
+  }
+  .load-text {
+    margin-top: 20px;
+    font-size: 24px;
+    color: orange;
+    display: flex;
+  }
+  .load-text span {
+    margin: 0 5px;
+    text-shadow: 5px 5px 5px orange;
+    animation: move 1s linear infinite;
+  }
+  .load-text span:nth-child(1) {
+    animation-delay: -0.6s;
+  }
+  .load-text span:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  .load-text span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+  .load-text span:nth-child(4) {
+    animation-delay: -0.3s;
+  }
+  .load-text span:nth-child(5) {
+    animation-delay: -0.2s;
+  }
+  .load-text span:nth-child(6) {
+    animation-delay: -0.1s;
+  }
+  @keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes rotate-reverse {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(-360deg); }
+  }
+  @keyframes move {
+    0% { transform: translateY(0%) rotate(0) scale(1); }
+    20% { transform: translateY(20%) rotate(10deg) scale(1.2); }
+    80% { transform: translateY(-10%) rotate(-20deg) scale(.8);}
+    100% { transform: translateY(0) rotate(0) scale(1); }
+  }
+
+  .progress {
+    position: fixed;
+    left: 0; top: 0;
+    width: 0;
+    height: 3px;
+    background-color: green;
+    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .1s;
+    z-index: 9999;
+  }
+
+  .to-up {
+    animation: toUp .5s 1;
+  }
+  .gray {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+    background-color: #000;
+    mix-blend-mode: color;
+  }
+  @keyframes toUp {
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0) ; opacity: 1; }
+  }
+</style>
 <body>
-  <section class="archive-container">
-  <section class="sidebar">
-  
-  <div class="avatar-container">
-    <img class="avatar" src="https://avatars.githubusercontent.com/u/26628346?v=4" />
-  </div>
-  <p class="title">妙妙屋</p>
-  <p class="subtitle">ass♂we♂can</p>
-  
-  
-  <div class="notice">
-    <h3>Notice</h3>
-    <p>
-      网站中图片存储在 github，如遇图片裂开，参考 <a href="https://zzyxka.github.io/2022/11/26/github-address/">github相关网址打不开的解决办法</a>
+  <div id="load" class="load">
+    <div class="load-circle">
+      <div class="load-circle-inner"></div>
+    </div>
+    <p class="load-text">
+      <span>L</span>
+      <span>O</span>
+      <span>A</span>
+      <span>D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
     </p>
   </div>
-  
-  <div class="icon-list">
-    <a href="/">
-      <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
-        <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
-      </svg>
-    </a>
-    
-    <a href="/categoriesuncategorized">
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-    </a>
-    
-    
-    <a href="https://github.com/zzyxka">
-      <svg t="1693393544823" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4990" width="20" height="20">
-        <path d="M512 0C229.283787 0 0.142041 234.942803 0.142041 524.867683c0 231.829001 146.647305 428.553077 350.068189 497.952484 25.592898 4.819996 34.976961-11.38884 34.976961-25.294314 0-12.45521-0.469203-45.470049-0.725133-89.276559-142.381822 31.735193-172.453477-70.380469-172.453477-70.380469-23.246882-60.569859-56.816233-76.693384-56.816234-76.693385-46.493765-32.58829 3.540351-31.948468 3.540351-31.948467 51.356415 3.71097 78.356923 54.086324 78.356923 54.086324 45.683323 80.19108 119.817417 57.072162 148.993321 43.593236 4.649376-33.91059 17.915029-57.029508 32.50298-70.167195-113.675122-13.222997-233.151301-58.223843-233.1513-259.341366 0-57.285437 19.919806-104.163095 52.678715-140.846248-5.246544-13.265652-22.820334-66.626844 4.990615-138.884127 0 0 42.996069-14.076094 140.760939 53.787741 40.863327-11.644769 84.627183-17.445825 128.177764-17.6591 43.465272 0.213274 87.271782 6.014331 128.135109 17.6591 97.679561-67.906489 140.59032-53.787741 140.59032-53.787741 27.938914 72.257282 10.407779 125.618474 5.118579 138.884127 32.844219 36.683154 52.593405 83.560812 52.593405 140.846248 0 201.586726-119.646798 245.990404-233.663158 258.957473 18.341577 16.208835 34.721032 48.199958 34.721032 97.210357 0 70.167195-0.639822 126.7275-0.639823 143.960051 0 14.033439 9.213443 30.370239 35.190235 25.209005 203.250265-69.527373 349.769606-266.123484 349.769605-497.867175C1023.857959 234.942803 794.673558 0 512 0" fill="#3E75C3" p-id="4991"></path>
-      </svg>
-    </a>
-    
-    <a type="button" id="btnSearch" class="search-btn">
-  <svg t="1693393972243" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6432" width="20" height="20">
-    <path d="M789.804097 737.772047 742.865042 784.699846 898.765741 940.600545 945.704796 893.672746Z" p-id="6433"></path>
-    <path d="M456.92259 82.893942c-209.311143 0-379.582131 170.282245-379.582131 379.582131s170.270988 379.570875 379.582131 379.570875c209.287607 0 379.558595-170.270988 379.558595-379.570875S666.210197 82.893942 456.92259 82.893942zM770.128989 462.477097c0 172.721807-140.508127 313.229934-313.206398 313.229934-172.720783 0-313.229934-140.508127-313.229934-313.229934s140.508127-313.229934 313.229934-313.229934C629.620861 149.247162 770.128989 289.75529 770.128989 462.477097z" p-id="6434"></path>
-  </svg>
-</a>
-<div id="searchContainer" class="search-container">
-  <div id="searchContent" class="search-content">
-    <div class="search-input">
-      <input id="searchInput" type="text" placeholder="查找文章" />
+  <div id="container" class="container w-100 vh-100" style="display: none;">
+    <header class="header">
+  <div class="header-wrapper">
+    <div class="header-left">
+      <div class="header-search">
+        <input id="search-input" type="text" class="header-search--input" placeholder="请输入要检索的文章标题" />
+        <span id="search-btn" class="header-search--icon"><i class="iconfont icon-sousuo"></i></span>
+      </div>
+      <div id="search-layer" class="header-search--layer hidden">
+        <p class="title">
+          <span>以下是搜索内容：</span>
+          <span id="close-layer-btn">关闭</span>
+        </p>
+        <ul>
+        </ul>
+      </div>
     </div>
-    <div id="searchResult" class="search-result-container"></div>
+    <div class="header-right">
+      <ul class="header-menu">
+        <li>
+          <a href="http://yoursite.com/">
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+            <span class="header-menu--span">首页</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://yoursite.com/log">
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+            <span class="header-menu--span">日志</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://yoursite.com/link">
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+            <span class="header-menu--span">友情链接</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://yoursite.com/about">
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+            <span class="header-menu--span">关于我</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const ipt = document.querySelector('#search-input')
+  const btn = document.querySelector('#search-btn')
+  const layer = document.querySelector('#search-layer')
+  const posts = JSON.parse(`[{"title":"Android入门-Activity","path":"2018/01/01/Android入门-Activity/"},{"title":"Android入门-ContentProvider","path":"2018/01/04/Android入门-ContentProvider/"},{"title":"Android入门-Service","path":"2018/01/02/Android入门-Service/"},{"title":"Android入门-BroadcastReceiver","path":"2018/01/03/Android入门-BroadcastReceiver/"},{"title":"Android入门-布局和控件","path":"2018/01/05/Android入门-布局和控件/"},{"title":"Android面试-View绘制相关","path":"2020/07/21/Android面试-View绘制相关/"},{"title":"Android面试-开源框架","path":"2020/07/24/Android面试-开源框架/"},{"title":"Android面试-基础","path":"2020/06/03/Android面试-基础/"},{"title":"Android面试-异步消息","path":"2020/06/24/Android面试-异步消息/"},{"title":"Android面试-异常及性能优化","path":"2020/07/25/Android面试-异常及性能优化/"},{"title":"Android面试-热门前沿知识","path":"2020/07/23/Android面试-热门前沿知识/"},{"title":"Android面试-项目构建","path":"2020/07/22/Android面试-项目构建/"},{"title":"Android高级面试-JNI 编程","path":"2020/07/28/Android高级面试-JNI-编程/"},{"title":"Android高级面试-Java","path":"2020/07/26/Android高级面试-Java/"},{"title":"Android高级面试-Activity","path":"2020/07/29/Android高级面试-Activity/"},{"title":"Android高级面试-Handler","path":"2020/07/30/Android高级面试-Handler/"},{"title":"Android高级面试-内存优化","path":"2020/07/31/Android高级面试-内存优化/"},{"title":"Android高级面试-插件化和热修复2","path":"2020/08/02/Android高级面试-插件化和热修复2/"},{"title":"Android高级面试-并发编程","path":"2020/07/27/Android高级面试-并发编程/"},{"title":"Android高级面试-插件化和热修复","path":"2020/08/01/Android高级面试-插件化和热修复/"},{"title":"Gradle-其他模块及自定义Plugin","path":"2018/06/23/Gradle-其他模块及自定义Plugin/"},{"title":"Gradle-Task","path":"2018/06/13/Gradle-Task/"},{"title":"Gradle--开发环境搭建","path":"2018/05/18/Gradle-开发环境搭建/"},{"title":"Gradle-project","path":"2018/06/10/Gradle-project/"},{"title":"Gradle-持续集成与打包","path":"2018/07/24/Gradle-持续集成与打包/"},{"title":"Gradle-核心语法-基础语法","path":"2018/05/19/Gradle-核心语法-基础语法/"},{"title":"Gradle-总结","path":"2018/07/25/Gradle-总结/"},{"title":"Gradle-核心语法-面向对象","path":"2018/05/22/Gradle-核心语法-面向对象/"},{"title":"Gradle--快速入门","path":"2018/05/18/Gradle-快速入门/"},{"title":"Gradle-核心语法-闭包","path":"2018/05/20/Gradle-核心语法-闭包/"},{"title":"Gradle-生命周期","path":"2018/05/26/Gradle-生命周期/"},{"title":"Gradle-高级用法-json操作","path":"2018/05/23/Gradle-高级用法-json操作/"},{"title":"Gradle-核心语法-数据结构","path":"2018/05/21/Gradle-核心语法-数据结构/"},{"title":"Gradle-高级用法-xml文件操作","path":"2018/05/24/Gradle-高级用法-xml文件操作/"},{"title":"HEXO总结","path":"2017/04/06/HEXO总结/"},{"title":"Gradle-高级用法-文件操作","path":"2018/05/25/Gradle-高级用法-文件操作/"},{"title":"Html","path":"2019/02/01/Html/"},{"title":"Java基础-IO","path":"2017/04/27/Java基础-IO/"},{"title":"Java基础-基础语法","path":"2017/04/22/Java基础-基础语法/"},{"title":"Java基础-初识","path":"2017/04/21/Java基础-初识/"},{"title":"HTTP静态服务","path":"2019/01/01/HTTP静态服务/"},{"title":"Java基础-多态","path":"2017/04/24/Java基础-多态/"},{"title":"Java基础-反射","path":"2017/04/29/Java基础-反射/"},{"title":"Java基础-包装类","path":"2017/04/24/Java基础-包装类/"},{"title":"Java基础-字符串","path":"2017/04/26/Java基础-字符串/"},{"title":"Java基础-泛型","path":"2017/04/30/Java基础-泛型/"},{"title":"Java基础-异常","path":"2017/04/24/Java基础-异常/"},{"title":"Java基础-多线程","path":"2017/04/25/Java基础-多线程/"},{"title":"Java基础-网络编程","path":"2017/04/28/Java基础-网络编程/"},{"title":"Java基础-注解","path":"2017/04/30/Java基础-注解/"},{"title":"Java基础-集合","path":"2017/04/26/Java基础-集合/"},{"title":"Java基础-继承","path":"2017/04/24/Java基础-继承/"},{"title":"Java基础-面向对象","path":"2017/04/23/Java基础-面向对象/"},{"title":"Java面试-高级知识点","path":"2020/02/02/Java面试-高级知识点/"},{"title":"Kotlin-内置类型","path":"2018/09/21/Kotlin-内置类型/"},{"title":"Java面试-面向对象","path":"2020/02/01/Java面试-面向对象/"},{"title":"Kotlin-程序结构","path":"2018/09/19/Kotlin-程序结构/"},{"title":"Kotlin-开发环境搭建","path":"2018/09/20/Kotlin-开发环境搭建/"},{"title":"Kotlin-函数进阶","path":"2018/09/24/Kotlin-函数进阶/"},{"title":"Kotlin-数据类型","path":"2018/09/18/Kotlin-数据类型/"},{"title":"Kotlin-表达式","path":"2018/09/23/Kotlin-表达式/"},{"title":"Kotlin-类型进阶","path":"2018/09/25/Kotlin-类型进阶/"},{"title":"Kotlin-类型初步","path":"2018/09/22/Kotlin-类型初步/"},{"title":"Markdown","path":"2017/04/07/Markdown/"},{"title":"Kotlin--简介","path":"2018/09/18/Kotlin-简介/"},{"title":"UML-类与类的关系","path":"2020/01/01/UML-类与类的关系/"},{"title":"UML-依赖与关联关系","path":"2020/01/02/UML-依赖与关联关系/"},{"title":"学习计划","path":"2017/04/10/学习计划/"},{"title":"书单","path":"2017/04/09/书单/"},{"title":"SSH","path":"2017/04/06/SSH/"},{"title":"VPS","path":"2017/04/08/VPS/"},{"title":"混合开发基础入门","path":"2019/01/02/混合开发基础入门/"},{"title":"热修复插件化-ClassLoader","path":"2018/04/03/热修复插件化-ClassLoader/"},{"title":"热修复插件化-class、dex文件解析","path":"2018/04/01/热修复插件化-class、dex文件解析/"},{"title":"热修复插件化-插件化Atlas","path":"2018/04/08/热修复插件化-插件化Atlas/"},{"title":"热修复插件化-插件化Small","path":"2018/04/07/热修复插件化-插件化Small/"},{"title":"热修复插件化-插件化原理","path":"2018/04/06/热修复插件化-插件化原理/"},{"title":"热修复插件化-热修复","path":"2018/04/04/热修复插件化-热修复/"},{"title":"热修复插件化-虚拟机","path":"2018/04/02/热修复插件化-虚拟机/"},{"title":"热修复插件化-版本管理","path":"2018/04/05/热修复插件化-版本管理/"},{"title":"第一行代码笔记-Android基础用法","path":"2018/03/07/第一行代码笔记-Android基础用法/"},{"title":"第一行代码笔记-Android Studio","path":"2018/03/06/第一行代码笔记-Android-Studio/"},{"title":"第一行代码笔记-Broadcast","path":"2018/03/11/第一行代码笔记-Broadcast/"},{"title":"第一行代码笔记-Android基础控件布局","path":"2018/03/08/第一行代码笔记-Android基础控件布局/"},{"title":"第一行代码笔记-Fragment","path":"2018/03/10/第一行代码笔记-Fragment/"},{"title":"第一行代码笔记-ContentProvider","path":"2018/03/13/第一行代码笔记-ContentProvider/"},{"title":"第一行代码笔记-Git","path":"2018/03/18/第一行代码笔记-Git/"},{"title":"第一行代码笔记-LBS","path":"2018/03/17/第一行代码笔记-LBS/"},{"title":"第一行代码笔记-ListView","path":"2018/03/09/第一行代码笔记-ListView/"},{"title":"第一行代码笔记-Service","path":"2018/03/16/第一行代码笔记-Service/"},{"title":"第一行代码笔记-Material Design","path":"2018/03/18/第一行代码笔记-MD/"},{"title":"第一行代码笔记-RecyclerView","path":"2018/03/09/第一行代码笔记-RecyclerView/"},{"title":"第一行代码笔记-数据存储","path":"2018/03/12/第一行代码笔记-数据存储/"},{"title":"第一行代码笔记-多媒体","path":"2018/03/14/第一行代码笔记-多媒体/"},{"title":"第一行代码笔记-网络","path":"2018/03/15/第一行代码笔记-网络/"},{"title":"第一行代码笔记-自定义view","path":"2018/03/08/第一行代码笔记-自定义view/"},{"title":"设计模式-单例","path":"2017/05/01/设计模式-单例/"},{"title":"音视频_FFMPEG常用命令","path":"2019/09/28/音视频-FFMPEG常用命令/"},{"title":"音视频_FFMPEG简介","path":"2019/09/27/音视频_FFMPEG简介/"}]`)
+  ipt.addEventListener('keyup', e => {
+    if (e.key === 'Enter') {
+      handleSearch()
+    }
+  })
+  btn.addEventListener('click', () => {
+    handleSearch()
+  })
+
+  document.querySelector('#close-layer-btn').addEventListener('click', () => {
+    layer.classList.toggle('hidden')
+  })
+
+  function handleSearch() {
+    if (ipt.value.trim() === '') {
+      return
+    }
+    let html = ''
+    const targetPosts = posts.filter(post => post.title.includes(ipt.value))
+    targetPosts.forEach(post => {
+      html += `
+        <li>
+          <div>
+            <a href="/${post.path}">${post.title.replace(new RegExp(ipt.value), `<span>${ipt.value}</span>`)}</a>
+          </div>
+          <img src="${post.cover || '/imgs/default-cover.webp' }" />
+        </li>
+      `
+    })
+    if (html.trim () === '') {
+      html += '<p class="empty">没有搜索到内容</p>'
+    }
+    layer.querySelector('ul').innerHTML = html
+    layer.classList.remove('hidden')
+  }
+</script> 
+    <section id="main" class="main">
+      <div class="main-left-wrapper">
+<div class="main-left">
+  <div class="main-left--block">
+    <div class="main-left--info">
+      <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
+      <div class="main-left--intro">
+        <p class="main-left--name">Cola.</p>
+        <div class="main-left--tags">
+          <span class="main-left--tag">中二</span>
+          <span class="main-left--tag">宅</span>
+        </div>
+      </div>
+    </div>
+  
+    <div>
+      <div class="main-left--motto">
+        <p>“花有重开日，人无再少年”</p>
+        <p>“一个简单普通的男孩”</p>
+      </div>
+      <div class="main-left--github">
+        <span class="line"></span>
+        <a href="https://github.com/Aizener"><i class="logo iconfont icon-github-fill"></i></a>
+        <span class="line"></span>
+      </div>
+      <div class="main-left--statics">
+        <a href="/categories">
+          <div>
+            <span>24</span>
+            <span>分类</span>
+          </div>
+        </a>
+        <a href="/tags">
+          <div>
+            <span>113</span>
+            <span>标签</span>
+          </div>
+        </a>
+        <a href="/archives">
+          <div>
+            <span>17 </span>
+            <span>归档</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-left--block">
+    <ul class="main-left--menu">
+      
+        <li>
+          <a href="/">
+            <span class="header-menu--span">小站首页</span>
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/log">
+            <span class="header-menu--span">个人日志</span>
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/link">
+            <span class="header-menu--span">友情链接</span>
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/about">
+            <span class="header-menu--span">关于自己</span>
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tools">
+            <span class="header-menu--span">我的工具</span>
+            <i class="header-menu--icon iconfont icon-gongju"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="main-left--block">
+    <div class="main-left--site">
+      <h5 class="main-left--title">
+        <span>站点信息</span>
+        <i class="iconfont icon-zhandian"></i>
+      </h5>
+      <p class="main-left--subtitle">
+        <span>文章数目：</span>
+        <span>99 篇</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>最近动态：</span>
+        <span>3年前</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>上线时间：</span>
+        <span>843天</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>当前版本：</span>
+        <span>v1.0.2</span>
+      </p>
+    </div>
+  </div>
+</div></div>
+      <div id="main-container" class="main-container"><link rel="stylesheet" href="/css/partial/archive.css" />
+
+
+
+    <link rel="stylesheet" href="/css/partial/index.css" />
+
+
+
+<div class="index">
+  <div class="index-left">
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-生命周期" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">Gradle-生命周期 </a>
+          <div>
+            
+              <p>
+                <a class="post-category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" rel="tag">Gradle生命周期</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-高级用法-xml文件操作" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">Gradle-高级用法-xml文件操作 </a>
+          <div>
+            
+              <p>
+                <a class="post-category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/" rel="tag">Gradle高级用法</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-核心语法-面向对象" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/22/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Gradle-核心语法-面向对象 </a>
+          <div>
+            
+              <p>
+                <a class="post-category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E8%AF%AD%E6%B3%95/" rel="tag">Gradle语法</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-核心语法-闭包" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/">Gradle-核心语法-闭包 </a>
+          <div>
+            
+              <p>
+                <a class="post-category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E8%AF%AD%E6%B3%95/" rel="tag">Gradle语法</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle--开发环境搭建" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/18/Gradle-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Gradle--开发环境搭建 </a>
+          <div>
+            
+              <p>
+                <a class="post-category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">Gradle开发环境搭建</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+  </div>
+  <div class="index-center">
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-高级用法-文件操作" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">Gradle-高级用法-文件操作 </a>
+          <div>
+            
+              <p>
+                <a class="category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/" rel="tag">Gradle高级用法</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-高级用法-json操作" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/23/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-json%E6%93%8D%E4%BD%9C/">Gradle-高级用法-json操作 </a>
+          <div>
+            
+              <p>
+                <a class="category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/" rel="tag">Gradle高级用法</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-核心语法-数据结构" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Gradle-核心语法-数据结构 </a>
+          <div>
+            
+              <p>
+                <a class="category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E8%AF%AD%E6%B3%95/" rel="tag">Gradle语法</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle-核心语法-基础语法" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Gradle-核心语法-基础语法 </a>
+          <div>
+            
+              <p>
+                <a class="category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E8%AF%AD%E6%B3%95/" rel="tag">Gradle语法</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+      <div class="index-article">
+        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Gradle--快速入门" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2018/05/18/Gradle-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Gradle--快速入门 </a>
+          <div>
+            
+              <p>
+                <a class="category-link" href="/categories/Gradle/">Gradle</a>
+              </p>
+            
+            
+              <p>
+                <a class="-link" href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="tag">Gradle快速入门</a>
+              </p>
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
+  </div>
+  <div class="index-right">
+    <div class="index-right-wrapper">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle/">Gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/UML/">UML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/JavaWeb/">JavaWeb</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">星球Android入门</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">Android基础</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">四大组件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/">布局</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%B8%83%E5%B1%80/%E6%8E%A7%E4%BB%B6/">控件</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">服务器搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">混合开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96/">热修复插件化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">第一行代码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Android%E5%9F%BA%E7%A1%80/">Android基础</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E5%88%92/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">音视频</a></li></ul>
+      <ul class="tags" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%90%E5%BC%8FIntent/" rel="tag">隐式Intent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/" rel="tag">运行时权限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/" rel="tag">设计模式单例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89view/" rel="tag">自定义view</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B/" rel="tag">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">热修复插件化之虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" rel="tag">热修复插件化之版本管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E7%83%AD%E4%BF%AE%E5%A4%8D/" rel="tag">热修复插件化之热修复</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/" rel="tag">热修复插件化之插件化原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Small/" rel="tag">热修复插件化之插件化Small</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8B%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/" rel="tag">热修复插件化之插件化Atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8Bclass%E3%80%81dex/" rel="tag">热修复插件化之class、dex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BClassLoader/" rel="tag">热修复插件化之ClassLoader</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" rel="tag">混合开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/" rel="tag">服务器搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/" rel="tag">文件存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" rel="tag">数据存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C/" rel="tag">摄像头和相册</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%83%E5%B1%80/" rel="tag">布局</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%8F%B0%E6%9C%8D%E5%8A%A1/" rel="tag">前台服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startActivityForResult/" rel="tag">startActivityForResult</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/onSaveInstanceState/" rel="tag">onSaveInstanceState</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/" rel="tag">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VideoView/" rel="tag">VideoView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/" rel="tag">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TableLayout/" rel="tag">TableLayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SharedPreferences/" rel="tag">SharedPreferences</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service/" rel="tag">Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/" rel="tag">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">SQLite数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RelativeLayout/" rel="tag">RelativeLayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecyclerView/" rel="tag">RecyclerView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProgressDialog/" rel="tag">ProgressDialog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProgressBar/" rel="tag">ProgressBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Plan/" rel="tag">Plan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PercentRelativeLayout/" rel="tag">PercentRelativeLayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PercentFrameLayout/" rel="tag">PercentFrameLayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PendingIntent/" rel="tag">PendingIntent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OkHttp/" rel="tag">OkHttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Notification/" rel="tag">Notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MediaPlayer/" rel="tag">MediaPlayer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/" rel="tag">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/" rel="tag">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LinearLayout/" rel="tag">LinearLayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Layout/" rel="tag">Layout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LBS/" rel="tag">LBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">Kotlin表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/" rel="tag">Kotlin类型进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/" rel="tag">Kotlin类型初步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E7%AE%80%E4%BB%8B/" rel="tag">Kotlin简介</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" rel="tag">Kotlin程序结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">Kotlin数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">Kotlin开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" rel="tag">Kotlin函数进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/" rel="tag">Kotlin内置类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E9%9D%A2%E8%AF%95/" rel="tag">Java面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">Java基础面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88/" rel="tag">Java基础集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">Java基础语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="tag">Java基础网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E7%BB%A7%E6%89%BF/" rel="tag">Java基础继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%A8%E8%A7%A3/" rel="tag">Java基础注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E6%B3%9B%E5%9E%8B/" rel="tag">Java基础泛型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E5%BC%82%E5%B8%B8/" rel="tag">Java基础异常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">Java基础字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">Java基础多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E5%A4%9A%E6%80%81/" rel="tag">Java基础多态</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84/" rel="tag">Java基础反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E5%8C%85%E8%A3%85%E7%B1%BB/" rel="tag">Java基础包装类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80IO/" rel="tag">Java基础IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%88%9D%E8%AF%86/" rel="tag">Java初识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/" rel="tag">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntentService/" rel="tag">IntentService</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ImageView/" rel="tag">ImageView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpURLConnection/" rel="tag">HttpURLConnection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler/" rel="tag">Handler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/" rel="tag">HEXO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/" rel="tag">Gradle高级用法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E8%AF%AD%E6%B3%95/" rel="tag">Gradle语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" rel="tag">Gradle生命周期</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/" rel="tag">Gradle持续集成与打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E6%80%BB%E7%BB%93/" rel="tag">Gradle总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="tag">Gradle快速入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">Gradle开发环境搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/" rel="tag">Gradle其他模块及自定义Plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E4%B9%8Bproject/" rel="tag">Gradle之project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle%E4%B9%8BTask/" rel="tag">Gradle之Task</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrameLayout/" rel="tag">FrameLayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment%EF%BC%8C%E9%99%90%E5%AE%9A%E7%AC%A6/" rel="tag">Fragment，限定符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/" rel="tag">Fragment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFMPEG/" rel="tag">FFMPEG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EditText/" rel="tag">EditText</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ContentProvider/" rel="tag">ContentProvider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Button/" rel="tag">Button</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BroadcastReceiver/" rel="tag">BroadcastReceiver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Broadcast/" rel="tag">Broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncTask/" rel="tag">AsyncTask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%9D%A2%E8%AF%95/" rel="tag">Android面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E5%9F%BA%E7%A1%80/" rel="tag">Android基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AlertDialog/" rel="tag">AlertDialog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activity/" rel="tag">Activity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionBar/" rel="tag">ActionBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AbsoluteLayout/" rel="tag">AbsoluteLayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/0-9/" rel="tag">0.9</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">2020年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020年07月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020年06月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">2020年02月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">2020年01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2019年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">2018年07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">2018年06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">2018年05月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">2018年04月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">2018年03月</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">21</span></li></ul>
+    </div>
   </div>
 </div>
+
+  <div class="page">
+    <span class="page-number current">1</span>
+  </div>
+
+
 <script>
-  function keyHandler(e) {
-    if (e.keyCode == 27) {
-      closeModal();
+  var allImgBoxs = document.querySelectorAll('.index-article--box');
+  var windowHeight = window.innerHeight;
+  var boxs = Array.from(allImgBoxs);
+  var timer = null;
+  boxs.forEach((box, idx) => {
+    if (!window.loadImageSet || !window.loadImageSet.includes(idx)) {
+      box.classList.add('img-loading');
+    } else {
+      const imgDom = box.querySelector('img');
+      imgDom.src = imgDom.dataset.cover;
+    }
+  });
+
+  function scrollFn() {
+    if (timer) {
+      return;
+    }
+    timer = setTimeout(() => {
+      loadImage();
+      timer = null;
+    }, 100)
+  }
+
+  setTimeout(() => {
+    loadImage();
+  }, 100);
+  if (!window.loadedImage) {
+    document.addEventListener('scroll', scrollFn);
+  }
+
+  function loadImage() {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop;
+    if (boxs.every(box => box.loadedImage)) {
+      document.removeEventListener('scroll', scrollFn);
+      window.loadedImage = 1;
+      return;
+    }
+    boxs.forEach((box, idx) => {
+      if (box.loadedImage) {
+        return;
+      }
+      if (box.getBoundingClientRect().top < windowHeight) {
+        const imgDom = box.querySelector('img');
+        imgDom.src = imgDom.dataset.cover;
+        // 图片成功加载
+        imgDom.onload = () => {
+          box.classList.remove('img-loading');
+          box.loadedImage = true;
+          if (!window.loadImageSet) {
+            window.loadImageSet = [];
+          }
+          window.loadImageSet.push(idx);
+        }
+        // 图片加载失败
+        imgDom.onerror = () => {
+          box.classList.remove('img-loading');
+          box.classList.add('img-error');
+          imgDom.src = '/imgs/404.png';
+        }
+      }
+    });
+  }
+</script> 
+</div>
+      <div class="main-right-wrapper"><div class="main-right">
+  <div class="main-right--board">
+    <div class="main-right--title">
+      <h5>公告栏</h5>
+      <i class="iconfont icon-gonggao"></i>
+    </div>
+    <div class="main-right--content">
+      Hello~大噶好。唔系可乐爱宅着，欢迎你们来到我的博客小站，希望能在这里收获到有用的东西哦！ 
+    </div>
+  </div>
+
+  <div id="aplayer" class="main-right--music"></div>
+
+  <div class="operate-items">
+    <div class="operate-item backtop">
+      <i class="iconfont icon-huidaodingbu"></i>
+      <span>回到顶部</span>
+    </div>
+    
+    <div class="operate-item turn-comment hidden">
+      <i class="iconfont icon-pinglun"></i>
+      <span>查看评论</span>
+    </div>
+    
+  </div>
+
+  <div class="main-right--site">
+    <div class="main-right--power">
+      <p>Power By <a href="https://hexo.io/zh-cn/docs/">Hexo</a>.</p>
+      <p>Theme：<a href="https://github.com/Aizener/hexo-theme-cola">Cola.</a></p>
+    </div>
+    <p class="main-right--refer"><a href="https://beian.miit.gov.cn/#/Integrated/index">蜀ICP备2022005384号-1</a> </p>
+  </div>
+</div>
+
+<script>
+  function setOperateItem () {
+    const reg = /\d{4}\/\d{2}\/\d{2}\/.+/
+    const path = location.pathname
+    const operateDom = document.querySelector('.main-right .operate-items')
+    const commentDom = document.querySelector('.turn-comment')
+    const cateloguDom = document.querySelector('.article-catelogue > .article-catelogue--wrapper');
+
+    if (commentDom) {
+      if (reg.test(path) || path.match(/\/log\/.+/)) {
+        commentDom.classList.remove('hidden')
+        const newDom = operateDom.cloneNode(true);
+        const _backtopDom = newDom.querySelector('.backtop');
+        const _commentDom = newDom.querySelector('.turn-comment');
+        _backtopDom.addEventListener('click', () => backTopEvent());
+        _commentDom.addEventListener('click', () => commentDomEvent());
+        cateloguDom.appendChild(newDom);
+      } else {
+        commentDom.classList.add('hidden')
+      }
     }
   }
 
-  function openModal() {
-    disableBodyScroll();
-    $('.search-container').addClass('show-search');
-    $('#searchInput').focus();
-    document.addEventListener('keydown', keyHandler);
+  setOperateItem()
+  const musics = JSON.parse(`[{"name":"安河桥","artist":"宋冬野","url":"http://ting6.yymp3.net:82/new25/songdongye/11.mp3","cover":"https://img2.baidu.com/it/u=1260056724,1076343118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"卡布达","artist":"暂无","url":"music/kabuda.mp3","cover":"https://img2.baidu.com/it/u=705831265,2862720033&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"}]`)
+  const ap = new APlayer({
+    container: document.querySelector('#aplayer'),
+    audio: musics,
+  })
+
+  $(document).on('pjax:complete', function() {
+    setOperateItem()
+  })
+
+  document.querySelector('.backtop').addEventListener('click', () => {
+    backTopEvent();
+  })
+  const dom = document.querySelector('.turn-comment')
+  dom && dom.addEventListener('click', () => {
+    commentDomEvent();
+  })
+
+  function backTopEvent() {
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
-  function closeModal() {
-    enableBodyScroll();
-    $('#searchInput').val('');
-    $('#searchResult').empty();
-    $('.search-container').removeClass('show-search');
-    document.removeEventListener('keydown', keyHandler);
+  function commentDomEvent() {
+    const commentDom = document.querySelector('.comments-intro')
+    if (!commentDom) return
+    const top = commentDom.offsetTop, height = commentDom.offsetHeight
+    document.documentElement.scrollTo({
+      top: top - 2 * height,
+      behavior: 'smooth'
+    })
   }
-  // 防止首页内容滚动
-  function disableBodyScroll() {
-    document.body.style.width = '100%';
-    var body = document.body;
-    window.stTemp = Math.max(body.scrollTop, document.documentElement.scrollTop);
-    body.style.overflow = 'hidden';
-    body.style.position = 'fixed';
-    body.style.top = (-window.stTemp || 0) + 'px';
-  }
-  // 恢复首页滚动
-  function enableBodyScroll() {
-    document.body.style.width = '';
-    var body = document.body;
-    body.style.overflow = 'hidden';
-    body.style.position = 'static';
-    body.style.top = '0px';
-    body.scrollTop = window.stTemp;
-    document.documentElement.scrollTop = window.stTemp;
-  }
-  // 阻止冒泡，防止点击弹窗内容触发弹窗关闭
-  searchContent.addEventListener('click', function(e) {
-    e.stopPropagation();
-  });
-  // 点击搜索打开搜索弹窗
-  btnSearch.addEventListener('click', openModal);
-  // 关闭搜索弹窗
-  searchContainer.addEventListener('click', closeModal);
-  // 注册搜索函数
-  searchFunc('search.json', 'searchInput', 'searchResult');
-</script>
+</script></div>
+    </section>
   </div>
+  <div id="progress" class="progress"></div>
+  <div id="gray" class="gray"></div>
+
+  <script>
+    function initScroll () {
+      document.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop
+        const pageHeight = doc.offsetHeight
+        const clientHeight = doc.clientHeight
+        const ratio = scrollTop / (pageHeight - clientHeight)
+        const progress = document.querySelector('#progress')
+        const avatarImg = document.querySelector('.main-left--avatar')
+        progress.style.width = (100 * ratio) + '%'
+        avatarImg.style.transform = `rotate(${360 * ratio}deg)`
+      })
+    }
+
+    const rootPath = "/"
+
+    const checkAndSetArticlePageLayout = () => {
+      const path = location.pathname.replace(rootPath, '');
+      if (
+        /^\/?\d{4}\/\d{2}\/\d{2}\/.*/.test(path) ||
+        /^log\/.+/.test(path)
+      ) {
+        $('.main-container, .main-right, .main-right-wrapper').addClass('is-article')
+      } else {
+        $('.main-container, .main-right, .main-right-wrapper').removeClass('is-article')
+      }
+    }
+
+    const gray = "none"
+    const setGrayStyle = () => {
+      if (gray === 'none') {
+        return
+      } else if (gray === 'index') {
+        location.pathname === '/' ? $('#gray').show() : $('#gray').hide()
+      } else if (gray === 'all') {
+        $('#gray').show()
+      }
+    }
+    setGrayStyle()
 
 
-</section>
-  <div class="post-archive">
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      星球Android入门(5)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/03/Android%E5%85%A5%E9%97%A8-BroadcastReceiver/">Android入门-BroadcastReceiver</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/04/Android%E5%85%A5%E9%97%A8-ContentProvider/">Android入门-ContentProvider</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/">Android入门-Service</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/">Android入门-Activity</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/05/Android%E5%85%A5%E9%97%A8-%E5%B8%83%E5%B1%80%E5%92%8C%E6%8E%A7%E4%BB%B6/">Android入门-布局和控件</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      Android基础(5)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/03/Android%E5%85%A5%E9%97%A8-BroadcastReceiver/">Android入门-BroadcastReceiver</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/04/Android%E5%85%A5%E9%97%A8-ContentProvider/">Android入门-ContentProvider</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/">Android入门-Service</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/">Android入门-Activity</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/05/Android%E5%85%A5%E9%97%A8-%E5%B8%83%E5%B1%80%E5%92%8C%E6%8E%A7%E4%BB%B6/">Android入门-布局和控件</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      面试(17)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/">Android面试-开源框架</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/">Android面试-View绘制相关</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/">Android面试-基础</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/25/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E5%B8%B8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android面试-异常及性能优化</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/">Android面试-异步消息</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/23/Android%E9%9D%A2%E8%AF%95-%E7%83%AD%E9%97%A8%E5%89%8D%E6%B2%BF%E7%9F%A5%E8%AF%86/">Android面试-热门前沿知识</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/22/Android%E9%9D%A2%E8%AF%95-%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/">Android面试-项目构建</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/29/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Activity/">Android高级面试-Activity</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/26/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Java/">Android高级面试-Java</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/">Android高级面试-Handler</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/28/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-JNI-%E7%BC%96%E7%A8%8B/">Android高级面试-JNI 编程</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/27/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">Android高级面试-并发编程</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/">Android高级面试-内存优化</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/08/02/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D2/">Android高级面试-插件化和热修复2</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/08/01/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%92%8C%E7%83%AD%E4%BF%AE%E5%A4%8D/">Android高级面试-插件化和热修复</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/">Java面试-高级知识点</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/02/01/Java%E9%9D%A2%E8%AF%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Java面试-面向对象</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      四大组件(4)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/03/Android%E5%85%A5%E9%97%A8-BroadcastReceiver/">Android入门-BroadcastReceiver</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/04/Android%E5%85%A5%E9%97%A8-ContentProvider/">Android入门-ContentProvider</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/">Android入门-Service</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/">Android入门-Activity</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      布局(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/05/Android%E5%85%A5%E9%97%A8-%E5%B8%83%E5%B1%80%E5%92%8C%E6%8E%A7%E4%BB%B6/">Android入门-布局和控件</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      控件(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/01/05/Android%E5%85%A5%E9%97%A8-%E5%B8%83%E5%B1%80%E5%92%8C%E6%8E%A7%E4%BB%B6/">Android入门-布局和控件</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      Gradle(15)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/06/10/Gradle-project/">Gradle-project</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/06/13/Gradle-Task/">Gradle-Task</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/18/Gradle-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Gradle--开发环境搭建</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/">Gradle-其他模块及自定义Plugin</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/18/Gradle-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Gradle--快速入门</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/07/24/Gradle-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%93%E5%8C%85/">Gradle-持续集成与打包</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/">Gradle-核心语法-闭包</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/07/25/Gradle-%E6%80%BB%E7%BB%93/">Gradle-总结</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Gradle-核心语法-基础语法</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/22/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Gradle-核心语法-面向对象</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Gradle-核心语法-数据结构</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">Gradle-生命周期</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/23/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-json%E6%93%8D%E4%BD%9C/">Gradle-高级用法-json操作</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">Gradle-高级用法-xml文件操作</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">Gradle-高级用法-文件操作</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      Blog(2)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/06/HEXO%E6%80%BB%E7%BB%93/">HEXO总结</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/07/Markdown/">Markdown</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      前端(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2019/02/01/Html/">Html</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      Java基础(15)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/">Java基础-IO</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/21/Java%E5%9F%BA%E7%A1%80-%E5%88%9D%E8%AF%86/">Java基础-初识</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/">Java基础-包装类</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/29/Java%E5%9F%BA%E7%A1%80-%E5%8F%8D%E5%B0%84/">Java基础-反射</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java基础-多线程</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Java基础-基础语法</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E6%80%81/">Java基础-多态</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/">Java基础-异常</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/30/Java%E5%9F%BA%E7%A1%80-%E6%B3%9B%E5%9E%8B/">Java基础-泛型</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E7%BB%A7%E6%89%BF/">Java基础-继承</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2/">Java基础-字符串</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/28/Java%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">Java基础-网络编程</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/">Java基础-集合</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/30/Java%E5%9F%BA%E7%A1%80-%E6%B3%A8%E8%A7%A3/">Java基础-注解</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/23/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Java基础-面向对象</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      服务器搭建(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2019/01/01/HTTP%E9%9D%99%E6%80%81%E6%9C%8D%E5%8A%A1/">HTTP静态服务</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      JavaWeb(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2019/02/01/Html/">Html</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      Kotlin(9)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/21/Kotlin-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">Kotlin-内置类型</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/24/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">Kotlin-函数进阶</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">Kotlin-程序结构</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Kotlin-开发环境搭建</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Kotlin-数据类型</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/18/Kotlin-%E7%AE%80%E4%BB%8B/">Kotlin--简介</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/">Kotlin-类型初步</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/23/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Kotlin-表达式</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">Kotlin-类型进阶</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      UML(2)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/">UML-类与类的关系</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/">UML-依赖与关联关系</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      环境配置(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/06/SSH/">SSH</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      计划(2)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/09/%E4%B9%A6%E5%8D%95/">书单</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/10/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      VPS(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/04/08/VPS/">VPS</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      混合开发(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">混合开发基础入门</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      热修复插件化(8)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/01/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-class%E3%80%81dex%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/">热修复插件化-class、dex文件解析</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/08/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96Atlas/">热修复插件化-插件化Atlas</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/07/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96Small/">热修复插件化-插件化Small</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/">热修复插件化-ClassLoader</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/">热修复插件化-插件化原理</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/05/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">热修复插件化-版本管理</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/">热修复插件化-热修复</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/">热修复插件化-虚拟机</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      第一行代码(16)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android-Studio/">第一行代码笔记-Android Studio</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/07/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/">第一行代码笔记-Android基础用法</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/11/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Broadcast/">第一行代码笔记-Broadcast</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6%E5%B8%83%E5%B1%80/">第一行代码笔记-Android基础控件布局</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/13/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ContentProvider/">第一行代码笔记-ContentProvider</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Git/">第一行代码笔记-Git</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/10/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Fragment/">第一行代码笔记-Fragment</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-LBS/">第一行代码笔记-LBS</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ListView/">第一行代码笔记-ListView</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/">第一行代码笔记-Material Design</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-RecyclerView/">第一行代码笔记-RecyclerView</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/16/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Service/">第一行代码笔记-Service</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/12/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">第一行代码笔记-数据存储</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/15/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C/">第一行代码笔记-网络</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/">第一行代码笔记-多媒体</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E8%87%AA%E5%AE%9A%E4%B9%89view/">第一行代码笔记-自定义view</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      读书笔记(16)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android-Studio/">第一行代码笔记-Android Studio</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/07/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/">第一行代码笔记-Android基础用法</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/11/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Broadcast/">第一行代码笔记-Broadcast</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6%E5%B8%83%E5%B1%80/">第一行代码笔记-Android基础控件布局</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/13/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ContentProvider/">第一行代码笔记-ContentProvider</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Git/">第一行代码笔记-Git</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/10/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Fragment/">第一行代码笔记-Fragment</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-LBS/">第一行代码笔记-LBS</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ListView/">第一行代码笔记-ListView</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/">第一行代码笔记-Material Design</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-RecyclerView/">第一行代码笔记-RecyclerView</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/16/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Service/">第一行代码笔记-Service</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/12/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">第一行代码笔记-数据存储</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/15/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C/">第一行代码笔记-网络</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/">第一行代码笔记-多媒体</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E8%87%AA%E5%AE%9A%E4%B9%89view/">第一行代码笔记-自定义view</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      Android基础(14)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android-Studio/">第一行代码笔记-Android Studio</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/07/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/">第一行代码笔记-Android基础用法</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/11/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Broadcast/">第一行代码笔记-Broadcast</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6%E5%B8%83%E5%B1%80/">第一行代码笔记-Android基础控件布局</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/10/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Fragment/">第一行代码笔记-Fragment</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-LBS/">第一行代码笔记-LBS</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ListView/">第一行代码笔记-ListView</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/">第一行代码笔记-Material Design</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/09/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-RecyclerView/">第一行代码笔记-RecyclerView</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/16/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Service/">第一行代码笔记-Service</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/12/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">第一行代码笔记-数据存储</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/15/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C/">第一行代码笔记-网络</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/">第一行代码笔记-多媒体</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2018/03/08/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E8%87%AA%E5%AE%9A%E4%B9%89view/">第一行代码笔记-自定义view</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      设计模式(1)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2017/05/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/">设计模式-单例</a>
-    </p>
-    
-    
-    <h2>
-      <svg t="1693394420206" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11459" width="20" height="20">
-        <path d="M942.325 252.65C953.7 263.937 960 279.338 960 295.35c0 16.013-6.388 31.412-17.675 42.7L771.437 509.025C760.15 520.4 744.75 526.7 728.737 526.7c-16.012 0-31.412-6.387-42.7-17.675L515.063 338.138c-11.375-11.288-17.675-26.688-17.675-42.7 0-16.013 6.388-31.413 17.675-42.7L685.95 81.763C697.325 70.388 712.638 64 728.65 64c16.013 0 31.413 6.388 42.7 17.675L942.325 252.65z" fill="#FA8B14" p-id="11460"></path>
-        <path d="M408.837 615.163c11.375 11.287 17.675 26.687 17.675 42.7v241.762c0 16.013-6.387 31.413-17.675 42.7C397.462 953.7 382.15 960 366.137 960H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 931.037 64 915.637 64 899.625V657.95c0-16.013 6.388-31.413 17.675-42.7 11.287-11.288 26.687-17.676 42.7-17.676H366.05a60.08 60.08 0 0 1 42.787 17.589z m440.738-17.676c33.337 0 60.375 27.038 60.375 60.375v241.763c0 16.013-6.388 31.413-17.675 42.7C880.9 953.7 865.587 960 849.575 960H607.812c-16.012 0-31.412-6.388-42.7-17.675-11.287-11.375-17.675-26.688-17.675-42.7V657.95c0-16.013 6.388-31.413 17.675-42.7 11.375-11.375 26.688-17.675 42.7-17.675l241.763-0.088zM366.137 114.05c16.013 0 31.413 6.388 42.7 17.675 11.375 11.375 17.675 26.688 17.675 42.7V416.1c0 16.012-6.387 31.412-17.675 42.7-11.375 11.375-26.687 17.675-42.7 17.675H124.463c-16.013 0-31.413-6.388-42.7-17.675C70.386 447.6 64 432.288 64 416.187V174.512c0-16.012 6.388-31.412 17.675-42.7 11.375-11.375 26.687-17.675 42.7-17.675l241.762-0.087z" fill="#2075CC" p-id="11461"></path>
-      </svg>
-      音视频(2)
-    </h2>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2019/09/27/%E9%9F%B3%E8%A7%86%E9%A2%91_FFMPEG%E7%AE%80%E4%BB%8B/">音视频_FFMPEG简介</a>
-    </p>
-    
-    <p class="post-item">
-      <a class="post-title" href="/2019/09/28/%E9%9F%B3%E8%A7%86%E9%A2%91-FFMPEG%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">音视频_FFMPEG常用命令</a>
-    </p>
-    
-    
-  </div>
-</section>
+    window.onload = function () {
+      checkAndSetArticlePageLayout()
+      setTimeout(() => {
+        $('#load').slideUp()
+        $('#container').slideToggle()
+        setTimeout(() => {
+          initScroll();
+        }, 500)
+      }, 500)
+    }
+    
+    let status = 0
+    // 对所有链接跳转事件绑定pjax容器container
+    $(document).pjax('a[target!=_blank]', '#main-container', {
+      container: '#main-container',
+      fragment: '#main-container',
+      timeout: 8000
+    })
+
+    $(document).on('pjax:start', function() {
+    })
+    $(document).on('pjax:complete', function() {
+      status = 0
+      $('.main-container').addClass('to-up').on('animationend', function() {
+        $(this).removeClass('to-up')
+      })
+      setGrayStyle()
+      checkAndSetArticlePageLayout()
+    })
+    $(document).on('pjax:popstate', function() {
+      status = -1
+      checkAndSetArticlePageLayout()
+    });
+  </script>
 </body>
-
 </html>
