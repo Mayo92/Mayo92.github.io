@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC"><span class="toc-text">MVC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVP"><span class="toc-text">MVP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-text">定义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVVM"><span class="toc-text">MVVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%8C%96"><span class="toc-text">插件化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A5%E7%94%B1"><span class="toc-text">来由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">主要解决的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-text">热更新</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A1%86%E6%9E%B6"><span class="toc-text">主流热更新框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB"><span class="toc-text">进程保活</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">进程优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="toc-text">回收策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88"><span class="toc-text">方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lint%E6%A3%80%E6%9F%A5"><span class="toc-text">Lint检查</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AElint"><span class="toc-text">如何配置lint</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89lint"><span class="toc-text">自定义lint</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#koltin"><span class="toc-text">koltin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88-1"><span class="toc-text">是什么</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android面试-热门前沿知识
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>M：业务逻辑处理</li>
+<li>V：处理数据显示（XML）</li>
+<li>C：Activity处理用户交互</li>
+</ul>
+<span id="more"></span>
+
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>耦合性低</li>
+<li>可扩展性好</li>
+<li>模块职责划分明确</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>利用MVC设计模式，使项目有了很好的可扩展性和维护性</li>
+<li>contronller是一个中间桥梁作用</li>
+</ul>
+<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>M：业务逻辑和实体模型</li>
+<li>V：对应于Activity，负责View的绘制以及与用户交互</li>
+<li>P：负责View与Model之间的交互</li>
+</ul>
+<p><img src="/2020/07/23/Android%E9%9D%A2%E8%AF%95-%E7%83%AD%E9%97%A8%E5%89%8D%E6%B2%BF%E7%9F%A5%E8%AF%86/1.png"></p>
+<p>M与V不直接交互</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p><img src="/2020/07/23/Android%E9%9D%A2%E8%AF%95-%E7%83%AD%E9%97%A8%E5%89%8D%E6%B2%BF%E7%9F%A5%E8%AF%86/2.png"></p>
+<ul>
+<li>View：Activity和XML</li>
+<li>Model：实体模型</li>
+<li>ViewModel：View与Model交互</li>
+</ul>
+<h3 id="插件化"><a href="#插件化" class="headerlink" title="插件化"></a>插件化</h3><h4 id="来由"><a href="#来由" class="headerlink" title="来由"></a>来由</h4><p>65535&#x2F;64K，多人开发</p>
+<h4 id="主要解决的问题"><a href="#主要解决的问题" class="headerlink" title="主要解决的问题"></a>主要解决的问题</h4><ul>
+<li>动态加载APK</li>
+<li>资源加载：AssetManager加反射</li>
+<li>代码加载：反射获取生命周期方法</li>
+</ul>
+<p>DexClassLoader加载apk中的字节码，PathClassloader加载文件目录下的apk</p>
+<h3 id="热更新"><a href="#热更新" class="headerlink" title="热更新"></a>热更新</h3><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><ul>
+<li>线上检测到严重的crash</li>
+<li>拉出bugfix分支并且在分支上修改问题</li>
+<li>jenkins构建和生成补丁</li>
+<li>APP通过推送或主动拉取补丁文件</li>
+<li>将bugfix代码合并到master上</li>
+</ul>
+<h4 id="主流热更新框架"><a href="#主流热更新框架" class="headerlink" title="主流热更新框架"></a>主流热更新框架</h4><p>1.Dexposed：hook，可以hook自定义函数和framework函数，通过动态加载让APP加载通过编译的java代码</p>
+<p>2.AndFix</p>
+<p>3.Nuwa：基于classloader加载dex文件，dex分包，多个dex排成有序的数组，是顺序遍历，每个dex文件查找对应的类，找到返回没找到在下一个寻找，，如果存在相同的类，排在前面的将被优先选择</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>1.Android类加载机制：</p>
+<ul>
+<li>PathClassloader：加载系统的类</li>
+<li>DexClassloader：加载dex</li>
+</ul>
+<p>2.热修复机制</p>
+<ul>
+<li>dexElements</li>
+<li>Classloader遍历这个数组</li>
+</ul>
+<h3 id="进程保活"><a href="#进程保活" class="headerlink" title="进程保活"></a>进程保活</h3><h4 id="进程优先级"><a href="#进程优先级" class="headerlink" title="进程优先级"></a>进程优先级</h4><ul>
+<li>前台进程</li>
+<li>可见进程</li>
+<li>服务进程</li>
+<li>后台进程（保存在列表中，确保用户最近查看的最后被终止，LRU）</li>
+<li>空进程（缓存作用）</li>
+</ul>
+<h4 id="回收策略"><a href="#回收策略" class="headerlink" title="回收策略"></a>回收策略</h4><ul>
+<li>Low memory kill（out of menory改进而来，但是它是定时检查而不是系统不足时候才调用）：通过一些比较复杂的评分机制，对进程进行打分，将分高的进程判定为bad进程，杀死并释放内存</li>
+<li>OOM_ODJ：判别进程的优先级</li>
+</ul>
+<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><ul>
+<li>利用系统广播拉活（会被系统应用限制，也不是立刻拉活）</li>
+<li>利用系统Service拉活：利用onStartComand返回值start_sticky，Service因为内存不足挂掉后当内存足够时，系统会尝试创建这个Service。Service被kill三次以上就不会重新创建</li>
+<li>Native进程拉活：5.0以后失效，fork一个进程监听主进程，主进程挂了拉起。监听方法，1.循环，2.获取主进程的锁，一旦获取了说明主进程挂了。</li>
+<li>利用JobScheduler机制拉活</li>
+<li>利用账号同步机制拉活</li>
+</ul>
+<h3 id="Lint检查"><a href="#Lint检查" class="headerlink" title="Lint检查"></a>Lint检查</h3><p><a href="https://blog.csdn.net/u011240877/article/details/54141714">blog</a></p>
+<h4 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h4><p>一个静态代码分析工具，能够对你的Android项目中潜在的bug、可优化的代码、安全性、性能、可用性、可访问性、国际化等进行检查</p>
+<h4 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h4><p><img src="/2020/07/23/Android%E9%9D%A2%E8%AF%95-%E7%83%AD%E9%97%A8%E5%89%8D%E6%B2%BF%E7%9F%A5%E8%AF%86/3.png"></p>
+<p>有一个lint tool工具，会把我们的Android代码和lint.xml打包成一个文件之后，输出lint output，并且展示出哪里的代码有问题</p>
+<h4 id="如何配置lint"><a href="#如何配置lint" class="headerlink" title="如何配置lint"></a>如何配置lint</h4><ul>
+<li>配置lint.xml</li>
+<li>java代码和xml布局中使用（java注解@SuppressLint(“忽略的警告名称”)，）</li>
+</ul>
+<h4 id="自定义lint"><a href="#自定义lint" class="headerlink" title="自定义lint"></a>自定义lint</h4><p>业务需求不同</p>
+<h3 id="koltin"><a href="#koltin" class="headerlink" title="koltin"></a>koltin</h3><h4 id="是什么-1"><a href="#是什么-1" class="headerlink" title="是什么"></a>是什么</h4><ul>
+<li>对Java的扩展</li>
+<li>基于JVM的编程语言</li>
+<li>支持函数式编程</li>
+<li>能与java互调</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

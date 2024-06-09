@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">1.文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%96%87%E6%9C%AC%E7%9A%84%E8%AF%BB%E5%86%99"><span class="toc-text">1.1 文本的读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-text">读取文件内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D%EF%BC%88%E8%AF%BB%E5%86%99%EF%BC%89"><span class="toc-text">拷贝（读写）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AF%BB%E5%86%99"><span class="toc-text">1.2 对象的读写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%B8%8A%E8%8A%82jsonToString%E7%BB%93%E6%9E%9C%E5%86%99%E5%88%B0%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="toc-text">1.3 上节jsonToString结果写到文件中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93"><span class="toc-text">阶段总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#groovy%E4%B8%8Ejava%E5%AF%B9%E6%AF%94"><span class="toc-text">groovy与java对比</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Gradle-高级用法-文件操作
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="1-文件操作"><a href="#1-文件操作" class="headerlink" title="1.文件操作"></a>1.文件操作</h2><p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/1.png"></p>
+<ol>
+<li>所有java对文件处理的类，groovy都可以使用</li>
+<li>groovy扩展了许多更加快捷和强大的方法</li>
+</ol>
+<span id="more"></span>
+
+<h3 id="1-1-文本的读写"><a href="#1-1-文本的读写" class="headerlink" title="1.1 文本的读写"></a>1.1 文本的读写</h3><pre><code>def file = new File(&#39;../../GroovySpecification.iml&#39;)
+</code></pre>
+<h4 id="读取文件内容"><a href="#读取文件内容" class="headerlink" title="读取文件内容"></a>读取文件内容</h4><pre><code>//eachLine不常用
+file.eachLine &#123;
+    line -&gt; println line
+&#125;
+</code></pre>
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/2.png"></p>
+<pre><code>def text = file.getText()
+println text
+</code></pre>
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/3.png"></p>
+<pre><code>//返回列表
+def result = file.readLines()
+println result.toListString()
+</code></pre>
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/4.png"></p>
+<pre><code>//读取部分内容
+def reader = file.withReader &#123;
+    reader -&gt;
+        char[] buffer = new char[100]
+        reader.read(buffer)
+        return buffer
+&#125;
+println reader
+</code></pre>
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/5.png"></p>
+<h4 id="拷贝（读写）"><a href="#拷贝（读写）" class="headerlink" title="拷贝（读写）"></a>拷贝（读写）</h4><pre><code>//groovy提供的方法为我们关闭了流
+def copy(String sourcePath,String destinationPath)&#123;
+    try&#123;
+        def desFile = new File(destinationPath)
+        if(!desFile.exists()) &#123;
+            desFile.createNewFile()
+        &#125;
+        def sourceFile = new File(sourcePath)
+        if(!sourceFile.exists()) &#123;
+            return false
+        &#125;
+        sourceFile.withReader &#123;
+            reader -&gt;
+                def lines = reader.readLines()
+                desFile.withWriter &#123;
+                    writer -&gt;
+                        lines.each &#123;
+                            writer.append(it+&#39;\r\n&#39;)
+                        &#125;
+                &#125;
+        &#125;
+        return true
+    &#125;catch(Exception e)&#123;
+        e.printStackTrace()
+    &#125;
+&#125;
+
+def result = copy(&#39;../../GroovySpecification.iml&#39;,&#39;../../GroovySpecification2.iml&#39;)
+println result
+</code></pre>
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/6.png"></p>
+<h3 id="1-2-对象的读写"><a href="#1-2-对象的读写" class="headerlink" title="1.2 对象的读写"></a>1.2 对象的读写</h3><pre><code>def saveObject(Object obj,String path)&#123;
+    try&#123;
+        def file = new File(path)
+        if(!file.exists()) &#123;
+            file.createNewFile()
+        &#125;
+        file.withObjectOutputStream &#123;
+            out -&gt;
+                out.writeObject(obj)
+        &#125;
+        return true
+    &#125;catch(Exception e)&#123;
+        e.printStackTrace()
+    &#125;
+&#125;
+
+def readObj(String path)&#123;
+    def obj = null
+    try&#123;
+        def file = new File(path)
+        if(file == null || !file.exists()) &#123;
+            return null
+        &#125;
+        file.withObjectInputStream &#123;
+            input -&gt;
+                obj = input.readObject()
+        &#125;
+    &#125;catch(Exception e)&#123;
+        e.printStackTrace()
+    &#125;
+    return obj
+&#125;
+
+def person = new Person(name: &#39;krido&#39;,age: 18)
+saveObject(person,&#39;../../person.bin&#39;)
+def obj = (Person)readObj(&#39;../../person.bin&#39;)
+println(&quot;name is $&#123;obj.name&#125; age is $&#123;obj.age&#125;&quot;)
+</code></pre>
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/7.png"></p>
+<h3 id="1-3-上节jsonToString结果写到文件中"><a href="#1-3-上节jsonToString结果写到文件中" class="headerlink" title="1.3 上节jsonToString结果写到文件中"></a>1.3 上节jsonToString结果写到文件中</h3><pre><code>def toFile(StringWriter sw,String path)&#123;
+    try&#123;
+        def file = new File(path)
+        if(!file.exists()) &#123;
+            file.createNewFile()
+        &#125;
+        file.withWriter &#123;
+            write -&gt;
+                sw.each &#123;
+                    line -&gt;
+                        write.append(line.toString() + &#39;\r\n&#39;)
+                &#125;
+        &#125;
+    &#125;catch(Exception e)&#123;
+        e.printStackTrace()
+    &#125;
+&#125;
+toFile(sw,&#39;../../xmltest.iml&#39;)
+</code></pre>
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/8.png"></p>
+<h2 id="阶段总结"><a href="#阶段总结" class="headerlink" title="阶段总结"></a>阶段总结</h2><h3 id="groovy与java对比"><a href="#groovy与java对比" class="headerlink" title="groovy与java对比"></a>groovy与java对比</h3><ul>
+<li>写法上：没有java那么多限制（可以不加分号，可以不写return等）</li>
+<li>功能上：对java已有的功能进行了极大的扩展</li>
+<li>作用上：既可以编写应用，也可以编写脚本</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

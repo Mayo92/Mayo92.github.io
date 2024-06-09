@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8"><span class="toc-text">异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%82%E5%B8%B8"><span class="toc-text">什么是异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="toc-text">程序中的异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">异常的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Throwable%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">Throwable中的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error"><span class="toc-text">Error</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exception"><span class="toc-text">Exception</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unchecked-exception%EF%BC%88%E7%BC%96%E8%AF%91%E6%97%B6%E4%B8%8D%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%82%E5%B8%B8-%EF%BC%89"><span class="toc-text">unchecked exception（编译时不检测异常(运行时异常)）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#check-exception%EF%BC%88%E7%BC%96%E8%AF%91%E6%97%B6%E8%A2%AB%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8%EF%BC%89"><span class="toc-text">check exception（编译时被检测异常）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%9B%E5%87%BA%E5%BC%82%E5%B8%B8"><span class="toc-text">抛出异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8D%95%E8%8E%B7%E5%BC%82%E5%B8%B8"><span class="toc-text">捕获异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86"><span class="toc-text">处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch"><span class="toc-text">try-catch</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E9%87%8Dcatch%E5%9D%97"><span class="toc-text">多重catch块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch-finally"><span class="toc-text">try-catch-finally</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch-finally%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-text">try-catch-finally经验总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throw-throws"><span class="toc-text">throw &amp; throws</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throws"><span class="toc-text">throws</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#throws%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99"><span class="toc-text">throws的使用规则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throw"><span class="toc-text">throw</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#throws%E5%92%8Cthrow%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">throws和throw的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86-1"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%9A%84%E5%8E%9F%E5%88%99"><span class="toc-text">异常处理的原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">异常的注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8"><span class="toc-text">自定义异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E9%93%BE"><span class="toc-text">异常链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%9E%8B"><span class="toc-text">常见的异常类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-text">Java 常见异常类型及原因分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#NullPointerException-%E5%BC%82%E5%B8%B8"><span class="toc-text">NullPointerException 异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ClassCastException-%E5%BC%82%E5%B8%B8"><span class="toc-text">ClassCastException 异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ArrayIndexOutOfBoundsException%E5%BC%82%E5%B8%B8"><span class="toc-text">ArrayIndexOutOfBoundsException异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UnsupportedClassVersionError"><span class="toc-text">UnsupportedClassVersionError</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NumberFormatException%E5%BC%82%E5%B8%B8"><span class="toc-text">NumberFormatException异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E6%A0%88%E6%BA%A2%E5%87%BA%E5%92%8C%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="toc-text">堆栈溢出和内存溢出</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java基础-异常
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a>什么是异常</h3><ul>
+<li>非正常的情况</li>
+<li>本质上是程序上的错误</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="程序中的异常"><a href="#程序中的异常" class="headerlink" title="程序中的异常"></a>程序中的异常</h3><ul>
+<li>错误在我们编写程序的过程中会发生，包括编译期间和运行期间的错误</li>
+<li>编译期间出现的错误有编译器帮我们一起修正，运行期间的错误便不是编译器力所能及了，并且运行期间的错误往往是难以预料的</li>
+<li>在程序运行过程中，意外发生的情况，背离我们程序本身的意图的表现，都可以理解为异常</li>
+<li>当程序在运行期间出现了异常，如果置之不理，程序可能会不正常运行、强制中断运行、造成用户数据丢失、资源无法正常释放、直接导致系统崩溃</li>
+</ul>
+<h3 id="异常的分类"><a href="#异常的分类" class="headerlink" title="异常的分类"></a>异常的分类</h3><p>通过Throwable及其子类描述各种不同的异常类型</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/1.png"></p>
+<p>Throwable有两个重要的子类：Exception和Error</p>
+<h4 id="Throwable中的方法"><a href="#Throwable中的方法" class="headerlink" title="Throwable中的方法"></a>Throwable中的方法</h4><ol>
+<li>getMessage():获取异常信息，返回字符串。</li>
+<li>toString():获取异常类名和异常信息，返回字符串。</li>
+<li>printStackTrace():获取异常类名和异常信息，以及异常出现在程序中的位置，返回值void。</li>
+<li>printStackTrace(PrintStream s):通常用该方法将异常内容保存在日志文件中，以便查阅。</li>
+</ol>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><ul>
+<li>程序无法处理的错误，表示运行应用程序中较严重的问题，大多数错误与代码编写者执行的操作无关，而表示代码运行时JVM出现的问题</li>
+<li>这些错误是不可查的，因为他们在应用程序的控制和处理能力之外，而且大多数是程序运行时不允许出现的状况</li>
+<li>对于设计合理的应用程序来说，即使确实发生了错误，本质上也不应该试图去处理它所引起的异常状况</li>
+<li>因此我们编写程序时不需要关心这类异常</li>
+</ul>
+<h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><ul>
+<li>程序本身可以处理的异常，异常处理通常指针对这种类型异常的处理</li>
+<li>Exception类包括check exception和unchecked exception</li>
+</ul>
+<h4 id="unchecked-exception（编译时不检测异常-运行时异常-）"><a href="#unchecked-exception（编译时不检测异常-运行时异常-）" class="headerlink" title="unchecked exception（编译时不检测异常(运行时异常)）"></a>unchecked exception（编译时不检测异常(运行时异常)）</h4><ul>
+<li>编译器不要求强制处理的异常</li>
+<li>包含RuntimeException类及其子类异常</li>
+<li>java编译器不会检查这些异常，在程序中可以选择捕获处理，也可以不处理，照样正常编译通过</li>
+</ul>
+<h4 id="check-exception（编译时被检测异常）"><a href="#check-exception（编译时被检测异常）" class="headerlink" title="check exception（编译时被检测异常）"></a>check exception（编译时被检测异常）</h4><ul>
+<li>编译器要求必须处理的异常</li>
+<li>是RuntimeException类及其子类以外，其他的Exception类的子类</li>
+<li>Java编译器会检查这些异常，当程序中可能出现这类异常时，要求必须进行异常处理，否则编译不会通过</li>
+</ul>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>抛出异常、捕获异常</p>
+<h4 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h4><ul>
+<li>当一个方法出现错误引发异常时，方法创建异常对象并交付给运行时系统</li>
+<li>异常对象中包含异常类型和异常出现时的程序状态等异常信息</li>
+<li>运行时系统负责寻找处置异常的代码并执行</li>
+</ul>
+<h4 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h4><ul>
+<li>在方法抛出异常之后，运行时系统将转为寻找合适的异常处理器</li>
+<li>运行时系统从发生异常的方法开始，依次回查调用栈中的方法，当异常处理器所能处理的异常类型与方法抛出的异常类型相符时，即为合适的异常处理器</li>
+<li>当运行时系统遍历调用栈而未找到合适的异常处理器，则运行时系统终止，同时，意味着java程序的终止</li>
+<li>对于运行时异常、错误或可查异常，java技术所要求的异常处理方式有所不同</li>
+<li>总体来说，java规定：对于可查异常必须捕捉或者声明抛出。允许忽略不可查的RuntimeException和Error</li>
+<li>简单的说，异常总是先被抛出，后被捕捉的</li>
+</ul>
+<h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><p>通过5个关键字来实现：try、catch、finally、throw、throws</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/2.png"></p>
+<h3 id="try-catch"><a href="#try-catch" class="headerlink" title="try-catch"></a>try-catch</h3><p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/3.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/4.png"></p>
+<h4 id="多重catch块"><a href="#多重catch块" class="headerlink" title="多重catch块"></a>多重catch块</h4><ul>
+<li>一旦某个catch捕获到匹配的异常类型，将进入异常处理代码。一经处理结束，就意味着整个try-catch语句结束，其他catch子句不再有匹配和捕获异常类型的机会</li>
+<li>对于有多个catch子句的异常程序而言，应尽量将捕获底层异常类的catch子句放在前面，同时尽量将捕获相对高层的异常类的catch子句放在后面。否则，捕获底层异常类的子句将可能会被屏蔽</li>
+<li>发生异常时按顺序逐个匹配</li>
+<li>只执行第一个与异常类型匹配的catch语句</li>
+</ul>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/5.png"></p>
+<h3 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try-catch-finally"></a>try-catch-finally</h3><ul>
+<li>try后面可以接零个或多个catch块</li>
+<li>如果没有catch，则必须跟一个finally块</li>
+</ul>
+<p>语法组合：try-catch、try-finally、try-catch-finally、try-catch-catch-finally</p>
+<ul>
+<li>当没有资源需要释放时，可以不用定义finally</li>
+<li>try finally:异常无法直接catch处理，但是资源必须关闭</li>
+</ul>
+<p>finally：是否发生异常都执行，不执行的唯一情况如下</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/6.png"></p>
+<p>return：</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/7.png"></p>
+<p>处理过程：</p>
+<ul>
+<li>try中检测到异常会将异常对象传递给catch，catch捕获到异常进行处理。</li>
+<li>finally里通常用来关闭资源。比如:数据库资源，IO资源等。</li>
+<li>需要注意:try是一个独立的代码块，在其中定义的变量只在该变量块中有效。</li>
+<li>如果在try以外继续使用，需要在try外建立引用，在try中对其进行初始化。IO，Socket就会遇到。</li>
+</ul>
+<h3 id="try-catch-finally经验总结"><a href="#try-catch-finally经验总结" class="headerlink" title="try-catch-finally经验总结"></a>try-catch-finally经验总结</h3><ul>
+<li>处理运行时异常时，采用逻辑去合理规避同时辅助try-catch处理</li>
+<li>在多重catch块后面，可以加一个catch（Exception）来处理可能会被遗漏的异常</li>
+<li>对于不确定的代码，也可以加上try-catch，处理潜在的异常</li>
+<li>尽量去处理异常，切忌只是简单的调用printStackTrace()去打印输出</li>
+<li>具体如何处理异常，要根据不同的业务需求和异常类型去决定</li>
+<li>尽量添加finally语句块去释放占用的资源</li>
+</ul>
+<h3 id="throw-throws"><a href="#throw-throws" class="headerlink" title="throw &amp; throws"></a>throw &amp; throws</h3><p>可以通过throws声明将要抛出何种类型的异常，通过throw将产生的异常抛出。</p>
+<h3 id="throws"><a href="#throws" class="headerlink" title="throws"></a>throws</h3><ul>
+<li>如果一个方法可能会出现异常，但没有能力处理这种异常，可以在方法声明处用throws子句来声明抛出异常。</li>
+<li>throws语句用在方法定义时声明该方法要抛出的异常类型。</li>
+<li>当方法抛出异常列表中的异常时，方法将不对这些类型及其子类类型的异常作处理，而抛向调用该方法的方法，由他去处理。</li>
+</ul>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/9.png"></p>
+<h4 id="throws的使用规则"><a href="#throws的使用规则" class="headerlink" title="throws的使用规则"></a>throws的使用规则</h4><ol>
+<li>如果是不可查异常（unchecked exception），即Error、RuntimeException或它们的子类，那么可以不使用throws关键字来声明要抛出的异常，编译仍能顺利通过，但在运行时会被系统抛出。</li>
+<li>如果一个方法中可能出现可查异常，要么用try-catch语句捕获，要么用throws子句声明将它抛出，否则会导致编译错误</li>
+<li>当抛出了异常，则该方法的调用者必须处理或者重新抛出该异常。</li>
+<li>当子类重写父类抛出异常的方法时，声明的异常必须是父类方法所声明异常的同类或子类。</li>
+</ol>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/11.png"></p>
+<h3 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h3><ul>
+<li>用来抛出一个异常，如throw new IOException();</li>
+<li>throw 抛出的只能够是可抛出类Throwable 或者其子类的实例对象。</li>
+</ul>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/10.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/12.png"></p>
+<h4 id="throws和throw的区别"><a href="#throws和throw的区别" class="headerlink" title="throws和throw的区别"></a>throws和throw的区别</h4><ol>
+<li>throws用于标识函数暴露出的异常类，并且可以抛出多个，用逗号分隔。throw用于抛出异常对象。</li>
+<li>thorws用在函数上，后面跟异常类名。throw用在函数内，后面跟异常对象。</li>
+</ol>
+<h3 id="异常处理-1"><a href="#异常处理-1" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="异常处理的原则"><a href="#异常处理的原则" class="headerlink" title="异常处理的原则"></a>异常处理的原则</h4><ol>
+<li>函数内容如果抛出需要检测的异常，那么函数上必须要声明。否则，必须在函数内用try&#x2F;catch捕捉，否则编译失败。</li>
+<li>如果调用到了声明异常的函数，要么try&#x2F;catch，要么throws，否则编译失败。</li>
+<li>什么时候catch，什么时候throws呢?功能内容可以解决，用catch。解决不了，用throws告诉调用者，由调用者解决。</li>
+<li>一个功能如果抛出了多个异常，那么调用时，必须有对应多个catch进行针对性处理。内部有几个需要检测的异常，就抛几个异常，抛出几个，就catch几个。</li>
+</ol>
+<h4 id="异常的注意事项"><a href="#异常的注意事项" class="headerlink" title="异常的注意事项"></a>异常的注意事项</h4><ol>
+<li>RuntimeException以及其子类如果在函数中被throw抛出，可以不用在函数上声明</li>
+<li>子类在覆盖父类方法时，父类的方法如果抛出了异常，那么子类的方法只能抛出父类的异常或者该异常的子类</li>
+<li>如果父类抛出多个异常，那么子类只能抛出父类异常的子集</li>
+</ol>
+<p>子类覆盖父类只能抛出父类的异常或者子类的子集。如果父类的方法没有抛出异常，那么子类覆盖时绝对不能抛，就只能try。</p>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><ul>
+<li>使用Java内置的异常类可以描述在编程时出现的大部分异常情况</li>
+<li>也可以通过自定义异常描述特定业务产生的异常类型</li>
+<li>所谓自定义异常，就是定义一个类，去继承Throwable类或者它的子类</li>
+</ul>
+<p>自定义异常时，要么继承Exception，要么继承RuntimeException</p>
+<h3 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h3><ul>
+<li>有时候我们会捕获一个异常后再抛出另一个异常</li>
+<li>顾名思义就是：将异常发生的原因一个传一个串起来，即把底层的异常信息传给上层，这样逐层抛出</li>
+</ul>
+<h3 id="常见的异常类型"><a href="#常见的异常类型" class="headerlink" title="常见的异常类型"></a>常见的异常类型</h3><p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/8.png"></p>
+<h3 id="Java-常见异常类型及原因分析"><a href="#Java-常见异常类型及原因分析" class="headerlink" title="Java 常见异常类型及原因分析"></a>Java 常见异常类型及原因分析</h3><h4 id="NullPointerException-异常"><a href="#NullPointerException-异常" class="headerlink" title="NullPointerException 异常"></a>NullPointerException 异常</h4><p>在 C++中，声明的指针需要指向一个实例(通过 new 方法构造)，这个指针可以理解为地址。在 Java 中，虽然没有指针，但是有引用(通常称为对象引用，一般直接说对象)，引用也是要指向一个实例对象(通过 new 方法构造)的，从这种意义上说，Java 中的引用与C++中的指针没有本质的区别，不同的是，处于安全的目的，在 Java 中不能对引用进行操作，而在 C++中可以直接进行指针的运算，例如 book++等。</p>
+<p>所以这里的 NullPointerException 虽然不是真正的空指针异常，但本质上差不多，是因为引用没有指向具体的实例，所以当访问这个引用的方法的时候就会产生这种异常。</p>
+<p>那这种异常通常是如何产生的呢?比较多见的是下面的两种情况:</p>
+<p>1.把调用某个方法的返回值直接赋值给某个引用，然后调用这个引用的方法。在这种情况下，如果返回的值是 null，必然会产生 NullPointerException 异常。</p>
+<p>2.在方法体中调用参数的方法。这种情况下，如果调用方法的时候传递进来的值是 null，也要产生NullPointerException 异常。要解决这种异常，只需要检查异常出现在第几行(通常在集成开发环境中会提示用户错误发生在第几行)，然后查看调用了哪个对象的方法，然后检查这个对象为什么没有赋值成功即可。</p>
+<p>要避免程序产生这种异常，比较好的解决方法是在调用某个对象的方法时候判断这个对象是否可能为空，如果可能，则增加判断的语句</p>
+<h4 id="ClassCastException-异常"><a href="#ClassCastException-异常" class="headerlink" title="ClassCastException 异常"></a>ClassCastException 异常</h4><p>从字面上看，是类型转换错误，通常是进行强制类型转换时候出的错误。</p>
+<p>遇到这样的异常的时候如何解决呢?如果你知道要访问的的对象的具体类型，直接转换成该类型即可。如果不能确定类型可以通过下面的两种方式进行处理(假设对象为 o):</p>
+<p>1.通过o.getClass().getName()得到具体的类型，可以通过输出语句输出这个类型，然后根据类型进行进行具体的处理。</p>
+<p>2.通过 if(o instanceof 类型) 的语句来判断 o 的类型是什么。</p>
+<h4 id="ArrayIndexOutOfBoundsException异常"><a href="#ArrayIndexOutOfBoundsException异常" class="headerlink" title="ArrayIndexOutOfBoundsException异常"></a>ArrayIndexOutOfBoundsException异常</h4><p>这是一个非常常见的异常，从名字上看是数组下标越界错误，解决方法就是查看为什么下标越界。</p>
+<h4 id="UnsupportedClassVersionError"><a href="#UnsupportedClassVersionError" class="headerlink" title="UnsupportedClassVersionError"></a>UnsupportedClassVersionError</h4><p>编译Java和运行Java所使用的Java的版本不一致。例如，编译的时候使用的Java版本是6，运行时候使用的Java版本是5。</p>
+<h4 id="NumberFormatException异常"><a href="#NumberFormatException异常" class="headerlink" title="NumberFormatException异常"></a>NumberFormatException异常</h4><p>数字转换异常，在把一个表示数字的字符串转换成数字类型的时候可能会报这个异常，原因是作为参数的字符串不是由数字组成的。</p>
+<h4 id="堆栈溢出和内存溢出"><a href="#堆栈溢出和内存溢出" class="headerlink" title="堆栈溢出和内存溢出"></a>堆栈溢出和内存溢出</h4><p>在递归调用的时候可能会产生堆栈溢出的情况，因为在递归调用的时候需要把调用的状态保存起来，如果递归的深度达到一定程度，将产生堆栈溢出的异常。</p>
+<p>如果虚拟机的内存比较小，而程序对内存的要求比较高，则可能产生内存溢出错误。</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8DOOM%E7%9A%84%E4%BA%A7%E7%94%9F%EF%BC%9F"><span class="toc-text">如何避免OOM的产生？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90"><span class="toc-text">题目剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OOM%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-text">OOM的产生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%90%88%E9%80%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">使用合适的数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8%E6%9E%9A%E4%B8%BE"><span class="toc-text">避免使用枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bitmap"><span class="toc-text">Bitmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%A8%E6%85%8E%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">谨慎的使用多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%A8%E6%85%8E%E7%9A%84%E4%BD%BF%E7%94%A8Large-Heap"><span class="toc-text">谨慎的使用Large Heap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8NDK"><span class="toc-text">使用NDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%9A%845R%E6%B3%95%E5%88%99"><span class="toc-text">内存优化的5R法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E7%AD%94"><span class="toc-text">问答</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AF%B9%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%BC%93%E5%AD%98%EF%BC%9F"><span class="toc-text">如何对图片进行缓存？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-1"><span class="toc-text">题目剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-text">图片加载过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95"><span class="toc-text">缓存算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LRU%EF%BC%88Least-Recently-Used%EF%BC%89"><span class="toc-text">LRU（Least Recently Used）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LFU%EF%BC%88Least-Frequently-Used%EF%BC%89"><span class="toc-text">LFU（Least Frequently Used）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LRU%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">LRU的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glide%E7%9A%84LRU"><span class="toc-text">Glide的LRU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OkHttp"><span class="toc-text">OkHttp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E9%9D%A2true%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">上面true的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%9B%BE%E7%89%87%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%9F"><span class="toc-text">如何计算图片占用内存的大小？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%89%96%E6%9E%90-2"><span class="toc-text">题目剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E8%8E%B7%E5%8F%96Bitmap%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">运行时获取Bitmap大小的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E6%9C%89%E5%93%AA%E4%BA%9B%E6%9D%A5%E6%BA%90"><span class="toc-text">图片有哪些来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Assets%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87"><span class="toc-text">Assets中的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Drawable%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87"><span class="toc-text">Drawable中的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Drawable%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B"><span class="toc-text">Drawable中的图片加载流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%86%85%E5%AD%98%E4%BD%93%E7%A7%AF%E4%BC%98%E5%8C%96"><span class="toc-text">图片内存体积优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%A8%A1%E5%BC%8F%EF%BC%88Indexed-Color%EF%BC%89"><span class="toc-text">索引模式（Indexed Color）</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android高级面试-内存优化
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="如何避免OOM的产生？"><a href="#如何避免OOM的产生？" class="headerlink" title="如何避免OOM的产生？"></a>如何避免OOM的产生？</h2><h3 id="题目剖析"><a href="#题目剖析" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
+<li>OOM如何产生</li>
+<li>如何优化程序减少内存占用</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="OOM的产生"><a href="#OOM的产生" class="headerlink" title="OOM的产生"></a>OOM的产生</h3><ul>
+<li>已使用内存+新申请内存 &gt; 可分配内存</li>
+<li>OOM几乎覆盖所有的内存区域，通常指堆内存</li>
+<li>Native Heap(堆)在物理内存不够时也会抛出OOM</li>
+</ul>
+<h3 id="使用合适的数据结构"><a href="#使用合适的数据结构" class="headerlink" title="使用合适的数据结构"></a>使用合适的数据结构</h3><p>SparseArray避免装箱拆箱开销</p>
+<p>ArrayMap是二分查找</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/1.png"></p>
+<p>ArrayMap的小数组复用池（类似于Message的pool），主要是4、8。HashMap开辟的比较大</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/2.png"></p>
+<h3 id="避免使用枚举"><a href="#避免使用枚举" class="headerlink" title="避免使用枚举"></a>避免使用枚举</h3><p>不仅影响内存，还会影响dex文件大小</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/3.png"></p>
+<p>只是编译器提示作用，没有编译约束，kotlin尚不支持</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/4.png"></p>
+<p>kotlin使用内联类</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/5.png"></p>
+<h3 id="Bitmap"><a href="#Bitmap" class="headerlink" title="Bitmap"></a>Bitmap</h3><ul>
+<li>尽量根据实际需求选择合适分辨率</li>
+<li>注意原始文件分辨率与内存缩放的结果</li>
+<li>不使用帧动画，使用代码实现动效</li>
+<li>考虑bitmap的重采样和复用配置</li>
+</ul>
+<h3 id="谨慎的使用多进程"><a href="#谨慎的使用多进程" class="headerlink" title="谨慎的使用多进程"></a>谨慎的使用多进程</h3><p>进程fork出来之后就先天带有一些公共的资源（系统预加载资源），这些都是会占用内存的</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/6.png"></p>
+<h3 id="谨慎的使用Large-Heap"><a href="#谨慎的使用Large-Heap" class="headerlink" title="谨慎的使用Large Heap"></a>谨慎的使用Large Heap</h3><p>不同机器支持的不一样，大堆也会影响垃圾回收（堆大了，回收速度变慢）</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/7.png"></p>
+<h3 id="使用NDK"><a href="#使用NDK" class="headerlink" title="使用NDK"></a>使用NDK</h3><ul>
+<li>Native Heap没有专门的使用限制</li>
+<li>内存大户的核心逻辑主要在Native层（如unity3D、OpenGL大户地图）</li>
+</ul>
+<h3 id="内存优化的5R法则"><a href="#内存优化的5R法则" class="headerlink" title="内存优化的5R法则"></a>内存优化的5R法则</h3><ul>
+<li>Reduce缩减：降低图片分辨率、重采样、抽稀策略</li>
+<li>Reuse复用：池化策略、避免频繁创建对象，减小GC压力</li>
+<li>Recycle回收：主动销毁、结束，避免内存泄漏、生命周期闭环</li>
+<li>Refactor重构：更合适的数据结构、更合理的程序架构</li>
+<li>Revalue重审：谨慎的使用Large Heap、多进程、第三方框架</li>
+</ul>
+<h3 id="问答"><a href="#问答" class="headerlink" title="问答"></a>问答</h3><p>避免使用枚举，使用int,为什么不使用byte</p>
+<p>其实 byte 在java虚拟机中一般也是占用跟int一样的空间，涉及内存对齐问题。当然这个也看虚拟机的实现。所以其实并不会节省内存。</p>
+<h2 id="如何对图片进行缓存？"><a href="#如何对图片进行缓存？" class="headerlink" title="如何对图片进行缓存？"></a>如何对图片进行缓存？</h2><h3 id="题目剖析-1"><a href="#题目剖析-1" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
+<li>网络、磁盘、内存缓存</li>
+<li>缓存算法分析</li>
+<li>以熟悉的框架为例分析它的缓存机制</li>
+<li>要有验证算法效果的意识</li>
+</ul>
+<h3 id="图片加载过程"><a href="#图片加载过程" class="headerlink" title="图片加载过程"></a>图片加载过程</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/8.png"></p>
+<h3 id="缓存算法"><a href="#缓存算法" class="headerlink" title="缓存算法"></a>缓存算法</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/9.png"></p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/10.png"></p>
+<h3 id="LRU（Least-Recently-Used）"><a href="#LRU（Least-Recently-Used）" class="headerlink" title="LRU（Least Recently Used）"></a>LRU（Least Recently Used）</h3><p>这里默认权重一样</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/11.png"></p>
+<h3 id="LFU（Least-Frequently-Used）"><a href="#LFU（Least-Frequently-Used）" class="headerlink" title="LFU（Least Frequently Used）"></a>LFU（Least Frequently Used）</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/12.png"></p>
+<h3 id="LRU的实现"><a href="#LRU的实现" class="headerlink" title="LRU的实现"></a>LRU的实现</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/13.png"></p>
+<p>true，每访问里面的元素一次就会被放到LinkedHashMap最后</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/14.png"></p>
+<p>存bitmap时，以大小作为权重</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/15.png"></p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/16.png"></p>
+<p>拿到最后一个元素是错的</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/17.png"></p>
+<p>v4下的是对的</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/18.png"></p>
+<h3 id="Glide的LRU"><a href="#Glide的LRU" class="headerlink" title="Glide的LRU"></a>Glide的LRU</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/19.png"></p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/20.png"></p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/21.png"></p>
+<h3 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/22.png"></p>
+<h3 id="上面true的实现"><a href="#上面true的实现" class="headerlink" title="上面true的实现"></a>上面true的实现</h3><p>move node to last</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/23.png"></p>
+<h2 id="如何计算图片占用内存的大小？"><a href="#如何计算图片占用内存的大小？" class="headerlink" title="如何计算图片占用内存的大小？"></a>如何计算图片占用内存的大小？</h2><h3 id="题目剖析-2"><a href="#题目剖析-2" class="headerlink" title="题目剖析"></a>题目剖析</h3><ul>
+<li>注意是占用内存，不是文件大小</li>
+<li>可以运行时获取</li>
+<li>重要的是掌握计算方法</li>
+</ul>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/24.png"></p>
+<h3 id="运行时获取Bitmap大小的方法"><a href="#运行时获取Bitmap大小的方法" class="headerlink" title="运行时获取Bitmap大小的方法"></a>运行时获取Bitmap大小的方法</h3><p>上面是应该占多大内存，下面是实际占多大内存</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/25.png"></p>
+<h3 id="图片有哪些来源"><a href="#图片有哪些来源" class="headerlink" title="图片有哪些来源"></a>图片有哪些来源</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/26.png"></p>
+<h3 id="Assets中的图片"><a href="#Assets中的图片" class="headerlink" title="Assets中的图片"></a>Assets中的图片</h3><p>ARGB_8888，四个字节，A透明度</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/27.png"></p>
+<p>JPG没有透明度，需要使用RGB_565，两个字节</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/28.png"></p>
+<p>png也可以设成RGB_565，这样没有透明度了</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/29.png"></p>
+<p>rgb565表示在16位整数中，低5位对应蓝色的高5位,高5位对应红色的高5位，中6位对应绿色的高6位。 argb8888,使用三个连续字节分别存储四个八位数的透明度，红色、绿色和蓝色。16位对应 2个字节，32位对应4个字节</p>
+<h3 id="Drawable中的图片"><a href="#Drawable中的图片" class="headerlink" title="Drawable中的图片"></a>Drawable中的图片</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/30.png"></p>
+<p>nodpi，不做缩放，大小不变</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/31.png"></p>
+<p>运算规则，图片&#x2F;所在目录对应DPI的值*屏幕密度&#x3D;图片应该多大</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/32.png"></p>
+<p>densityDpi指的就是DisplayMetrics.densityDpi。</p>
+<p>像素包含物理硬件的实际像素和程序渲染过程中的逻辑像素，比如我的手机分辨率是 2560*1440，这是物理像素，一般称为像素，android当中就是 px；点实际上是值咱们的程序中UI的逻辑像素，单位对应于dp。dp对应于 px 的比例越高，画面越细腻。</p>
+<h3 id="Drawable中的图片加载流程"><a href="#Drawable中的图片加载流程" class="headerlink" title="Drawable中的图片加载流程"></a>Drawable中的图片加载流程</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/33.png"></p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/34.png"></p>
+<p>C++代码</p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/35.png"></p>
+<p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/36.png"></p>
+<h3 id="图片内存体积优化"><a href="#图片内存体积优化" class="headerlink" title="图片内存体积优化"></a>图片内存体积优化</h3><ul>
+<li>跟文件存储格式无关（跟ARGB_8888这些有关）</li>
+<li>使用inSampleSize采用：大图-&gt;小图</li>
+<li>使用矩阵变换放大图片：小图-&gt;大图</li>
+<li>使用RGB_565加载不透明图片</li>
+<li>使用9-patch图片做背景</li>
+<li>不使用图片，使用程序实现动画，使用VectorDrawable</li>
+</ul>
+<h3 id="索引模式（Indexed-Color）"><a href="#索引模式（Indexed-Color）" class="headerlink" title="索引模式（Indexed Color）"></a>索引模式（Indexed Color）</h3><p><img src="/2020/07/31/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/37.png"></p>
+<ul>
+<li>不能放入drawable类似需要缩放的目录中</li>
+<li>得到的bitmap不能用于创建Canvas</li>
+<li>从8.1开始移除底层Indexed Color</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

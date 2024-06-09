@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%83%AD%E4%BF%AE%E5%A4%8D"><span class="toc-text">什么是热修复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A5%BD%E5%A4%84"><span class="toc-text">好处</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E8%A1%8C%E6%8A%80%E6%9C%AF"><span class="toc-text">流行技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%AF%B9%E6%AF%94"><span class="toc-text">技术对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-text">技术选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AndFix%EF%BC%88%E5%B7%B2%E5%81%9C%E6%AD%A2%E7%BB%B4%E6%8A%A4%EF%BC%89"><span class="toc-text">AndFix（已停止维护）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90"><span class="toc-text">集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch%E7%94%9F%E6%88%90"><span class="toc-text">patch生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch%E5%AE%89%E8%A3%85"><span class="toc-text">patch安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86AndFix%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-text">将AndFix组件化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E6%AD%A5%E9%AA%A4"><span class="toc-text">组件化步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AndFix%E6%BA%90%E7%A0%81"><span class="toc-text">AndFix源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%A3"><span class="toc-text">优劣</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tinker"><span class="toc-text">Tinker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">核心原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">集成与初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F"><span class="toc-text">patch生成方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">命令行的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle%E6%8F%92%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">gradle插件的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-text">组件化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tinker%E8%BF%9B%E9%98%B6"><span class="toc-text">Tinker进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85"><span class="toc-text">如何支持多渠道打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89Tinker%E8%A1%8C%E4%B8%BA"><span class="toc-text">如何自定义Tinker行为</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tinker%E6%BA%90%E7%A0%81"><span class="toc-text">Tinker源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E9%97%AE%E9%A2%98"><span class="toc-text">注意问题</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          热修复插件化-热修复
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="什么是热修复"><a href="#什么是热修复" class="headerlink" title="什么是热修复"></a>什么是热修复</h3><p>动态修复或者更新APP的行为</p>
+<span id="more"></span>
+
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><p>不需要用户感知完成BUG修复以及小功能的更新</p>
+<h2 id="流行技术"><a href="#流行技术" class="headerlink" title="流行技术"></a>流行技术</h2><ul>
+<li>QQ空间的超级补丁方案</li>
+<li>微信的Tinker</li>
+<li>阿里的AndFix、dexposed</li>
+<li>美团的Robust、饿了么的migo、百度的hotfix。。。</li>
+</ul>
+<h2 id="技术对比"><a href="#技术对比" class="headerlink" title="技术对比"></a>技术对比</h2><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/1.png"></p>
+<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><ul>
+<li>需求是什么，需求是衡量一切的标准</li>
+<li>能满足需求的条件下，学习成本最低的</li>
+<li>学习成本	一样的情况下，优先选择大公司的方案</li>
+</ul>
+<h2 id="AndFix（已停止维护）"><a href="#AndFix（已停止维护）" class="headerlink" title="AndFix（已停止维护）"></a>AndFix（已停止维护）</h2><p>只能用于方法的替换</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/2.png"></p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/3.png"></p>
+<h3 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h3><pre><code>compile &#39;com.alipay.euler:andfix:0.5.0@aar&#39;
+</code></pre>
+<p>如果引入的库，仅仅是提供java代码的使用，那么在对应的module下compile即可。如果还有自定义脚本，需要在根gradle中，引入classpath</p>
+<pre><code>public class AndFixPatchManager &#123;
+
+    private static AndFixPatchManager mInstance = null;
+
+    private static PatchManager mPatchManager = null;
+
+    public static AndFixPatchManager getInstance() &#123;
+        if (mInstance == null) &#123;
+            synchronized (AndFixPatchManager.class) &#123;
+                if (mInstance == null) &#123;
+                    mInstance = new AndFixPatchManager();
+                &#125;
+            &#125;
+        &#125;
+        return mInstance;
+    &#125;
+
+    //初始化AndFix方法
+    public void initPatch(Context context) &#123;
+        mPatchManager = new PatchManager(context);
+        mPatchManager.init(Utils.getVersionName(context));
+        mPatchManager.loadPatch();
+    &#125;
+
+    //加载我们的patch文件
+    public void addPatch(String path) &#123;
+        try &#123;
+            if (mPatchManager != null) &#123;
+                mPatchManager.addPatch(path);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>build一个有bug的old apk安装到手机</li>
+<li>分析问题解决bug后，build一个new apk</li>
+</ul>
+<p>代码</p>
+<pre><code>public class MainActivity extends AppCompatActivity &#123;
+
+    private static final String FILE_END = &quot;.apatch&quot;;
+    private String mPatchDir;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mPatchDir = getExternalCacheDir().getAbsolutePath()+&quot;/apatch/&quot;;
+        Log.e(&quot;yly&quot;,mPatchDir);
+
+        File file = new File(mPatchDir);
+        if(file == null || !file.exists())&#123;
+            file.mkdir();
+        &#125;
+    &#125;
+
+    public void createBug(View v)&#123;
+        print();
+    &#125;
+
+    public void fixBug(View v)&#123;
+        AndFixPatchManager.getInstance().addPatch(getPatchName());
+    &#125;
+
+    public void print()&#123;
+        String error = &quot;yly&quot;;
+        Log.e(&quot;yly&quot;,error);
+    &#125;
+
+    public String getPatchName() &#123;
+        return mPatchDir.concat(&quot;fix&quot;).concat(FILE_END);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="patch生成"><a href="#patch生成" class="headerlink" title="patch生成"></a>patch生成</h3><p>apkpatch-1.0.3文件夹</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/4.png"></p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/5.png"></p>
+<p>命令保存为脚本，复制命令，创建create_patch.sh，粘贴命令，前面加上sh</p>
+<h3 id="patch安装"><a href="#patch安装" class="headerlink" title="patch安装"></a>patch安装</h3><h3 id="将AndFix组件化"><a href="#将AndFix组件化" class="headerlink" title="将AndFix组件化"></a>将AndFix组件化</h3><h4 id="组件化步骤"><a href="#组件化步骤" class="headerlink" title="组件化步骤"></a>组件化步骤</h4><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/6.png"></p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/7.png"></p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><pre><code>public class AndFixService extends Service &#123;
+    private static final String TAG = AndFixService.class.getSimpleName();
+    private static final String FILE_END = &quot;.apatch&quot;;
+    private static final int UPDATE_PATCH = 0x02;
+    private static final int DOWNLOAD_PATCH = 0x01;
+
+    private String mPatchFileDir;
+    private String mPatchFile;
+    private Handler mHandler = new Handler() &#123;
+
+        @Override
+    public void handleMessage(Message msg) &#123;
+            switch (msg.what) &#123;
+                case UPDATE_PATCH:
+                    checkPatchUpdate();
+                    break;
+                case DOWNLOAD_PATCH:
+                    downloadPatch();
+                    break;
+            &#125;
+        &#125;
+    &#125;;
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) &#123;
+        return null;
+    &#125;
+
+
+    @Override
+    public void onCreate() &#123;
+        super.onCreate();
+        init();
+    &#125;
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) &#123;
+        mHandler.sendEmptyMessage(UPDATE_PATCH);
+        return START_NOT_STICKY;
+    &#125;
+
+    //完成文件目录的构造
+    private void init() &#123;
+
+        mPatchFileDir = getExternalCacheDir().getAbsolutePath() + &quot;/apatch/&quot;;
+        File patchDir = new File(mPatchFileDir);
+
+        try &#123;
+            if (patchDir == null || !patchDir.exists()) &#123;
+                patchDir.mkdir();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+            stopSelf();
+        &#125;
+    &#125;
+
+    private BasePatch mBasePatchInfo;
+
+    //检查服务器是否有patch文件
+    private void checkPatchUpdate() &#123;
+        RequestCenter.requestPatchUpdateInfo(new DisposeDataListener() &#123;
+            @Override
+            public void onSuccess(Object responseObj) &#123;
+                mBasePatchInfo = (BasePatch) responseObj;
+                if (!TextUtils.isEmpty(mBasePatchInfo.data.downloadUrl)) &#123;
+                    //下载patch文件
+                    mHandler.sendEmptyMessage(DOWNLOAD_PATCH);
+                &#125; else &#123;
+                    stopSelf();
+                &#125;
+            &#125;
+
+            @Override
+            public void onFailure(Object reasonObj) &#123;
+                stopSelf();
+            &#125;
+        &#125;);
+    &#125;
+
+    //完成patch文件的下载
+    private void downloadPatch() &#123;
+        //初始化patch文件下载路径
+        mPatchFile = mPatchFileDir.concat(String.valueOf(System.currentTimeMillis())).
+            concat(FILE_END);
+
+        RequestCenter.downloadFile(mBasePatchInfo.data.downloadUrl, mPatchFile,
+                new DisposeDownloadListener() &#123;
+                    @Override
+                    public void onProgress(int progrss) &#123;
+                        Log.d(TAG, &quot;current progedss: &quot; + progrss);
+                    &#125;
+
+                    @Override
+                    public void onSuccess(Object responseObj) &#123;
+                        //将我们下载好的patch文件添加到我们的andfix中
+                        AndFixPatchManager.getInstance().addPatch(mPatchFile);
+                    &#125;
+
+                    @Override
+                    public void onFailure(Object reasonObj) &#123;
+                        stopSelf();
+                    &#125;
+                &#125;);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="AndFix源码"><a href="#AndFix源码" class="headerlink" title="AndFix源码"></a>AndFix源码</h3><p>入口：PatchManager（外观模式）</p>
+<p>AndFixManager，bug修复方法替换由它完成</p>
+<p>SortedSet<Patch> mPatchs，包含应用所有的patch文件</Patch></p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/8.png"></p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/9.png"></p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/10.png"></p>
+<p>Patch类</p>
+<p>Map&lt;String,List<String>&gt; mClassesMap 本次patch文件所有要修复的class的字符串</String></p>
+<p>解析用工具生成的patch文件</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/11.png"></p>
+<p>添加进来以后，可以调用下面方法获取这个patch文件中所有要修复的class的绝对路径</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/12.png"></p>
+<p>addPatch方法</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/13.png"></p>
+<p>loadPatch方法（无参数的是遍历所有patch）</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/14.png"></p>
+<p>fix方法，遍历dexFile找到要修复的class</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/15.png"></p>
+<p>fixClass方法，反射找到所有的方法，通过注解找到哪些方法需要被替换</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/16.png"></p>
+<p>replaceMethod方法</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/17.png"></p>
+<p>Native方法</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/18.png"></p>
+<p>总结：首先将文件都转换成patch，将patch所有的class通过名字转换成class字节码，寻找字节码中被注解的方法，最终通过JNI完成方法的替换</p>
+<h3 id="优劣"><a href="#优劣" class="headerlink" title="优劣"></a>优劣</h3><ul>
+<li>原理简单、集成简单、使用简单、即时生效</li>
+<li>只能修复方法级别的bug，极大的限制了使用场景</li>
+</ul>
+<h2 id="Tinker"><a href="#Tinker" class="headerlink" title="Tinker"></a>Tinker</h2><h3 id="核心原理"><a href="#核心原理" class="headerlink" title="核心原理"></a>核心原理</h3><ul>
+<li>基于Android原生的classloader，开发了自己的classloader</li>
+<li>基于Android原生的aapt，开发了自己的aapt</li>
+<li>微信团队基于Dex文件的格式，研发了DexDiff算法</li>
+</ul>
+<h3 id="集成与初始化"><a href="#集成与初始化" class="headerlink" title="集成与初始化"></a>集成与初始化</h3><ul>
+<li>gradle中添加Tinker依赖</li>
+<li>在代码中完成对Tinker初始化</li>
+</ul>
+<h3 id="patch生成方式"><a href="#patch生成方式" class="headerlink" title="patch生成方式"></a>patch生成方式</h3><ul>
+<li>命令行的方式</li>
+<li>gradle插件的方式</li>
+</ul>
+<h4 id="命令行的方式"><a href="#命令行的方式" class="headerlink" title="命令行的方式"></a>命令行的方式</h4><p>1.修改tinker_config里的参数</p>
+<p>修改application</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/19.png"></p>
+<p>修改签名</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/20.png"></p>
+<p>2.执行命令</p>
+<pre><code>java -jar tinker-patch-cli.jar -old old.apk -new new.apk -config tinker_config.xml -out output_path
+</code></pre>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/21.png"></p>
+<h4 id="gradle插件的方式"><a href="#gradle插件的方式" class="headerlink" title="gradle插件的方式"></a>gradle插件的方式</h4><pre><code>def bakPath = file(&quot;$&#123;buildDir&#125;/bakApk/&quot;) //指定基准文件存放位置
+
+ext &#123;
+    tinkerEnable = true
+    tinkerOldApkPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+    tinkerID = &quot;1.0&quot;
+    tinkerApplyMappingPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+    tinkerApplyResourcePath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+    tinkerBuildFlavorDirectory = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
+&#125;
+
+def buildWithTinker() &#123;
+    return ext.tinkerEnable
+&#125;
+
+def getOldApkPath() &#123;
+    return ext.tinkerOldApkPath
+&#125;
+
+def getApplyMappingPath() &#123;
+    return ext.tinkerApplyMappingPath
+&#125;
+
+def getApplyResourceMappingPath() &#123;
+    return ext.tinkerApplyResourcePath
+&#125;
+
+def getTinkerIdValue() &#123;
+    return ext.tinkerID
+&#125;
+
+def getTinkerBuildFlavorDirectory()&#123;
+    return ext.tinkerBuildFlavorDirectory
+&#125;
+
+if (buildWithTinker()) &#123;
+    //启用tinker
+    apply plugin: &#39;com.tencent.tinker.patch&#39;
+
+    //所有tinker相关的参数配置
+    tinkerPatch &#123;
+
+        oldApk = getOldApkPath() //指定old apk文件径
+
+        ignoreWarning = false   //不忽略tinker的警告，有则中止patch文件的生成
+
+        useSign = true  //强制patch文件也使用签名
+
+        tinkerEnable = buildWithTinker(); //指定是否启用tinker
+
+        buildConfig &#123;
+
+            applyMapping = getApplyMappingPath()  //指定old apk打包时所使用的混淆文件
+
+            applyResourceMapping = getApplyResourceMappingPath()  //指定old apk的资源文件
+
+            tinkerId = getTinkerIdValue() //指定TinkerID
+
+            keepDexApply = false
+        &#125;
+
+        dex &#123;
+
+            dexMode = &quot;jar&quot; //jar、raw
+            pattern = [&quot;classes*.dex&quot;, &quot;assets/secondary-dex-?.jar&quot;] //指定dex文件目录
+            loader = [&quot;com.imooc.tinker.MyTinkerApplication&quot;] //指定加载patch文件时用到的类
+        &#125;
+
+        lib &#123;
+
+            pattern = [&quot;libs/*/*.so&quot;]
+        &#125;
+
+        res &#123;
+
+            pattern = [&quot;res/*&quot;, &quot;assets/*&quot;, &quot;resources.arcs&quot;, &quot;AndoridManifest.xml&quot;] //指定tinker可以修改的资源路径
+
+            ignoreChange = [&quot;assets/sample_meta.txt&quot;] //指定不受影响的资源路径
+
+            largeModSize = 100 //资源修改大小默认值
+        &#125;
+
+        //patch相关信息
+        packageConfig &#123;
+
+            configField(&quot;patchMessage&quot;, &quot;fix the 1.0 version&#39;s bugs&quot;)
+
+            configField(&quot;patchVersion&quot;, &quot;1.0&quot;)
+        &#125;
+    &#125;
+
+    //判断当前项目是否配置多渠道
+    List&lt;String&gt; flavors = new ArrayList&lt;&gt;();
+    project.android.productFlavors.each &#123; flavor -&gt;
+        flavors.add(flavor.name)
+    &#125;
+    boolean hasFlavors = flavors.size() &gt; 0
+
+    /**
+     * 复制基准包和其它必须文件到指定目录
+     */
+    android.applicationVariants.all &#123; variant -&gt;
+        /**
+         * task type, you want to bak
+         */
+        def taskName = variant.name
+        def date = new Date().format(&quot;MMdd-HH-mm-ss&quot;)
+
+        tasks.all &#123;
+            if (&quot;assemble$&#123;taskName.capitalize()&#125;&quot;.equalsIgnoreCase(it.name)) &#123;
+
+                it.doLast &#123;
+                    copy &#123;
+                        def fileNamePrefix = &quot;$&#123;project.name&#125;-$&#123;variant.baseName&#125;&quot;
+                        def newFileNamePrefix = hasFlavors ? &quot;$&#123;fileNamePrefix&#125;&quot; : &quot;$&#123;fileNamePrefix&#125;-$&#123;date&#125;&quot;
+
+                        def destPath = hasFlavors ? file(&quot;$&#123;bakPath&#125;/$&#123;project.name&#125;-$&#123;date&#125;/$&#123;variant.flavorName&#125;&quot;) : bakPath
+                        from variant.outputs.outputFile
+                        into destPath
+                        rename &#123; String fileName -&gt;
+                            fileName.replace(&quot;$&#123;fileNamePrefix&#125;.apk&quot;, &quot;$&#123;newFileNamePrefix&#125;.apk&quot;)
+                        &#125;
+
+                        from &quot;$&#123;buildDir&#125;/outputs/mapping/$&#123;variant.dirName&#125;/mapping.txt&quot;
+                        into destPath
+                        rename &#123; String fileName -&gt;
+                            fileName.replace(&quot;mapping.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-mapping.txt&quot;)
+                        &#125;
+
+                        from &quot;$&#123;buildDir&#125;/intermediates/symbols/$&#123;variant.dirName&#125;/R.txt&quot;
+                        into destPath
+                        rename &#123; String fileName -&gt;
+                            fileName.replace(&quot;R.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-R.txt&quot;)
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    /**
+     * 多渠道
+     */
+    project.afterEvaluate &#123;
+        if (hasFlavors) &#123;
+            task(tinkerPatchAllFlavorRelease) &#123;
+                group = &#39;tinker&#39;
+                def originOldPath = getTinkerBuildFlavorDirectory()
+                for (String flavor : flavors) &#123;
+                    def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Release&quot;)
+                    dependsOn tinkerTask
+                    def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;ReleaseManifest&quot;)
+                    preAssembleTask.doFirst &#123;
+                        String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 15)
+                        //拼凑名字
+                        project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release.apk&quot;
+                        project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-mapping.txt&quot;
+                        project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-R.txt&quot;
+                    &#125;
+                &#125;
+            &#125;
+
+            task(tinkerPatchAllFlavorDebug) &#123;
+                group = &#39;tinker&#39;
+                def originOldPath = getTinkerBuildFlavorDirectory()
+                for (String flavor : flavors) &#123;
+                    def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Debug&quot;)
+                    dependsOn tinkerTask
+                    def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;DebugManifest&quot;)
+                    preAssembleTask.doFirst &#123;
+                        String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 13)
+                        project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug.apk&quot;
+                        project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-mapping.txt&quot;
+                        project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-R.txt&quot;
+                    &#125;
+
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/22.png"></p>
+<h3 id="Tinker进阶"><a href="#Tinker进阶" class="headerlink" title="Tinker进阶"></a>Tinker进阶</h3><h4 id="如何支持多渠道打包"><a href="#如何支持多渠道打包" class="headerlink" title="如何支持多渠道打包"></a>如何支持多渠道打包</h4><p>app&#x2F;build.gradle下的android{}</p>
+<pre><code>//真正的多渠道脚本支持
+productFlavors &#123;
+
+    googleplayer &#123;
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;googleplayer&quot;]
+    &#125;
+
+    baidu &#123;
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]
+    &#125;
+
+    productFlavors.all &#123;
+        flavor -&gt; flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    &#125;
+&#125;
+</code></pre>
+<p>脚本看上面的“gradle插件的方式”</p>
+<h4 id="如何自定义Tinker行为"><a href="#如何自定义Tinker行为" class="headerlink" title="如何自定义Tinker行为"></a>如何自定义Tinker行为</h4><blockquote>
+<p>自定义PatchListener监听patch receiver事件</p>
+</blockquote>
+<p>DefaultPatchListener的patchCheck方法</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/23.png"></p>
+<pre><code>//1.较验patch文件是否合法  2.启动Service去安装patch文件
+public class CustomPatchListener extends DefaultPatchListener &#123;
+
+    private String currentMD5;
+
+    public void setCurrentMD5(String md5Value) &#123;
+
+        this.currentMD5 = md5Value;
+    &#125;
+
+    public CustomPatchListener(Context context) &#123;
+        super(context);
+    &#125;
+
+    //拓展MD5校验
+    @Override
+    protected int patchCheck(String path) &#123;
+        //patch文件ms5较验
+        if (!Utils.isFileMD5Matched(path, currentMD5)) &#123;
+
+            return ShareConstants.ERROR_PATCH_DISABLE;
+        &#125;
+        
+        return super.patchCheck(path);
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>自定义TinkerResultService改变patch安装成功后行为</p>
+</blockquote>
+<p>DefaultTinkerResultService -&gt; AbstractResultService（onPatchResult） -&gt; IntentService</p>
+<p>DefaultTinkerResultService的onPatchResult方法</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/24.png"></p>
+<pre><code>//本类的作用：决定在patch安装完以后的后续操作，默认实现是杀进程
+public class CustomResultService extends DefaultTinkerResultService &#123;
+    private static final String TAG = &quot;Tinker.SampleResultService&quot;;
+
+    //返回patch文件的最终安装结果
+    @Override
+    public void onPatchResult(PatchResult result) &#123;
+        if (result == null) &#123;
+            TinkerLog.e(TAG, &quot;DefaultTinkerResultService received null result!!!!&quot;);
+            return;
+        &#125;
+        TinkerLog.i(TAG, &quot;DefaultTinkerResultService received a result:%s &quot;, result.toString());
+
+        //first, we want to kill the recover process
+        TinkerServiceInternals.killTinkerPatchServiceProcess(getApplicationContext());
+
+        // if success and newPatch, it is nice to delete the raw file, and restart at once
+        // only main process can load an upgrade patch!
+        if (result.isSuccess) &#123;
+            deleteRawPatchFile(new File(result.rawPatchFilePath));
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>自定义行为后修改初始化方法</p>
+</blockquote>
+<pre><code>mPatchListener = new CustomPatchListener(getApplicationContext());
+
+    //补丁文件加载过程中可能出现所有异常的监听
+   LoadReporter loadReporter = new DefaultLoadReporter(getApplicationContext());
+   //合成阶段可能出现所有异常的监听
+   PatchReporter patchReporter = new DefaultPatchReporter(getApplicationContext());
+
+   AbstractPatch upgradePatchProcessor = new UpgradePatch();
+
+   TinkerInstaller.install(applicationLike,
+            loadReporter,
+            patchReporter,
+            mPatchListener,
+            CustomResultService.class,
+            upgradePatchProcessor); //完成Tinker初始化
+            
+</code></pre>
+<p>修改完成Patch文件的加载方法</p>
+<pre><code>public static void loadPatch(String path, String md5Value) &#123;
+    if (Tinker.isTinkerInstalled()) &#123;
+        mPatchListener.setCurrentMD5(md5Value);
+        TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), path);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Tinker源码"><a href="#Tinker源码" class="headerlink" title="Tinker源码"></a>Tinker源码</h3><p>1.TinkerInstaller（外观模式） 对 Tinker 的包装</p>
+<p>2.Tinker（构建+单例）</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/25.png"></p>
+<p>3.TinkerInstaller.onReceiveUpgradePatch -&gt; PatchListener接口里的onPatchReceiver -&gt; DefaultPatchListener（onPatchReceiver）</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/26.png"></p>
+<p>TinkerPatchService</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/27.png"></p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/28.png"></p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/29.png"></p>
+<p>处理完毕后调用AbstractResultService（patch安装成功后行为）</p>
+<p>处理patch文件（tryPatch） -&gt; AbstractPatch -&gt; UpgradePatch</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/30.png"></p>
+<p>tryRecoverDexFiles（dex文件合并） -&gt; DexPatchApplier</p>
+<p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/31.png"></p>
+<p>通过这些算法计算每个区域的偏移量</p>
+<h3 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h3><ul>
+<li>目前版本(1.7.7)还不支持加固，以后的版本应该会支持</li>
+<li>不支持修改AndroidManifest.xml</li>
+<li>不支持新增四大组件、transition动画、桌面图标等</li>
+<li>部分三星Android-21机型不兼容</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

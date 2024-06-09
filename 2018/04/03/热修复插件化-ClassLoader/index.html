@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android%E4%B8%AD%E7%9A%84ClassLoader"><span class="toc-text">Android中的ClassLoader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android%E4%B8%ADClassLoader%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-text">Android中ClassLoader的种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android%E4%B8%ADClassLoader%E7%9A%84%E7%89%B9%E7%82%B9%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="toc-text">Android中ClassLoader的特点及作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ClassLoader%E7%9A%84%E6%BA%90%E7%A0%81"><span class="toc-text">ClassLoader的源码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E9%9A%BE%E7%82%B9"><span class="toc-text">Android动态加载难点</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          热修复插件化-ClassLoader
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <p>双亲委托再找其他文章看一看</p>
+<h2 id="Android中的ClassLoader"><a href="#Android中的ClassLoader" class="headerlink" title="Android中的ClassLoader"></a>Android中的ClassLoader</h2><h3 id="Android中ClassLoader的种类"><a href="#Android中ClassLoader的种类" class="headerlink" title="Android中ClassLoader的种类"></a>Android中ClassLoader的种类</h3><span id="more"></span>
+
+<ul>
+<li>BootClassLoader：加载Android的framework层class字节码文件（与Bootstrap类似）</li>
+<li>PathClassLoader：加载已经安装到系统中的apk文件中的class文件（与App类似）</li>
+<li>DexClassLoader：加载指定目录中class字节码文件（与Custom类似）</li>
+<li>BaseDexClassLoader：Path、Dex的父类</li>
+</ul>
+<p>一个应用至少要用到BootClassLoader、PathClassLoader</p>
+<pre><code>    ClassLoader classLoader = getClassLoader();
+    if(classLoader != null)&#123;
+        Log.e(&quot;xxx&quot;,&quot;classLoader：&quot;+classLoader.toString());
+        while (classLoader.getParent() != null)&#123;
+            classLoader = classLoader.getParent();
+            Log.e(&quot;xxx&quot;,&quot;classLoader：&quot;+classLoader.toString());
+        &#125;
+    &#125;
+    
+</code></pre>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/1.png"></p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/2.png"></p>
+<h3 id="Android中ClassLoader的特点及作用"><a href="#Android中ClassLoader的特点及作用" class="headerlink" title="Android中ClassLoader的特点及作用"></a>Android中ClassLoader的特点及作用</h3><p>特点</p>
+<ul>
+<li>双亲代理模型的特点（classloader在加载一个字节码的时候首先会询问当前的classloader是否已经加载过此类，如果加载过就直接返回不再重复加载。如果没有查询它的parents是否已经加载过此类，如果加载过返回parents加载过的字节码文件。如果整个继承线路上classloader都没有加载，才由child完成加载）</li>
+</ul>
+<p>一个类，被位于树中的任意一个classloader节点加载过，那么在以后的整个系统生命周期中，这个类都不会再被重新加载，提高效率</p>
+<p>作用</p>
+<ul>
+<li>类加载的共享功能（framework层级的类一旦被顶层classloader加载过，那么就会缓存在内存里，以后任何地方用到都不需要重新加载）</li>
+<li>类加载的隔离功能（不同继承路线上的classloader加载的类肯定不是同一个类，避免用户自己写的代码冒充核心类库）</li>
+</ul>
+<p>同一个类：相同的ClassName、相同的packageName、同一个classloader加载</p>
+<h3 id="ClassLoader的源码"><a href="#ClassLoader的源码" class="headerlink" title="ClassLoader的源码"></a>ClassLoader的源码</h3><p>双亲委托</p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/3.png"></p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/4.png"></p>
+<p>DexClassLoader，可以加载没有安装到应用中的类，动态加载的核心</p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/5.png"></p>
+<p>PathClassLoader，只能加载已经安装到系统中的应用中的dex文件</p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/6.png"></p>
+<p>BaseDexClassLoader（中转，pathList查找）</p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/7.png"></p>
+<p>DexPathList（将所有dex文件转换成DexFile，并转换成数组）</p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/8.png"></p>
+<p>DexFile</p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/9.png"></p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/10.png"></p>
+<p>总结：</p>
+<p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/11.png"></p>
+<h2 id="Android动态加载难点"><a href="#Android动态加载难点" class="headerlink" title="Android动态加载难点"></a>Android动态加载难点</h2><ul>
+<li>有许多组件类需要注册才能使用</li>
+<li>资源的动态加载很复杂（需要id注册）</li>
+<li>Android每个版本区别</li>
+</ul>
+<p>Android重新运行时需要一个上下文环境</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

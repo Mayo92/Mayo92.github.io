@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">多线程的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">线程的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread%E7%B1%BB"><span class="toc-text">Thread类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runnable%E6%8E%A5%E5%8F%A3"><span class="toc-text">Runnable接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-text">实现Runnable接口创建线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3"><span class="toc-text">为什么要实现Runnable接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callable%E6%8E%A5%E5%8F%A3"><span class="toc-text">callable接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">线程的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">线程的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sleep%E6%96%B9%E6%B3%95%E5%BA%94%E7%94%A8"><span class="toc-text">sleep方法应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#join%E6%96%B9%E6%B3%95%E5%BA%94%E7%94%A8"><span class="toc-text">join方法应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">线程优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E7%BA%BF%E7%A8%8B"><span class="toc-text">停止线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%B1%BB%E7%9A%84%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="toc-text">线程类的其他方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%90%E8%A1%8C%E9%97%AE%E9%A2%98"><span class="toc-text">多线程运行问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-text">线程安全问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">产生的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">多线程下的单例模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81"><span class="toc-text">死锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">线程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">涉及的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%94%9F%E4%BA%A7%E8%80%85%E5%A4%9A%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-text">多生产者多消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%AD%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E6%98%AF%E4%BD%BF%E7%94%A8while%E8%80%8C%E4%B8%8D%E6%98%AFif"><span class="toc-text">生产者消费者模式中条件判断是使用while而不是if</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK1-5%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-text">JDK1.5新特性</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java基础-多线程
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="多线程的概念"><a href="#多线程的概念" class="headerlink" title="多线程的概念"></a>多线程的概念</h3><p>System类的gc方法告诉垃圾回收器调用finalize方法，但不一定立即执行。</p>
+<h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><ul>
+<li>创建一个Thread类，或者一个Thread子类的对象</li>
+<li>创建一个实现Runnable接口的类的对象</li>
+<li>实现callable接口，重写call()方法，call()作为线程的执行体，具有返回值，并且可以对异常进行声明和抛出；使用start()方法来启动线程</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h3><p>Thread是一个线程类，位于java.lang包下</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/11.png"></p>
+<p>常用方法:</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/12.png"></p>
+<p>可以通过Thread的getName方法获取线程的名称，名称格式:Thread-编号(从0开始)。Thread在创建的时候，该Thread就已经命名了</p>
+<h3 id="Runnable接口"><a href="#Runnable接口" class="headerlink" title="Runnable接口"></a>Runnable接口</h3><ul>
+<li>只有一个方法run()</li>
+<li>Runnable是Java中用以实现线程的接口</li>
+<li>任何实现线程功能的类都必须实现该接口</li>
+</ul>
+<h4 id="实现Runnable接口创建线程"><a href="#实现Runnable接口创建线程" class="headerlink" title="实现Runnable接口创建线程"></a>实现Runnable接口创建线程</h4><p>好处：</p>
+<ol>
+<li>将线程的任务从线程的子类中分离出来，进行了单独的封装，按照面向对象的思想将任务封装成对象。</li>
+<li>避免了Java单继承的局限性。所以，创建线程的这种方式较为常用。</li>
+</ol>
+<h4 id="为什么要实现Runnable接口"><a href="#为什么要实现Runnable接口" class="headerlink" title="为什么要实现Runnable接口"></a>为什么要实现Runnable接口</h4><ul>
+<li>Java不支持多继承</li>
+<li>不打算重写Thread类的其他方法</li>
+</ul>
+<h3 id="callable接口"><a href="#callable接口" class="headerlink" title="callable接口"></a>callable接口</h3><ul>
+<li>创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值</li>
+<li>创建Callable实现类的实例，使用FutureTask类来包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值</li>
+<li>使用FutureTask对象作为Thread对象的target创建并启动新线程</li>
+<li>调用FutureTask对象的get()方法来获得子线程执行结束后的返回值</li>
+</ul>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/15.png"></p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/16.png"></p>
+<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><ul>
+<li>新建（New）</li>
+<li>可运行（Runnable）</li>
+<li>正在运行（Running）</li>
+<li>阻塞（Blocked）</li>
+<li>终止（Dead）</li>
+</ul>
+<h3 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h3><p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/13.png"></p>
+<h3 id="sleep方法应用"><a href="#sleep方法应用" class="headerlink" title="sleep方法应用"></a>sleep方法应用</h3><ul>
+<li>Thread类的方法，public static void sleep(long millis)</li>
+<li>作用：在指定的毫秒数内让正在执行的线程休眠（暂停执行）</li>
+<li>参数为休眠的时间，单位是毫秒</li>
+</ul>
+<h3 id="join方法应用"><a href="#join方法应用" class="headerlink" title="join方法应用"></a>join方法应用</h3><p>Thread类的方法，public final void join()</p>
+<ul>
+<li>作用：等待调用该方法的线程结束后才能执行</li>
+</ul>
+<p>Thread类的方法，public final void join(long millis)</p>
+<ul>
+<li>作用：等待该线程终止的最长时间为millis毫秒。</li>
+<li>如果millis为0则意味着要一直等下去。</li>
+</ul>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/7.png"></p>
+<h3 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h3><ul>
+<li>Java为线程类提供了10个优先级</li>
+<li>优先级可以用整数1-10表示，超过范围会抛出异常</li>
+<li>主线程默认优先级为5</li>
+</ul>
+<p>优先级常量</p>
+<ul>
+<li>MAX_PRIORITY：线程的最高优先级10</li>
+<li>MIN_PRIORITY：线程的最低优先级1</li>
+<li>NORM_PRIORITY：线程的默认优先级5</li>
+</ul>
+<p>优先级相关的方法</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/14.png"></p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/8.png"></p>
+<h3 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h3><p>任务中通常都会有循环结构，只要控制住循环就可以结束任务。</p>
+<p>如果线程处于冻结状态，无法读取标记，可以使用interrupt方法将线程从冻结状态强制恢复到运行状态中来，让线程具备CPU的执行资格，强制会发生InterruptException，记得处理</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/5.png"></p>
+<h3 id="线程类的其他方法"><a href="#线程类的其他方法" class="headerlink" title="线程类的其他方法"></a>线程类的其他方法</h3><p>setDaemon方法</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/6.png"></p>
+<p>toString方法</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/9.png"></p>
+<p>yield方法</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/10.png"></p>
+<h3 id="多线程运行问题"><a href="#多线程运行问题" class="headerlink" title="多线程运行问题"></a>多线程运行问题</h3><ul>
+<li>各个线程是通过竞争CPU时间而获得运行机会的</li>
+<li>各线程什么时候得到CPU时间，占用多久，是不可预测的</li>
+<li>一个正在运行着的线程在什么地方被暂停是不确定的</li>
+</ul>
+<h3 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h3><h4 id="产生的原因"><a href="#产生的原因" class="headerlink" title="产生的原因"></a>产生的原因</h4><ol>
+<li>多个线程在操作共享的数据</li>
+<li>操作共享数据的线程代码有多条</li>
+</ol>
+<p>当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算，就会导致线程安全问题的产生。</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>思路：就是将多条操作共享数据的线程代码封装起来，当有线程在执行这些代码的时候，其他线程不可以参与运算。必须要当前线程把这些代码都执行完毕后，其他线程才可以参与运算。</p>
+<p>synchronized关键字用在</p>
+<ul>
+<li>成员方法</li>
+<li>静态方法</li>
+<li>语句块</li>
+</ul>
+<p>Java同步代码块的格式：</p>
+<pre><code>synchronized(对象)&#123;
+    需要被同步的代码;
+&#125;
+</code></pre>
+<p>同步函数：在函数上加上synchronized修饰符即可</p>
+<p>同步函数和同步代码块的区别（建议使用同步代码块）：</p>
+<ol>
+<li>同步函数的锁是固定的this</li>
+<li>同步代码块的锁是任意的对象</li>
+</ol>
+<p>由于同步函数的锁是固定的this，同步代码块的锁是任意的对象，那么如果同步函数和同步代码块都使用this 作为锁，就可以实现同步</p>
+<p>静态的同步函数使用的锁是该函数所属字节码文件对象，可以用getClass方法获取，也可以用当前类名.class 表示。</p>
+<h4 id="多线程下的单例模式"><a href="#多线程下的单例模式" class="headerlink" title="多线程下的单例模式"></a>多线程下的单例模式</h4><p>饿汉式：不存在安全问题，因为不存在多个线程共同操作数据的情况</p>
+<pre><code>class Single&#123;
+    private static final Single s = new Single(); 
+    private Single()&#123;&#125;
+    public static Single getInstance()&#123;&#125; 
+&#125;
+</code></pre>
+<p>懒汉式：</p>
+<pre><code>class Single&#123;
+    private static Single s = null;
+    private Single()&#123;&#125;
+    public static Single getInstance()&#123;
+        if(s ==null)&#123;
+            synchronized(Single.class)&#123;
+                if(s == null)
+                    s = new Single();
+            &#125;
+        &#125;
+        return s;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>死锁常见情景之一：同步的嵌套</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png"></p>
+<p>当线程t1获取到obj对象锁执行同步代码块，线程t2获取到this对象锁执行show方法。同步代码块中的show方法因无法获取到this对象锁无法执行，show方法中的同步代码块因无法获取到obj对象锁无法执行，就会产生死锁</p>
+<h3 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h3><h4 id="涉及的方法"><a href="#涉及的方法" class="headerlink" title="涉及的方法"></a>涉及的方法</h4><p>等待&#x2F;唤醒机制涉及的方法：</p>
+<ol>
+<li>wait()：让线程处于冻结状态，被wait的线程会被存储到线程池中</li>
+<li>notify()：唤醒线程池中的一个线程（任何一个都有可能）</li>
+<li>notifyAll()：唤醒线程池中所有的线程</li>
+</ol>
+<p>PS：</p>
+<ul>
+<li>这些方法都必须定义在同步中，因为这些方法是用于操作线程状态的方法</li>
+<li>必须要明确到底操作的是哪个锁上的线程</li>
+<li>wait和sleep的区别。1.wait可以指定时间也可以不指定，sleep必须指定。2.在同步中，对CPU的执行权和锁的处理不同。wait释放执行权释放锁。sleep释放执行权不释放锁。</li>
+</ul>
+<p>为什么操作线程的方法定义在object类中，因为这些方法是监视器的方法，监视器其实就是锁，锁可以是任意的对象，任意的对象调用的方式一定在object类中。</p>
+<h4 id="多生产者多消费者"><a href="#多生产者多消费者" class="headerlink" title="多生产者多消费者"></a>多生产者多消费者</h4><p>线程0、1是生产者，2、3是消费者</p>
+<p>1.线程0获取到CPU执行权及锁，生产了烤鸭3298，将flag设置为true。然后，线程0又重新获取CPU权限，因flag为true，所以执行wait方法阻塞。线程1获取CPU权限，因为flag为true，所以执行wait方法阻塞。</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/2.png"></p>
+<p>2.线程3获取CPU权限及锁，消费了烤鸭3298，将flag设置为false，然后线程0被唤醒，但没有获取锁。而线程3又获取CPU及锁，此时flag为false，所以线程3阻塞。然后线程2获取CPU执行权及锁，此时flag为false，所以线程2阻塞。</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/3.png"></p>
+<p>3.线程0获取CPU权限及锁，生产烤鸭3299，然后又唤醒线程1获取CPU执行权及锁，生产烤鸭3300，不需要if判断（唤醒后从wait后执行），从而造成3299还没有消费就生产了3300的情况。</p>
+<p>由于if判断标记只有一次，会导致不该运行的线程运行了，会出现数据错误的情况，故修改成while判断标记，线程获取CPU执行权及锁后，将重新判断是否具备运行条件。</p>
+<p>notify方法只能唤醒一个线程，如果是本方唤醒了本方就没有意义，而且while+notify会导致死锁，notifyAll解决了本方线程一定会唤醒对方线程的问题。</p>
+<h4 id="生产者消费者模式中条件判断是使用while而不是if"><a href="#生产者消费者模式中条件判断是使用while而不是if" class="headerlink" title="生产者消费者模式中条件判断是使用while而不是if"></a>生产者消费者模式中条件判断是使用while而不是if</h4><p>永远在循环（loop）里调用 wait 和 notify，不是在 If 语句现在你知道wait应该永远在被synchronized的背景下和那个被多线程共享的对象上调用，下一个一定要记住的问题就是，你应该永远在while循环，而不是if语句中调用wait。因为线程是在某些条件下等待的——在我们的例子里，即“如果缓冲区队列是满的话，那么生产者线程应该等待”，你可能直觉就会写一个if语句。但if语句存在一些微妙的小问题，导致即使条件没被满足，你的线程你也有可能被错误地唤醒。所以如果你不在线程被唤醒后再次使用while循环检查唤醒条件是否被满足，你的程序就有可能会出错——例如在缓冲区为满的时候生产者继续生产数据，或者缓冲区为空的时候消费者开始消耗数据。所以记住，永远在while循环而不是if语句中使用wait！</p>
+<p>因为在多核处理器环境中，Signal唤醒操作可能会激活多于一个线程（阻塞在条件变量上的线程），使得多个调用等待的线程返回。所以用while循环对condition多次判断，可以避免这种假唤醒。</p>
+<p>基于以上认知，下面这个是使用wait和notify函数的规范代码模板：</p>
+<pre><code>// The standard idiom for calling the wait method in Java
+synchronized(sharedObject) &#123;
+    while(condition) &#123;
+        sharedObject.wait();
+        // (Releases lock, and reacquires on wakeup)
+&#125;
+// do action based upon condition e.g. take or put into queue
+&#125;
+</code></pre>
+<p>Ps:在while循环里使用wait的目的，是在线程被唤醒的前后都持续检查条件是否被满足。如果条件并未改变，wait被调用之前notify的唤醒通知就来了，那么这个线程并不能保证被唤醒，有可能会导致死锁问题。</p>
+<p>注意：</p>
+<ol>
+<li>永远在synchronized的方法或对象里使用wait、notify和notifyAll，不然Java虚拟机会生成 IllegalMonitorStateException。</li>
+<li>永远在while循环里而不是if语句下使用wait。这样，循环会在线程睡眠前后都检查wait的条件，并在条件实际上并未改变的情况下处理唤醒通知。</li>
+<li>永远在多线程间共享的对象（在生产者消费者模型里即缓冲区队列）上使用wait。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/liuyishi/p/10664429.html">连接</a></p>
+<h4 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h4><p>同步代码块对锁的操作是隐式的。1.5以后将同步和锁封装成了对象，并将操作锁的隐式方法定义到了该对象中，将隐式动作变成了显示动作。</p>
+<p>Lock接口：出现替代了同步代码块或同步函数，将同步的隐式操作变成显示锁操作，同时更加灵活，可以一个锁加上多组监听器。</p>
+<ul>
+<li>Lock()：获取锁</li>
+<li>unlocl()：释放锁，为了防止异常导致锁无法被关闭，所以锁的关闭要防止finally里</li>
+</ul>
+<p>Condition接口：替代了object中的wait、notify、notifyAll方法。将这些监视器方法单独进行了封装，变成Condition监视器对象，可以任意锁进行组合。</p>
+<ul>
+<li>Condition中的await相当于Object的wait</li>
+<li>Condition中的signal相当于Object的notify</li>
+<li>Condition中的signalAll相当于Object的notifyAll</li>
+</ul>
+<p>示例：使用一个Lock、两个Condition</p>
+<p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/4.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

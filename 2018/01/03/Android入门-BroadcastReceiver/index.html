@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BroadcastReceiver"><span class="toc-text">BroadcastReceiver</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="toc-text">发送广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%92%8C%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%8C%BA%E5%88%AB"><span class="toc-text">静态注册和动态注册区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93%E5%B9%BF%E6%92%AD%E4%B8%BA%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD%E6%97%B6%EF%BC%9A"><span class="toc-text">当广播为有序广播时：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93%E5%B9%BF%E6%92%AD%E4%B8%BA%E6%99%AE%E9%80%9A%E5%B9%BF%E6%92%AD%E6%97%B6%EF%BC%9A"><span class="toc-text">当广播为普通广播时：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Android8-0%E4%B8%8A%E7%AA%81%E7%A0%B4%E9%9A%90%E5%BC%8F%E5%B9%BF%E6%92%AD%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">在Android8.0上突破隐式广播的限制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E5%AF%B9%E6%96%B9%E6%B3%95"><span class="toc-text">应对方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%AA%81%E7%A0%B4"><span class="toc-text">如何突破</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android入门-BroadcastReceiver
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h2><p>广播被分为两种不同的类型：“<strong>普通广播</strong>（Normal broadcasts）”和“<strong>有序广播</strong>（Ordered broadcasts）”。</p>
+<p>普通广播是完全异步的，可以在同一时刻（逻辑上）被所有接收者接收到，消息传递的效率比较高，但缺点是：接收者不能将处理结果传递给下一个接收者，并且无法终止广播Intent的传播；</p>
+<span id="more"></span>
+
+<p>而有序广播是按照接收者声明的优先级别（声明在intent-filter元素的android:priority属性中，数越大优先级别越高,取值范围:-1000到1000。也可以调用IntentFilter对象的setPriority()进行设置），被接收者依次接收广播。如：A的级别高于B,B的级别高于C,那么，广播先传给A，再传给B，最后传给C。A得到广播后，可以往广播里存入数据，当广播传给B时,B可以从广播中得到A存入的数据。</p>
+<h3 id="发送广播"><a href="#发送广播" class="headerlink" title="发送广播"></a>发送广播</h3><p>发送普通广播，所有订阅者都有机会获得并进行处理。</p>
+<pre><code>Context.sendBroadcast()
+</code></pre>
+<p>发送有序广播，系统会根据接收者声明的优先级别按顺序逐个执行接收者，前面的接收者有权终止广播(BroadcastReceiver.abortBroadcast())，如果广播被前面的接收者终止，后面的接收者就再也无法获取到广播。对于有序广播，前面的接收者可以将处理结果通过setResultExtras(Bundle)方法存放进结果对象，然后传给下一个接收者，通过代码：Bundle bundle &#x3D;getResultExtras(true))可以获取上一个接收者存入在结果对象中的数据。</p>
+<p>系统收到短信，发出的广播属于有序广播。如果想阻止用户收到短信，可以通过设置优先级，让你们自定义的接收者先获取到广播，然后终止广播，这样用户就接收不到短信了。</p>
+<pre><code>Context.sendOrderedBroadcast()
+</code></pre>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>如果一个广播处理完onReceive 那么系统将认定此对象将不再是一个活动的对象，也就会finished掉它</p>
+<p><img src="/2018/01/03/Android%E5%85%A5%E9%97%A8-BroadcastReceiver/1.png"></p>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ul>
+<li>自定义一个类继承BroadcastReceiver</li>
+<li>重写onReceive方法</li>
+<li>在manifest.xml中注册</li>
+</ul>
+<p><strong>注意 ：BroadcastReceiver生命周期很短</strong></p>
+<p>如果需要在onReceiver完成一些耗时操作，应该考虑在Service中开启一个新线程处理耗时操作，不应该在BroadcastReceiver中开启一个新的线程，因为BroadcastReceiver生命周期很短，在执行完onReceiver以后就结束，如果开启一个新的线程，可能出现BroadcastRecevier退出以后线程还在，而如果BroadcastReceiver所在的进程结束了，该线程就会被标记为一个空线程，根据Android的内存管理策略，在系统内存紧张的时候，会按照优先级，结束优先级低的线程，而空线程无异是优先级最低的，这样就可能导致BroadcastReceiver启动的子线程不能执行完成。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code>public class MyBroadcastReceiver extends BroadcastReceiver &#123;
+    @Override
+    public void onReceive(Context context, Intent intent) &#123;
+        Log.i(&quot;yly&quot;,&quot;intent-action : &quot; + intent.getAction());
+        if(intent.getAction().equals(&quot;test&quot;))&#123;
+            Toast.makeText(context,&quot;test&quot;,Toast.LENGTH_LONG).show();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>静态注册，8.0后有限制，建议使用动态注册</p>
+<pre><code>&lt;receiver android:name=&quot;.MyBroadcastReceiver&quot;&gt;
+      &lt;intent-filter&gt;
+          &lt;action android:name=&quot;test&quot;/&gt;
+      &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+<p>发送广播</p>
+<pre><code>public class MainActivity extends AppCompatActivity &#123;
+
+    private Button mButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mButton = findViewById(R.id.button);
+
+        mButton.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View view) &#123;
+                Intent intent = new Intent();
+                intent.setAction(&quot;test&quot;);
+                intent.setClass(MainActivity.this,MyBroadcastReceiver.class);//8.0加上这句
+                sendBroadcast(intent);
+            &#125;
+        &#125;);
+    &#125;
+&#125;
+</code></pre>
+<p>动态注册及发送</p>
+<pre><code>public class MainActivity extends AppCompatActivity &#123;
+
+    private Button mButton;
+
+    private IntentFilter intentFilter;
+
+    private MyBroadcastReceiver mMyBroadcastReceiver;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        intentFilter = new IntentFilter();
+        intentFilter.addAction(&quot;test&quot;);
+        mMyBroadcastReceiver = new MyBroadcastReceiver();
+        registerReceiver(mMyBroadcastReceiver, intentFilter);
+
+        mButton = findViewById(R.id.button);
+
+        mButton.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View view) &#123;
+                Intent intent = new Intent();
+                intent.setAction(&quot;test&quot;);
+//                intent.setClass(MainActivity.this,MyBroadcastReceiver.class);
+                sendBroadcast(intent);
+            &#125;
+        &#125;);
+    &#125;
+
+    @Override
+    protected void onDestroy() &#123;
+        super.onDestroy();
+        unregisterReceiver(mMyBroadcastReceiver);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="静态注册和动态注册区别"><a href="#静态注册和动态注册区别" class="headerlink" title="静态注册和动态注册区别"></a>静态注册和动态注册区别</h3><blockquote>
+<p>动态注册广播不是常驻型广播，也就是说广播跟随activity的生命周期。注意: 在activity结束前，移除广播接收器。<br>静态注册是常驻型，也就是说当应用程序关闭后，如果有信息广播来，程序也会被系统调用自动运行。</p>
+</blockquote>
+<h4 id="当广播为有序广播时："><a href="#当广播为有序广播时：" class="headerlink" title="当广播为有序广播时："></a>当广播为有序广播时：</h4><p>1 优先级高的先接收</p>
+<p>2 同优先级的广播接收器，动态优先于静态</p>
+<p>3 同优先级的同类广播接收器，静态：先扫描的优先于后扫描的，动态：先注册的优先于后注册的。</p>
+<h4 id="当广播为普通广播时："><a href="#当广播为普通广播时：" class="headerlink" title="当广播为普通广播时："></a>当广播为普通广播时：</h4><p>1 无视优先级，动态广播接收器优先于静态广播接收器</p>
+<p>2 同优先级的同类广播接收器，静态：先扫描的优先于后扫描的，动态：先注册的优先于后注册的。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>在Android 中如果要发送一个广播必须使用sendBroadCast 向系统发送对其感兴趣的广播接收器中。</li>
+<li>使用广播必须要有一个intent 对象必设置其action动作对象</li>
+<li>使用广播必须在配置文件中显式的指明该广播对象</li>
+<li>每次接收广播都会重新生成一个接收广播的对象</li>
+<li>在BroadCastReceiver中尽量不要处理太多逻辑问题，建议复杂的逻辑交给Activity 或者 Service 去处理</li>
+<li>如果在AndroidManifest.xml中注册，当应用程序关闭的时候，也会接收到广播。在应用程序中注册就不产生这种情况了。</li>
+</ul>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>当如果要进行的操作需要花费比较长的时间，则不适合放在BroadcastReceiver中进行处理。</p>
+</blockquote>
+<blockquote>
+<p>引用网上找到的一段解释：</p>
+</blockquote>
+<blockquote>
+<p>在 Android 中，程序的响应（ Responsive ）被活动管理器（ Activity Manager ）和窗口管理器（ Window Manager ）这两个系统服务所监视。当 BroadcastReceiver 在 10 秒内没有执行完毕，Android 会认为该程序无响应。所以在 BroadcastReceiver 里不能做一些比较耗时的操作，否侧会弹出ANR （ Application No Response ）的对话框。如果需要完成一项比较耗时的工作，应该通过发送Intent 给 Service ，由 Service 来完成。而不是使用子线程的方法来解决，因为 BroadcastReceiver 的生命周期很短（在 onReceive() 执行后 BroadcastReceiver 的实例就会被销毁），子线程可能还没有结束BroadcastReceiver 就先结束了。如果 BroadcastReceiver 结束了，它的宿主进程还在运行，那么子线程还会继续执行。但宿主进程此时很容易在系统需要内存时被优先杀死，因为它属于空进程（没有任何活动组件的进程）。</p>
+</blockquote>
+<h3 id="在Android8-0上突破隐式广播的限制"><a href="#在Android8-0上突破隐式广播的限制" class="headerlink" title="在Android8.0上突破隐式广播的限制"></a>在Android8.0上突破隐式广播的限制</h3><p>若App的TargetSDK达到了26， 我们正常静态注册的广播就没有用了。能用的仅有以下豁免的Broadcast, 包括我们自己正常发广播，如果不指定包名， 静态注册的也是收不到的。PS：动态注册是没有影响的</p>
+<p>在我们收不到广播的时候，系统会有如下打印，即这个后台的广播接收器不会被执行</p>
+<pre><code>W BroadcastQueue: Background execution not allowed:******************
+</code></pre>
+<h4 id="应对方法"><a href="#应对方法" class="headerlink" title="应对方法"></a>应对方法</h4><ul>
+<li>能动态注册，就不静态注册</li>
+<li>如果一定要静态注册， 发送的时候指定包名，即发送显式广播</li>
+<li>如果要接收系统广播，而对应的广播在Android8.0中无法被接收，那么只能暂时把App的targetSdkVersion改为25或以下，但这招已经不顶用了，工信部要求targetSDK必须26以上</li>
+</ul>
+<h4 id="如何突破"><a href="#如何突破" class="headerlink" title="如何突破"></a>如何突破</h4><p>搜索日志：<a href="http://androidxref.com/">http://androidxref.com/</a></p>
+<p><img src="/2018/01/03/Android%E5%85%A5%E9%97%A8-BroadcastReceiver/2.png"></p>
+<p>代码里面有个skip变量是用来标志是否跳过的，日志在1275行打印出来了，skip为true了那就， 我们不希望这个判断能够进去。</p>
+<p>查看if判断条件，或关系，有一个为true即可，第二个为true的话必须所有条件为true，不进入判断的话，第一第二都为false，第二有一个为false即可</p>
+<ul>
+<li>有这么个判断r.intent.getFlags()&amp;Intent.FLAG_RECEIVER_EXCLUDE_BACKGROUND intent中携带了EXCLUDE_BACKGROUND标志位肯定进去，很显然我们正常都不带，只有希望后台收不到的时候才会带。false排除。</li>
+<li>r.intent.getComponent() &#x3D;&#x3D; null， 这个肯定不会为null的。为null是必须跳过，此条为true</li>
+<li>r.intent.getPackage() &#x3D;&#x3D; null, 若包名为空，那肯定也跳过,为true（Intent未设置包名）</li>
+<li>r.intent.getFlags() &amp; Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND) &#x3D;&#x3D; 0 不能带有FLAG_RECEIVER_INCLUDE_BACKGROUND这个标志位，若带了，那就进不去了</li>
+</ul>
+<p>综上，设置包名或者携带 FLAG_RECEIVER_INCLUDE_BACKGROUND 这个标志位即可。我们发现在AS中使用Intent是找不到这个标志位的，应该是hide了，没有被编译进SDK。那么我们直接带硬编码即可。</p>
+<pre><code>public static final int FLAG_RECEIVER_INCLUDE_BACKGROUND = 0x01000000;
+</code></pre>
+<p>使用添加</p>
+<pre><code>intent.setPackage(&quot;com.yly.broadcastreceiver&quot;);
+</code></pre>
+<p>或</p>
+<pre><code>intent.addFlags(0x01000000);
+</code></pre>
+<p>即能让广播突破隐式广播限制。</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

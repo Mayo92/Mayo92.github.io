@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Gradle%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1.Gradle基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Gradle%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">1.1 Gradle是什么，能做什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Gradle%E4%BC%98%E5%8A%BF"><span class="toc-text">1.2 Gradle优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Gradle%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">2.Gradle执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9B%91%E5%90%AC"><span class="toc-text">3.Gradle生命周期监听</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Gradle-生命周期
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <ol>
+<li>this.beforeEvaluate没效果</li>
+<li>this.gradle.beforeProject与this.gradle.afterProject不与上面的完全等同，作用范围不一样</li>
+</ol>
+<h2 id="1-Gradle基本概念"><a href="#1-Gradle基本概念" class="headerlink" title="1.Gradle基本概念"></a>1.Gradle基本概念</h2><h3 id="1-1-Gradle是什么，能做什么"><a href="#1-1-Gradle是什么，能做什么" class="headerlink" title="1.1 Gradle是什么，能做什么"></a>1.1 Gradle是什么，能做什么</h3><p><img src="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/1.png"></p>
+<p>是一种编程框架</p>
+<span id="more"></span>
+
+<h3 id="1-2-Gradle优势"><a href="#1-2-Gradle优势" class="headerlink" title="1.2 Gradle优势"></a>1.2 Gradle优势</h3><ul>
+<li>灵活性</li>
+<li>粒度性（细化到了每一个Task，如Tinker通过打包过程生成补丁文件）</li>
+<li>扩展性（支持插件机制）</li>
+<li>兼容性（兼容ant、maven）</li>
+</ul>
+<h2 id="2-Gradle执行流程"><a href="#2-Gradle执行流程" class="headerlink" title="2.Gradle执行流程"></a>2.Gradle执行流程</h2><p>.&#x2F;gradlew clean</p>
+<p>.&#x2F;gradlew build</p>
+<p>这种看似是执行命令，其实是执行gradle中的task，而任务又是有依赖性的，要想执行这个任务必须把它所依赖的任务都执行完</p>
+<p><img src="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/2.png"></p>
+<p>loading就是Initialization阶段</p>
+<h2 id="3-Gradle生命周期监听"><a href="#3-Gradle生命周期监听" class="headerlink" title="3.Gradle生命周期监听"></a>3.Gradle生命周期监听</h2><p>工程下的settings.gradle</p>
+<pre><code>println &#39;初始化阶段开始执行...&#39;
+</code></pre>
+<p>工程下的build.gradle（还有一种是添加监听方式，这里没写）</p>
+<pre><code>//初始化阶段与配置阶段之间的监听（没效果）
+this.beforeEvaluate &#123;&#125;
+
+//配置阶段之后执行阶段之前监听（监听不到它的子工程）
+this.afterEvaluate &#123;
+    println &#39;配置阶段执行完毕...&#39;
+&#125;
+
+//生命周期执行完监听
+this.gradle.buildFinished &#123;
+    println &#39;执行阶段执行完毕...&#39;
+&#125;
+</code></pre>
+<p><img src="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/3.png"></p>
+<pre><code>//等同this.beforeEvaluate（主工程没效果）
+this.gradle.beforeProject &#123;&#125;
+
+//等同this.afterEvaluate
+this.gradle.afterProject &#123;&#125;
+</code></pre>
+<p>.&#x2F;gradlew tasks 查看项目中有多少任务</p>
+<p><img src="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/4.png"></p>
+<p>要想执行这个task，必须把他所依赖的task都执行完毕。这个关系图在配置阶段执行完成之后生成</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

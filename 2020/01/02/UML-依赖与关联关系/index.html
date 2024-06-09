@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="toc-text">依赖关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB"><span class="toc-text">关联关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E5%85%B3%E8%81%94"><span class="toc-text">双向关联</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E5%85%B3%E8%81%94"><span class="toc-text">单向关联</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E8%BA%AB%E5%85%B3%E8%81%94-%E5%8F%8D%E8%BA%AB%E5%85%B3%E8%81%94"><span class="toc-text">自身关联(反身关联)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-text">补充</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          UML-依赖与关联关系
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="依赖关系"><a href="#依赖关系" class="headerlink" title="依赖关系"></a>依赖关系</h3><p>依赖关系(Dependency) 是一种使用关系，特定事物的改变有可能会影响到使用该事物的其他事物，在需要表示一个事物使用另一个事物时使用依赖关系。如人要过河时要使用到船，人与船之间就是依赖关系;我用锤子在墙上锤了一下，我和锤子之间就是依赖关系;装修工人安装灯具时需要使用工具，装修工人和工具之间就是依赖关系。大多数情况下，依赖关系体现在某个类的方法使用另一个类的对象作为参数。</p>
+<span id="more"></span>
+
+<p>依赖关系有下列三种情况:</p>
+<ul>
+<li>A 类是 B 类中(某种方法的)局部变量</li>
+<li>A 类是 B 类方法当中的一个参数</li>
+<li>A 类向 B 类发送消息，从而影响 B 类发生变化</li>
+</ul>
+<p>我们这里就依赖关系最常出现的情况—在某个类的方法使用另一个类的对象作为参数进行举例说明:课程表与课程之间就是依赖关系</p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/1.png"></p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/2.png"></p>
+<p>课程表类中用课程的对象作为参数，进行增加课程和删除课程的功能。课程的变化会引起课程表的实时变更，这就是一种“use a”的关系，也就是课程表依赖于课程。</p>
+<h3 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h3><p>关联关系是类与类之间最常用的一种关系，它是一种结构化关系，代表类的对象之间的一组连接。如客户与订单、老师与学生、公司与职员，人体与大脑，这些关系不是是使用时才有的，而是一种长期且稳定的关系。</p>
+<p>关联关系可以分为双向关联、单向关联、自关联。</p>
+<h4 id="双向关联"><a href="#双向关联" class="headerlink" title="双向关联"></a>双向关联</h4><p>指双方都知道对方的存在，都可以调用对方的公共属性和方法。默认情况下，关联是双向的。如供货商和顾客之间的关系，一家供货商可以向多个顾客供货，一个顾客也可以向多家供货商进货</p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/3.png"></p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/4.png"></p>
+<h4 id="单向关联"><a href="#单向关联" class="headerlink" title="单向关联"></a>单向关联</h4><p>类的关联关系也可以是单向的，单向关联用带箭头的实线表示。例如:顾客(Customer)拥有地址(Address)，则 Customer 类与 Address 类具有单向关联关系</p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/5.png"></p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/6.png"></p>
+<h4 id="自身关联-反身关联"><a href="#自身关联-反身关联" class="headerlink" title="自身关联(反身关联)"></a>自身关联(反身关联)</h4><p>在系统中可能会存在一些类的属性对象类型为该类本身，这种特殊的关联关系称为自关联。顾客自身需要用到自己对象时，自己引用自己，带着一个自己的引用。</p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/7.png"></p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/8.png"></p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>重数性关联: 表示一个类的对象与另一个类的对象连接的个数。</p>
+<p>在 UML 中多重性关系可以直接在关联直线上增加一个数字表示与之对应的另一个类的对象的个数。在关联的两端可写上一个被称为重数的范围，表示该类有多少个对象可与对方一个对象连接，重数的默认值为 1，重数的符号通常有:</p>
+<p><img src="/2020/01/02/UML-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB/9.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

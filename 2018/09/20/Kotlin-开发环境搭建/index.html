@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="toc-text">1.命令行方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Eclipse"><span class="toc-text">2.Eclipse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IntelliJ"><span class="toc-text">3.IntelliJ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Android-Studio"><span class="toc-text">4.Android Studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Gradle%E5%B7%A5%E7%A8%8B"><span class="toc-text">5.Gradle工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">5.1 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%AE%89%E8%A3%85"><span class="toc-text">5.2 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-%E4%B8%8B%E8%BD%BD%E8%A7%A3%E5%8E%8B"><span class="toc-text">5.2.1 下载解压</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-%E9%80%9A%E8%BF%87%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-text">5.2.2 通过包管理工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-3-Gradle-Wrapper"><span class="toc-text">5.2.3 Gradle Wrapper</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E8%AE%A4%E8%AF%86Gradle%E5%B7%A5%E7%A8%8B"><span class="toc-text">5.3 认识Gradle工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E8%AE%A4%E8%AF%86Gradle%E9%85%8D%E7%BD%AE"><span class="toc-text">5.4 认识Gradle配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-Gradle%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">5.5 Gradle常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-1-%E4%B8%8B%E8%BD%BD%E4%B8%8D%E4%B8%8B%E6%9D%A5%EF%BC%88%E5%B7%A5%E7%A8%8B%E5%8F%AA%E6%9C%89Gradle%E7%9B%AE%E5%BD%95%E7%AD%89%EF%BC%89"><span class="toc-text">5.5.1 下载不下来（工程只有Gradle目录等）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-2-%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD%E4%B8%8D%E4%B8%8B%E6%9D%A5"><span class="toc-text">5.5.2 依赖下载不下来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-3-Gradle-Sync-failed-%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-text">5.5.3 Gradle Sync failed 怎么办</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Kotlin-开发环境搭建
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="1-命令行方式"><a href="#1-命令行方式" class="headerlink" title="1.命令行方式"></a>1.命令行方式</h2><span id="more"></span>
+
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/2.png"></p>
+<h2 id="2-Eclipse"><a href="#2-Eclipse" class="headerlink" title="2.Eclipse"></a>2.Eclipse</h2><p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/3.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/4.png"></p>
+<h2 id="3-IntelliJ"><a href="#3-IntelliJ" class="headerlink" title="3.IntelliJ"></a>3.IntelliJ</h2><p>使用第二种方式</p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/5.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/6.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/7.png"></p>
+<p>gradle现在支持kotlin编写，不勾选Kotlin DSL默认是Groovy模式</p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/8.png"></p>
+<p>修改版本号可以修改下载版本，bin只有gradle运行时的东西，all可以下载源码</p>
+<h2 id="4-Android-Studio"><a href="#4-Android-Studio" class="headerlink" title="4.Android Studio"></a>4.Android Studio</h2><p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/9.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/10.png"></p>
+<h2 id="5-Gradle工程"><a href="#5-Gradle工程" class="headerlink" title="5.Gradle工程"></a>5.Gradle工程</h2><h3 id="5-1-是什么"><a href="#5-1-是什么" class="headerlink" title="5.1 是什么"></a>5.1 是什么</h3><p>一个灵活高效且支持多语言多平台的构建工具</p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/11.png"></p>
+<h3 id="5-2-安装"><a href="#5-2-安装" class="headerlink" title="5.2 安装"></a>5.2 安装</h3><p>使用方式三</p>
+<h4 id="5-2-1-下载解压"><a href="#5-2-1-下载解压" class="headerlink" title="5.2.1 下载解压"></a>5.2.1 下载解压</h4><h4 id="5-2-2-通过包管理工具"><a href="#5-2-2-通过包管理工具" class="headerlink" title="5.2.2 通过包管理工具"></a>5.2.2 通过包管理工具</h4><p>Homebrew：brew install gradle</p>
+<h4 id="5-2-3-Gradle-Wrapper"><a href="#5-2-3-Gradle-Wrapper" class="headerlink" title="5.2.3 Gradle Wrapper"></a>5.2.3 Gradle Wrapper</h4><ol>
+<li>每个Gradle工程可以灵活配置Gradle版本</li>
+<li>无需手动下载安装，配置版本即可自动下载</li>
+</ol>
+<h3 id="5-3-认识Gradle工程"><a href="#5-3-认识Gradle工程" class="headerlink" title="5.3 认识Gradle工程"></a>5.3 认识Gradle工程</h3><p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/12.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/13.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/14.png"></p>
+<h3 id="5-4-认识Gradle配置"><a href="#5-4-认识Gradle配置" class="headerlink" title="5.4 认识Gradle配置"></a>5.4 认识Gradle配置</h3><p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/15.png"></p>
+<h3 id="5-5-Gradle常见问题"><a href="#5-5-Gradle常见问题" class="headerlink" title="5.5 Gradle常见问题"></a>5.5 Gradle常见问题</h3><h4 id="5-5-1-下载不下来（工程只有Gradle目录等）"><a href="#5-5-1-下载不下来（工程只有Gradle目录等）" class="headerlink" title="5.5.1 下载不下来（工程只有Gradle目录等）"></a>5.5.1 下载不下来（工程只有Gradle目录等）</h4><p>删除本地下载（地址在gradle-wrapper.properties里有写）用浏览器或迅雷下载</p>
+<h4 id="5-5-2-依赖下载不下来"><a href="#5-5-2-依赖下载不下来" class="headerlink" title="5.5.2 依赖下载不下来"></a>5.5.2 依赖下载不下来</h4><p>换成阿里云maven</p>
+<h4 id="5-5-3-Gradle-Sync-failed-怎么办"><a href="#5-5-3-Gradle-Sync-failed-怎么办" class="headerlink" title="5.5.3 Gradle Sync failed 怎么办"></a>5.5.3 Gradle Sync failed 怎么办</h4><p>查找错误信息</p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/16.png"></p>
+<p><img src="/2018/09/20/Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/17.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

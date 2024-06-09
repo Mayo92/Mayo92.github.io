@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E8%83%8C%E6%99%AF"><span class="toc-text">出现背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-text">如何解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF"><span class="toc-text">哪些优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94"><span class="toc-text">结构对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E7%BB%84%E4%BB%B6%E5%8C%96%E5%AF%B9%E6%AF%94"><span class="toc-text">与组件化对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E5%AF%B9%E6%AF%94"><span class="toc-text">与动态更新对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%8C%96%E7%9F%A5%E8%AF%86%E4%BB%8B%E7%BB%8D"><span class="toc-text">插件化知识介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Manifest%E5%A4%84%E7%90%86"><span class="toc-text">Manifest处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86"><span class="toc-text">插件类加载原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%B1%BB%E5%8A%A0%E8%BD%BD"><span class="toc-text">插件类加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="toc-text">两个问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%A6%E4%B8%80%E4%B8%AAapk%E9%87%8C%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取另一个apk里的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E7%AE%80%E5%8D%95%E7%9A%84classloader"><span class="toc-text">定义简单的classloader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD"><span class="toc-text">资源文件加载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E6%89%80%E9%9C%80%E7%9A%84%E7%B1%BB"><span class="toc-text">Android资源加载所需的类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%82%E9%9D%A2%E4%B8%8A%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">市面上第三方框架的做法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="toc-text">核心技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E7%AE%80%E5%8D%95%E7%9A%84%E6%8F%92%E4%BB%B6%E5%8C%96%E6%A1%86%E6%9E%B6"><span class="toc-text">模拟简单的插件化框架</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          热修复插件化-插件化原理
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="出现背景"><a href="#出现背景" class="headerlink" title="出现背景"></a>出现背景</h2><ul>
+<li>app体积越来越大，功能模块越来越多</li>
+<li>模块耦合度高，协同开发沟通成本极大</li>
+<li>方法数可能超过65535，占用内存过大</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><ul>
+<li>将一个大的apk按照业务分隔成多个小的apk</li>
+<li>每个小的apk既可以独立运行又可以作为插件运行</li>
+</ul>
+<h3 id="哪些优势"><a href="#哪些优势" class="headerlink" title="哪些优势"></a>哪些优势</h3><ul>
+<li>业务模块完全解耦</li>
+<li>高效并行开发（编译速度更快）</li>
+<li>按需加载，内存占用更低</li>
+</ul>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><ul>
+<li>宿主：主APP，可以加载插件，也称为Host</li>
+<li>插件：插件APP，被宿主加载的APP，可以是跟普通APP一样的apk文件</li>
+<li>插件化：将一个应用按照宿主插件的方式改造就叫插件化</li>
+</ul>
+<h3 id="结构对比"><a href="#结构对比" class="headerlink" title="结构对比"></a>结构对比</h3><p><img src="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/1.png"> </p>
+<h3 id="与组件化对比"><a href="#与组件化对比" class="headerlink" title="与组件化对比"></a>与组件化对比</h3><ul>
+<li>组件化是一种编程思想，插件化是一种技术</li>
+<li>组件化是为了代码的高度复用性出现的</li>
+<li>插件化是为了解决应用越来越庞大而出现的</li>
+</ul>
+<h3 id="与动态更新对比"><a href="#与动态更新对比" class="headerlink" title="与动态更新对比"></a>与动态更新对比</h3><ul>
+<li>与动态更新一样，都是动态加载技术的应用</li>
+<li>动态更新是为了解决线上BUG或小功能的更新而出现</li>
+<li>插件化是为了解决应用越来越庞大而出现的</li>
+</ul>
+<p><img src="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/2.png"></p>
+<h2 id="插件化知识介绍"><a href="#插件化知识介绍" class="headerlink" title="插件化知识介绍"></a>插件化知识介绍</h2><ul>
+<li>Android classloader加载class原理</li>
+<li>java反射原理</li>
+<li>Android资源加载原理</li>
+<li>四大组件加载原理</li>
+</ul>
+<h3 id="Manifest处理"><a href="#Manifest处理" class="headerlink" title="Manifest处理"></a>Manifest处理</h3><p><img src="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/3.png"></p>
+<h2 id="插件类加载原理"><a href="#插件类加载原理" class="headerlink" title="插件类加载原理"></a>插件类加载原理</h2><h3 id="插件类加载"><a href="#插件类加载" class="headerlink" title="插件类加载"></a>插件类加载</h3><p><img src="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/4.png"></p>
+<h3 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h3><ul>
+<li>如何自定义classloader加载类文件</li>
+<li>如何调用插件apk文件中的类</li>
+</ul>
+<h3 id="获取另一个apk里的方法"><a href="#获取另一个apk里的方法" class="headerlink" title="获取另一个apk里的方法"></a>获取另一个apk里的方法</h3><pre><code>//主apk加载Bundle.apk里的方法
+String apkPath = getExternalCacheDir().getAbsolutePath() + &quot;/bundle.apk&quot;;
+loadApk(apkPath);
+
+private void loadApk(String apkPath) &#123;
+    File optDir = getDir(&quot;opt&quot;, MODE_PRIVATE);
+    //初始化classLoader
+    DexClassLoader classLoader = new DexClassLoader(apkPath,
+            optDir.getAbsolutePath(), null, this.getClassLoader());
+
+    try &#123;
+        Class cls = classLoader.loadClass(&quot;com.imooc.bundle.BundleUtil&quot;);
+        if (cls != null) &#123;
+
+            Object instacne = cls.newInstance();
+            Method method = cls.getMethod(&quot;printLog&quot;);
+            method.invoke(instacne);
+        &#125;
+    &#125; catch (Exception e) &#123;
+        e.printStackTrace();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="定义简单的classloader"><a href="#定义简单的classloader" class="headerlink" title="定义简单的classloader"></a>定义简单的classloader</h3><pre><code>public class CustomClassLoader extends DexClassLoader &#123;
+
+    public CustomClassLoader(String dexPath, String optimizedDirectory, String librarySearchPath, ClassLoader parent) &#123;
+        super(dexPath, optimizedDirectory, librarySearchPath, parent);
+    &#125;
+
+
+    @Override
+    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException &#123;
+
+        byte[] classData = getClassData(name);
+        if (classData != null) &#123;
+            return defineClass(name, classData, 0, classData.length);
+        &#125; else &#123;
+
+            throw new ClassNotFoundException();
+        &#125;
+    &#125;
+
+    private byte[] getClassData(String name) &#123;
+
+        try &#123;
+            InputStream inputStream = new FileInputStream(name);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            int buffersize = 4096;
+            byte[] buffer = new byte[buffersize];
+            int bytesNumRead = -1;
+            while ((bytesNumRead = inputStream.read(buffer)) != -1) &#123;
+                baos.write(buffer, 0, bytesNumRead);
+            &#125;
+            return baos.toByteArray();
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        return null;
+    &#125;
+&#125;
+</code></pre>
+<p>需要为每个插件定义classloader</p>
+<h3 id="资源文件加载"><a href="#资源文件加载" class="headerlink" title="资源文件加载"></a>资源文件加载</h3><h4 id="Android资源加载所需的类"><a href="#Android资源加载所需的类" class="headerlink" title="Android资源加载所需的类"></a>Android资源加载所需的类</h4><p><img src="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/5.png"></p>
+<p>如果资源只有文件名，需要通过assetmanager通过文件名加载资源。如果资源有对应的ID（如图片、布局、动画），通过resources类完成对应资源的加载，再通过assetmanager完成资源文件的读写。</p>
+<h4 id="市面上第三方框架的做法"><a href="#市面上第三方框架的做法" class="headerlink" title="市面上第三方框架的做法"></a>市面上第三方框架的做法</h4><p><img src="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/6.png"></p>
+<h3 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h3><ul>
+<li>处理所有插件apk文件中的manifest文件</li>
+<li>管理宿主apk中所有的插件apk信息</li>
+<li>为每个插件apk创建对应的类加载器，资源管理器等</li>
+</ul>
+<h3 id="模拟简单的插件化框架"><a href="#模拟简单的插件化框架" class="headerlink" title="模拟简单的插件化框架"></a>模拟简单的插件化框架</h3><p>PluginInfo：</p>
+<pre><code>public class PluginInfo &#123;
+
+    public DexClassLoader mClassLoader;
+
+    public AssetManager mAssetManager;
+
+    public Resources mResouces;
+&#125;
+</code></pre>
+<p>PluginManager:（不需要那么多static）</p>
+<pre><code>public class PluginManager &#123;
+
+    private static PluginManager mInstacne;
+
+    private static Context mContext;
+    private static File mOptFile;
+    private static HashMap&lt;String, PluginInfo&gt; mPluginMap;
+
+    private PluginManager(Context context) &#123;
+        mContext = context;
+        mOptFile = mContext.getDir(&quot;opt&quot;, mContext.MODE_PRIVATE);
+        mPluginMap = new HashMap&lt;&gt;();
+    &#125;
+
+    //获取单例对象方法
+    public static PluginManager getInstance(Context context) &#123;
+
+        if (mInstacne == null) &#123;
+            synchronized (PluginManager.class) &#123;
+                if (mInstacne == null) &#123;
+
+                    mInstacne = new PluginManager(context);
+                &#125;
+            &#125;
+        &#125;
+        return mInstacne;
+    &#125;
+
+
+    public static PluginInfo loadApk(String apkPath) &#123;
+
+        if (mPluginMap.get(apkPath) != null) &#123;
+             return mPluginMap.get(apkPath);
+        &#125;
+
+        PluginInfo pluginInfo = new PluginInfo();
+        pluginInfo.mClassLoader = createPluginDexClassLoader(apkPath);
+        pluginInfo.mAssetManager = createPluginAssetManager(apkPath);
+        pluginInfo.mResouces = createPluginResources(apkPath);
+
+        mPluginMap.put(apkPath, pluginInfo);
+
+        return pluginInfo;
+    &#125;
+
+    //为插件apk创建对应的classLoader
+    private static DexClassLoader createPluginDexClassLoader(String apkPath) &#123;
+
+        DexClassLoader classLoader = new DexClassLoader(apkPath,
+            mOptFile.getAbsolutePath(), null, null);
+        return classLoader;
+    &#125;
+
+    //为对应的插件创建AssetManager
+    private static AssetManager createPluginAssetManager(String apkPath) &#123;
+
+        try &#123;
+            AssetManager assetManager = AssetManager.class.newInstance();
+            Method addAssetPath = assetManager.getClass().getMethod(&quot;addAssetPath&quot;,
+                String.class);
+
+            addAssetPath.invoke(assetManager, apkPath);
+            return assetManager;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        return null;
+    &#125;
+
+    //为对应的插件创建resoures
+    private static Resources createPluginResources(String apkPath) &#123;
+
+        AssetManager assetManager = createPluginAssetManager(apkPath);
+
+        Resources superResources = mContext.getResources();
+
+        Resources pluginResources = new Resources(assetManager,
+            superResources.getDisplayMetrics(), superResources.getConfiguration());
+
+        return pluginResources;
+    &#125;
+&#125;
+</code></pre>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

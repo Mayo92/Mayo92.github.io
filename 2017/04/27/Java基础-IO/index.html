@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AF%B9%E8%B1%A1API"><span class="toc-text">其他对象API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#System%E7%B1%BB"><span class="toc-text">System类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runtime%E7%B1%BB"><span class="toc-text">Runtime类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Math%E7%B1%BB"><span class="toc-text">Math类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Date%E3%80%81DateFormat%E7%B1%BB"><span class="toc-text">Date、DateFormat类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%AF%AB%E7%A7%92%E5%80%BC%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">日期对象和毫秒值之间的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1%E8%BF%9B%E8%A1%8C%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%9A"><span class="toc-text">对日期对象进行格式化：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Calendar%E7%B1%BB"><span class="toc-text">Calendar类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81"><span class="toc-text">IO流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-text">输出流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%B5%81"><span class="toc-text">输入流</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E6%B5%81%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%B1%BB"><span class="toc-text">IO流常用基类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E4%B8%80%E4%BA%9B%E6%96%87%E5%AD%97%E5%AD%98%E5%82%A8%E5%88%B0%E7%A1%AC%E7%9B%98%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="toc-text">将一些文字存储到硬盘一个文件中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E6%96%87%E6%96%87%E4%BB%B6"><span class="toc-text">读取一个文文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6"><span class="toc-text">复制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">字符流的缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">装饰设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%92%8C%E7%BB%A7%E6%89%BF"><span class="toc-text">装饰和继承</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-text">字节流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FileInputStream"><span class="toc-text">FileInputStream</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileOutputStream"><span class="toc-text">FileOutputStream</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96"><span class="toc-text">读取</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-text">转换流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%9A%84%E6%93%8D%E4%BD%9C%E8%A7%84%E5%BE%8B"><span class="toc-text">流的操作规律</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E6%8C%87%E5%AE%9A%E7%BC%96%E7%A0%81%E5%86%99%E5%AD%97%E7%AC%A6%E5%88%B0%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="toc-text">按照指定编码写字符到指定文件中</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-text">什么时候使用转换流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81-%E5%AD%97%E8%8A%82%E6%B5%81%E7%BB%A7%E6%89%BF%E4%BD%93%E7%B3%BB%E7%AE%80%E5%9B%BE"><span class="toc-text">字符流&#x2F;字节流继承体系简图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81-1"><span class="toc-text">字节流</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File%E7%B1%BB"><span class="toc-text">File类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-text">创建文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">File对象的常用方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#list%E6%96%B9%E6%B3%95"><span class="toc-text">list方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%9B%E9%80%89%E6%8C%87%E5%AE%9A%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-text">筛选指定格式的文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%9B%E9%80%89%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6"><span class="toc-text">筛选隐藏文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-text">递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Properties%E9%9B%86%E5%90%88"><span class="toc-text">Properties集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E5%8C%85%E4%B8%AD%E7%9A%84%E5%85%B6%E4%BB%96%E7%B1%BB"><span class="toc-text">IO包中的其他类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E6%B5%81"><span class="toc-text">打印流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E6%B5%81"><span class="toc-text">序列流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1"><span class="toc-text">操作对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Serializable"><span class="toc-text">Serializable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RandomAccessFile"><span class="toc-text">RandomAccessFile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E6%B5%81"><span class="toc-text">管道流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">操作基本数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E8%8A%82%E6%95%B0%E7%BB%84"><span class="toc-text">操作字节数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E8%A1%A8"><span class="toc-text">编码表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-text">字符集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="toc-text">两种编码方式</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java基础-IO
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="其他对象API"><a href="#其他对象API" class="headerlink" title="其他对象API"></a>其他对象API</h2><h3 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h3><p>System类中的字段和方法都是静态的</p>
+<span id="more"></span>
+
+<p>long currentTimeMillis();获取当前时间的毫秒值，可以通过此方法检测程序的执行时间。</p>
+<p>Properties getProperties();确定当前的系统属性。Properties集合中存储的都是String类型的键和值。最好使用它自己的存储和取出的方法来完成元素的操作。</p>
+<h3 id="Runtime类"><a href="#Runtime类" class="headerlink" title="Runtime类"></a>Runtime类</h3><p>每个 Java 应用程序都有一个 Runtime 类实例，使应用程序能够与其运行的环境相连接。应用程序不能创建自己的 Runtime 类实例。</p>
+<p>Runtime：没有构造方法摘要，说明该类不可以创建对象。又发现还有非静态的方法，说明该类应该提供静态的返回该类对象的方法。而且只有一个，说明Runtime类使用了单例设计模式</p>
+<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><p>提供了操作数学运算的方法，都是静态的。</p>
+<p>ceil():返回大于参数的最小整数。</p>
+<p>floor():返回小于参数的最大整数。</p>
+<p>round():返回四舍五入的整数。</p>
+<p>pow(a,b):a的b次方。</p>
+<h3 id="Date、DateFormat类"><a href="#Date、DateFormat类" class="headerlink" title="Date、DateFormat类"></a>Date、DateFormat类</h3><h4 id="日期对象和毫秒值之间的转换"><a href="#日期对象和毫秒值之间的转换" class="headerlink" title="日期对象和毫秒值之间的转换"></a>日期对象和毫秒值之间的转换</h4><p>毫秒值–&gt;日期对象：</p>
+<ol>
+<li>. 通过Date对象的构造方法 new Date(timeMillis);</li>
+<li>还可以通过setTime设置。</li>
+</ol>
+<p>因为可以通过Date对象的方法对该日期中的各个字段（年月日等）进行操作</p>
+<p>日期对象–&gt;毫秒值：</p>
+<ol>
+<li>getTime方法。</li>
+</ol>
+<p>因为可以通过具体的数值进行运算。</p>
+<h4 id="对日期对象进行格式化："><a href="#对日期对象进行格式化：" class="headerlink" title="对日期对象进行格式化："></a>对日期对象进行格式化：</h4><p>将日期对象–&gt;日期格式的字符串。使用的是DateFormat类中的format方法。</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/1.png"></p>
+<p>将日期格式的字符串–&gt;日期对象：使用的是DateFormat类中的prase方法。</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/2.png"></p>
+<h3 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h3><p>Calendar 类是一个抽象类，它为特定瞬间与一组诸如YEAR、MONTH、DAY_OF_MONTH、HOUR等日历字段之间的转换提供了一些方法，并为操作日历字段（例如获得下星期的日期）提供了一些方法。</p>
+<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>IO流用来处理设备之间的数据传输。Java对数据的操作是通过流的方式。Java用于操作流的对象都在IO包中。</p>
+<p>输入流和输出流相对于内存设备而言。</p>
+<p>将外设中的数据读取到内存中：输入。将内存的数写入到外设中：输出。</p>
+<p>流按操作数据分为两种：字节流与字符流。</p>
+<p>字符流的由来：字节流读取文字字节数据后，不直接操作而是先查指定的编码表，获取对应的文字。再对这个文字进行操作。简单说：字节流+编码表。</p>
+<h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/27.png"></p>
+<h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/28.png"></p>
+<h3 id="IO流常用基类"><a href="#IO流常用基类" class="headerlink" title="IO流常用基类"></a>IO流常用基类</h3><p>字节流的抽象基类：InputStream，OutputStream。</p>
+<p>字符流的抽象基类：Reader，Writer。</p>
+<p>由这四个类派生出来的子类名称都是以其父类名作为子类名的后缀：InputStream的子类FileInputStream、Reader的子类FileReader</p>
+<h4 id="将一些文字存储到硬盘一个文件中"><a href="#将一些文字存储到硬盘一个文件中" class="headerlink" title="将一些文字存储到硬盘一个文件中"></a>将一些文字存储到硬盘一个文件中</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/3.png"></p>
+<ol>
+<li>close方法只能用一次。</li>
+<li>流关闭以后不能，不能再调用write方法，否则会报异常错误</li>
+<li>如果FileWriter构造函数中加入true，可以实现对文件进行续写。</li>
+</ol>
+<h4 id="读取一个文文件"><a href="#读取一个文文件" class="headerlink" title="读取一个文文件"></a>读取一个文文件</h4><p>第一种读取方式：使用read()方法读取文本文件数据。</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/4.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/5.png"></p>
+<p>第二种读取方式：使用read(char[])方法读取文本文件数据。</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/6.png"></p>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>方式1：使用read()读取文本文件数据。</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/7.png"></p>
+<p>方式2：使用read(char[])读取文本文件数据。</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/8.png"></p>
+<h3 id="字符流的缓冲区"><a href="#字符流的缓冲区" class="headerlink" title="字符流的缓冲区"></a>字符流的缓冲区</h3><p>缓冲区的出现提高了对数据的读写效率。</p>
+<p>对应类：BufferedWriter、BufferedReader</p>
+<p>缓冲区要结合流才可以使用。</p>
+<p>作用：在流的基础上对流的功能进行了增强。</p>
+<p>写入换行使用BufferedWriter类中的newLine()方法。</p>
+<p>读取一行数据使用BufferedReader类中的readLine()方法。</p>
+<p>bufr.read():这个read方法是从缓冲区中读取字符数据，所以覆盖了父类中的read方法。</p>
+<p>bufr.readLine():另外开辟了一个缓冲区，存储的是原缓冲区一行的数据，不包含换行符。</p>
+<p>原理：使用了读取缓冲区的read方法，将读取到的字符进行缓冲并判断换行标记，将标记前的缓冲数据变成字符串返回。</p>
+<p>LineNumberReader：跟踪行号的缓冲字符输入流。此类定义了方法 setLineNumber(int) 和 getLineNumber()，它们可分别用于设置和获取当前行号。</p>
+<h3 id="装饰设计模式"><a href="#装饰设计模式" class="headerlink" title="装饰设计模式"></a>装饰设计模式</h3><p>对原有类进行了功能的改变，增强</p>
+<h4 id="装饰和继承"><a href="#装饰和继承" class="headerlink" title="装饰和继承"></a>装饰和继承</h4><p>装饰和继承都能实现一样的特点：进行功能的扩展增强。有什么区别呢？</p>
+<p>首先有一个继承体系：</p>
+<blockquote>
+<p>Writer</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>TextWriter:用于操作文本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>MediaWriter:用于操作媒体  </p>
+</blockquote>
+</blockquote>
+<p>如果想要对操作的动作进行效率的提高，按照面向对象，可以通过继承的方式对具体的对象进行功能的扩展，那么就需要加入缓冲技术</p>
+<blockquote>
+<p>Writer</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>TextWriter:用于操作文本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>BufferTextWriter:加入了缓冲技术的操作文本的对象</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>MediaWriter:用于操作媒体 </p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>BufferMediaWriter:加入了缓冲技术的操作媒体的对象</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>以上方式并不理想，如果这个体系需要再进行功能扩展，又多了更多流对象。</p>
+<p>这样就会发现只为提高功能，导致继承体系越来越臃肿，不够灵活。</p>
+<p>既然加入的都是同一种技术–缓冲。前一种是让缓冲和自己的流对象相结合。可以将缓冲进行单独的封装，哪个对象需要缓冲就将哪个对象和缓冲关联</p>
+<blockquote>
+<p>Writer</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>TextWriter:用于操作文本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>MediaWriter:用于操作媒体</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>BufferedWriter:用于提高效率</p>
+</blockquote>
+</blockquote>
+<p>装饰比继承灵活。</p>
+<p>特点：装饰类和被装饰类都必须所属同一个接口或者父类。</p>
+<h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><p>基本操作与字符流类相同。但它不仅可以操作字符，还可以操作其他媒体文件。</p>
+<h4 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h4><ul>
+<li>从文件系统中的某个文件中获得输入字节</li>
+<li>用于读取诸如图像数据之类的原始字节流</li>
+</ul>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/31.png"></p>
+<h4 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/32.png"></p>
+<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/9.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/10.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/11.png"></p>
+<p>FileOutputStream、FileInputStream的flush方法内容为空，没有任何实现，调用没有意义。</p>
+<p>字节流的缓冲区：同样是提高了字节流的读写效率。</p>
+<h3 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h3><p>转换流的由来：字符流与字节流之间的桥梁，方便了字符流与字节流之间的操作</p>
+<p>转换流的应用：字节流中的数据都是字符时，转成字符流操作更高效。</p>
+<p>InputStreamReader：字节到字符的桥梁，解码。</p>
+<p>OutputStreamWriter：字符到字节的桥梁，编码。</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/12.png"></p>
+<h3 id="流的操作规律"><a href="#流的操作规律" class="headerlink" title="流的操作规律"></a>流的操作规律</h3><p>1、明确源和目的</p>
+<p>源：InputStream Reader</p>
+<p>目的：OutputStream Writer</p>
+<p>2、明确数据是否是纯文本数据</p>
+<p>源：是纯文本：Reader 否：InputStream</p>
+<p>目的：是纯文本：Writer 否：OutputStream</p>
+<p>3、明确具体的设备</p>
+<p>源设备：硬盘：File、键盘：System.in、内存：数组、网络：Socket流</p>
+<p>目的设备：硬盘：File、控制台：System.out、内存：数组、网络：Socket流</p>
+<p>4、是否需要其他额外功能</p>
+<p>是否需要高效（缓冲区）：是，就加上buffer</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/13.png"></p>
+<p>UTF-8编码，一个中文三个字节。</p>
+<h4 id="按照指定编码写字符到指定文件中"><a href="#按照指定编码写字符到指定文件中" class="headerlink" title="按照指定编码写字符到指定文件中"></a>按照指定编码写字符到指定文件中</h4><p>如果需求中已经明确指定了编码表。那就不可以使用FileWriter，因为FileWriter内部使用的默认的本地码表。只能使用其父类，OutputStreamWriter。</p>
+<p>OutputStreamWriter接收一个字节输出流对象，既然是操作文件，那么该对象应该是FileOutputStream。</p>
+<pre><code>OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;a.txt&quot;),charsetName);
+</code></pre>
+<p>需要高效：</p>
+<pre><code>BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(&quot;a.txt&quot;),charsetName));
+</code></pre>
+<h3 id="什么时候使用转换流"><a href="#什么时候使用转换流" class="headerlink" title="什么时候使用转换流"></a>什么时候使用转换流</h3><ol>
+<li>源或者目的对应的设备是字节流，但是操作的却是文本数据，可以使用转换作为桥梁，提高对文本操作的便捷</li>
+<li>一旦操作文本涉及到具体的指定编码表时，必须使用转换流</li>
+</ol>
+<h3 id="字符流-字节流继承体系简图"><a href="#字符流-字节流继承体系简图" class="headerlink" title="字符流&#x2F;字节流继承体系简图"></a>字符流&#x2F;字节流继承体系简图</h3><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/14.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/33.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/34.png"></p>
+<h4 id="字节流-1"><a href="#字节流-1" class="headerlink" title="字节流"></a>字节流</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/15.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/29.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/30.png"></p>
+<h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>文件可认为是相关记录或放在一起的数据的集合</p>
+<p>File类用来将文件或者文件夹封装成对象，方便对文件与文件夹的属性信息进行操作。</p>
+<p>File对象可以作为参数传递给流的构造函数。</p>
+<p>流只能操作数据，不能操作文件。</p>
+<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/16.png"></p>
+<h4 id="File对象的常用方法："><a href="#File对象的常用方法：" class="headerlink" title="File对象的常用方法："></a>File对象的常用方法：</h4><p>1、获取</p>
+<p>获取文件名称、获取文件路径、获取文件大小、获取文件修改时间</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/17.png"></p>
+<p>2、创建和删除</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/18.png"></p>
+<p>3、判断</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/19.png"></p>
+<p>4、重命名</p>
+<pre><code>boolean b = f1.renameTo(f2);
+</code></pre>
+<p>5、系统根目录和容量获取</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/20.png"></p>
+<h4 id="list方法"><a href="#list方法" class="headerlink" title="list方法"></a>list方法</h4><ul>
+<li>获取目录下的文件以及文件夹的名称，包含隐藏文件</li>
+<li>调用list方法的File对象中封装的必须是目录，否则会产生NullPointerException</li>
+<li>如果访问的是系统级目录也会发生空指针异常</li>
+<li>如果目录存在但是没有内容，会返回一个数组，但是长度为0</li>
+</ul>
+<h4 id="筛选指定格式的文件"><a href="#筛选指定格式的文件" class="headerlink" title="筛选指定格式的文件"></a>筛选指定格式的文件</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/21.png"></p>
+<pre><code>String[] names = dir.list( new SuffixFilter(&quot;.java&quot; ));
+</code></pre>
+<h4 id="筛选隐藏文件"><a href="#筛选隐藏文件" class="headerlink" title="筛选隐藏文件"></a>筛选隐藏文件</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/22.png"></p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>函数自身直接或者间接的调用到了自身。</p>
+<p>一个功能在被重复使用，并每次使用时，参与运算的结果和上一次调用有关。这时可以用递归来解决问题。</p>
+<ol>
+<li>递归一定明确条件，否则容易栈溢出。</li>
+<li>注意一下递归的次数。</li>
+</ol>
+<h3 id="Properties集合"><a href="#Properties集合" class="headerlink" title="Properties集合"></a>Properties集合</h3><blockquote>
+<p>Map</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Hashtable</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Properties</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>特点：</p>
+<ol>
+<li>该集合中的键和值都是字符串类型。</li>
+<li>集合中的数据可以保存到流中，或者从流中获取。</li>
+<li>通常该集合用于操作以键值对形式存在的配置文件。</li>
+</ol>
+<h3 id="IO包中的其他类"><a href="#IO包中的其他类" class="headerlink" title="IO包中的其他类"></a>IO包中的其他类</h3><h4 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h4><p>PrintWriter与PrintStream：可以直接操作输入流和文件。</p>
+<p>PrintStream为其他输出流添加了功能，使它们能够方便地打印各种数据值表示形式。</p>
+<p>与其他输出流不同，PrintStream永远不会抛出IOException。</p>
+<p>PrintStream打印的所有字符都使用平台的默认字符编码转换为字节。</p>
+<p>在需要写入字符而不是写入字节的情况下，应该使用PrintWriter类。</p>
+<p>PrintStream：</p>
+<ol>
+<li>提供了打印方法可以对多种数据类型值进行打印，并保持数据的表示形式</li>
+<li>它不抛IOException</li>
+</ol>
+<p>构造函数接收三种类型的值</p>
+<ol>
+<li>字符串路径</li>
+<li>File对象</li>
+<li>字节输出流</li>
+</ol>
+<p>PrintWriter：字符打印流</p>
+<p>构造函数参数</p>
+<ol>
+<li>字符串路径</li>
+<li>File对象</li>
+<li>字节输出流</li>
+<li>字符输出流</li>
+</ol>
+<h4 id="序列流"><a href="#序列流" class="headerlink" title="序列流"></a>序列流</h4><p>SequenceInputStream：对多个流进行合并。</p>
+<p>文件切割</p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/23.png"></p>
+<h4 id="操作对象"><a href="#操作对象" class="headerlink" title="操作对象"></a>操作对象</h4><p>ObjectInputStream与ObjectOutputStream</p>
+<p>writeObject方法不能写入类及其所有超类型的瞬态和静态字段的值。</p>
+<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/24.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/25.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/26.png"></p>
+<h4 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h4><p>随机访问文件，自身具备读写的方法。</p>
+<p>通过skipBytes(int x),seek(int x)等方法来达到随机访问。</p>
+<p>特点：</p>
+<ol>
+<li>该对象即能读，又能写。</li>
+<li>该对象内部维护了一个byte数组，并通过指针可以操作数组中的元素。</li>
+<li>可以通过getFilePointer方法获取指针的位置，和通过seek方法设置指针的位置</li>
+<li>其实该对象就是将字节输入流和输出流进行了封装。</li>
+<li>该对象的源或者目的只能是文件。通过构造函数就可以看出。</li>
+</ol>
+<p>RandomAccessFile不是io体系中的子类。</p>
+<h4 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h4><p>PipedInputStream和PipedOutputStream：输入输出可以直接进行连接，通过结合线程使用。</p>
+<h4 id="操作基本数据类型"><a href="#操作基本数据类型" class="headerlink" title="操作基本数据类型"></a>操作基本数据类型</h4><p>DataInputStream与DataOutputStream</p>
+<h4 id="操作字节数组"><a href="#操作字节数组" class="headerlink" title="操作字节数组"></a>操作字节数组</h4><p>ByteArrayInputStream与ByteArrayOutputStream</p>
+<p>关闭字节数组输出输出流无效，因为它们没有调用底层资源，所有的操作都是在内存中完成的。</p>
+<h3 id="编码表"><a href="#编码表" class="headerlink" title="编码表"></a>编码表</h3><p>计算机只能识别二进制数据，早期由来是电信号。为了方便应用计算机，让它可以识别各个国家的文字。 就将各个国家的文字用数字来表示，并一一对应，形成一张表，这就是编码表。</p>
+<p>常见的编码表：</p>
+<ol>
+<li>ASCII：美国标准信息交换码，用一个字节的7位可以表示，能表示128个字符。其扩展使用8位表示，表示256个字符。</li>
+<li>ISO8859-1：拉丁码表。欧洲码表，用一个字节的8位表示。</li>
+<li>GB2312：中国的中文编码表。</li>
+<li>GBK：中国的中文编码表升级，融合了更多的中文文字符号。</li>
+<li>Unicode：国际标准码，融合了多种文字。所有文字都用两个字节来表示,Java语言使用的就是unicode</li>
+<li>UTF-8：最多用三个字节来表示一个字符。</li>
+</ol>
+<h4 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h4><p>字符集是一张码表，它规定了文字与数字的一一对应关系。与计算机的内部表示没有必然的联系。我们先不谈GB2312，GBK等等字符集，因为这些方案既包括了字符集，又包括了编码方案。</p>
+<h4 id="两种编码方式"><a href="#两种编码方式" class="headerlink" title="两种编码方式"></a>两种编码方式</h4><p>UTF-8：采用变长字节(1 ASCII, 2 希腊字母, 3 汉字, 4 平面符号) 表示，网络传输即使错了一个字节，不影响其他字节，而双字节只要一个错了，其他也错了。UTF-8最多可用到7个字节</p>
+<p>UTF-16：采用2字节，Unicode中不同部分的字符都同样基于现有的标准。这是为了便于转换。从0×0000到0×007F是ASCII字符，从0×0080到0×00FF是ISO-8859-1对ASCII的扩展。希腊字母表使用从0×0370到0×03FF 的代码，斯拉夫语使用从0×0400到0×04FF的代码，美国使用从0×0530到0×058F的代码，希伯来语使用从0×0590到0×05FF的代码。中国、日本和韩国的象形文字（总称为CJK）占用了从0×3000到0×9FFF的代码；由于0×00在c语言及操作系统文件名等中有特殊意义，故很多情况下需要UTF-8编码保存文本，去掉这个0×00。</p>
+<p>优缺点：</p>
+<ul>
+<li>UTF-8、UTF-16和UTF-32都可以表示有效编码空间(U+000000-U+10FFFF) 内的所有Unicode字符。</li>
+<li>使用UTF-8编码时ASCII字符只占1个字节，存储效率比较高，适用于拉丁字符较多的场合以节省空间。对于大多数非拉丁字符（如中文和日文）来说，UTF-16所需存储空间最小，每个字符只占2个字节。</li>
+<li>Windows NT内核是Unicode（UTF-16），采用UTF-16编码在调用系统API时无需转换，处理速度也比较快。采用UTF-16和UTF-32会有Big Endian和Little Endian之分，而UTF-8则没有字节顺序问题，所以UTF-8适合传输和通信。</li>
+<li>UTF-32采用4字节编码，一方面处理速度比较快，但另一方面也浪费了大量空间，影响输速度，因而很少使用。</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

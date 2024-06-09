@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Service"><span class="toc-text">Service</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%EF%BC%88LocalService%EF%BC%89"><span class="toc-text">本地服务（LocalService）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">两种启动方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8DstartService"><span class="toc-text">第一种startService</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dbind"><span class="toc-text">第二种bind</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IntentService"><span class="toc-text">IntentService</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1-aidl%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">绑定远程服务(aidl文件的使用)</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android入门-Service
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="本地服务（LocalService）"><a href="#本地服务（LocalService）" class="headerlink" title="本地服务（LocalService）"></a>本地服务（LocalService）</h3><p>调用者和service在同一个进程里，所以运行在主进程的main线程中。所以不能进行耗时操作，可以采用在service里面创建一个Thread来执行任务。<br>service影响的是进程的生命周期，讨论与Thread的区别没有意义。<br>任何 Activity 都可以控制同一 Service，而系统也只会创建一个对应 Service 的实例。</p>
+<p>本地service不涉及进程间通信</p>
+<span id="more"></span>
+
+<h3 id="两种启动方式"><a href="#两种启动方式" class="headerlink" title="两种启动方式"></a>两种启动方式</h3><h4 id="第一种startService"><a href="#第一种startService" class="headerlink" title="第一种startService"></a>第一种startService</h4><p>步骤：</p>
+<ul>
+<li>定义一个类继承service</li>
+<li>manifest.xml文件中配置service</li>
+<li>使用context的startService(Intent)方法启动service</li>
+<li>不在使用时，调用stopService(Intent)方法停止服务</li>
+</ul>
+<p>生命周期：</p>
+<pre><code>onCreate() -- &gt; onStartCommand() -- &gt; onDestory()
+</code></pre>
+<p>**注意:**如果服务已经开启，不会重复回调onCreate()方法，如果再次调用context.startService()方法，service而是会调用onStart()或者onStartCommand()方法。停止服务需要调用context.stopService()方法，服务停止的时候回调onDestory被销毁。</p>
+<p>**特点:**一旦服务开启就跟调用者（开启者）没有任何关系了。调用者退出了，调用者挂了，服务还在后台长期的运行，调用者不能调用服务里面的方法。</p>
+<h4 id="第二种bind"><a href="#第二种bind" class="headerlink" title="第二种bind"></a>第二种bind</h4><p>步骤：</p>
+<ul>
+<li>定义一个类继承Service</li>
+<li>在manifest.xml文件中注册service</li>
+<li>使用context的bindService(Intent,ServiceConnection,int)方法启动service</li>
+<li>不再使用时，调用unbindService(ServiceConnection)方法停止该服务</li>
+</ul>
+<p>生命周期：</p>
+<pre><code>onCreate() -- &gt; onBind() --&gt; onUnbind() -- &gt; onDestory()
+</code></pre>
+<p><strong>注意：</strong>绑定服务不会调用onStart()或者onStartCommand()方法</p>
+<p>**特点:**bind的方式开启服务，绑定服务，调用者挂了，服务也会跟着挂掉。绑定者可以调用服务里面的方法。</p>
+<p><strong>例子：</strong></p>
+<p>定义一个类继承service</p>
+<pre><code>public class MyService extends Service &#123;
+
+    private String TAG = &quot;MyService&quot;;
+
+    @Override
+    public void onCreate() &#123;
+        super.onCreate();
+        Log.i(TAG,&quot;onCreate&quot;);
+    &#125;
+
+    @Override
+    public void onStart(Intent intent, int startId) &#123;
+        super.onStart(intent, startId);
+        Log.i(TAG,&quot;onStart&quot;);
+    &#125;
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) &#123;
+        Log.i(TAG,&quot;onStartCommand&quot;);
+        return super.onStartCommand(intent, flags, startId);
+    &#125;
+
+    //绑定服务时调用这个方法，返回一个IBinder对象
+    @Override
+    public IBinder onBind(Intent intent) &#123;
+        	Log.i(TAG,&quot;onBind&quot;);
+        return new MyBinder();
+    &#125;
+
+    @Override
+    public boolean onUnbind(Intent intent) &#123;
+        Log.i(TAG,&quot;onUnbind&quot;);
+        return super.onUnbind(intent);
+    &#125;
+
+    @Override
+    public void onDestroy() &#123;
+        super.onDestroy();
+        Log.i(TAG,&quot;onDestroy&quot;);
+    &#125;
+
+    public interface MyIBinder&#123;
+        void test();
+    &#125;
+
+    public class MyBinder extends Binder implements MyIBinder&#123;
+
+        public void stopService(ServiceConnection serviceConnection)&#123;
+            unbindService(serviceConnection);
+        &#125;
+
+        @Override
+        public void test() &#123;
+            for (int i=0;i&lt;20;i++)&#123;
+                Log.i(TAG,&quot;test&quot;+i);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>在manifest.xml文件中注册service</p>
+<pre><code>&lt;service android:name=&quot;.MyService&quot; android:exported=&quot;true&quot;&gt;
+     &lt;intent-filter&gt;
+         &lt;action android:name=&quot;com.yly.yservice&quot;/&gt;
+         &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;
+     &lt;/intent-filter&gt;
+&lt;/service&gt;
+</code></pre>
+<p>绑定自定义的service</p>
+<pre><code>public class MainActivity extends AppCompatActivity &#123;
+
+    private String TAG = &quot;MyService&quot;;
+    private Button mButton1,mButton2;
+    private MyService.MyBinder mMyBinder;
+    private ServiceConnection mServiceConnection;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mButton1 = findViewById(R.id.button);
+        mButton2 = findViewById(R.id.button2);
+
+        mButton1.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View view) &#123;
+                mServiceConnection = new MyServiceConnection();
+                Intent intent = new Intent(MainActivity.this,MyService.class);
+                //startService(intent);
+                bindService(intent,mServiceConnection,BIND_AUTO_CREATE);
+        &#125;
+        &#125;);
+
+        mButton2.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View view) &#123;
+                unbindService(mServiceConnection);
+            &#125;
+        &#125;);
+    &#125;
+
+    class MyServiceConnection implements ServiceConnection &#123;
+
+        //这里的第二个参数IBinder就是Service中的onBind方法返回的
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) &#123;
+            Log.i(TAG, &quot;onServiceConnected&quot;);
+            mMyBinder = (MyService.MyBinder) iBinder;
+        &#125;
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) &#123;
+            Log.i(TAG, &quot;onServiceDisconnected&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>startService输出日志：</p>
+<p><img src="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/1.png"></p>
+<p>bindService 输出日志：</p>
+<p><img src="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/2.png"></p>
+<h3 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h3><p>IntentService是Service的子类，比普通的Service增加了额外的功能。</p>
+<p>先看Service本身存在两个问题：</p>
+<ul>
+<li>Service不会专门启动一条单独的进程，Service与它所在应用位于同一个进程中</li>
+<li>Service也不是专门一条新线程，因此不应该在Service中直接处理耗时的任务</li>
+</ul>
+<p>IntentService特征:</p>
+<ul>
+<li>会创建独立的worker线程来处理所有的Intent请求</li>
+<li>会创建独立的worker线程来处理onHandleIntent()方法实现的代码，无需处理多线程问题</li>
+<li>所有请求处理完成后，IntentService会自动停止，无需调用stopSelf()方法停止Service</li>
+<li>为Service的onBind()提供默认实现，返回null</li>
+<li>为Service的onStartCommand提供默认实现，将请求Intent添加到队列中</li>
+</ul>
+<h3 id="绑定远程服务-aidl文件的使用"><a href="#绑定远程服务-aidl文件的使用" class="headerlink" title="绑定远程服务(aidl文件的使用)"></a>绑定远程服务(aidl文件的使用)</h3><p>远程服务是位于另一个项目中的一个对外开放的服务，区别于本地服务。</p>
+<ul>
+<li>远程服务：调用者和服务在不同的工程代码里面</li>
+<li>本地服务：调用者和服务在同一个工程代码里面</li>
+</ul>
+<p>绑定远程服务的步骤:</p>
+<ul>
+<li>在服务的内部创建一个内部类，提供一个方法，可以间接调用服务的方法</li>
+<li>把暴露的接口文件的扩展名改为.aidl文件 去掉访问修饰符</li>
+<li>实现服务的onbind方法，继承Binder和实现aidl定义的接口，提供给外界可调用的方法</li>
+<li>在activity 中绑定服务。bindService()</li>
+<li>在服务成功绑定的时候会回调 onServiceConnected方法 传递一个 IBinder对象</li>
+<li>aidl定义的接口.Stub.asInterface(binder) 调用接口里面的方法</li>
+</ul>
+<p>.aidl：android interface definition language 安卓接口定义语言。<br>aidl文件都是公有的，没有访问权限修饰符。</p>
+<p><strong>例子</strong></p>
+<p><em>远程服务的程序：</em></p>
+<p>定义一个Service</p>
+<pre><code>public class MyService extends Service &#123;
+
+    public MyService()&#123;&#125;
+
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) &#123;
+        //返回MyBind对象
+        return new MyBinder();
+    &#125;
+
+    /**
+     * 直接继承IMyBinder.Stub
+     */
+    private class MyBinder extends IMyBinder.Stub &#123;
+
+        @Override
+        public void invokeMethodInMyService() throws RemoteException &#123;
+            methodInMyService();
+        &#125;
+    &#125;
+
+    private void methodInMyService() &#123;
+        Looper.prepare();
+        Toast.makeText(getApplicationContext(), &quot;服务里的方法执行了。。。&quot;,
+            Toast.LENGTH_SHORT).show();
+        Looper.loop();
+    &#125;
+&#125;
+</code></pre>
+<p>创建IMyBinder.aidl文件，工具会自动生成一个IMyBinder的接口。</p>
+<pre><code>interface IMyBinder &#123;
+
+     void invokeMethodInMyService();
+
+&#125;
+</code></pre>
+<p>在Manifes.xml件中进行配置</p>
+<pre><code>&lt;service android:name=&quot;.MyService&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.yly.myservice&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+</code></pre>
+<p><em>调用远程服务的程序：</em></p>
+<p>创建一个和远程服务程序的MyBinder.aidl一样的文件（包括包名），拷贝即可</p>
+<p>绑定服务，调用方法</p>
+<pre><code>public class MainActivity extends AppCompatActivity &#123;
+
+    private Button mButton1,mButton2;
+
+    private IMyBinder mIMyBinder;
+
+    private MyConn mMyConn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mButton1 = findViewById(R.id.button1);
+        mButton2 = findViewById(R.id.button2);
+
+        mButton1.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View view) &#123;
+                Intent intent = new Intent();
+                intent.setAction(&quot;com.yly.myservice&quot;);
+                intent.setPackage(&quot;com.yly.aidlservice&quot;);
+                mMyConn = new MyConn();
+                bindService(intent,mMyConn,BIND_AUTO_CREATE);
+            &#125;
+        &#125;);
+
+        mButton2.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View view) &#123;
+                try &#123;
+                    mIMyBinder.invokeMethodInMyService();
+            &#125; catch (RemoteException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+        &#125;);
+    &#125;
+
+    private class MyConn implements ServiceConnection &#123;
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) &#123;
+            //通过Stub得到接口类型
+            mIMyBinder = IMyBinder.Stub.asInterface(iBinder);
+            Log.e(&quot;xxx&quot;,&quot;绑定成功&quot;);
+        &#125;
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) &#123;
+
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

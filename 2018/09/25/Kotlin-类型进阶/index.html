@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-text">1.类的构造器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%9E%84%E9%80%A0%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%86%99%E6%B3%95"><span class="toc-text">1.1 构造器的基本写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-init%E5%9D%97"><span class="toc-text">1.2 init块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%B1%9E%E6%80%A7%E5%BF%85%E9%A1%BB%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.3 属性必须初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%BB%A7%E6%89%BF%E7%88%B6%E7%B1%BB"><span class="toc-text">1.4 继承父类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%89%AF%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-text">1.5 副构造器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E4%B8%8D%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">1.6 不定义主构造器（不推荐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E4%B8%BB%E6%9E%84%E9%80%A0%E5%99%A8%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">1.7 主构造器默认参数（推荐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E6%9E%84%E9%80%A0%E5%90%8C%E5%90%8D%E7%9A%84%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0"><span class="toc-text">1.8 构造同名的工厂函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%B1%BB%E4%B8%8E%E6%88%90%E5%91%98%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text">2.类与成员的可见性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%8F%AF%E8%A7%81%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="toc-text">2.1 可见性对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BF%AE%E9%A5%B0%E5%AF%B9%E8%B1%A1"><span class="toc-text">2.2 修饰对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%A8%A1%E5%9D%97%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">2.3 模块的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-internal-VS-default"><span class="toc-text">2.4 internal VS default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E6%9E%84%E9%80%A0%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text">2.5 构造器的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text">2.6 属性的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E9%A1%B6%E7%BA%A7%E5%A3%B0%E6%98%8E%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text">2.7 顶级声明的可见性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B1%BB%E5%B1%9E%E6%80%A7%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">3.类属性的延迟初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">3.1 为什么要延迟初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%BB%A5Android%E7%9A%84UI%E4%B8%BA%E4%BE%8B"><span class="toc-text">3.2 以Android的UI为例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BAnull%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">方法一：初始化为null（不推荐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8lateinit%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">方法二：使用lateinit（不推荐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9Alazy%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">方法三：lazy（推荐）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">3.3 对比总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%A3%E7%90%86Delegate"><span class="toc-text">4.代理Delegate</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BB%A3%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">4.1 代理是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%EF%BC%88%E7%94%A8%E7%9A%84%E6%AF%94%E8%BE%83%E5%B0%91%EF%BC%89"><span class="toc-text">4.2 接口代理（用的比较少）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%B1%9E%E6%80%A7%E4%BB%A3%E7%90%86-lazy"><span class="toc-text">4.3 属性代理-lazy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8D%95%E4%BE%8Bobject"><span class="toc-text">5.单例object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text">6.内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%95%B0%E6%8D%AE%E7%B1%BBdata-class"><span class="toc-text">7.数据类data class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%9E%9A%E4%B8%BE%E7%B1%BBenum-class"><span class="toc-text">8.枚举类enum class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%AF%86%E5%B0%81%E7%B1%BBsealed-class"><span class="toc-text">9.密封类sealed class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%86%85%E8%81%94%E7%B1%BBinline-class"><span class="toc-text">10.内联类inline class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%A1%88%E4%BE%8B"><span class="toc-text">11.案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%B0%8F%E7%BB%93"><span class="toc-text">12.小结</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Kotlin-类型进阶
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="1-类的构造器"><a href="#1-类的构造器" class="headerlink" title="1.类的构造器"></a>1.类的构造器</h2><h3 id="1-1-构造器的基本写法"><a href="#1-1-构造器的基本写法" class="headerlink" title="1.1 构造器的基本写法"></a>1.1 构造器的基本写法</h3><span id="more"></span>
+
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/1.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/2.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/3.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/4.png"></p>
+<h3 id="1-2-init块"><a href="#1-2-init块" class="headerlink" title="1.2 init块"></a>1.2 init块</h3><p>可以访问到构造器参数</p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/5.png"></p>
+<p>可以写多个</p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/6.png"></p>
+<p>多个会合并到一起</p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/7.png"></p>
+<h3 id="1-3-属性必须初始化"><a href="#1-3-属性必须初始化" class="headerlink" title="1.3 属性必须初始化"></a>1.3 属性必须初始化</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/8.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/9.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/10.png"></p>
+<h3 id="1-4-继承父类"><a href="#1-4-继承父类" class="headerlink" title="1.4 继承父类"></a>1.4 继承父类</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/11.png"></p>
+<h3 id="1-5-副构造器"><a href="#1-5-副构造器" class="headerlink" title="1.5 副构造器"></a>1.5 副构造器</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/12.png"></p>
+<h3 id="1-6-不定义主构造器（不推荐）"><a href="#1-6-不定义主构造器（不推荐）" class="headerlink" title="1.6 不定义主构造器（不推荐）"></a>1.6 不定义主构造器（不推荐）</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/13.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/14.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/15.png"></p>
+<h3 id="1-7-主构造器默认参数（推荐）"><a href="#1-7-主构造器默认参数（推荐）" class="headerlink" title="1.7 主构造器默认参数（推荐）"></a>1.7 主构造器默认参数（推荐）</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/17.png"></p>
+<p>如果这个类是在java里使用，这块的重载希望java能看懂，在构造器前加一个@JvmOverloads就可以了。虽然在kotlin是默认参数的实现，但在java里当做函数重载</p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/16.png"></p>
+<h3 id="1-8-构造同名的工厂函数"><a href="#1-8-构造同名的工厂函数" class="headerlink" title="1.8 构造同名的工厂函数"></a>1.8 构造同名的工厂函数</h3><p>工厂函数比构造器有更强的表现，工厂函数可以自定义名字</p>
+<p>我们可以定义一个类叫person，也可以定义一个函数也叫person</p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/18.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/19.png"></p>
+<p>采用跟类名一样的工厂函数的还有String</p>
+<h2 id="2-类与成员的可见性"><a href="#2-类与成员的可见性" class="headerlink" title="2.类与成员的可见性"></a>2.类与成员的可见性</h2><h3 id="2-1-可见性对比"><a href="#2-1-可见性对比" class="headerlink" title="2.1 可见性对比"></a>2.1 可见性对比</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/20.png"></p>
+<h3 id="2-2-修饰对象"><a href="#2-2-修饰对象" class="headerlink" title="2.2 修饰对象"></a>2.2 修饰对象</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/21.png"></p>
+<h3 id="2-3-模块的概念"><a href="#2-3-模块的概念" class="headerlink" title="2.3 模块的概念"></a>2.3 模块的概念</h3><ul>
+<li>InteLLIJ IDEA 模块</li>
+<li>Maven工程</li>
+<li>Gradle SourceSet</li>
+<li>Ant任务中一次调用<kotlinc>的文件</kotlinc></li>
+</ul>
+<p>编译kotlin代码，一定会用到kotlinc命令，在一次调用kotlinc命令的这一伙文件当中，他们就是一个模块</p>
+<p>直观的讲，大致可以认为是一个Jar包、一个aar</p>
+<h3 id="2-4-internal-VS-default"><a href="#2-4-internal-VS-default" class="headerlink" title="2.4 internal VS default"></a>2.4 internal VS default</h3><ul>
+<li>一般由SDK或公共组件开发者用于隐藏模块内部细节实现</li>
+<li>default可通过外部创建相同包名来访问，访问控制非常弱</li>
+<li>default会导致不同抽象层次的类聚集到相同包之下</li>
+<li>internal可方便处理内外隔离，提升模块代码内聚减少接口暴露</li>
+<li>internal修饰的kotlin类或成员在java当中可直接访问（名字会被改变，类是没什么问题函数名会被修改。Java访问internal是不生效的，不想让java访问的话，加上注解@JvmName(“%abc”)）</li>
+</ul>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/22.png"></p>
+<h3 id="2-5-构造器的可见性"><a href="#2-5-构造器的可见性" class="headerlink" title="2.5 构造器的可见性"></a>2.5 构造器的可见性</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/23.png"></p>
+<h3 id="2-6-属性的可见性"><a href="#2-6-属性的可见性" class="headerlink" title="2.6 属性的可见性"></a>2.6 属性的可见性</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/24.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/25.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/26.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/27.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/28.png"></p>
+<h3 id="2-7-顶级声明的可见性"><a href="#2-7-顶级声明的可见性" class="headerlink" title="2.7 顶级声明的可见性"></a>2.7 顶级声明的可见性</h3><ul>
+<li>顶级声明指文件内直接定义的属性、函数、类等</li>
+<li>顶级声明不支持protected</li>
+<li>顶级声明被private修饰表示文件内部可见</li>
+</ul>
+<h2 id="3-类属性的延迟初始化"><a href="#3-类属性的延迟初始化" class="headerlink" title="3.类属性的延迟初始化"></a>3.类属性的延迟初始化</h2><h3 id="3-1-为什么要延迟初始化"><a href="#3-1-为什么要延迟初始化" class="headerlink" title="3.1 为什么要延迟初始化"></a>3.1 为什么要延迟初始化</h3><ul>
+<li>类属性必须在构造时初始化</li>
+<li>某些成员只有在类构造之后才会被初始化</li>
+</ul>
+<h3 id="3-2-以Android的UI为例"><a href="#3-2-以Android的UI为例" class="headerlink" title="3.2 以Android的UI为例"></a>3.2 以Android的UI为例</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/29.png"></p>
+<p>Java代码</p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/30.png"></p>
+<h4 id="方法一：初始化为null（不推荐）"><a href="#方法一：初始化为null（不推荐）" class="headerlink" title="方法一：初始化为null（不推荐）"></a>方法一：初始化为null（不推荐）</h4><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/31.png"></p>
+<h4 id="方法二：使用lateinit（不推荐）"><a href="#方法二：使用lateinit（不推荐）" class="headerlink" title="方法二：使用lateinit（不推荐）"></a>方法二：使用lateinit（不推荐）</h4><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/32.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/33.png"></p>
+<p>注意事项</p>
+<ul>
+<li>lateinit会让编译器忽略变量的初始化，不支持Int等基本类型</li>
+<li>开发者必须能够在完全确定变量值的生命周期下使用lateinit</li>
+<li>不要在复杂的逻辑中使用lateinit，它只会让你的代码更脆弱</li>
+<li>kotlin1.2加入的判断lateinit属性是否初始化的API最好不要用</li>
+</ul>
+<h4 id="方法三：lazy（推荐）"><a href="#方法三：lazy（推荐）" class="headerlink" title="方法三：lazy（推荐）"></a>方法三：lazy（推荐）</h4><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/34.png"></p>
+<h3 id="3-3-对比总结"><a href="#3-3-对比总结" class="headerlink" title="3.3 对比总结"></a>3.3 对比总结</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/35.png"></p>
+<h2 id="4-代理Delegate"><a href="#4-代理Delegate" class="headerlink" title="4.代理Delegate"></a>4.代理Delegate</h2><h3 id="4-1-代理是什么"><a href="#4-1-代理是什么" class="headerlink" title="4.1 代理是什么"></a>4.1 代理是什么</h3><p>我代替你实现它</p>
+<ol>
+<li>我：代理</li>
+<li>你：被代理的对象</li>
+<li>它：接口、属性</li>
+</ol>
+<ul>
+<li>接口代理：对象X代替当前类A实现接口B的方法</li>
+<li>属性代理：对象X代替属性a实现getter&#x2F;setter方法</li>
+</ul>
+<h3 id="4-2-接口代理（用的比较少）"><a href="#4-2-接口代理（用的比较少）" class="headerlink" title="4.2 接口代理（用的比较少）"></a>4.2 接口代理（用的比较少）</h3><p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/36.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/37.png"></p>
+<p>a和b编译器自动生成，c需要功能增强所以自己实现</p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/38.png"></p>
+<p><img src="/2018/09/25/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/39.png"></p>
+<h3 id="4-3-属性代理-lazy"><a href="#4-3-属性代理-lazy" class="headerlink" title="4.3 属性代理-lazy"></a>4.3 属性代理-lazy</h3><h2 id="5-单例object"><a href="#5-单例object" class="headerlink" title="5.单例object"></a>5.单例object</h2><h2 id="6-内部类"><a href="#6-内部类" class="headerlink" title="6.内部类"></a>6.内部类</h2><h2 id="7-数据类data-class"><a href="#7-数据类data-class" class="headerlink" title="7.数据类data class"></a>7.数据类data class</h2><h2 id="8-枚举类enum-class"><a href="#8-枚举类enum-class" class="headerlink" title="8.枚举类enum class"></a>8.枚举类enum class</h2><h2 id="9-密封类sealed-class"><a href="#9-密封类sealed-class" class="headerlink" title="9.密封类sealed class"></a>9.密封类sealed class</h2><h2 id="10-内联类inline-class"><a href="#10-内联类inline-class" class="headerlink" title="10.内联类inline class"></a>10.内联类inline class</h2><h2 id="11-案例"><a href="#11-案例" class="headerlink" title="11.案例"></a>11.案例</h2><h2 id="12-小结"><a href="#12-小结" class="headerlink" title="12.小结"></a>12.小结</h2>
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

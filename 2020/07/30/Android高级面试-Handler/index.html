@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E-UI-%E7%BA%BF%E7%A8%8B%E4%B8%8D%E8%83%BD%E6%9B%B4%E6%96%B0-UI%EF%BC%9F"><span class="toc-text">Android 中为什么非 UI 线程不能更新 UI？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90"><span class="toc-text">题目解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UI%E7%BA%BF%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">UI线程是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E7%BA%BF%E7%A8%8B%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-text">主线程如何工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88UI%E4%B8%8D%E8%AE%BE%E7%BD%AE%E6%88%90%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84"><span class="toc-text">为什么UI不设置成线程安全的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9EUI%E7%BA%BF%E7%A8%8B%E4%B8%80%E5%AE%9A%E4%B8%8D%E8%83%BD%E6%9B%B4%E6%96%B0UI%E5%90%97"><span class="toc-text">非UI线程一定不能更新UI吗</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SurfaceView"><span class="toc-text">SurfaceView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GLSurfaceView"><span class="toc-text">GLSurfaceView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#textureview"><span class="toc-text">textureview</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handler-%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF%E7%9A%84-Delay-%E9%9D%A0%E8%B0%B1%E5%90%97%EF%BC%9F"><span class="toc-text">Handler 发送消息的 Delay 靠谱吗？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90-1"><span class="toc-text">题目解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E7%BA%BF%E7%A8%8B%E5%8E%8B%E5%8A%9B%E5%A4%A7%E7%9A%84%E6%97%B6%E5%80%99"><span class="toc-text">主线程压力大的时候</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%9A%84%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0"><span class="toc-text">错误的动画实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MessageQueue%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E6%B6%88%E6%81%AF"><span class="toc-text">MessageQueue如何处理消息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%8A%A0%E5%85%A5"><span class="toc-text">如何加入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86"><span class="toc-text">如何处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%B6%88%E6%81%AF%E6%B5%81%E7%A8%8B"><span class="toc-text">处理消息流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96"><span class="toc-text">队列优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%A4%8D%E6%B6%88%E6%81%AF%E8%BF%87%E6%BB%A4"><span class="toc-text">重复消息过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E6%B6%88%E6%81%AF%E5%8F%96%E6%B6%88"><span class="toc-text">互斥消息取消</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E7%94%A8%E6%B6%88%E6%81%AF"><span class="toc-text">复用消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E7%A9%BA%E9%97%B2IdleHandler"><span class="toc-text">消息空闲IdleHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%8B%AC%E4%BA%AB%E7%9A%84Looper"><span class="toc-text">使用独享的Looper</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0"><span class="toc-text">正确的动画实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E7%AD%94"><span class="toc-text">问答</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E7%BA%BF%E7%A8%8B%E7%9A%84-Looper-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BA%94%E7%94%A8-ANR-%EF%BC%9F"><span class="toc-text">主线程的 Looper 为什么不会导致应用 ANR ？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90-2"><span class="toc-text">题目解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ANR%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">ANR的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service-Timeout%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-text">Service Timeout的产生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E7%BA%BF%E7%A8%8B%E7%A9%B6%E7%AB%9F%E5%9C%A8%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="toc-text">主线程究竟在干什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Looper%E5%92%8CANR%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">Looper和ANR的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Looper%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4CPU%E5%8D%A0%E6%9C%89%E7%8E%87%E9%AB%98"><span class="toc-text">Looper为什么不会导致CPU占有率高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ANR%E5%88%86%E6%9E%90"><span class="toc-text">ANR分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-Handler-Looper-%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="toc-text">如何自己实现一个简单的 Handler - Looper 框架？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Handler%E7%9A%84%E6%A0%B8%E5%BF%83%E8%83%BD%E5%8A%9B"><span class="toc-text">Handler的核心能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Handler%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">Handler的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Looper%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">Looper的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MessageQueue%E7%9A%84%E6%A0%B8%E5%BF%83%E8%83%BD%E5%8A%9B"><span class="toc-text">MessageQueue的核心能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MessageQueue%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">MessageQueue的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">Message的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HandlerThread"><span class="toc-text">HandlerThread</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DelayQueue%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E6%B6%88%E6%81%AF%E9%A1%BA%E5%BA%8F"><span class="toc-text">DelayQueue如何处理消息顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E5%A4%8D%E7%94%A8DelayQueue"><span class="toc-text">Android为什么不直接复用DelayQueue</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android高级面试-Handler
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="Android-中为什么非-UI-线程不能更新-UI？"><a href="#Android-中为什么非-UI-线程不能更新-UI？" class="headerlink" title="Android 中为什么非 UI 线程不能更新 UI？"></a>Android 中为什么非 UI 线程不能更新 UI？</h2><h3 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h3><ul>
+<li>UI线程的工作机制</li>
+<li>为什么UI设计成线程不安全的</li>
+<li>非UI线程一定不能更新UI吗</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="UI线程是什么"><a href="#UI线程是什么" class="headerlink" title="UI线程是什么"></a>UI线程是什么</h3><p>先启动一个进程再启动UI线程</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/1.png"></p>
+<p>如果loop的死循环跳出则会抛异常，一般见不到这个异常</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/2.png"></p>
+<h3 id="主线程如何工作"><a href="#主线程如何工作" class="headerlink" title="主线程如何工作"></a>主线程如何工作</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/3.png"></p>
+<h3 id="为什么UI不设置成线程安全的"><a href="#为什么UI不设置成线程安全的" class="headerlink" title="为什么UI不设置成线程安全的"></a>为什么UI不设置成线程安全的</h3><p>开销太大</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/4.png"></p>
+<ul>
+<li>UI具有可变性，甚至是高频可变性</li>
+<li>UI对响应时间的敏感性要求UI操作必须高效</li>
+<li>UI组件必须批量绘制来保证效率</li>
+</ul>
+<h3 id="非UI线程一定不能更新UI吗"><a href="#非UI线程一定不能更新UI吗" class="headerlink" title="非UI线程一定不能更新UI吗"></a>非UI线程一定不能更新UI吗</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/5.png"></p>
+<p>这种算间接更新，因为没有直接修改UI的内容</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/6.png"></p>
+<h4 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h4><p>非UI线程刷新修改UI内容甚至绘制。这样可以实现比较高的帧率，因为绘制的时间放到了非UI线程，告诉UI线程你该显示了就行UI线程压力减小。游戏、地图、视频</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/7.png"></p>
+<h4 id="GLSurfaceView"><a href="#GLSurfaceView" class="headerlink" title="GLSurfaceView"></a>GLSurfaceView</h4><p>地图</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/8.png"></p>
+<h4 id="textureview"><a href="#textureview" class="headerlink" title="textureview"></a>textureview</h4><p>textureview没有独立出来一个窗口，可以跟其他的view一样去设置属性、透明度、变换等</p>
+<h2 id="Handler-发送消息的-Delay-靠谱吗？"><a href="#Handler-发送消息的-Delay-靠谱吗？" class="headerlink" title="Handler 发送消息的 Delay 靠谱吗？"></a>Handler 发送消息的 Delay 靠谱吗？</h2><h3 id="题目解析-1"><a href="#题目解析-1" class="headerlink" title="题目解析"></a>题目解析</h3><ul>
+<li>不可靠，但需要深入分析原理</li>
+<li>给出基于原理的实践案例</li>
+</ul>
+<h3 id="主线程压力大的时候"><a href="#主线程压力大的时候" class="headerlink" title="主线程压力大的时候"></a>主线程压力大的时候</h3><p>任务堆积多了会卡顿</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/9.png"></p>
+<h3 id="错误的动画实现"><a href="#错误的动画实现" class="headerlink" title="错误的动画实现"></a>错误的动画实现</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/10.png"></p>
+<h3 id="MessageQueue如何处理消息"><a href="#MessageQueue如何处理消息" class="headerlink" title="MessageQueue如何处理消息"></a>MessageQueue如何处理消息</h3><h4 id="如何加入"><a href="#如何加入" class="headerlink" title="如何加入"></a>如何加入</h4><p>添加消息，如果消息在队列最开始并且符合执行的条件马上处理消息，否则找到消息对应的位置插入。</p>
+<p>mMessages单链表。</p>
+<p>nativeWake：消息队列没有消息则处于阻塞状态，有消息过来唤醒</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/11.png"></p>
+<h4 id="如何处理"><a href="#如何处理" class="headerlink" title="如何处理"></a>如何处理</h4><p>死循环拿到消息return。</p>
+<p>nativePollOnce：调用底层的messagequeue，把底层的消息队列处理完</p>
+<p>nextPollTimeoutMillis：为-1的话在底层阻塞，不为-1遍历java层的messagequeue。执行它下面的代码，如果里面没有消息则把它设为-1，如果是立马执行则执行，如果是5秒后执行则做相应设置等5秒唤醒执行</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/12.png"></p>
+<h4 id="处理消息流程"><a href="#处理消息流程" class="headerlink" title="处理消息流程"></a>处理消息流程</h4><p>没有消息等待</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/13.png"></p>
+<p>有消息唤醒</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/14.png"></p>
+<h3 id="队列优化"><a href="#队列优化" class="headerlink" title="队列优化"></a>队列优化</h3><h4 id="重复消息过滤"><a href="#重复消息过滤" class="headerlink" title="重复消息过滤"></a>重复消息过滤</h4><p>合并红色消息</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/15.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/16.png"></p>
+<p>以地图为例</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/17.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/18.png"></p>
+<h4 id="互斥消息取消"><a href="#互斥消息取消" class="headerlink" title="互斥消息取消"></a>互斥消息取消</h4><p>有我没你</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/19.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/20.png"></p>
+<p>以地图为例</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/21.png"></p>
+<h4 id="复用消息"><a href="#复用消息" class="headerlink" title="复用消息"></a>复用消息</h4><p>使用obtain会使创建消息的实例大大减少</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/22.png"></p>
+<h4 id="消息空闲IdleHandler"><a href="#消息空闲IdleHandler" class="headerlink" title="消息空闲IdleHandler"></a>消息空闲IdleHandler</h4><p>消息队列没有消息的时候触发，为true表示下次空闲还执行</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/23.png"></p>
+<p>例子：Glide3里面通过IdleHandler移除弱引用</p>
+<h4 id="使用独享的Looper"><a href="#使用独享的Looper" class="headerlink" title="使用独享的Looper"></a>使用独享的Looper</h4><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/24.png"></p>
+<h3 id="正确的动画实现"><a href="#正确的动画实现" class="headerlink" title="正确的动画实现"></a>正确的动画实现</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/25.png"></p>
+<p>不是完美解决</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>大于Handler Looper的周期时基本可靠（例如主线程 &gt; 50ms）</li>
+<li>Looper的负载越高，任务越容易积压，进而导致卡顿</li>
+<li>不要使用Handler的delay作为计时的依据</li>
+</ul>
+<h3 id="问答"><a href="#问答" class="headerlink" title="问答"></a>问答</h3><p>提高时间准确性最简单的办法就是单独用一个线程计时，再用别的线程执行任务。一般任务足够了。</p>
+<h2 id="主线程的-Looper-为什么不会导致应用-ANR-？"><a href="#主线程的-Looper-为什么不会导致应用-ANR-？" class="headerlink" title="主线程的 Looper 为什么不会导致应用 ANR ？"></a>主线程的 Looper 为什么不会导致应用 ANR ？</h2><h3 id="题目解析-2"><a href="#题目解析-2" class="headerlink" title="题目解析"></a>题目解析</h3><ul>
+<li>ANR是怎么产生的</li>
+<li>Looper的工作机制是什么</li>
+<li>Looper不会导致应用ANR的本质原因是什么</li>
+<li>Looper为什么不会导致CPU占有率高</li>
+</ul>
+<h3 id="ANR的类型"><a href="#ANR的类型" class="headerlink" title="ANR的类型"></a>ANR的类型</h3><p>Service Timeout：</p>
+<ul>
+<li>前台服务20s</li>
+<li>后台服务200s</li>
+</ul>
+<p>BroadcaseQueue Timeout：</p>
+<ul>
+<li>前台广播10s</li>
+<li>后台广播60s</li>
+</ul>
+<p>ContentProvider Timeout：</p>
+<ul>
+<li>10s</li>
+</ul>
+<p>InputDispatching Timeout：</p>
+<ul>
+<li>5s</li>
+</ul>
+<h3 id="Service-Timeout的产生"><a href="#Service-Timeout的产生" class="headerlink" title="Service Timeout的产生"></a>Service Timeout的产生</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/26.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/27.png"></p>
+<p>在超时之前调用完了,触发下面的方法移除消息</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/28.png"></p>
+<p>炸弹怎么埋的，bumpServiceExecutingLocked调用ScheduleServiceTimeoutLocked方法</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/29.png"></p>
+<p>流程图</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/30.png"></p>
+<p>超时会触发下面方法，进而触发ANR</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/31.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/32.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/33.png"></p>
+<h3 id="主线程究竟在干什么"><a href="#主线程究竟在干什么" class="headerlink" title="主线程究竟在干什么"></a>主线程究竟在干什么</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/34.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/35.png"></p>
+<h3 id="Looper和ANR的关系"><a href="#Looper和ANR的关系" class="headerlink" title="Looper和ANR的关系"></a>Looper和ANR的关系</h3><p>Looper是整体进程上的概念，ANR是执行到某一个环节对开发者占用主线程耗时的监控</p>
+<h3 id="Looper为什么不会导致CPU占有率高"><a href="#Looper为什么不会导致CPU占有率高" class="headerlink" title="Looper为什么不会导致CPU占有率高"></a>Looper为什么不会导致CPU占有率高</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/36.png"></p>
+<p>epoll_wait，消息队列空的时候是阻塞的，阻塞不会占用CPU碎片</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/37.png"></p>
+<p>是Linux的IO多路复用</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/38.png"></p>
+<h3 id="ANR分析"><a href="#ANR分析" class="headerlink" title="ANR分析"></a>ANR分析</h3><p>trace里面能看出来主线程的堆栈</p>
+<p><a href="https://blog.csdn.net/codezjx/article/details/78648333">blog</a></p>
+<h2 id="如何自己实现一个简单的-Handler-Looper-框架？"><a href="#如何自己实现一个简单的-Handler-Looper-框架？" class="headerlink" title="如何自己实现一个简单的 Handler - Looper 框架？"></a>如何自己实现一个简单的 Handler - Looper 框架？</h2><h3 id="Handler的核心能力"><a href="#Handler的核心能力" class="headerlink" title="Handler的核心能力"></a>Handler的核心能力</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/39.png"></p>
+<h3 id="Handler的实现"><a href="#Handler的实现" class="headerlink" title="Handler的实现"></a>Handler的实现</h3><p>Android的handlerDelayed的时间是按照开机时间算的</p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/40.png"></p>
+<h3 id="Looper的实现"><a href="#Looper的实现" class="headerlink" title="Looper的实现"></a>Looper的实现</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/41.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/42.png"></p>
+<h3 id="MessageQueue的核心能力"><a href="#MessageQueue的核心能力" class="headerlink" title="MessageQueue的核心能力"></a>MessageQueue的核心能力</h3><ul>
+<li>持有消息</li>
+<li>消息按时间排序（优先级）</li>
+<li>队列为空时阻塞</li>
+<li>头结点有延时可以定时阻塞</li>
+</ul>
+<p>DelayQueue延时队列，包含了优先级队列是基于堆实现的排序</p>
+<h3 id="MessageQueue的实现"><a href="#MessageQueue的实现" class="headerlink" title="MessageQueue的实现"></a>MessageQueue的实现</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/43.png"></p>
+<h3 id="Message的实现"><a href="#Message的实现" class="headerlink" title="Message的实现"></a>Message的实现</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/44.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/45.png"></p>
+<h3 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/46.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/47.png"></p>
+<h3 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/48.png"></p>
+<h3 id="DelayQueue如何处理消息顺序"><a href="#DelayQueue如何处理消息顺序" class="headerlink" title="DelayQueue如何处理消息顺序"></a>DelayQueue如何处理消息顺序</h3><p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/49.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/50.png"></p>
+<p><img src="/2020/07/30/Android%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95-Handler/51.png"></p>
+<h3 id="Android为什么不直接复用DelayQueue"><a href="#Android为什么不直接复用DelayQueue" class="headerlink" title="Android为什么不直接复用DelayQueue"></a>Android为什么不直接复用DelayQueue</h3><ul>
+<li>DelayQueue没有提供合适的remove机制</li>
+<li>更大的自由度，可以定制许多功能，特别是与Native层结合</li>
+<li>Android的MessageQueue可以针对单线程读取的场景做优化，其他线程添加的时候才会涉及线程问题，读取的时候不涉及</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

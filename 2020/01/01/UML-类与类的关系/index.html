@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UML"><span class="toc-text">UML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96"><span class="toc-text">泛化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96"><span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94"><span class="toc-text">关联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88"><span class="toc-text">聚合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88"><span class="toc-text">组合</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          UML-类与类的关系
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>UML(Unified Modeling Language), 又称统一建模语言或标准建模语言，它是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化支持，可用于多种类型软件系统开发建模的各个阶段。我们可以用 UML 图例来表示类与类之间的各种关系。</p>
+<span id="more"></span>
+
+<p>类的层次结构代表类与类之间的关系，类的关系有很多种，包括泛化、依赖、关联、聚合和组合。这些关系在大的类别上还可分为两种:横向关系和纵向关系，纵向关系就是泛化关系，而横向关系就是剩下的 4 种，它们的强弱关系:依赖 &lt; 关联 &lt; 聚合 &lt; 组合。理解这些类的关系，并应用于类的层次结构设计中，有助于优化代码组织结构。</p>
+<h3 id="泛化"><a href="#泛化" class="headerlink" title="泛化"></a>泛化</h3><ul>
+<li>泛化关系就是继承，表示一般与特殊的关系，即“一般”元素是“特殊”元素的泛化。在继承中，一般类就是父类，特殊类就是子类。</li>
+<li>它们之间是“is a”的关系。</li>
+<li>如:一个 Cat 类继承 Animal 类，也就是说 Cat is an Animal。在 UML 类图设计中，继承用一条带空心三角箭头的实线表示，从子类指向父类，或者子接口指向父接口。</li>
+</ul>
+<p><img src="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/1.png"></p>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ul>
+<li>表示一个元素以某种方式依赖于另一种元素。依赖就是一个类 A 使用到了另一个类B，而这种使用关系是具有偶然性的、临时性的、非常弱的，但是类 B 的变化会影响到类 A。</li>
+<li>它们之间是“use a”的关系。</li>
+<li>依赖的例子有:一个类把另一个类的对象作为参数，一个类访问另一个类的全局变量，或者一个类调用另一个类的类操作。</li>
+<li>比如某人要过河，需要借用一条船，此时人与船之间的关系就是依赖。表现在代码层面，为类 B 作为参数被类 A 在某个 method 方法中使用。在 UML 类图设计中，依赖关系用由类 A 指向类 B 的带箭头虚线表示。</li>
+</ul>
+<p><img src="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/2.png"></p>
+<h3 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h3><ul>
+<li>关联体现的是两个类之间一种强依赖关系，这种关系比依赖更强、不存在依赖关系的偶然性、关系也不是临时性的，一般是长期性的，而且双方的关系一般是平等的。关联可以是单向、双向的。</li>
+<li>比如老师和学生是双向关联，老师有多名学生，学生也可能有多名老师。学生跟学生学号之间是单向关联，一个学生只能对应一个唯一的学号。在 UML 类图设计中, 双向的关联可以有两个箭头或者没有箭头，单向的关联有一个箭头。</li>
+</ul>
+<p><img src="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/3.png"></p>
+<p><img src="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/4.png"></p>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ul>
+<li>聚合关系是关联关系的一种，是强的关联关系，它体现的是整体与部分的关系 ，且部分可以离开整体而单独存在;关联和聚合在语法上无法区分，必须考察具体的逻辑关系。</li>
+<li>它们之间是“use a”的关系。</li>
+<li>此时整体与部分之间是可分离的，它们可以具有各自的生命周期，部分可以属于多个整体对象，也可以为多个整体对象共享。</li>
+<li>在UML类图设计中，聚合关系以空心菱形加实线表示。如学校有很多老师。</li>
+</ul>
+<p><img src="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/5.png"></p>
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><ul>
+<li>是整体与部分的关系，是比聚合关系还要强的关系，但此时整体与部分是不可分的，整体的生命周期结束也就意味着部分的生命周期结束，如公司和部门是整体和部分的关系, 没有公司就不存在部门。</li>
+<li>它体现的是一种“contains-a”的关系。</li>
+<li>在 UML 类图设计中，组合关系以实心菱形加实线表示。</li>
+</ul>
+<p><img src="/2020/01/01/UML-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB/6.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

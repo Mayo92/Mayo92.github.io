@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90"><span class="toc-text">Java虚拟机结构解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84%E8%AE%B2%E8%A7%A3"><span class="toc-text">JVM整体结构讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B"><span class="toc-text">编译流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-text">类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%B0%86class%E5%AD%97%E8%8A%82%E7%A0%81%E5%8A%A0%E8%BD%BD%E5%88%B0JVM%E6%B5%81%E7%A8%8B"><span class="toc-text">类加载器将class字节码加载到JVM流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java%E6%A0%88%E5%8C%BA"><span class="toc-text">Java栈区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#java%E6%A0%88%E5%B8%A7"><span class="toc-text">java栈帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E5%8C%BA"><span class="toc-text">堆区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-text">垃圾收集算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">引用的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">弱引用的创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="toc-text">垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%9B%9E%E6%94%B6"><span class="toc-text">触发回收</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dalvik%E4%B8%8EJVM%E7%9A%84%E4%B8%8D%E5%90%8C"><span class="toc-text">Dalvik与JVM的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ART%E6%AF%94Dalvik%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF"><span class="toc-text">ART比Dalvik有哪些优势</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          热修复插件化-虚拟机
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="Java虚拟机结构解析"><a href="#Java虚拟机结构解析" class="headerlink" title="Java虚拟机结构解析"></a>Java虚拟机结构解析</h2><h3 id="JVM整体结构讲解"><a href="#JVM整体结构讲解" class="headerlink" title="JVM整体结构讲解"></a>JVM整体结构讲解</h3><span id="more"></span>
+
+<p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/1.png"></p>
+<h3 id="编译流程"><a href="#编译流程" class="headerlink" title="编译流程"></a>编译流程</h3><p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/2.png"></p>
+<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/3.png"></p>
+<p>Bootstrap、Extension加载JDK特定的jar包</p>
+<p>App应用程序所用到的加载器</p>
+<p>Custom可以自定义的加载器。可以重写classloader，让这个classloader加载自定义的class。可以实现动态加载的理论依据与技术手段</p>
+<h3 id="类加载器将class字节码加载到JVM流程"><a href="#类加载器将class字节码加载到JVM流程" class="headerlink" title="类加载器将class字节码加载到JVM流程"></a>类加载器将class字节码加载到JVM流程</h3><p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/4.png"></p>
+<ul>
+<li>Loading：类的信息从文件中获取并且载入到JVM的内存里</li>
+<li>Verifying：检查读入的结构是否符合JVM规范的描述</li>
+<li>Preparing：分配一个结构用来存储类信息</li>
+<li>Resolving：把这个类的常量池中的所有的符号引用改变成直接引用</li>
+<li>Initializing：执行静态初始化程序，把静态变量初始化成指定的值</li>
+</ul>
+<h3 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h3><p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/1.png"></p>
+<h4 id="Java栈区"><a href="#Java栈区" class="headerlink" title="Java栈区"></a>Java栈区</h4><ul>
+<li>作用：它存放的是java方法执行时的所有的数据（描述java方法执行的一个完整的内存模型）</li>
+<li>组成：由栈帧组成，一个栈帧代表一个方法的执行</li>
+</ul>
+<h4 id="java栈帧"><a href="#java栈帧" class="headerlink" title="java栈帧"></a>java栈帧</h4><ul>
+<li>每个方法从调用到执行完成就对应一个栈帧在虚拟机中入栈到出栈</li>
+</ul>
+<p>A方法调用到了B方法，java虚拟机创建一个保存B方法的栈帧压入到栈区中，B方法执行完成后返回到A方法中时，这个栈帧弹出</p>
+<ul>
+<li>每个栈帧包含：局部变量表、栈操作数、动态链接、方法出口</li>
+</ul>
+<h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h4><ul>
+<li>作用：本地方法栈是专门为Native方法服务的</li>
+</ul>
+<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><ul>
+<li>存储被虚拟机加载的类信息、常量、静态变量、即使编译器编译后的数据（永远占据内存）</li>
+</ul>
+<h4 id="堆区"><a href="#堆区" class="headerlink" title="堆区"></a>堆区</h4><ul>
+<li>作用：所有通过new创建的对象的内存都在堆中分配</li>
+<li>特点：是虚拟机中最大的一块内存，是GC要回收的部分</li>
+</ul>
+<p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/5.png"></p>
+<p>可以让开发人员动态调整Young与Old的大小</p>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><h4 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h4><ul>
+<li>引用计数算法（1.2之前）</li>
+</ul>
+<p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/6.png"></p>
+<p>A与B的引用计数都是1，但是这两个对象都是不可达的，但引用计数算法下不能被回收</p>
+<ul>
+<li>可达性算法（根搜索性算法）</li>
+</ul>
+<p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/7.png"></p>
+<h4 id="引用的类型"><a href="#引用的类型" class="headerlink" title="引用的类型"></a>引用的类型</h4><ul>
+<li>强引用、软引用、弱引用、虚引用</li>
+<li>最常使用的就是强引用、弱引用</li>
+</ul>
+<h4 id="弱引用的创建"><a href="#弱引用的创建" class="headerlink" title="弱引用的创建"></a>弱引用的创建</h4><pre><code>Object obj = new Object();//强引用
+//Object对象有两个引用指向它obj、wf
+WeakReference&lt;Object&gt; wf = new WeakReference&lt;Object&gt;(obj);
+obj = null;
+wf.get();//使用的时候要判断是否为空
+</code></pre>
+<h4 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h4><ul>
+<li>标记-清除算法</li>
+</ul>
+<p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/8.png"></p>
+<p>好处：不需要进过对象的移动并且仅对不存活的对象进行处理，在存活对象比较多的情况下很高效。坏处：会造成内存碎片，不利于后续对内存的分配</p>
+<ul>
+<li>复制算法</li>
+</ul>
+<p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/9.png"></p>
+<p>优点：存活对象少时候高效。缺点：需要一块内存作为交换空间来进行对象的移动</p>
+<ul>
+<li>标记-整理算法</li>
+</ul>
+<p><img src="/2018/04/02/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA/10.png"></p>
+<p>在标记-清除算法基础上，成本更高但解决了内存碎片问题	<br>这三种算法在虚拟机中是结合使用的。</p>
+<h4 id="触发回收"><a href="#触发回收" class="headerlink" title="触发回收"></a>触发回收</h4><ul>
+<li>Java虚拟机无法再为新的对象分配内存空间了</li>
+<li>手动调用System.gc()方法（不推荐）</li>
+<li>低优先级的GC线程，被运行时就会执行GC</li>
+</ul>
+<h2 id="Dalvik与JVM的不同"><a href="#Dalvik与JVM的不同" class="headerlink" title="Dalvik与JVM的不同"></a>Dalvik与JVM的不同</h2><ul>
+<li>执行的文件不同，一个是class，一个是dex</li>
+<li>类加载的系统与JVM区别较大</li>
+<li>可以同时存在多个DVM（某一个应用程序的虚拟机挂掉不会影响其他，保证系统稳定性）</li>
+<li>Dalvik是基于寄存器的（运行的更快），JVM是基于栈的（方法调用在栈中完成）</li>
+</ul>
+<h2 id="ART比Dalvik有哪些优势"><a href="#ART比Dalvik有哪些优势" class="headerlink" title="ART比Dalvik有哪些优势"></a>ART比Dalvik有哪些优势</h2><ul>
+<li>DVM使用JIT（每次运行都会将字节码转换成本地机器码再执行）来将字节码转换成机器码，效率低</li>
+<li>ART采用了AOT（安装的时候将字节码转换成本地机器码）预编译技术，执行速度更快</li>
+<li>ART会占用更多的应用安装时间和存储空间（以空间换时间）</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

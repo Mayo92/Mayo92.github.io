@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%B3%9B%E5%9E%8B"><span class="toc-text">为什么使用泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">泛型的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81%E4%B8%8E%E6%B3%9B%E5%9E%8B"><span class="toc-text">多态与泛型</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java基础-泛型
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="为什么使用泛型"><a href="#为什么使用泛型" class="headerlink" title="为什么使用泛型"></a>为什么使用泛型</h3><p>在Java中增加泛型之前，泛型程序设计使用继承来实现的</p>
+<p>坏处：</p>
+<ul>
+<li>需要强制转换</li>
+<li>可向集合中添加任意类型的对象，存在风险</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="泛型的使用"><a href="#泛型的使用" class="headerlink" title="泛型的使用"></a>泛型的使用</h3><pre><code>List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+</code></pre>
+<p>JavaSE7及以后的版本中，构造方法中可以省略泛型类型</p>
+<pre><code>List&lt;String&gt; list = new ArrayList&lt;&gt;();
+</code></pre>
+<h3 id="多态与泛型"><a href="#多态与泛型" class="headerlink" title="多态与泛型"></a>多态与泛型</h3><p>变量声明的类型必须匹配传递给实际对象的类型</p>
+<pre><code>//都是错的
+class Animal&#123;&#125;
+class Cat extends Animal&#123;&#125;
+List&lt;Animal&gt; list = new ArrayList&lt;Cat&gt;();
+
+List&lt;Object&gt; list = new ArrayList&lt;String&gt;();
+
+List&lt;Number&gt; numbers = new ArrayList&lt;Integer&gt;();
+</code></pre>
+<p><img src="/2017/04/30/Java%E5%9F%BA%E7%A1%80-%E6%B3%9B%E5%9E%8B/1.png"></p>
+<p><img src="/2017/04/30/Java%E5%9F%BA%E7%A1%80-%E6%B3%9B%E5%9E%8B/2.png">	</p>
+<? extends Goods> extends后面的内容也可以是接口
+
+这样定义添加的是Goods及他的子类都允许
+
+<? super Goods> 必须是Goods或Goods的超类
+
+### 要注意的问题
+
+* 泛型的类型参数只能是类类型，不能是基本数据类型
+* 泛型的原理就是参数化类型
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

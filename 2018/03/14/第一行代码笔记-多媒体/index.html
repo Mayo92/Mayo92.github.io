@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E9%80%9A%E7%9F%A5"><span class="toc-text">1. 使用通知</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">1.1 基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">基础配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-PendingIntent"><span class="toc-text">1.2 PendingIntent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E5%8F%96%E6%B6%88%E9%80%9A%E7%9F%A5"><span class="toc-text">1.3 取消通知</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E9%80%9A%E7%9F%A5%E8%BF%9B%E9%98%B6"><span class="toc-text">1.4 通知进阶</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="toc-text">1.5 高级功能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B0%83%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E5%92%8C%E7%9B%B8%E5%86%8C"><span class="toc-text">2. 调用摄像头和相册</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E8%B0%83%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%8B%8D%E7%85%A7"><span class="toc-text">2.1 调用摄像头拍照</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%B3%E5%87%BBres%E5%88%9B%E5%BB%BAxml%E7%9B%AE%E5%BD%95%EF%BC%8C%E5%8F%B3%E5%87%BBxml%E5%88%9B%E5%BB%BAfile-paths-xml%E6%96%87%E4%BB%B6%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-text">右击res创建xml目录，右击xml创建file_paths.xml文件如下：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E4%BB%8E%E7%9B%B8%E5%86%8C%E4%B8%AD%E9%80%89%E6%8B%A9%E7%85%A7%E7%89%87"><span class="toc-text">2.2 从相册中选择照片</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%92%AD%E6%94%BE%E5%A4%9A%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6"><span class="toc-text">3. 播放多媒体文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E6%92%AD%E6%94%BE%E9%9F%B3%E9%A2%91-MediaPlayer"><span class="toc-text">3.1 播放音频 MediaPlayer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E6%92%AD%E6%94%BE%E8%A7%86%E9%A2%91-VideoView"><span class="toc-text">3.2 播放视频 VideoView</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          第一行代码笔记-多媒体
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="1-使用通知"><a href="#1-使用通知" class="headerlink" title="1. 使用通知"></a>1. 使用通知</h3><h4 id="1-1-基本用法"><a href="#1-1-基本用法" class="headerlink" title="1.1 基本用法"></a>1.1 基本用法</h4><p>可以在Activity，Service，广播接收器里创建，后两种比较常见。</p>
+<p>首先需要NotificationManager来对通知进行管理，使用Context的getSystemService()获取。</p>
+<pre><code>NotificationManager manager = (NotificationManager)
+getSystemService(Context.NOTIFICATION_SERVICE);
+</code></pre>
+<span id="more"></span>
+<p>接下来使用Builder构造器来创建Notification对象，使用support-v4库中提供的一个NotificationCompat类。</p>
+<pre><code>Notification notification = new NotificationCompat.Builder(context).build();
+</code></pre>
+<h5 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h5><pre><code>Notification notification = new NotificationCompat.Builder(context)
+    .setContentTitle(&quot;title&quot;)
+    .setContentText(&quot;text&quot;)
+    .setWhen(System.currentTimeMillis())
+    .setSmallIcon(R.drable.small_icon)
+    setLargeIcon(BitmapFactory.decodeResource(getResource(),
+        R.drable.large_icon))
+    .build();
+    
+</code></pre>
+<p>setWhen()指定通知被创建的时间，以毫秒为单位。setSmallIcon()用于设置通知的小图标，只能使用纯alpha图层的图片进行设置。</p>
+<p>调用NotificationManager的notify()方法就可以让通知显示出来。接收两个参数，第一个是id，要保证为每个通知所指定的id都是不同的。第二个参数是Notification对象。</p>
+<pre><code>manager.notify(1, notification);
+</code></pre>
+<h4 id="1-2-PendingIntent"><a href="#1-2-PendingIntent" class="headerlink" title="1.2 PendingIntent"></a>1.2 PendingIntent</h4><p>可以用于启动活动、启动服务、发送广播等。Intent更加倾向于立即执行某个动作，而PendingIntent更加倾向于在某个合适的时机去执行某个动作。可以把PendingIntent简单的理解为延迟执行的Intent。</p>
+<p>提供getActivity()、getBroadcast()、getService()方法用于获取PendingIntent实例。第一个参数是Context，第二个一般用不到传入0即可，第三个是一个Intent对象，第四个用于确定PendingIntent的行为，有FLAG_ONE_SHOT、FLAG_NO_CREATE、FLAG_CANCEL_CURRENT、FLAG_UPDATE_CURRENT四种可选，通常传入0即可。</p>
+<p>NotificationCompat.Builder还可以再连缀一个setContentIntent()方法，当用户点击这条通知的时候就会执行相应的逻辑。</p>
+<h4 id="1-3-取消通知"><a href="#1-3-取消通知" class="headerlink" title="1.3 取消通知"></a>1.3 取消通知</h4><p>NotificationCompat.Builder再连缀一个setAutoCancel()方法，传入true时表示点击这个通知会自动取消掉。</p>
+<pre><code>.setAutoCancel(true);
+</code></pre>
+<p>调用NotificationManager的cancel()方法，传入id</p>
+<pre><code>manager.cancel(1);
+</code></pre>
+<h4 id="1-4-通知进阶"><a href="#1-4-通知进阶" class="headerlink" title="1.4 通知进阶"></a>1.4 通知进阶</h4><p>NotificationCompat.Builder的setSound()方法，可以在通知发出的时候播放一段音频，接收一个Uri参数</p>
+<pre><code>.setSound(Uri.fromFile(new File(&quot;/system/media/audio/ringtones/Luna.ogg&quot;)))
+</code></pre>
+<p>vibrate使手机振动，接收长整型的数组，用于设置手机静止和振动的时长，以毫秒为单位，下标0表示手机静止的时长，下标1表示手机振动的时长，下标2表示手机静止的时长，以此类推。</p>
+<pre><code>.setVibrate(new long[] &#123;0,1000,1000,1000&#125;)
+</code></pre>
+<p>setLights()设置闪光灯，接收三个参数，第一个用于指定LED颜色，第二个亮起时长，毫秒单位，第三个LED暗去时长，毫秒单位。</p>
+<pre><code>.setLights(Color.GREEN,1000,1000)
+</code></pre>
+<p>如果不想设置如上方法，可以使用默认效果</p>
+<pre><code>.setDefaults(NotificationCompat.DEFAULT_ALL)
+</code></pre>
+<h4 id="1-5-高级功能"><a href="#1-5-高级功能" class="headerlink" title="1.5 高级功能"></a>1.5 高级功能</h4><p>setStyle()方法接受一个NotificationCompat.Style参数，这个参数用来构建具体的富文本信息的，如长文字、图片等。</p>
+<pre><code>.setStyle(new NotificationCompat.BigTextStyle().bigText(&quot;xxxxxx&quot;))
+
+.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(
+BitmapFactory.decodeResource(getResource(),R.drawable.big_image)))
+</code></pre>
+<p>setPriority()方法，用于设置通知的重要程度。接受一个整形参数用于设置这条数据的重要程度，一共五个值可选，PRIORITY_DEFAULT默认的重要程度与不设置一样；PRIORITY_MIN表示最低的重要程度，系统可能只会在特定的场景才会显示这条通知，比如用户下拉状态栏的时候；PRIORITY_LOW较低的重要程度，系统可能会将这类通知缩小，或改变其显示的顺序，将其排在更重要的通知之后；PRIORITY_HIGH较高的重要程度，系统可能会将这类通知放大，或改变其显示的顺序，将其排在比较靠前的位置；PRIORITY_MAX最高的重要程度，这类通知必须要让用户立即看到，甚至需要用户做出响应操作。</p>
+<pre><code>. setPriority(NotificationCompat. PRIORITY_MAX)
+</code></pre>
+<h3 id="2-调用摄像头和相册"><a href="#2-调用摄像头和相册" class="headerlink" title="2. 调用摄像头和相册"></a>2. 调用摄像头和相册</h3><h4 id="2-1-调用摄像头拍照"><a href="#2-1-调用摄像头拍照" class="headerlink" title="2.1 调用摄像头拍照"></a>2.1 调用摄像头拍照</h4><pre><code>public static final int TAKE_PHOTO = 1;
+
+//创建File对象，用于存储拍照后的照片
+File outputImage = new File(getExternalCacheDir(),
+    &quot;output_image.jpg&quot;);
+try&#123;
+    if(outputImage.exists())&#123;
+        outputImage.delete();
+    &#125;
+    outputImage.createNewFile();
+&#125; catch (IOException e) &#123;
+    e.printStackTrace();
+&#125;
+if(Build.VERSION.SDK_INT &gt;= 24) &#123;
+    imageUri = FileProvider.getUriForFile(MainActivity.this,
+        &quot;com.example.cameraalbumtest.fileprovider&quot;,outputImage);
+&#125; else &#123;
+    imageUri = Uri.fromFile(outputImage);
+&#125;
+
+//启动相机程序
+Intent intent = new Intent(&quot;android.media.action.IMAGE_CAPTURE&quot;);
+intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
+startActivityForResult(intent,TAKE_PHOTO);
+
+@Override
+protected void onActivityResult(int requestCode,int resultCode,Intent data) &#123;
+    switch (requestCode)&#123;
+        case TAKE_PHOTO:
+            if(resultCode == RESULT_OK)&#123;
+                try&#123;
+                    //将拍摄的照片显示出来
+                    Bitmap bitmap = BitmapFactory.decodeStream(
+                        getContentResolver().openInputStream(imageUri));
+                    picture.setImageBitmap(bitmap);
+                &#125; catch (FileNotFoundException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+            break;
+        default:
+            break;
+    &#125;
+&#125;
+</code></pre>
+<p>首先创建一个File对象，用于存放摄像头拍下的图片，命名为output_image.jpg，并存放在手机SD卡的应用关联缓存目录下，为SD卡中专门用于存放当前应用缓存数据的位置，调用getExternalCacheDir()可以得到这个目录，具体为&#x2F;sdcard&#x2F;Android&#x2F;data&#x2F;<package name>&#x2F;cache。为什么使用这个目录，因为6.0开始读写SD卡被列为了危险权限，使用应用缓存可以跳过申请权限。</package></p>
+<p>接下来，如果低于7.0调用Uri的fromFile()将File对象转换成Uri对象，这个Uri对象标志着output_image.jpg的本地真实路径。否则调用FileProvider的getUriForFile()方法，将File对象转换成一个封装过的Uri对象。接收三个参数，第一个Context，第二个可以是任意唯一的字符串，第三个File对象。因为7.0开始，直接使用本地真实路径的Uri被认为是不安全的，会抛出FileUriExposedException，而FileProvider则是一种特殊的内容提供器，使用和内容提供器类似的机制对数据进行保护，可以选择性地将封装过的Uri共享给外部，从而提高了应用的安全性。</p>
+<p>接下来构建一个Intent对象，action指定为android.media.action.IMAGE_CAPTURE，调用putExtra()指定图片的输出地址，填写刚刚得到的Uri对象。</p>
+<p>如果拍照成功，调用BitmapFactory的decodeStream()方法将图片解析成Bitmap对象，然后设置到ImageView中显示出来。</p>
+<pre><code>&lt;provider
+    android:name=&quot;android.support.v4.content.FileProvider&quot;
+    android:authorities=&quot;com.example.cameraalbumtest.fileprovider&quot;
+    android:expord=&quot;false&quot;
+    android:grantUriPermission=&quot;true&quot;&gt;
+    &lt;meta-data
+        android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
+        android:resource=&quot;@xml/file_paths&quot;/&gt;
+&lt;/provider&gt;
+</code></pre>
+<p>android:name属性是固定的，android:authorities属性必须和刚刚 FileProvider.getUriForFile()第二个参数一致。meta-data指定Uri的共享路径，引用一个@xml&#x2F;file_paths资源。</p>
+<h5 id="右击res创建xml目录，右击xml创建file-paths-xml文件如下："><a href="#右击res创建xml目录，右击xml创建file-paths-xml文件如下：" class="headerlink" title="右击res创建xml目录，右击xml创建file_paths.xml文件如下："></a>右击res创建xml目录，右击xml创建file_paths.xml文件如下：</h5><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;paths xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;external-path name=&quot;my_images&quot; path=&quot;&quot; /&gt;
+&lt;/paths&gt;
+</code></pre>
+<p>xternal-path指定Uri共享的，name属性随便填，path属性表示共享的具体路径，空值表示将整个SD卡进行共享，当然也可以仅共享存放图片的路径。</p>
+<h4 id="2-2-从相册中选择照片"><a href="#2-2-从相册中选择照片" class="headerlink" title="2.2 从相册中选择照片"></a>2.2 从相册中选择照片</h4><pre><code>public static final int CHOOSE_PHOTO = 2;
+
+//检查权限
+if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
+    permission.WRITE_EXTERNAL_STORAGE) ! = PackageManager.PERMISSION_GRANTED)&#123;
+    
+    ActivityCompat.requestPermissions(MainActivity.this,new
+        String[]&#123;Manifest.permission.WRITE_EXTERNAL_STORAGE&#125;,1)
+&#125; else &#123;
+    openAlbum();
+&#125;
+
+//打开相册
+private void openAlbum()&#123;
+    Intent intent = new Intent(&quot;android.intent.action.GET_CONTENT&quot;);
+    intent.setType(&quot;image/*&quot;);
+    startActivityForResult(intent, CHOOSE_PHOTO);
+&#125;
+
+@Override
+public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults)&#123;
+
+    switch (requestCode)&#123;
+        case 1:
+            if(grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED)&#123;
+                openAlbum();
+            &#125; else &#123;
+                //拒绝了权限
+            &#125;
+            break;
+        default:
+    &#125;
+&#125;
+
+@Override
+protected void onActivityResult(int requestCode,int resultCode,Intent data) &#123;
+    switch (requestCode)&#123;
+        case CHOOSE_PHOTO:
+            if(resultCode == RESULT_OK)&#123;
+                //判断手机系统版本
+                if(Build.VERSION.SDK_INT &gt;= 19)&#123;
+                    //4.4及以上使用这个方法处理图片
+                    handleImageOnKitKat(data);
+                &#125; else &#123;
+                    handleImageBeforeKitKat(data);
+                &#125;
+            &#125;
+            break;
+        default:
+            break;
+    &#125;
+&#125;
+
+@TargetApi(19)
+private void handleImageOnKitKat(Intent data) &#123;
+    
+    String imagePath = null;
+    Uri uri = data.getData();
+    if(DocumentsContract.isDocumentUri(this,uri))&#123;
+        //如果是Document类型的Uri，则通过Document id处理
+        String docId = DocumentsContract.getDocumentId(uri);
+        
+        if(&quot;com.android.providers.media.documents&quot;.equal(
+            uri.getAuthority())) &#123;
+            //解析出数字格式的id
+            String id = docId.split(&quot;:&quot;)[1];
+            String selection = MediaStore.Images.Media._ID + &quot;=&quot; + id;
+            imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_
+                CONTENT_URI,selection);
+        &#125; else if(&quot;com.android.providers.downloads.documents&quot;.equal(
+            uri.getAuthority())) &#123;
+            Uri contentUri = ContentUris.withAppendedId(Uri.parse(
+                &quot;content://downloads/public_downloads&quot;),
+                Long.valueOf(docId));
+            imagePath = getImagePath(contentUri,null);
+        &#125;
+    &#125; else if(&quot;content&quot;.equalsIgnoreCase(uri.getScheme())) &#123;
+        //如果是content类型的Uri，则使用普通方式处理
+        imagePath = getImagePath(uri,null);
+    &#125; else if(&quot;file&quot;.equalsIgnoreCase(uri.getScheme())) &#123;
+        //如果是file类型的Uri,直接获取图片路径即可
+        imagePath = uri.getPath();
+    &#125;
+    //根据图片路径显示图片
+    displayImage(imagePath);
+&#125;
+
+private void handleImageBeforeKitKat(Intent data)&#123;
+    Uri uri = data.getData();
+    String imagePath = getImagePath(uri,null);
+    displayImage(imagePath);
+&#125;
+
+private String getImagePath(Uri uri,String selection) &#123;
+    String path = null;
+    //通过Uri和selection来获取真实的图片路径
+    Cursor cursor = getContentResolver().query(uri,null,selection,null,null);
+    if(cursor != null)&#123;
+        if(cursor.moveToFirst())&#123;
+            path = cursor.getString(cursor.getColumnIndex(
+                MediaStore.Images.Media.DATA));
+        &#125;
+        cursor.close();
+    &#125;
+    return path;
+&#125;
+
+private void displayImage(String imagePath) &#123;
+    if(imagePath != null)&#123;
+        Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+        picture.setImageBitmap(bitmap);
+    &#125; else &#123;
+    
+    &#125;
+&#125;
+</code></pre>
+<p>还需要根据项目需求先对照片进行适当的压缩，然后加载到内存中。</p>
+<h3 id="3-播放多媒体文件"><a href="#3-播放多媒体文件" class="headerlink" title="3. 播放多媒体文件"></a>3. 播放多媒体文件</h3><h4 id="3-1-播放音频-MediaPlayer"><a href="#3-1-播放音频-MediaPlayer" class="headerlink" title="3.1 播放音频 MediaPlayer"></a>3.1 播放音频 MediaPlayer</h4><p><img src="/2018/03/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/1.png"></p>
+<p>首先需要创建一个MediaPlayer对象，然后调用setDataSource()方法设置音频文件的路径，再调用prepare()方法使MediaPlayer进入准备状态，接下来使用start()方法就可以开始播放音频，调用pause()方法就会暂停播放，调用reset()方法停止播放。</p>
+<pre><code>private MediaPlayer mediaPlayer = new MediaPlayer();
+
+//检查权限
+if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
+    permission.WRITE_EXTERNAL_STORAGE) ! = PackageManager.PERMISSION_GRANTED)&#123;
+    
+    ActivityCompat.requestPermissions(MainActivity.this,new
+        String[]&#123;Manifest.permission.WRITE_EXTERNAL_STORAGE&#125;,1)
+&#125; else &#123;
+    initMediaPlayer();
+&#125;
+
+@Override
+public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults)&#123;
+
+    switch (requestCode)&#123;
+        case 1:
+            if(grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED)&#123;
+                initMediaPlayer();
+            &#125; else &#123;
+                //拒绝了权限
+                finish();
+            &#125;
+            break;
+        default:
+    &#125;
+&#125;
+
+private void initMediaPlayer() &#123;
+    try&#123;
+        File file = new File(Environment.getExternalStorageDirectory(),
+            &quot;music.mp3&quot;);
+        //指定音频文件路径
+        mediaPlayer.setDataSource(file.getPath());
+        mediaPlayer.prepare();
+    &#125; catch (Exception e)&#123;
+        e.printStackTrace();
+    &#125;
+&#125;
+
+//播放
+if(!mediaPlayer.isPlaying())&#123;
+    mediaPlayer.start();
+&#125;
+
+//暂停播放
+if(mediaPlayer.isPlaying())&#123;
+    mediaPlayer.pause();
+&#125;
+
+//停止播放
+if(mediaPlayer.isPlaying())&#123;
+    mediaPlayer.reset();
+    initMediaPlayer();
+&#125;
+
+@Override
+protected void onDestroy()&#123;
+    super.onDestroy();
+    if(mediaPlayer != null)&#123;
+        mediaPlayer.stop();
+        mediaPlayer.release();
+    &#125;
+&#125;
+</code></pre>
+<h4 id="3-2-播放视频-VideoView"><a href="#3-2-播放视频-VideoView" class="headerlink" title="3.2 播放视频 VideoView"></a>3.2 播放视频 VideoView</h4><p><img src="/2018/03/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/2.png"></p>
+<pre><code>private VideoView videoView;
+
+//检查权限
+if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.
+    permission.WRITE_EXTERNAL_STORAGE) ! = PackageManager.PERMISSION_GRANTED)&#123;
+    
+    ActivityCompat.requestPermissions(MainActivity.this,new
+        String[]&#123;Manifest.permission.WRITE_EXTERNAL_STORAGE&#125;,1)
+&#125; else &#123;
+    initVideoPath();
+&#125;
+
+@Override
+public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults)&#123;
+
+    switch (requestCode)&#123;
+        case 1:
+            if(grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED)&#123;
+                initVideoPath();
+            &#125; else &#123;
+                //拒绝了权限
+                finish();
+            &#125;
+            break;
+        default:
+    &#125;
+&#125;
+
+private void initVideoPath() &#123;
+    File file = new File(Environment.getExternalStorageDirectory(),
+        &quot;movie.mp4&quot;);
+    //指定视频文件路径
+    videoView.setVideoPath(file.getPath());
+&#125;
+
+//播放
+if(!videoView.isPlaying())&#123;
+    videoView.start();
+&#125;
+
+//暂停播放
+if(videoView.isPlaying())&#123;
+    videoView.pause();
+&#125;
+
+//重新播放
+if(videoView.isPlaying())&#123;
+    mediaPlayer.resume();
+&#125;
+
+@Override
+protected void onDestroy()&#123;
+    super.onDestroy();
+    if(videoView != null)&#123;
+        videoView.suspend();
+    &#125;
+&#125;
+</code></pre>
+<p>VideoView背后仍是使用MediaPlayer来对视频文件进行控制的。</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

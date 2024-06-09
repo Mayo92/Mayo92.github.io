@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Handler"><span class="toc-text">Handler</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Handler%E7%9A%84%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E5%92%8C%E8%BF%90%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="toc-text">Handler的四大组件和运作机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#looper%E3%80%81handler%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E6%8D%86%E7%BB%91"><span class="toc-text">looper、handler、消息队列如何捆绑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#looper%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86MessageQueue"><span class="toc-text">looper如何管理MessageQueue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Handler%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E9%9D%A2%E8%AF%95%E8%A6%81%E7%82%B9"><span class="toc-text">Handler机制总结&amp;面试要点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Asynctask"><span class="toc-text">Asynctask</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%92%8C4%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">使用和4点注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Asynctask%E6%BA%90%E7%A0%81%EF%BC%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0-SerialExecutor%E5%88%9B%E5%BB%BA"><span class="toc-text">Asynctask源码：线程池&amp;SerialExecutor创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9AFutureTask-Callable"><span class="toc-text">异步消息-并发编程：FutureTask&amp;Callable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Asynctask%E6%BA%90%E7%A0%81%EF%BC%9ApostResult%E6%96%B9%E6%B3%95"><span class="toc-text">Asynctask源码：postResult方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Asynctask%E6%BA%90%E7%A0%81%EF%BC%9AAsynctask%E5%A6%82%E4%BD%95%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-text">Asynctask源码：Asynctask如何实例化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Asynctask%E6%BA%90%E7%A0%81%EF%BC%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84execute-executeOnExecutor"><span class="toc-text">Asynctask源码：线程池的execute&amp;executeOnExecutor</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android面试-异步消息
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h3><ul>
+<li>Android SDK提供给开发者方便进行异步消息处理的类</li>
+<li>AsyncTask、retrofit都利用了Handler</li>
+</ul>
+<span id="more"></span>
+
+<h4 id="Handler的四大组件和运作机制"><a href="#Handler的四大组件和运作机制" class="headerlink" title="Handler的四大组件和运作机制"></a>Handler的四大组件和运作机制</h4><p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/1.png"></p>
+<p>Message：Handler接收和处理消息的对象</p>
+<p>Looper：每一个线程只能有一个Looper</p>
+<p>MessageQueue：单链表（插入删除性能优势），头部取出</p>
+<p>Handler：发送消息、处理消息</p>
+<h4 id="looper、handler、消息队列如何捆绑"><a href="#looper、handler、消息队列如何捆绑" class="headerlink" title="looper、handler、消息队列如何捆绑"></a>looper、handler、消息队列如何捆绑</h4><p><em>handler源码</em></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/2.png"></p>
+<p>Handler内部会获取Looper对象，Looper.myLooper()方法，再通过Looper对象获取MessageQueue对象</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/3.png"></p>
+<p>所有的sendMessage方法都会走到enqueueMessage方法，添加到消息队列中。msg.target &#x3D; this，将当前的Handler对象绑定到Message对象的target变量中</p>
+<p><em>MessageQueue源码</em></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/4.png"></p>
+<p>enqueueMessage插入消息</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/5.png"></p>
+<p>next()方法，读取并删除</p>
+<h4 id="looper如何管理MessageQueue"><a href="#looper如何管理MessageQueue" class="headerlink" title="looper如何管理MessageQueue"></a>looper如何管理MessageQueue</h4><p><em>Looper源码</em></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/6.png"></p>
+<p>sThreadLocal线程本地变量，可以为每个变量在每个线程都创建一个副本，每个线程都可以访问自己线程内部的变量，是独立的，可以确保每一个线程获取的Looper都是唯一的</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/7.png"></p>
+<p>构造方法，这里创建了MessageQueue</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/8.png"></p>
+<p>Handler里获取Looper对象</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/9.png"></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/10.png"></p>
+<p><em>handler源码</em></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/11.png"></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/12.png"></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/13.png"></p>
+<p>Loop()方法不断循环，消息不为空，msg.target即Handler开始处理消息，调用dispatchMessage方法</p>
+<p>callback即为runnable。mCallback为CallBack接口，handleMessage方法处理消息</p>
+<h4 id="Handler机制总结-面试要点"><a href="#Handler机制总结-面试要点" class="headerlink" title="Handler机制总结&amp;面试要点"></a>Handler机制总结&amp;面试要点</h4><ul>
+<li>Looper类主要为每个线程开启的单独的消息循环</li>
+<li>Handler可以看做是Looper的一个接口</li>
+<li>在非主线程中直接new Handler()不可以，必须创建好Looper对象</li>
+</ul>
+<h3 id="Asynctask"><a href="#Asynctask" class="headerlink" title="Asynctask"></a>Asynctask</h3><h4 id="使用和4点注意事项"><a href="#使用和4点注意事项" class="headerlink" title="使用和4点注意事项"></a>使用和4点注意事项</h4><ul>
+<li>Handler+线程池（避免不必要的线程开销）</li>
+<li>Asynctask的实例必须在主线程中创建</li>
+<li>Asynctask的execute方法必须在主线程中调用</li>
+<li>回调方法，Android会自动调用</li>
+<li>一个Asynctask实例，只能执行一次execute方法</li>
+</ul>
+<p>代码</p>
+<pre><code>public class UpdateTextTask extends AsyncTask&lt;Void, Integer, Integer&gt; &#123;
+
+    private Context context;
+
+    UpdateTextTask(Context context) &#123;
+        this.context = context;
+    &#125;
+
+    /**
+     * 运行在UI线程中，在调用doInBackground()之前执行
+     */
+    @Override
+    protected void onPreExecute() &#123;
+        Toast.makeText(context, &quot;开始执行&quot;, Toast.LENGTH_SHORT).show();
+    &#125;
+
+    /**
+     * 后台运行的方法，可以运行非UI线程，可以执行耗时的方法
+     */
+    @Override
+    protected Integer doInBackground(Void... voids) &#123;
+        int i = 0;
+        while (i &lt; 10) &#123;
+            i++;
+            publishProgress(i);
+            try &#123;
+                Thread.sleep(1000);
+            &#125; catch (InterruptedException e) &#123;
+            &#125;
+        &#125;
+        return null;
+    &#125;
+
+    /**
+     * 运行在ui线程中，在doInBackground()执行完毕后执行
+     */
+    @Override
+    protected void onPostExecute(Integer integer) &#123;
+        Toast.makeText(context, &quot;执行完毕&quot;, Toast.LENGTH_SHORT).show();
+    &#125;
+
+    /**
+     * 在publishProgress()被调用以后执行，publishProgress()用于更新进度
+     */
+    @Override
+    protected void onProgressUpdate(Integer... values) &#123; &#125;
+&#125;
+</code></pre>
+<h4 id="Asynctask源码：线程池-SerialExecutor创建"><a href="#Asynctask源码：线程池-SerialExecutor创建" class="headerlink" title="Asynctask源码：线程池&amp;SerialExecutor创建"></a>Asynctask源码：线程池&amp;SerialExecutor创建</h4><p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/14.png"></p>
+<p>CP_COUNT CPU核心数</p>
+<p>CORE_POOL_SIZE 线程数的核心大小</p>
+<p>MAXIMUM_POOL_SIZE 线程池的最大线程数</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/15.png"></p>
+<p>线程池工厂，原子类型mCount（线程安全），重写newThread方法，新增线程名以AsyncTask为标识</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/16.png"></p>
+<p>阻塞式队列，存放Runnable对象</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/17.png"></p>
+<p>实例化线程池，是static final</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/18.png"></p>
+<p>执行串行任务，维护了一个Runnable的双端队列ArrayDeque（没有容量限制）。</p>
+<p>execute方法，传入一个Runnable类型的变量，实例化一个Runnable类型的匿名内部类，对这个Runnable进行封装，调用队列的offer方法，将封装后的Runnable添加到队尾，然后执行Runnable的run方法开始执行任务（在线程池中执行），执行完成调用scheduleNext执行下一个任务的Runnable。</p>
+<p>scheduleNext方法，mTasks.poll()出队并且返回队头的Runnable，最终调用默认的线程池THREAD_POOL_EXECUTOR来执行</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/19.png"></p>
+<p>绑定了主线程的loop，处理子线程发送的消息在主线程回显</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/20.png"></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/21.png"></p>
+<p>枚举类型，初始状态为PENDING</p>
+<h4 id="异步消息-并发编程：FutureTask-Callable"><a href="#异步消息-并发编程：FutureTask-Callable" class="headerlink" title="异步消息-并发编程：FutureTask&amp;Callable"></a>异步消息-并发编程：FutureTask&amp;Callable</h4><p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/22.png"></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/23.png"></p>
+<p>Callable与Runnable接口很类似，但是call方法有返回值，run方法没有</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/24.png"></p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/26.png"></p>
+<p>FutureTask内部实现了Callable接口与Runnable接口</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/25.png"></p>
+<p>构造方法，传入Callable接口</p>
+<p>前面的execute方法，传入一个Runnable类型的变量，可以把FutureTask对象传递给execute方法</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/27.png"></p>
+<p>由自己实现，任务完成之后可以做一些UI的回显、数据的保存</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/28.png"></p>
+<p>阻塞式的等待任务返回值，Callable的call方法的返回值</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/29.png"></p>
+<p>取消任务方法，之后会调用done方法</p>
+<h4 id="Asynctask源码：postResult方法"><a href="#Asynctask源码：postResult方法" class="headerlink" title="Asynctask源码：postResult方法"></a>Asynctask源码：postResult方法</h4><p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/30.png"></p>
+<p>根据前面的doInBackground的结果result来进行相应的判断</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/31.png"></p>
+<p>getHandler()获取主线程Handler，message.sendToTarget()交给Handler处理</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/32.png"></p>
+<p>result.mTask代表所绑定的Asynctask，result.mData[0]表示doInBackground处理的结果</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/33.png"></p>
+<p>被取消了执行onCancelled方法。onPostExecute方法，做一些后台计算结果之后的数据的显现工作，主线程工作，所以finish方法也在主线程工作，最后改变状态值</p>
+<h4 id="Asynctask源码：Asynctask如何实例化"><a href="#Asynctask源码：Asynctask如何实例化" class="headerlink" title="Asynctask源码：Asynctask如何实例化"></a>Asynctask源码：Asynctask如何实例化</h4><p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/34.png"></p>
+<p>构造函数，传入Looper对象，用来判断主线程的Handler，mHandler是主线程Handler。mWorker实现了Callable的call方法，call方法是在线程池中的某个线程中执行的，不是在主线程。mTaskInvoked.set(true)表示任务已经开始执行了。setThreadPriority将call方法执行线程设置为后台线程级别。</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/35.png"></p>
+<p>任务执行完或取消执行done方法</p>
+<h4 id="Asynctask源码：线程池的execute-executeOnExecutor"><a href="#Asynctask源码：线程池的execute-executeOnExecutor" class="headerlink" title="Asynctask源码：线程池的execute&amp;executeOnExecutor"></a>Asynctask源码：线程池的execute&amp;executeOnExecutor</h4><p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/36.png"></p>
+<p>注解运行在主线程，sDefaultExecutor默认执行任务的线程池</p>
+<p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/37.png"></p>
+<p>状态判断及改变。onPreExecute初始化工作，运行在主线程。exec.execute(mFuture)，mFuture实现Callable接口与Runnable接口，可以直接调用</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

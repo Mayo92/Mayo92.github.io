@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="toc-text">包装类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">Java中的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">包装类与基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-text">基本类型与包装类型的异同</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">字符串与基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%85%B7%E5%A4%87%E4%B8%8D%E5%90%8C%E7%9A%84%E8%BF%9B%E5%88%B6%E4%BD%93%E7%8E%B0"><span class="toc-text">整数具备不同的进制体现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="toc-text">基本数据类型的初始值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="toc-text">常量池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#equals%E6%96%B9%E6%B3%95"><span class="toc-text">equals方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B"><span class="toc-text">包装类常用方法简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Integer"><span class="toc-text">Integer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Boolean"><span class="toc-text">Boolean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Byte"><span class="toc-text">Byte</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Character"><span class="toc-text">Character</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Double"><span class="toc-text">Double</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Number"><span class="toc-text">Number</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java基础-包装类
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><p>Java中的包装类包括：Integer、Long、Short、Byte、Character、Double、Float、Boolean、BigInteger、BigDecimal。其中BigInteger、BigDecimal没有相对应的基本类型，主要应用于高精度的运算，BigInteger支持任意精度的整数，BigDecimal支持任意精度带小数点的运算。</p>
+<span id="more"></span>
+
+<h3 id="Java中的数据类型"><a href="#Java中的数据类型" class="headerlink" title="Java中的数据类型"></a>Java中的数据类型</h3><p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/1.png"></p>
+<h3 id="包装类与基本数据类型"><a href="#包装类与基本数据类型" class="headerlink" title="包装类与基本数据类型"></a>包装类与基本数据类型</h3><p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/2.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/3.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/4.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/5.png"></p>
+<p>装箱：把基本数据类型转换成包装类</p>
+<p>自动装箱、手动装箱</p>
+<p>拆箱：把包装类转换成基本数据类型</p>
+<p>自动拆箱、手动拆箱</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/6.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/7.png"></p>
+<h4 id="基本类型与包装类型的异同"><a href="#基本类型与包装类型的异同" class="headerlink" title="基本类型与包装类型的异同"></a>基本类型与包装类型的异同</h4><ol>
+<li>在Java中，一切皆对象，但八大基本类型却不是对象。</li>
+<li>声明方式的不同，基本类型无需通过new关键字来创建，而包装类型需new关键字。</li>
+<li>存储方式及位置的不同，基本类型是直接存储变量的值保存在栈中能高效的存取，包装类型需要通过引用指向实例，具体的实例保存在堆中。</li>
+<li>初始值的不同，包装类型的初始值为null，基本类型的的初始值视具体的类型而定，比如int类型的初始值为0，boolean类型为false</li>
+<li>使用方式的不同，比如与集合类合作使用时只能使用包装类型</li>
+</ol>
+<h3 id="字符串与基本数据类型"><a href="#字符串与基本数据类型" class="headerlink" title="字符串与基本数据类型"></a>字符串与基本数据类型</h3><p>基本数据类型转换为字符串：使用包装类的toString() 方法或基本类型数值+””</p>
+<p>字符串转换为基本数据类型：</p>
+<ul>
+<li>自动拆箱调用包装类的parseXxx() 静态方法。只有Character没有parse方法</li>
+<li>调用包装类的valueOf() 方法转换为基本类型的包装类，自动拆箱</li>
+<li>如果字符串被Integer进行对象的封装，可使用另一个非静态的方法，intValue。将一个Integer对象转成基本数据类型值。</li>
+</ul>
+<h4 id="整数具备不同的进制体现"><a href="#整数具备不同的进制体现" class="headerlink" title="整数具备不同的进制体现"></a>整数具备不同的进制体现</h4><p>十进制–&gt;其他进制方法：</p>
+<ul>
+<li>String toBinaryString(int i);</li>
+<li>String toOctalString(int i);</li>
+<li>String toHexString(int i);</li>
+<li>String toString(int i,int radix);</li>
+</ul>
+<p>其他进制–&gt;十进制方法：</p>
+<ul>
+<li>nt parseInt(String s,int radix);</li>
+</ul>
+<h3 id="基本数据类型的初始值"><a href="#基本数据类型的初始值" class="headerlink" title="基本数据类型的初始值"></a>基本数据类型的初始值</h3><p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/8.png"></p>
+<p>范围</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/15.png"></p>
+<p>char初始值为空格</p>
+<h3 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h3><p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/9.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/10.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/11.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/12.png"></p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/13.png"></p>
+<h3 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h3><p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/14.png"></p>
+<h3 id="包装类常用方法简介"><a href="#包装类常用方法简介" class="headerlink" title="包装类常用方法简介"></a>包装类常用方法简介</h3><h4 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h4><p>1.构造方法有两种：</p>
+<p>以int型变量作为参数创建Integer对象，实例代码如下：</p>
+<pre><code>Integer number=newInteger(7);
+</code></pre>
+<p>以String型变量作为参数创建Integer对象，实例代码如下：</p>
+<pre><code>Integer number=newInteger(“7”);
+</code></pre>
+<p>2.常用方法：</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/16.png"></p>
+<p>3.常用的常量</p>
+<ul>
+<li>MAX_VALUE:表示int型可取的最大值</li>
+<li>MIN_VALUE:表示int型可取的最小值</li>
+<li>SIZE：表示以二进制补码形式表示int值的位数</li>
+<li>TYPE:表示基本类型Class实例</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><p>1.构造方法</p>
+<p>创建一个表示value参数的boolean对象</p>
+<pre><code>Boolean    b = newBoolean(true);
+</code></pre>
+<p>以String变量作为参数，创建boolean对象。此时，如果传入的字符串不为null，且忽略大小写后的内容等于”true”,则生成Boolean对象值为true，反之为false.</p>
+<pre><code>Boolean    b1 = new    Boolean(&quot;ok&quot;);
+Boolean b2=new Boolean(&quot;TRUE&quot;);
+</code></pre>
+<p>2.常用方法</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/17.png"></p>
+<p>3.常用的常量</p>
+<ul>
+<li>TRUE:对应基值true的Boolean对象</li>
+<li>FALSR:对应基值false的Boolean对象</li>
+<li>TYPE:表示基本类型Class实</li>
+</ul>
+<h4 id="Byte"><a href="#Byte" class="headerlink" title="Byte"></a>Byte</h4><p>1.构造方法</p>
+<p>Byte（byte value) 通过这种方法创建的byte对象，可表示指定的byte值。</p>
+<pre><code>byte mybyte = 45
+Byte b = new Byte(mybyte);
+</code></pre>
+<p>Byte(String str) 通过这种方法创建的byte对象，可表示String参数指定的byte值</p>
+<pre><code>Byte    mybyte = new Byte(&quot;12&quot;)
+</code></pre>
+<p>2.常用方法</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/18.png"></p>
+<p>3.常用的常量</p>
+<ul>
+<li>MIN_VALUE:最小值</li>
+<li>MAX_VALUE:最大值</li>
+<li>SIZE:二进制</li>
+<li>TYPE:表示基本类型byte的class实</li>
+</ul>
+<h4 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h4><p>1.构造方法</p>
+<pre><code>Character（char value)
+</code></pre>
+<p>2.常用方法</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/19.png"></p>
+<h4 id="Double"><a href="#Double" class="headerlink" title="Double"></a>Double</h4><p>1.构造方法</p>
+<ul>
+<li>Double（double value): 基于double参数创建Double类对象</li>
+<li>Double（String str): 构造一个新分配的Double对象，表示用字符串表示的Double类型的浮点值</li>
+</ul>
+<p>2.常用方法</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/20.png"></p>
+<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><p>抽象类Number是父类，Number的子类必须提供将表示的数值转换成byte、double&#x2F;float&#x2F;long&#x2F;int&#x2F;short的方法。Number类的方法被Number的各子类所实现，常用方法如下：</p>
+<p><img src="/2017/04/24/Java%E5%9F%BA%E7%A1%80-%E5%8C%85%E8%A3%85%E7%B1%BB/21.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

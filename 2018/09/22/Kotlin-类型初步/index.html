@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3"><span class="toc-text">1.类和接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%B1%BB"><span class="toc-text">1.1 类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1.1 类的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-text">1.1.2 类的构造</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-text">1.1.3 类的实例化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%8E%A5%E5%8F%A3"><span class="toc-text">1.2 接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.2.1 接口的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.2.2 接口的实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.3 抽象类的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">1.4 类的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BBAbsClass"><span class="toc-text">抽象类AbsClass</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3Simple"><span class="toc-text">接口Simple</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SimpleClass%E4%B8%8ESimpleClass2"><span class="toc-text">SimpleClass与SimpleClass2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-text">执行代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%B1%9E%E6%80%A7"><span class="toc-text">1.6 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="toc-text">例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95"><span class="toc-text">2.扩展方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Java-vs-Kotlin"><span class="toc-text">2.1 Java vs Kotlin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%B8%BE%E4%BE%8B"><span class="toc-text">2.2 举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E4%B8%BE%E4%BE%8B"><span class="toc-text">2.4 举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%A9%BA%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8"><span class="toc-text">3.空类型安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">3.1 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">3.2 运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-text">3.2.1 !!（不常用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E5%AE%89%E5%85%A8%E8%AE%BF%E9%97%AE"><span class="toc-text">3.2.2 安全访问 ?.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-elvis%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">3.2.3 elvis运算符 ?:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-text">3.3 继承关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%B9%B3%E5%8F%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.4 平台类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%99%BA%E8%83%BD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">4.智能类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">4.1 Java类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Kotlin%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">4.2 Kotlin类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%BD%9C%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-text">4.3 作用范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-text">4.4 不支持的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%AE%89%E5%85%A8%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">4.5 安全的类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E7%BC%96%E7%A0%81%E5%BB%BA%E8%AE%AE"><span class="toc-text">4.6 编码建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%A1%88%E4%BE%8B"><span class="toc-text">5.案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%B0%8F%E7%BB%93"><span class="toc-text">6.小结</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Kotlin-类型初步
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="1-类和接口"><a href="#1-类和接口" class="headerlink" title="1.类和接口"></a>1.类和接口</h2><h3 id="1-1-类"><a href="#1-1-类" class="headerlink" title="1.1 类"></a>1.1 类</h3><h4 id="1-1-1-类的定义"><a href="#1-1-1-类的定义" class="headerlink" title="1.1.1 类的定义"></a>1.1.1 类的定义</h4><span id="more"></span>
+
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/1.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/2.png"></p>
+<h4 id="1-1-2-类的构造"><a href="#1-1-2-类的构造" class="headerlink" title="1.1.2 类的构造"></a>1.1.2 类的构造</h4><p>由副构造器到主构造器</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/3.png"></p>
+<p>下图为副构造器</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/4.png"></p>
+<p>下图为主构造器，主构造器要求其他构造器必须调用它，实例化路径只有一条</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/5.png"></p>
+<p>constructor可以省略</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/6.png"></p>
+<p>可以同时对属性初始化</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/7.png"></p>
+<h4 id="1-1-3-类的实例化"><a href="#1-1-3-类的实例化" class="headerlink" title="1.1.3 类的实例化"></a>1.1.3 类的实例化</h4><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/8.png"></p>
+<h3 id="1-2-接口"><a href="#1-2-接口" class="headerlink" title="1.2 接口"></a>1.2 接口</h3><h4 id="1-2-1-接口的定义"><a href="#1-2-1-接口的定义" class="headerlink" title="1.2.1 接口的定义"></a>1.2.1 接口的定义</h4><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/9.png"></p>
+<h4 id="1-2-2-接口的实现"><a href="#1-2-2-接口的实现" class="headerlink" title="1.2.2 接口的实现"></a>1.2.2 接口的实现</h4><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/10.png"></p>
+<h3 id="1-3-抽象类的定义"><a href="#1-3-抽象类的定义" class="headerlink" title="1.3 抽象类的定义"></a>1.3 抽象类的定义</h3><p>加上open可以覆写</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/11.png"></p>
+<h3 id="1-4-类的继承"><a href="#1-4-类的继承" class="headerlink" title="1.4 类的继承"></a>1.4 类的继承</h3><p>()表示构造方法</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/12.png"></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="抽象类AbsClass"><a href="#抽象类AbsClass" class="headerlink" title="抽象类AbsClass"></a>抽象类AbsClass</h4><pre><code>abstract class AbsClass &#123;
+    abstract fun absMethod()
+
+    //不写open不能被复写
+    open fun overridable()&#123;&#125;
+
+    fun nonOverridable()&#123;&#125;
+&#125;
+</code></pre>
+<h4 id="接口Simple"><a href="#接口Simple" class="headerlink" title="接口Simple"></a>接口Simple</h4><pre><code>interface Simple &#123;
+
+    //属性
+    val simpleProperty:Int//property
+
+    fun simpleMethod()
+&#125;
+</code></pre>
+<h4 id="SimpleClass与SimpleClass2"><a href="#SimpleClass与SimpleClass2" class="headerlink" title="SimpleClass与SimpleClass2"></a>SimpleClass与SimpleClass2</h4><pre><code>//没有open不能被继承
+open class SimpleClass(var x:Int,val y:String): AbsClass(),Simple &#123;
+
+    val z:Long = 0L
+
+    //需要override
+    override fun absMethod() &#123;&#125;
+
+    //默认有get/set，只读的话没有set
+    override val simpleProperty: Int
+        get() &#123;
+            return 2
+        &#125;
+
+    override fun simpleMethod() &#123;&#125;
+
+    fun y()&#123;&#125;
+
+    fun zzz(string:String)&#123;&#125;
+
+    //前面加上final不让子类继承
+    override fun overridable() &#123;
+    &#125;
+&#125;
+
+class SimpleClass2(x:Int,y:String):SimpleClass(x,y)&#123;
+
+    override fun overridable() &#123;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h4><pre><code>val simpleClass = SimpleClass(9,&quot;Hello&quot;)
+println(simpleClass.simpleProperty)
+println(simpleClass.x)
+println(simpleClass.y)
+println(simpleClass.z)
+simpleClass.y()
+simpleClass.zzz(&quot;&quot;)
+</code></pre>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/13.png"></p>
+<h3 id="1-6-属性"><a href="#1-6-属性" class="headerlink" title="1.6 属性"></a>1.6 属性</h3><p>property &#x3D; field+ getter + setter</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/14.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/15.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/16.png"></p>
+<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/17.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/18.png"></p>
+<pre><code>class Person(age:Int,name:String) &#123;
+
+    var age:Int = age
+    get() &#123;
+        return field//backing field
+    &#125;
+    set(value) &#123;
+        println(&quot;setAge:$value&quot;)
+        field = value
+    &#125;
+
+    var name:String = name
+&#125;
+
+
+fun main() &#123;
+    //属性引用
+    val ageRef = Person::age
+    val person = Person(10,&quot;yly&quot;)
+    val nameRef = person::name
+    nameRef.set(&quot;krido&quot;)
+&#125;
+</code></pre>
+<h2 id="2-扩展方法"><a href="#2-扩展方法" class="headerlink" title="2.扩展方法"></a>2.扩展方法</h2><h3 id="2-1-Java-vs-Kotlin"><a href="#2-1-Java-vs-Kotlin" class="headerlink" title="2.1 Java vs Kotlin"></a>2.1 Java vs Kotlin</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/19.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/20.png"></p>
+<h3 id="2-2-举例"><a href="#2-2-举例" class="headerlink" title="2.2 举例"></a>2.2 举例</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/21.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/22.png"></p>
+<h3 id="2-3-类型"><a href="#2-3-类型" class="headerlink" title="2.3 类型"></a>2.3 类型</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/23.png"></p>
+<h3 id="2-4-举例"><a href="#2-4-举例" class="headerlink" title="2.4 举例"></a>2.4 举例</h3><pre><code>class PoorGuy&#123;
+    var pocket:Double = 0.0
+&#125;
+
+//扩展方法
+fun PoorGuy.noMoney()&#123;&#125;
+
+//扩展成员
+//属性=backing field（状态，存储空间）+getter（方法，接口行为）+setter（方法，接口行为）
+//backing field是类的状态，这个值与类密切绑定
+//扩展成员里扩展属性是没有办法定义backing field
+//扩展成员是没有办法存储状态的，因为没有口袋不能存，但是可以访问类里面做存储操作，且只能访问公共的
+var PoorGuy.moneyLeft:Double
+    get() &#123;
+//        return 0.0
+        //类里加上pocket可以这么写，pocket不能是private
+        return this.pocket
+    &#125;
+    set(value) &#123;
+        //类里加上pocket可以这么写，pocket不能是private
+        pocket = value
+    &#125;
+
+interface Guy&#123;
+    //接口里的属性没有backing field，接口没有状态不能存储东西只能定义行为
+    //这里定义get/set是默认行为
+    var moneyLeft:Double
+    get() &#123;
+        return 0.0
+    &#125;
+    set(value) &#123;
+
+    &#125;
+
+    fun noMoney()&#123;
+        //定义默认行为
+    &#125;
+&#125;
+</code></pre>
+<h2 id="3-空类型安全"><a href="#3-空类型安全" class="headerlink" title="3.空类型安全"></a>3.空类型安全</h2><h3 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h3><p>加？表示可以为空</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/24.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/25.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/26.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/27.png"></p>
+<h3 id="3-2-运算符"><a href="#3-2-运算符" class="headerlink" title="3.2 运算符"></a>3.2 运算符</h3><h4 id="3-2-1-（不常用）"><a href="#3-2-1-（不常用）" class="headerlink" title="3.2.1 !!（不常用）"></a>3.2.1 !!（不常用）</h4><p>假设确定传的值不为空</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/28.png"></p>
+<h4 id="3-2-2-安全访问"><a href="#3-2-2-安全访问" class="headerlink" title="3.2.2 安全访问 ?."></a>3.2.2 安全访问 ?.</h4><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/29.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/30.png"></p>
+<h4 id="3-2-3-elvis运算符"><a href="#3-2-3-elvis运算符" class="headerlink" title="3.2.3 elvis运算符 ?:"></a>3.2.3 elvis运算符 ?:</h4><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/31.png"></p>
+<h3 id="3-3-继承关系"><a href="#3-3-继承关系" class="headerlink" title="3.3 继承关系"></a>3.3 继承关系</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/32.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/33.png"></p>
+<h3 id="3-4-平台类型"><a href="#3-4-平台类型" class="headerlink" title="3.4 平台类型"></a>3.4 平台类型</h3><p>平台类型不能推断出是否为空需要自己使用的时候注意，平台类型客观存在不能主观定义</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/34.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/35.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/36.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/37.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/38.png"></p>
+<h2 id="4-智能类型转换"><a href="#4-智能类型转换" class="headerlink" title="4.智能类型转换"></a>4.智能类型转换</h2><h3 id="4-1-Java类型转换"><a href="#4-1-Java类型转换" class="headerlink" title="4.1 Java类型转换"></a>4.1 Java类型转换</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/39.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/40.png"></p>
+<h3 id="4-2-Kotlin类型转换"><a href="#4-2-Kotlin类型转换" class="headerlink" title="4.2 Kotlin类型转换"></a>4.2 Kotlin类型转换</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/41.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/42.png"></p>
+<p>第二个场景，空类型安全</p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/43.png"></p>
+<h3 id="4-3-作用范围"><a href="#4-3-作用范围" class="headerlink" title="4.3 作用范围"></a>4.3 作用范围</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/44.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/45.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/46.png"></p>
+<h3 id="4-4-不支持的情况"><a href="#4-4-不支持的情况" class="headerlink" title="4.4 不支持的情况"></a>4.4 不支持的情况</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/47.png"></p>
+<h3 id="4-5-安全的类型转换"><a href="#4-5-安全的类型转换" class="headerlink" title="4.5 安全的类型转换"></a>4.5 安全的类型转换</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/48.png"></p>
+<p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/49.png"></p>
+<h3 id="4-6-编码建议"><a href="#4-6-编码建议" class="headerlink" title="4.6 编码建议"></a>4.6 编码建议</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/50.png"></p>
+<h2 id="5-案例"><a href="#5-案例" class="headerlink" title="5.案例"></a>5.案例</h2><p>查看Retrofit项目</p>
+<h2 id="6-小结"><a href="#6-小结" class="headerlink" title="6.小结"></a>6.小结</h2><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/51.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E8%8A%82%E7%A0%81%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E7%9A%843%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">获取字节码文件对象的3种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Object%E7%B1%BB%E4%B8%AD%E7%9A%84getClass-%E6%96%B9%E6%B3%95"><span class="toc-text">Object类中的getClass()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E4%BD%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%83%BD%E5%85%B7%E5%A4%87%E4%B8%80%E4%B8%AA%E9%9D%99%E6%80%81%E7%9A%84%E5%B1%9E%E6%80%A7-class%E6%9D%A5%E8%8E%B7%E5%8F%96%E5%85%B6%E5%AF%B9%E5%BA%94%E7%9A%84Class%E5%AF%B9%E8%B1%A1"><span class="toc-text">任何数据类型都具备一个静态的属性.class来获取其对应的Class对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%A6%81%E9%80%9A%E8%BF%87%E7%BB%99%E5%AE%9A%E7%9A%84%E7%B1%BB%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%90%8D%E7%A7%B0%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E8%AF%A5%E7%B1%BB"><span class="toc-text">只要通过给定的类的字符串名称就可以获取该类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96Class%E4%B8%AD%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">获取Class中的构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96Class%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-text">获取Class的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96Class%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取Class中的方法</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java基础-反射
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>JAVA反射机制是在运行状态中，对于任意一个类（class文件），都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象方法的功能称为java语言的反射机制。</p>
+<span id="more"></span>
+
+<p>动态获取类中信息，就是java反射。可以理解为对类的解剖。</p>
+<p>如果想要对指定名称的字节码文件进行加载并获取其中的内容并调用，这时就使用到了反射技术。</p>
+<p>用于描述字节码的类就是Class类，创建对象，可以提取字节码文件中的内容，如字段、构造函数、一般函数。该类就可以获取字节码文件中的所有内容，那么反射就是依靠该类完成的。想要对一个类文件进行解剖，只要获取到该类的字节码文件对象即可。</p>
+<h3 id="获取字节码文件对象的3种方式"><a href="#获取字节码文件对象的3种方式" class="headerlink" title="获取字节码文件对象的3种方式"></a>获取字节码文件对象的3种方式</h3><h4 id="Object类中的getClass-方法"><a href="#Object类中的getClass-方法" class="headerlink" title="Object类中的getClass()方法"></a>Object类中的getClass()方法</h4><p>想要用这种方式，必须要明确具体的类，并创建对象。麻烦。</p>
+<pre><code>Person p = new Person();
+Class clazz = p.getClass();
+</code></pre>
+<h4 id="任何数据类型都具备一个静态的属性-class来获取其对应的Class对象"><a href="#任何数据类型都具备一个静态的属性-class来获取其对应的Class对象" class="headerlink" title="任何数据类型都具备一个静态的属性.class来获取其对应的Class对象"></a>任何数据类型都具备一个静态的属性.class来获取其对应的Class对象</h4><p>相对简单，但是还是要明确用到类中的静态成员。还是不够扩展。</p>
+<pre><code>Class clazz = Person.class;
+</code></pre>
+<h4 id="只要通过给定的类的字符串名称就可以获取该类"><a href="#只要通过给定的类的字符串名称就可以获取该类" class="headerlink" title="只要通过给定的类的字符串名称就可以获取该类"></a>只要通过给定的类的字符串名称就可以获取该类</h4><p>更为扩展，可以用Class类中的方法完成</p>
+<pre><code>String className = &quot;cn.itcast.bean.Person&quot;;
+Class clazz = Class.forName(className);
+</code></pre>
+<h3 id="获取Class中的构造函数"><a href="#获取Class中的构造函数" class="headerlink" title="获取Class中的构造函数"></a>获取Class中的构造函数</h3><pre><code>String name = &quot;cn.itcast.bean.Person&quot;;
+//找寻该文件类文件，并加载进内存，并产生Class对象。
+Class clazz = Class.forName(name);
+Object obj = clazz.newInstance();//调用Person的空参构造函数
+</code></pre>
+<p>指定构造函数</p>
+<pre><code>String name = &quot;cn.itcast.bean.Person&quot;;
+Class clazz = Class.forName(name);
+//获取到了指定的构造函数对象
+Constructor constructor = clazz.getConstructor(int.class,String.class);
+Object obj = constructor.newInstance(38,&quot;小明&quot;);
+</code></pre>
+<h3 id="获取Class的字段"><a href="#获取Class的字段" class="headerlink" title="获取Class的字段"></a>获取Class的字段</h3><pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
+//getField只能获取所有可访问公共字段，private获取不到。
+//getDeclaredField可以获取到公共字段，也可以获取到私有字段。
+Field field = clazz.getDeclaredField(&quot;age&quot;);
+
+//对私有字段的访问取消权限检查，暴力访问。
+field.setAccessible(true);
+
+Object obj = clazz.newInstance();
+//为对象的属性赋值
+field.set(obj,89);
+//获取某对象的某属性值
+Object o = field.get(obj);
+</code></pre>
+<h3 id="获取Class中的方法"><a href="#获取Class中的方法" class="headerlink" title="获取Class中的方法"></a>获取Class中的方法</h3><p>获取指定Class中的公共函数</p>
+<pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
+//获取的都是公有的方法
+Method[] methods = clazz.getMethods();
+//只获取本类中所有方法，包括私有。
+</code></pre>
+<p>获取空参数一般方法</p>
+<pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
+Method method = clazz.getMethod(&quot;show&quot;,null);
+Object obj = clazz.newInstance();
+Constructor constructor = clazz.getConstructor(int.class,String.class);
+obj = constructor.newInstance(37,&quot;小明&quot;);
+method.invoke(obj,null);
+</code></pre>
+<p>获取一般方法</p>
+<pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
+Method method = clazz.getMethod(&quot;paramMethod&quot;,String.class,int.class);
+Object obj = clazz.newInstance();
+Constructor constructor = clazz.getConstructor();
+obj = constructor.newInstance();
+method.invoke(obj,&quot;小强&quot;,89);
+</code></pre>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

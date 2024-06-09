@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85node%E3%80%81npm"><span class="toc-text">安装node、npm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E6%88%96%E5%91%BD%E4%BB%A4%E4%B8%8B%E8%BD%BD%EF%BC%8C%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90"><span class="toc-text">进入官网下载或命令下载，检查是否安装完成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9npm%E6%BA%90%EF%BC%8C%E5%A6%82%E4%B8%8D%E6%9B%B4%E6%94%B9%E4%BC%9A%E5%AF%BC%E8%87%B4%E6%9F%90%E4%BA%9B%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5"><span class="toc-text">更改npm源，如不更改会导致某些资源下载失败</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85http-server"><span class="toc-text">安装http-server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BDH5%E6%96%87%E4%BB%B6"><span class="toc-text">加载H5文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cd%E5%88%B0%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%89%A7%E8%A1%8C"><span class="toc-text">cd到文件目录执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%8C%E8%BE%93%E5%85%A5localhost-8080"><span class="toc-text">打开浏览器，输入localhost:8080</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%8A%A0%E8%BD%BDH5"><span class="toc-text">在手机端加载H5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%97%ADserver"><span class="toc-text">关闭server</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          HTTP静态服务
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="安装node、npm"><a href="#安装node、npm" class="headerlink" title="安装node、npm"></a>安装node、npm</h2><h3 id="进入官网下载或命令下载，检查是否安装完成"><a href="#进入官网下载或命令下载，检查是否安装完成" class="headerlink" title="进入官网下载或命令下载，检查是否安装完成"></a>进入官网下载或命令下载，检查是否安装完成</h3><pre><code>node -v
+npm -v
+</code></pre>
+<span id="more"></span>
+<h3 id="更改npm源，如不更改会导致某些资源下载失败"><a href="#更改npm源，如不更改会导致某些资源下载失败" class="headerlink" title="更改npm源，如不更改会导致某些资源下载失败"></a>更改npm源，如不更改会导致某些资源下载失败</h3><pre><code>npm config set registry http://registry.npm.taobao.org/
+</code></pre>
+<h2 id="安装http-server"><a href="#安装http-server" class="headerlink" title="安装http-server"></a>安装http-server</h2><pre><code>npm install http-server -g
+</code></pre>
+<p>-g表示安装在全局，不只是当前用户能使用。如果报找不到文件的错误，使用管理员权限运行</p>
+<pre><code>npm install http-server -g
+</code></pre>
+<h2 id="加载H5文件"><a href="#加载H5文件" class="headerlink" title="加载H5文件"></a>加载H5文件</h2><h3 id="cd到文件目录执行"><a href="#cd到文件目录执行" class="headerlink" title="cd到文件目录执行"></a>cd到文件目录执行</h3><pre><code>//.表示在当前目录下
+http-server .
+</code></pre>
+<p>如果显示结果如下，则表示本地服务器已经启动</p>
+<pre><code>http-server .
+Starting up http-server, serving .
+Available on:
+http://127.0.0.1:8080
+http://192.168.1.229:8080
+http://192.168.2.1:8080
+Hit CTRL-C to stop the server
+</code></pre>
+<h3 id="打开浏览器，输入localhost-8080"><a href="#打开浏览器，输入localhost-8080" class="headerlink" title="打开浏览器，输入localhost:8080"></a>打开浏览器，输入localhost:8080</h3><p>点击文件所在文件夹即可访问H5文件</p>
+<h2 id="在手机端加载H5"><a href="#在手机端加载H5" class="headerlink" title="在手机端加载H5"></a>在手机端加载H5</h2><p>上面结果的</p>
+<ul>
+<li>第一个表示本机地址，可以在电脑上直接访问</li>
+<li>第二行表示在局域网的地址，如果手机与电脑同属一个局域网，那么可以通过这个地址加载H5</li>
+<li>第三行代表电脑的WIFI地址，如果手机连接的是电脑热点，那么可以通过这个地址加载H5</li>
+</ul>
+<h2 id="关闭server"><a href="#关闭server" class="headerlink" title="关闭server"></a>关闭server</h2><p>选择终端窗口，键盘输入Control+C</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%86%E7%B1%BB"><span class="toc-text">1. 分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E6%A0%87%E5%87%86%E5%B9%BF%E6%92%AD"><span class="toc-text">1.1.1 标准广播</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="toc-text">1.1.2 有序广播</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C"><span class="toc-text">1.2.1 动态注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C"><span class="toc-text">1.2.2 静态注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-%E5%8C%BA%E5%88%AB"><span class="toc-text">1.2.3 区别:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">2. 注意事项:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%91%E9%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD"><span class="toc-text">3. 发送自定义广播</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E5%8F%91%E9%80%81%E6%A0%87%E5%87%86%E5%B9%BF%E6%92%AD"><span class="toc-text">3.1 发送标准广播</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E5%8F%91%E9%80%81%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="toc-text">3.2 发送有序广播</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E6%9C%AC%E5%9C%B0%E5%B9%BF%E6%92%AD"><span class="toc-text">3.3 本地广播</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%BC%BA%E5%88%B6%E4%B8%8B%E7%BA%BF%E5%8A%9F%E8%83%BD"><span class="toc-text">4. 强制下线功能</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          第一行代码笔记-Broadcast
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h3><h4 id="1-1-1-标准广播"><a href="#1-1-1-标准广播" class="headerlink" title="1.1.1 标准广播"></a>1.1.1 标准广播</h4><p>是一种完全异步执行的广播，广播发出之后，所有的广播接收器几乎都会在同一时刻接收到这条广播消息，他们之间没有任何先后顺序而言。广播效率比较高，但无法被截断。</p>
+<span id="more"></span>
+
+<h4 id="1-1-2-有序广播"><a href="#1-1-2-有序广播" class="headerlink" title="1.1.2 有序广播"></a>1.1.2 有序广播</h4><p>一种同步执行的广播，广播发出之后，同一时刻只会有一个广播接收器能够收到这条消息。这个广播接收器的逻辑执行完成后，广播才会继续传递。此时的广播接收器是有先后顺序的，优先级高的广播接收器就可以先收到广播消息，并且前边的广播接收器还可以截断正在传递的广播，这样后面的广播接收器就无法收到广播消息了。</p>
+<h4 id="1-2-1-动态注册"><a href="#1-2-1-动态注册" class="headerlink" title="1.2.1 动态注册"></a>1.2.1 动态注册</h4><pre><code>private IntentFilter intentFilter;
+
+private NetworkChangeReceiver networkChangeReceiver;
+
+@Override
+protected void onCreate(Bundle savedInstanceState)&#123;
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    intentFilter = new IntentFilter();
+    intentFilter.addAction(&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;);
+    networkChangeReceiver = new NetworkChangeReceiver();
+    registerReceiver(networkChangeReceiver, intentFilter);
+&#125;
+
+@Override
+protected void onDestroy()&#123;
+    super.onDestroy();
+    unregisterReceiver(networkChangeReceiver);
+&#125;
+
+class NetworkChangeReceiver extends BroadcastReceiver&#123;
+    
+    @Override
+    public void onReceiver(Context context,Intent intent)&#123;
+        ConnectivityManager connectionManager = (ConnectivityManager)
+            getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectionManager.getActiveNetworkInfo();
+        if(networkInfo != null &amp;&amp; networkInfo.isAvailble())&#123;
+            Toast.makeText(context,&quot;network is available&quot;,Toast.LENGTH_SHORT).show();
+        &#125; else &#123;
+            Toast.makeText(context,&quot;network is unavailable&quot;,Toast.LENGTH_SHORT).show();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="1-2-2-静态注册"><a href="#1-2-2-静态注册" class="headerlink" title="1.2.2 静态注册"></a>1.2.2 静态注册</h4><h4 id="1-2-3-区别"><a href="#1-2-3-区别" class="headerlink" title="1.2.3 区别:"></a>1.2.3 区别:</h4><p>动态注册的广播接收器可以自由地控制注册与注销，在灵活性方面有很大的优势，但是它也存在着一个缺点，即必须要在程序启动之后才能接收到广播。静态注册的manifest里，Exported属性表示是否允许这个广播接收器接收本程序以外的广播。Enable属性表示是否启用这个广播接收器。</p>
+<h3 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2. 注意事项:"></a>2. 注意事项:</h3><p>不要在onReceiver()方法中添加过多的逻辑或者进行任何的耗时操作，因为在广播接收器中是不允许开启线程的，当onReceiver()方法运行了较长时间而没有结束时，程序就会报错。因此广播接收器更多的是扮演一种打开程序其他组件的角色，比如创建一条状态栏通知，启动一个服务等等。</p>
+<h3 id="3-发送自定义广播"><a href="#3-发送自定义广播" class="headerlink" title="3. 发送自定义广播"></a>3. 发送自定义广播</h3><h4 id="3-1-发送标准广播"><a href="#3-1-发送标准广播" class="headerlink" title="3.1 发送标准广播"></a>3.1 发送标准广播</h4><pre><code>Intent intent = new Intent(&quot;xxxx&quot;);
+sendBroadcast(intent);
+</code></pre>
+<p>由于广播是使用Intent进行传递的，因此可以在Intent中携带一些数据传递给广播接收器。</p>
+<h4 id="3-2-发送有序广播"><a href="#3-2-发送有序广播" class="headerlink" title="3.2 发送有序广播"></a>3.2 发送有序广播</h4><pre><code>Intent intent = new Intent(&quot;xxxx&quot;);
+sendOrderBroadcast(intent，null);
+
+&lt;intent-filter android:priority=&quot;100&quot;&gt;
+    &lt;action android:name=&quot;xxxx&quot;/&gt;
+&lt;/intent-filter&gt;
+</code></pre>
+<p>sendOrderBroadcast,第一个参数仍是Intent，第二个参数是一个与权限相关的字符串，这里传入null就可以了。android:priority给广播接收器设置优先级，优先级高的可以选择是否允许广播继续传播，abortBroadcast()。</p>
+<h4 id="3-3-本地广播"><a href="#3-3-本地广播" class="headerlink" title="3.3 本地广播"></a>3.3 本地广播</h4><pre><code>private IntentFilter intentFilter;
+
+private LocalReceiver localReceiver;
+
+private LocalBroadcastManager localBroadcastManager;
+    
+@Override
+protected void onCreate(Bundle savedInstanceState)&#123;
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    
+    //获取实例
+    localBroadcastManager = LocalBroadcastManager.getInstance(this);
+    Button button = (Button)findViewById(R.id.button);
+    button.setOnClickListener(new View.OnClickListener()&#123;
+        @Override
+        public void onClick(View v) &#123;
+            Intent intent = new Intent(&quot;xxxx&quot;);
+            //发送本地广播
+            localBroadcastManager.sendBroadcast(intent);
+        &#125;
+    &#125;);
+    intentFilter = new IntentFilter();
+    intentFilter.addAction(&quot;xxxx&quot;);
+    localReceiver = new LocalReceiver();
+    //注册本地广播接收器
+    localBroadcastManager.registerReceiver(localReceiver, intentFilter);
+&#125;
+
+@Override
+protected void onDestroy()&#123;
+    super.onDestroy();
+    localBroadcastManager.unregisterReceiver(localReceiver);
+&#125;
+
+class LocalReceiver extends BroadcastReceiver&#123;
+    
+    @Override
+    public void onReceiver(Context context,Intent intent)&#123;
+        Toast.makeText(context,&quot;xxxxx&quot;,Toast.LENGTH_SHORT).show();
+    &#125;
+&#125;
+</code></pre>
+<p>本地广播无法通过静态注册的方式来接收。本地广播的优势：1.可以明确知道正在发送的广播不会离开我们的程序，因此不必担心机密数据泄露。2.其他的程序无法将广播发送到我们程序的内部，因此不需要担心会有安全漏洞的隐患。3.发送本地广播比发送系统全局广播将会更加高效。</p>
+<h3 id="4-强制下线功能"><a href="#4-强制下线功能" class="headerlink" title="4. 强制下线功能"></a>4. 强制下线功能</h3><p>广播接收是在BaseAvtivity中实现的，因为静态注册的广播无法弹出UI控件。在onResume()和onPause()方法里注册和取消注册Receiver。因为始终需要保证只有处于栈顶的活动才能接收到这条强制下线广播，非栈顶的活动不应该也没必要去接收这条广播，所以在onResume()和onPause()方法里就很好的解决了这个问题，当一个活动失去栈顶位置的时候就自动取消广播接收器的注册。</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

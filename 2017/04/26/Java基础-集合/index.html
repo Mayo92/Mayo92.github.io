@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%B1%BB"><span class="toc-text">集合类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collection%E6%8E%A5%E5%8F%A3"><span class="toc-text">Collection接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95"><span class="toc-text">常见方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator%EF%BC%88%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%89"><span class="toc-text">Iterator（迭代器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List%E3%80%81Set"><span class="toc-text">List、Set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#List%EF%BC%9A%E7%89%B9%E6%9C%89%E7%9A%84%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95%E3%80%82"><span class="toc-text">List：特有的常见方法。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector%E3%80%81ArrayList%E3%80%81LinkedList"><span class="toc-text">Vector、ArrayList、LinkedList</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#LinkedList%E6%96%B9%E6%B3%95"><span class="toc-text">LinkedList方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set"><span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%A1%AE%E5%AE%9A%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E7%9B%B8%E5%90%8C"><span class="toc-text">哈希表确定元素是否相同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TreeSet"><span class="toc-text">TreeSet</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map%E3%80%81HashMap%E3%80%81TreeMap"><span class="toc-text">Map、HashMap、TreeMap</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AD%90%E7%B1%BB"><span class="toc-text">Map常用的子类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collections%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">Collections工具类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Arrays%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">Arrays工具类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BD%AC%E9%9B%86%E5%90%88"><span class="toc-text">数组转集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E8%BD%AC%E6%95%B0%E7%BB%84"><span class="toc-text">集合转数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%8E%92%E5%BA%8F"><span class="toc-text">集合排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Comparator%E6%8E%A5%E5%8F%A3"><span class="toc-text">Comparator接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Comparable%E6%8E%A5%E5%8F%A3"><span class="toc-text">Comparable接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Comparator%E5%92%8CComparable%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Comparator和Comparable的区别</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Java基础-集合
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h2><p>由来：对象用于封装特有数据，对象多了需要存储；如果对象的个数不确定，就使用集合容器进行存储。</p>
+<span id="more"></span>
+
+<p>特点：</p>
+<ol>
+<li>用于存储对象的容器。</li>
+<li>集合的长度是可变的。</li>
+<li>集合中不可以存储基本数据类型值。</li>
+</ol>
+<p>数组和集合类同是容器，有何不同？</p>
+<ol>
+<li>数组虽然也可以存储对象，但长度是固定的；集合长度是可变的。</li>
+<li>数组中可以存储基本数据类型，集合只能存储对象。</li>
+</ol>
+<p>集合框架的体系结构:</p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/1.png"></p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/2.png"></p>
+<h3 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h3><h4 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h4><p>1、添加：</p>
+<p>boolean add(Object obj);</p>
+<p>boolean addAll(Collection coll);</p>
+<p>2、删除：</p>
+<p>boolean remove(Object obj);</p>
+<p>boolean removeAll(Collection coll);</p>
+<p>void clear();</p>
+<p>3、判断：</p>
+<p>boolean contains(Object obj);</p>
+<p>boolean containsAll(Collection coll);</p>
+<p>boolean isEmpty();判断集合中是否有元素。</p>
+<p>4、获取：</p>
+<p>int size();</p>
+<p>Iterator iterator();</p>
+<p>取出元素的方式：迭代器。</p>
+<p>该对象必须依赖于具体容器，因为每一个容器的数据结构都不同，所以该迭代器对象是在容器中进行内部实现的，也就是iterator方法在每个容器中的实现方式是不同的。</p>
+<p>对于使用容器者而言，具体的实现不重要，只要通过容器获取到该实现的迭代器的对象即可，也就是iterator方法。</p>
+<p>Iterator接口就是对所有的Collection容器进行元素取出的公共接口。</p>
+<p>5、其他：</p>
+<p>boolean retainAll(Collection coll);取交集</p>
+<p>Object toArray();将集合转成数组</p>
+<pre><code>//for循环结束，Iterator变量内存释放，更高效
+for(Iterator it2 = coll.iterator();it2.hasNext();)
+    System.out.println(it2.next());
+    
+</code></pre>
+<h3 id="Iterator（迭代器）"><a href="#Iterator（迭代器）" class="headerlink" title="Iterator（迭代器）"></a>Iterator（迭代器）</h3><ul>
+<li>Iterator接口可以以统一的方式对各种集合元素进行遍历</li>
+<li>hasNext()方法检测集合中是否还有下一个元素</li>
+<li>next()方法返回集合中的下一个元素</li>
+</ul>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/10.png"></p>
+<h3 id="List、Set"><a href="#List、Set" class="headerlink" title="List、Set"></a>List、Set</h3><ul>
+<li>List：有序（存入和取出的顺序一致），元素都有索引（角标），允许重复元素。</li>
+<li>Set：元素不能重复，无序，被称为集</li>
+</ul>
+<h4 id="List：特有的常见方法。"><a href="#List：特有的常见方法。" class="headerlink" title="List：特有的常见方法。"></a>List：特有的常见方法。</h4><p>有一个共性特点就是都可以操作角标</p>
+<p>1、添加</p>
+<p>void add(index,element);</p>
+<p>void addAll(index,collection);</p>
+<p>2、删除</p>
+<p>Object remove(index);</p>
+<p>3、修改</p>
+<p>Object set(index,element);</p>
+<p>4、获取：</p>
+<p>Object get(index);</p>
+<p>int indexOf(object);</p>
+<p>int lastIndexOf(object);</p>
+<p>List subList(from,to);</p>
+<p>在迭代器过程中，不要使用集合操作元素，容易出现异常：java.util.ConcurrentModificationException。可以使用Iterator接口的子接口ListIterator来完成在迭代中对元素进行更多的操作。</p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/3.png"></p>
+<h3 id="Vector、ArrayList、LinkedList"><a href="#Vector、ArrayList、LinkedList" class="headerlink" title="Vector、ArrayList、LinkedList"></a>Vector、ArrayList、LinkedList</h3><ul>
+<li>Vector:内部是数组数据结构，是同步的。增删，查询都很慢。</li>
+<li>ArrayList:内部是数组数据结构，是不同步的。动态增长，以满足应用程序的需求。在列表尾部插入或删除非常有，更适合查找和更新元素。元素可以为null。替代了Vector，查询的速度快。</li>
+<li>LinkedList:内部是链表数据结构，元素之间是双向链接的，是不同步的。增删元素的速度很快。实现List和Queue两个接口</li>
+</ul>
+<h4 id="LinkedList方法"><a href="#LinkedList方法" class="headerlink" title="LinkedList方法"></a>LinkedList方法</h4><p>addFirst();</p>
+<p>addLast();</p>
+<p>jdk1.6版本后新方法：</p>
+<p>offerFirst();与addFirst方法没有区别</p>
+<p>offerLast();与addLast方法没有区别。</p>
+<hr>
+<p>getFirst();&#x2F;&#x2F;获取但不移除，如果链表为空，抛出NoSuchElementException。</p>
+<p>getLast();</p>
+<p>jdk1.6版本后新方法：</p>
+<p>peekFirst();&#x2F;&#x2F;获取但不移除，如果链表为空，返回null。</p>
+<p>peekLast();</p>
+<hr>
+<p>removeFirst();&#x2F;&#x2F;获取并移除，如果链表为空，抛出NoSuchElementException</p>
+<p>removeLast();</p>
+<p>jdk1.6版本后新方法：</p>
+<p>pollFirst();&#x2F;&#x2F;获取并移除，如果链表为空，返回null;</p>
+<p>pollLast();</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>元素不可以重复，是无序。Set接口中的方法和Collection一致。</p>
+<ul>
+<li>HashSet：内部数据结构是哈希表，是不同步的。只允许一个null元素，具有良好的存取和查找性能</li>
+<li>TreeSet：可以对Set集合中的元素进行排序，是不同步的。</li>
+</ul>
+<p>无序变有序，使用LinkHashSet</p>
+<h4 id="哈希表确定元素是否相同"><a href="#哈希表确定元素是否相同" class="headerlink" title="哈希表确定元素是否相同"></a>哈希表确定元素是否相同</h4><ol>
+<li>判断的是两个元素的哈希值是否相同。如果相同，再判断两个对象的内容是否相同。</li>
+<li>判断哈希值相同，其实判断的是对象的HashCode方法。判断内容相同，用的是equals方法。</li>
+</ol>
+<p>如果哈希值不同，不需要判断equals。</p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/11.png"></p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/12.png"></p>
+<h4 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h4><p>判断元素唯一性的方式：就是根据比较方法的返回结果是否是0，是0，就是相同元素，不存。</p>
+<p>TreeSet对元素进行排序的方式一： 让元素自身具备比较功能，元素就需要实现Comparable接口，覆盖compareTo方法。</p>
+<p>如果不要按照对象中具备的自然顺序进行排序。如果对象中不具备自然顺序。怎么办？可以使用TreeSet集合第二种排序方式：让集合自身具备比较功能，定义一个类实现Comparator接口，覆盖compare方法。将该类对象作为参数传递给TreeSet集合的构造函数。</p>
+<p>如果自定义类实现了Comparable接口，并且TreeSet的构造函数中也传入了比较器，那么将以比较器的比较规则为准。</p>
+<p>TreeSet集合的底层是二叉树进行排序的。</p>
+<h3 id="Map、HashMap、TreeMap"><a href="#Map、HashMap、TreeMap" class="headerlink" title="Map、HashMap、TreeMap"></a>Map、HashMap、TreeMap</h3><h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><ul>
+<li>Map中的数据是以键值对（key-value）的形式存储的</li>
+<li>key-value以Entry类型的对象实例存在</li>
+<li>可以通过key值快速地查找value</li>
+<li>一个映射不能包含重复的键</li>
+<li>每个键最多只能映射到一个值</li>
+<li>map集合中必须保证键的唯一性</li>
+</ul>
+<p>Map与Collection</p>
+<ul>
+<li>一次添加一对元素，Collection一次添加一个元素（类的对象）</li>
+<li>Map也称为双列集合，Collection集合称为单列集合</li>
+</ul>
+<p>常用方法：</p>
+<p>1、添加</p>
+<p>value put(key,value):返回前一个和key关联的值，如果没有返回null。</p>
+<p>2、删除</p>
+<p>void clear():清空map集合。</p>
+<p>value remove(Object key):根据指定的key删除这个键值对。</p>
+<p>3、判断</p>
+<p>boolean containsKey(key);</p>
+<p>boolean containsValue(value);</p>
+<p>boolean isEmpty();</p>
+<p>4、获取</p>
+<p>value get(key):通过键获取值，如果没有该键返回null。当然可以通过返回null，来判断是否包含指定键。</p>
+<p>int size():获取键值对个数。</p>
+<p>获取Map集合元素的三种方法：</p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/4.png"></p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/5.png"></p>
+<p>只获取value</p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/6.png"></p>
+<h4 id="Map常用的子类"><a href="#Map常用的子类" class="headerlink" title="Map常用的子类"></a>Map常用的子类</h4><blockquote>
+<p>Hashtable：内部结构是哈希表，是同步的。不允许null作为键，null作为值。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Properties：用来存储键值对型的配置文件的信息，可以和IO技术相结合。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>HashMap：内部结构是哈希表，不是同步的。允许null作为键，null作为值。key值不允许重复，HashMap中的Entry对象是无序排列的</p>
+</blockquote>
+<blockquote>
+<p> TreeMap：内部结构是二叉树，不是同步的。可以对Map结合中的键进行排序。</p>
+</blockquote>
+<p>hashSet实现Set接口，由哈希表（实际上是一个HashMap实例）支持。</p>
+<p>使用LinkedHashMap则是跟原来存入的顺序是一致的。</p>
+<p>Map在有映射关系时，可以优先考虑,在查表法中的应用较为多见。</p>
+<h3 id="Collections工具类"><a href="#Collections工具类" class="headerlink" title="Collections工具类"></a>Collections工具类</h3><p>Collections:是集合框架的工具类，里面的方法都是静态的。</p>
+<p>Collections.binarySearch()</p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/8.png"></p>
+<p>Collections. shuffle()</p>
+<p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/9.png"></p>
+<h3 id="Arrays工具类"><a href="#Arrays工具类" class="headerlink" title="Arrays工具类"></a>Arrays工具类</h3><p>Arrays:集合框架的工具类，里面的方法都是静态的。</p>
+<h4 id="数组转集合"><a href="#数组转集合" class="headerlink" title="数组转集合"></a>数组转集合</h4><p>List<String> list &#x3D; Arrays. asList(arr);将数组转成集合。可以使用集合的方法操作数组。</String></p>
+<p>数组的长度是固定的，所以对于结合的增删方法是不可以使用的，否则，会发生UnsupportedOperationException</p>
+<p>如果数组中的元素是对象，那么转成集合时，直接将数组中的元素作为集合中的元素进行集合存储。如果数组中的元素是基本类型数值，那么会将该数组作为集合中的元素进行存储。</p>
+<h4 id="集合转数组"><a href="#集合转数组" class="headerlink" title="集合转数组"></a>集合转数组</h4><p>使用的就是Collection接口中的toArray方法。</p>
+<p>集合转成数组，可以对集合中的元素操作的方法进行限定，不允许对其进行增删。</p>
+<p>toArray方法需要传入一个指定类型的数组。如果长度小于集合的size，那么该方法会创建一个同类型并和集合相同的size的数组。如果长度大于集合的size，那么该方法就会使用指定的数组，存储集合中的元素，其他位置默认为<br>null。所以建议，最后长度就指定为，集合的size。</p>
+<h3 id="集合排序"><a href="#集合排序" class="headerlink" title="集合排序"></a>集合排序</h3><ul>
+<li>使用Collections类的sort()方法</li>
+<li>sort(List<T> list)-根据元素的自然顺序对指定列表按升序进行排序。</T></li>
+<li>使用Comparable或Comparator接口</li>
+</ul>
+<h4 id="Comparator接口"><a href="#Comparator接口" class="headerlink" title="Comparator接口"></a>Comparator接口</h4><ul>
+<li>强行对某个对象进行整体排序的比较函数</li>
+<li>可以将Comparator传递给sort方法（如Collections.sort或Arrays.sort）</li>
+</ul>
+<p>intcompare(T o1,T o2)比较用来排序的两个参数</p>
+<ul>
+<li>如果o1&lt;o2，返回负整数</li>
+<li>如果o1&#x3D;&#x3D;o2，返回0</li>
+<li>如果o1&gt;o2，返回正整数</li>
+</ul>
+<p>booleanequals(Object obj)指示某个其他对象是否“等于”此Comparator。此方法可以被Object类中的equals方法覆盖，不必重写。</p>
+<pre><code>public class NameComparator implements Comparator&lt;Cat&gt; &#123;
+
+    @Override
+    public int compare(Cat o1, Cat o2) &#123;
+        // 按名字升序排序
+        String name1=o1.getName();
+        String name2=o2.getName();
+        int n=name1.compareTo(name2);
+        return n;
+    &#125;
+
+&#125;
+
+Collections.sort(catList, new NameComparator());
+</code></pre>
+<h4 id="Comparable接口"><a href="#Comparable接口" class="headerlink" title="Comparable接口"></a>Comparable接口</h4><ul>
+<li>此接口强行对实现它的每个类的对象进行整体排序</li>
+<li>这种排序被称为类的自然排序，类的compareTo方法被称为它的自然比较方法</li>
+<li>对于集合，通过调用Collections.sort方法进行排序</li>
+<li>对于数组，通过调用Arrays.sort方法进行排序</li>
+</ul>
+<p>intcompareTo(T o)方法：</p>
+<p>该对象小于、等于或大于指定对象，则分别返回负整数、零或正整数</p>
+<pre><code>public class Goods implements Comparable&lt;Goods&gt; &#123;
+    private String id;//商品编号
+    private String name;//商品名称
+    private double price;//商品价格
+    //构造方法
+    public Goods(String id,String name,double price)&#123;
+        this.id=id;
+        this.name=name;
+        this.price=price;
+    &#125;
+
+    //getter和setter方法
+    public String getId() &#123;
+        return id;
+    &#125;
+
+    public void setId(String id) &#123;
+        this.id = id;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public double getPrice() &#123;
+        return price;
+    &#125;
+
+    public void setPrice(double price) &#123;
+        this.price = price;
+    &#125;
+    public String toString()&#123;
+        return &quot;商品编号：&quot;+id+&quot;,商品名称：&quot;+name+&quot;，商品价格：&quot;+price;
+    &#125;
+    @Override
+    public int compareTo(Goods o) &#123;
+        // 取出商品价格
+        double price1=this.getPrice();
+        double price2=o.getPrice();
+        int n=new Double(price2-price1).intValue();
+        return n;
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="Comparator和Comparable的区别"><a href="#Comparator和Comparable的区别" class="headerlink" title="Comparator和Comparable的区别"></a>Comparator和Comparable的区别</h4><p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/13.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

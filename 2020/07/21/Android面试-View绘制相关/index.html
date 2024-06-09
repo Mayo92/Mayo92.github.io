@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#decorview%E3%80%81Window%E3%80%81surface%E7%AD%89%E6%A6%82%E5%BF%B5"><span class="toc-text">decorview、Window、surface等概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E9%87%8F%E8%BF%87%E7%A8%8B-measureSpec"><span class="toc-text">测量过程&amp;measureSpec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layout%E5%B8%83%E5%B1%80%E9%98%B6%E6%AE%B5-FrameLayout"><span class="toc-text">layout布局阶段&amp;FrameLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#draw%E9%98%B6%E6%AE%B5-dispatchDraw%E5%AE%9E%E7%8E%B0"><span class="toc-text">draw阶段&amp;dispatchDraw实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#listview%E7%BB%98%E5%88%B6%E5%92%8C%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86%EF%BC%9Aconvertview%EF%BC%8FviewHolder"><span class="toc-text">listview绘制和缓存原理：convertview／viewHolder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#listview%E7%9A%84RecycleBin%E6%9C%BA%E5%88%B6%EF%BC%9A%E7%BC%93%E5%AD%98scrapView%E3%80%81fillActiveViews%E7%AD%89"><span class="toc-text">listview的RecycleBin机制：缓存scrapView、fillActiveViews等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#listview%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%965%E4%B8%AA%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-text">listview性能优化5个关键点</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Android面试-View绘制相关
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="decorview、Window、surface等概念"><a href="#decorview、Window、surface等概念" class="headerlink" title="decorview、Window、surface等概念"></a>decorview、Window、surface等概念</h3><p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/1.png"></p>
+<span id="more"></span>
+
+<p>Activity接收到焦点，请求绘制UI布局，由Android的framework层处理，从根节点开始，对布局数依次测量绘制。每一个Activity都与一个window相关，用户界面通过window承载</p>
+<p>PhoneWindow是window的唯一实现类，窗口是屏幕上用于绘制各种我们的UI布局当中元素以及响应我们用户输入事件的一个矩形的区域。Android中为窗口提供一个功能，独占一个surface实例的显示区域，每一个窗口的surface由WindowsManagerService系统服务来分配。可以把surface看成一个画布，应用可以通过canvas在上面作画，通过surface的surfaceFlinger将多块surface按照特定的顺序进行混合，然后会输出到framebuffer，这样用户界面就得以显示。</p>
+<p>DecorView应用窗口的根容器，本质上是FrameLayout，有一个唯一的子View，垂直的LinearLayout，包含两个元素，ContentView是窗口内容相关的容器，也是一个FrameLayout，setcontentview就是设置它的子view</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/2.png"></p>
+<p>view的绘制由viewroot的实现类ViewRootImpl来负责，每一个DecorView都有一个相关联的viewroot对象，关联的关系通过windowmanager管理类来维护。关联后调用ViewRootImpl类的requestLayout()方法,完成用户界面布局的首次布局</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/3.png"></p>
+<p>通过向主线程发送消息，不断的遍历来完成每次的绘制过程</p>
+<p><em>总结</em></p>
+<ol>
+<li>measure：判断是否需要重新计算view的大小</li>
+<li>Layout：判断是否需要重新计算View的位置</li>
+<li>draw：判断是否需要重新绘制view</li>
+</ol>
+<h3 id="测量过程-measureSpec"><a href="#测量过程-measureSpec" class="headerlink" title="测量过程&amp;measureSpec"></a>测量过程&amp;measureSpec</h3><p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/4.png"></p>
+<p>计算view树各个view所要显示的内容大小，从measureHierarchy开始</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/5.png"></p>
+<p>getRootMeasureSpec获取宽高的根的MeasureSpec，这个根MeasureSpec代表DecorView宽高的信息，是一个约束信息，所有的宽高都要在这个限定范围内。</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/6.png"></p>
+<p>定义在view内的一个静态内部类，代表一个限定值，32位的整数，模式是高二位，低三十位代表测量模式下的测量尺寸。view或viewgroup他的模式都是由他自己view的Layoutparams和父view的MeasureSpec所一起结合构成的。</p>
+<p>MeasureSpec有三个值，UNSPECIFIED，EXACTLY，AT_MOST</p>
+<ul>
+<li>UNSPECIFIED：父view不会对子view有任何的约束，子view可以达到你所希望的最大的尺寸，当然这个最大尺寸受屏幕限制也就是DecorView的限制，一般使用ListView是时候用到</li>
+<li>EXACTLY：表示父视图为子视图指定了一个确定的尺寸，无论子view期望多大大小，它都必须在这个最大值的边界内。如match_parent，或者具体的dp值</li>
+<li>AT_MOST：父视图为子视图指定了一个最大的尺寸，子view必须确保它所有的子子view都在这个范围内，这种情况下，父view无法确认子view的大小的，只能由子view自己根据需求计算大小，再回告给父view。如wrap_content</li>
+</ul>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/7.png"></p>
+<p>获取了宽高的MeasureSpec之后，调用performMeasure方法进行下一步的计算。mView即DecorView，调用DecorView的measure方法来进行具体的测量过程。从上到下依次测量view树当中的view的大小然后进行计算和整合。</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/8.png"></p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/9.png"></p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/10.png"></p>
+<p>最终调用onMeasure方法，measure方法是final类型的不可以被覆写但是最终会调用onMeasure方法，onMeasure可以被覆写。所以自定义view的时候覆写onMeasure方法即可，参数为父视图对子视图宽和高的测量要求。setMeasuredDimension会得到具体的尺寸，这样测量阶段就结束了，这个方法是必须要调用的</p>
+<h3 id="layout布局阶段-FrameLayout"><a href="#layout布局阶段-FrameLayout" class="headerlink" title="layout布局阶段&amp;FrameLayout"></a>layout布局阶段&amp;FrameLayout</h3><p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/11.png"></p>
+<p>参数l表示view左边缘与你的父view左边缘的距离，其他同理</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/12.png"></p>
+<p>判断view的位置是否发生了改变，如果发生了，会在这两个方法选择一个进行重新赋值</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/13.png"></p>
+<p>对view的局部变换都是通过onLayout方法实现</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/14.png"></p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/15.png"></p>
+<p>view中这个方法为空，viewgroup中是抽象的，因为不同的布局管理器有不同的布局方式，需要自己去继承重写</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/16.png"></p>
+<p>FrameLayout调用了layoutChildren方法，摆放在这个父view中所有的子view的过程。</p>
+<p>parentleft表示子view显示区域的左边到我们父view的左边的距离</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/17.png"></p>
+<p>获取layoutParams参数，宽高的MeasureSpec参数，这两者决定了子view所要摆放的距离。</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/18.png"></p>
+<p>根据子view的gravity属性对childLeft、childTop做不同的调整</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/19.png"></p>
+<p>调用子view的Layout对子view位置参数进行设置，这时便转到了view当中的layout方法</p>
+<h3 id="draw阶段-dispatchDraw实现"><a href="#draw阶段-dispatchDraw实现" class="headerlink" title="draw阶段&amp;dispatchDraw实现"></a>draw阶段&amp;dispatchDraw实现</h3><p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/20.png"></p>
+<p>分为6步，第二步与第五步不是强制性的，重点三四步。1绘制背景，3绘制自己的内容，4绘制子view的内容，6添加view的装饰。</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/21.png"></p>
+<p>onDraw方法，view与viewgroup都没实现，由自己实现。</p>
+<p>dispatchDraw对当前view的所有子view进行绘制，view里是空实现，viewgroup中调用子view的draw方法进行绘制</p>
+<h3 id="listview绘制和缓存原理：convertview／viewHolder"><a href="#listview绘制和缓存原理：convertview／viewHolder" class="headerlink" title="listview绘制和缓存原理：convertview／viewHolder"></a>listview绘制和缓存原理：convertview／viewHolder</h3><p>数据集合以动态滚动的方式展示到用户界面上的view。listview是一帧一帧绘制的，每一帧都会经历测量放置绘制</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/22.png"></p>
+<p>listview针对每一个Item要求Adapter返回一个view即getview方法，开始绘制的时候首先调用getCount方法得到listview的长度，根据返回的长度调用getview，然后一行一行绘制每一个Item，有多少项就会调用多少次getView方法来绘制每一项的界面</p>
+<h3 id="listview的RecycleBin机制：缓存scrapView、fillActiveViews等"><a href="#listview的RecycleBin机制：缓存scrapView、fillActiveViews等" class="headerlink" title="listview的RecycleBin机制：缓存scrapView、fillActiveViews等"></a>listview的RecycleBin机制：缓存scrapView、fillActiveViews等</h3><p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/23.png"></p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/24.png"></p>
+<p>RecycleBin是抽象listview即AbsListView的一个内部类</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/25.png"></p>
+<p>mActiveViews存储的是屏幕上的view，这些view是有可能被直接复用的。mScrapViews所有废弃类型的view，二维数组。mCurrentScrap表示当前被抛弃的view的list</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/26.png"></p>
+<p>为listview中每一种类型的数据项都建立一个RecycleBin机制，RecycleBin中的所有数据都放在mScrapViews中，大多数情况我们操作的是mCurrentScrap、mActiveViews</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/27.png"></p>
+<p>childCount表示要存储的view的数量，firstActivePosition第一个可见元素的坐标值。RecycleBin机制通过这个方法，将mActiveViews来存储view，根据传入的参数来将我们listview中的指定元素存储到mActiveViews中</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/28.png"></p>
+<p>从填充的数组中获取相应的数据，position表示在listview中的位置，会将position值转换成对应的数组下标值</p>
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/29.png"></p>
+<p>将移除屏幕外的view进行缓存</p>
+<h3 id="listview性能优化5个关键点"><a href="#listview性能优化5个关键点" class="headerlink" title="listview性能优化5个关键点"></a>listview性能优化5个关键点</h3><ol>
+<li>convertview，缓存复用</li>
+<li>viewHolder，避免频繁调用findviewbyid</li>
+<li>getview中尽量少做耗时操作，滑动停止再加载耗时操作</li>
+<li>listview中Item元素避免半透明，半透明在绘制的时候会集成大量的乘法运算，滑动的时候不同的重新绘制肯定会造成大量的计算操作</li>
+<li>开启硬件加速</li>
+</ol>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

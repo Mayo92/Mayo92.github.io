@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6SDK"><span class="toc-text">百度SDK</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7API-Key"><span class="toc-text">申请API Key</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96SHA1"><span class="toc-text">获取SHA1</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E5%AE%9A%E4%BD%8D"><span class="toc-text">使用百度定位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#LBS-SDK"><span class="toc-text">LBS SDK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E8%87%AA%E5%B7%B1%E4%BD%8D%E7%BD%AE%E7%9A%84%E7%BB%8F%E7%BA%AC%E5%BA%A6"><span class="toc-text">确定自己位置的经纬度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%AE%9A%E4%BD%8D%E6%A8%A1%E5%BC%8F"><span class="toc-text">选择定位模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9C%8B%E5%BE%97%E6%87%82%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-text">看得懂的位置信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE"><span class="toc-text">使用百度地图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%A9%E5%9C%B0%E5%9B%BE%E6%98%BE%E7%A4%BA%E5%87%BA%E6%9D%A5"><span class="toc-text">让地图显示出来</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%88%B0%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-text">移动到我的位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%A9%E2%80%9C%E6%88%91%E2%80%9D%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%8A"><span class="toc-text">让“我”显示在地图上</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          第一行代码笔记-LBS
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>基于位置的服务，Location Based Service。利用无线电通讯网络或者GPS等定位方式来确定移动设备所在的位置。</p>
+<p>GPS定位是基于手机内置的GPS硬件直接和卫星交互来获取当前的经纬度信息，精确度非常高，缺点是只能在室外使用，室内基本无法接收到卫星信号。</p>
+<p>网络定位根据手机当前网络附近的三个基站进行测试，计算出手机和每个基站的距离，再通过三角定位确定大概的位置，精度一般，室内外都可使用。</p>
+<span id="more"></span>
+
+<h3 id="百度SDK"><a href="#百度SDK" class="headerlink" title="百度SDK"></a>百度SDK</h3><h4 id="申请API-Key"><a href="#申请API-Key" class="headerlink" title="申请API Key"></a>申请API Key</h4><p>去百度地图开放平台创建应用，</p>
+<h5 id="获取SHA1"><a href="#获取SHA1" class="headerlink" title="获取SHA1"></a>获取SHA1</h5><p>指的是打包程序时所用签名文件的SHA1指纹，打开Android Studio任意项目，点击右侧状态栏的Gradle–项目名–:app–Tasks–android,signingReport这个Task就可以用来查看签名文件信息，双击查看。</p>
+<p><img src="/2018/03/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-LBS/1.png"></p>
+<p>这是使用debug.keystore文件所生成的指纹，这是Android自动生成的一个用于测试的签名文件。获取正式的签名文件指纹，在触cmd中输入</p>
+<pre><code>keytool -list -v -keystore &lt;签名文件路径&gt;
+</code></pre>
+<h4 id="使用百度定位"><a href="#使用百度定位" class="headerlink" title="使用百度定位"></a>使用百度定位</h4><h5 id="LBS-SDK"><a href="#LBS-SDK" class="headerlink" title="LBS SDK"></a>LBS SDK</h5><p>libs目录下的内容分为两部分，BaiduLBS_Android.jar这个文件是Java层要使用到的，其他子目录下的so文件是Native层要用到的。so文件是用c&#x2F;c++编写，然后再用NDK编译出来的。</p>
+<p>app目录下有一个libs目录，用来存放所有的Jar包。展开src&#x2F;main目录，创建一个jniLibs目录，用来存放so文件。</p>
+<p>虽然所有新创建的项目中,app&#x2F;build.gradle文件都会默认配置以下这段声明：</p>
+<pre><code>implementation fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+</code></pre>
+<p>这个表示会将libs目录下所有以.jar结尾的文件添加到当前项目的引用中，但由于我们是直接将Jar包复制到libs目录下的，并没有修改gradle文件，因此不会弹出我们熟悉的Sync Now提示，需手动点击。</p>
+<h5 id="确定自己位置的经纬度"><a href="#确定自己位置的经纬度" class="headerlink" title="确定自己位置的经纬度"></a>确定自己位置的经纬度</h5><p>见代码</p>
+<h5 id="选择定位模式"><a href="#选择定位模式" class="headerlink" title="选择定位模式"></a>选择定位模式</h5><p>GPS定位功能必须要由用户主动去开启才行。SDK有三个模式可选，Hight_Accuracy、Battery_Saving、Device_Sensors。</p>
+<ul>
+<li>Hight_Accuracy高精确模式，会在GPS信号正常的情况下优先使用GPS定位，无法接收GPS信号的时候使用网络定位。默认模式。</li>
+<li>Battery_Saving节电模式，使用网络定位</li>
+<li>Device_Sensors传感器模式，GPS定位。</li>
+</ul>
+<h5 id="看得懂的位置信息"><a href="#看得懂的位置信息" class="headerlink" title="看得懂的位置信息"></a>看得懂的位置信息</h5><h4 id="使用百度地图"><a href="#使用百度地图" class="headerlink" title="使用百度地图"></a>使用百度地图</h4><h5 id="让地图显示出来"><a href="#让地图显示出来" class="headerlink" title="让地图显示出来"></a>让地图显示出来</h5><h5 id="移动到我的位置"><a href="#移动到我的位置" class="headerlink" title="移动到我的位置"></a>移动到我的位置</h5><p>SDK提供一个BaiduMap类，是地图的总控制器，调用MapView的getMap()方法就能获取BaiduMap的实例</p>
+<pre><code>BaiduMap baiduMap = mapView.getMap();
+</code></pre>
+<p>百度地图缩放级别的取值范围限定在3到19之间，小数点位的值也是可取的，值越大，地图显示的信息就越精细，设置成12.5：</p>
+<pre><code>MapStatusUpdate update = MapStatusUpdateFactory.zoomTo(12.5f);
+baiduMap.animateMapStatus(update);
+</code></pre>
+<p>LatLng用于存放经纬度值，构造方法接收两个参数，第一个是纬度值，第二个是经度值。调用MapStatusUpdateFactory的newLatLng()方法将LatLng对象传入，newLatLng()方法返回的也是一个MapStatusUpdate对象，再把这个对象传入BaiduMap的animateMapStatus()方法中，就可以将地图移动到指定的经纬度上了:</p>
+<pre><code>LatLng ll = new LatLng(39.915,116.404);
+MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
+baiduMap.animateMapStatus(update);
+</code></pre>
+<h5 id="让“我”显示在地图上"><a href="#让“我”显示在地图上" class="headerlink" title="让“我”显示在地图上"></a>让“我”显示在地图上</h5><p>SDK提供一个MyLocationData.Builder类，这个类用来封装设备当前所在位置的，只需将经纬度传入即可</p>
+<pre><code>MyLocationData.Builder locationBuilder = new MyLocationData.Builder();
+locationBuilder.latitude(39.915);
+locationBuilder.longitude(116.404);
+</code></pre>
+<p>MyLocationData.Builder类还提供了一个build()方法，当我们把要封装的信息都设置完成之后，只需调用它的build()方法，就会生成一个MyLocationData的实例，然后再将这个实例传入BaidMap的setMyLocationData()方法中，就可以让设备当前的位置显示在地图上了:</p>
+<pre><code>MyLocationData locationData = locationBuilder.build();
+baiduMap.setMyLocationData(locationData);
+</code></pre>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

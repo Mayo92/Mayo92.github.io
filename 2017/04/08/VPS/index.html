@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E6%95%99%E7%A8%8B"><span class="toc-text">购买教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E5%90%8E"><span class="toc-text">购买后</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="toc-text">第四步</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E8%A2%AB%E5%B0%81"><span class="toc-text">检测是否被封</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IP%E6%A3%80%E6%B5%8B"><span class="toc-text">IP检测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%B5%8B"><span class="toc-text">端口检测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9SSH%E7%AB%AF%E5%8F%A3"><span class="toc-text">修改SSH端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9SSR%E7%AB%AF%E5%8F%A3"><span class="toc-text">修改SSR端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hostwinds%E6%8D%A2IP"><span class="toc-text">Hostwinds换IP</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          VPS
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <p><em>vultr到期后换了Hostwinds</em></p>
+<h3 id="购买教程"><a href="#购买教程" class="headerlink" title="购买教程"></a>购买教程</h3><p><a href="https://www.vps234.com/hostwinds-purchase-tutorial/">https://www.vps234.com/hostwinds-purchase-tutorial/</a></p>
+<h3 id="购买后"><a href="#购买后" class="headerlink" title="购买后"></a>购买后</h3><p><a href="https://www.vps234.com/usa-vps-hostwinds-tutorials-after-purchase/">https://www.vps234.com/usa-vps-hostwinds-tutorials-after-purchase/</a></p>
+<span id="more"></span>
+
+<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>打开终端，用ssh命令登录上面购买的VPS。</p>
+<pre><code>ssh user@hostname
+</code></pre>
+<p>用户名默认root，输入密码。当出现root@，说明已经登录VPS成功</p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>分别执行以下3个命令。(此处有坑，请注意，下面执行的命令与你在创建VPS选择操作系统时有关系，如果是Cent OS则可执行以下命令)</p>
+<ol>
+<li></li>
+</ol>
+<pre><code>wget --no-check-certificate  https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh
+</code></pre>
+<ol start="2">
+<li></li>
+</ol>
+<pre><code>chmod +x shadowsocks.sh
+</code></pre>
+<ol start="3">
+<li></li>
+</ol>
+<pre><code>./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log
+</code></pre>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>依次输入密码（默认：teddysun.com）、端口号（默认：9721）、加密方式（默认：选项1-&gt;aes-256-gcm）</p>
+<h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>配置成功，会出现信息</p>
+<p>然后关闭防火墙：</p>
+<pre><code>chkconfig iptables off
+</code></pre>
+<p>需重启VPS后生效</p>
+<pre><code>/etc/init.d/shadowsocks restart
+</code></pre>
+<p><em>如果后面遇到可以登录VPS，但是ssr上不了网，可能就是端口封了，修改一下ssr端口就可以了</em>	</p>
+<p><em>插件及多用户没有配置</em></p>
+<h3 id="检测是否被封"><a href="#检测是否被封" class="headerlink" title="检测是否被封"></a>检测是否被封</h3><h4 id="IP检测"><a href="#IP检测" class="headerlink" title="IP检测"></a>IP检测</h4><p>检测网址<a href="http://ping.chinaz.com/">http://ping.chinaz.com/</a>或者<a href="https://www.vps234.com/ipchecker/">https://www.vps234.com/ipchecker/</a></p>
+<p>输入IP分别选择国内与国外</p>
+<ul>
+<li>国内能ping通：IP正常，国外就不用检测了</li>
+<li>国内ping不通，国外能ping通：IP被墙</li>
+<li>国内ping不通，国外也ping不通：检测VPS是否开机，如果国外也ping不通，最大的问题是VPS处于关机状态，正常情况下国外是不可能ping不通的，请开机后再进行测。</li>
+</ul>
+<h4 id="端口检测"><a href="#端口检测" class="headerlink" title="端口检测"></a>端口检测</h4><p>国内端口检测地址<a href="http://coolaf.com/tool/port">http://coolaf.com/tool/port</a></p>
+<ul>
+<li>如果显示“开放”则说明你的VPS没有被墙</li>
+<li>如果显示“关闭”暂时还不能确定VPS是不是被墙</li>
+</ul>
+<p>国外端口检测地址<a href="https://www.yougetsignal.com/tools/open-ports">https://www.yougetsignal.com/tools/open-ports</a></p>
+<ul>
+<li>如果检测结果显示“open”则表示端口没有被墙</li>
+<li>如果检测结果显示“closed”则表示端口被墙</li>
+</ul>
+<p>几种端口的测试结果：</p>
+<ul>
+<li>国内端口开放：端口正常，国外就不用检测了</li>
+<li>国内端口关闭，国外端口开放：端口被墙</li>
+<li>国内端口关闭，国外端口也关闭：检测VPS是否开机，如果国外端口也关闭，最大的问题是VPS处于关机状态，正常情况下国外端口是不可能关闭的，请开机后再进行测。</li>
+</ul>
+<h4 id="修改SSH端口"><a href="#修改SSH端口" class="headerlink" title="修改SSH端口"></a>修改SSH端口</h4><p>使用Hostwinds后台管理的Get VNC</p>
+<p>1.输入用户名root和密码</p>
+<p>2.输入命令</p>
+<pre><code>vi /etc/ssh/sshd_config
+</code></pre>
+<p>输入i进入编辑状态，去掉端口注释，修改端口值。再按ESC，然后输入“：”+“wq!”回车退出保存</p>
+<p>3.输入命令重启ssh</p>
+<pre><code>/etc/init.d/sshd restart
+</code></pre>
+<h4 id="修改SSR端口"><a href="#修改SSR端口" class="headerlink" title="修改SSR端口"></a>修改SSR端口</h4><p>登录SSH，输入命令</p>
+<pre><code>bash shadowsocks.sh
+</code></pre>
+<p>然后重新输入密码端口等再配置一遍</p>
+<h4 id="Hostwinds换IP"><a href="#Hostwinds换IP" class="headerlink" title="Hostwinds换IP"></a>Hostwinds换IP</h4><p>如果IP被封，在Manage IP’s里选择Fix ISP Block，完成后重装系统，Actions里面选择ReInstall</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

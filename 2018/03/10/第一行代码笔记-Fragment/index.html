@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0"><span class="toc-text">1. 动态添加</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-text">布局</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BF%94%E5%9B%9E%E6%A0%88"><span class="toc-text">2. 返回栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%A2%8E%E7%89%87%E5%92%8C%E6%B4%BB%E5%8A%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-text">3. 碎片和活动之间的通信</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E6%B4%BB%E5%8A%A8%E8%8E%B7%E5%BE%97%E7%A2%8E%E7%89%87%E5%AE%9E%E4%BE%8B"><span class="toc-text">3.1 活动获得碎片实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E7%A2%8E%E7%89%87%E8%8E%B7%E5%BE%97%E6%B4%BB%E5%8A%A8%E5%AE%9E%E4%BE%8B"><span class="toc-text">3.2 碎片获得活动实例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">4. 生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E7%8A%B6%E6%80%81%E5%92%8C%E5%9B%9E%E8%B0%83"><span class="toc-text">4.1 状态和回调</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E4%BD%93%E9%AA%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">4.2 体验生命周期</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Android%E5%B8%B8%E8%A7%81%E7%9A%84%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-text">5. Android常见的限定符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%EF%BC%9A"><span class="toc-text">大小：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E8%BE%A8%E7%8E%87%EF%BC%9A"><span class="toc-text">分辨率：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E5%90%91%EF%BC%9A"><span class="toc-text">方向：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E5%AE%BD%E5%BA%A6%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-text">最小宽度限定符:</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          第一行代码笔记-Fragment
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h4 id="1-动态添加"><a href="#1-动态添加" class="headerlink" title="1. 动态添加"></a>1. 动态添加</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><pre><code>&lt;fragment 
+    android:id=&quot;@+id/left_fragment&quot;
+    android:name=&quot;com.example.fragmenttest.LeftFragment&quot;
+    android:layout_width=&quot;0dp&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:layout_weight=&quot;1&quot;/&gt;
+    
+&lt;fragmentLayout 
+    android:id=&quot;@+id/right_fragment&quot;
+    android:layout_width=&quot;0dp&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:layout_weight=&quot;1&quot;/&gt;
+    
+</code></pre>
+<span id="more"></span>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><pre><code>@Override
+protected void onCreate(Bundle saveInstanceState) &#123;
+    super.onCreate(saveInstanceState);
+    setContentView(R.layout.activity_main);
+    //直接取得Fragment里的控件
+    Button button = (Button)findViewById(R.id.button);
+    button.setOnClickListener(this);
+    replaceFragment(new RightFragment);
+&#125;
+
+@Override
+public void onClick(View v) &#123;
+    switch(v.getId()) &#123;
+        case R.id.button:
+            replaceFragment(new AnotherRightFragment());
+            break;
+        fefault:
+            break;
+    &#125;
+&#125;
+
+private void replaceFragment(Fragment fragment) &#123;
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction transaction = fragmentManager.beginTransaction();
+    transaction.replace(R.id.right_layout,fragment);
+    transaction.commit();
+&#125;
+</code></pre>
+<h4 id="2-返回栈"><a href="#2-返回栈" class="headerlink" title="2. 返回栈"></a>2. 返回栈</h4><pre><code>transaction.addToBackStack(null);
+transaction.commit();
+</code></pre>
+<p>接收一个名字用于描述返回栈的状态，一般传入null即可。</p>
+<h4 id="3-碎片和活动之间的通信"><a href="#3-碎片和活动之间的通信" class="headerlink" title="3. 碎片和活动之间的通信"></a>3. 碎片和活动之间的通信</h4><h5 id="3-1-活动获得碎片实例"><a href="#3-1-活动获得碎片实例" class="headerlink" title="3.1 活动获得碎片实例"></a>3.1 活动获得碎片实例</h5><pre><code>RightFragment rightFragment = (RightFragment)getFragmentManager()
+    .findFragmentById(R.id.right_fragment);
+</code></pre>
+<h5 id="3-2-碎片获得活动实例"><a href="#3-2-碎片获得活动实例" class="headerlink" title="3.2 碎片获得活动实例"></a>3.2 碎片获得活动实例</h5><pre><code>MainActivity activity = (MainActivity)getActivity();
+</code></pre>
+<h4 id="4-生命周期"><a href="#4-生命周期" class="headerlink" title="4. 生命周期"></a>4. 生命周期</h4><h5 id="4-1-状态和回调"><a href="#4-1-状态和回调" class="headerlink" title="4.1 状态和回调"></a>4.1 状态和回调</h5><ul>
+<li>运行状态：当一个碎片是可见的，并且它所关联的活动正处于运行状态时，该碎片也处于运行状态。</li>
+<li>暂停状态：当一个活动进入暂停状态时（由于另一个未占满屏幕的活动被添加到了栈顶），与它相关联的可见碎片就会进入到暂停状态。</li>
+<li>停止状态：当一个活动进入停止状态时，与他相关联的碎片就会进入到停止状态，或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前调用addToBackStack()方法，这时碎片也会进入到停止状态。总的来说，进入停止状态的碎片对用户来说是完全不可见的，有时候会被系统回收。</li>
+<li>销毁状态：碎片总是依附活动而存在，因此当活动被销毁时，当与它相关联的碎片就会进入到销毁状态。或者通过调用FragmentTransaction的remove()、replace()方法将碎片从活动中移除，但如果在事务提交之前没有调用addToBackStack()方法，这时的碎片也会进入到销毁状态。</li>
+</ul>
+<p>附加的回调方法，onAttach()：当碎片和活动建立关联的时候调用。onCreateView()：为碎片创建视图（加载布局）时调用。onActivityCreated()：确保与碎片关联的活动一定已经创建完毕的时候调用。onDestroyView():当与碎片关联的视图被移除的时候调用。onDetach():当碎片和活动解除关联的时候调用。</p>
+<h5 id="4-2-体验生命周期"><a href="#4-2-体验生命周期" class="headerlink" title="4.2 体验生命周期"></a>4.2 体验生命周期</h5><ul>
+<li>第一次加载时候，依次执行：onAttatch()、onCreate()、onCreateView()、onActivityCreated()、onStart()、onResume()方法。</li>
+<li>替换后进入停止状态，执行onPause()、onStop()、onDestroyView()。如果addToBackStack没有调用，此时会进入销毁状态，onDestroy()和onDetach()会执行。</li>
+<li>按返回键重新回到运行状态，因此onActivityCreated()、onStart()和onResume()方法会得到执行。onCreate()和onCreateView()方法并不会执行，因为我们借助addToBackStack()方法使得RightFragment和它的视图并没有销毁。</li>
+<li>再次按下返回键退出应用，依次执行onPause()、onStop()、onDestroyView()、onDestroy()、onDetach()，最终活动和碎片一起销毁。</li>
+</ul>
+<p>碎片中可以使用onSaveInstanceState()来保数据，在onCreate()、onCreateView()、onActivityCreated()这三个方法可以重新得到。</p>
+<h4 id="5-Android常见的限定符"><a href="#5-Android常见的限定符" class="headerlink" title="5. Android常见的限定符"></a>5. Android常见的限定符</h4><h5 id="大小："><a href="#大小：" class="headerlink" title="大小："></a>大小：</h5><ul>
+<li>small,提供给小屏幕设备的资源</li>
+<li>normal，提供给中等屏幕设备的资源</li>
+<li>large，提供给大屏幕设备的资源</li>
+<li>xlarge，提供给超大屏幕设备的资源</li>
+</ul>
+<h5 id="分辨率："><a href="#分辨率：" class="headerlink" title="分辨率："></a>分辨率：</h5><ul>
+<li>ldpi,提供给低分辨率设备的资源(120dpi以下)</li>
+<li>mdpi,提供给中等分辨率设备的资源(120dpi~160dpi)</li>
+<li>hdpi，提供给高分辨率设备的资源(160dpi~240dpi)</li>
+<li>xhdpi，提供给超高分辨率设备的资源(240dpi~320dpi)</li>
+<li>xxhdpi，提供给超超高分辨率设备的资源(320dpi~480dpi)</li>
+</ul>
+<h5 id="方向："><a href="#方向：" class="headerlink" title="方向："></a>方向：</h5><ul>
+<li>land,提供给横屏设备的资源</li>
+<li>port,提供给竖屏设备的资源</li>
+</ul>
+<h5 id="最小宽度限定符"><a href="#最小宽度限定符" class="headerlink" title="最小宽度限定符:"></a>最小宽度限定符:</h5><p>如layout-sw600dp,当屏幕宽度大于600dp的设备时，会加载layout-sw600dp下的布局，小于时加载默认的布局。</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

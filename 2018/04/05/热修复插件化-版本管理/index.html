@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E7%AD%96%E7%95%A5"><span class="toc-text">代码分支管理策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="toc-text">分支管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5hot-fix%E5%88%86%E6%94%AF"><span class="toc-text">引入hot_fix分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E8%8A%82%E5%A5%8F%E7%AE%A1%E7%90%86"><span class="toc-text">版本发布节奏管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E5%89%8D%E7%9A%84%E7%89%88%E6%9C%AC%E8%BF%AD%E4%BB%A3%E9%80%94%E5%BE%84"><span class="toc-text">以前的版本迭代途径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E5%9C%A8%E7%9A%84%E7%89%88%E6%9C%AC%E8%BF%AD%E4%BB%A3%E9%80%94%E5%BE%84"><span class="toc-text">现在的版本迭代途径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E9%97%AE%E9%A2%98"><span class="toc-text">注意问题</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          热修复插件化-版本管理
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="代码分支管理策略"><a href="#代码分支管理策略" class="headerlink" title="代码分支管理策略"></a>代码分支管理策略</h2><h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><span id="more"></span>
+
+<p><img src="/2018/04/05/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/1.png"></p>
+<p>master只能进行代码合并和分支的merge、branch，不能进行代码提交和修改</p>
+<p>dev分支每次开发新版本功能的时候，确保Dev与master一致</p>
+<h3 id="引入hot-fix分支"><a href="#引入hot-fix分支" class="headerlink" title="引入hot_fix分支"></a>引入hot_fix分支</h3><p>专门用来管理动态更新迭代，每次与master一致</p>
+<p>应用市场版本一般是三位如1.0.1，patch是四位如1.0.1.1</p>
+<h2 id="版本发布节奏管理"><a href="#版本发布节奏管理" class="headerlink" title="版本发布节奏管理"></a>版本发布节奏管理</h2><h3 id="以前的版本迭代途径"><a href="#以前的版本迭代途径" class="headerlink" title="以前的版本迭代途径"></a>以前的版本迭代途径</h3><p><img src="/2018/04/05/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2.png"></p>
+<h3 id="现在的版本迭代途径"><a href="#现在的版本迭代途径" class="headerlink" title="现在的版本迭代途径"></a>现在的版本迭代途径</h3><p><img src="/2018/04/05/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/3.png"></p>
+<h2 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h2><ul>
+<li>依旧要强调代码质量，而不是过分依赖动态更新</li>
+<li>动态更新的发版要与应用市场一样严肃对待</li>
+<li>应用市场版本发布节奏之间最好只有一个动态更新版本</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E4%B8%80%E4%B8%AAxml%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">1.如何解析一个xml格式数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%8E%B7%E5%8F%96%E5%80%BC-%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7"><span class="toc-text">1.1 获取值&#x2F;获取属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%81%8D%E5%8E%86%E6%9F%A5%E6%89%BE"><span class="toc-text">1.2 遍历查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%B7%B1%E5%BA%A6%E9%81%8D%E5%8E%86%EF%BC%88depthFirst-%E7%AE%80%E5%86%99%E2%80%99-%E2%80%99%EF%BC%89"><span class="toc-text">1.3 深度遍历（depthFirst()简写’**’）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%B9%BF%E5%BA%A6%E9%81%8D%E5%8E%86%EF%BC%88children-%E7%AE%80%E5%86%99%E2%80%99-%E2%80%99%EF%BC%89"><span class="toc-text">1.4 广度遍历（children()简写’*’）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAxml%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">2.如何创建一个xml格式数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%9B%B4%E6%8E%A5%E5%86%99"><span class="toc-text">2.1 直接写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AE%9E%E4%BD%93%E7%B1%BB%E8%BD%AC%E6%8D%A2"><span class="toc-text">2.2 实体类转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-json%E8%BD%AC%E6%8D%A2%E6%88%90xml"><span class="toc-text">3.json转换成xml</span></a></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          Gradle-高级用法-xml文件操作
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="1-如何解析一个xml格式数据"><a href="#1-如何解析一个xml格式数据" class="headerlink" title="1.如何解析一个xml格式数据"></a>1.如何解析一个xml格式数据</h2><p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/1.png"></p>
+<span id="more"></span>
+
+<pre><code>final String xml = &#39;&#39;&#39;
+&lt;response version-api=&quot;2.0&quot;&gt;
+    &lt;value&gt;
+        &lt;books id=&quot;1&quot; classification=&quot;android&quot;&gt;
+            &lt;book available=&quot;20&quot; id=&quot;1&quot;&gt;
+                &lt;title&gt;疯狂Android讲义&lt;/title&gt;
+                &lt;author id=&quot;1&quot;&gt;李刚&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;book available=&quot;14&quot; id=&quot;2&quot;&gt;
+               &lt;title&gt;第一行代码&lt;/title&gt;
+               &lt;author id=&quot;2&quot;&gt;郭林&lt;/author&gt;
+           &lt;/book&gt;
+           &lt;book available=&quot;13&quot; id=&quot;3&quot;&gt;
+               &lt;title&gt;Android开发艺术探索&lt;/title&gt;
+               &lt;author id=&quot;3&quot;&gt;任玉刚&lt;/author&gt;
+           &lt;/book&gt;
+           &lt;book available=&quot;5&quot; id=&quot;4&quot;&gt;
+               &lt;title&gt;Android源码设计模式&lt;/title&gt;
+               &lt;author id=&quot;4&quot;&gt;何红辉&lt;/author&gt;
+           &lt;/book&gt;
+       &lt;/books&gt;
+       &lt;books id=&quot;2&quot; classification=&quot;web&quot;&gt;
+           &lt;book available=&quot;10&quot; id=&quot;1&quot;&gt;
+               &lt;title&gt;Vue从入门到精通&lt;/title&gt;
+               &lt;author id=&quot;4&quot;&gt;李刚&lt;/author&gt;
+           &lt;/book&gt;
+       &lt;/books&gt;
+   &lt;/value&gt;
+&lt;/response&gt;
+&#39;&#39;&#39;
+</code></pre>
+<h3 id="1-1-获取值-获取属性"><a href="#1-1-获取值-获取属性" class="headerlink" title="1.1 获取值&#x2F;获取属性"></a>1.1 获取值&#x2F;获取属性</h3><pre><code>def xmlSlurper = new XmlSlurper()
+//response指向根节点
+def response = xmlSlurper.parseText(xml)
+println response.value.books[1].book[0].author
+//获取属性值，@属性名
+println response.value.books[0].@classification
+</code></pre>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/2.png"></p>
+<h3 id="1-2-遍历查找"><a href="#1-2-遍历查找" class="headerlink" title="1.2 遍历查找"></a>1.2 遍历查找</h3><pre><code>def list = []
+response.value.books.each &#123;
+    books -&gt;
+        //对下面节点进行遍历
+        books.book.each&#123;
+            book -&gt;
+                def author = book.author.text()
+                if(author.equals(&#39;李刚&#39;))&#123;
+                    list.add(book.title.text())
+                &#125;
+        &#125;
+&#125;
+println list.toListString()
+</code></pre>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/3.png"></p>
+<h3 id="1-3-深度遍历（depthFirst-简写’-’）"><a href="#1-3-深度遍历（depthFirst-简写’-’）" class="headerlink" title="1.3 深度遍历（depthFirst()简写’**’）"></a>1.3 深度遍历（depthFirst()简写’**’）</h3><pre><code>response.depthFirst().findAll &#123;
+    book -&gt; return book.author.text() == &#39;李刚&#39;
+&#125;.each &#123;
+    println it.title.text()
+&#125;
+
+def list2 = []
+response.&#39;**&#39;.findAll &#123;
+    book -&gt;
+        if(book.author.text() == &#39;李刚&#39;)&#123;
+            list2.add(book.title.text())
+        &#125;
+&#125;
+println list2.toListString()
+
+def books = response.depthFirst().findAll &#123;
+    book -&gt; book.author.text() == &#39;李刚&#39;
+&#125;.collect&#123;
+    name -&gt; return name.title.text()
+&#125;
+println books
+</code></pre>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/4.png"></p>
+<p>遍历不会改变原来的集合，打印输出原来的集合不对</p>
+<h3 id="1-4-广度遍历（children-简写’-’）"><a href="#1-4-广度遍历（children-简写’-’）" class="headerlink" title="1.4 广度遍历（children()简写’*’）"></a>1.4 广度遍历（children()简写’*’）</h3><pre><code>def name = response.value.books.children().findAll&#123;
+    //node.name()返回当前节点的名字
+    node -&gt; node.name() == &#39;book&#39; &amp;&amp; node.@id == &#39;2&#39;
+&#125;.collect&#123;
+    node -&gt; return node.title.text()
+&#125;
+println name
+</code></pre>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/5.png"></p>
+<h2 id="2-如何创建一个xml格式数据"><a href="#2-如何创建一个xml格式数据" class="headerlink" title="2.如何创建一个xml格式数据"></a>2.如何创建一个xml格式数据</h2><h3 id="2-1-直接写"><a href="#2-1-直接写" class="headerlink" title="2.1 直接写"></a>2.1 直接写</h3><pre><code>def sw = new StringWriter()
+def xmlBuilder = new MarkupBuilder(sw)//用来生成xml数据的核心类
+//根结点langs创建成功
+xmlBuilder.langs(type:&#39;current&#39;,count:&#39;3&#39;,mainstream: &#39;true&#39;)&#123;
+    //第一个language结点
+    language(flavor: &#39;static&#39;, version: &#39;1.5&#39;,)&#123;
+        //第一个age结点
+        age(&#39;18&#39;)
+    &#125;
+    language(flavor: &#39;dynamic&#39;, version: &#39;1.6&#39;,)&#123;
+        age(&#39;10&#39;)
+    &#125;
+    language(flavor: &#39;dynamic&#39;, version: &#39;1.9&#39;,&#39;JavaScript&#39;)&#123;&#125;
+&#125;
+println sw
+</code></pre>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/6.png"></p>
+<h3 id="2-2-实体类转换"><a href="#2-2-实体类转换" class="headerlink" title="2.2 实体类转换"></a>2.2 实体类转换</h3><pre><code>//对应xml中的langs结点
+class Langs&#123;
+    String type = &#39;current&#39;
+    int count = 3
+    boolean mainstream = true
+    def list = [new Language(flavor: &#39;static&#39;,version: &#39;1.5&#39;,value: &#39;java&#39;),
+            new Language(flavor: &#39;dynamic&#39;,version: &#39;1.6&#39;,value: &#39;groovy&#39;),
+            new Language(flavor: &#39;dynamic&#39;,version: &#39;1.9&#39;,value: &#39;JavaScript&#39;)]
+&#125;
+//对应xml中的languang结点
+class Language&#123;
+    String flavor
+    String version
+    String value
+&#125;
+Langs langs = new Langs()
+xmlBuilder.langs(type:langs.type,count:langs.count,mainstream:langs.mainstream)&#123;
+    langs.list.each &#123;
+        language(flavor:  it.flavor,version: it.version,it.value)&#123;
+            age(&#39;10&#39;)
+        &#125;
+    &#125;
+&#125;
+println sw
+</code></pre>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/7.png"></p>
+<h2 id="3-json转换成xml"><a href="#3-json转换成xml" class="headerlink" title="3.json转换成xml"></a>3.json转换成xml</h2><pre><code>def getNetworkData(String url)&#123;
+    //发送HTTP请求
+    def connection = new URL(url).openConnection()
+    connection.setRequestMethod(&#39;GET&#39;)
+    connection.connect()
+    def response = connection.content.text
+
+    //json转换为实体对象
+    def jsonSlurper = new JsonSlurper()
+    return jsonSlurper.parseText(response)
+&#125;
+
+def response = getNetworkData(&#39;https://wanandroid.com/wxarticle/chapters/json&#39;)
+
+def list = response.data
+
+println list
+
+def sw = new StringWriter()
+
+def xmlBuilder = new MarkupBuilder(sw)
+
+xmlBuilder.datas()&#123;
+    list.each&#123;
+        a -&gt; data()&#123;
+            children(a.children)
+            courseId(a.courseId)
+            id(a.id)
+            name(a.name)
+            order(a.order)
+            parentChapterId(a.parentChapterId)
+            userControlSetTop(a.userControlSetTop)
+            visible(a.visible)
+        &#125;
+    &#125;
+&#125;
+
+println sw
+</code></pre>
+<p>it有作用范围，闭包{}里	</p>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/8.png"></p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>

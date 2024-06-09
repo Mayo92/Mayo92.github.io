@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>妙妙屋</title>
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+<link rel="stylesheet" href="/css/style.css">
+ 
+<script src="/js/jquery.js"></script>
+ 
+<script src="/js/search.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <article class="article-container">
+  <section class="header-container">
+  <a class="header-title" href="/">
+    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
+      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
+    </svg>
+    <span>妙妙屋</span>
+  </a>
+</section>
+  <section class="article-body">
+    <div class="post-toc">
+      <h3>本文目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMaterial-Design"><span class="toc-text">什么是Material Design</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Toolbar"><span class="toc-text">Toolbar</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BB%98%E8%AE%A4%E4%BC%9A%E6%98%BE%E7%A4%BAActionBar"><span class="toc-text">为什么默认会显示ActionBar</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95"><span class="toc-text">滑动菜单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DrawerLayout"><span class="toc-text">DrawerLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NavigationView"><span class="toc-text">NavigationView</span></a></li></ol></li></ol>
+    </div>
+    <div class="post-container">
+      <div class="post-title">
+        <h2 class="title">
+          第一行代码笔记-Material Design
+        </h2>
+      </div>
+      <div class="post-meta">
+      </div>
+      <div class="post-content">
+        <h2 id="什么是Material-Design"><a href="#什么是Material-Design" class="headerlink" title="什么是Material Design"></a>什么是Material Design</h2><p>界面设计语言，包含视觉、运动、交互效果。开发人员使用Design Support库即可。</p>
+<span id="more"></span>
+
+<h2 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h2><p>官方已经不建议使用ActionBar了，推荐使用Toolbar。<br>Toolbar不仅继承了ActionBar的所有功能，而且灵活性很高，可以配合其他控件完成一些Material Design的效果。</p>
+<h3 id="为什么默认会显示ActionBar"><a href="#为什么默认会显示ActionBar" class="headerlink" title="为什么默认会显示ActionBar"></a>为什么默认会显示ActionBar</h3><p>这是根据项目的主题而来的，从AndroidManifest.xml的android:theme找到res&#x2F;values&#x2F;styles.xml，找到主题的parent是Theme.AppCompat.Light.DarkActionBar，这个DarkActionBar是一个深色的ActionBar主题，所以才会出现ActionBar。  </p>
+<p>指定不带ActionBar的主题，通常有Theme.AppCompat.NoActionBar和Theme.AppCompat.Light.NoActionBar这两种主题可选。其中Theme.AppCompat.NoActionBar表示深色主题，界面主体为深色，陪衬颜色为淡色。Theme.AppCompat.Light.NoActionBar表示淡色主题，界面主体为淡色，陪衬颜色为深色。  </p>
+<p>AppTheme中的属性重新，这里重写了colorPrimary、colorPrimaryDark、colorAccent这三个颜色属性，如下图：</p>
+<p><img src="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/1.png"></p>
+<p>除上述3个属性，还可以通过textColorPrimary、windowBackground和navigationBarColor等属性来控制更多的颜色。不过colorAccent这个属性比较难理解，它不只是用来指定这样一个按钮的颜色，更多的表达强调的意思，比如一些控件的选中状态也会使用colorAccent的颜色。</p>
+<p>添加Toolbar</p>
+<pre><code>&lt;android.support.v7.widget.Toolbar
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_heiht=&quot;?attr/actionBarSize&quot;
+    android:background=&quot;?attr/colorPrimary&quot;
+    android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;
+    app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;/&gt;
+    
+</code></pre>
+<p>使用了xmlns:android命名空间，之后可以使用app:attribute这样的写法了。因为Material Design是Android5.0出现的，而很多Material属性在5.0之前的系统不存在，为了兼容，不能使用android: attribute，而应该使用app:attribute。</p>
+<p>这里的高度为actionBar的高度。由于在style.xml中将程序主题指定成了淡色，因此Toolbar也是淡色，而Toolbar上面的各个元素会自动使用深色，为了和主题颜色区分。但这样很难看。这里使用android:theme，使Toolbar单独使用深色主题，但这样如果Toolbar里有菜单按钮，那么弹出来的也是深色主题，这样也难看，所以使用app:popupTheme属性单独将弹出来的菜单指定淡色主题。</p>
+<p>添加Toolbar，在onCreate()里</p>
+<pre><code>Toolbar toobar = findViewById(R.id.toobar);
+setSupportActionBar(toobar);
+</code></pre>
+<p>修改标题栏显示文字内容，在manifest中</p>
+<pre><code>&lt;Activity
+    android:label=&quot;Fruits&quot;&gt;
+&lt;/Activity&gt;
+</code></pre>
+<p>如果没有指定，会默认使用application中指定的label内容，即应用名称。</p>
+<p>添加action按钮，res&#x2F;menu下创建toolbar.xml</p>
+<pre><code>&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;
+
+    &lt;item
+        android:id=&quot;@+id/backup&quot;
+        android:icon=&quot;@drawable/ic_ backup&quot;
+        android:title=&quot;backup&quot;
+        app:showAsAction=&quot;alawys&quot;/&gt;
+    &lt;item
+        android:id=&quot;@+id/delete&quot;
+        android:icon=&quot;@drawable/ic_ delete&quot;
+        android:title=&quot;delete&quot;
+        app:showAsAction=&quot;ifRoom&quot;/&gt;
+    &lt;item
+        android:id=&quot;@+id/settings&quot;
+        android:icon=&quot;@drawable/ic_ settings&quot;
+        android:title=&quot;settings&quot;
+        app:showAsAction=&quot;never&quot;/&gt;
+&lt;/menu&gt;
+</code></pre>
+<p>app:showAsAction指定按钮显示位置，alawys永远显示，如果屏幕空间不够则不显示；ifRoom表示屏幕空间够显示，不够不显示；never永远显示在菜单中。注意，Toolbar中的action按钮只会显示图标，菜单中的action按钮只会显示文字。</p>
+<pre><code>public boolean onCreateOptionsMenu(Menu menu)&#123;
+    getMenuInflater().inflate(R.menu.toolbar,menu);
+    return true;
+&#125;
+
+@Override
+public boolean onOptionsItemSeleted(MenuItem item)&#123;
+    switch(item.getItemId())&#123;
+        case R.id.backup:
+        .....
+    &#125;
+    return true;
+&#125;
+</code></pre>
+<h2 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h2><h3 id="DrawerLayout"><a href="#DrawerLayout" class="headerlink" title="DrawerLayout"></a>DrawerLayout</h3><p>所谓滑动菜单就是将一些菜单选项隐藏，然后可以通过滑动的方式将菜单显示出来，这种方式即节省了屏幕空间，又实现了非常好的动画效果，是Material Design中推荐的做法。</p>
+<p>DrawerLayout是一个布局，允许放入两个直接子控件，第一个控件是主屏幕显示的内容，第二个子控件是滑动菜单显示的内容。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.v4.widget.DrawerLayout 
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:id=&quot;@+id/drawerLayout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;FrameLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;&gt;
+        
+        &lt;android.support.v7.widget.Toolbar
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_heiht=&quot;?attr/actionBarSize&quot;
+            android:background=&quot;?attr/colorPrimary&quot;
+            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;
+            app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;/&gt;
+    &lt;/FrameLayout&gt;
+    
+    &lt;TextView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_gravity=&quot;start&quot;/&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;
+</code></pre>
+<p>DrawerLayout没有限制只能使用固定的控件。第二个控件android:layout_gravity是必须的，需要告诉DrawerLayout滑动菜单是在屏幕的左边还是右边.left左边，right右边，start会根据系统语言进行判断。</p>
+<p>向左滑动菜单或点击菜单以外的区域，都可以让菜单关闭。</p>
+<p>在Toolbar最左边加一个导航按钮，防止用户不知道屏幕左边是可以拖动的。</p>
+<p>在onCreate()中添加</p>
+<pre><code>Toolbar toobar = findViewById(R.id.toobar);
+setSupportActionBar(toobar);
+mDrawerLayout = findViewById(R.id.drawerLayout);
+ActionBar actionBar = getSupportActionBar();
+if(actionBar != null)&#123;
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+&#125;
+</code></pre>
+<p>在onOptionsItemSeleted()中添加</p>
+<pre><code>case android.R.id.home:
+    mDrawerLayout.openDrawer(GravityCompat.START);
+    break;
+    
+</code></pre>
+<p>getSupportActionBar()得到ActionBar实例，具体实现是由Toolbar来完成的。setDisplayHomeAsUpEnabled()方法让导航按钮显示出来，调用setHomeAsUpIndicator()方法设置一个导航按钮图标。实际上，Toolbar最左侧的按钮就叫做HomeAsUp按钮，它默认的图标是一个返回按钮，返回上一个活动。这里我们将它默认的样式和作用进行了修改。</p>
+<p>HomeAsUp的ID永远都是android.R.id.home。调用openDrawer()方法将滑动菜单显示出来，需传入一个Gravity参数，为了与XML一致，这里传入了GravityCompat.START。</p>
+<h3 id="NavigationView"><a href="#NavigationView" class="headerlink" title="NavigationView"></a>NavigationView</h3><p>可以在滑动菜单也定制任意的布局，不过谷歌提供了NavigationView。NavigationView是Design Support库中提供的一个控件，不仅严格按照MD的要求设计，而且可以将滑动菜单页的实现变得非常简单。</p>
+<pre><code>compile &#39;com.android.support:design:24.2.1&#39;
+compile &#39;de.hdodenhof:circleimageview:2.1.0&#39;
+</code></pre>
+<p>这里添加了依赖，第一行是Design Support库，</p>
+
+      </div>
+    </div>
+  </section>
+</article>
+<!-- go-top -->
+<a id="goTop" class="go-top" type="button">
+  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
+    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
+  </svg>
+</a>
+<script>
+  goTop.addEventListener('click', function(e) {
+    document.querySelector('.post-container').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+</body>
+
+</html>
