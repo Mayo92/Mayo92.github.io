@@ -95,6 +95,7 @@ hexo d
 </code></pre>
 <h4 id="5-Bug"><a href="#5-Bug" class="headerlink" title="5. Bug"></a>5. Bug</h4><h5 id="本地图片不显示"><a href="#本地图片不显示" class="headerlink" title="本地图片不显示"></a>本地图片不显示</h5><pre><code>1.配置_config.yml里面的post_asset_folder:false这个选项设置为true。(不是主题配置)
 2.安装修改后的插件npm install https://github.com/7ym0n/hexo-asset-image --save(hexo-asset-image插件hexo3版本后有问题)
+npm install https://github.com/CodeFalling/hexo-asset-image --save，新版用这个
 3.运行hexo new &#39;filename&#39;来生成md博文时，/source/_posts文件夹内除了&#39;filename&#39;.md文件还有一个同名的文件夹，把图片放入该文件
 4.最后添加图片![](filename/图片名.jpg)如不显示则使用![](图片名.jpg)，但这样本地则不会显示
 </code></pre>
