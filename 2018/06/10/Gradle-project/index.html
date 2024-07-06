@@ -1,224 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    
-
-    
-
-    
-
-
-
     <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Gradle-project | 妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Keep Team">
     
-    <meta name="theme-color" content="#3F51B5">
+    <title>
+        
+            Gradle-project |
+        
+        Keep Theme
+    </title>
     
-    
-    <meta name="keywords" content="Gradle之project">
-    <meta name="description" content="深入了解ProjectProject详解module在gradle看来也是project">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Gradle-project">
-<meta property="og:url" content="http://yoursite.com/2018/06/10/Gradle-project/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="深入了解ProjectProject详解module在gradle看来也是project">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/6.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/7.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/8.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/9.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/10.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/11.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/12.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/13.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/14.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/15.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/Gradle-project/16.png">
-<meta property="article:published_time" content="2018-06-10T02:26:32.000Z">
-<meta property="article:modified_time" content="2020-07-22T09:13:26.000Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Gradle之project">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/10/Gradle-project/1.png">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+<link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
     
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Gradle-project</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Gradle-project</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2018-06-10T02:26:32.000Z" itemprop="datePublished" class="page-time">
-  2018-06-10
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
-
-            
-        </h5>
-    </div>
-
+<div class="progress-bar-container">
     
 
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
 
 </header>
 
 
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3Project"><span class="post-toc-number">1.</span> <span class="post-toc-text">深入了解Project</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Project%E8%AF%A6%E8%A7%A3"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Project详解</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Project%E6%A0%B8%E5%BF%83API%E8%AE%B2%E8%A7%A3"><span class="post-toc-number">2.</span> <span class="post-toc-text">Project核心API讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83API%E5%88%86%E8%A7%A3"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">核心API分解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#project%E7%9B%B8%E5%85%B3API"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">project相关API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3API"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">属性相关API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%87%AA%E5%B8%A6%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">自带的属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%89%A9%E5%B1%95%E5%B1%9E%E6%80%A7"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">扩展属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%89%A9%E5%B1%95%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">扩展属性的另一种定义方式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3API"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">文件属性相关API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">文件路径</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E5%AE%9A%E4%BD%8D"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">文件定位</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">文件拷贝</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E6%A0%91%E9%81%8D%E5%8E%86"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">文件树遍历</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96API"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">其他API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BE%9D%E8%B5%96%E7%9B%B8%E5%85%B3API"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">依赖相关API</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">外部命令执行</span></a></li></ol></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Gradle-project"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Gradle-project</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2018-06-10 10:26:32" datetime="2018-06-10T02:26:32.000Z"  itemprop="datePublished">2018-06-10</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="深入了解Project"><a href="#深入了解Project" class="headerlink" title="深入了解Project"></a>深入了解Project</h2><h3 id="Project详解"><a href="#Project详解" class="headerlink" title="Project详解"></a>Project详解</h3><p>module在gradle看来也是project</p>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Gradle-project
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2018-06-10 10:26:32</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jul 22 2020 17:13:26 GMT+0800">2020-07-22 17:13:26</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Gradle/">Gradle</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Gradle%E4%B9%8Bproject/">Gradle之project</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="深入了解Project"><a href="#深入了解Project" class="headerlink" title="深入了解Project"></a>深入了解Project</h2><h3 id="Project详解"><a href="#Project详解" class="headerlink" title="Project详解"></a>Project详解</h3><p>module在gradle看来也是project</p>
 <span id="more"></span>
 
 <pre><code>./gradlew projects
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/1.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/1.png"></p>
 <p>以树的结构进行管理，一般只有两层。每个project必须对应一个build.gradle文件。根project的作用是管理子project。子project用于输出，具体输出什么在它的build.gradle文件配置。</p>
-<h2 id="Project核心API讲解"><a href="#Project核心API讲解" class="headerlink" title="Project核心API讲解"></a>Project核心API讲解</h2><h3 id="核心API分解"><a href="#核心API分解" class="headerlink" title="核心API分解"></a>核心API分解</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/2.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h2 id="Project核心API讲解"><a href="#Project核心API讲解" class="headerlink" title="Project核心API讲解"></a>Project核心API讲解</h2><h3 id="核心API分解"><a href="#核心API分解" class="headerlink" title="核心API分解"></a>核心API分解</h3><p><img src="/2018/06/10/Gradle-project/2.png"></p>
 <ul>
 <li>project相关API：拥有操作父project以及管理子project的能力</li>
 <li>task相关API：为当前project提供新增task、使用当前已有task的能力</li>
@@ -246,14 +263,7 @@ def getProjects()&#123;
     &#125;
 &#125;
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/3.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/3.png"></p>
 <p><em>获取所有子project</em></p>
 <pre><code>this.getSubProjects()
 def getSubProjects()&#123;
@@ -266,14 +276,7 @@ def getSubProjects()&#123;
     &#125;
 &#125;
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/4.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/4.png"></p>
 <p><em>获取父project</em>（在子project中调用）</p>
 <pre><code>this.getParentProject()
 def getParentProject()&#123;
@@ -281,14 +284,7 @@ def getParentProject()&#123;
     println &quot;parent name is $&#123;name&#125;&quot;
 &#125;
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/5.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/5.png"></p>
 <p><em>获取根project</em></p>
 <pre><code>this.getRootPro()
 def getRootPro()&#123;
@@ -296,14 +292,7 @@ def getRootPro()&#123;
     println &quot;root name is $&#123;name&#125;&quot;
 &#125;
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/6.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/6.png"></p>
 <p><em>对子工程进行配置</em>（一般不这么做除非是公共的配置）</p>
 <pre><code>project(&#39;app&#39;) &#123; Project project -&gt;
     println &quot;name is $&#123;project.name&#125;&quot;
@@ -323,14 +312,7 @@ def getRootPro()&#123;
 
 println project(&#39;framework&#39;).group
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/7.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/7.png"></p>
 <p><em>只配置子工程</em></p>
 <pre><code>subprojects &#123; Project project -&gt;
     //库工程上传maven
@@ -340,14 +322,7 @@ println project(&#39;framework&#39;).group
 &#125;
 </code></pre>
 <p>相对独立的功能可以写到独立的gradle文件中，再由工程引用</p>
-<h3 id="属性相关API"><a href="#属性相关API" class="headerlink" title="属性相关API"></a>属性相关API</h3><h4 id="自带的属性"><a href="#自带的属性" class="headerlink" title="自带的属性"></a>自带的属性</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/8.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="属性相关API"><a href="#属性相关API" class="headerlink" title="属性相关API"></a>属性相关API</h3><h4 id="自带的属性"><a href="#自带的属性" class="headerlink" title="自带的属性"></a>自带的属性</h4><p><img src="/2018/06/10/Gradle-project/8.png"></p>
 <ul>
 <li>PATH_SEPARATOR：路径分隔符</li>
 <li>DEFAULT_BUILD_DIR_NAME：输出文件夹</li>
@@ -416,26 +391,12 @@ compileSdkVersion rootProject.ext.android.compileSdkVersion
 </code></pre>
 <p>注意这种方式，自定义的属性不能与build.gradle文件里已有的方法重复，编译的时候不会报错，使用会找不到</p>
 <h3 id="文件属性相关API"><a href="#文件属性相关API" class="headerlink" title="文件属性相关API"></a>文件属性相关API</h3><p>作用范围都是同一个根project</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/9.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/9.png"></p>
 <h4 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h4><pre><code>println &quot;root file path is&quot;+getRootDir().absolutePath
 println &quot;project file path is&quot;+getProjectDir().absolutePath
 println &quot;build file path is&quot;+getBuildDir().absolutePath
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/10.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/10.png"></p>
 <h4 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h4><pre><code>def getContent(String path)&#123;
     try&#123;
         def file = file(path)
@@ -448,14 +409,7 @@ println &quot;build file path is&quot;+getBuildDir().absolutePath
 
 println getContent(&#39;common.gradle&#39;)
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/11.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/11.png"></p>
 <p>file所传路径为相对应当前project的一个相对路径，files可以传递多个路径得到结果后遍历即可</p>
 <h4 id="文件拷贝"><a href="#文件拷贝" class="headerlink" title="文件拷贝"></a>文件拷贝</h4><pre><code>copy &#123;
     from file(&#39;proguard-rules.pro&#39;)
@@ -488,23 +442,9 @@ println getContent(&#39;common.gradle&#39;)
     &#125;
 &#125;
 </code></pre>
-<h3 id="其他API"><a href="#其他API" class="headerlink" title="其他API"></a>其他API</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/12.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="其他API"><a href="#其他API" class="headerlink" title="其他API"></a>其他API</h3><p><img src="/2018/06/10/Gradle-project/12.png"></p>
 <h4 id="依赖相关API"><a href="#依赖相关API" class="headerlink" title="依赖相关API"></a>依赖相关API</h4><p>buildscript–&gt;ScriptHandler</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/13.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/13.png"></p>
 <pre><code>buildscript &#123; ScriptHandler scriptHandler -&gt;
 
     //配置工程的仓库地址
@@ -538,32 +478,11 @@ println getContent(&#39;common.gradle&#39;)
 <p><em>两个常见问题</em></p>
 <p><em>1.依赖冲突解决</em></p>
 <p>exclude两个参数，key和value</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/14.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/14.png"></p>
 <p><em>2.传递依赖</em></p>
 <p>实际开发禁止传递依赖，因为不确定性</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/15.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/06/10/Gradle-project/16.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/06/10/Gradle-project/15.png"></p>
+<p><img src="/2018/06/10/Gradle-project/16.png"></p>
 <p><em>依赖方式比较</em></p>
 <p>compile 第三方库所有的类、资源也会被打包到最终的输出文件中</p>
 <p>provided 占位编译，只参与编译不参与打包。还有一种情况，一个库工程需要引入的第三方库已经在被依赖的主工程引入了，库工程可以provided</p>
@@ -590,179 +509,256 @@ println getContent(&#39;common.gradle&#39;)
 ./gradlew apkcopy
 </code></pre>
 
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Gradle%E4%B9%8Bproject/">Gradle之project</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2018/06/13/Gradle-Task/"
+                                   title="Gradle-Task"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Gradle-Task</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"
+                                   title="Gradle-生命周期"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Gradle-生命周期</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
 
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2020-07-22T09:13:26.000Z" itemprop="dateUpdated">2020-07-22 17:13:26</time>
-</span><br>
-
-
         
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle%E4%B9%8Bproject/" rel="tag">Gradle之project</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/06/13/Gradle-Task/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Gradle-Task</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2018/05/26/Gradle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Gradle-生命周期</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
-
-
 </div>
 
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
 
-
-        <p>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
     </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
         </div>
-    </a>
-</li>
-</template>
+    </div>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
 
 
 
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+<!-- local-search -->
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
 
 

@@ -1,206 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    
-
-    
-
-    
-
-
-
     <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Java基础-基础语法 | 妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Keep Team">
     
-    <meta name="theme-color" content="#3F51B5">
+    <title>
+        
+            Java基础-基础语法 |
+        
+        Keep Theme
+    </title>
     
-    
-    <meta name="keywords" content="Java基础语法">
-    <meta name="description" content="标识符命名规则 标识符可以由字母、数字、下划线(_)和美元符($)组成，不能以数字开头 标识符严格区分大小写 标识符不能是Java关键字和保留字 标识符的命名最好能反映出其作用">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java基础-基础语法">
-<meta property="og:url" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="标识符命名规则 标识符可以由字母、数字、下划线(_)和美元符($)组成，不能以数字开头 标识符严格区分大小写 标识符不能是Java关键字和保留字 标识符的命名最好能反映出其作用">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/2.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/3.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/7.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/4.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/11.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/12.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/10.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/5.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/6.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/14.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/13.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/15.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/16.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/17.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/18.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/8.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/9.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/19.png">
-<meta property="article:published_time" content="2017-04-22T08:15:55.000Z">
-<meta property="article:modified_time" content="2020-12-26T07:22:35.000Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Java基础语法">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/2.png">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+<link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
     
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Java基础-基础语法</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Java基础-基础语法</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2017-04-22T08:15:55.000Z" itemprop="datePublished" class="page-time">
-  2017-04-22
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li></ul>
-
-            
-        </h5>
-    </div>
-
+<div class="progress-bar-container">
     
 
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
 
 </header>
 
 
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="post-toc-number">1.</span> <span class="post-toc-text">标识符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">命名规则</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-number">2.</span> <span class="post-toc-text">关键字</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="post-toc-number">3.</span> <span class="post-toc-text">注释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9B%E5%88%B6"><span class="post-toc-number">4.</span> <span class="post-toc-text">进制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%B4%9F%E6%95%B0%E7%9A%84%E8%BF%9B%E5%88%B6"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">负数的进制</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%98%E9%87%8F"><span class="post-toc-number">5.</span> <span class="post-toc-text">变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">变量名的命名规则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B1%BB%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">类的命名规则</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">6.</span> <span class="post-toc-text">数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">基本数据类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%8C%83%E5%9B%B4"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">基本数据类型范围</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B5%AE%E7%82%B9%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">浮点型数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ASCII%E7%A0%81"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">ASCII码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ASCII%E7%A0%81%E8%A1%A8%E7%A4%BA"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">ASCII码表示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Unicode%E7%BC%96%E7%A0%81"><span class="post-toc-number">6.6.</span> <span class="post-toc-text">Unicode编码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="post-toc-number">6.7.</span> <span class="post-toc-text">转义字符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%87%AA%E5%8A%A8%E6%8F%90%E5%8D%87"><span class="post-toc-number">6.8.</span> <span class="post-toc-text">表达式的数据类型自动提升</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="post-toc-number">7.</span> <span class="post-toc-text">运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">运算符的优先级</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">逻辑运算符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%80%9C-%E2%80%9D%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E8%A7%84%E5%BE%8B"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">“^”符号运算规律:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">位运算符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">三元运算符</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="post-toc-number">8.</span> <span class="post-toc-text">程序流程控制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">选择结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">循环结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#if%E5%92%8Cswitch%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">if和switch的区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#break%E8%AF%AD%E5%8F%A5"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">break语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#continue%E8%AF%AD%E5%8F%A5"><span class="post-toc-number">8.5.</span> <span class="post-toc-text">continue语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A2%9E%E5%BC%BA%E5%9E%8Bfor%E5%BE%AA%E7%8E%AF"><span class="post-toc-number">8.6.</span> <span class="post-toc-text">增强型for循环</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E7%BB%84"><span class="post-toc-number">9.</span> <span class="post-toc-text">数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">二维数组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%85%E5%AD%98%E7%9A%84%E5%88%92%E5%88%86"><span class="post-toc-number">10.</span> <span class="post-toc-text">内存的划分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%88%E5%86%85%E5%AD%98"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">栈内存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A0%86%E5%86%85%E5%AD%98"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">堆内存</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95"><span class="post-toc-number">11.</span> <span class="post-toc-text">方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E5%A3%B0%E6%98%8E"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">方法声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">方法分类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">方法重载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8"><span class="post-toc-number">11.4.</span> <span class="post-toc-text">可变参数列表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E4%BC%A0%E5%80%BC%E9%97%AE%E9%A2%98"><span class="post-toc-number">11.5.</span> <span class="post-toc-text">方法的传值问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B0%83%E8%AF%95"><span class="post-toc-number">12.</span> <span class="post-toc-text">调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="post-toc-number">13.</span> <span class="post-toc-text">二分查找</span></a></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Java基础-基础语法"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Java基础-基础语法</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2017-04-22 16:15:55" datetime="2017-04-22T08:15:55.000Z"  itemprop="datePublished">2017-04-22</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Java基础-基础语法
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2017-04-22 16:15:55</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Dec 26 2020 15:22:35 GMT+0800">2020-12-26 15:22:35</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Java基础语法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
 <li>标识符可以由字母、数字、下划线(_)和美元符($)组成，不能以数字开头</li>
 <li>标识符严格区分大小写</li>
 <li>标识符不能是Java关键字和保留字</li>
@@ -208,14 +236,7 @@
 </ul>
 <span id="more"></span>
 
-<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/2.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/2.png"></p>
 <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>文档注释格式</p>
 <p>&#x2F;*<em>注释文字</em>&#x2F;</p>
 <h3 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h3><h4 id="负数的进制"><a href="#负数的进制" class="headerlink" title="负数的进制"></a>负数的进制</h4><p>负数的二进制表现形式就是对应的正数二进制取反加1。负数的二进制最高位永远是1。</p>
@@ -228,55 +249,20 @@
 <li>变量名的长度没有限制</li>
 </ul>
 <h4 id="类的命名规则"><a href="#类的命名规则" class="headerlink" title="类的命名规则"></a>类的命名规则</h4><p>满足Pascal命名法规范</p>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/3.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/3.png"></p>
 <ul>
 <li>数据类型分为基本数据类型和引用数据类型</li>
 <li>引用数据类型包括数组和类等</li>
 <li>类定义的变量又叫对象</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/7.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/4.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="基本数据类型范围"><a href="#基本数据类型范围" class="headerlink" title="基本数据类型范围"></a>基本数据类型范围</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/11.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/7.png"></p>
+<h4 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h4><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/4.png"></p>
+<h4 id="基本数据类型范围"><a href="#基本数据类型范围" class="headerlink" title="基本数据类型范围"></a>基本数据类型范围</h4><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/11.png"></p>
 <h4 id="浮点型数据"><a href="#浮点型数据" class="headerlink" title="浮点型数据"></a>浮点型数据</h4><p>float是4字节32位，精度是7~8位</p>
 <p>double是8字节64位，精度是16~17位</p>
 <p>因为浮点型的特殊存储结构，所以在进行数据的计算或数据的转换时，会有精度的损失。</p>
 <p>精确计算通过BigDecimal，先将浮点型数据转换成String型数据，再进行计算。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/12.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/12.png"></p>
 <p>应用场景：要求有高精度的医学、化学、军事。数量级特别大的天文、游戏、图形图像处理等</p>
 <h4 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h4><ul>
 <li>ASCII(American Standard Code for Information Interchange，美国标准信息交换代码)</li>
@@ -288,26 +274,12 @@
 <li>标准ASCII码使用7位二进制来表示所有的大写字母和小写字母，数字0-9，标点符号，以及在美式英语种使用的控制字符。</li>
 <li>后128个称为扩展ASCII码，用于表示特殊符号、外来语字母和图形符号。</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/10.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/10.png"></p>
 <h4 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h4><p>又称为统一码、万国码。目标是支持世界上所有的字符集</p>
 <pre><code>char c=‘\u005d’;
 </code></pre>
 <p>Unicode表示法，在值前加前缀\u</p>
-<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/5.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/5.png"></p>
 <h4 id="表达式的数据类型自动提升"><a href="#表达式的数据类型自动提升" class="headerlink" title="表达式的数据类型自动提升"></a>表达式的数据类型自动提升</h4><ul>
 <li>所有的byte型、short型和char的值将被提升到int型</li>
 <li>如果一个操作数是long型，计算结果就是long型</li>
@@ -317,14 +289,7 @@
 <p>两个 byte类型的数据相加时，首先都会被提升为int类型，他们的和也是int类型，其值可能会超过byte的范 围，因此就会报错。</p>
 <p>int类型的两个变量相加，最后还是int类型，虽然结果溢出，但是不会报错</p>
 <p>自动类型转换又叫隐式类型转换</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/6.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/6.png"></p>
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ol>
 <li>算术运算符</li>
 <li>赋值运算符</li>
@@ -333,42 +298,21 @@
 <li>条件运算符</li>
 <li>位运算符</li>
 </ol>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/14.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/14.png"></p>
 <ul>
 <li>负数对正数取模结果为负数</li>
 <li>正数对负数取模结果为正数</li>
 </ul>
 <p>在执行s+&#x3D;4;语句时，编译器在编译的时候，默认进行了强制类型转换，也就是将int类型的数 据转换成short类型的数据。</p>
 <p>在执行s &#x3D; s + 4;语句时，编译器在编译的时候，默认并没有强制类型转换。所以，s是short类 型，4是int类型，s会自动提升为int类型，相加的和也是int类型，赋值给short类型的变量肯定会损失精 度。这时候就需要进行强制类型转换:s &#x3D; (short)(s + 4);。</p>
-<h4 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/13.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h4><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/13.png"></p>
 <h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>&amp;&amp;、||运算符又叫短路运算符，如果第一个表达式的值就能决定表达式最后的结果，运算符右边的表达式就不再计算了</p>
 <h4 id="“-”符号运算规律"><a href="#“-”符号运算规律" class="headerlink" title="“^”符号运算规律:"></a>“^”符号运算规律:</h4><ul>
 <li>^符号的两边结果如果相同，结果是false</li>
 <li>两边的结果不同，结果是true</li>
 </ul>
 <p>&amp;&amp;:当左边为false时，右边不参加运算，这样可以提升效率。||:当左边为true时，右边不参加运算，这样可以提升效率。</p>
-<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1.png"></p>
 <p>用“与运算”可以很方便提取某一二进制数的其中几位数</p>
 <p>一个数异或同一个数两次，结果还是这个数</p>
 <p>利用异或运算可以实现对数据简单地进行加密</p>
@@ -387,30 +331,9 @@
 <li>循环嵌套</li>
 </ul>
 <p>for的三个表达式都是可以省略</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/15.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/16.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/17.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/15.png"></p>
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/16.png"></p>
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/17.png"></p>
 <h4 id="if和switch的区别"><a href="#if和switch的区别" class="headerlink" title="if和switch的区别"></a>if和switch的区别</h4><p>if结构:</p>
 <ul>
 <li>判断条件是布尔类型</li>
@@ -448,14 +371,7 @@ for(int n:arr)
 <li>数据类型 数组名[][];</li>
 <li>数据类型[] 数组名[];</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/18.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/18.png"></p>
 <p>直接打印数组的引用变量，打印出来的结果是数组初始地址的哈希值。”[I”表示的是int类型数组，”@”后面的内容表示数组初始地址的哈希值。</p>
 <h3 id="内存的划分"><a href="#内存的划分" class="headerlink" title="内存的划分"></a>内存的划分</h3><ul>
 <li>程序计数器</li>
@@ -464,22 +380,8 @@ for(int n:arr)
 <li>栈内存</li>
 <li>堆内存</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/8.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/9.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/8.png"></p>
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/9.png"></p>
 <h4 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h4><p>用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放</p>
 <h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><p>数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类型是false，char类型是’\u0000’。</p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>所谓方法，就是用来解决一类问题的代码的有序组合，是一个功能模块。</p>
@@ -504,14 +406,7 @@ for(int n:arr)
 <li>在重载中，含有可变参数的方法是最后被选中的</li>
 <li>数组作为参数时是不能将多个值传递给数组的</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/19.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/19.png"></p>
 <h4 id="方法的传值问题"><a href="#方法的传值问题" class="headerlink" title="方法的传值问题"></a>方法的传值问题</h4><p>基本数据类型传值：方法中对参数的修改，不会对主方法中传来的变量值产生影响</p>
 <p>引用数据类型传值：方法中对数组的改变，会影响主方法中传来的数组</p>
 <p>数组传递会改变大小，因为他是引用类型</p>
@@ -525,179 +420,256 @@ for(int n:arr)
 </code></pre>
 <p>如果包含在数组中，返回搜索键的索引，否则返回（-(插入点)-1）。插入点被定义为第一个大于此键的元素索引，如果数组中的所有元素都小于指定的键，则为a.length，保证了当前仅当此键被找到时，返回的值&gt;&#x3D;0。</p>
 
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Java基础语法</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2017/04/23/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"
+                                   title="Java基础-面向对象"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java基础-面向对象</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2017/04/21/Java%E5%9F%BA%E7%A1%80-%E5%88%9D%E8%AF%86/"
+                                   title="Java基础-初识"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java基础-初识</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
 
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2020-12-26T07:22:35.000Z" itemprop="dateUpdated">2020-12-26 15:22:35</time>
-</span><br>
-
-
         
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">Java基础语法</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/04/23/Java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Java基础-面向对象</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/04/21/Java%E5%9F%BA%E7%A1%80-%E5%88%9D%E8%AF%86/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Java基础-初识</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
-
-
 </div>
 
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
 
-
-        <p>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
     </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
         </div>
-    </a>
-</li>
-</template>
+    </div>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
 
 
 
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+<!-- local-search -->
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
 
 

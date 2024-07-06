@@ -1,230 +1,242 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    
-
-    
-
-    
-
-
-
     <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Kotlin-数据类型 | 妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Keep Team">
     
-    <meta name="theme-color" content="#3F51B5">
+    <title>
+        
+            Kotlin-数据类型 |
+        
+        Keep Theme
+    </title>
     
-    
-    <meta name="keywords" content="Kotlin数据类型">
-    <meta name="description" content="数据类型Boolean类型大多数情况下相当于java的基本类型boolean，只有在必要情况下才会装箱成java的装箱类型Boolean，但是这已经交给编译器来决定了，不需要我们关心。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin-数据类型">
-<meta property="og:url" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="数据类型Boolean类型大多数情况下相当于java的基本类型boolean，只有在必要情况下才会装箱成java的装箱类型Boolean，但是这已经交给编译器来决定了，不需要我们关心。">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/6.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/7.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/8.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/9.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/10.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/11.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/12.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/13.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/14.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/15.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/16.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/17.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/18.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/19.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/20.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/21.png">
-<meta property="article:published_time" content="2018-09-18T09:12:15.000Z">
-<meta property="article:modified_time" content="2019-10-22T08:58:40.000Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Kotlin数据类型">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+<link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
     
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Kotlin-数据类型</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Kotlin-数据类型</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2018-09-18T09:12:15.000Z" itemprop="datePublished" class="page-time">
-  2018-09-18
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Kotlin/">Kotlin</a></li></ul>
-
-            
-        </h5>
-    </div>
-
+<div class="progress-bar-container">
     
 
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
 
 </header>
 
 
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Boolean%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Boolean类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Number%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Number类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">拆箱装箱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Char数据类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">基础数据类型转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">类与对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">什么是类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%B9%E8%B1%A1"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">什么是对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">类与对象的关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="post-toc-number">1.7.4.</span> <span class="post-toc-text">类的继承</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A9%BA%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">空类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%99%BA%E8%83%BD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">智能类型转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8C%85%EF%BC%88package%EF%BC%89"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">包（package）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8C%BA%E9%97%B4%EF%BC%88Range%EF%BC%89"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">区间（Range）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E7%BB%84%EF%BC%88Array%EF%BC%89"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">数组（Array）</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Kotlin-数据类型"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Kotlin-数据类型</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2018-09-18 17:12:15" datetime="2018-09-18T09:12:15.000Z"  itemprop="datePublished">2018-09-18</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Kotlin/">Kotlin</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h3><p>大多数情况下相当于java的基本类型boolean，只有在必要情况下才会装箱成java的装箱类型Boolean，但是这已经交给编译器来决定了，不需要我们关心。</p>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Kotlin-数据类型
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2018-09-18 17:12:15</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Oct 22 2019 16:58:40 GMT+0800">2019-10-22 16:58:40</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Kotlin/">Kotlin</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Kotlin数据类型</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h3><p>大多数情况下相当于java的基本类型boolean，只有在必要情况下才会装箱成java的装箱类型Boolean，但是这已经交给编译器来决定了，不需要我们关心。</p>
 <span id="more"></span>
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png"></p>
 <pre><code>val aBoolean:Boolean = true
 val anotherBoolean:Boolean = false
 </code></pre>
 <h3 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h3><p>包括整形和浮点型，byte一般被当成数据流而不是整数当成二进制来看</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2.png"></p>
 <pre><code>val anInt:Int = 8
 val anotherInt:Int = 0xFF
 val moreInt:Int = 0b00000011
@@ -286,23 +298,9 @@ fun main(args: Array&lt;String&gt;) &#123;
     println(minByte)
 &#125;
 </code></pre>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/3.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/3.png"></p>
 <h3 id="拆箱装箱"><a href="#拆箱装箱" class="headerlink" title="拆箱装箱"></a>拆箱装箱</h3><p>Kotlin不需要关心装箱与非装箱</p>
-<h3 id="Char数据类型"><a href="#Char数据类型" class="headerlink" title="Char数据类型"></a>Char数据类型</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/4.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="Char数据类型"><a href="#Char数据类型" class="headerlink" title="Char数据类型"></a>Char数据类型</h3><p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/4.png"></p>
 <pre><code>val aChar:Char=&#39;0&#39;
 val bChar:Char=&#39;中&#39;
 //\u表示Unicode编码
@@ -316,39 +314,11 @@ fun main(args: Array&lt;String&gt;) &#123;
 </code></pre>
 <p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/6.png"></p>
 <p>转义字符</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/5.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/5.png"></p>
 <h3 id="基础数据类型转换"><a href="#基础数据类型转换" class="headerlink" title="基础数据类型转换"></a>基础数据类型转换</h3><p>不可以隐式转换</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/7.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/8.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/9.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/7.png"></p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/8.png"></p>
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/9.png"></p>
 <pre><code>val string:String=&quot;Hello&quot;
 val fromChars:String=String(charArrayOf(&#39;H&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;))
 
@@ -402,14 +372,7 @@ fun main(args: Array&lt;String&gt;) &#123;
 <li>一个对象本质上只能从属于一个类</li>
 <li>某一个人，他是工程师，但本质上还是属于人这一类</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/11.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/11.png"></p>
 <ul>
 <li>对象也经常被称作“类的对象”或者“类的实例”</li>
 </ul>
@@ -439,14 +402,7 @@ fun main(args: Array&lt;String&gt;) &#123;
 &#125;
 </code></pre>
 <p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/12.png"></p>
-<h3 id="空类型"><a href="#空类型" class="headerlink" title="空类型"></a>空类型</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/13.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="空类型"><a href="#空类型" class="headerlink" title="空类型"></a>空类型</h3><p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/13.png"></p>
 <p>String?可为空</p>
 <pre><code>fun getName():String?&#123;
     return null
@@ -476,14 +432,7 @@ public class Child extends Parent &#123;
 &#125;
 </code></pre>
 <p>Java转换方法</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/15.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/15.png"></p>
 <p>Kotlin方法</p>
 <pre><code>val parent:Parent = Child()
 if (parent is Child)&#123;
@@ -565,194 +514,259 @@ fun main(args: Array&lt;String&gt;) &#123;
 &#125;
 </code></pre>
 <p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/19.png"></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/20.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/20.png"></p>
+<p><img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/21.png"></p>
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/09/18/Kotlin-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/21.png" alt title>
+                    
                 </div>
-                <div class="image-caption"></div>
-            </figure>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Kotlin数据类型</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/"
+                                   title="Kotlin-程序结构"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Kotlin-程序结构</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2018/09/18/Kotlin-%E7%AE%80%E4%BB%8B/"
+                                   title="Kotlin--简介"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Kotlin--简介</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
 
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2019-10-22T08:58:40.000Z" itemprop="dateUpdated">2019-10-22 16:58:40</time>
-</span><br>
-
-
         
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">Kotlin数据类型</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Kotlin-程序结构</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2018/09/18/Kotlin-%E7%AE%80%E4%BB%8B/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Kotlin--简介</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
-
-
 </div>
 
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
 
-
-        <p>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
     </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
         </div>
-    </a>
-</li>
-</template>
+    </div>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
 
 
 
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+<!-- local-search -->
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
 
 

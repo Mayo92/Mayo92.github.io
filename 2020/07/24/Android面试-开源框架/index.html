@@ -1,218 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    
-
-    
-
-    
-
-
-
     <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Android面试-开源框架 | 妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Keep Team">
     
-    <meta name="theme-color" content="#3F51B5">
+    <title>
+        
+            Android面试-开源框架 |
+        
+        Keep Theme
+    </title>
     
-    
-    <meta name="keywords" content="Android面试">
-    <meta name="description" content="OkHttp同步请求 生成一个OKHTTPClient对象 创建Request对象和response对象 通过call对象来操作请求 RealCall 执行完毕之后将同步请求从Dispatcher中移除">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android面试-开源框架">
-<meta property="og:url" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="OkHttp同步请求 生成一个OKHTTPClient对象 创建Request对象和response对象 通过call对象来操作请求 RealCall 执行完毕之后将同步请求从Dispatcher中移除">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/2.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/3.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/4.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/5.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/7.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/8.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/9.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/10.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/11.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/12.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/13.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/14.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/15.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/18.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/19.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/16.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/17.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/25.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/20.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/21.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/22.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/23.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/24.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/26.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/27.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/28.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/29.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/30.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/31.png">
-<meta property="article:published_time" content="2020-07-24T02:46:43.000Z">
-<meta property="article:modified_time" content="2020-12-10T12:28:19.000Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Android面试">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/1.png">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+<link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
     
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Android面试-开源框架</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Android面试-开源框架</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2020-07-24T02:46:43.000Z" itemprop="datePublished" class="page-time">
-  2020-07-24
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
-
-            
-        </h5>
-    </div>
-
+<div class="progress-bar-container">
     
 
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
 
 </header>
 
 
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OkHttp"><span class="post-toc-number">1.</span> <span class="post-toc-text">OkHttp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%8C%E6%AD%A5%E8%AF%B7%E6%B1%82"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">同步请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RealCall"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">RealCall</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">Dispatcher</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#okhttp%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">okhttp异步请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RealCall-1"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">RealCall</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">Dispatcher</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#okhttp%E5%86%85%E9%83%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%88%9B%E5%BB%BA"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">okhttp内部线程池创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher-2"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Dispatcher</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ThreadPoolExecutor%E7%9A%84execute%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">ThreadPoolExecutor的execute方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#okhttp%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">okhttp调度器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RealCall%E9%87%8C%E7%9A%84AsyncCall%E7%9A%84execute%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">RealCall里的AsyncCall的execute方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher%E9%87%8C%E7%9A%84finished%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">Dispatcher里的finished方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dispatcher%E9%87%8C%E7%9A%84promoteCalls%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">Dispatcher里的promoteCalls方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#retrofit"><span class="post-toc-number">2.</span> <span class="post-toc-text">retrofit</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">使用步骤</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8C%E6%AD%A5%E9%AA%A4"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">执行步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#retrofit%E7%B1%BB"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">retrofit类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">成员变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CallAdapter%E7%B1%BB"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">CallAdapter类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">build方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#create%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">create方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#eagerlyValidateMethods%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">eagerlyValidateMethods方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#loadServiceMethod%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.1.6.</span> <span class="post-toc-text">loadServiceMethod方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#invoke%E9%87%8C%E7%9A%84adapt%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.1.7.</span> <span class="post-toc-text">invoke里的adapt方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">2.1.8.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ServiceMethod%E7%B1%BB"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ServiceMethod类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Builder%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">Builder方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build%E6%96%B9%E6%B3%95-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">build方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OkHttpCall%E7%B1%BB"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">OkHttpCall类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">发送请求过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ExecutorCallAdapterFactory%E7%B1%BB%E7%9A%84enqueue%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">ExecutorCallAdapterFactory类的enqueue方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#OkHttpCall%E7%B1%BB-1"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">OkHttpCall类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Platform%E7%B1%BB"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">Platform类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%93%E5%AD%98LRU"><span class="post-toc-number">3.</span> <span class="post-toc-text">缓存LRU</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LruCache%E7%B1%BB"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">LruCache类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#trimToSize%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">trimToSize方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#butterknife"><span class="post-toc-number">4.</span> <span class="post-toc-text">butterknife</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8E%9F%E7%90%86"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">对性能的影响</span></a></li></ol></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Android面试-开源框架"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Android面试-开源框架</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2020-07-24 10:46:43" datetime="2020-07-24T02:46:43.000Z"  itemprop="datePublished">2020-07-24</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h2><h3 id="同步请求"><a href="#同步请求" class="headerlink" title="同步请求"></a>同步请求</h3><ul>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Android面试-开源框架
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-07-24 10:46:43</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Dec 10 2020 20:28:19 GMT+0800">2020-12-10 20:28:19</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Android%E9%9D%A2%E8%AF%95/">Android面试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h2><h3 id="同步请求"><a href="#同步请求" class="headerlink" title="同步请求"></a>同步请求</h3><ul>
 <li>生成一个OKHTTPClient对象</li>
 <li>创建Request对象和response对象</li>
 <li>通过call对象来操作请求</li>
@@ -224,23 +240,9 @@
 <h4 id="RealCall"><a href="#RealCall" class="headerlink" title="RealCall"></a>RealCall</h4><p>call的实现类RealCall</p>
 <p>if(executed)，每个call请求只能被执行一次</p>
 <p>finished方法，执行完请求后会从dispatcher调度器中移除</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/1.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/1.png"></p>
 <h4 id="Dispatcher"><a href="#Dispatcher" class="headerlink" title="Dispatcher"></a>Dispatcher</h4><p>executed方法在双向队列中存放同步请求</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/2.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/2.png"></p>
 <h3 id="okhttp异步请求"><a href="#okhttp异步请求" class="headerlink" title="okhttp异步请求"></a>okhttp异步请求</h3><ul>
 <li>生成一个OKHTTPClient对象</li>
 <li>创建Request对象</li>
@@ -249,87 +251,31 @@
 </ul>
 <h4 id="RealCall-1"><a href="#RealCall-1" class="headerlink" title="RealCall"></a>RealCall</h4><p>if(executed)，每个call请求只能被执行一次</p>
 <p>AsyncCall，runnable对象</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/3.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/3.png"></p>
 <h4 id="Dispatcher-1"><a href="#Dispatcher-1" class="headerlink" title="Dispatcher"></a>Dispatcher</h4><p>首先判断，正在运行的异步任务和正在调度请求主机的最大数。如果都满足则存放到异步队列中，并且调用线程池的execute进行执行。如果不满足加入准备就绪的异步请求队列中。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/4.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/4.png"></p>
 <p>maxRequests 线程最大并发数64</p>
 <p>maxRequestsPerHost 每个主机最大请求数5</p>
 <p>readyAsyncCalls 缓存等待的异步请求队列</p>
 <p>runningAsyncCalls 正在执行的异步请求队列</p>
 <p>runningSyncCalls 正在执行的同步请求队列</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/5.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/5.png"></p>
 <h3 id="okhttp内部线程池创建"><a href="#okhttp内部线程池创建" class="headerlink" title="okhttp内部线程池创建"></a>okhttp内部线程池创建</h3><h4 id="Dispatcher-2"><a href="#Dispatcher-2" class="headerlink" title="Dispatcher"></a>Dispatcher</h4><p>线程池在Dispatcher里配置的</p>
 <p>SynchronousQueue 线程等待队列，同步队列，先来先服务，必须有一个移除了另一个才能插入</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/6.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/6.png"></p>
 <h4 id="ThreadPoolExecutor的execute方法"><a href="#ThreadPoolExecutor的execute方法" class="headerlink" title="ThreadPoolExecutor的execute方法"></a>ThreadPoolExecutor的execute方法</h4><p>okhttp中线程池只起辅助作用，用来缓存线程，对线程进行并发控制以及执行时机进行调度的是Dispatcher</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/7.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/7.png"></p>
 <h3 id="okhttp调度器"><a href="#okhttp调度器" class="headerlink" title="okhttp调度器"></a>okhttp调度器</h3><ul>
 <li>维护请求状态</li>
 <li>维护线程池</li>
 </ul>
 <p>异步请求的两个队列可以看成是生产者消费者模型，异步执行队列有空余，就从异步等待队列获取</p>
 <h4 id="RealCall里的AsyncCall的execute方法"><a href="#RealCall里的AsyncCall的execute方法" class="headerlink" title="RealCall里的AsyncCall的execute方法"></a>RealCall里的AsyncCall的execute方法</h4><p>finished，成功或失败都会回调</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/8.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/8.png"></p>
 <h4 id="Dispatcher里的finished方法"><a href="#Dispatcher里的finished方法" class="headerlink" title="Dispatcher里的finished方法"></a>Dispatcher里的finished方法</h4><p>promoteCalls方法，根据正在执行队列的数量，对请求队列数量进行调整</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/9.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/9.png"></p>
 <h4 id="Dispatcher里的promoteCalls方法"><a href="#Dispatcher里的promoteCalls方法" class="headerlink" title="Dispatcher里的promoteCalls方法"></a>Dispatcher里的promoteCalls方法</h4><p>根据条件是否加入队列并且执行</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/10.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/10.png"></p>
 <h2 id="retrofit"><a href="#retrofit" class="headerlink" title="retrofit"></a>retrofit</h2><ul>
 <li>RESTful的HTTP网络请求框架的封装</li>
 <li>本质是OKHTTP完成，而retrofit仅负责网络请求接口的封装</li>
@@ -357,97 +303,27 @@
 <p>adapterFactories，适配器工厂集合，生产callAdapter网络请求适配器</p>
 <p>Executor，回调方法执行器，子线程切换到主线程</p>
 <p>validateEagerly，是否提前对接口中的注解进行转换</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/11.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/11.png"></p>
 <h4 id="CallAdapter类"><a href="#CallAdapter类" class="headerlink" title="CallAdapter类"></a>CallAdapter类</h4><p>Factory是CallAdapter里的一个抽象类，默认有三种实现。作用是将默认的网络请求适配器OKHTTPCall转换成其他平台的适配器</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/12.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/13.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/12.png"></p>
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/13.png"></p>
 <h4 id="build方法"><a href="#build方法" class="headerlink" title="build方法"></a>build方法</h4><p>完成retrofit对象创建</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/14.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/14.png"></p>
 <h4 id="create方法"><a href="#create方法" class="headerlink" title="create方法"></a>create方法</h4><p>创建网络请求接口实例</p>
 <p>根据标志位判断是否需要提前进行验证，是的话走到eagerlyValidateMethods方法</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/15.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/15.png"></p>
 <p>如果不是提前验证会动态解析，然后得到ServiceMethod对象，再存入到集合中，默认这样，延迟加载</p>
 <p>这里使用了动态代理，动态生成网络请求接口的代理类，交给InvocationHandler处理，由invoke方法执行网络拦截操作</p>
 <p>一旦调用getCall方法就会执行invoke方法，获取所有注解和方法，也就是ServiceMethod对象</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/18.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/19.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="eagerlyValidateMethods方法"><a href="#eagerlyValidateMethods方法" class="headerlink" title="eagerlyValidateMethods方法"></a>eagerlyValidateMethods方法</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/16.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/18.png"></p>
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/19.png"></p>
+<h4 id="eagerlyValidateMethods方法"><a href="#eagerlyValidateMethods方法" class="headerlink" title="eagerlyValidateMethods方法"></a>eagerlyValidateMethods方法</h4><p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/16.png"></p>
 <h4 id="loadServiceMethod方法"><a href="#loadServiceMethod方法" class="headerlink" title="loadServiceMethod方法"></a>loadServiceMethod方法</h4><p>对接口中的每一个方法进行解析，得到一个ServiceMethod对象（有唯一性，对应于网络请求接口方法），method为key传入对应的linkhashmap集合。</p>
 <p>由于每次获取接口实例，都是传入class对象，而class在进程中是唯一的，所以获取它的method实例也是唯一的</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/17.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/17.png"></p>
 <p>使用linkHashMap，是因为调用它的迭代器的next，返回的是最不经常使用的元素，LUR算法的实现</p>
 <h4 id="invoke里的adapt方法"><a href="#invoke里的adapt方法" class="headerlink" title="invoke里的adapt方法"></a>invoke里的adapt方法</h4><p>CallAdapter接口里的方法，有如下实现类，完成子线程主线程之间的切换</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/25.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/25.png"></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
 <li>动态创建网络请求接口的实例</li>
 <li>创建ServiceMethod对象</li>
@@ -457,41 +333,13 @@
 </ul>
 <h3 id="ServiceMethod类"><a href="#ServiceMethod类" class="headerlink" title="ServiceMethod类"></a>ServiceMethod类</h3><p>包含了所有的网络请求参数</p>
 <p>ParameterHandlers，方法参数处理器</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/20.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/20.png"></p>
 <h4 id="Builder方法"><a href="#Builder方法" class="headerlink" title="Builder方法"></a>Builder方法</h4><p>getAnnotations，获取网络请求接口方法里的注释</p>
 <p>getGennericParameterTypes，获取网络请求接口里的参数类型</p>
 <p>getParameterAnnotations，获取网络请求接口方法里的注解内容</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/21.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="build方法-1"><a href="#build方法-1" class="headerlink" title="build方法"></a>build方法</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/22.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/23.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/21.png"></p>
+<h4 id="build方法-1"><a href="#build方法-1" class="headerlink" title="build方法"></a>build方法</h4><p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/22.png"></p>
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/23.png"></p>
 <ul>
 <li>根据返回值类型和方法以及方法的注解从retrofit对象网络请求适配器工厂集合和内容转换器工厂集合，分别获取网络请求适配器和数据转换器</li>
 <li>根据方法的标注对ServiceMethod的域进行赋值</li>
@@ -499,65 +347,23 @@
 </ul>
 <h3 id="OkHttpCall类"><a href="#OkHttpCall类" class="headerlink" title="OkHttpCall类"></a>OkHttpCall类</h3><p>包含了ServiceMethod对象</p>
 <p>rawCall，实际进行网络请求的类</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/24.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/24.png"></p>
 <h3 id="发送请求过程"><a href="#发送请求过程" class="headerlink" title="发送请求过程"></a>发送请求过程</h3><ul>
 <li>对网络请求接口的方法中的每个参数利用对应ParameterHandler进行解析</li>
 <li>使用OkHttp的Request发送网络请求</li>
 <li>对返回的数据使用之前设置的数据转换器解析返回的数据</li>
 <li>进行线程切换在主线程处理返回的数据结果</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/26.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/26.png"></p>
 <p>enqueue方法</p>
 <h4 id="ExecutorCallAdapterFactory类的enqueue方法"><a href="#ExecutorCallAdapterFactory类的enqueue方法" class="headerlink" title="ExecutorCallAdapterFactory类的enqueue方法"></a>ExecutorCallAdapterFactory类的enqueue方法</h4><p>delegate是代理，交给okhttp去实现</p>
 <p>callbackExecutor，进行线程切换</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/27.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="OkHttpCall类-1"><a href="#OkHttpCall类-1" class="headerlink" title="OkHttpCall类"></a>OkHttpCall类</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/28.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/27.png"></p>
+<h4 id="OkHttpCall类-1"><a href="#OkHttpCall类-1" class="headerlink" title="OkHttpCall类"></a>OkHttpCall类</h4><p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/28.png"></p>
 <p>createRawCall方法</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/29.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/29.png"></p>
 <h4 id="Platform类"><a href="#Platform类" class="headerlink" title="Platform类"></a>Platform类</h4><p>线程切换，默认的回调执行器是handler实现的</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/30.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/30.png"></p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>将HTTP请求抽象成java接口</li>
 <li>在接口里用注解来描述和配置网络请求参数</li>
@@ -568,14 +374,7 @@
 <h4 id="trimToSize方法"><a href="#trimToSize方法" class="headerlink" title="trimToSize方法"></a>trimToSize方法</h4><p>判断缓存是否已满，满了获取的是队尾的对象，删除队尾对象</p>
 <h2 id="butterknife"><a href="#butterknife" class="headerlink" title="butterknife"></a>butterknife</h2><p>一个依托Java的注解机制来实现辅助代码生成的框架</p>
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>编译时注解</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/31.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2020/07/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/31.png"></p>
 <ul>
 <li>扫描Java代码中所有的butterknife注解</li>
 <li>butterknifeProcessor 生成 <className>$$ViewBinder</className></li>
@@ -584,179 +383,256 @@
 </ul>
 <h4 id="对性能的影响"><a href="#对性能的影响" class="headerlink" title="对性能的影响"></a>对性能的影响</h4><p>在一些场景下，比如视图注入的过程中，你并不能优化 ButterKnife 的查找。比如一个我们需要找到一个父视图中的数个子视图，如果纯手工写，我们可以先找到父视图，在从父视图中查找子视图。而 ButterKnife 却要每次重新从根视图去查找，效率也是有所下降的。所以说ButterKnife对性能有一定的影响，并且引入了更多的类和方法，增加了安装包的大小。但是，对开发效率的提升也是显而易见的，较少代码冗余和findviewbyid等。</p>
 
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Android%E9%9D%A2%E8%AF%95/">Android面试</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2020/07/25/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E5%B8%B8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"
+                                   title="Android面试-异常及性能优化"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Android面试-异常及性能优化</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2020/07/23/Android%E9%9D%A2%E8%AF%95-%E7%83%AD%E9%97%A8%E5%89%8D%E6%B2%BF%E7%9F%A5%E8%AF%86/"
+                                   title="Android面试-热门前沿知识"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Android面试-热门前沿知识</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
 
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2020-12-10T12:28:19.000Z" itemprop="dateUpdated">2020-12-10 20:28:19</time>
-</span><br>
-
-
         
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android%E9%9D%A2%E8%AF%95/" rel="tag">Android面试</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/07/25/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E5%B8%B8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Android面试-异常及性能优化</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2020/07/23/Android%E9%9D%A2%E8%AF%95-%E7%83%AD%E9%97%A8%E5%89%8D%E6%B2%BF%E7%9F%A5%E8%AF%86/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Android面试-热门前沿知识</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
-
-
 </div>
 
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
 
-
-        <p>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
     </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
         </div>
-    </a>
-</li>
-</template>
+    </div>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
 
 
 
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+<!-- local-search -->
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
 
 

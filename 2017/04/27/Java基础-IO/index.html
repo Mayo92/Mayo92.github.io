@@ -1,301 +1,260 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    
-
-    
-
-    
-
-
-
     <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Java基础-IO | 妙妙屋 | ass♂we♂can</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Keep Team">
     
-    <meta name="theme-color" content="#3F51B5">
+    <title>
+        
+            Java基础-IO |
+        
+        Keep Theme
+    </title>
     
-    
-    <meta name="keywords" content="Java基础IO">
-    <meta name="description" content="IO流概念IO流用来处理设备之间的数据传输。Java对数据的操作是通过流的方式。Java用于操作流的对象都在IO包中。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java基础-IO">
-<meta property="og:url" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/index.html">
-<meta property="og:site_name" content="妙妙屋">
-<meta property="og:description" content="IO流概念IO流用来处理设备之间的数据传输。Java对数据的操作是通过流的方式。Java用于操作流的对象都在IO包中。">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/27.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/28.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/3.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/4.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/5.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/6.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/7.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/8.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/31.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/32.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/9.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/10.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/11.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/12.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/13.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/14.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/33.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/34.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/15.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/29.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/30.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/16.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/17.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/18.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/19.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/20.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/21.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/22.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/23.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/24.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/25.png">
-<meta property="og:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/26.png">
-<meta property="article:published_time" content="2017-04-27T08:15:55.000Z">
-<meta property="article:modified_time" content="2024-06-26T15:58:08.008Z">
-<meta property="article:author" content="Mayo">
-<meta property="article:tag" content="Java基础IO">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/27.png">
-    
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+<link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
     
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpeg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Mayo</h5>
-          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about-me"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Java基础-IO</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Java基础-IO</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2017-04-27T08:15:55.000Z" itemprop="datePublished" class="page-time">
-  2017-04-27
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li></ul>
-
-            
-        </h5>
-    </div>
-
+<div class="progress-bar-container">
     
 
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
 
 </header>
 
 
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IO%E6%B5%81"><span class="post-toc-number">1.</span> <span class="post-toc-text">IO流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA%E6%B5%81"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">输出流</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BE%93%E5%85%A5%E6%B5%81"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">输入流</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IO%E6%B5%81%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%B1%BB"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">IO流常用基类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B0%86%E4%B8%80%E4%BA%9B%E6%96%87%E5%AD%97%E5%AD%98%E5%82%A8%E5%88%B0%E7%A1%AC%E7%9B%98%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">将一些文字存储到硬盘一个文件中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E6%96%87%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">读取一个文文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%8D%E5%88%B6"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">复制</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">字符流的缓冲区</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A3%85%E9%A5%B0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">装饰设计模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A3%85%E9%A5%B0%E5%92%8C%E7%BB%A7%E6%89%BF"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">装饰和继承</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">字节流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#FileInputStream"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">FileInputStream</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#FileOutputStream"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">FileOutputStream</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%AF%BB%E5%8F%96"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">读取</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">转换流</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B5%81%E7%9A%84%E6%93%8D%E4%BD%9C%E8%A7%84%E5%BE%8B"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">流的操作规律</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8C%89%E7%85%A7%E6%8C%87%E5%AE%9A%E7%BC%96%E7%A0%81%E5%86%99%E5%AD%97%E7%AC%A6%E5%88%B0%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">按照指定编码写字符到指定文件中</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">什么时候使用转换流</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81-%E5%AD%97%E8%8A%82%E6%B5%81%E7%BB%A7%E6%89%BF%E4%BD%93%E7%B3%BB%E7%AE%80%E5%9B%BE"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">字符流&#x2F;字节流继承体系简图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81-1"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">字节流</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#File%E7%B1%BB"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">File类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">创建文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#File%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="post-toc-number">1.10.2.</span> <span class="post-toc-text">File对象的常用方法：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#list%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.10.3.</span> <span class="post-toc-text">list方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AD%9B%E9%80%89%E6%8C%87%E5%AE%9A%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.10.4.</span> <span class="post-toc-text">筛选指定格式的文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AD%9B%E9%80%89%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.10.5.</span> <span class="post-toc-text">筛选隐藏文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%92%E5%BD%92"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">递归</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Properties%E9%9B%86%E5%90%88"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">Properties集合</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IO%E5%8C%85%E4%B8%AD%E7%9A%84%E5%85%B6%E4%BB%96%E7%B1%BB"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">IO包中的其他类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%89%93%E5%8D%B0%E6%B5%81"><span class="post-toc-number">1.13.1.</span> <span class="post-toc-text">打印流</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BA%8F%E5%88%97%E6%B5%81"><span class="post-toc-number">1.13.2.</span> <span class="post-toc-text">序列流</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1"><span class="post-toc-number">1.13.3.</span> <span class="post-toc-text">操作对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Serializable"><span class="post-toc-number">1.13.4.</span> <span class="post-toc-text">Serializable</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RandomAccessFile"><span class="post-toc-number">1.13.5.</span> <span class="post-toc-text">RandomAccessFile</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E9%81%93%E6%B5%81"><span class="post-toc-number">1.13.6.</span> <span class="post-toc-text">管道流</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.13.7.</span> <span class="post-toc-text">操作基本数据类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E8%8A%82%E6%95%B0%E7%BB%84"><span class="post-toc-number">1.13.8.</span> <span class="post-toc-text">操作字节数组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BC%96%E7%A0%81%E8%A1%A8"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">编码表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="post-toc-number">1.14.1.</span> <span class="post-toc-text">字符集</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%A4%E7%A7%8D%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="post-toc-number">1.14.2.</span> <span class="post-toc-text">两种编码方式</span></a></li></ol></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Java基础-IO"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Java基础-IO</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2017-04-27 16:15:55" datetime="2017-04-27T08:15:55.000Z"  itemprop="datePublished">2017-04-27</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>IO流用来处理设备之间的数据传输。Java对数据的操作是通过流的方式。Java用于操作流的对象都在IO包中。</p>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Java基础-IO
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2017-04-27 16:15:55</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jun 26 2024 23:58:08 GMT+0800">2024-06-26 23:58:08</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">Java基础IO</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>IO流用来处理设备之间的数据传输。Java对数据的操作是通过流的方式。Java用于操作流的对象都在IO包中。</p>
 <span id="more"></span>
 
 <p>输入流和输出流相对于内存设备而言。</p>
 <p>将外设中的数据读取到内存中：输入。将内存的数写入到外设中：输出。</p>
 <p>流按操作数据分为两种：字节流与字符流。</p>
 <p>字符流的由来：字节流读取文字字节数据后，不直接操作而是先查指定的编码表，获取对应的文字。再对这个文字进行操作。简单说：字节流+编码表。</p>
-<h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/27.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/28.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/27.png"></p>
+<h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/28.png"></p>
 <h3 id="IO流常用基类"><a href="#IO流常用基类" class="headerlink" title="IO流常用基类"></a>IO流常用基类</h3><p>字节流的抽象基类：InputStream，OutputStream。</p>
 <p>字符流的抽象基类：Reader，Writer。</p>
 <p>由这四个类派生出来的子类名称都是以其父类名作为子类名的后缀：InputStream的子类FileInputStream、Reader的子类FileReader</p>
-<h4 id="将一些文字存储到硬盘一个文件中"><a href="#将一些文字存储到硬盘一个文件中" class="headerlink" title="将一些文字存储到硬盘一个文件中"></a>将一些文字存储到硬盘一个文件中</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/3.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="将一些文字存储到硬盘一个文件中"><a href="#将一些文字存储到硬盘一个文件中" class="headerlink" title="将一些文字存储到硬盘一个文件中"></a>将一些文字存储到硬盘一个文件中</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/3.png"></p>
 <ol>
 <li>close方法只能用一次。</li>
 <li>流关闭以后不能，不能再调用write方法，否则会报异常错误</li>
 <li>如果FileWriter构造函数中加入true，可以实现对文件进行续写。</li>
 </ol>
 <h4 id="读取一个文文件"><a href="#读取一个文文件" class="headerlink" title="读取一个文文件"></a>读取一个文文件</h4><p>第一种读取方式：使用read()方法读取文本文件数据。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/4.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/5.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/4.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/5.png"></p>
 <p>第二种读取方式：使用read(char[])方法读取文本文件数据。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/6.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/6.png"></p>
 <h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>方式1：使用read()读取文本文件数据。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/7.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/7.png"></p>
 <p>方式2：使用read(char[])读取文本文件数据。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/8.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/8.png"></p>
 <h3 id="字符流的缓冲区"><a href="#字符流的缓冲区" class="headerlink" title="字符流的缓冲区"></a>字符流的缓冲区</h3><p>缓冲区的出现提高了对数据的读写效率。</p>
 <p>对应类：BufferedWriter、BufferedReader</p>
 <p>缓冲区要结合流才可以使用。</p>
@@ -378,60 +337,18 @@
 <li>从文件系统中的某个文件中获得输入字节</li>
 <li>用于读取诸如图像数据之类的原始字节流</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/31.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/32.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/9.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/10.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/11.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/31.png"></p>
+<h4 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/32.png"></p>
+<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/9.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/10.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/11.png"></p>
 <p>FileOutputStream、FileInputStream的flush方法内容为空，没有任何实现，调用没有意义。</p>
 <p>字节流的缓冲区：同样是提高了字节流的读写效率。</p>
 <h3 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h3><p>转换流的由来：字符流与字节流之间的桥梁，方便了字符流与字节流之间的操作</p>
 <p>转换流的应用：字节流中的数据都是字符时，转成字符流操作更高效。</p>
 <p>InputStreamReader：字节到字符的桥梁，解码。</p>
 <p>OutputStreamWriter：字符到字节的桥梁，编码。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/12.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/12.png"></p>
 <h3 id="流的操作规律"><a href="#流的操作规律" class="headerlink" title="流的操作规律"></a>流的操作规律</h3><p>1、明确源和目的</p>
 <p>源：InputStream Reader</p>
 <p>目的：OutputStream Writer</p>
@@ -443,14 +360,7 @@
 <p>目的设备：硬盘：File、控制台：System.out、内存：数组、网络：Socket流</p>
 <p>4、是否需要其他额外功能</p>
 <p>是否需要高效（缓冲区）：是，就加上buffer</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/13.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/13.png"></p>
 <p>UTF-8编码，一个中文三个字节。</p>
 <h4 id="按照指定编码写字符到指定文件中"><a href="#按照指定编码写字符到指定文件中" class="headerlink" title="按照指定编码写字符到指定文件中"></a>按照指定编码写字符到指定文件中</h4><p>如果需求中已经明确指定了编码表。那就不可以使用FileWriter，因为FileWriter内部使用的默认的本地码表。只能使用其父类，OutputStreamWriter。</p>
 <p>OutputStreamWriter接收一个字节输出流对象，既然是操作文件，那么该对象应该是FileOutputStream。</p>
@@ -463,130 +373,39 @@
 <li>源或者目的对应的设备是字节流，但是操作的却是文本数据，可以使用转换作为桥梁，提高对文本操作的便捷</li>
 <li>一旦操作文本涉及到具体的指定编码表时，必须使用转换流</li>
 </ol>
-<h3 id="字符流-字节流继承体系简图"><a href="#字符流-字节流继承体系简图" class="headerlink" title="字符流&#x2F;字节流继承体系简图"></a>字符流&#x2F;字节流继承体系简图</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/14.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/33.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/34.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<h4 id="字节流-1"><a href="#字节流-1" class="headerlink" title="字节流"></a>字节流</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/15.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/29.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/30.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h3 id="字符流-字节流继承体系简图"><a href="#字符流-字节流继承体系简图" class="headerlink" title="字符流&#x2F;字节流继承体系简图"></a>字符流&#x2F;字节流继承体系简图</h3><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/14.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/33.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/34.png"></p>
+<h4 id="字节流-1"><a href="#字节流-1" class="headerlink" title="字节流"></a>字节流</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/15.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/29.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/30.png"></p>
 <h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>文件可认为是相关记录或放在一起的数据的集合</p>
 <p>File类用来将文件或者文件夹封装成对象，方便对文件与文件夹的属性信息进行操作。</p>
 <p>File对象可以作为参数传递给流的构造函数。</p>
 <p>流只能操作数据，不能操作文件。</p>
-<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/16.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/16.png"></p>
 <h4 id="File对象的常用方法："><a href="#File对象的常用方法：" class="headerlink" title="File对象的常用方法："></a>File对象的常用方法：</h4><p>1、获取</p>
 <p>获取文件名称、获取文件路径、获取文件大小、获取文件修改时间</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/17.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/17.png"></p>
 <p>2、创建和删除</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/18.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/18.png"></p>
 <p>3、判断</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/19.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/19.png"></p>
 <p>4、重命名</p>
 <pre><code>boolean b = f1.renameTo(f2);
 </code></pre>
 <p>5、系统根目录和容量获取</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/20.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/20.png"></p>
 <h4 id="list方法"><a href="#list方法" class="headerlink" title="list方法"></a>list方法</h4><ul>
 <li>获取目录下的文件以及文件夹的名称，包含隐藏文件</li>
 <li>调用list方法的File对象中封装的必须是目录，否则会产生NullPointerException</li>
 <li>如果访问的是系统级目录也会发生空指针异常</li>
 <li>如果目录存在但是没有内容，会返回一个数组，但是长度为0</li>
 </ul>
-<h4 id="筛选指定格式的文件"><a href="#筛选指定格式的文件" class="headerlink" title="筛选指定格式的文件"></a>筛选指定格式的文件</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/21.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="筛选指定格式的文件"><a href="#筛选指定格式的文件" class="headerlink" title="筛选指定格式的文件"></a>筛选指定格式的文件</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/21.png"></p>
 <pre><code>String[] names = dir.list( new SuffixFilter(&quot;.java&quot; ));
 </code></pre>
-<h4 id="筛选隐藏文件"><a href="#筛选隐藏文件" class="headerlink" title="筛选隐藏文件"></a>筛选隐藏文件</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/22.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="筛选隐藏文件"><a href="#筛选隐藏文件" class="headerlink" title="筛选隐藏文件"></a>筛选隐藏文件</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/22.png"></p>
 <h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>函数自身直接或者间接的调用到了自身。</p>
 <p>一个功能在被重复使用，并每次使用时，参与运算的结果和上一次调用有关。这时可以用递归来解决问题。</p>
 <ol>
@@ -640,40 +459,12 @@
 </ol>
 <h4 id="序列流"><a href="#序列流" class="headerlink" title="序列流"></a>序列流</h4><p>SequenceInputStream：对多个流进行合并。</p>
 <p>文件切割</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/23.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/23.png"></p>
 <h4 id="操作对象"><a href="#操作对象" class="headerlink" title="操作对象"></a>操作对象</h4><p>ObjectInputStream与ObjectOutputStream</p>
 <p>writeObject方法不能写入类及其所有超类型的瞬态和静态字段的值。</p>
-<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/24.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/25.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/26.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
+<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/24.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/25.png"></p>
+<p><img src="/2017/04/27/Java%E5%9F%BA%E7%A1%80-IO/26.png"></p>
 <h4 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h4><p>随机访问文件，自身具备读写的方法。</p>
 <p>通过skipBytes(int x),seek(int x)等方法来达到随机访问。</p>
 <p>特点：</p>
@@ -710,179 +501,256 @@
 <li>UTF-32采用4字节编码，一方面处理速度比较快，但另一方面也浪费了大量空间，影响输速度，因而很少使用。</li>
 </ul>
 
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java%E5%9F%BA%E7%A1%80IO/">Java基础IO</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2017/04/28/Java%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"
+                                   title="Java基础-网络编程"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java基础-网络编程</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2017/04/27/Java%E5%9F%BA%E7%A1%80-%E5%85%B6%E4%BB%96API/"
+                                   title="Java基础-其他API"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java基础-其他API</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
 
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2024-06-26T15:58:08.008Z" itemprop="dateUpdated">2024-06-26 23:58:08</time>
-</span><br>
-
-
         
     </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpeg" alt="Mayo">
-            Mayo
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80IO/" rel="tag">Java基础IO</a></li></ul>
-
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/04/28/Java%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Java基础-网络编程</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/04/27/Java%E5%9F%BA%E7%A1%80-%E5%85%B6%E4%BB%96API/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Java基础-其他API</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
-
-
 </div>
 
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
 
-
-        <p>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Mayo &copy; 2015 - 2024</span>
-            <span>
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
     </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
         </div>
-    </a>
-</li>
-</template>
+    </div>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
 
 
 
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+<!-- local-search -->
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'oh♂I'm♂fucking♂coming';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
 
 
