@@ -1,43 +1,220 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <title>妙妙屋</title>
-  <link rel="shortcut icon" href="/images/favicon.ico"> 
-<link rel="stylesheet" href="/css/style.css">
- 
-<script src="/js/jquery.js"></script>
- 
-<script src="/js/search.js"></script>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Gradle-核心语法-数据结构 | 妙妙屋 | ass♂we♂can</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Gradle语法">
+    <meta name="description" content="数据结构1.groovy中列表详解                                                                                                            1.1 列表的定义列表声明和初始化 &#x2F;&#x2F;def list &#x3D; new ArrayList()&#x2F;&#x2F;java定义方式 def list &#x3D; [1,2,3,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle-核心语法-数据结构">
+<meta property="og:url" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="妙妙屋">
+<meta property="og:description" content="数据结构1.groovy中列表详解                                                                                                            1.1 列表的定义列表声明和初始化 &#x2F;&#x2F;def list &#x3D; new ArrayList()&#x2F;&#x2F;java定义方式 def list &#x3D; [1,2,3,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/47.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/48.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/49.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/50.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/51.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/52.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/53.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/54.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/55.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/56.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/57.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/58.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/59.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/60.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/61.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/62.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/63.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/64.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/65.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/66.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/67.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/68.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/69.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/70.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/71.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/72.png">
+<meta property="article:published_time" content="2018-05-21T05:23:24.000Z">
+<meta property="article:modified_time" content="2020-04-09T06:23:37.000Z">
+<meta property="article:author" content="Mayo">
+<meta property="article:tag" content="Gradle语法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/47.png">
+    
+    <link rel="shortcut icon" href="/">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body>
-  <article class="article-container">
-  <section class="header-container">
-  <a class="header-title" href="/">
-    <svg t="1693387181307" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" width="20" height="20">
-      <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="4054" fill="#515151"></path>
-    </svg>
-    <span>妙妙屋</span>
-  </a>
-</section>
-  <section class="article-body">
-    <div class="post-toc">
-      <h3>本文目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-groovy%E4%B8%AD%E5%88%97%E8%A1%A8%E8%AF%A6%E8%A7%A3"><span class="toc-text">1.groovy中列表详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1 列表的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">定义数组的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%88%97%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">1.2 列表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-text">添加元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-text">删除元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">列表排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%9F%A5%E6%89%BE"><span class="toc-text">列表查找</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-groovy%E4%B8%AD%E6%98%A0%E5%B0%84%E8%AF%A6%E8%A7%A3%EF%BC%88Map%EF%BC%89"><span class="toc-text">2.groovy中映射详解（Map）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%9A%E4%B9%89"><span class="toc-text">2.1 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%98%A0%E5%B0%84%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">2.2 映射的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E5%80%BC"><span class="toc-text">获取元素值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%EF%BC%88%E6%B2%A1%E6%9C%89%E8%AF%A5key%E6%97%B6%E6%B7%BB%E5%8A%A0%EF%BC%89"><span class="toc-text">添加元素（没有该key时添加）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86"><span class="toc-text">遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-text">查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-groovy%E4%B8%AD%E8%8C%83%E5%9B%B4%E8%AF%A6%E8%A7%A3"><span class="toc-text">3.groovy中范围详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%AE%9A%E4%B9%89"><span class="toc-text">3.1 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%BD%BF%E7%94%A8"><span class="toc-text">3.2 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-1"><span class="toc-text">遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#switch-case"><span class="toc-text">switch&#x2F;case</span></a></li></ol></li></ol></li></ol>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mayo</h5>
+          <a href="mailto:yaoluyang92@gmail.com" title="yaoluyang92@gmail.com" class="mail">yaoluyang92@gmail.com</a>
+        </hgroup>
+      </div>
     </div>
-    <div class="post-container">
-      <div class="post-title">
-        <h2 class="title">
-          Gradle-核心语法-数据结构
-        </h2>
-      </div>
-      <div class="post-meta">
-      </div>
-      <div class="post-content">
-        <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h2 id="1-groovy中列表详解"><a href="#1-groovy中列表详解" class="headerlink" title="1.groovy中列表详解"></a>1.groovy中列表详解</h2><p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/47.png"></p>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Gradle-核心语法-数据结构</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Gradle-核心语法-数据结构</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-21T05:23:24.000Z" itemprop="datePublished" class="page-time">
+  2018-05-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-groovy%E4%B8%AD%E5%88%97%E8%A1%A8%E8%AF%A6%E8%A7%A3"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.groovy中列表详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.1 列表的定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">定义数组的方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-%E5%88%97%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2 列表的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">添加元素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">删除元素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%97%E8%A1%A8%E6%8E%92%E5%BA%8F"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">列表排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%97%E8%A1%A8%E6%9F%A5%E6%89%BE"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">列表查找</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-groovy%E4%B8%AD%E6%98%A0%E5%B0%84%E8%AF%A6%E8%A7%A3%EF%BC%88Map%EF%BC%89"><span class="post-toc-number">3.</span> <span class="post-toc-text">2.groovy中映射详解（Map）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-%E5%AE%9A%E4%B9%89"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">2.1 定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-%E6%98%A0%E5%B0%84%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.2 映射的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E5%80%BC"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">获取元素值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%EF%BC%88%E6%B2%A1%E6%9C%89%E8%AF%A5key%E6%97%B6%E6%B7%BB%E5%8A%A0%EF%BC%89"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">添加元素（没有该key时添加）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%81%8D%E5%8E%86"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">查找</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">排序</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-groovy%E4%B8%AD%E8%8C%83%E5%9B%B4%E8%AF%A6%E8%A7%A3"><span class="post-toc-number">4.</span> <span class="post-toc-text">3.groovy中范围详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-%E5%AE%9A%E4%B9%89"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">3.1 定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-%E4%BD%BF%E7%94%A8"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">3.2 使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%81%8D%E5%8E%86-1"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#switch-case"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">switch&#x2F;case</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Gradle-核心语法-数据结构"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Gradle-核心语法-数据结构</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-21 13:23:24" datetime="2018-05-21T05:23:24.000Z"  itemprop="datePublished">2018-05-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gradle/">Gradle</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h2 id="1-groovy中列表详解"><a href="#1-groovy中列表详解" class="headerlink" title="1.groovy中列表详解"></a>1.groovy中列表详解</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/47.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="1-1-列表的定义"><a href="#1-1-列表的定义" class="headerlink" title="1.1 列表的定义"></a>1.1 列表的定义</h3><p>列表声明和初始化</p>
 <pre><code>//def list = new ArrayList()//java定义方式
 def list = [1,2,3,4,5]
@@ -147,7 +324,14 @@ def colors2 = [red:&#39;ff0000&#39;,green:&#39;00ff00&#39;,
 //不可使用这种方法，此时class为key
 println colors2.class
 </code></pre>
-<p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/56.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/56.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="2-2-映射的操作"><a href="#2-2-映射的操作" class="headerlink" title="2.2 映射的操作"></a>2.2 映射的操作</h3><h4 id="获取元素值"><a href="#获取元素值" class="headerlink" title="获取元素值"></a>获取元素值</h4><pre><code>println colors[&#39;red&#39;]
 println colors.green
 </code></pre>
@@ -189,9 +373,30 @@ students.eachWithIndex &#123; key,value,index -&gt;
 &#125;
 </code></pre>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/59.png"></p>
-<p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/60.png"></p>
-<p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/61.png"></p>
-<p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/62.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/60.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/61.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/62.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><pre><code>//第一个符合条件的
 def entry = students.find &#123;def student -&gt;
     return student.value.score &gt;= 60&#125;
@@ -233,8 +438,22 @@ println group.toMapString()
 &#125;
 println sort
 </code></pre>
-<p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/68.png"></p>
-<h2 id="3-groovy中范围详解"><a href="#3-groovy中范围详解" class="headerlink" title="3.groovy中范围详解"></a>3.groovy中范围详解</h2><p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/69.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/68.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="3-groovy中范围详解"><a href="#3-groovy中范围详解" class="headerlink" title="3.groovy中范围详解"></a>3.groovy中范围详解</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/69.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义"></a>3.1 定义</h3><pre><code>def range = 1..10
 println range[0]
 println range.contains(10)
@@ -272,25 +491,181 @@ println result
 </code></pre>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/72.png"></p>
 
-      </div>
-    </div>
-  </section>
-</article>
-<!-- go-top -->
-<a id="goTop" class="go-top" type="button">
-  <svg t="1693380723883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3999" width="20" height="20">
-    <path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328zM864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z" fill="#ffffff" p-id="4000"></path>
-  </svg>
-</a>
-<script>
-  goTop.addEventListener('click', function(e) {
-    document.querySelector('.post-container').scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  });
-</script>
-</body>
+        </div>
 
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-09T06:23:37.000Z" itemprop="dateUpdated">2020-04-09 14:23:37</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpeg" alt="Mayo">
+            Mayo
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle%E8%AF%AD%E6%B3%95/" rel="tag">Gradle语法</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/22/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Gradle-核心语法-面向对象</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Gradle-核心语法-闭包</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mayo &copy; 2015 - 2024</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'oh♂I'm♂fucking♂coming';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
 </html>
