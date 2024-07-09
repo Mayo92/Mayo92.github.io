@@ -33,7 +33,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"/img/avatar.jpeg","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -95,6 +95,16 @@
                         
                         <li class="menu-item">
                             <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
                                href="/categories"
                             >
                                 
@@ -144,6 +154,13 @@
                 
                 <li class="drawer-menu-item flex-center">
                     <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
                        href="/categories"
                     >分类</a>
                 </li>
@@ -187,7 +204,7 @@
                     <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/img/avatar.jpeg">
+                                <img src="https://avatars.githubusercontent.com/u/16527293?v=4">
                             </div>
                         
                         <div class="info-box">
@@ -309,7 +326,7 @@ arch -x86_64 /bin/bash $DIR/build/ndk-build &quot;$@&quot;
 <p>8.打开要激活的软件对应的文本复制，粘贴到软件ActivationCode处，点击Activate</p>
 <h4 id="key-is-invalid"><a href="#key-is-invalid" class="headerlink" title="key is invalid"></a>key is invalid</h4><p>1.进入micool_macconfig，configfile，jetbra，找到ja-netfilter.jar</p>
 <p>2.拖入终端，复制路径</p>
-<p>3.先用临时账户激活 <a class="link" href="mailto:&#x31;&#49;&#x34;&#56;&#54;&#x39;&#54;&#x36;&#51;&#57;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#x31;&#49;&#x34;&#56;&#54;&#x39;&#54;&#x36;&#51;&#57;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>密码99936869wu</p>
+<p>3.先用临时账户激活 <a class="link" href="mailto:&#x31;&#x31;&#x34;&#56;&#54;&#57;&#54;&#x36;&#x33;&#x39;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#x31;&#x31;&#x34;&#56;&#54;&#57;&#54;&#x36;&#x33;&#x39;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>密码99936869wu</p>
 <p>4.打开软件help，edit custom vm options</p>
 <p>5.输入<br>–add-opens&#x3D;java.base&#x2F;jdk.internal.org.objectweb.asm&#x3D;ALL-UNNAMED<br>–add-opens&#x3D;java.base&#x2F;jdk.internal.org.objectweb.asm.tree&#x3D;ALL-UNNAMED<br>再加一行上面jar包路径，-javaagent:填ja-netfilter.jar的路径&#x3D;jetbrains</p>
 <p>6.重启软件，输入软件对应激活码</p>
@@ -411,7 +428,7 @@ arch -x86_64 /bin/bash $DIR/build/ndk-build &quot;$@&quot;
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        &copy;&nbsp;<span>2017</span>&nbsp;-&nbsp;2024
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Mayo</a>
         

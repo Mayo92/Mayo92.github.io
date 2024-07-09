@@ -33,7 +33,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"/img/avatar.jpeg","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -95,6 +95,16 @@
                         
                         <li class="menu-item">
                             <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
                                href="/categories"
                             >
                                 
@@ -144,6 +154,13 @@
                 
                 <li class="drawer-menu-item flex-center">
                     <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
                        href="/categories"
                     >分类</a>
                 </li>
@@ -187,7 +204,7 @@
                     <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/img/avatar.jpeg">
+                                <img src="https://avatars.githubusercontent.com/u/16527293?v=4">
                             </div>
                         
                         <div class="info-box">
@@ -210,7 +227,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 26 2024 15:51:52 GMT+0800">2024-06-26 15:51:52</span>
+                <span class="datetime" data-updated="Tue Jul 09 2024 23:54:46 GMT+0800">2024-07-09 23:54:46</span>
             </span>
         
 
@@ -254,14 +271,13 @@
                     
 
                     
-                         <h4 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1. 准备环境"></a>1. 准备环境</h4><h5 id="安装nodejs，查看node版本："><a href="#安装nodejs，查看node版本：" class="headerlink" title="安装nodejs，查看node版本："></a>安装nodejs，查看node版本：</h5><pre><code>node -v
-</code></pre>
+                         <h4 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1. 准备环境"></a>1. 准备环境</h4><h5 id="安装nodejs，查看node版本："><a href="#安装nodejs，查看node版本：" class="headerlink" title="安装nodejs，查看node版本："></a>安装nodejs，查看node版本：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
-<h5 id="安装git，查看git版本："><a href="#安装git，查看git版本：" class="headerlink" title="安装git，查看git版本："></a>安装git，查看git版本：</h5><pre><code>git --version
-</code></pre>
-<h5 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h5><h5 id="npm安装Hexo："><a href="#npm安装Hexo：" class="headerlink" title="npm安装Hexo："></a>npm安装Hexo：</h5><pre><code>sudo npm install -g hexo(官网有坑)
-</code></pre>
+<h5 id="安装git，查看git版本："><a href="#安装git，查看git版本：" class="headerlink" title="安装git，查看git版本："></a>安装git，查看git版本：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h5><h5 id="npm安装Hexo："><a href="#npm安装Hexo：" class="headerlink" title="npm安装Hexo："></a>npm安装Hexo：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo(官网有坑)</span><br></pre></td></tr></table></figure>
+
 <h5 id="初始化，在指定目录创建所需要的文件："><a href="#初始化，在指定目录创建所需要的文件：" class="headerlink" title="初始化，在指定目录创建所需要的文件："></a>初始化，在指定目录创建所需要的文件：</h5><ul>
 <li>hexo init &lt;文件夹名称&gt; </li>
 <li>cd &lt;文件夹名称&gt; </li>
@@ -274,52 +290,21 @@
 <li>source 资源文件夹. _posts 目录下为你已经发表的文章. _drafts 目录下为你存放的草稿文章.</li>
 <li>themes 主题文件夹</li>
 </ul>
-<h4 id="2-关联GitHub"><a href="#2-关联GitHub" class="headerlink" title="2. 关联GitHub"></a>2. 关联GitHub</h4><h5 id="设置SSH"><a href="#设置SSH" class="headerlink" title="设置SSH"></a>设置SSH</h5><h5 id="新建项目，名称为用户名-github-io"><a href="#新建项目，名称为用户名-github-io" class="headerlink" title="新建项目，名称为用户名.github.io"></a>新建项目，名称为用户名.github.io</h5><h5 id="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"><a href="#输入git上传插件安装代码（安装时会提示输入github用户名及密码）" class="headerlink" title="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"></a>输入git上传插件安装代码（安装时会提示输入github用户名及密码）</h5><pre><code>npm install hexo-deployer-git --save
-</code></pre>
-<h5 id="在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错"><a href="#在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错" class="headerlink" title="在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)"></a>在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)</h5><pre><code>deploy:
-      type: git
-      repository:
-            github: https://github.com/jikaipenggithub/jikaipenggithub.github.io
-      branch: master
-      
-</code></pre>
-<h5 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h5><pre><code>hexo clean
-hexo g
-hexo d
-</code></pre>
-<h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http:&#x2F;&#x2F;你的用户名.github.io"></a>打开http:&#x2F;&#x2F;你的用户名.github.io</h5><h4 id="3-安装主题"><a href="#3-安装主题" class="headerlink" title="3. 安装主题"></a>3. 安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><pre><code>$ git clone https://github.com/iissnan/hexo-theme-next themes/next
-</code></pre>
-<h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><pre><code>hexo clean //清除缓存文件 (db.json) 和已生成的静态文件 (public)
-hexo g //生成缓存和静态文件
-hexo d //重新部署到服务器
-</code></pre>
-<h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog&#x2F;_config.yml文件和blog&#x2F;themes&#x2F;next&#x2F;_config.yml文件中对应的属性名称"></a>修改blog&#x2F;_config.yml文件和blog&#x2F;themes&#x2F;next&#x2F;_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog&#x2F;themes&#x2F;next&#x2F; 下执行命令 git pull 更新主题"></a>cd 到 blog&#x2F;themes&#x2F;next&#x2F; 下执行命令 git pull 更新主题</h5><h4 id="4-新建与更新博客"><a href="#4-新建与更新博客" class="headerlink" title="4. 新建与更新博客"></a>4. 新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><pre><code>hexo new &#39;filename&#39;
-</code></pre>
-<h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg&#x2F;source&#x2F;_posts&#x2F;下面会看到新建的博客"></a>在bolg&#x2F;source&#x2F;_posts&#x2F;下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre><code>title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot; #博文题目
-date: 2014-11-21 11:25:38 #生成时间
-tags: #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]
-- tag1
-- tag2
-- tag3
-categories: [cat1,cat2,cat3]
----
-</code></pre>
-<h5 id="如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加"><a href="#如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加" class="headerlink" title="如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加"></a>如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加</h5><pre><code>&lt;!--more--&gt;
-</code></pre>
-<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><pre><code>hexo clean
-hexo g
-hexo d
-</code></pre>
-<h4 id="5-Bug"><a href="#5-Bug" class="headerlink" title="5. Bug"></a>5. Bug</h4><h5 id="本地图片不显示"><a href="#本地图片不显示" class="headerlink" title="本地图片不显示"></a>本地图片不显示</h5><pre><code>1.配置_config.yml里面的post_asset_folder:false这个选项设置为true。(不是主题配置)
-2.安装修改后的插件npm install https://github.com/7ym0n/hexo-asset-image --save(hexo-asset-image插件hexo3版本后有问题)
-npm install https://github.com/CodeFalling/hexo-asset-image --save，新版用这个
-3.运行hexo new &#39;filename&#39;来生成md博文时，/source/_posts文件夹内除了&#39;filename&#39;.md文件还有一个同名的文件夹，把图片放入该文件
-4.最后添加图片![](filename/图片名.jpg)如不显示则使用![](图片名.jpg)，但这样本地则不会显示
-</code></pre>
-<h5 id="error-RPC-failed-curl-55-SSL-write-returned-SYSCALL-errno-32"><a href="#error-RPC-failed-curl-55-SSL-write-returned-SYSCALL-errno-32" class="headerlink" title="error: RPC failed; curl 55 SSL_write() returned SYSCALL, errno &#x3D; 32"></a>error: RPC failed; curl 55 SSL_write() returned SYSCALL, errno &#x3D; 32</h5><pre><code>// 加大缓存
-git config --global http.postBuffer 524288000
-</code></pre>
+<h4 id="2-关联GitHub"><a href="#2-关联GitHub" class="headerlink" title="2. 关联GitHub"></a>2. 关联GitHub</h4><h5 id="设置SSH"><a href="#设置SSH" class="headerlink" title="设置SSH"></a>设置SSH</h5><h5 id="新建项目，名称为用户名-github-io"><a href="#新建项目，名称为用户名-github-io" class="headerlink" title="新建项目，名称为用户名.github.io"></a>新建项目，名称为用户名.github.io</h5><h5 id="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"><a href="#输入git上传插件安装代码（安装时会提示输入github用户名及密码）" class="headerlink" title="输入git上传插件安装代码（安装时会提示输入github用户名及密码）"></a>输入git上传插件安装代码（安装时会提示输入github用户名及密码）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
+<h5 id="在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错"><a href="#在-config-yml中最后添加-在配置所有的-config-yml文件时（包括theme中的），在所有的冒号-后边都要加一个空格，否则执行hexo命令会报错" class="headerlink" title="在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)"></a>在_config.yml中最后添加(在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错.)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"> 		type: git</span><br><span class="line"> 		repository:</span><br><span class="line">           	github: https://github.com/jikaipenggithub/jikaipenggithub.github.io</span><br><span class="line"> 		branch: master</span><br></pre></td></tr></table></figure>
+<h5 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h5 id="打开http-你的用户名-github-io"><a href="#打开http-你的用户名-github-io" class="headerlink" title="打开http:&#x2F;&#x2F;你的用户名.github.io"></a>打开http:&#x2F;&#x2F;你的用户名.github.io</h5><h4 id="3-安装主题"><a href="#3-安装主题" class="headerlink" title="3. 安装主题"></a>3. 安装主题</h4><h5 id="cd到blog-目录下执行如下命令："><a href="#cd到blog-目录下执行如下命令：" class="headerlink" title="cd到blog 目录下执行如下命令："></a>cd到blog 目录下执行如下命令：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<h5 id="将blog目录下-config-yml里theme的名称landscape修改为next"><a href="#将blog目录下-config-yml里theme的名称landscape修改为next" class="headerlink" title="将blog目录下_config.yml里theme的名称landscape修改为next"></a>将blog目录下_config.yml里theme的名称landscape修改为next</h5><h5 id="cd到blog目录下执行如下命令-每次部署文章的步骤-："><a href="#cd到blog目录下执行如下命令-每次部署文章的步骤-：" class="headerlink" title="cd到blog目录下执行如下命令(每次部署文章的步骤)："></a>cd到blog目录下执行如下命令(每次部署文章的步骤)：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean //清除缓存文件 (db.json) 和已生成的静态文件 (public)</span><br><span class="line">hexo g //生成缓存和静态文件</span><br><span class="line">hexo d //重新部署到服务器</span><br></pre></td></tr></table></figure>
+<h5 id="修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称"><a href="#修改blog-config-yml文件和blog-themes-next-config-yml文件中对应的属性名称" class="headerlink" title="修改blog&#x2F;_config.yml文件和blog&#x2F;themes&#x2F;next&#x2F;_config.yml文件中对应的属性名称"></a>修改blog&#x2F;_config.yml文件和blog&#x2F;themes&#x2F;next&#x2F;_config.yml文件中对应的属性名称</h5><h5 id="cd-到-blog-themes-next-下执行命令-git-pull-更新主题"><a href="#cd-到-blog-themes-next-下执行命令-git-pull-更新主题" class="headerlink" title="cd 到 blog&#x2F;themes&#x2F;next&#x2F; 下执行命令 git pull 更新主题"></a>cd 到 blog&#x2F;themes&#x2F;next&#x2F; 下执行命令 git pull 更新主题</h5><h4 id="4-新建与更新博客"><a href="#4-新建与更新博客" class="headerlink" title="4. 新建与更新博客"></a>4. 新建与更新博客</h4><h5 id="bolg文件下"><a href="#bolg文件下" class="headerlink" title="bolg文件下"></a>bolg文件下</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#x27;filename&#x27;</span><br></pre></td></tr></table></figure>
+<h5 id="在bolg-source-posts-下面会看到新建的博客"><a href="#在bolg-source-posts-下面会看到新建的博客" class="headerlink" title="在bolg&#x2F;source&#x2F;_posts&#x2F;下面会看到新建的博客"></a>在bolg&#x2F;source&#x2F;_posts&#x2F;下面会看到新建的博客</h5><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: &quot;It Starts with iGaze: Visual Attention Driven Networkingwith Smart Glasses&quot; #博文题目</span><br><span class="line">date: 2014-11-21 11:25:38 #生成时间</span><br><span class="line">tags: #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]</span><br><span class="line">- tag1</span><br><span class="line">- tag2</span><br><span class="line">- tag3</span><br><span class="line">categories: [cat1,cat2,cat3]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h5 id="如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加"><a href="#如果不想博文在首页全部显示-并能出现阅读全文按钮效果-需要在你想在首页显示的部分下添加" class="headerlink" title="如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加"></a>如果不想博文在首页全部显示, 并能出现阅读全文按钮效果, 需要在你想在首页显示的部分下添加</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Bug"><a href="#5-Bug" class="headerlink" title="5. Bug"></a>5. Bug</h4><h5 id="本地图片不显示"><a href="#本地图片不显示" class="headerlink" title="本地图片不显示"></a>本地图片不显示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.配置_config.yml里面的post_asset_folder:false这个选项设置为true。(不是主题配置)</span><br><span class="line">2.安装修改后的插件npm install https://github.com/7ym0n/hexo-asset-image --save(hexo-asset-image插件hexo3版本后有问题)</span><br><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save，新版用这个</span><br><span class="line">3.运行hexo new &#x27;filename&#x27;来生成md博文时，/source/_posts文件夹内除了&#x27;filename&#x27;.md文件还有一个同名的文件夹，把图片放入该文件</span><br><span class="line">4.最后添加图片![](filename/图片名.jpg)如不显示则使用![](图片名.jpg)，但这样本地则不会显示</span><br></pre></td></tr></table></figure>
+<h5 id="error-RPC-failed-curl-55-SSL-write-returned-SYSCALL-errno-32"><a href="#error-RPC-failed-curl-55-SSL-write-returned-SYSCALL-errno-32" class="headerlink" title="error: RPC failed; curl 55 SSL_write() returned SYSCALL, errno &#x3D; 32"></a>error: RPC failed; curl 55 SSL_write() returned SYSCALL, errno &#x3D; 32</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 加大缓存</span><br><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
                     
                 </div>
 
@@ -401,7 +386,7 @@ git config --global http.postBuffer 524288000
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        &copy;&nbsp;<span>2017</span>&nbsp;-&nbsp;2024
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Mayo</a>
         
