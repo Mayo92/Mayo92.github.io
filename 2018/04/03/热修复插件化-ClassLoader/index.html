@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Jul 27 2020 11:39:44 GMT+0800">2020-07-27 11:39:44</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 13:30:49 GMT+0800">2024-07-11 13:30:49</span>
             </span>
         
 
@@ -264,16 +264,7 @@
 <li>BaseDexClassLoader：Path、Dex的父类</li>
 </ul>
 <p>一个应用至少要用到BootClassLoader、PathClassLoader</p>
-<pre><code>    ClassLoader classLoader = getClassLoader();
-    if(classLoader != null)&#123;
-        Log.e(&quot;xxx&quot;,&quot;classLoader：&quot;+classLoader.toString());
-        while (classLoader.getParent() != null)&#123;
-            classLoader = classLoader.getParent();
-            Log.e(&quot;xxx&quot;,&quot;classLoader：&quot;+classLoader.toString());
-        &#125;
-    &#125;
-    
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader classLoader = getClassLoader();</span><br><span class="line">      if(classLoader != null)&#123;</span><br><span class="line">          Log.e(&quot;xxx&quot;,&quot;classLoader：&quot;+classLoader.toString());</span><br><span class="line">          while (classLoader.getParent() != null)&#123;</span><br><span class="line">              classLoader = classLoader.getParent();</span><br><span class="line">              Log.e(&quot;xxx&quot;,&quot;classLoader：&quot;+classLoader.toString());</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/1.png"></p>
 <p><img src="/2018/04/03/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-ClassLoader/2.png"></p>
 <h3 id="Android中ClassLoader的特点及作用"><a href="#Android中ClassLoader的特点及作用" class="headerlink" title="Android中ClassLoader的特点及作用"></a>Android中ClassLoader的特点及作用</h3><p>特点</p>

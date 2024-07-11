@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Mayo">
+    
+    <title>
+        
+            第一行代码笔记-Git |
+        
+        妙妙屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               妙妙屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about-me"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about-me"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        第一行代码笔记-Git
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://avatars.githubusercontent.com/u/16527293?v=4">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Mayo</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2017-11-18 15:01:18</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jul 11 2024 13:17:50 GMT+0800">2024-07-11 13:17:50</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">第一行代码</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Git/">Git</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h3><p>提供一种可配性很强的机制来允许用户将指定的文件或目录排除在版本控制之外，它会检查代码仓库的目录下是否存在一个名为.gitignore的文件，存在的话会一行一行读取这个文件的内容，并把每一行指定的文件或目录排除在版本控制之外，文件或目录可以使用”*”通配符的。</p>
+<p>AS在创建项目的时候会自动帮我们创建两个.gitignore文件，一个在根目录下，一个在app模块下。</p>
+<p>配置完成之后，就可以提交代码，先使用add命令将所有文件进行添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<span id="more"></span>	
+<p>然后执行commit命令完成提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;first commit&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h3><h5 id="查看文件修改的情况"><a href="#查看文件修改的情况" class="headerlink" title="查看文件修改的情况"></a>查看文件修改的情况</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看文件修改的内容"><a href="#查看文件修改的内容" class="headerlink" title="查看文件修改的内容"></a>查看文件修改的内容</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<h5 id="查看某个文件修改的内容"><a href="#查看某个文件修改的内容" class="headerlink" title="查看某个文件修改的内容"></a>查看某个文件修改的内容</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff app/src/main/java/com/example/providertest/MainActivity.java</span><br></pre></td></tr></table></figure>
+<h3 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h3><h5 id="只要代码没有提交，所有修改的内容都是可以撤销的"><a href="#只要代码没有提交，所有修改的内容都是可以撤销的" class="headerlink" title="只要代码没有提交，所有修改的内容都是可以撤销的"></a>只要代码没有提交，所有修改的内容都是可以撤销的</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout app/src/main/java/com/example/providertest/MainActivity.java</span><br></pre></td></tr></table></figure>
+<h5 id="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："><a href="#对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：" class="headerlink" title="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："></a>对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD app/src/main/java/com/example/providertest/MainActivity.java</span><br></pre></td></tr></table></figure>
+<h3 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h3><h5 id="每次提交记录都会包含提交id、提交人、提交日期、描述信息"><a href="#每次提交记录都会包含提交id、提交人、提交日期、描述信息" class="headerlink" title="每次提交记录都会包含提交id、提交人、提交日期、描述信息"></a>每次提交记录都会包含提交id、提交人、提交日期、描述信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+<h5 id="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"><a href="#只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录" class="headerlink" title="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"></a>只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log 1fa380xxxxxxx -1</span><br></pre></td></tr></table></figure>
+<h5 id="查看这条记录具体修改什么内容，在命令中加入-p参数"><a href="#查看这条记录具体修改什么内容，在命令中加入-p参数" class="headerlink" title="查看这条记录具体修改什么内容，在命令中加入-p参数"></a>查看这条记录具体修改什么内容，在命令中加入-p参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log 1fa380xxxxxxx -1 -p</span><br></pre></td></tr></table></figure>
+<h3 id="分支的作用"><a href="#分支的作用" class="headerlink" title="分支的作用"></a>分支的作用</h3><p>在现有代码的基础上开辟一个分叉口，使得代码可以在主干线和分支线上同时进行开发，且互相不会影响。</p>
+<p><img src="/2017/11/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Git/1.png"></p>
+<p>查看当前版本库中有哪些分支，前面有*说明代码在哪个分支上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>创建一个分支,名为version1.0：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch version1.0</span><br></pre></td></tr></table></figure>
+<p>切换到version1.0这个分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout version1.0</span><br></pre></td></tr></table></figure>
+<p>在version1.0分支上修改并提交的代码将不会影响到master分支，同理，master分支上修改并提交的代码也不会影响到version1.0分支，最好的办法是使用merge命令来完成合并操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge version1.0</span><br></pre></td></tr></table></figure>
+<p>这两行代码就可以在version1.0分支上修改并提交的内容合并到master分支，合并后可能存在代码冲突的情况，需要自行修改</p>
+<p>删除分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D version1.0</span><br></pre></td></tr></table></figure>
+<h3 id="与远程版本库协作"><a href="#与远程版本库协作" class="headerlink" title="与远程版本库协作"></a>与远程版本库协作</h3><p>养成经常从版本库获取最新代码的习惯</p>
+<p>将代码下载到本地：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/example/test.git</span><br></pre></td></tr></table></figure>
+<p>本地修改的内容同步到远程版本库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>origin部分指定的是远程版本库的Git地址，master部分指定的是同步到哪一个分支，上述命令就完成了将本地代码同步到<a class="link" href="https://github.com/example/test.git%E8%BF%99%E4%B8%AA%E7%89%88%E6%9C%AC%E5%BA%93%E7%9A%84master%E5%88%86%E6%94%AF%E4%B8%8A%E7%9A%84%E5%8A%9F%E8%83%BD%E3%80%82">https://github.com/example/test.git这个版本库的master分支上的功能。<i class="fas fa-external-link-alt"></i></a></p>
+<p>将远程版本库上的修改同步到本地，Git提供两种命令完成此功能，分别是fetch和pull，fetch的语法规则和push差不多，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin master</span><br></pre></td></tr></table></figure>
+<p>执行上述命令后，会将远程版本库上的代码同步到本地，同步下来的代码不会合并到任何分支上去，而是会存放到一个origin&#x2F;master分支上，这时我们可以通过diff命令来查看远程版本库上到底修改了哪些东西：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff origin/master</span><br></pre></td></tr></table></figure>
+<p>再调用merge命令将origin&#x2F;master分支上的修改合并到主分支上即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure>
+<p>pull命令则是相当于将fetch和merge这两个命令放在一起执行了，它可以从远程版本库上获取最新的代码合并到本地：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Git/">Git</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2017/11/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/"
+                                   title="第一行代码笔记-Material Design"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-Material Design</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2017/11/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-LBS/"
+                                   title="第一行代码笔记-LBS"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-LBS</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">查看修改内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.0.1.</span> <span class="nav-text">查看文件修改的情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.0.2.</span> <span class="nav-text">查看文件修改的内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.0.3.</span> <span class="nav-text">查看某个文件修改的内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%A4%E9%94%80%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.</span> <span class="nav-text">撤销未提交的修改</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E8%A6%81%E4%BB%A3%E7%A0%81%E6%B2%A1%E6%9C%89%E6%8F%90%E4%BA%A4%EF%BC%8C%E6%89%80%E6%9C%89%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9%E9%83%BD%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%92%A4%E9%94%80%E7%9A%84"><span class="nav-number">3.0.1.</span> <span class="nav-text">只要代码没有提交，所有修改的内容都是可以撤销的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%B7%B2%E6%B7%BB%E5%8A%A0%E7%9A%84%E6%96%87%E4%BB%B6%E6%88%91%E4%BB%AC%E5%BA%94%E8%AF%A5%E5%85%88%E5%AF%B9%E5%85%B6%E5%8F%96%E6%B6%88%E6%B7%BB%E5%8A%A0%EF%BC%8C%E7%84%B6%E5%90%8E%E6%89%8D%E5%8F%AF%E4%BB%A5%E6%92%A4%E5%9B%9E%E6%8F%90%E4%BA%A4%EF%BC%8C%E5%8F%96%E6%B6%88%E6%B7%BB%E5%8A%A0%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.0.2.</span> <span class="nav-text">对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">查看提交记录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AF%8F%E6%AC%A1%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95%E9%83%BD%E4%BC%9A%E5%8C%85%E5%90%AB%E6%8F%90%E4%BA%A4id%E3%80%81%E6%8F%90%E4%BA%A4%E4%BA%BA%E3%80%81%E6%8F%90%E4%BA%A4%E6%97%A5%E6%9C%9F%E3%80%81%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-number">4.0.1.</span> <span class="nav-text">每次提交记录都会包含提交id、提交人、提交日期、描述信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E6%83%B3%E6%9F%A5%E7%9C%8B%E5%85%B6%E4%B8%AD%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%8C%87%E5%AE%9A%E8%AF%A5%E8%AE%B0%E5%BD%95%E7%9A%84id%EF%BC%8C%E5%B9%B6%E5%8A%A0%E4%B8%8A-1%E5%8F%82%E6%95%B0%E8%A1%A8%E7%A4%BA%E5%8F%AA%E6%83%B3%E7%9C%8B%E5%88%B0%E4%B8%80%E8%A1%8C%E8%AE%B0%E5%BD%95"><span class="nav-number">4.0.2.</span> <span class="nav-text">只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%99%E6%9D%A1%E8%AE%B0%E5%BD%95%E5%85%B7%E4%BD%93%E4%BF%AE%E6%94%B9%E4%BB%80%E4%B9%88%E5%86%85%E5%AE%B9%EF%BC%8C%E5%9C%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E5%8A%A0%E5%85%A5-p%E5%8F%82%E6%95%B0"><span class="nav-number">4.0.3.</span> <span class="nav-text">查看这条记录具体修改什么内容，在命令中加入-p参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">分支的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%89%88%E6%9C%AC%E5%BA%93%E5%8D%8F%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">与远程版本库协作</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2017</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Mayo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">查看修改内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.0.1.</span> <span class="nav-text">查看文件修改的情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.0.2.</span> <span class="nav-text">查看文件修改的内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.0.3.</span> <span class="nav-text">查看某个文件修改的内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%A4%E9%94%80%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.</span> <span class="nav-text">撤销未提交的修改</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E8%A6%81%E4%BB%A3%E7%A0%81%E6%B2%A1%E6%9C%89%E6%8F%90%E4%BA%A4%EF%BC%8C%E6%89%80%E6%9C%89%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9%E9%83%BD%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%92%A4%E9%94%80%E7%9A%84"><span class="nav-number">3.0.1.</span> <span class="nav-text">只要代码没有提交，所有修改的内容都是可以撤销的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%B7%B2%E6%B7%BB%E5%8A%A0%E7%9A%84%E6%96%87%E4%BB%B6%E6%88%91%E4%BB%AC%E5%BA%94%E8%AF%A5%E5%85%88%E5%AF%B9%E5%85%B6%E5%8F%96%E6%B6%88%E6%B7%BB%E5%8A%A0%EF%BC%8C%E7%84%B6%E5%90%8E%E6%89%8D%E5%8F%AF%E4%BB%A5%E6%92%A4%E5%9B%9E%E6%8F%90%E4%BA%A4%EF%BC%8C%E5%8F%96%E6%B6%88%E6%B7%BB%E5%8A%A0%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.0.2.</span> <span class="nav-text">对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">查看提交记录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AF%8F%E6%AC%A1%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95%E9%83%BD%E4%BC%9A%E5%8C%85%E5%90%AB%E6%8F%90%E4%BA%A4id%E3%80%81%E6%8F%90%E4%BA%A4%E4%BA%BA%E3%80%81%E6%8F%90%E4%BA%A4%E6%97%A5%E6%9C%9F%E3%80%81%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-number">4.0.1.</span> <span class="nav-text">每次提交记录都会包含提交id、提交人、提交日期、描述信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E6%83%B3%E6%9F%A5%E7%9C%8B%E5%85%B6%E4%B8%AD%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%8C%87%E5%AE%9A%E8%AF%A5%E8%AE%B0%E5%BD%95%E7%9A%84id%EF%BC%8C%E5%B9%B6%E5%8A%A0%E4%B8%8A-1%E5%8F%82%E6%95%B0%E8%A1%A8%E7%A4%BA%E5%8F%AA%E6%83%B3%E7%9C%8B%E5%88%B0%E4%B8%80%E8%A1%8C%E8%AE%B0%E5%BD%95"><span class="nav-number">4.0.2.</span> <span class="nav-text">只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%99%E6%9D%A1%E8%AE%B0%E5%BD%95%E5%85%B7%E4%BD%93%E4%BF%AE%E6%94%B9%E4%BB%80%E4%B9%88%E5%86%85%E5%AE%B9%EF%BC%8C%E5%9C%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E5%8A%A0%E5%85%A5-p%E5%8F%82%E6%95%B0"><span class="nav-number">4.0.3.</span> <span class="nav-text">查看这条记录具体修改什么内容，在命令中加入-p参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">分支的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%89%88%E6%9C%AC%E5%BA%93%E5%8D%8F%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">与远程版本库协作</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

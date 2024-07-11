@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Dec 24 2020 20:01:59 GMT+0800">2020-12-24 20:01:59</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 10:47:03 GMT+0800">2024-07-11 10:47:03</span>
             </span>
         
 
@@ -292,11 +292,7 @@
 <p>5、其他：</p>
 <p>boolean retainAll(Collection coll);取交集</p>
 <p>Object toArray();将集合转成数组</p>
-<pre><code>//for循环结束，Iterator变量内存释放，更高效
-for(Iterator it2 = coll.iterator();it2.hasNext();)
-    System.out.println(it2.next());
-    
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//for循环结束，Iterator变量内存释放，更高效</span><br><span class="line">for(Iterator it2 = coll.iterator();it2.hasNext();)</span><br><span class="line">	System.out.println(it2.next());</span><br></pre></td></tr></table></figure>
 <h3 id="Iterator（迭代器）"><a href="#Iterator（迭代器）" class="headerlink" title="Iterator（迭代器）"></a>Iterator（迭代器）</h3><ul>
 <li>Iterator接口可以以统一的方式对各种集合元素进行遍历</li>
 <li>hasNext()方法检测集合中是否还有下一个元素</li>
@@ -438,21 +434,8 @@ for(Iterator it2 = coll.iterator();it2.hasNext();)
 <li>如果o1&gt;o2，返回正整数</li>
 </ul>
 <p>booleanequals(Object obj)指示某个其他对象是否“等于”此Comparator。此方法可以被Object类中的equals方法覆盖，不必重写。</p>
-<pre><code>public class NameComparator implements Comparator&lt;Cat&gt; &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class NameComparator implements Comparator&lt;Cat&gt; &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int compare(Cat o1, Cat o2) &#123;</span><br><span class="line">		// 按名字升序排序</span><br><span class="line">		String name1=o1.getName();</span><br><span class="line">		String name2=o2.getName();</span><br><span class="line">		int n=name1.compareTo(name2);</span><br><span class="line">		return n;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Collections.sort(catList, new NameComparator());</span><br></pre></td></tr></table></figure>
 
-    @Override
-    public int compare(Cat o1, Cat o2) &#123;
-        // 按名字升序排序
-        String name1=o1.getName();
-        String name2=o2.getName();
-        int n=name1.compareTo(name2);
-        return n;
-    &#125;
-
-&#125;
-
-Collections.sort(catList, new NameComparator());
-</code></pre>
 <h4 id="Comparable接口"><a href="#Comparable接口" class="headerlink" title="Comparable接口"></a>Comparable接口</h4><ul>
 <li>此接口强行对实现它的每个类的对象进行整体排序</li>
 <li>这种排序被称为类的自然排序，类的compareTo方法被称为它的自然比较方法</li>
@@ -461,55 +444,8 @@ Collections.sort(catList, new NameComparator());
 </ul>
 <p>intcompareTo(T o)方法：</p>
 <p>该对象小于、等于或大于指定对象，则分别返回负整数、零或正整数</p>
-<pre><code>public class Goods implements Comparable&lt;Goods&gt; &#123;
-    private String id;//商品编号
-    private String name;//商品名称
-    private double price;//商品价格
-    //构造方法
-    public Goods(String id,String name,double price)&#123;
-        this.id=id;
-        this.name=name;
-        this.price=price;
-    &#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class Goods implements Comparable&lt;Goods&gt; &#123;</span><br><span class="line">	private String id;//商品编号</span><br><span class="line">	private String name;//商品名称</span><br><span class="line">	private double price;//商品价格</span><br><span class="line">	//构造方法</span><br><span class="line">	public Goods(String id,String name,double price)&#123;</span><br><span class="line">		this.id=id;</span><br><span class="line">		this.name=name;</span><br><span class="line">		this.price=price;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//getter和setter方法</span><br><span class="line">	public String getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setId(String id) &#123;</span><br><span class="line">		this.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public double getPrice() &#123;</span><br><span class="line">		return price;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setPrice(double price) &#123;</span><br><span class="line">		this.price = price;</span><br><span class="line">	&#125;</span><br><span class="line">	public String toString()&#123;</span><br><span class="line">		return &quot;商品编号：&quot;+id+&quot;,商品名称：&quot;+name+&quot;，商品价格：&quot;+price;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public int compareTo(Goods o) &#123;</span><br><span class="line">		// 取出商品价格</span><br><span class="line">		double price1=this.getPrice();</span><br><span class="line">		double price2=o.getPrice();</span><br><span class="line">		int n=new Double(price2-price1).intValue();</span><br><span class="line">		return n;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    //getter和setter方法
-    public String getId() &#123;
-        return id;
-    &#125;
-
-    public void setId(String id) &#123;
-        this.id = id;
-    &#125;
-
-    public String getName() &#123;
-        return name;
-    &#125;
-
-    public void setName(String name) &#123;
-        this.name = name;
-    &#125;
-
-    public double getPrice() &#123;
-        return price;
-    &#125;
-
-    public void setPrice(double price) &#123;
-        this.price = price;
-    &#125;
-    public String toString()&#123;
-        return &quot;商品编号：&quot;+id+&quot;,商品名称：&quot;+name+&quot;，商品价格：&quot;+price;
-    &#125;
-    @Override
-    public int compareTo(Goods o) &#123;
-        // 取出商品价格
-        double price1=this.getPrice();
-        double price2=o.getPrice();
-        int n=new Double(price2-price1).intValue();
-        return n;
-    &#125;
-
-&#125;
-</code></pre>
 <h4 id="Comparator和Comparable的区别"><a href="#Comparator和Comparable的区别" class="headerlink" title="Comparator和Comparable的区别"></a>Comparator和Comparable的区别</h4><p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/13.png"></p>
 
                     

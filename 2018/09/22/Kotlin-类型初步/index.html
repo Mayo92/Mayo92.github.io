@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Oct 22 2020 19:09:44 GMT+0800">2020-10-22 19:09:44</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:27:22 GMT+0800">2024-07-11 15:27:22</span>
             </span>
         
 
@@ -275,62 +275,10 @@
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/11.png"></p>
 <h3 id="1-4-类的继承"><a href="#1-4-类的继承" class="headerlink" title="1.4 类的继承"></a>1.4 类的继承</h3><p>()表示构造方法</p>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/12.png"></p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="抽象类AbsClass"><a href="#抽象类AbsClass" class="headerlink" title="抽象类AbsClass"></a>抽象类AbsClass</h4><pre><code>abstract class AbsClass &#123;
-    abstract fun absMethod()
-
-    //不写open不能被复写
-    open fun overridable()&#123;&#125;
-
-    fun nonOverridable()&#123;&#125;
-&#125;
-</code></pre>
-<h4 id="接口Simple"><a href="#接口Simple" class="headerlink" title="接口Simple"></a>接口Simple</h4><pre><code>interface Simple &#123;
-
-    //属性
-    val simpleProperty:Int//property
-
-    fun simpleMethod()
-&#125;
-</code></pre>
-<h4 id="SimpleClass与SimpleClass2"><a href="#SimpleClass与SimpleClass2" class="headerlink" title="SimpleClass与SimpleClass2"></a>SimpleClass与SimpleClass2</h4><pre><code>//没有open不能被继承
-open class SimpleClass(var x:Int,val y:String): AbsClass(),Simple &#123;
-
-    val z:Long = 0L
-
-    //需要override
-    override fun absMethod() &#123;&#125;
-
-    //默认有get/set，只读的话没有set
-    override val simpleProperty: Int
-        get() &#123;
-            return 2
-        &#125;
-
-    override fun simpleMethod() &#123;&#125;
-
-    fun y()&#123;&#125;
-
-    fun zzz(string:String)&#123;&#125;
-
-    //前面加上final不让子类继承
-    override fun overridable() &#123;
-    &#125;
-&#125;
-
-class SimpleClass2(x:Int,y:String):SimpleClass(x,y)&#123;
-
-    override fun overridable() &#123;
-    &#125;
-&#125;
-</code></pre>
-<h4 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h4><pre><code>val simpleClass = SimpleClass(9,&quot;Hello&quot;)
-println(simpleClass.simpleProperty)
-println(simpleClass.x)
-println(simpleClass.y)
-println(simpleClass.z)
-simpleClass.y()
-simpleClass.zzz(&quot;&quot;)
-</code></pre>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="抽象类AbsClass"><a href="#抽象类AbsClass" class="headerlink" title="抽象类AbsClass"></a>抽象类AbsClass</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">abstract class AbsClass &#123;</span><br><span class="line">   	abstract fun absMethod()</span><br><span class="line"></span><br><span class="line">   	//不写open不能被复写</span><br><span class="line">   	open fun overridable()&#123;&#125;</span><br><span class="line"></span><br><span class="line">   	fun nonOverridable()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="接口Simple"><a href="#接口Simple" class="headerlink" title="接口Simple"></a>接口Simple</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface Simple &#123;</span><br><span class="line"></span><br><span class="line">   	//属性</span><br><span class="line">   	val simpleProperty:Int//property</span><br><span class="line"></span><br><span class="line">   	fun simpleMethod()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="SimpleClass与SimpleClass2"><a href="#SimpleClass与SimpleClass2" class="headerlink" title="SimpleClass与SimpleClass2"></a>SimpleClass与SimpleClass2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//没有open不能被继承</span><br><span class="line">open class SimpleClass(var x:Int,val y:String): AbsClass(),Simple &#123;</span><br><span class="line"></span><br><span class="line">   	val z:Long = 0L</span><br><span class="line"></span><br><span class="line">   	//需要override</span><br><span class="line">   	override fun absMethod() &#123;&#125;</span><br><span class="line"></span><br><span class="line">   	//默认有get/set，只读的话没有set</span><br><span class="line">   	override val simpleProperty: Int</span><br><span class="line">       	get() &#123;</span><br><span class="line">           	return 2</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">   	override fun simpleMethod() &#123;&#125;</span><br><span class="line"></span><br><span class="line">   	fun y()&#123;&#125;</span><br><span class="line"></span><br><span class="line">   	fun zzz(string:String)&#123;&#125;</span><br><span class="line"></span><br><span class="line">   	//前面加上final不让子类继承</span><br><span class="line">   	override fun overridable() &#123;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SimpleClass2(x:Int,y:String):SimpleClass(x,y)&#123;</span><br><span class="line"></span><br><span class="line">   	override fun overridable() &#123;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val simpleClass = SimpleClass(9,&quot;Hello&quot;)</span><br><span class="line">   println(simpleClass.simpleProperty)</span><br><span class="line">   println(simpleClass.x)</span><br><span class="line">   println(simpleClass.y)</span><br><span class="line">   println(simpleClass.z)</span><br><span class="line">   simpleClass.y()</span><br><span class="line">   simpleClass.zzz(&quot;&quot;)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/13.png"></p>
 <h3 id="1-6-属性"><a href="#1-6-属性" class="headerlink" title="1.6 属性"></a>1.6 属性</h3><p>property &#x3D; field+ getter + setter</p>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/14.png"></p>
@@ -338,73 +286,13 @@ simpleClass.zzz(&quot;&quot;)
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/16.png"></p>
 <h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/17.png"></p>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/18.png"></p>
-<pre><code>class Person(age:Int,name:String) &#123;
-
-    var age:Int = age
-    get() &#123;
-        return field//backing field
-    &#125;
-    set(value) &#123;
-        println(&quot;setAge:$value&quot;)
-        field = value
-    &#125;
-
-    var name:String = name
-&#125;
-
-
-fun main() &#123;
-    //属性引用
-    val ageRef = Person::age
-    val person = Person(10,&quot;yly&quot;)
-    val nameRef = person::name
-    nameRef.set(&quot;krido&quot;)
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Person(age:Int,name:String) &#123;</span><br><span class="line"></span><br><span class="line">   	var age:Int = age</span><br><span class="line">   	get() &#123;</span><br><span class="line">       	return field//backing field</span><br><span class="line">   	&#125;</span><br><span class="line">   	set(value) &#123;</span><br><span class="line">       	println(&quot;setAge:$value&quot;)</span><br><span class="line">       	field = value</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	var name:String = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fun main() &#123;</span><br><span class="line">   	//属性引用</span><br><span class="line">   	val ageRef = Person::age</span><br><span class="line">   	val person = Person(10,&quot;yly&quot;)</span><br><span class="line">   	val nameRef = person::name</span><br><span class="line">   	nameRef.set(&quot;krido&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="2-扩展方法"><a href="#2-扩展方法" class="headerlink" title="2.扩展方法"></a>2.扩展方法</h2><h3 id="2-1-Java-vs-Kotlin"><a href="#2-1-Java-vs-Kotlin" class="headerlink" title="2.1 Java vs Kotlin"></a>2.1 Java vs Kotlin</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/19.png"></p>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/20.png"></p>
 <h3 id="2-2-举例"><a href="#2-2-举例" class="headerlink" title="2.2 举例"></a>2.2 举例</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/21.png"></p>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/22.png"></p>
 <h3 id="2-3-类型"><a href="#2-3-类型" class="headerlink" title="2.3 类型"></a>2.3 类型</h3><p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/23.png"></p>
-<h3 id="2-4-举例"><a href="#2-4-举例" class="headerlink" title="2.4 举例"></a>2.4 举例</h3><pre><code>class PoorGuy&#123;
-    var pocket:Double = 0.0
-&#125;
-
-//扩展方法
-fun PoorGuy.noMoney()&#123;&#125;
-
-//扩展成员
-//属性=backing field（状态，存储空间）+getter（方法，接口行为）+setter（方法，接口行为）
-//backing field是类的状态，这个值与类密切绑定
-//扩展成员里扩展属性是没有办法定义backing field
-//扩展成员是没有办法存储状态的，因为没有口袋不能存，但是可以访问类里面做存储操作，且只能访问公共的
-var PoorGuy.moneyLeft:Double
-    get() &#123;
-//        return 0.0
-        //类里加上pocket可以这么写，pocket不能是private
-        return this.pocket
-    &#125;
-    set(value) &#123;
-        //类里加上pocket可以这么写，pocket不能是private
-        pocket = value
-    &#125;
-
-interface Guy&#123;
-    //接口里的属性没有backing field，接口没有状态不能存储东西只能定义行为
-    //这里定义get/set是默认行为
-    var moneyLeft:Double
-    get() &#123;
-        return 0.0
-    &#125;
-    set(value) &#123;
-
-    &#125;
-
-    fun noMoney()&#123;
-        //定义默认行为
-    &#125;
-&#125;
-</code></pre>
+<h3 id="2-4-举例"><a href="#2-4-举例" class="headerlink" title="2.4 举例"></a>2.4 举例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class PoorGuy&#123;</span><br><span class="line">   	var pocket:Double = 0.0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展方法</span><br><span class="line">fun PoorGuy.noMoney()&#123;&#125;</span><br><span class="line"></span><br><span class="line">//扩展成员</span><br><span class="line">//属性=backing field（状态，存储空间）+getter（方法，接口行为）+setter（方法，接口行为）</span><br><span class="line">//backing field是类的状态，这个值与类密切绑定</span><br><span class="line">//扩展成员里扩展属性是没有办法定义backing field</span><br><span class="line">//扩展成员是没有办法存储状态的，因为没有口袋不能存，但是可以访问类里面做存储操作，且只能访问公共的</span><br><span class="line">var PoorGuy.moneyLeft:Double</span><br><span class="line">   	get() &#123;</span><br><span class="line">//        return 0.0</span><br><span class="line">       	//类里加上pocket可以这么写，pocket不能是private</span><br><span class="line">       	return this.pocket</span><br><span class="line">   	&#125;</span><br><span class="line">   	set(value) &#123;</span><br><span class="line">       	//类里加上pocket可以这么写，pocket不能是private</span><br><span class="line">       	pocket = value</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">interface Guy&#123;</span><br><span class="line">   	//接口里的属性没有backing field，接口没有状态不能存储东西只能定义行为</span><br><span class="line">   	//这里定义get/set是默认行为</span><br><span class="line">   	var moneyLeft:Double</span><br><span class="line">   	get() &#123;</span><br><span class="line">       	return 0.0</span><br><span class="line">   	&#125;</span><br><span class="line">   	set(value) &#123;</span><br><span class="line"></span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	fun noMoney()&#123;</span><br><span class="line">       	//定义默认行为</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3-空类型安全"><a href="#3-空类型安全" class="headerlink" title="3.空类型安全"></a>3.空类型安全</h2><h3 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h3><p>加？表示可以为空</p>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/24.png"></p>
 <p><img src="/2018/09/22/Kotlin-%E7%B1%BB%E5%9E%8B%E5%88%9D%E6%AD%A5/25.png"></p>

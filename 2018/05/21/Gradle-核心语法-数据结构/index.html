@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Apr 09 2020 14:23:37 GMT+0800">2020-04-09 14:23:37</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 14:50:03 GMT+0800">2024-07-11 14:50:03</span>
             </span>
         
 
@@ -254,239 +254,65 @@
                     
 
                     
-                         <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h2 id="1-groovy中列表详解"><a href="#1-groovy中列表详解" class="headerlink" title="1.groovy中列表详解"></a>1.groovy中列表详解</h2><p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/47.png"></p>
+                         <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h2 id="1-groovy中列表详解"><a href="#1-groovy中列表详解" class="headerlink" title="1.groovy中列表详解"></a>1.groovy中列表详解</h2><span id="more"></span>
+
+<p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/47.png"></p>
 <h3 id="1-1-列表的定义"><a href="#1-1-列表的定义" class="headerlink" title="1.1 列表的定义"></a>1.1 列表的定义</h3><p>列表声明和初始化</p>
-<pre><code>//def list = new ArrayList()//java定义方式
-def list = [1,2,3,4,5]
-println list.class
-println list.size()
-</code></pre>
-<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//def list = new ArrayList()//java定义方式</span><br><span class="line">def list = [1,2,3,4,5]</span><br><span class="line">println list.class</span><br><span class="line">println list.size()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/48.png"></p>
 <h4 id="定义数组的方法"><a href="#定义数组的方法" class="headerlink" title="定义数组的方法"></a>定义数组的方法</h4><p>列表占用了数组的定义，那么数组定义的两种方式如下，数组与列表使用基本一致</p>
-<pre><code>def array = [1,2,3,4,5] as int[]
-int[] array2 = [1,2,3,4,5]
-</code></pre>
-<h3 id="1-2-列表的操作"><a href="#1-2-列表的操作" class="headerlink" title="1.2 列表的操作"></a>1.2 列表的操作</h3><h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><pre><code>list.add(6)
-list.leftShift(7)
-list &lt;&lt; 8
-println list.toString()
-def plusList = list + 9
-println plusList.toString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def array = [1,2,3,4,5] as int[]</span><br><span class="line">int[] array2 = [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-列表的操作"><a href="#1-2-列表的操作" class="headerlink" title="1.2 列表的操作"></a>1.2 列表的操作</h3><h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list.add(6)</span><br><span class="line">list.leftShift(7)</span><br><span class="line">list &lt;&lt; 8</span><br><span class="line">println list.toString()</span><br><span class="line">def plusList = list + 9</span><br><span class="line">println plusList.toString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/49.png"></p>
-<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><pre><code>//[1, 2, 3, 4, 5, 6, 7, 8]
-list.remove(7)//index为7
-println list.toString()
-list.remove((Object)7)//删除7元素
-println list.toString()
-//list.removeAt(7)//index为7
-list.removeElement(6)//删除6元素
-println list.toString()
-list.removeAll&#123;
-    return it % 2 == 0//删除偶数
-&#125;
-println list.toString()
-println list - [1,5]//删除1、5元素
-</code></pre>
+<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//[1, 2, 3, 4, 5, 6, 7, 8]</span><br><span class="line">list.remove(7)//index为7</span><br><span class="line">println list.toString()</span><br><span class="line">list.remove((Object)7)//删除7元素</span><br><span class="line">println list.toString()</span><br><span class="line">//list.removeAt(7)//index为7</span><br><span class="line">list.removeElement(6)//删除6元素</span><br><span class="line">println list.toString()</span><br><span class="line">list.removeAll&#123;</span><br><span class="line">   	return it % 2 == 0//删除偶数</span><br><span class="line">&#125;</span><br><span class="line">println list.toString()</span><br><span class="line">println list - [1,5]//删除1、5元素</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/50.png"></p>
-<h4 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h4><pre><code>def sortList = [6,-3,9,2,-7,1,5]
-//java方法
-Collections.sort(sortList)
-println sortList
-//定义自定义排序规则，绝对值从小到大
-Comparator mc = &#123;a,b -&gt; a == b ? 0 : Math.abs(a) &lt; Math.abs(b) ? -1 : 1&#125;
-Collections.sort(sortList,mc)
-println sortList
-</code></pre>
+<h4 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def sortList = [6,-3,9,2,-7,1,5]</span><br><span class="line">//java方法</span><br><span class="line">Collections.sort(sortList)</span><br><span class="line">println sortList</span><br><span class="line">//定义自定义排序规则，绝对值从小到大</span><br><span class="line">Comparator mc = &#123;a,b -&gt; a == b ? 0 : Math.abs(a) &lt; Math.abs(b) ? -1 : 1&#125;</span><br><span class="line">Collections.sort(sortList,mc)</span><br><span class="line">println sortList</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/51.png"></p>
-<pre><code>//groovy方法
-sortList.sort()
-println sortList
-sortList.sort&#123;a,b -&gt; a==b ? 0 : Math.abs(a) &lt; Math.abs(b) ? 1 : -1&#125;
-println sortList
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//groovy方法</span><br><span class="line">sortList.sort()</span><br><span class="line">println sortList</span><br><span class="line">sortList.sort&#123;a,b -&gt; a==b ? 0 : Math.abs(a) &lt; Math.abs(b) ? 1 : -1&#125;</span><br><span class="line">println sortList</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/52.png"></p>
-<pre><code>//字符串排序
-def sortStringList = [&#39;abc&#39;,&#39;z&#39;,&#39;Hello&#39;,&#39;groovy&#39;,&#39;java&#39;,&#39;kotlin&#39;]
-sortStringList.sort&#123;it.size()&#125;
-println sortStringList
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//字符串排序</span><br><span class="line">def sortStringList = [&#x27;abc&#x27;,&#x27;z&#x27;,&#x27;Hello&#x27;,&#x27;groovy&#x27;,&#x27;java&#x27;,&#x27;kotlin&#x27;]</span><br><span class="line">sortStringList.sort&#123;it.size()&#125;</span><br><span class="line">println sortStringList</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/53.png"></p>
-<pre><code>class Man&#123;
-    String name
-    int age
-
-    @Override
-    String toString() &#123;
-        return name
-    &#125;
-&#125;
-def wang = new Man(name: &#39;wang&#39;,age: 18)
-def li = new Man(name: &#39;li&#39;,age: 36)
-def zhang = new Man(name: &#39;zhang&#39;,age: 23)
-def sortClassList = [wang,li,zhang]
-sortClassList.sort&#123;it.age&#125;
-println sortClassList.toString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Man&#123;</span><br><span class="line">   	String name</span><br><span class="line">   	int age</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	String toString() &#123;</span><br><span class="line">       	return name</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">def wang = new Man(name: &#x27;wang&#x27;,age: 18)</span><br><span class="line">def li = new Man(name: &#x27;li&#x27;,age: 36)</span><br><span class="line">def zhang = new Man(name: &#x27;zhang&#x27;,age: 23)</span><br><span class="line">def sortClassList = [wang,li,zhang]</span><br><span class="line">sortClassList.sort&#123;it.age&#125;</span><br><span class="line">println sortClassList.toString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/54.png"></p>
-<h4 id="列表查找"><a href="#列表查找" class="headerlink" title="列表查找"></a>列表查找</h4><pre><code>def findList = [-3,9,6,2,-7,1,5]
-//查找第一个偶数
-int result = findList.find &#123;it % 2 == 0&#125;
-println result
-//查找奇数
-def resultList = findList.findAll&#123;it%2 != 0&#125;
-println resultList.toListString()
-//是否有值为奇数b
-def resultBoolean = findList.any&#123;it%2 != 0&#125;
-println resultBoolean
-//是否都为偶数
-def resultBoolean2 = findList.every&#123;it%2 == 0&#125;
-println resultBoolean2
-//最大最小值
-println findList.max()
-println findList.min()
-//绝对值最大最小
-println findList.max&#123;Math.abs(it)&#125;
-println findList.min&#123;Math.abs(it)&#125;
-//统计次数，有多少个偶数
-def num = findList.count &#123;it % 2 == 0&#125;
-println num
-</code></pre>
+<h4 id="列表查找"><a href="#列表查找" class="headerlink" title="列表查找"></a>列表查找</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def findList = [-3,9,6,2,-7,1,5]</span><br><span class="line">//查找第一个偶数</span><br><span class="line">int result = findList.find &#123;it % 2 == 0&#125;</span><br><span class="line">println result</span><br><span class="line">//查找奇数</span><br><span class="line">def resultList = findList.findAll&#123;it%2 != 0&#125;</span><br><span class="line">println resultList.toListString()</span><br><span class="line">//是否有值为奇数b</span><br><span class="line">def resultBoolean = findList.any&#123;it%2 != 0&#125;</span><br><span class="line">println resultBoolean</span><br><span class="line">//是否都为偶数</span><br><span class="line">def resultBoolean2 = findList.every&#123;it%2 == 0&#125;</span><br><span class="line">println resultBoolean2</span><br><span class="line">//最大最小值</span><br><span class="line">println findList.max()</span><br><span class="line">println findList.min()</span><br><span class="line">//绝对值最大最小</span><br><span class="line">println findList.max&#123;Math.abs(it)&#125;</span><br><span class="line">println findList.min&#123;Math.abs(it)&#125;</span><br><span class="line">//统计次数，有多少个偶数</span><br><span class="line">def num = findList.count &#123;it % 2 == 0&#125;</span><br><span class="line">println num</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/55.png"></p>
 <h2 id="2-groovy中映射详解（Map）"><a href="#2-groovy中映射详解（Map）" class="headerlink" title="2.groovy中映射详解（Map）"></a>2.groovy中映射详解（Map）</h2><h3 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h3><p>key通常是字符串或者number，字符串必须是不可变字符串也就是单引号字符串（不指定默认为单引号）</p>
-<pre><code>def colors = [red:&#39;ff0000&#39;,green:&#39;00ff00&#39;,
-            blue:&#39;0000ff&#39;]
-println colors.getClass()
-//修改为HashMap或者def改成HashMap
-def colors2 = [red:&#39;ff0000&#39;,green:&#39;00ff00&#39;,
-          blue:&#39;0000ff&#39;] as HashMap
-//不可使用这种方法，此时class为key
-println colors2.class
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def colors = [red:&#x27;ff0000&#x27;,green:&#x27;00ff00&#x27;,</span><br><span class="line">               blue:&#x27;0000ff&#x27;]</span><br><span class="line">println colors.getClass()</span><br><span class="line">//修改为HashMap或者def改成HashMap</span><br><span class="line">def colors2 = [red:&#x27;ff0000&#x27;,green:&#x27;00ff00&#x27;,</span><br><span class="line">             blue:&#x27;0000ff&#x27;] as HashMap</span><br><span class="line">//不可使用这种方法，此时class为key</span><br><span class="line">println colors2.class</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/56.png"></p>
-<h3 id="2-2-映射的操作"><a href="#2-2-映射的操作" class="headerlink" title="2.2 映射的操作"></a>2.2 映射的操作</h3><h4 id="获取元素值"><a href="#获取元素值" class="headerlink" title="获取元素值"></a>获取元素值</h4><pre><code>println colors[&#39;red&#39;]
-println colors.green
-</code></pre>
+<h3 id="2-2-映射的操作"><a href="#2-2-映射的操作" class="headerlink" title="2.2 映射的操作"></a>2.2 映射的操作</h3><h4 id="获取元素值"><a href="#获取元素值" class="headerlink" title="获取元素值"></a>获取元素值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">println colors[&#x27;red&#x27;]</span><br><span class="line">println colors.green</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/57.png"></p>
-<h4 id="添加元素（没有该key时添加）"><a href="#添加元素（没有该key时添加）" class="headerlink" title="添加元素（没有该key时添加）"></a>添加元素（没有该key时添加）</h4><pre><code>colors.yellow = &#39;ffff00&#39;
-println colors.toMapString()
-//colors.leftShift(yellow:&#39;iiii&#39;)
-//println colors.toMapString()
-//添加任意类型
-colors.complex = [a:1,b:2]
-println colors.toMapString()
-</code></pre>
+<h4 id="添加元素（没有该key时添加）"><a href="#添加元素（没有该key时添加）" class="headerlink" title="添加元素（没有该key时添加）"></a>添加元素（没有该key时添加）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">colors.yellow = &#x27;ffff00&#x27;</span><br><span class="line">println colors.toMapString()</span><br><span class="line">//colors.leftShift(yellow:&#x27;iiii&#x27;)</span><br><span class="line">//println colors.toMapString()</span><br><span class="line">//添加任意类型</span><br><span class="line">colors.complex = [a:1,b:2]</span><br><span class="line">println colors.toMapString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/58.png"></p>
 <p>例子</p>
-<pre><code>def students = [
-    1:[number:&#39;0001&#39;,name:&#39;Bob&#39;,
-        score:55,sex:&#39;male&#39;],
-    2:[number:&#39;0002&#39;,name:&#39;Johnny&#39;,
-       score:62,sex:&#39;female&#39;],
-    3:[number:&#39;0003&#39;,name:&#39;Claire&#39;,
-       score:73,sex:&#39;female&#39;],
-    4:[number:&#39;0004&#39;,name:&#39;Amy&#39;,
-       score:66,sex:&#39;male&#39;]
-</code></pre>
-<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><pre><code>students.each &#123;def student -&gt;
-    println &quot;Key is $&#123;student.key&#125;,Value is $&#123;student.value&#125;&quot;
-&#125;
-//带索引的遍历（index必须为最后一个参数）
-students.eachWithIndex&#123; def student,int index -&gt;
-    println &quot;Index is $&#123;index&#125;,Key is $&#123;student.key&#125;,Value is $	&#123;student.value&#125;&quot;
-&#125;
-//key value遍历
-students.each &#123; value,key -&gt;
-    println &quot;Key is $&#123;value&#125;,Value is $&#123;key&#125;&quot;
-&#125;
-//index必须为最后一个参数
-students.eachWithIndex &#123; key,value,index -&gt;
-    println &quot;Index is $&#123;index&#125;,Key is $&#123;key&#125;,Value is $&#123;value&#125;&quot;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def students = [</span><br><span class="line">       1:[number:&#x27;0001&#x27;,name:&#x27;Bob&#x27;,</span><br><span class="line">           score:55,sex:&#x27;male&#x27;],</span><br><span class="line">       2:[number:&#x27;0002&#x27;,name:&#x27;Johnny&#x27;,</span><br><span class="line">          score:62,sex:&#x27;female&#x27;],</span><br><span class="line">       3:[number:&#x27;0003&#x27;,name:&#x27;Claire&#x27;,</span><br><span class="line">          score:73,sex:&#x27;female&#x27;],</span><br><span class="line">       4:[number:&#x27;0004&#x27;,name:&#x27;Amy&#x27;,</span><br><span class="line">          score:66,sex:&#x27;male&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">students.each &#123;def student -&gt;</span><br><span class="line">   	println &quot;Key is $&#123;student.key&#125;,Value is $&#123;student.value&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line">//带索引的遍历（index必须为最后一个参数）</span><br><span class="line">students.eachWithIndex&#123; def student,int index -&gt;</span><br><span class="line">   	println &quot;Index is $&#123;index&#125;,Key is $&#123;student.key&#125;,Value is $	&#123;student.value&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line">//key value遍历</span><br><span class="line">students.each &#123; value,key -&gt;</span><br><span class="line">   	println &quot;Key is $&#123;value&#125;,Value is $&#123;key&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line">//index必须为最后一个参数</span><br><span class="line">students.eachWithIndex &#123; key,value,index -&gt;</span><br><span class="line">   	println &quot;Index is $&#123;index&#125;,Key is $&#123;key&#125;,Value is $&#123;value&#125;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/59.png"></p>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/60.png"></p>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/61.png"></p>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/62.png"></p>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><pre><code>//第一个符合条件的
-def entry = students.find &#123;def student -&gt;
-    return student.value.score &gt;= 60&#125;
-println entry
-</code></pre>
+<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//第一个符合条件的</span><br><span class="line">def entry = students.find &#123;def student -&gt;</span><br><span class="line">   	return student.value.score &gt;= 60&#125;</span><br><span class="line">println entry</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/63.png"></p>
-<pre><code>def entrys = students.findAll &#123;def student -&gt;
-    return student.value.score &gt;= 60&#125;
-println entrys
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def entrys = students.findAll &#123;def student -&gt;</span><br><span class="line">   	return student.value.score &gt;= 60&#125;</span><br><span class="line">println entrys</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/64.png"></p>
-<pre><code>def count = students.count &#123;def student -&gt;
-    return student.value.score &gt;= 60 &amp;&amp; student.value.sex == &#39;male&#39;&#125;
-println count
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def count = students.count &#123;def student -&gt;</span><br><span class="line">   	return student.value.score &gt;= 60 &amp;&amp; student.value.sex == &#x27;male&#x27;&#125;</span><br><span class="line">println count</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/65.png"></p>
-<pre><code>//输出所有及格学生的姓名
-def names = students.findAll &#123;def student -&gt;
-    return student.value.score &gt;= 60&#125;.
-        collect &#123;
-        it.value.name
-    &#125;
-println names.toListString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//输出所有及格学生的姓名</span><br><span class="line">def names = students.findAll &#123;def student -&gt;</span><br><span class="line">   	return student.value.score &gt;= 60&#125;.</span><br><span class="line">       	collect &#123;</span><br><span class="line">       	it.value.name</span><br><span class="line">   	&#125;</span><br><span class="line">println names.toListString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/66.png"></p>
-<pre><code>//分组
-def group = students.groupBy &#123; def student -&gt;
-        return student.value.score &gt;= 60 ? &#39;及格&#39; : &#39;不及格&#39;
-&#125;
-println group.toMapString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//分组</span><br><span class="line">def group = students.groupBy &#123; def student -&gt;</span><br><span class="line">       	return student.value.score &gt;= 60 ? &#x27;及格&#x27; : &#x27;不及格&#x27;</span><br><span class="line">&#125;</span><br><span class="line">println group.toMapString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/67.png"></p>
 <h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>Map的排序会产生一个新的Map，列表则是它本身没有返回值</p>
-<pre><code>def sort = students.sort&#123;
-    def student1,def student2 -&gt;
-        Number score1 = student1.value.score
-        Number score2 = student2.value.score
-        return score1 == score2 ? 0 : score1 &gt; score2 ? 1 : -1
-&#125;
-println sort
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def sort = students.sort&#123;</span><br><span class="line">   	def student1,def student2 -&gt;</span><br><span class="line">       	Number score1 = student1.value.score</span><br><span class="line">       	Number score2 = student2.value.score</span><br><span class="line">       	return score1 == score2 ? 0 : score1 &gt; score2 ? 1 : -1</span><br><span class="line">&#125;</span><br><span class="line">println sort</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/68.png"></p>
 <h2 id="3-groovy中范围详解"><a href="#3-groovy中范围详解" class="headerlink" title="3.groovy中范围详解"></a>3.groovy中范围详解</h2><p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/69.png"></p>
-<h3 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义"></a>3.1 定义</h3><pre><code>def range = 1..10
-println range[0]
-println range.contains(10)
-println range.from
-println range.to
-</code></pre>
+<h3 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义"></a>3.1 定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def range = 1..10</span><br><span class="line">println range[0]</span><br><span class="line">println range.contains(10)</span><br><span class="line">println range.from</span><br><span class="line">println range.to</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/70.png"></p>
 <p>range是list的子类，是更简单的list，操作方法与list一样，更轻量</p>
-<h3 id="3-2-使用"><a href="#3-2-使用" class="headerlink" title="3.2 使用"></a>3.2 使用</h3><h4 id="遍历-1"><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h4><pre><code>range.each &#123;
-    print it
-&#125;
-</code></pre>
+<h3 id="3-2-使用"><a href="#3-2-使用" class="headerlink" title="3.2 使用"></a>3.2 使用</h3><h4 id="遍历-1"><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">range.each &#123;</span><br><span class="line">   	print it</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/71.png"></p>
-<h4 id="switch-case"><a href="#switch-case" class="headerlink" title="switch&#x2F;case"></a>switch&#x2F;case</h4><pre><code>def getGrade(Number number) &#123;
-    def result
-    switch (number)&#123;
-        case 0..&lt;60:
-            result = &#39;不及格&#39;
-            break
-        case 60..&lt;70:
-            result = &#39;及格&#39;
-            break
-        case 70..&lt;80:
-            result = &#39;良好&#39;
-            break
-        case 80..100:
-            result = &#39;优秀&#39;
-            break
-    &#125;
-    return result//return可以省略
-&#125;
-
-def result = getGrade(75)
-println result
-</code></pre>
+<h4 id="switch-case"><a href="#switch-case" class="headerlink" title="switch&#x2F;case"></a>switch&#x2F;case</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def getGrade(Number number) &#123;</span><br><span class="line">   	def result</span><br><span class="line">   	switch (number)&#123;</span><br><span class="line">       	case 0..&lt;60:</span><br><span class="line">           	result = &#x27;不及格&#x27;</span><br><span class="line">           	break</span><br><span class="line">       	case 60..&lt;70:</span><br><span class="line">           	result = &#x27;及格&#x27;</span><br><span class="line">           	break</span><br><span class="line">       	case 70..&lt;80:</span><br><span class="line">           	result = &#x27;良好&#x27;</span><br><span class="line">           	break</span><br><span class="line">       	case 80..100:</span><br><span class="line">           	result = &#x27;优秀&#x27;</span><br><span class="line">           	break</span><br><span class="line">   	&#125;</span><br><span class="line">   	return result//return可以省略</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def result = getGrade(75)</span><br><span class="line">println result</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/21/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/72.png"></p>
 
                     

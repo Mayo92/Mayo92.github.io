@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Apr 13 2020 11:42:32 GMT+0800">2020-04-13 11:42:32</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 14:58:51 GMT+0800">2024-07-11 14:58:51</span>
             </span>
         
 
@@ -254,129 +254,28 @@
                     
 
                     
-                         <h2 id="1-文件操作"><a href="#1-文件操作" class="headerlink" title="1.文件操作"></a>1.文件操作</h2><p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/1.png"></p>
+                         <h2 id="1-文件操作"><a href="#1-文件操作" class="headerlink" title="1.文件操作"></a>1.文件操作</h2><span id="more"></span>
+
+<p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/1.png"></p>
 <ol>
 <li>所有java对文件处理的类，groovy都可以使用</li>
 <li>groovy扩展了许多更加快捷和强大的方法</li>
 </ol>
-<span id="more"></span>
+<h3 id="1-1-文本的读写"><a href="#1-1-文本的读写" class="headerlink" title="1.1 文本的读写"></a>1.1 文本的读写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def file = new File(&#x27;../../GroovySpecification.iml&#x27;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="1-1-文本的读写"><a href="#1-1-文本的读写" class="headerlink" title="1.1 文本的读写"></a>1.1 文本的读写</h3><pre><code>def file = new File(&#39;../../GroovySpecification.iml&#39;)
-</code></pre>
-<h4 id="读取文件内容"><a href="#读取文件内容" class="headerlink" title="读取文件内容"></a>读取文件内容</h4><pre><code>//eachLine不常用
-file.eachLine &#123;
-    line -&gt; println line
-&#125;
-</code></pre>
+<h4 id="读取文件内容"><a href="#读取文件内容" class="headerlink" title="读取文件内容"></a>读取文件内容</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//eachLine不常用</span><br><span class="line">file.eachLine &#123;</span><br><span class="line">   	line -&gt; println line</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/2.png"></p>
-<pre><code>def text = file.getText()
-println text
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def text = file.getText()</span><br><span class="line">println text</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/3.png"></p>
-<pre><code>//返回列表
-def result = file.readLines()
-println result.toListString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//返回列表</span><br><span class="line">def result = file.readLines()</span><br><span class="line">println result.toListString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/4.png"></p>
-<pre><code>//读取部分内容
-def reader = file.withReader &#123;
-    reader -&gt;
-        char[] buffer = new char[100]
-        reader.read(buffer)
-        return buffer
-&#125;
-println reader
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//读取部分内容</span><br><span class="line">def reader = file.withReader &#123;</span><br><span class="line">   	reader -&gt;</span><br><span class="line">       	char[] buffer = new char[100]</span><br><span class="line">       	reader.read(buffer)</span><br><span class="line">       	return buffer</span><br><span class="line">&#125;</span><br><span class="line">println reader</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/5.png"></p>
-<h4 id="拷贝（读写）"><a href="#拷贝（读写）" class="headerlink" title="拷贝（读写）"></a>拷贝（读写）</h4><pre><code>//groovy提供的方法为我们关闭了流
-def copy(String sourcePath,String destinationPath)&#123;
-    try&#123;
-        def desFile = new File(destinationPath)
-        if(!desFile.exists()) &#123;
-            desFile.createNewFile()
-        &#125;
-        def sourceFile = new File(sourcePath)
-        if(!sourceFile.exists()) &#123;
-            return false
-        &#125;
-        sourceFile.withReader &#123;
-            reader -&gt;
-                def lines = reader.readLines()
-                desFile.withWriter &#123;
-                    writer -&gt;
-                        lines.each &#123;
-                            writer.append(it+&#39;\r\n&#39;)
-                        &#125;
-                &#125;
-        &#125;
-        return true
-    &#125;catch(Exception e)&#123;
-        e.printStackTrace()
-    &#125;
-&#125;
-
-def result = copy(&#39;../../GroovySpecification.iml&#39;,&#39;../../GroovySpecification2.iml&#39;)
-println result
-</code></pre>
+<h4 id="拷贝（读写）"><a href="#拷贝（读写）" class="headerlink" title="拷贝（读写）"></a>拷贝（读写）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//groovy提供的方法为我们关闭了流</span><br><span class="line">def copy(String sourcePath,String destinationPath)&#123;</span><br><span class="line">   	try&#123;</span><br><span class="line">       	def desFile = new File(destinationPath)</span><br><span class="line">       	if(!desFile.exists()) &#123;</span><br><span class="line">           	desFile.createNewFile()</span><br><span class="line">       	&#125;</span><br><span class="line">       	def sourceFile = new File(sourcePath)</span><br><span class="line">       	if(!sourceFile.exists()) &#123;</span><br><span class="line">           	return false</span><br><span class="line">       	&#125;</span><br><span class="line">       	sourceFile.withReader &#123;</span><br><span class="line">           	reader -&gt;</span><br><span class="line">               	def lines = reader.readLines()</span><br><span class="line">               	desFile.withWriter &#123;</span><br><span class="line">                   	writer -&gt;</span><br><span class="line">                       	lines.each &#123;</span><br><span class="line">                           	writer.append(it+&#x27;\r\n&#x27;)</span><br><span class="line">                       	&#125;</span><br><span class="line">               	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">       	return true</span><br><span class="line">   	&#125;catch(Exception e)&#123;</span><br><span class="line">       	e.printStackTrace()</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def result = copy(&#x27;../../GroovySpecification.iml&#x27;,&#x27;../../GroovySpecification2.iml&#x27;)</span><br><span class="line">println result</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/6.png"></p>
-<h3 id="1-2-对象的读写"><a href="#1-2-对象的读写" class="headerlink" title="1.2 对象的读写"></a>1.2 对象的读写</h3><pre><code>def saveObject(Object obj,String path)&#123;
-    try&#123;
-        def file = new File(path)
-        if(!file.exists()) &#123;
-            file.createNewFile()
-        &#125;
-        file.withObjectOutputStream &#123;
-            out -&gt;
-                out.writeObject(obj)
-        &#125;
-        return true
-    &#125;catch(Exception e)&#123;
-        e.printStackTrace()
-    &#125;
-&#125;
-
-def readObj(String path)&#123;
-    def obj = null
-    try&#123;
-        def file = new File(path)
-        if(file == null || !file.exists()) &#123;
-            return null
-        &#125;
-        file.withObjectInputStream &#123;
-            input -&gt;
-                obj = input.readObject()
-        &#125;
-    &#125;catch(Exception e)&#123;
-        e.printStackTrace()
-    &#125;
-    return obj
-&#125;
-
-def person = new Person(name: &#39;krido&#39;,age: 18)
-saveObject(person,&#39;../../person.bin&#39;)
-def obj = (Person)readObj(&#39;../../person.bin&#39;)
-println(&quot;name is $&#123;obj.name&#125; age is $&#123;obj.age&#125;&quot;)
-</code></pre>
+<h3 id="1-2-对象的读写"><a href="#1-2-对象的读写" class="headerlink" title="1.2 对象的读写"></a>1.2 对象的读写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">def saveObject(Object obj,String path)&#123;</span><br><span class="line">   	try&#123;</span><br><span class="line">       	def file = new File(path)</span><br><span class="line">       	if(!file.exists()) &#123;</span><br><span class="line">           	file.createNewFile()</span><br><span class="line">       	&#125;</span><br><span class="line">       	file.withObjectOutputStream &#123;</span><br><span class="line">           	out -&gt;</span><br><span class="line">               	out.writeObject(obj)</span><br><span class="line">       	&#125;</span><br><span class="line">       	return true</span><br><span class="line">   	&#125;catch(Exception e)&#123;</span><br><span class="line">       	e.printStackTrace()</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def readObj(String path)&#123;</span><br><span class="line">   	def obj = null</span><br><span class="line">   	try&#123;</span><br><span class="line">       	def file = new File(path)</span><br><span class="line">       	if(file == null || !file.exists()) &#123;</span><br><span class="line">           	return null</span><br><span class="line">       	&#125;</span><br><span class="line">       	file.withObjectInputStream &#123;</span><br><span class="line">           	input -&gt;</span><br><span class="line">               	obj = input.readObject()</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;catch(Exception e)&#123;</span><br><span class="line">       	e.printStackTrace()</span><br><span class="line">   	&#125;</span><br><span class="line">   	return obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def person = new Person(name: &#x27;krido&#x27;,age: 18)</span><br><span class="line">saveObject(person,&#x27;../../person.bin&#x27;)</span><br><span class="line">def obj = (Person)readObj(&#x27;../../person.bin&#x27;)</span><br><span class="line">println(&quot;name is $&#123;obj.name&#125; age is $&#123;obj.age&#125;&quot;)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/7.png"></p>
-<h3 id="1-3-上节jsonToString结果写到文件中"><a href="#1-3-上节jsonToString结果写到文件中" class="headerlink" title="1.3 上节jsonToString结果写到文件中"></a>1.3 上节jsonToString结果写到文件中</h3><pre><code>def toFile(StringWriter sw,String path)&#123;
-    try&#123;
-        def file = new File(path)
-        if(!file.exists()) &#123;
-            file.createNewFile()
-        &#125;
-        file.withWriter &#123;
-            write -&gt;
-                sw.each &#123;
-                    line -&gt;
-                        write.append(line.toString() + &#39;\r\n&#39;)
-                &#125;
-        &#125;
-    &#125;catch(Exception e)&#123;
-        e.printStackTrace()
-    &#125;
-&#125;
-toFile(sw,&#39;../../xmltest.iml&#39;)
-</code></pre>
+<h3 id="1-3-上节jsonToString结果写到文件中"><a href="#1-3-上节jsonToString结果写到文件中" class="headerlink" title="1.3 上节jsonToString结果写到文件中"></a>1.3 上节jsonToString结果写到文件中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def toFile(StringWriter sw,String path)&#123;</span><br><span class="line">   	try&#123;</span><br><span class="line">       	def file = new File(path)</span><br><span class="line">       	if(!file.exists()) &#123;</span><br><span class="line">           	file.createNewFile()</span><br><span class="line">       	&#125;</span><br><span class="line">       	file.withWriter &#123;</span><br><span class="line">           	write -&gt;</span><br><span class="line">               	sw.each &#123;</span><br><span class="line">                   	line -&gt;</span><br><span class="line">                       	write.append(line.toString() + &#x27;\r\n&#x27;)</span><br><span class="line">               	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;catch(Exception e)&#123;</span><br><span class="line">       	e.printStackTrace()</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">toFile(sw,&#x27;../../xmltest.iml&#x27;)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/25/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/8.png"></p>
 <h2 id="阶段总结"><a href="#阶段总结" class="headerlink" title="阶段总结"></a>阶段总结</h2><h3 id="groovy与java对比"><a href="#groovy与java对比" class="headerlink" title="groovy与java对比"></a>groovy与java对比</h3><ul>
 <li>写法上：没有java那么多限制（可以不加分号，可以不写return等）</li>

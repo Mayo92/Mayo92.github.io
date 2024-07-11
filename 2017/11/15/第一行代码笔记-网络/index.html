@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Mayo">
+    
+    <title>
+        
+            第一行代码笔记-网络 |
+        
+        妙妙屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               妙妙屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about-me"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about-me"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        第一行代码笔记-网络
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://avatars.githubusercontent.com/u/16527293?v=4">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Mayo</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2017-11-15 11:35:43</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jul 11 2024 13:09:01 GMT+0800">2024-07-11 13:09:01</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">第一行代码</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/WebView/">WebView</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/HttpURLConnection/">HttpURLConnection</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/OkHttp/">OkHttp</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/XML/">XML</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/JSON/">JSON</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="1-WebView"><a href="#1-WebView" class="headerlink" title="1. WebView"></a>1. WebView</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">webView.getSettings().setJavaScriptEnabled(true);</span><br><span class="line">webView.setWebViewClient(new WebViewClient());</span><br><span class="line">webView.loadUrl(&quot;http://www.baidu.com&quot;);</span><br></pre></td></tr></table></figure>
+<p>getSettings()方法可以设置一些浏览器的属性，这里只调用了setJavaScriptEnabled()方法使得WebView支持JavaScript脚本。</p>
+<span id="more"></span>
+
+<p>setWebViewClient()方法，当需要从一个网页跳转到另一个网页时，希望网页仍在当前WebView显示。</p>
+<h3 id="2-使用HTTP协议访问网络"><a href="#2-使用HTTP协议访问网络" class="headerlink" title="2. 使用HTTP协议访问网络"></a>2. 使用HTTP协议访问网络</h3><h4 id="2-1-使用HttpURLConnection"><a href="#2-1-使用HttpURLConnection" class="headerlink" title="2.1 使用HttpURLConnection"></a>2.1 使用HttpURLConnection</h4><p>首先获取HttpURLConnection实例，一般只需new出一个URL对象，并传入目标的网络地址，然后调用openConnection()方法即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://www.baidu.com&quot;);</span><br><span class="line">HttpURLConnection connection = (HttpURLConnection)url.openConnection();</span><br></pre></td></tr></table></figure>
+<p>设置HTTP请求所使用的方法，常用的有GET和POST，GET从服务器获取数据，POST希望提交数据给服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;GET&quot;);</span><br></pre></td></tr></table></figure>
+<p>接下来可以自由定制，如链接超时、读取超时毫秒数、服务器希望得到的消息头等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">connection.setConnectTimeout(8000);</span><br><span class="line">connection.setReadTimeout(8000);</span><br></pre></td></tr></table></figure>
+<p>再调用getInputStream()方法就可以获取到服务器返回的输入流了，接着对输入流进行读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = connection.getInputStream();</span><br></pre></td></tr></table></figure>
+<p>最后调用disconnect()将这个HTTP连接关闭掉</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.disconnect();</span><br></pre></td></tr></table></figure>
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">new Thread(new Runnable&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run()&#123;</span><br><span class="line">		HttpURLConnection connection = null;</span><br><span class="line">		BufferedReader reader = null;</span><br><span class="line">		try&#123;</span><br><span class="line">			URL url = new URL(&quot;http://www.baidu.com&quot;);</span><br><span class="line">			connection = (HttpURLConnection)url.openConnection();</span><br><span class="line">			connection.setRequestMethod(&quot;GET&quot;);</span><br><span class="line">			connection.setConnectTimeout(8000);</span><br><span class="line">			connection.setReadTimeout(8000);</span><br><span class="line">			InputStream in = connection.getInputStream();</span><br><span class="line">			//对获取到的输入流进行读取</span><br><span class="line">			reader = new BufferedReader(new InputStreamReader(in));</span><br><span class="line">			StringBuilder response = new StringBuilder();</span><br><span class="line">			String line;</span><br><span class="line">			while((line = reader.readLine()) != null)&#123;</span><br><span class="line">				response.append(line);</span><br><span class="line">			&#125;</span><br><span class="line">			showResponse(response.toString());</span><br><span class="line">		&#125; catch(Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; finally &#123;</span><br><span class="line">			if(reader != null)&#123;</span><br><span class="line">				try&#123;</span><br><span class="line">					reader.close();</span><br><span class="line">				&#125;catch (IOException e)&#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(connection != null)&#123;</span><br><span class="line">				connection.disconnect();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;).start();</span><br><span class="line"></span><br><span class="line">private void showResponse(final String response)&#123;</span><br><span class="line">	runOnUiThread(new Runnable()&#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void run()&#123;</span><br><span class="line">			//进行UI操作</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用POST方法，每条数据要以键值对的形式，数据与数据用”&amp;”符号隔开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(&quot;POST&quot;);</span><br><span class="line">DataOutputStream out = new DataOutputStream(connection.getOutputStream());</span><br><span class="line">out.writeBytes(&quot;username=admin&amp;password=123456&quot;);</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-OkHttp"><a href="#2-2-OkHttp" class="headerlink" title="2.2 OkHttp"></a>2.2 OkHttp</h4><p>首先创建一个OkHttpClient实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = new OkHttpClient();</span><br></pre></td></tr></table></figure>
+<p>创建Request对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Request request = new Request.Builder().build();</span><br></pre></td></tr></table></figure>
+<p>进行配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Request request = new Request.Builder()</span><br><span class="line">	.url(&quot;http://www.baidu.com&quot;)</span><br><span class="line">	.build();</span><br></pre></td></tr></table></figure>
+<p>调用newCall()创建一个Call对象，并调用它的execute()方法来发送请求并获取服务器返回的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Response response = client.newCall(request).execute();</span><br></pre></td></tr></table></figure>
+<p>获取返回的具体内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String responseData = response.body().string();</span><br></pre></td></tr></table></figure>
+<p>POST需要先构建一个RequestBody对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RequestBody requestBody = new FormBody.Builder()</span><br><span class="line">	.add(&quot;username&quot;,&quot;admin&quot;)</span><br><span class="line">	.add(&quot;password&quot;,&quot;123456&quot;)</span><br><span class="line">	.build();</span><br></pre></td></tr></table></figure>
+<p>然后在Request.Builder中调用post()方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Request request = new Request.Builder()</span><br><span class="line">	.url(&quot;http://www.baidu.com&quot;)</span><br><span class="line">	.post(requestBody)</span><br><span class="line">	.build();</span><br></pre></td></tr></table></figure>
+<h5 id="修改上面的例子"><a href="#修改上面的例子" class="headerlink" title="修改上面的例子"></a>修改上面的例子</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">new Thread(new Runnable&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run()&#123;</span><br><span class="line">		HttpURLConnection connection = null;</span><br><span class="line">		BufferedReader reader = null;</span><br><span class="line">		try&#123;</span><br><span class="line">			OkHttpClient client = new OkHttpClient();</span><br><span class="line">			Request request = new Request.Builder()</span><br><span class="line">				.url(&quot;http://www.baidu.com&quot;)</span><br><span class="line">				.build();	</span><br><span class="line">			Response response = client.newCall(request).execute();</span><br><span class="line">			String responseData = response.body().string();</span><br><span class="line">			showResponse(responseData);</span><br><span class="line">		&#125; catch(Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+<h3 id="3-解析XML格式数据"><a href="#3-解析XML格式数据" class="headerlink" title="3. 解析XML格式数据"></a>3. 解析XML格式数据</h3><p>一般我们会在网络上传输一些格式化后的数据，这些数据会有一定的结构规格和语义，当另一方收到数据消息之后就可以按照相同的结构规格进行解析，从而取出他想要的那部分内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;apps&gt;</span><br><span class="line">	&lt;app&gt;</span><br><span class="line">		&lt;id&gt;1&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;Google Maps&lt;/names&gt;</span><br><span class="line">		&lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">	&lt;/app&gt;</span><br><span class="line">	&lt;app&gt;</span><br><span class="line">		&lt;id&gt;2&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;Chrome&lt;/names&gt;</span><br><span class="line">		&lt;version&gt;2.1&lt;/version&gt;</span><br><span class="line">	&lt;/app&gt;</span><br><span class="line">	&lt;app&gt;</span><br><span class="line">		&lt;id&gt;3&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;Google Play&lt;/names&gt;</span><br><span class="line">		&lt;version&gt;2.3&lt;/version&gt;</span><br><span class="line">	&lt;/app&gt;</span><br><span class="line">&lt;/apps&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-Pull解析方式"><a href="#3-1-Pull解析方式" class="headerlink" title="3.1 Pull解析方式"></a>3.1 Pull解析方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	XmlPullParseFactory factory = XmlPullParseFactory.newInstance();</span><br><span class="line">	XmlPullParser xmlPullParser = factory.newPullParser();</span><br><span class="line">	xmlPullParser.setInput(new StringReader(xmlData));</span><br><span class="line">	int eventType = xmlPullParser.getEventType();</span><br><span class="line">	String id = &quot;&quot;;</span><br><span class="line">	String name = &quot;&quot;;</span><br><span class="line">	String version = &quot;&quot;;</span><br><span class="line">	while(eventType != XmlPullParser.END_DOCUMENT) &#123;</span><br><span class="line">		String nodeName = xmlPullParser.getName();</span><br><span class="line">		switch(eventType) &#123;</span><br><span class="line">			//开始解析某个节点</span><br><span class="line">			case XmlPullParser.START_TAG:</span><br><span class="line">				if(&quot;id&quot;.equals(nodeName))&#123;</span><br><span class="line">					id = xmlPullParser.nextText();</span><br><span class="line">				&#125; else if(&quot;name&quot;.equals(nodeName)) &#123;</span><br><span class="line">					name = xmlPullParser.nextText();</span><br><span class="line">				&#125; else if(&quot;version&quot;.equals(nodeName)) &#123;</span><br><span class="line">					version = xmlPullParser.nextText();</span><br><span class="line">				&#125;</span><br><span class="line">				break;</span><br><span class="line">			//完成解析某个节点</span><br><span class="line">			case XmlPullParser.END_TAG:</span><br><span class="line">				if(&quot;app&quot;.equals(nodeName))&#123;</span><br><span class="line">					//获取到id,name,version</span><br><span class="line">				&#125;</span><br><span class="line">				break;</span><br><span class="line">			default:</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		eventType = xmlPullParser.next();</span><br><span class="line">	&#125;</span><br><span class="line">&#125; catch(Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先获取XmlPullParseFactory的实例，并且借助这个实例得到XmlPullParser对象，调用XmlPullParser的setInput()方法将服务器返回的XML数据设置进去就可以开始解析了。</p>
+<h4 id="3-2-SAX解析方式"><a href="#3-2-SAX解析方式" class="headerlink" title="3.2 SAX解析方式"></a>3.2 SAX解析方式</h4><h5 id="新建一个类继承DefaultHandler，重写5个方法"><a href="#新建一个类继承DefaultHandler，重写5个方法" class="headerlink" title="新建一个类继承DefaultHandler，重写5个方法"></a>新建一个类继承DefaultHandler，重写5个方法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class MyHandler extends DefaultHandler &#123;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	publlic void startDocument() throws SAXException &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void startElement(String uri,String localName,String qName,</span><br><span class="line">		Attributes attributes) throws SAXException &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void characters(char[] ch,int start,int length) throws SAXException &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void endElements(String uri,String localName,String qName)</span><br><span class="line">		throws SAXException &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void endDocument() throws SAXException &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>startDocument()在开始XML解析的时候调用，startElement()开始解析某个节点的时候调用，characters()获取节点内容的时候调用，endElements()完成解析某个节点的时候调用，endDocument()完成整个XML解析的时候调用。中间三个方法是有参数的，从XML解析出的数据就会以参数的形式传入到这些方法中。获取节点内容的时候，characters()方法可能会被调用多次，一些换行符也被当做内容解析出来，需要针对这些情况在代码里做好控制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">public class ContentHandler extends DefaultHandler &#123;</span><br><span class="line"></span><br><span class="line">	private String nodeName;</span><br><span class="line">	</span><br><span class="line">	private StringBuilder id;</span><br><span class="line">	</span><br><span class="line">	private StringBuilder name;</span><br><span class="line">	</span><br><span class="line">	private StringBuilder version;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	publlic void startDocument() throws SAXException &#123;</span><br><span class="line">		id = new StringBuilder();</span><br><span class="line">		name = new StringBuilder();</span><br><span class="line">		version = new StringBuilder();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void startElement(String uri,String localName,String qName,</span><br><span class="line">		Attributes attributes) throws SAXException &#123;</span><br><span class="line">		//记录当前节点</span><br><span class="line">		nodeName = localName;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void characters(char[] ch,int start,int length) throws SAXException &#123;</span><br><span class="line">		//根据当前节点名判断内容添加到哪一个StringBuilder对象中</span><br><span class="line">		if(&quot;id&quot;.equals(nodeName))&#123;</span><br><span class="line">			id.append(ch,start,length);</span><br><span class="line">		&#125; else if(&quot;name&quot;.equals(nodeName)) &#123;</span><br><span class="line">			name.append(ch,start,length);</span><br><span class="line">		&#125; else if(&quot;version&quot;.equals(nodeName)) &#123;</span><br><span class="line">			version.append(ch,start,length);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void endElements(String uri,String localName,String qName)</span><br><span class="line">		throws SAXException &#123;</span><br><span class="line">		if(&quot;app&quot;.equals(nodeName))&#123;</span><br><span class="line">			//id.toString().trim()</span><br><span class="line">			//name.toString().trim()</span><br><span class="line">			//version.toString().trim()</span><br><span class="line">			//清空StringBuilder</span><br><span class="line">			id.setLength(0);</span><br><span class="line">			name.setLength(0);</span><br><span class="line">			version.setLength(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void endDocument() throws SAXException &#123;</span><br><span class="line">		super.endDocument();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为id、name、version都可能包括回车或换行符，所以需调用trim()方法。清空StringBuilder防止影响下一次内容的读取。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	SAXParseFactory factory = SAXParseFactory.newInstance();</span><br><span class="line">	XmlReader xmlReader = factory.newSAXParser().getXMLReader();</span><br><span class="line">	ContentHandler handler = new ContentHandler();</span><br><span class="line">	//将ContentHandler的实例设置到XmlReader中</span><br><span class="line">	xmlReader.setContentHandler(handler);</span><br><span class="line">	//开始执行解析</span><br><span class="line">	xmlReader.parse(new InputSource(new StringReader(xmlData)));</span><br><span class="line">&#125; catch(Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-解析JSON格式数据"><a href="#4-解析JSON格式数据" class="headerlink" title="4. 解析JSON格式数据"></a>4. 解析JSON格式数据</h3><p>体积更小，传输更省流量。但语义性较差没有XML直观。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&quot;id&quot;:5,&quot;version&quot;:5.5,&quot;name&quot;:&quot;xxxx&quot;&#125;,</span><br><span class="line">&#123;&quot;id&quot;:6,&quot;version&quot;:7.0,&quot;name&quot;:&quot;xxxx&quot;&#125;,</span><br><span class="line">&#123;&quot;id&quot;:7,&quot;version&quot;:3.5,&quot;name&quot;:&quot;xxxx&quot;&#125;]</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-使用JSONObject"><a href="#4-1-使用JSONObject" class="headerlink" title="4.1 使用JSONObject"></a>4.1 使用JSONObject</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	JSONArray jsonArray = new JSONArray(jsonData);</span><br><span class="line">	for(int i = 0;i &lt; jsonArray.length();i++) &#123;</span><br><span class="line">		JSONObject jsonObject = jsonArray.getJSONObject(i);</span><br><span class="line">		String id = jsonObject.getString(&quot;id&quot;);</span><br><span class="line">		String name = jsonObject.getString(&quot;name&quot;);</span><br><span class="line">		String version = jsonObject.getString(&quot;version&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; catch(Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-使用GSON"><a href="#4-2-使用GSON" class="headerlink" title="4.2 使用GSON"></a>4.2 使用GSON</h4><p>可以将一段JSON格式的字符串自动映射成一个对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;name&quot;:&quot;Tom&quot;,&quot;age&quot;:20&#125;</span><br></pre></td></tr></table></figure>
+<p>定义一个Person类，加入name和age字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Gson gson = new Gson();</span><br><span class="line">Person person = gson.fromJson(jsonData, Person.class);</span><br></pre></td></tr></table></figure>
+<p>JSON数组需要借助TypeToken将希望解析成的数据类型传入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; people = gson.fromJson(jsonData,new TypeToken&lt;List&lt;Person&gt;&gt;()</span><br><span class="line">	&#123;&#125;.getType());</span><br><span class="line">	</span><br><span class="line">Gson gson = new Gson();</span><br><span class="line">List&lt;App&gt; appList = gson.fromJson(jsonData,new TypeToken&lt;List&lt;App&gt;&gt;()</span><br><span class="line">	&#123;&#125;.getType());</span><br><span class="line">for (App app : appList) &#123;</span><br><span class="line">	//app.getId()</span><br><span class="line">	//app.getName()</span><br><span class="line">	//app.getVersion()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-实战"><a href="#5-实战" class="headerlink" title="5. 实战"></a>5. 实战</h3><p>通常将通用的网络操作提取到一个公共的类里，并且提供一个静态方法。</p>
+<p>如果开启一个线程发起HTTP请求，那么服务器响应的数据是W无法进行返回的，所有的耗时逻辑都是在子线程里进行的，sendHttpRequest()方法会在服务器还没有来得及响应的时候就执行结束了，当然也就无法返回响应的数据了。</p>
+<p>使用Java回调机制解决，新建一个接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public interface HttpCallbackListener &#123;</span><br><span class="line">	</span><br><span class="line">	void onFinish(String response);</span><br><span class="line">	</span><br><span class="line">	void onError(Exception e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void sendHttpRequest(final String address,</span><br><span class="line">	final HttpCallbackListener listener) &#123;</span><br><span class="line">	</span><br><span class="line">	new Thread(new Runnable() &#123;</span><br><span class="line">		</span><br><span class="line">		@Override</span><br><span class="line">		public void run() &#123;</span><br><span class="line">			</span><br><span class="line">			HttpURLConnection connection = null;</span><br><span class="line">			try &#123;</span><br><span class="line">				URL url = new URL(address);</span><br><span class="line">				connection = (HttpURLConnection)url.openConnection();</span><br><span class="line">				connection.setRequestMethod(&quot;GET&quot;);</span><br><span class="line">				connection.setConnectTimeout(8000);</span><br><span class="line">				connection.setReadTimeout(8000);</span><br><span class="line">				connection.setDoInput(true);</span><br><span class="line">				connection.setDoOutput(true);</span><br><span class="line">				InputStream in = connection.getInputStream();</span><br><span class="line">				BufferedReader reader = new BufferedReader(new InputStreamReader(in));</span><br><span class="line">				StringBuilder response = new StringBuilder();</span><br><span class="line">				String line;</span><br><span class="line">				while((line = reader.readLine()) != null)&#123;</span><br><span class="line">					response.append(line);</span><br><span class="line">				&#125;</span><br><span class="line">				if(listener != null)&#123;</span><br><span class="line">					//回调onFinish()方法</span><br><span class="line">					listener.onFinish(response.toString());</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; catch(Exception e)&#123;</span><br><span class="line">				if(listener != null)&#123;</span><br><span class="line">					//回调onError()方法</span><br><span class="line">					listener. onError(e);</span><br><span class="line">				&#125;				</span><br><span class="line">			&#125; finally &#123;</span><br><span class="line">				if(reader != null)&#123;</span><br><span class="line">					try&#123;</span><br><span class="line">						reader.close();</span><br><span class="line">					&#125;catch (IOException e)&#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				if(connection != null)&#123;</span><br><span class="line">					connection.disconnect();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;).start();	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">HttpUtil.sendHttpRequest(address,new HttpCallbackListener()&#123;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onFinish(String response) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onError(Exception e) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="使用OkHttp实现"><a href="#使用OkHttp实现" class="headerlink" title="使用OkHttp实现"></a>使用OkHttp实现</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void sendOkHttpRequest(String address,okhttp3.Callback callback) &#123;</span><br><span class="line">	</span><br><span class="line">	OkHttpClient client = new OkHttpClient();</span><br><span class="line">	Request request = new Request.Builder()</span><br><span class="line">	.url(address)</span><br><span class="line">	.build();</span><br><span class="line">	client.newCall(request).enqueue(callback);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>OkHttp在enqueue()方法内部开好了子线程，并把最终的请求结果回调到okhttp3.Callback中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HttpUtil.sendOkHttpRequest(address,new okhttp3.Callback()&#123;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onResponse(Call call,Response response) throws IOException &#123;</span><br><span class="line">		String responseData = response.body().string();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onFailure(Call call,IOException e) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>不管使用HttpURLConnection还是OkHttp，回调接口都还是在子线程中运行，因此我们不可以在这里执行任何的UI操作。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/WebView/">WebView</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/HttpURLConnection/">HttpURLConnection</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/OkHttp/">OkHttp</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/XML/">XML</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/JSON/">JSON</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2017/11/16/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Service/"
+                                   title="第一行代码笔记-Service"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-Service</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2017/11/14/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%AA%92%E4%BD%93/"
+                                   title="第一行代码笔记-多媒体"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-多媒体</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-WebView"><span class="nav-number">1.</span> <span class="nav-text">1. WebView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8HTTP%E5%8D%8F%E8%AE%AE%E8%AE%BF%E9%97%AE%E7%BD%91%E7%BB%9C"><span class="nav-number">2.</span> <span class="nav-text">2. 使用HTTP协议访问网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E4%BD%BF%E7%94%A8HttpURLConnection"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 使用HttpURLConnection</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.1.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-OkHttp"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 OkHttp</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%8A%E9%9D%A2%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">2.2.1.</span> <span class="nav-text">修改上面的例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A7%A3%E6%9E%90XML%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="nav-number">3.</span> <span class="nav-text">3. 解析XML格式数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Pull%E8%A7%A3%E6%9E%90%E6%96%B9%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Pull解析方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-SAX%E8%A7%A3%E6%9E%90%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 SAX解析方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%BB%A7%E6%89%BFDefaultHandler%EF%BC%8C%E9%87%8D%E5%86%995%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">新建一个类继承DefaultHandler，重写5个方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%A7%A3%E6%9E%90JSON%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">4. 解析JSON格式数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E4%BD%BF%E7%94%A8JSONObject"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 使用JSONObject</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E4%BD%BF%E7%94%A8GSON"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 使用GSON</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%AE%9E%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">5. 实战</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8OkHttp%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.0.1.</span> <span class="nav-text">使用OkHttp实现</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2017</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Mayo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-WebView"><span class="nav-number">1.</span> <span class="nav-text">1. WebView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8HTTP%E5%8D%8F%E8%AE%AE%E8%AE%BF%E9%97%AE%E7%BD%91%E7%BB%9C"><span class="nav-number">2.</span> <span class="nav-text">2. 使用HTTP协议访问网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E4%BD%BF%E7%94%A8HttpURLConnection"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 使用HttpURLConnection</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.1.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-OkHttp"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 OkHttp</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%8A%E9%9D%A2%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">2.2.1.</span> <span class="nav-text">修改上面的例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A7%A3%E6%9E%90XML%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="nav-number">3.</span> <span class="nav-text">3. 解析XML格式数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Pull%E8%A7%A3%E6%9E%90%E6%96%B9%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Pull解析方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-SAX%E8%A7%A3%E6%9E%90%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 SAX解析方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%BB%A7%E6%89%BFDefaultHandler%EF%BC%8C%E9%87%8D%E5%86%995%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">新建一个类继承DefaultHandler，重写5个方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%A7%A3%E6%9E%90JSON%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">4. 解析JSON格式数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E4%BD%BF%E7%94%A8JSONObject"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 使用JSONObject</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E4%BD%BF%E7%94%A8GSON"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 使用GSON</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%AE%9E%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">5. 实战</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8OkHttp%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.0.1.</span> <span class="nav-text">使用OkHttp实现</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

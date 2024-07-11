@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Jul 24 2020 18:39:13 GMT+0800">2020-07-24 18:39:13</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 13:30:03 GMT+0800">2024-07-11 13:30:03</span>
             </span>
         
 
@@ -307,12 +307,7 @@
 <li>强引用、软引用、弱引用、虚引用</li>
 <li>最常使用的就是强引用、弱引用</li>
 </ul>
-<h4 id="弱引用的创建"><a href="#弱引用的创建" class="headerlink" title="弱引用的创建"></a>弱引用的创建</h4><pre><code>Object obj = new Object();//强引用
-//Object对象有两个引用指向它obj、wf
-WeakReference&lt;Object&gt; wf = new WeakReference&lt;Object&gt;(obj);
-obj = null;
-wf.get();//使用的时候要判断是否为空
-</code></pre>
+<h4 id="弱引用的创建"><a href="#弱引用的创建" class="headerlink" title="弱引用的创建"></a>弱引用的创建</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object obj = new Object();//强引用</span><br><span class="line">//Object对象有两个引用指向它obj、wf</span><br><span class="line">WeakReference&lt;Object&gt; wf = new WeakReference&lt;Object&gt;(obj);</span><br><span class="line">obj = null;</span><br><span class="line">wf.get();//使用的时候要判断是否为空</span><br></pre></td></tr></table></figure>
 <h4 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h4><ul>
 <li>标记-清除算法</li>
 </ul>

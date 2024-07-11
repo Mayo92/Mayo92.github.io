@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Dec 24 2020 14:40:47 GMT+0800">2020-12-24 14:40:47</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 11:15:12 GMT+0800">2024-07-11 11:15:12</span>
             </span>
         
 
@@ -229,7 +229,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">设计模式单例</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%8D%95%E4%BE%8B/">单例</a></li>
                         
                     
                 </ul>
@@ -303,46 +303,9 @@
 </ul>
 <h4 id="饿汉式与懒汉式"><a href="#饿汉式与懒汉式" class="headerlink" title="饿汉式与懒汉式"></a>饿汉式与懒汉式</h4><p>饿汉式在类加载时就创建实例，第一次加载速度快；懒汉式第一次使用时才进行实例化，第一次加载速度慢。饿汉式空间换时间；懒汉式时间换空间</p>
 <p>饿汉式线程安全；懒汉式存在线程风险（同步锁、双重校验锁、静态内部类、枚举）</p>
-<h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><pre><code>//设立静态变量，直接创建实例  
-private static MySingleton2 mySingleton = new MySingleton2();  
+<h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//设立静态变量，直接创建实例  </span><br><span class="line">private static MySingleton2 mySingleton = new MySingleton2();  </span><br><span class="line"> </span><br><span class="line">private MySingleton2()&#123;  </span><br><span class="line">   	//私有化构造函数  </span><br><span class="line">   	System.out.println(&quot;--&gt;饿汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">     </span><br><span class="line">//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">public static MySingleton2 getInstance()&#123;  </span><br><span class="line">   	System.out.println(&quot;--&gt;饿汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">   	return mySingleton;  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
-private MySingleton2()&#123;  
-    //私有化构造函数  
-    System.out.println(&quot;--&gt;饿汉式单例模式开始调用构造函数&quot;);  
-&#125;  
-  
-//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  
-public static MySingleton2 getInstance()&#123;  
-    System.out.println(&quot;--&gt;饿汉式单例模式开始调用公有方法返回实例&quot;);  
-    return mySingleton;  
-&#125; 
-</code></pre>
-<h4 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h4><pre><code>//懒汉式单例模式  
-public class MySingleton &#123;  
-
-    //设立静态变量  
-    private static MySingleton mySingleton = null;  
-
-    private MySingleton()&#123;  
-        //私有化构造函数  
-        System.out.println(&quot;--&gt;懒汉式单例模式开始调用构造函数&quot;);  
-    &#125;  
-  
-    //开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  
-    public static MySingleton getInstance()&#123;  
-        System.out.println(&quot;--&gt;懒汉式单例模式开始调用公有方法返回实例&quot;);  
-        if(mySingleton == null)&#123;  
-            System.out.println(&quot;--&gt;懒汉式构造函数的实例当前并没有被创建&quot;);  
-            mySingleton = new MySingleton();  
-        &#125;else&#123;  
-            System.out.println(&quot;--&gt;懒汉式构造函数的实例已经被创建&quot;);  
-        &#125;  
-        System.out.println(&quot;--&gt;方法调用结束，返回单例&quot;);  
-        return mySingleton;  
-    &#125;  
-&#125;  
-</code></pre>
-
+<h4 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例模式  </span><br><span class="line">public class MySingleton &#123;  </span><br><span class="line"> </span><br><span class="line">   	//设立静态变量  </span><br><span class="line">   	private static MySingleton mySingleton = null;  </span><br><span class="line"> </span><br><span class="line">   	private MySingleton()&#123;  </span><br><span class="line">       	//私有化构造函数  </span><br><span class="line">       	System.out.println(&quot;--&gt;懒汉式单例模式开始调用构造函数&quot;);  </span><br><span class="line">   	&#125;  </span><br><span class="line">     </span><br><span class="line">   	//开放一个公有方法，判断是否已经存在实例，有返回，没有新建一个在返回  </span><br><span class="line">   	public static MySingleton getInstance()&#123;  </span><br><span class="line">       	System.out.println(&quot;--&gt;懒汉式单例模式开始调用公有方法返回实例&quot;);  </span><br><span class="line">       	if(mySingleton == null)&#123;  </span><br><span class="line">           	System.out.println(&quot;--&gt;懒汉式构造函数的实例当前并没有被创建&quot;);  </span><br><span class="line">           	mySingleton = new MySingleton();  </span><br><span class="line">       	&#125;else&#123;  </span><br><span class="line">           	System.out.println(&quot;--&gt;懒汉式构造函数的实例已经被创建&quot;);  </span><br><span class="line">       	&#125;  </span><br><span class="line">       	System.out.println(&quot;--&gt;方法调用结束，返回单例&quot;);  </span><br><span class="line">       	return mySingleton;  </span><br><span class="line">   	&#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
                     
                 </div>
 
@@ -354,7 +317,7 @@ public class MySingleton &#123;
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%95%E4%BE%8B/">设计模式单例</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%8D%95%E4%BE%8B/">单例</a>
                                     </li>
                                 
                             </ul>
@@ -373,14 +336,14 @@ public class MySingleton &#123;
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/"
-                                   title="Android入门-Activity"
+                                   href="/2017/11/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Android-Studio/"
+                                   title="第一行代码笔记-Android Studio"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Android入门-Activity</span>
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-Android Studio</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>

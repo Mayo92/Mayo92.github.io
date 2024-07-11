@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Dec 29 2020 11:11:53 GMT+0800">2020-12-29 11:11:53</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:50:58 GMT+0800">2024-07-11 15:50:58</span>
             </span>
         
 
@@ -295,188 +295,23 @@
 <li>调用onDeach方法，把传递进来的Activity对象释放掉</li>
 </ol>
 <p>Fragment</p>
-<pre><code>public class TestFragment extends Fragment implements View.OnClickListener &#123;
-
-    // 2.1 定义用来与外部activity交互，获取到宿主activity
-    private FragmentListener listener;
-
-    // 1 定义了所有activity必须实现的接口方法
-    public interface FragmentListener&#123;
-        void process(String str);
-    &#125;
-
-    @Override
-    public void onAttach(Activity activity) &#123;
-        super.onAttach(activity);
-
-        if(activity instanceof FragmentListener) &#123;
-            listener = (FragmentListener)activity; // 2.2 获取到宿主activity并赋值
-        &#125; else&#123;
-            throw new IllegalArgumentException(&quot;activity must implements FragmentListener&quot;);
-        &#125;
-    &#125;
-
-    @Override
-    public void onClick(View v) &#123;
-        listener.process(&quot;我是接口&quot;); //3.1 执行回调
-    &#125;
-
-    //把传递进来的activity对象释放掉，防止内存泄漏
-    @Override
-    public void onDetach() &#123;
-        super.onDetach();
-        listener = null;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class TestFragment extends Fragment implements View.OnClickListener &#123;</span><br><span class="line"></span><br><span class="line">   	// 2.1 定义用来与外部activity交互，获取到宿主activity</span><br><span class="line">   	private FragmentListener listener;</span><br><span class="line"></span><br><span class="line">   	// 1 定义了所有activity必须实现的接口方法</span><br><span class="line">   	public interface FragmentListener&#123;</span><br><span class="line">       	void process(String str);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onAttach(Activity activity) &#123;</span><br><span class="line">       	super.onAttach(activity);</span><br><span class="line"></span><br><span class="line">       	if(activity instanceof FragmentListener) &#123;</span><br><span class="line">           	listener = (FragmentListener)activity; // 2.2 获取到宿主activity并赋值</span><br><span class="line">       	&#125; else&#123;</span><br><span class="line">           	throw new IllegalArgumentException(&quot;activity must implements FragmentListener&quot;);</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onClick(View v) &#123;</span><br><span class="line">       	listener.process(&quot;我是接口&quot;); //3.1 执行回调</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//把传递进来的activity对象释放掉，防止内存泄漏</span><br><span class="line">   	@Override</span><br><span class="line">   	public void onDetach() &#123;</span><br><span class="line">       	super.onDetach();</span><br><span class="line">       	listener = null;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Activity</p>
-<pre><code>class MainActivity : AppCompatActivity(),TestFragment.FragmentListener &#123;
-
-    override fun process(str: String?) &#123;
-        TODO(&quot;not implemented&quot;) //To change body of created functions use File | Settings | File Templates.
-    &#125;
-
-    override fun onCreate(savedInstanceState: Bundle?) &#123;
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class MainActivity : AppCompatActivity(),TestFragment.FragmentListener &#123;</span><br><span class="line">   </span><br><span class="line">   	override fun process(str: String?) &#123;</span><br><span class="line">       	TODO(&quot;not implemented&quot;) //To change body of created functions use File | Settings | File Templates.</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState)</span><br><span class="line">       	setContentView(R.layout.activity_main)</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Activity与Service通信"><a href="#Activity与Service通信" class="headerlink" title="Activity与Service通信"></a>Activity与Service通信</h3><ol>
 <li>绑定服务，利用ServiceConnection类</li>
 <li>简单通信，利用Intent进行传值</li>
 <li>定义一个callback接口来监听服务中的进程变化</li>
 </ol>
 <p>Service</p>
-<pre><code>public class MyService extends Service &#123;
-
-    public String data = &quot;服务器正在执行&quot;;
-
-    public MyService() &#123;
-    &#125;
-
-    public class Binder extends android.os.Binder&#123;
-        public void setData(String data)&#123;
-            MyService.this.data = data;
-        &#125;
-    &#125; 
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) &#123;
-        return new Binder();
-    &#125;
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) &#123;
-        return super.onStartCommand(intent, flags, startId);
-    &#125;
-
-    @Override
-    public void onDestroy() &#123;
-        super.onDestroy();
-    &#125;
-
-    @Override
-    public boolean onUnbind(Intent intent) &#123;
-        return super.onUnbind(intent);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class MyService extends Service &#123;</span><br><span class="line"></span><br><span class="line">   	public String data = &quot;服务器正在执行&quot;;</span><br><span class="line"></span><br><span class="line">   	public MyService() &#123;</span><br><span class="line">   	&#125;</span><br><span class="line">   </span><br><span class="line">   	public class Binder extends android.os.Binder&#123;</span><br><span class="line">       	public void setData(String data)&#123;</span><br><span class="line">           	MyService.this.data = data;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125; </span><br><span class="line"></span><br><span class="line">   	@Nullable</span><br><span class="line">   	@Override</span><br><span class="line">   	public IBinder onBind(Intent intent) &#123;</span><br><span class="line">       	return new Binder();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">       	return super.onStartCommand(intent, flags, startId);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onDestroy() &#123;</span><br><span class="line">       	super.onDestroy();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public boolean onUnbind(Intent intent) &#123;</span><br><span class="line">       	return super.onUnbind(intent);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Activity</p>
-<pre><code>public class ServiceActivity extends AppCompatActivity implements ServiceConnection &#123;
-
-    public MyService.Binder binder = null;//①
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-
-        if (binder != null)
-            binder.setData(&quot;启动服务了&quot;);//③
-    &#125;
-
-    @Override
-    public void onServiceConnected(ComponentName name, IBinder service) &#123;
-        binder = (MyService.Binder)service;//②
-    &#125;
-
-    @Override
-    public void onServiceDisconnected(ComponentName name) &#123;
-
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class ServiceActivity extends AppCompatActivity implements ServiceConnection &#123;</span><br><span class="line">   </span><br><span class="line">   	public MyService.Binder binder = null;//①</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">       	if (binder != null)</span><br><span class="line">           	binder.setData(&quot;启动服务了&quot;);//③</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">       	binder = (MyService.Binder)service;//②</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Callback方案</p>
 <p>Service</p>
-<pre><code>public class MyService2 extends Service &#123;
-
-    private Callback callback;
-    public String data = &quot;服务器正在执行&quot;;
-
-    public void setCallback(Callback callback) &#123;
-        this.callback = callback;
-    &#125;
-
-    public Callback getCallback() &#123;
-        return callback;
-    &#125;
-
-    public interface Callback &#123;
-        void onDataChange(String data);
-    &#125;
-
-    public class Binder extends android.os.Binder &#123;
-        public void setData(String data) &#123;
-            MyService2.this.data = data;
-        &#125;
-
-        public MyService2 getMyService() &#123;
-            return MyService2.this;
-        &#125;
-    &#125;
-
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) &#123;
-        return new Binder();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class MyService2 extends Service &#123;</span><br><span class="line"></span><br><span class="line">   	private Callback callback;</span><br><span class="line">   	public String data = &quot;服务器正在执行&quot;;</span><br><span class="line"></span><br><span class="line">   	public void setCallback(Callback callback) &#123;</span><br><span class="line">       	this.callback = callback;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public Callback getCallback() &#123;</span><br><span class="line">       	return callback;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public interface Callback &#123;</span><br><span class="line">       	void onDataChange(String data);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public class Binder extends android.os.Binder &#123;</span><br><span class="line">       	public void setData(String data) &#123;</span><br><span class="line">           	MyService2.this.data = data;</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	public MyService2 getMyService() &#123;</span><br><span class="line">           	return MyService2.this;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   	@Nullable</span><br><span class="line">   	@Override</span><br><span class="line">   	public IBinder onBind(Intent intent) &#123;</span><br><span class="line">       	return new Binder();</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Activity</p>
-<pre><code>public class ServiceActivity2 extends AppCompatActivity implements ServiceConnection &#123;
-
-    public MyService2.Binder myBinder = null;
-
-    private Handler hander = new Handler()&#123;
-        @Override
-        public void handleMessage(Message msg) &#123;
-            super.handleMessage(msg);
-        &#125;
-    &#125;;
-
-    @Override
-    public void onServiceConnected(ComponentName name, IBinder service) &#123;
-        myBinder = (MyService2.Binder) service;
-        myBinder.getMyService().setCallback(new MyService2.Callback()&#123;
-            @Override
-            public void onDataChange(String data) &#123;
-                Message msg = new Message();
-                Bundle b = new Bundle();
-                b.putString(&quot;data&quot;,data);
-                msg.setData(b);
-                hander.sendMessage(msg);
-            &#125;
-        &#125;);
-    &#125;
-
-    @Override
-    public void onServiceDisconnected(ComponentName name) &#123;
-
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class ServiceActivity2 extends AppCompatActivity implements ServiceConnection &#123;</span><br><span class="line"></span><br><span class="line">   	public MyService2.Binder myBinder = null;</span><br><span class="line"></span><br><span class="line">   	private Handler hander = new Handler()&#123;</span><br><span class="line">       	@Override</span><br><span class="line">       	public void handleMessage(Message msg) &#123;</span><br><span class="line">           	super.handleMessage(msg);</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;;</span><br><span class="line">   </span><br><span class="line">   	@Override</span><br><span class="line">   	public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">       	myBinder = (MyService2.Binder) service;</span><br><span class="line">       	myBinder.getMyService().setCallback(new MyService2.Callback()&#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onDataChange(String data) &#123;</span><br><span class="line">               	Message msg = new Message();</span><br><span class="line">               	Bundle b = new Bundle();</span><br><span class="line">               	b.putString(&quot;data&quot;,data);</span><br><span class="line">               	msg.setData(b);</span><br><span class="line">               	hander.sendMessage(msg);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Activity启动模式"><a href="#Activity启动模式" class="headerlink" title="Activity启动模式"></a>Activity启动模式</h3><ol>
 <li>standard</li>
 <li>singleTop</li>
@@ -577,54 +412,7 @@
 </ul>
 <h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><p><img src="/2020/06/03/Android%E9%9D%A2%E8%AF%95-%E5%9F%BA%E7%A1%80/17.png"></p>
 <p>serialVersionUID的作用，序列化操作的时候系统会把当前类的UID写到序列化的文件中，当反序列化的时候系统会检测文件中的UID，判断是否一致，一致说明序列化的版本和当前类的版本是一样的，就可以反序列化。Serializable在内存开销上比较大</p>
-<h4 id="Parcelable"><a href="#Parcelable" class="headerlink" title="Parcelable"></a>Parcelable</h4><pre><code>public class ParcableImplement implements Parcelable &#123;
-
-    public int id;
-    public String name;
-
-    public ParcableImplement() &#123;
-    &#125;
-
-    protected ParcableImplement(Parcel in) &#123;
-        this.id = in.readInt();
-        this.name = in.readString();
-    &#125;
-
-    //当前对象的内容描述,一般返回0即可
-    @Override
-    public int describeContents() &#123;
-        return 0;
-    &#125;
-
-    //将当前对象写入序列化结构中
-    @Override
-    public void writeToParcel(Parcel dest, int flags) &#123;
-        dest.writeInt(this.id);
-        dest.writeString(this.name);
-    &#125;
-
-    /**
-     * public static final一个都不能少，内部对象CREATOR的名称也不能改变，必须全部大写。
-     * 重写接口中的两个方法：
-     * createFromParcel(Parcel in) 实现从Parcel容器中读取传递数据值,封装成Parcelable对象返回逻辑层，
-     * newArray(int size) 创建一个类型为T，长度为size的数组，供外部类反序列化本类数组使用。
-     */
-    public static final Creator&lt;ParcableImplement&gt; CREATOR = new Creator&lt;ParcableImplement&gt;() &#123;
-    
-        //从序列化后的对象中创建原始对象
-        @Override
-        public ParcableImplement createFromParcel(Parcel source) &#123;
-            return new ParcableImplement(source);
-        &#125;
-
-        //创建指定长度的原始对象数组
-        @Override
-        public ParcableImplement[] newArray(int size) &#123;
-            return new ParcableImplement[size];
-        &#125;
-    &#125;;
-&#125;
-</code></pre>
+<h4 id="Parcelable"><a href="#Parcelable" class="headerlink" title="Parcelable"></a>Parcelable</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public class ParcableImplement implements Parcelable &#123;</span><br><span class="line"></span><br><span class="line">   	public int id;</span><br><span class="line">   	public String name;</span><br><span class="line"></span><br><span class="line">   	public ParcableImplement() &#123;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	protected ParcableImplement(Parcel in) &#123;</span><br><span class="line">       	this.id = in.readInt();</span><br><span class="line">       	this.name = in.readString();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//当前对象的内容描述,一般返回0即可</span><br><span class="line">   	@Override</span><br><span class="line">   	public int describeContents() &#123;</span><br><span class="line">       	return 0;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//将当前对象写入序列化结构中</span><br><span class="line">   	@Override</span><br><span class="line">   	public void writeToParcel(Parcel dest, int flags) &#123;</span><br><span class="line">       	dest.writeInt(this.id);</span><br><span class="line">       	dest.writeString(this.name);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* public static final一个都不能少，内部对象CREATOR的名称也不能改变，必须全部大写。</span><br><span class="line">    	* 重写接口中的两个方法：</span><br><span class="line">    	* createFromParcel(Parcel in) 实现从Parcel容器中读取传递数据值,封装成Parcelable对象返回逻辑层，</span><br><span class="line">    	* newArray(int size) 创建一个类型为T，长度为size的数组，供外部类反序列化本类数组使用。</span><br><span class="line">    	*/</span><br><span class="line">   	public static final Creator&lt;ParcableImplement&gt; CREATOR = new Creator&lt;ParcableImplement&gt;() &#123;</span><br><span class="line">       </span><br><span class="line">       	//从序列化后的对象中创建原始对象</span><br><span class="line">       	@Override</span><br><span class="line">       	public ParcableImplement createFromParcel(Parcel source) &#123;</span><br><span class="line">           	return new ParcableImplement(source);</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	//创建指定长度的原始对象数组</span><br><span class="line">       	@Override</span><br><span class="line">       	public ParcableImplement[] newArray(int size) &#123;</span><br><span class="line">           	return new ParcableImplement[size];</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><ul>
 <li>两者的实现差异</li>
 <li>两者效率上的对比，Parcelable内存开销更小。内存中传递数据，如Activity之间传递数据，AIDL之间传递数据更推荐Parcelable。对象序列化到存储设备中一般推荐使用Serializable，也可以防止Android不同版本之间的差异</li>
@@ -636,158 +424,15 @@
 <li>客户端：实现ServiceConnection、BindService</li>
 </ol>
 <p>Person</p>
-<pre><code>public class Person implements Parcelable &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class Person implements Parcelable &#123;</span><br><span class="line"></span><br><span class="line">   	private String mName;</span><br><span class="line"></span><br><span class="line">   	public Person(String name) &#123;</span><br><span class="line">       	mName = name;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	protected Person(Parcel in) &#123;</span><br><span class="line">       	this.mName = in.readString();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public int describeContents() &#123;</span><br><span class="line">       	return 0;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void writeToParcel(Parcel dest, int flags) &#123;</span><br><span class="line">       	dest.writeString(this.mName);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public static final Creator&lt;Person&gt; CREATOR = new Creator&lt;Person&gt;() &#123;</span><br><span class="line">       	@Override</span><br><span class="line">       	public Person createFromParcel(Parcel source) &#123;</span><br><span class="line">           	return new Person(source);</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public Person[] newArray(int size) &#123;</span><br><span class="line">           	return new Person[size];</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public String toString() &#123;</span><br><span class="line">       	return &quot;Person&#123;&quot; +</span><br><span class="line">               	&quot;mName=&#x27;&quot; + mName + &#x27;\&#x27;&#x27; +</span><br><span class="line">               	&#x27;&#125;&#x27;;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    private String mName;
-
-    public Person(String name) &#123;
-        mName = name;
-    &#125;
-
-    protected Person(Parcel in) &#123;
-        this.mName = in.readString();
-    &#125;
-
-    @Override
-    public int describeContents() &#123;
-        return 0;
-    &#125;
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) &#123;
-        dest.writeString(this.mName);
-    &#125;
-
-    public static final Creator&lt;Person&gt; CREATOR = new Creator&lt;Person&gt;() &#123;
-        @Override
-        public Person createFromParcel(Parcel source) &#123;
-            return new Person(source);
-        &#125;
-
-        @Override
-        public Person[] newArray(int size) &#123;
-            return new Person[size];
-        &#125;
-    &#125;;
-
-    @Override
-    public String toString() &#123;
-        return &quot;Person&#123;&quot; +
-                &quot;mName=&#39;&quot; + mName + &#39;\&#39;&#39; +
-                &#39;&#125;&#39;;
-    &#125;
-&#125;
-</code></pre>
 <p>Person.aidl</p>
-<pre><code>package com.yly.interviewbat.aidlxuexi;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">	package com.yly.interviewbat.aidlxuexi;</span><br><span class="line"></span><br><span class="line">	// Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">	parcelable Person;</span><br><span class="line">	</span><br><span class="line">IMyAidlInterface.aidl</span><br><span class="line"></span><br><span class="line">	package com.yly.interviewbat;</span><br><span class="line"></span><br><span class="line">	//可以理解为Person.aidl文件，通过它来映射对应的实体类</span><br><span class="line">	import com.yly.interviewbat.aidlxuexi.Person;</span><br><span class="line"></span><br><span class="line">	// Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">	interface IMyAidlInterface &#123;</span><br><span class="line">    	void addPerson(in Person person);</span><br><span class="line"></span><br><span class="line">    	List&lt;Person&gt; getPersonList();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-// Declare any non-default types here with import statements
-
-parcelable Person;
-</code></pre>
-<p>IMyAidlInterface.aidl</p>
-<pre><code>package com.yly.interviewbat;
-
-//可以理解为Person.aidl文件，通过它来映射对应的实体类
-import com.yly.interviewbat.aidlxuexi.Person;
-
-// Declare any non-default types here with import statements
-
-interface IMyAidlInterface &#123;
-    void addPerson(in Person person);
-
-    List&lt;Person&gt; getPersonList();
-&#125;
-</code></pre>
 <p>MyAidlService服务端</p>
-<pre><code>public class MyAidlService extends Service &#123;
-
-    private final String TAG = this.getClass().getSimpleName();
-
-    private ArrayList&lt;Person&gt; mPersons;
-
-    /**
-     * 创建生成的本地 Binder 对象，实现 AIDL 制定的方法
-     */
-    private IBinder mIBinder = new IMyAidlInterface.Stub() &#123;
-
-        @Override
-        public void addPerson(Person person) throws RemoteException &#123;
-            mPersons.add(person);
-        &#125;
-
-        @Override
-        public List&lt;Person&gt; getPersonList() throws RemoteException &#123;
-            return mPersons;
-        &#125;
-    &#125;;
-
-    /**
-     * 客户端与服务端绑定时的回调，返回 mIBinder 后客户端就可以通过它远程调用服务端的方法，即实现了通讯
-     *
-     * @param intent
-     * @return
-     */
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) &#123;
-        mPersons = new ArrayList&lt;&gt;();
-        Log.d(TAG, &quot;MyAidlService onBind&quot;);
-        return mIBinder;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class MyAidlService extends Service &#123;</span><br><span class="line"></span><br><span class="line">   	private final String TAG = this.getClass().getSimpleName();</span><br><span class="line"></span><br><span class="line">   	private ArrayList&lt;Person&gt; mPersons;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* 创建生成的本地 Binder 对象，实现 AIDL 制定的方法</span><br><span class="line">    	*/</span><br><span class="line">   	private IBinder mIBinder = new IMyAidlInterface.Stub() &#123;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public void addPerson(Person person) throws RemoteException &#123;</span><br><span class="line">           	mPersons.add(person);</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public List&lt;Person&gt; getPersonList() throws RemoteException &#123;</span><br><span class="line">           	return mPersons;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* 客户端与服务端绑定时的回调，返回 mIBinder 后客户端就可以通过它远程调用服务端的方法，即实现了通讯</span><br><span class="line">    	*</span><br><span class="line">    	* @param intent</span><br><span class="line">    	* @return</span><br><span class="line">    	*/</span><br><span class="line">   	@Nullable</span><br><span class="line">   	@Override</span><br><span class="line">   	public IBinder onBind(Intent intent) &#123;</span><br><span class="line">       	mPersons = new ArrayList&lt;&gt;();</span><br><span class="line">       	Log.d(TAG, &quot;MyAidlService onBind&quot;);</span><br><span class="line">       	return mIBinder;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>MyServiceActivity客户端</p>
-<pre><code>public class MyServiceActivity extends Activity &#123;
-
-    private Button mBtn;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mBtn = findViewById(R.id.btn);
-        mBtn.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View v) &#123;
-                Intent intent1 = new Intent(getApplicationContext(), MyAidlService.class);
-                bindService(intent1, mConnection, BIND_AUTO_CREATE);
-                addPerson();
-            &#125;
-        &#125;);
-
-    &#125;
-
-    private IMyAidlInterface mAidl;
-
-    private ServiceConnection mConnection = new ServiceConnection() &#123;
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) &#123;
-            //连接后拿到 Binder，转换成 AIDL，在不同进程会返回个代理
-            mAidl = IMyAidlInterface.Stub.asInterface(service);
-        &#125;
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) &#123;
-            mAidl = null;
-        &#125;
-    &#125;;
-
-    List&lt;Person&gt; personList;
-
-    public void addPerson() &#123;
-        Random random = new Random();
-        Person person = new Person(&quot;&quot; + random.nextInt(10));
-
-        try &#123;
-            mAidl.addPerson(person);
-            personList = mAidl.getPersonList();
-        &#125; catch (RemoteException e) &#123;
-            e.printStackTrace();
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">public class MyServiceActivity extends Activity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mBtn;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main);</span><br><span class="line">       	mBtn = findViewById(R.id.btn);</span><br><span class="line">       	mBtn.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View v) &#123;</span><br><span class="line">               	Intent intent1 = new Intent(getApplicationContext(), MyAidlService.class);</span><br><span class="line">               	bindService(intent1, mConnection, BIND_AUTO_CREATE);</span><br><span class="line">               	addPerson();</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line"></span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	private IMyAidlInterface mAidl;</span><br><span class="line"></span><br><span class="line">   	private ServiceConnection mConnection = new ServiceConnection() &#123;</span><br><span class="line">       	@Override</span><br><span class="line">       	public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">           	//连接后拿到 Binder，转换成 AIDL，在不同进程会返回个代理</span><br><span class="line">           	mAidl = IMyAidlInterface.Stub.asInterface(service);</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line">           	mAidl = null;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;;</span><br><span class="line"></span><br><span class="line">   	List&lt;Person&gt; personList;</span><br><span class="line"></span><br><span class="line">   	public void addPerson() &#123;</span><br><span class="line">       	Random random = new Random();</span><br><span class="line">       	Person person = new Person(&quot;&quot; + random.nextInt(10));</span><br><span class="line"></span><br><span class="line">       	try &#123;</span><br><span class="line">           	mAidl.addPerson(person);</span><br><span class="line">           	personList = mAidl.getPersonList();</span><br><span class="line">       	&#125; catch (RemoteException e) &#123;</span><br><span class="line">           	e.printStackTrace();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="binder机制通信：AIDL生成java文件详细分析"><a href="#binder机制通信：AIDL生成java文件详细分析" class="headerlink" title="binder机制通信：AIDL生成java文件详细分析"></a>binder机制通信：AIDL生成java文件详细分析</h3><p>使用Binder机制，简化进程间通信开发的操作</p>
 <p>aidl帮我们生成的Binder对象，同时生成跨平台接口转换类Stub以及在不同进程客户端拿到的代码Proxy</p>
 <p>服务端和客户端是各有一个代理</p>
@@ -801,33 +446,33 @@ interface IMyAidlInterface &#123;
 <p>asBinder方法，获取远端代理的Binder对象</p>
 <p>mRemote.transact(Stub.TRANSACTION_addPerson, _data, _reply, 0)方法，利用远端的Binder对象从服务端获取数据</p>
 <h3 id="广播：静态-动态注册使用、特点、应用场景"><a href="#广播：静态-动态注册使用、特点、应用场景" class="headerlink" title="广播：静态&amp;动态注册使用、特点、应用场景"></a>广播：静态&amp;动态注册使用、特点、应用场景</h3><p>动态注册代码</p>
-<pre><code>// 选择在Activity生命周期方法中的onResume()中注册
-@Override
-protected void onResume() &#123;
-    super.onResume();
+<pre><code>    // 选择在Activity生命周期方法中的onResume()中注册
+    @Override
+    protected void onResume() &#123;
+        super.onResume();
 
-    // 1. 实例化BroadcastReceiver子类 &amp;  IntentFilter
-    mBroadcastReceiver = new MyBroadcastReceiver();
-    IntentFilter intentFilter = new IntentFilter();
+        // 1. 实例化BroadcastReceiver子类 &amp;  IntentFilter
+        mBroadcastReceiver = new MyBroadcastReceiver();
+        IntentFilter intentFilter = new IntentFilter();
 
-    // 2. 设置接收广播的类型
-    intentFilter.addAction(CONNECTIVITY_SERVICE);
+        // 2. 设置接收广播的类型
+        intentFilter.addAction(CONNECTIVITY_SERVICE);
 
-    // 3. 动态注册：调用Context的registerReceiver（）方法
-    registerReceiver(mBroadcastReceiver, intentFilter);
-&#125;
+        // 3. 动态注册：调用Context的registerReceiver（）方法
+        registerReceiver(mBroadcastReceiver, intentFilter);
+    &#125;
 
 
-// 注册广播后，要在相应位置记得销毁广播
-// 即在onPause() 中unregisterReceiver(mBroadcastReceiver)
-// 当此Activity实例化时，会动态将MyBroadcastReceiver注册到系统中
-// 当此Activity销毁时，动态注册的MyBroadcastReceiver将不再接收到相应的广播。
-@Override
-protected void onPause() &#123;
-    super.onPause();
-    //销毁在onResume()方法中的广播
-    unregisterReceiver(mBroadcastReceiver);
-&#125;
+    // 注册广播后，要在相应位置记得销毁广播
+    // 即在onPause() 中unregisterReceiver(mBroadcastReceiver)
+    // 当此Activity实例化时，会动态将MyBroadcastReceiver注册到系统中
+    // 当此Activity销毁时，动态注册的MyBroadcastReceiver将不再接收到相应的广播。
+    @Override
+    protected void onPause() &#123;
+        super.onPause();
+        //销毁在onResume()方法中的广播
+        unregisterReceiver(mBroadcastReceiver);
+    &#125;
 </code></pre>
 <p>根据Activity生命周期，onPause()方法在Activity被销毁之前一定会被执行，而某些情况如内存不足销毁，onStop()及onDestroy()不一定会被执行，所以在onPause()方法注销广播，防止内存泄漏</p>
 <ol>

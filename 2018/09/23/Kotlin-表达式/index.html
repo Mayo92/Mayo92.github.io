@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Oct 22 2020 21:15:36 GMT+0800">2020-10-22 21:15:36</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:31:30 GMT+0800">2024-07-11 15:31:30</span>
             </span>
         
 
@@ -288,47 +288,7 @@
 <h4 id="3-1-5-与set"><a href="#3-1-5-与set" class="headerlink" title="3.1.5 []与set"></a>3.1.5 []与set</h4><p><img src="/2018/09/23/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/24.png"></p>
 <h4 id="3-1-6-与compareTo"><a href="#3-1-6-与compareTo" class="headerlink" title="3.1.6 &gt;与compareTo"></a>3.1.6 &gt;与compareTo</h4><p><img src="/2018/09/23/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/25.png"></p>
 <h4 id="3-1-7-与invoke"><a href="#3-1-7-与invoke" class="headerlink" title="3.1.7 ()与invoke"></a>3.1.7 ()与invoke</h4><p><img src="/2018/09/23/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/26.png"></p>
-<h3 id="3-2-例子"><a href="#3-2-例子" class="headerlink" title="3.2 例子"></a>3.2 例子</h3><pre><code>class Complex(var real:Double,var image:Double)&#123;
-    override fun toString() = &quot;$real+$&#123;image&#125;i&quot;
-&#125;
-
-//运算符通过在类里或扩展方法定义，扩展方法需要访问公开成员
-operator fun Complex.plus(other:Complex):Complex&#123;
-    return Complex(this.real+other.real,
-        this.image+other.image)
-&#125;
-
-operator fun Complex.plus(other:Double):Complex&#123;
-    return Complex(this.real+other,
-        this.image)
-&#125;
-
-operator fun Complex.plus(other:Int):Complex&#123;
-    return Complex(this.real+other,
-        this.image)
-&#125;
-
-operator fun Complex.minus(real: Double):Complex&#123;
-    return Complex(this.real-real,this.image)
-&#125;
-
-operator fun Complex.get(index: Int):Double = when(index)&#123;
-    0 -&gt; this.real
-    1 -&gt; this.image
-    else -&gt; throw IndexOutOfBoundsException()
-&#125;
-
-fun main() &#123;
-    val c1 = Complex(3.0,4.0)
-    val c2 = Complex(2.0,2.0)
-
-    println(c1+2.0)
-    println(c1+c2)
-    println(c1+3)
-    println(c1-3.0)
-    println(c1[0])
-&#125;
-</code></pre>
+<h3 id="3-2-例子"><a href="#3-2-例子" class="headerlink" title="3.2 例子"></a>3.2 例子</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Complex(var real:Double,var image:Double)&#123;</span><br><span class="line">   	override fun toString() = &quot;$real+$&#123;image&#125;i&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//运算符通过在类里或扩展方法定义，扩展方法需要访问公开成员</span><br><span class="line">operator fun Complex.plus(other:Complex):Complex&#123;</span><br><span class="line">   	return Complex(this.real+other.real,</span><br><span class="line">       	this.image+other.image)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">operator fun Complex.plus(other:Double):Complex&#123;</span><br><span class="line">   	return Complex(this.real+other,</span><br><span class="line">       	this.image)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">operator fun Complex.plus(other:Int):Complex&#123;</span><br><span class="line">   	return Complex(this.real+other,</span><br><span class="line">       	this.image)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">operator fun Complex.minus(real: Double):Complex&#123;</span><br><span class="line">   	return Complex(this.real-real,this.image)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">operator fun Complex.get(index: Int):Double = when(index)&#123;</span><br><span class="line">   	0 -&gt; this.real</span><br><span class="line">   	1 -&gt; this.image</span><br><span class="line">   	else -&gt; throw IndexOutOfBoundsException()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main() &#123;</span><br><span class="line">   	val c1 = Complex(3.0,4.0)</span><br><span class="line">   	val c2 = Complex(2.0,2.0)</span><br><span class="line"></span><br><span class="line">   	println(c1+2.0)</span><br><span class="line">   	println(c1+c2)</span><br><span class="line">   	println(c1+3)</span><br><span class="line">   	println(c1-3.0)</span><br><span class="line">   	println(c1[0])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="3-3-中缀表达式"><a href="#3-3-中缀表达式" class="headerlink" title="3.3 中缀表达式"></a>3.3 中缀表达式</h3><p>格式：infix、一个参数</p>
 <p><img src="/2018/09/23/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/27.png"></p>
 <p><img src="/2018/09/23/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/28.png"></p>

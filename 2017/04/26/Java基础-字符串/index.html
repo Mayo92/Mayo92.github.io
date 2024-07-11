@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Dec 02 2020 12:06:03 GMT+0800">2020-12-02 12:06:03</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 10:42:32 GMT+0800">2024-07-11 10:42:32</span>
             </span>
         
 
@@ -254,19 +254,16 @@
                     
 
                     
-                         <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h4 id="创建String对象的方法（不止三种）"><a href="#创建String对象的方法（不止三种）" class="headerlink" title="创建String对象的方法（不止三种）"></a>创建String对象的方法（不止三种）</h4><ul>
+                         <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h4 id="创建String对象的方法（不止三种）"><a href="#创建String对象的方法（不止三种）" class="headerlink" title="创建String对象的方法（不止三种）"></a>创建String对象的方法（不止三种）</h4><span id="more"></span>
+
+<ul>
 <li>String s1 &#x3D;”imooc”;创建一个字符串对象imooc，名为s1</li>
 <li>String s2 &#x3D;new String();创建一个空字符串对象，名为s2</li>
 <li>String s2 &#x3D;new String(“imooc”);创建一个字符串对象imooc，名为s3</li>
 </ul>
 <p>String s &#x3D; new String();&#x2F;&#x2F;等效于String s &#x3D; “”;不等效于String s &#x3D; null;</p>
-<span id="more"></span>
-
 <h4 id="String特点"><a href="#String特点" class="headerlink" title="String特点"></a>String特点</h4><p>字符串对象一旦被初始化就不会被改变</p>
-<pre><code>String s1 =&quot;abc&quot;;
-String s2 =&quot;abc&quot;;
-System.out.println(s1 == s2);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s1 =&quot;abc&quot;;</span><br><span class="line">String s2 =&quot;abc&quot;;</span><br><span class="line">System.out.println(s1 == s2);</span><br></pre></td></tr></table></figure>
 <p>字符串创建的时候，有一个字符串常量池，s1创建后，”abc”放入其中。s2创建的时候，”abc”已经存在于字符串常量池中，故引用变量s2直接指向了已经存在的”abc”字符串对象，故s1&#x3D;&#x3D;s2。</p>
 <p>String类复写了Object中的equals方法，建立了String类自己的判断字符串对象是否相同的依据。只比较字符串内容，不比较地址。</p>
 <h4 id="字符串存储"><a href="#字符串存储" class="headerlink" title="字符串存储"></a>字符串存储</h4><p><img src="/2017/04/26/Java%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2/2.png"></p>
@@ -305,11 +302,7 @@ System.out.println(s1 == s2);
 <p>StringBuffer的字符串缓冲区初始容量为16个字符，其实质还是数组</p>
 <h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>1、添加</p>
 <p>StringBuffer append(data);、StringBuffer insert(index,data);</p>
-<pre><code>StringBuffer sb1 = new StringBuffer();
-StringBuffer sb2 = sb1.append(4);
-System.out.println(sb1 == sb2);
- 
-</code></pre>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb1 = new StringBuffer();</span><br><span class="line">StringBuffer sb2 = sb1.append(4);</span><br><span class="line">System.out.println(sb1 == sb2);</span><br></pre></td></tr></table></figure>
 <p>sb1.append(4);语句是在缓冲区中添加4，然后将sb2引用变量指向了最终生成的字符串对象，sb1也指向这个新生成的字符串对象，故两者指向的是同一个对象。</p>
 <p>2、删除</p>
 <p>StringBuffer delete(int start,int end);包含头，不包含尾。</p>

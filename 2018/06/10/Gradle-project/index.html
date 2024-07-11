@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jul 22 2020 17:13:26 GMT+0800">2020-07-22 17:13:26</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:04:07 GMT+0800">2024-07-11 15:04:07</span>
             </span>
         
 
@@ -257,8 +257,8 @@
                          <h2 id="深入了解Project"><a href="#深入了解Project" class="headerlink" title="深入了解Project"></a>深入了解Project</h2><h3 id="Project详解"><a href="#Project详解" class="headerlink" title="Project详解"></a>Project详解</h3><p>module在gradle看来也是project</p>
 <span id="more"></span>
 
-<pre><code>./gradlew projects
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew projects</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/06/10/Gradle-project/1.png"></p>
 <p>以树的结构进行管理，一般只有两层。每个project必须对应一个build.gradle文件。根project的作用是管理子project。子project用于输出，具体输出什么在它的build.gradle文件配置。</p>
 <h2 id="Project核心API讲解"><a href="#Project核心API讲解" class="headerlink" title="Project核心API讲解"></a>Project核心API讲解</h2><h3 id="核心API分解"><a href="#核心API分解" class="headerlink" title="核心API分解"></a>核心API分解</h3><p><img src="/2018/06/10/Gradle-project/2.png"></p>
@@ -273,228 +273,75 @@
 <h3 id="project相关API"><a href="#project相关API" class="headerlink" title="project相关API"></a>project相关API</h3><p>每一个groovy脚本都会被编译为script字节码，每一个build.gradle都会被编译为project的字节码，所以相当于在一个project类内部去书写内容</p>
 <p>build.gradle中的方法、代码都是在配置阶段执行的</p>
 <p><em>获取所有project</em></p>
-<pre><code>this.getProjects()
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">this.getProjects()</span><br><span class="line"></span><br><span class="line">def getProjects()&#123;</span><br><span class="line">   	println &#x27;-------&#x27;</span><br><span class="line">   	println &#x27;Root project&#x27;</span><br><span class="line">   	println &#x27;-------&#x27;</span><br><span class="line">   	this.getAllprojects().eachWithIndex &#123;</span><br><span class="line">       	Project project,int index -&gt;</span><br><span class="line">           	if(index == 0)&#123;</span><br><span class="line">               	println &quot;Root project &#x27;:$&#123;project.name&#125;&#x27;&quot;</span><br><span class="line">           	&#125;else&#123;</span><br><span class="line">               	println &quot;+--- project &#x27;:$&#123;project.name&#125;&#x27;&quot;</span><br><span class="line">           	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-def getProjects()&#123;
-    println &#39;-------&#39;
-    println &#39;Root project&#39;
-    println &#39;-------&#39;
-    this.getAllprojects().eachWithIndex &#123;
-        Project project,int index -&gt;
-            if(index == 0)&#123;
-                println &quot;Root project &#39;:$&#123;project.name&#125;&#39;&quot;
-            &#125;else&#123;
-                println &quot;+--- project &#39;:$&#123;project.name&#125;&#39;&quot;
-            &#125;
-    &#125;
-&#125;
-</code></pre>
 <p><img src="/2018/06/10/Gradle-project/3.png"></p>
 <p><em>获取所有子project</em></p>
-<pre><code>this.getSubProjects()
-def getSubProjects()&#123;
-    println &#39;-------&#39;
-    println &#39;project&#39;
-    println &#39;-------&#39;
-    this.getSubprojects().eachWithIndex &#123;
-        Project project,int index -&gt;
-            println &quot;+--- project &#39;:$&#123;project.name&#125;&#39;&quot;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">this.getSubProjects()</span><br><span class="line">def getSubProjects()&#123;</span><br><span class="line">   	println &#x27;-------&#x27;</span><br><span class="line">   	println &#x27;project&#x27;</span><br><span class="line">   	println &#x27;-------&#x27;</span><br><span class="line">   	this.getSubprojects().eachWithIndex &#123;</span><br><span class="line">       	Project project,int index -&gt;</span><br><span class="line">           	println &quot;+--- project &#x27;:$&#123;project.name&#125;&#x27;&quot;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/06/10/Gradle-project/4.png"></p>
 <p><em>获取父project</em>（在子project中调用）</p>
-<pre><code>this.getParentProject()
-def getParentProject()&#123;
-    def name = this.getParent().name
-    println &quot;parent name is $&#123;name&#125;&quot;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">this.getParentProject()</span><br><span class="line">def getParentProject()&#123;</span><br><span class="line">   	def name = this.getParent().name</span><br><span class="line">   	println &quot;parent name is $&#123;name&#125;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/06/10/Gradle-project/5.png"></p>
 <p><em>获取根project</em></p>
-<pre><code>this.getRootPro()
-def getRootPro()&#123;
-    def name = this.getRootProject().name
-    println &quot;root name is $&#123;name&#125;&quot;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">this.getRootPro()</span><br><span class="line">def getRootPro()&#123;</span><br><span class="line">   	def name = this.getRootProject().name</span><br><span class="line">   	println &quot;root name is $&#123;name&#125;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/06/10/Gradle-project/6.png"></p>
 <p><em>对子工程进行配置</em>（一般不这么做除非是公共的配置）</p>
-<pre><code>project(&#39;app&#39;) &#123; Project project -&gt;
-    println &quot;name is $&#123;project.name&#125;&quot;
-    apply plugin: &#39;com.android.application&#39;
-    group &#39;com.yly&#39;
-    version &#39;1.0.1-release&#39;
-
-    dependencies &#123;&#125;
-
-    android &#123;&#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">project(&#x27;app&#x27;) &#123; Project project -&gt;</span><br><span class="line">   	println &quot;name is $&#123;project.name&#125;&quot;</span><br><span class="line">   	apply plugin: &#x27;com.android.application&#x27;</span><br><span class="line">   	group &#x27;com.yly&#x27;</span><br><span class="line">   	version &#x27;1.0.1-release&#x27;</span><br><span class="line"></span><br><span class="line">   	dependencies &#123;&#125;</span><br><span class="line"></span><br><span class="line">   	android &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><em>配置当前工程及其子工程</em></p>
-<pre><code>allprojects &#123;
-    group &#39;com.yly&#39;
-&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">   	group &#x27;com.yly&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println project(&#x27;framework&#x27;).group</span><br></pre></td></tr></table></figure>
 
-println project(&#39;framework&#39;).group
-</code></pre>
 <p><img src="/2018/06/10/Gradle-project/7.png"></p>
 <p><em>只配置子工程</em></p>
-<pre><code>subprojects &#123; Project project -&gt;
-    //库工程上传maven
-    if(project.plugins.hasPlugin(&#39;com.android.library&#39;))&#123;
-        apply from: &#39;../publishToMaven.gradle&#39;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">subprojects &#123; Project project -&gt;</span><br><span class="line">   	//库工程上传maven</span><br><span class="line">   	if(project.plugins.hasPlugin(&#x27;com.android.library&#x27;))&#123;</span><br><span class="line">       	apply from: &#x27;../publishToMaven.gradle&#x27;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>相对独立的功能可以写到独立的gradle文件中，再由工程引用</p>
 <h3 id="属性相关API"><a href="#属性相关API" class="headerlink" title="属性相关API"></a>属性相关API</h3><h4 id="自带的属性"><a href="#自带的属性" class="headerlink" title="自带的属性"></a>自带的属性</h4><p><img src="/2018/06/10/Gradle-project/8.png"></p>
 <ul>
 <li>PATH_SEPARATOR：路径分隔符</li>
 <li>DEFAULT_BUILD_DIR_NAME：输出文件夹</li>
 </ul>
-<h4 id="扩展属性"><a href="#扩展属性" class="headerlink" title="扩展属性"></a>扩展属性</h4><pre><code>//定义扩展属性
-ext&#123;
-
-&#125;
-</code></pre>
+<h4 id="扩展属性"><a href="#扩展属性" class="headerlink" title="扩展属性"></a>扩展属性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//定义扩展属性</span><br><span class="line">ext&#123;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>1.由gradle为每个子工程创建扩展属性，本质是定义多次</p>
-<pre><code>subprojects &#123;
-    ext &#123;
-        compileSdkVersion = 25
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">subprojects &#123;</span><br><span class="line">   	ext &#123;</span><br><span class="line">       	compileSdkVersion = 25</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2.在根工程中定义，子工程获取根工程下的属性，这样只定义了一次</p>
-<pre><code>ext &#123;
-    compileSdkVersion = 25
-&#125;
-
-//app中
-compileSdkVersion this.rootProject.compileSdkVersion
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">   	compileSdkVersion = 25</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//app中</span><br><span class="line">compileSdkVersion this.rootProject.compileSdkVersion</span><br></pre></td></tr></table></figure>
 <p>根project里的所有属性会被子project继承，所有app中，this.compileSdkVersion也不会报错</p>
 <p>3.定义gradle文件</p>
-<pre><code>ext &#123;
-    //Android 配置
-    android = [
-            compileSdkVersion: 29
-    ]
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">   	//Android 配置</span><br><span class="line">   	android = [</span><br><span class="line">           	compileSdkVersion: 29</span><br><span class="line">   	]</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   	signConfigs = [</span><br><span class="line">           	&#x27;storeFile&#x27; : &#x27;123.jks&#x27;</span><br><span class="line">   	]</span><br><span class="line">   </span><br><span class="line">   	java = [</span><br><span class="line">           	&#x27;javaVersion&#x27; : JavaVersion.VERSION_1_7</span><br><span class="line">   	]</span><br><span class="line">   </span><br><span class="line">   	//依赖 配置</span><br><span class="line">   	dependencies = [</span><br><span class="line">           	&quot;httpclient&quot;     : &#x27;org.apache.http.legacy&#x27;</span><br><span class="line">   	]</span><br><span class="line">   	</span><br><span class="line">   	//仓库</span><br><span class="line">   	maven = [</span><br><span class="line">           	&quot;jitpack&quot;: &quot;https://jitpack.io&quot;</span><br><span class="line">   	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-    signConfigs = [
-            &#39;storeFile&#39; : &#39;123.jks&#39;
-    ]
-
-    java = [
-            &#39;javaVersion&#39; : JavaVersion.VERSION_1_7
-    ]
-
-    //依赖 配置
-    dependencies = [
-            &quot;httpclient&quot;     : &#39;org.apache.http.legacy&#39;
-    ]
-    
-    //仓库
-    maven = [
-            &quot;jitpack&quot;: &quot;https://jitpack.io&quot;
-    ]
-&#125;
-</code></pre>
 <p>每一个[]为Map，在里面定义key、value，在根工程下引入</p>
-<pre><code>apply from: this.file(&#39;common.gradle&#39;)
-
-//app下，这里加上rootProject.ext为了避免跟app下的android目录混淆
-compileSdkVersion rootProject.ext.android.compileSdkVersion
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apply from: this.file(&#x27;common.gradle&#x27;)</span><br><span class="line"></span><br><span class="line">//app下，这里加上rootProject.ext为了避免跟app下的android目录混淆</span><br><span class="line">compileSdkVersion rootProject.ext.android.compileSdkVersion</span><br></pre></td></tr></table></figure>
 <h4 id="扩展属性的另一种定义方式"><a href="#扩展属性的另一种定义方式" class="headerlink" title="扩展属性的另一种定义方式"></a>扩展属性的另一种定义方式</h4><p>在gradle.properties里定义，只能是key、value形式。</p>
-<pre><code>isLoadIjk=true
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isLoadIjk=true</span><br></pre></td></tr></table></figure>
 <p>在setting.gradle中（默认获取的是object类型，所以需要toBoolean）</p>
-<pre><code>if(hasProperty(&#39;isLoadIjk&#39;) ? isLoadIjk.toBoolean() : false)&#123;
-    include &#39;:ijkplayer-java&#39;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(hasProperty(&#x27;isLoadIjk&#x27;) ? isLoadIjk.toBoolean() : false)&#123;</span><br><span class="line">   	include &#x27;:ijkplayer-java&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意这种方式，自定义的属性不能与build.gradle文件里已有的方法重复，编译的时候不会报错，使用会找不到</p>
 <h3 id="文件属性相关API"><a href="#文件属性相关API" class="headerlink" title="文件属性相关API"></a>文件属性相关API</h3><p>作用范围都是同一个根project</p>
 <p><img src="/2018/06/10/Gradle-project/9.png"></p>
-<h4 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h4><pre><code>println &quot;root file path is&quot;+getRootDir().absolutePath
-println &quot;project file path is&quot;+getProjectDir().absolutePath
-println &quot;build file path is&quot;+getBuildDir().absolutePath
-</code></pre>
-<p><img src="/2018/06/10/Gradle-project/10.png"></p>
-<h4 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h4><pre><code>def getContent(String path)&#123;
-    try&#123;
-        def file = file(path)
-        return file.text
-    &#125; catch(GradleException e)&#123;
-        println &#39;file not found&#39;
-    &#125;
-    return null
-&#125;
+<h4 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">println &quot;root file path is&quot;+getRootDir().absolutePath</span><br><span class="line">println &quot;project file path is&quot;+getProjectDir().absolutePath</span><br><span class="line">println &quot;build file path is&quot;+getBuildDir().absolutePath</span><br></pre></td></tr></table></figure>
 
-println getContent(&#39;common.gradle&#39;)
-</code></pre>
+<p><img src="/2018/06/10/Gradle-project/10.png"></p>
+<h4 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def getContent(String path)&#123;</span><br><span class="line">   	try&#123;</span><br><span class="line">       	def file = file(path)</span><br><span class="line">       	return file.text</span><br><span class="line">   	&#125; catch(GradleException e)&#123;</span><br><span class="line">       	println &#x27;file not found&#x27;</span><br><span class="line">   	&#125;</span><br><span class="line">   	return null</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println getContent(&#x27;common.gradle&#x27;)</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/06/10/Gradle-project/11.png"></p>
 <p>file所传路径为相对应当前project的一个相对路径，files可以传递多个路径得到结果后遍历即可</p>
-<h4 id="文件拷贝"><a href="#文件拷贝" class="headerlink" title="文件拷贝"></a>文件拷贝</h4><pre><code>copy &#123;
-    from file(&#39;proguard-rules.pro&#39;)
-    into getRootProject().getBuildDir()
-&#125;
-</code></pre>
+<h4 id="文件拷贝"><a href="#文件拷贝" class="headerlink" title="文件拷贝"></a>文件拷贝</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">copy &#123;</span><br><span class="line">   	from file(&#x27;proguard-rules.pro&#x27;)</span><br><span class="line">   	into getRootProject().getBuildDir()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>把app下的proguard-rules.pro文件拷贝到根工程的build文件夹下</p>
 <p>实际开发中经常需要拷贝生成的APK，下面是拷贝apk文件夹</p>
-<pre><code>copy &#123;
-    from file(&#39;build/outputs/apk/&#39;)
-    into getRootProject().getBuildDir().path+&#39;/apk/&#39;
-&#125;
-</code></pre>
-<p>其他操作</p>
-<pre><code>copy &#123;
-    from file(&#39;proguard-rules.pro&#39;)
-    into getRootProject().getBuildDir()
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">copy &#123;</span><br><span class="line">   	from file(&#x27;build/outputs/apk/&#x27;)</span><br><span class="line">   	into getRootProject().getBuildDir().path+&#x27;/apk/&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    exclude &#123;&#125;//配置不想要的文件
-    rename &#123;&#125;//指定文件的重命名
-&#125;
-</code></pre>
-<h4 id="文件树遍历"><a href="#文件树遍历" class="headerlink" title="文件树遍历"></a>文件树遍历</h4><pre><code>fileTree(&#39;build/outputs/apk/&#39;) &#123; FileTree fileTree -&gt;
-    fileTree.visit &#123; FileTreeElement element -&gt;
-        println &#39;the file name is&#39;+element.file.name
-        copy &#123;
-            from element.file
-            into getRootProject().getBuildDir().path+&#39;/test/&#39;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<p>其他操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">copy &#123;</span><br><span class="line">   	from file(&#x27;proguard-rules.pro&#x27;)</span><br><span class="line">   	into getRootProject().getBuildDir()</span><br><span class="line"></span><br><span class="line">   	exclude &#123;&#125;//配置不想要的文件</span><br><span class="line">   	rename &#123;&#125;//指定文件的重命名</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件树遍历"><a href="#文件树遍历" class="headerlink" title="文件树遍历"></a>文件树遍历</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fileTree(&#x27;build/outputs/apk/&#x27;) &#123; FileTree fileTree -&gt;</span><br><span class="line">   	fileTree.visit &#123; FileTreeElement element -&gt;</span><br><span class="line">       	println &#x27;the file name is&#x27;+element.file.name</span><br><span class="line">       	copy &#123;</span><br><span class="line">           	from element.file</span><br><span class="line">           	into getRootProject().getBuildDir().path+&#x27;/test/&#x27;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="其他API"><a href="#其他API" class="headerlink" title="其他API"></a>其他API</h3><p><img src="/2018/06/10/Gradle-project/12.png"></p>
 <h4 id="依赖相关API"><a href="#依赖相关API" class="headerlink" title="依赖相关API"></a>依赖相关API</h4><p>buildscript–&gt;ScriptHandler</p>
 <p><img src="/2018/06/10/Gradle-project/13.png"></p>
-<pre><code>buildscript &#123; ScriptHandler scriptHandler -&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123; ScriptHandler scriptHandler -&gt;</span><br><span class="line"></span><br><span class="line">   	//配置工程的仓库地址</span><br><span class="line">   	scriptHandler.repositories &#123; RepositoryHandler repositories -&gt;</span><br><span class="line">       	repositories.jcenter()</span><br><span class="line">       	repositories.mavenCentral()</span><br><span class="line">       	repositories.mavenLocal()</span><br><span class="line">       	repositories.ivy &#123;&#125;</span><br><span class="line">       	repositories.maven &#123;</span><br><span class="line">           	name &#x27;personal&#x27;</span><br><span class="line">           	url &#x27;xxx&#x27;</span><br><span class="line">           	credentials&#123;</span><br><span class="line">               	username = &#x27;123&#x27;</span><br><span class="line">               	password = &#x27;123&#x27;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//配置工程的“插件”依赖地址（gradle使用的插件）</span><br><span class="line">   	scriptHandler.dependencies &#123;</span><br><span class="line">       	classpath &#x27;com.android.tools.build:gradle:3.1.0&#x27;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    //配置工程的仓库地址
-    scriptHandler.repositories &#123; RepositoryHandler repositories -&gt;
-        repositories.jcenter()
-        repositories.mavenCentral()
-        repositories.mavenLocal()
-        repositories.ivy &#123;&#125;
-        repositories.maven &#123;
-            name &#39;personal&#39;
-            url &#39;xxx&#39;
-            credentials&#123;
-                username = &#39;123&#39;
-                password = &#39;123&#39;
-            &#125;
-        &#125;
-    &#125;
-
-    //配置工程的“插件”依赖地址（gradle使用的插件）
-    scriptHandler.dependencies &#123;
-        classpath &#39;com.android.tools.build:gradle:3.1.0&#39;
-    &#125;
-&#125;
-</code></pre>
 <p><em>project里的dependencies</em>（为应用程序添加第三方依赖）</p>
 <ol>
 <li>fileTree、file、files的依赖</li>
@@ -513,28 +360,7 @@ println getContent(&#39;common.gradle&#39;)
 <p>compile 第三方库所有的类、资源也会被打包到最终的输出文件中</p>
 <p>provided 占位编译，只参与编译不参与打包。还有一种情况，一个库工程需要引入的第三方库已经在被依赖的主工程引入了，库工程可以provided</p>
 <h4 id="外部命令执行"><a href="#外部命令执行" class="headerlink" title="外部命令执行"></a>外部命令执行</h4><p>exec方法</p>
-<pre><code>task(name:&#39;apkcopy&#39;) &#123;
-    doLast &#123;
-        //gradle执行阶段去执行
-        def sourcePath = this.buildDir().path + &#39;/outputs/apk&#39;
-        def desPath = &#39;/Users/yly/Downloads/&#39;
-        def command = &quot;mv -f $&#123;sourcePath&#125; $&#123;desPath&#125;&quot;
-    
-        exec&#123;
-            try&#123;
-                executable &#39;bash&#39; //外部命令
-                args &#39;-c&#39;,command
-                println &#39;success&#39;
-            &#125;catch(GradleException e)&#123;
-                println &#39;failed&#39;
-            &#125;
-        &#125;
-    &#125;
-&#125;
-
-./gradlew apkcopy
-</code></pre>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">task(name:&#x27;apkcopy&#x27;) &#123;</span><br><span class="line">   	doLast &#123;</span><br><span class="line">       	//gradle执行阶段去执行</span><br><span class="line">       	def sourcePath = this.buildDir().path + &#x27;/outputs/apk&#x27;</span><br><span class="line">       	def desPath = &#x27;/Users/yly/Downloads/&#x27;</span><br><span class="line">       	def command = &quot;mv -f $&#123;sourcePath&#125; $&#123;desPath&#125;&quot;</span><br><span class="line">       </span><br><span class="line">       	exec&#123;</span><br><span class="line">           	try&#123;</span><br><span class="line">               	executable &#x27;bash&#x27; //外部命令</span><br><span class="line">               	args &#x27;-c&#x27;,command</span><br><span class="line">               	println &#x27;success&#x27;</span><br><span class="line">           	&#125;catch(GradleException e)&#123;</span><br><span class="line">               	println &#x27;failed&#x27;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">./gradlew apkcopy</span><br></pre></td></tr></table></figure>
                     
                 </div>
 

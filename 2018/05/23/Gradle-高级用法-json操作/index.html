@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Feb 12 2020 21:03:46 GMT+0800">2020-02-12 21:03:46</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 14:55:07 GMT+0800">2024-07-11 14:55:07</span>
             </span>
         
 
@@ -254,37 +254,12 @@
                     
 
                     
-                         <h2 id="1-实体类转换成json"><a href="#1-实体类转换成json" class="headerlink" title="1.实体类转换成json"></a>1.实体类转换成json</h2><pre><code>def list = [new Person(name: &#39;John&#39;,age: 25),
-        new Person(name: &#39;Major&#39;,age: 26)]
-
-println JsonOutput.toJson(list)
-//带格式的输出
-def json = JsonOutput.toJson(list)
-println JsonOutput.prettyPrint(json)
-</code></pre>
+                         <h2 id="1-实体类转换成json"><a href="#1-实体类转换成json" class="headerlink" title="1.实体类转换成json"></a>1.实体类转换成json</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def list = [new Person(name: &#x27;John&#x27;,age: 25),</span><br><span class="line">           new Person(name: &#x27;Major&#x27;,age: 26)]</span><br><span class="line"></span><br><span class="line">println JsonOutput.toJson(list)</span><br><span class="line">//带格式的输出</span><br><span class="line">def json = JsonOutput.toJson(list)</span><br><span class="line">println JsonOutput.prettyPrint(json)</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <p><img src="/2018/05/23/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-json%E6%93%8D%E4%BD%9C/1.png"></p>
-<h2 id="2-json转换实体类"><a href="#2-json转换实体类" class="headerlink" title="2.json转换实体类"></a>2.json转换实体类</h2><pre><code>def jsonSlurper = new JsonSlurper()
-jsonSlurper.parse()
-jsonSlurper.parseText()
-</code></pre>
+<h2 id="2-json转换实体类"><a href="#2-json转换实体类" class="headerlink" title="2.json转换实体类"></a>2.json转换实体类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def jsonSlurper = new JsonSlurper()</span><br><span class="line">jsonSlurper.parse()</span><br><span class="line">jsonSlurper.parseText()</span><br></pre></td></tr></table></figure>
 <p>也可以使用java第三方库，如gson</p>
-<h2 id="3-网络请求例子"><a href="#3-网络请求例子" class="headerlink" title="3.网络请求例子"></a>3.网络请求例子</h2><pre><code>def getNetworkData(String url)&#123;
-    //发送HTTP请求
-    def connection = new URL(url).openConnection()
-    connection.setRequestMethod(&#39;GET&#39;)
-    connection.connect()
-    def response = connection.content.text
-
-    //json转换为实体对象
-    def jsonSlurper = new JsonSlurper()
-    return jsonSlurper.parseText(response)
-&#125;
-
-def response = getNetworkData(&#39;http://co-api.51wnl.com/calendar/vacations?token=A2E0C3CDEA081D3BFC34F8FE23A15886&amp;type=1&amp;timestamp=1462377600&amp;client=ceshi&#39;)
-//可以直接调用对应的属性字段
-println response.status
-</code></pre>
+<h2 id="3-网络请求例子"><a href="#3-网络请求例子" class="headerlink" title="3.网络请求例子"></a>3.网络请求例子</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def getNetworkData(String url)&#123;</span><br><span class="line">   	//发送HTTP请求</span><br><span class="line">   	def connection = new URL(url).openConnection()</span><br><span class="line">   	connection.setRequestMethod(&#x27;GET&#x27;)</span><br><span class="line">   	connection.connect()</span><br><span class="line">   	def response = connection.content.text</span><br><span class="line"></span><br><span class="line">   	//json转换为实体对象</span><br><span class="line">   	def jsonSlurper = new JsonSlurper()</span><br><span class="line">   	return jsonSlurper.parseText(response)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def response = getNetworkData(&#x27;http://co-api.51wnl.com/calendar/vacations?token=A2E0C3CDEA081D3BFC34F8FE23A15886&amp;type=1&amp;timestamp=1462377600&amp;client=ceshi&#x27;)</span><br><span class="line">//可以直接调用对应的属性字段</span><br><span class="line">println response.status</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/23/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-json%E6%93%8D%E4%BD%9C/2.png"></p>
 <p><img src="/2018/05/23/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-json%E6%93%8D%E4%BD%9C/3.png"></p>
 

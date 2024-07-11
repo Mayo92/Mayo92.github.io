@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Jul 24 2020 11:37:22 GMT+0800">2020-07-24 11:37:22</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:11:28 GMT+0800">2024-07-11 15:11:28</span>
             </span>
         
 
@@ -254,27 +254,16 @@
                     
 
                     
-                         <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/3.png"></p>
-<h2 id="Settings类"><a href="#Settings类" class="headerlink" title="Settings类"></a>Settings类</h2><p>决定哪些工程需要被gradle处理，Settings类通过settings.gradle配置文件来初始化</p>
-<span id="more"></span>
+                         <span id="more"></span>
 
+<p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/3.png"></p>
+<h2 id="Settings类"><a href="#Settings类" class="headerlink" title="Settings类"></a>Settings类</h2><p>决定哪些工程需要被gradle处理，Settings类通过settings.gradle配置文件来初始化</p>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/1.png"></p>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/2.png"></p>
 <h2 id="SourceSet类"><a href="#SourceSet类" class="headerlink" title="SourceSet类"></a>SourceSet类</h2><p>决定了代码、资源、第三方库要存放的位置。gradle约定大于配置，只要没有做修改，默认按照约定的来，默认从java文件夹下获取代码、从res文件夹下获取资源</p>
-<h3 id="修改SO文件位置"><a href="#修改SO文件位置" class="headerlink" title="修改SO文件位置"></a>修改SO文件位置</h3><pre><code>sourceSets &#123;
-    main&#123;
-        jniLibs.srcDirs = [&#39;libs&#39;] 
-    &#125;
-&#125;
-</code></pre>
-<h3 id="修改资源文件夹"><a href="#修改资源文件夹" class="headerlink" title="修改资源文件夹"></a>修改资源文件夹</h3><pre><code>this.android.sourceSets&#123;
-    main&#123;
-        res.srcDirs = [&#39;src/main/res&#39;,
-                       &#39;src/main/res-ad&#39;,
-                        &#39;src/main/res-player&#39;]
-    &#125;
-&#125;
-</code></pre>
+<h3 id="修改SO文件位置"><a href="#修改SO文件位置" class="headerlink" title="修改SO文件位置"></a>修改SO文件位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">       main&#123;</span><br><span class="line">           jniLibs.srcDirs = [&#x27;libs&#x27;] </span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改资源文件夹"><a href="#修改资源文件夹" class="headerlink" title="修改资源文件夹"></a>修改资源文件夹</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">this.android.sourceSets&#123;</span><br><span class="line">   	main&#123;</span><br><span class="line">       	res.srcDirs = [&#x27;src/main/res&#x27;,</span><br><span class="line">                      	&#x27;src/main/res-ad&#x27;,</span><br><span class="line">                       	&#x27;src/main/res-player&#x27;]</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/4.png"></p>
 <h2 id="Plugin及自定义Plugin"><a href="#Plugin及自定义Plugin" class="headerlink" title="Plugin及自定义Plugin"></a>Plugin及自定义Plugin</h2><p>完成特定任务的所有task都封装在某一个插件中，这样引入这个插件就可以完成特定的功能。</p>
 <h3 id="第一种方式直接在build-gradle文件中编写"><a href="#第一种方式直接在build-gradle文件中编写" class="headerlink" title="第一种方式直接在build.gradle文件中编写"></a>第一种方式直接在build.gradle文件中编写</h3><p>好处：自动编译，无需执行其他操作。</p>
@@ -283,170 +272,31 @@
 <h3 id="第二种方式创建buildSrc的module"><a href="#第二种方式创建buildSrc的module" class="headerlink" title="第二种方式创建buildSrc的module"></a>第二种方式创建buildSrc的module</h3><p>目录如下</p>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/5.png"></p>
 <p>修改build.gradle</p>
-<pre><code>//groovy library
-apply plugin: &#39;groovy&#39;
-
-dependencies &#123;
-    // gradle sdk
-    implementation gradleApi()
-    // groovy sdk
-    implementation localGroovy()
-&#125;
-
-sourceSets &#123;
-    main&#123;
-        groovy&#123;
-            srcDir &#39;src/main/groovy&#39;
-        &#125;
-
-        resources&#123;
-            srcDir &#39;src/main/resources&#39;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//groovy library</span><br><span class="line">apply plugin: &#x27;groovy&#x27;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">   	// gradle sdk</span><br><span class="line">   	implementation gradleApi()</span><br><span class="line">   	// groovy sdk</span><br><span class="line">   	implementation localGroovy()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sourceSets &#123;</span><br><span class="line">   	main&#123;</span><br><span class="line">       	groovy&#123;</span><br><span class="line">           	srcDir &#x27;src/main/groovy&#x27;</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	resources&#123;</span><br><span class="line">           	srcDir &#x27;src/main/resources&#x27;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>创建groovy类</p>
-<pre><code>/**
- * 自定义插件
- */
-class GradleStudyPlugin implements Plugin&lt;Project&gt;&#123;
-
-    /**
-     * 插件被引入时要执行的方法
-     * @param project 引入当前插件的project
-     */
-    @Override
-    void apply(Project project) &#123;
-
-        println &#39;hello this &#39;+project.name
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	* 自定义插件</span><br><span class="line">	*/</span><br><span class="line">class GradleStudyPlugin implements Plugin&lt;Project&gt;&#123;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* 插件被引入时要执行的方法</span><br><span class="line">    	* @param project 引入当前插件的project</span><br><span class="line">    	*/</span><br><span class="line">   	@Override</span><br><span class="line">   	void apply(Project project) &#123;</span><br><span class="line"></span><br><span class="line">       	println &#x27;hello this &#x27;+project.name</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>创建properties文件</p>
-<pre><code>implementation-class=com.yly.gradle.study.GradleStudyPlugin
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation-class=com.yly.gradle.study.GradleStudyPlugin</span><br></pre></td></tr></table></figure>
 <p>app moudle引用</p>
-<pre><code>apply plugin: &#39;com.yly.gradle.study&#39;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.yly.gradle.study&#x27;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/6.png"></p>
 <p>添加实际逻辑</p>
 <p>创建属性</p>
-<pre><code>/**
- * 与自定义PLugin进行参数传递
- */
-class ReleaseInfoExtension &#123;
-
-    String versionCode
-    String versionName
-    String versionInfo
-    String fileName
-
-    ReleaseInfoExtension() &#123;
-
-    &#125;
-
-    @Override
-    String toString() &#123;
-        &quot;&quot;&quot;| versionCode = $&#123;versionCode&#125;
-           | versionName = $&#123;versionName&#125;
-           | versionInfo = $&#123;versionInfo&#125;
-           | fileName = $&#123;fileName&#125;
-        &quot;&quot;&quot;.stripMargin()
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	* 与自定义PLugin进行参数传递</span><br><span class="line">	*/</span><br><span class="line">class ReleaseInfoExtension &#123;</span><br><span class="line"></span><br><span class="line">   	String versionCode</span><br><span class="line">   	String versionName</span><br><span class="line">   	String versionInfo</span><br><span class="line">   	String fileName</span><br><span class="line"></span><br><span class="line">   	ReleaseInfoExtension() &#123;</span><br><span class="line"></span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	String toString() &#123;</span><br><span class="line">       	&quot;&quot;&quot;| versionCode = $&#123;versionCode&#125;</span><br><span class="line">          	| versionName = $&#123;versionName&#125;</span><br><span class="line">          	| versionInfo = $&#123;versionInfo&#125;</span><br><span class="line">          	| fileName = $&#123;fileName&#125;</span><br><span class="line">       	&quot;&quot;&quot;.stripMargin()</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>apply方法中创建扩展属性</p>
-<pre><code>project.extensions.create(&#39;ylyReleaseInfo&#39;,
-            ReleaseInfoExtension)
-            
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project.extensions.create(&#x27;ylyReleaseInfo&#x27;,</span><br><span class="line">               ReleaseInfoExtension)</span><br></pre></td></tr></table></figure>
 <p>app moudle为自定义插件传递参数</p>
-<pre><code>ylyReleaseInfo&#123;
-    versionCode = rootProject.ext.android.versionCode
-    versionName = rootProject.ext.android.versionName
-    versionInfo = &#39;第8个版本。。。&#39;
-    fileName = &#39;releases.xml&#39;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ylyReleaseInfo&#123;</span><br><span class="line">   	versionCode = rootProject.ext.android.versionCode</span><br><span class="line">   	versionName = rootProject.ext.android.versionName</span><br><span class="line">   	versionInfo = &#x27;第8个版本。。。&#x27;</span><br><span class="line">   	fileName = &#x27;releases.xml&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>创建自定义Task</p>
-<pre><code>/**
- * 自定义Task,实现维护版本信息功能
- */
-class ReleaseInfoTask extends DefaultTask&#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	* 自定义Task,实现维护版本信息功能</span><br><span class="line">	*/</span><br><span class="line">class ReleaseInfoTask extends DefaultTask&#123;</span><br><span class="line"></span><br><span class="line">   	ReleaseInfoTask() &#123;</span><br><span class="line">       	group = &#x27;yly&#x27;</span><br><span class="line">       	description = &#x27;update the release info&#x27;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* 执行于gradle执行阶段的代码</span><br><span class="line">    	* TaskAction注解的方法执行于执行阶段，doFirst为它之前，doLast为它之后</span><br><span class="line">    	*/</span><br><span class="line">   	@TaskAction</span><br><span class="line">   	void doAction() &#123;</span><br><span class="line">       	updateInfo()</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//真正的将Extension类中的信息呢，写入指定文件中</span><br><span class="line">   	private void updateInfo() &#123;</span><br><span class="line">       	//获取将要写入的信息</span><br><span class="line">       	String versionCodeMsg = project.extensions.</span><br><span class="line">               ylyReleaseInfo.versionCode</span><br><span class="line">       	String versionNameMsg = project.extensions.</span><br><span class="line">               ylyReleaseInfo.versionName</span><br><span class="line">       	String versionInfoMsg = project.extensions.</span><br><span class="line">               ylyReleaseInfo.versionInfo</span><br><span class="line">       	String fileName = project.extensions.</span><br><span class="line">               ylyReleaseInfo.fileName</span><br><span class="line">       	def file = project.file(fileName)</span><br><span class="line">       	//将实体对象写入到xml文件中</span><br><span class="line">       	def sw = new StringWriter()</span><br><span class="line">       	def xmlBuilder = new MarkupBuilder(sw)</span><br><span class="line">       	if (file.text != null &amp;&amp; file.text.size() &lt;= 0) &#123;</span><br><span class="line">           	//没有内容</span><br><span class="line">           	xmlBuilder.releases &#123;</span><br><span class="line">               	release &#123;</span><br><span class="line">                   	versionCode(versionCodeMsg)</span><br><span class="line">                   	versionName(versionNameMsg)</span><br><span class="line">                   	versionInfo(versionInfoMsg)</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">           	//直接写入</span><br><span class="line">           	file.withWriter &#123; writer -&gt; writer.append(sw.toString())</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125; else &#123;</span><br><span class="line">           	//已有其它版本内容</span><br><span class="line">           	xmlBuilder.release &#123;</span><br><span class="line">               	versionCode(versionCodeMsg)</span><br><span class="line">               	versionName(versionNameMsg)</span><br><span class="line">               	versionInfo(versionInfoMsg)</span><br><span class="line">           	&#125;</span><br><span class="line">           	//插入到最后一行前面</span><br><span class="line">           	def lines = file.readLines()</span><br><span class="line">           	def lengths = lines.size() - 1</span><br><span class="line">           	file.withWriter &#123; writer -&gt;</span><br><span class="line">               	lines.eachWithIndex &#123; line, index -&gt;</span><br><span class="line">                   	if (index != lengths) &#123;</span><br><span class="line">                       	writer.append(line + &#x27;\r\n&#x27;)</span><br><span class="line">                   	&#125; else if (index == lengths) &#123;</span><br><span class="line">                       	writer.append(&#x27;\r\r\n&#x27; + sw.toString() + &#x27;\r\n&#x27;)</span><br><span class="line">                       	writer.append(lines.get(lengths))</span><br><span class="line">                   	&#125;</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    ReleaseInfoTask() &#123;
-        group = &#39;yly&#39;
-        description = &#39;update the release info&#39;
-    &#125;
-
-    /**
-     * 执行于gradle执行阶段的代码
-     * TaskAction注解的方法执行于执行阶段，doFirst为它之前，doLast为它之后
-     */
-    @TaskAction
-    void doAction() &#123;
-        updateInfo()
-    &#125;
-
-    //真正的将Extension类中的信息呢，写入指定文件中
-    private void updateInfo() &#123;
-        //获取将要写入的信息
-        String versionCodeMsg = project.extensions.
-            ylyReleaseInfo.versionCode
-        String versionNameMsg = project.extensions.
-            ylyReleaseInfo.versionName
-        String versionInfoMsg = project.extensions.
-            ylyReleaseInfo.versionInfo
-        String fileName = project.extensions.
-            ylyReleaseInfo.fileName
-        def file = project.file(fileName)
-        //将实体对象写入到xml文件中
-        def sw = new StringWriter()
-        def xmlBuilder = new MarkupBuilder(sw)
-        if (file.text != null &amp;&amp; file.text.size() &lt;= 0) &#123;
-            //没有内容
-            xmlBuilder.releases &#123;
-                release &#123;
-                    versionCode(versionCodeMsg)
-                    versionName(versionNameMsg)
-                    versionInfo(versionInfoMsg)
-                &#125;
-            &#125;
-            //直接写入
-            file.withWriter &#123; writer -&gt; writer.append(sw.toString())
-            &#125;
-        &#125; else &#123;
-            //已有其它版本内容
-            xmlBuilder.release &#123;
-                versionCode(versionCodeMsg)
-                versionName(versionNameMsg)
-                versionInfo(versionInfoMsg)
-            &#125;
-            //插入到最后一行前面
-            def lines = file.readLines()
-            def lengths = lines.size() - 1
-            file.withWriter &#123; writer -&gt;
-                lines.eachWithIndex &#123; line, index -&gt;
-                    if (index != lengths) &#123;
-                        writer.append(line + &#39;\r\n&#39;)
-                    &#125; else if (index == lengths) &#123;
-                        writer.append(&#39;\r\r\n&#39; + sw.toString() + &#39;\r\n&#39;)
-                        writer.append(lines.get(lengths))
-                    &#125;
-                &#125;
-            &#125;
-        &#125;
-
-    &#125;
-&#125;
-</code></pre>
 <p>apply方法中创建Task</p>
-<pre><code>project.tasks.create(&#39;ylyReleaseInfoTask&#39;,
-            ReleaseInfoTask)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project.tasks.create(&#x27;ylyReleaseInfoTask&#x27;,</span><br><span class="line">               ReleaseInfoTask)</span><br></pre></td></tr></table></figure>
+
 <p>执行task</p>
-<pre><code>./gradlew ylyReleaseInfoTask
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew ylyReleaseInfoTask</span><br></pre></td></tr></table></figure>
+
 <p>缺点：只对当前工程可用</p>
 <h3 id="第三种方式Standalone-project"><a href="#第三种方式Standalone-project" class="headerlink" title="第三种方式Standalone project"></a>第三种方式Standalone project</h3><p>优点：插件的module名字，可以随意。这种方式，就是将我们写的一些插件，任务等等打包到一起，生成jar，通过jar包的方式使用。所以， 在其他的项目也是可以使用的 </p>
 <p><a class="link" href="https://blog.csdn.net/android_jianbo/article/details/103704459">参考文档<i class="fas fa-external-link-alt"></i></a></p>
@@ -455,323 +305,17 @@ class ReleaseInfoTask extends DefaultTask&#123;
 <p>Android引入的task，在每个变体中获取相应的task</p>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/8.png"></p>
 <p><a class="link" href="https://avatarqing.github.io/Gradle-Plugin-User-Guide-Chinese-Verision/advanced_build_customization/manipulation_taskstask.html">参考文档<i class="fas fa-external-link-alt"></i></a></p>
-<pre><code>this.afterEvaluate &#123;
-    //获取所有变体并遍历
-    this.android.applicationVariants.all &#123; variant-&gt;
-        def name = variant.name
-        def baseName = variant.baseName
-        println &quot;name is $&#123;name&#125;,baseName is $&#123;baseName&#125;&quot;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">this.afterEvaluate &#123;</span><br><span class="line">   	//获取所有变体并遍历</span><br><span class="line">   	this.android.applicationVariants.all &#123; variant-&gt;</span><br><span class="line">       	def name = variant.name</span><br><span class="line">       	def baseName = variant.baseName</span><br><span class="line">       	println &quot;name is $&#123;name&#125;,baseName is $&#123;baseName&#125;&quot;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/9.png"></p>
 <p>改变输出apk名称，修改变体中的属性</p>
-<pre><code>this.afterEvaluate &#123;
-    //获取所有变体并遍历
-    this.android.applicationVariants.all &#123; variant-&gt;
-
-        def output = variant.outputs.first()
-        def apkName = &quot;app-$&#123;variant.baseName&#125;&quot; +
-            &quot;-$&#123;variant.versionName&#125;.apk&quot;
-        output.outputFileName = apkName
-        println output.outputFileName
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">this.afterEvaluate &#123;</span><br><span class="line">   	//获取所有变体并遍历</span><br><span class="line">   	this.android.applicationVariants.all &#123; variant-&gt;</span><br><span class="line"></span><br><span class="line">       	def output = variant.outputs.first()</span><br><span class="line">       	def apkName = &quot;app-$&#123;variant.baseName&#125;&quot; +</span><br><span class="line">               &quot;-$&#123;variant.versionName&#125;.apk&quot;</span><br><span class="line">       	output.outputFileName = apkName</span><br><span class="line">       	println output.outputFileName</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/10.png"></p>
 <p>获取变体中的task，后续可以进行操作</p>
-<pre><code>this.afterEvaluate &#123;
-    //获取所有变体并遍历
-    this.android.applicationVariants.all &#123; variant-&gt;
-        //修改变体中的task
-        def task = variant.checkManifest
-        println task.name
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">this.afterEvaluate &#123;</span><br><span class="line">   	//获取所有变体并遍历</span><br><span class="line">   	this.android.applicationVariants.all &#123; variant-&gt;</span><br><span class="line">       	//修改变体中的task</span><br><span class="line">       	def task = variant.checkManifest</span><br><span class="line">       	println task.name</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/11.png"></p>
 <p>实际案例，壳工程下载包含的最新子工程</p>
-<pre><code>/**
- * 创建时间：2017年12月22日 &lt;br&gt;
- * 作者：renzhiqiang &lt;br&gt;
- * 描述：插件自动更新脚本
- * 流程描述：  1、解析插件配置
- *           2、请求该配置下的最新版本
- *           3、检验本地是否存在相同配置的版本
- *           4、ipackage下载插件
- *           5、校验下载的文件的合法性
- */
-import groovy.json.JsonSlurper
-import java.security.MessageDigest
-
-/**
- * 入口
- */
-this.afterEvaluate &#123;
-    this.android.applicationVariants.all &#123; variant -&gt;
-        def checkTask = variant.checkManifest
-        checkTask.doFirst &#123;
-            def bt = variant.buildType.name
-            if (bt.equals(&#39;qa&#39;) || bt.equals(&#39;preview&#39;)
-                    || bt.equals(&#39;release&#39;)) &#123;
-                update_plugin(bt)
-            &#125;
-        &#125;
-    &#125;
-&#125;
-
-/**
- * 1.读取配置文件
- * 2.根据配置生成获取插件下载地址的url
- * 3.拼接下载地址，插件文件名，插件md5文件名成string
- * @param buildType 打包的buildType
- */
-def update_plugin(String buildType) &#123;
-    //使用线上配置
-    def config = getJsonDataFromNet(rootProject.ext.android.pluginConfigUrl);
-    println &#39;plugin config is :&#39; + config + &quot; \ncount=&quot; + config.size()
-
-    def pluginUrl = &#39;http://i.package.imooc.com/api/package/search.json&#39;
-    int pluginSize = config.size()
-    for (int i = 0; i &lt; pluginSize; i++) &#123;
-        def plugin = config[i]
-        println(&quot;1、解析&quot; + plugin.projectname + &quot;的插件配置&quot;)
-        println(plugin.projectname + &quot;插件配置为：&quot; + plugin)
-        StringBuilder urlRequest = new StringBuilder(pluginUrl)
-        urlRequest.append(&#39;?&#39;)
-        urlRequest.append(&#39;project=&#39;).append(plugin.projectname).append(&#39;&amp;&#39;)
-        urlRequest.append(&#39;version=&#39;).append(plugin.version).append(&#39;&amp;&#39;)
-        if (plugin.type != null) &#123;
-            urlRequest.append(&#39;type=&#39;).append(plugin.type)
-            if (plugin.commit_hash != null) &#123;
-                urlRequest.append(&#39;&amp;&#39;)
-                urlRequest.append(&#39;commit_hash=&#39;).append(plugin.commit_hash)
-            &#125; else &#123;
-                if (plugin.type == &#39;release&#39;) &#123;
-                    //release时必须有commitHash否则直接返回失败
-//          return false
-                &#125;
-            &#125;
-        &#125; else &#123;
-            if (buildType.equals(&#39;qa&#39;)) &#123;
-                urlRequest.append(&#39;type=&#39;).append(&#39;debug&#39;)
-                if (plugin.commit_hash != null) &#123;
-                    urlRequest.append(&#39;&amp;&#39;)
-                    urlRequest.append(&#39;commit_hash=&#39;).append(plugin.commit_hash)
-                &#125;
-            &#125; else if (buildType.equals(&#39;release&#39;)) &#123;
-                //release时必须有commitHash否则直接返回失败
-                if (plugin.commit_hash == null) &#123;
-//          return false
-                &#125; else &#123;
-                    urlRequest.append(&#39;type=&#39;).append(&#39;release&#39;).append(&#39;&amp;&#39;)
-                    urlRequest.append(&#39;commit_hash=&#39;).append(plugin.commit_hash)
-                &#125;
-            &#125; else if (buildType.equals(&#39;preview&#39;)) &#123;
-                //preview时必须有commitHash否则直接返回失败
-                if (plugin.commit_hash == null) &#123;
-//          return false
-                &#125; else &#123;
-                    urlRequest.append(&#39;type=&#39;).append(&#39;preview&#39;).append(&#39;&amp;&#39;)
-                    urlRequest.append(&#39;commit_hash=&#39;).append(plugin.commit_hash)
-                &#125;
-            &#125;
-        &#125;
-        def success = askForLatest(urlRequest.toString(), plugin.jar_name, plugin.jar_md5_name)
-        if (success) &#123;
-            println &#39;-----------&#39; + plugin.jar_name + &#39; update successfull-----&#39;
-            println()
-        &#125; else &#123;
-            println &#39;-----------&#39; + plugin.jar_name + &#39; update failed-----&#39;
-            println()
-            throw new IllegalArgumentException(plugin.jar_name + &#39; update failed !!!!!&#39;)
-        &#125;
-    &#125;
-&#125;
-
-/**
- * 获取插件最新版本
- * 1、根据版本配置请求ipackage上该插件的所有文件（一个配置会有多个插件文件）
- * 2、下载最新一个文件（约定第一个为最新）
- * @param url
- * @param jarname
- * @param jarMd5name
- * @return
- */
-def askForLatest(String url, String jarname, String jarMd5name) &#123;
-    println(&quot;2、从ipackage请求该配置下的最新版本&quot;)
-    println(&quot;请求链接为：&quot; + url)
-    def pluginList = getJsonDataFromNet(url).result
-    if (pluginList.size() &gt; 0) &#123;
-        def latestPlugin = pluginList[0]
-        println(&quot;搜索最新版本成功：&quot; + latestPlugin)
-        if (isPluginExist(jarname, jarMd5name, latestPlugin.md5)) &#123;
-            return true;
-        &#125; else &#123;
-            def flag = down(latestPlugin.download_url, jarname)
-            if (flag) &#123;
-                flag = checkMd5(jarname, latestPlugin.md5)
-            &#125;
-            return flag
-        &#125;
-    &#125; else &#123;
-        println(&quot;搜索最新版本失败，更新插件失败&quot;)
-        return false
-    &#125;
-&#125;
-
-/**
- * 校验本地是否已经存在符合配置的插件
- * 1、校验插件文件是否存在
- * 2、校验插件md5文件是否存在以及内容是否一致
- * 3、1和2同时满足即为符合否则删除该插件的相关文件
- * @param jarname
- * @param jarMd5name
- * @param md5
- * @return
- */
-def isPluginExist(String jarname, String jarMd5name, String md5) &#123;
-    println(&quot;3、检验本地是否存在相同配置的版本&quot;)
-    println(&quot;检验条件：&quot; + &quot;文件名&quot; + jarname + &quot;，md5值&quot; + md5)
-    String pluginPath = &#39;src/main/assets/plugins/&#39;
-    File pluginfile;
-    File md5file;
-    String md5content;
-    FileCollection plugins = files &#123; file(pluginPath).listFiles() &#125;
-    plugins.each &#123; File file -&gt;
-        if (file.getName().equals(jarname)) &#123;
-            pluginfile = file;
-        &#125;
-        if (file.getName().equals(jarMd5name)) &#123;
-            md5file = file;
-            md5content = getFileContent(file);
-        &#125;
-    &#125;
-    if (pluginfile != null &amp;&amp; md5content.equals(md5)) &#123;
-        println(&quot;本地存在相同配置的版本，跳过下载，返回成功&quot;)
-        return true;
-    &#125;
-
-    //本地的不匹配则删除
-    if (pluginfile != null) &#123;
-        pluginfile.delete()
-    &#125;
-
-    if (md5file != null) &#123;
-        md5file.delete()
-    &#125;
-    println(&quot;本地不存在相同配置的版本&quot;)
-    return false
-&#125;
-
-/**
- * 下载网络文件
- * @param url
- * @param jarname
- * @return
- */
-def down(String url, String jarname) &#123;
-    println(&quot;4、开始ipackage下载&quot;)
-    println(&quot;下载url为：&quot; + url)
-    def file = new File(project.getProjectDir().getAbsolutePath() + &quot;/src/main/assets/plugins/&quot; + jarname)
-    InputStream is
-    FileOutputStream fos
-    try &#123;
-        def connection = new URL(url).openConnection()
-        connection.setRequestMethod(&#39;GET&#39;)
-        connection.connect()
-        is = connection.getInputStream()
-        fos = new FileOutputStream(file)
-        byte[] b = new byte[1024]
-        int len = 0
-        while ((len = is.read(b)) != -1) &#123;
-            fos.write(b, 0, len)
-        &#125;
-        fos.flush()
-        println(&quot;文件下载成功&quot;)
-        return true
-    &#125; catch (Exception e) &#123;
-        println(&quot;文件下载失败&quot;)
-        println(e.printStackTrace())
-        return false
-    &#125; finally &#123;
-        if (fos != null) &#123;
-            fos.close()
-        &#125;
-        if (is != null) &#123;
-            is.close()
-        &#125;
-    &#125;
-&#125;
-
-/**
- * 下载成功后校验文件与返回的md5是否匹配
- * 不匹配则删除文件
- * @param jarname
- * @param md5
- * @return
- */
-def checkMd5(String jarname, String md5) &#123;
-    println(&quot;5、开始校验下载的文件的合法性&quot;)
-    //  println(&quot;ipackage返回的md5 = &quot; + md5)
-    String pluginPath = &#39;src/main/assets/plugins/&#39;
-    FileCollection plugins = files &#123; file(pluginPath).listFiles() &#125;
-    plugins.each &#123; File file -&gt;
-        if (file.getName().equals(jarname)) &#123;
-            def digest = MessageDigest.getInstance(&quot;MD5&quot;).digest(file.bytes).encodeHex().toString()
-            //      println(&quot;下载后计算的md5 = &quot; + digest)
-            if (digest.equals(md5)) &#123;
-                File md5File = new File(pluginPath + file.name + &#39;.md5&#39;)
-                FileCollection collectionss = files(md5File)
-                collectionss.getFiles().getAt(0).withWriter(&#39;UTF-8&#39;) &#123; within -&gt; within.append(digest) &#125;
-                println(&quot;md5校验成功&quot;)
-                return true;
-            &#125; else &#123;
-                file.delete()
-                println(&quot;md5校验失败，删除已下载文件&quot;)
-                return false;
-            &#125;
-        &#125;
-    &#125;
-&#125;
-
-/**
- * 获取文件的第一行
- * md5文件只有一行
- * @param file
- * @return
- */
-def getFileContent(File file) &#123;
-    List&lt;String&gt; contents = file.readLines();
-    if (contents != null &amp;&amp; contents.size() &gt; 0) &#123;
-        return contents.get(0);
-    &#125;
-    return &quot;&quot;;
-&#125;
-
-/**
- * 从网络获取json数据
- * @param url
- * @return
- */
-def getJsonDataFromNet(String url) &#123;
-    //使用接口配置
-    def connection = new URL(url).openConnection()
-    connection.setRequestMethod(&#39;GET&#39;)
-    connection.connect()
-    def resp = connection.content.text
-
-    def jsonSlurper = new JsonSlurper()
-    return jsonSlurper.parseText(resp).data
-&#125;
-
-//关闭测试相关的task
-tasks.whenTaskAdded &#123; task -&gt;
-    if (task.name.contains(&#39;AndroidTest&#39;)) &#123;
-        task.enabled = false
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	* 创建时间：2017年12月22日 &lt;br&gt;</span><br><span class="line">	* 作者：renzhiqiang &lt;br&gt;</span><br><span class="line">	* 描述：插件自动更新脚本</span><br><span class="line">	* 流程描述：  1、解析插件配置</span><br><span class="line">	*           2、请求该配置下的最新版本</span><br><span class="line">	*           3、检验本地是否存在相同配置的版本</span><br><span class="line">	*           4、ipackage下载插件</span><br><span class="line">	*           5、校验下载的文件的合法性</span><br><span class="line">	*/</span><br><span class="line">import groovy.json.JsonSlurper</span><br><span class="line">import java.security.MessageDigest</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 入口</span><br><span class="line">	*/</span><br><span class="line">this.afterEvaluate &#123;</span><br><span class="line">   	this.android.applicationVariants.all &#123; variant -&gt;</span><br><span class="line">       	def checkTask = variant.checkManifest</span><br><span class="line">       	checkTask.doFirst &#123;</span><br><span class="line">           	def bt = variant.buildType.name</span><br><span class="line">           	if (bt.equals(&#x27;qa&#x27;) || bt.equals(&#x27;preview&#x27;)</span><br><span class="line">                   	|| bt.equals(&#x27;release&#x27;)) &#123;</span><br><span class="line">               	update_plugin(bt)</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 1.读取配置文件</span><br><span class="line">	* 2.根据配置生成获取插件下载地址的url</span><br><span class="line">	* 3.拼接下载地址，插件文件名，插件md5文件名成string</span><br><span class="line">	* @param buildType 打包的buildType</span><br><span class="line">	*/</span><br><span class="line">def update_plugin(String buildType) &#123;</span><br><span class="line">   	//使用线上配置</span><br><span class="line">   	def config = getJsonDataFromNet(rootProject.ext.android.pluginConfigUrl);</span><br><span class="line">   	println &#x27;plugin config is :&#x27; + config + &quot; \ncount=&quot; + config.size()</span><br><span class="line"></span><br><span class="line">   	def pluginUrl = &#x27;http://i.package.imooc.com/api/package/search.json&#x27;</span><br><span class="line">   	int pluginSize = config.size()</span><br><span class="line">   	for (int i = 0; i &lt; pluginSize; i++) &#123;</span><br><span class="line">       	def plugin = config[i]</span><br><span class="line">       	println(&quot;1、解析&quot; + plugin.projectname + &quot;的插件配置&quot;)</span><br><span class="line">       	println(plugin.projectname + &quot;插件配置为：&quot; + plugin)</span><br><span class="line">       	StringBuilder urlRequest = new StringBuilder(pluginUrl)</span><br><span class="line">       	urlRequest.append(&#x27;?&#x27;)</span><br><span class="line">       	urlRequest.append(&#x27;project=&#x27;).append(plugin.projectname).append(&#x27;&amp;&#x27;)</span><br><span class="line">       	urlRequest.append(&#x27;version=&#x27;).append(plugin.version).append(&#x27;&amp;&#x27;)</span><br><span class="line">       	if (plugin.type != null) &#123;</span><br><span class="line">           	urlRequest.append(&#x27;type=&#x27;).append(plugin.type)</span><br><span class="line">           	if (plugin.commit_hash != null) &#123;</span><br><span class="line">               	urlRequest.append(&#x27;&amp;&#x27;)</span><br><span class="line">               	urlRequest.append(&#x27;commit_hash=&#x27;).append(plugin.commit_hash)</span><br><span class="line">           	&#125; else &#123;</span><br><span class="line">               	if (plugin.type == &#x27;release&#x27;) &#123;</span><br><span class="line">                   	//release时必须有commitHash否则直接返回失败</span><br><span class="line">//          return false</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125; else &#123;</span><br><span class="line">           	if (buildType.equals(&#x27;qa&#x27;)) &#123;</span><br><span class="line">               	urlRequest.append(&#x27;type=&#x27;).append(&#x27;debug&#x27;)</span><br><span class="line">               	if (plugin.commit_hash != null) &#123;</span><br><span class="line">                   	urlRequest.append(&#x27;&amp;&#x27;)</span><br><span class="line">                   	urlRequest.append(&#x27;commit_hash=&#x27;).append(plugin.commit_hash)</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125; else if (buildType.equals(&#x27;release&#x27;)) &#123;</span><br><span class="line">               	//release时必须有commitHash否则直接返回失败</span><br><span class="line">               	if (plugin.commit_hash == null) &#123;</span><br><span class="line">//          return false</span><br><span class="line">               	&#125; else &#123;</span><br><span class="line">                   	urlRequest.append(&#x27;type=&#x27;).append(&#x27;release&#x27;).append(&#x27;&amp;&#x27;)</span><br><span class="line">                   	urlRequest.append(&#x27;commit_hash=&#x27;).append(plugin.commit_hash)</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125; else if (buildType.equals(&#x27;preview&#x27;)) &#123;</span><br><span class="line">               	//preview时必须有commitHash否则直接返回失败</span><br><span class="line">               	if (plugin.commit_hash == null) &#123;</span><br><span class="line">//          return false</span><br><span class="line">               	&#125; else &#123;</span><br><span class="line">                   	urlRequest.append(&#x27;type=&#x27;).append(&#x27;preview&#x27;).append(&#x27;&amp;&#x27;)</span><br><span class="line">                   	urlRequest.append(&#x27;commit_hash=&#x27;).append(plugin.commit_hash)</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">       	def success = askForLatest(urlRequest.toString(), plugin.jar_name, plugin.jar_md5_name)</span><br><span class="line">       	if (success) &#123;</span><br><span class="line">           	println &#x27;-----------&#x27; + plugin.jar_name + &#x27; update successfull-----&#x27;</span><br><span class="line">           	println()</span><br><span class="line">       	&#125; else &#123;</span><br><span class="line">           	println &#x27;-----------&#x27; + plugin.jar_name + &#x27; update failed-----&#x27;</span><br><span class="line">           	println()</span><br><span class="line">           	throw new IllegalArgumentException(plugin.jar_name + &#x27; update failed !!!!!&#x27;)</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 获取插件最新版本</span><br><span class="line">	* 1、根据版本配置请求ipackage上该插件的所有文件（一个配置会有多个插件文件）</span><br><span class="line">	* 2、下载最新一个文件（约定第一个为最新）</span><br><span class="line">	* @param url</span><br><span class="line">	* @param jarname</span><br><span class="line">	* @param jarMd5name</span><br><span class="line">	* @return</span><br><span class="line">	*/</span><br><span class="line">def askForLatest(String url, String jarname, String jarMd5name) &#123;</span><br><span class="line">   	println(&quot;2、从ipackage请求该配置下的最新版本&quot;)</span><br><span class="line">   	println(&quot;请求链接为：&quot; + url)</span><br><span class="line">   	def pluginList = getJsonDataFromNet(url).result</span><br><span class="line">   	if (pluginList.size() &gt; 0) &#123;</span><br><span class="line">       	def latestPlugin = pluginList[0]</span><br><span class="line">       	println(&quot;搜索最新版本成功：&quot; + latestPlugin)</span><br><span class="line">       	if (isPluginExist(jarname, jarMd5name, latestPlugin.md5)) &#123;</span><br><span class="line">           	return true;</span><br><span class="line">       	&#125; else &#123;</span><br><span class="line">           	def flag = down(latestPlugin.download_url, jarname)</span><br><span class="line">           	if (flag) &#123;</span><br><span class="line">               	flag = checkMd5(jarname, latestPlugin.md5)</span><br><span class="line">           	&#125;</span><br><span class="line">           	return flag</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125; else &#123;</span><br><span class="line">       	println(&quot;搜索最新版本失败，更新插件失败&quot;)</span><br><span class="line">       	return false</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 校验本地是否已经存在符合配置的插件</span><br><span class="line">	* 1、校验插件文件是否存在</span><br><span class="line">	* 2、校验插件md5文件是否存在以及内容是否一致</span><br><span class="line">	* 3、1和2同时满足即为符合否则删除该插件的相关文件</span><br><span class="line">	* @param jarname</span><br><span class="line">	* @param jarMd5name</span><br><span class="line">	* @param md5</span><br><span class="line">	* @return</span><br><span class="line">	*/</span><br><span class="line">def isPluginExist(String jarname, String jarMd5name, String md5) &#123;</span><br><span class="line">   	println(&quot;3、检验本地是否存在相同配置的版本&quot;)</span><br><span class="line">   	println(&quot;检验条件：&quot; + &quot;文件名&quot; + jarname + &quot;，md5值&quot; + md5)</span><br><span class="line">   	String pluginPath = &#x27;src/main/assets/plugins/&#x27;</span><br><span class="line">   	File pluginfile;</span><br><span class="line">   	File md5file;</span><br><span class="line">   	String md5content;</span><br><span class="line">   	FileCollection plugins = files &#123; file(pluginPath).listFiles() &#125;</span><br><span class="line">   	plugins.each &#123; File file -&gt;</span><br><span class="line">       	if (file.getName().equals(jarname)) &#123;</span><br><span class="line">           	pluginfile = file;</span><br><span class="line">       	&#125;</span><br><span class="line">       	if (file.getName().equals(jarMd5name)) &#123;</span><br><span class="line">           	md5file = file;</span><br><span class="line">           	md5content = getFileContent(file);</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">   	if (pluginfile != null &amp;&amp; md5content.equals(md5)) &#123;</span><br><span class="line">       	println(&quot;本地存在相同配置的版本，跳过下载，返回成功&quot;)</span><br><span class="line">       	return true;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//本地的不匹配则删除</span><br><span class="line">   	if (pluginfile != null) &#123;</span><br><span class="line">       	pluginfile.delete()</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	if (md5file != null) &#123;</span><br><span class="line">       	md5file.delete()</span><br><span class="line">   	&#125;</span><br><span class="line">   	println(&quot;本地不存在相同配置的版本&quot;)</span><br><span class="line">   	return false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 下载网络文件</span><br><span class="line">	* @param url</span><br><span class="line">	* @param jarname</span><br><span class="line">	* @return</span><br><span class="line">	*/</span><br><span class="line">def down(String url, String jarname) &#123;</span><br><span class="line">   	println(&quot;4、开始ipackage下载&quot;)</span><br><span class="line">   	println(&quot;下载url为：&quot; + url)</span><br><span class="line">   	def file = new File(project.getProjectDir().getAbsolutePath() + &quot;/src/main/assets/plugins/&quot; + jarname)</span><br><span class="line">   	InputStream is</span><br><span class="line">   	FileOutputStream fos</span><br><span class="line">   	try &#123;</span><br><span class="line">       	def connection = new URL(url).openConnection()</span><br><span class="line">       	connection.setRequestMethod(&#x27;GET&#x27;)</span><br><span class="line">       	connection.connect()</span><br><span class="line">       	is = connection.getInputStream()</span><br><span class="line">       	fos = new FileOutputStream(file)</span><br><span class="line">       	byte[] b = new byte[1024]</span><br><span class="line">       	int len = 0</span><br><span class="line">       	while ((len = is.read(b)) != -1) &#123;</span><br><span class="line">           	fos.write(b, 0, len)</span><br><span class="line">       	&#125;</span><br><span class="line">       	fos.flush()</span><br><span class="line">       	println(&quot;文件下载成功&quot;)</span><br><span class="line">       	return true</span><br><span class="line">   	&#125; catch (Exception e) &#123;</span><br><span class="line">       	println(&quot;文件下载失败&quot;)</span><br><span class="line">       	println(e.printStackTrace())</span><br><span class="line">       	return false</span><br><span class="line">   	&#125; finally &#123;</span><br><span class="line">       	if (fos != null) &#123;</span><br><span class="line">           	fos.close()</span><br><span class="line">       	&#125;</span><br><span class="line">       	if (is != null) &#123;</span><br><span class="line">           	is.close()</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 下载成功后校验文件与返回的md5是否匹配</span><br><span class="line">	* 不匹配则删除文件</span><br><span class="line">	* @param jarname</span><br><span class="line">	* @param md5</span><br><span class="line">	* @return</span><br><span class="line">	*/</span><br><span class="line">def checkMd5(String jarname, String md5) &#123;</span><br><span class="line">   	println(&quot;5、开始校验下载的文件的合法性&quot;)</span><br><span class="line">   	//  println(&quot;ipackage返回的md5 = &quot; + md5)</span><br><span class="line">   	String pluginPath = &#x27;src/main/assets/plugins/&#x27;</span><br><span class="line">   	FileCollection plugins = files &#123; file(pluginPath).listFiles() &#125;</span><br><span class="line">   	plugins.each &#123; File file -&gt;</span><br><span class="line">       	if (file.getName().equals(jarname)) &#123;</span><br><span class="line">           	def digest = MessageDigest.getInstance(&quot;MD5&quot;).digest(file.bytes).encodeHex().toString()</span><br><span class="line">           	//      println(&quot;下载后计算的md5 = &quot; + digest)</span><br><span class="line">           	if (digest.equals(md5)) &#123;</span><br><span class="line">               	File md5File = new File(pluginPath + file.name + &#x27;.md5&#x27;)</span><br><span class="line">               	FileCollection collectionss = files(md5File)</span><br><span class="line">               	collectionss.getFiles().getAt(0).withWriter(&#x27;UTF-8&#x27;) &#123; within -&gt; within.append(digest) &#125;</span><br><span class="line">               	println(&quot;md5校验成功&quot;)</span><br><span class="line">               	return true;</span><br><span class="line">           	&#125; else &#123;</span><br><span class="line">               	file.delete()</span><br><span class="line">               	println(&quot;md5校验失败，删除已下载文件&quot;)</span><br><span class="line">               	return false;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 获取文件的第一行</span><br><span class="line">	* md5文件只有一行</span><br><span class="line">	* @param file</span><br><span class="line">	* @return</span><br><span class="line">	*/</span><br><span class="line">def getFileContent(File file) &#123;</span><br><span class="line">   	List&lt;String&gt; contents = file.readLines();</span><br><span class="line">   	if (contents != null &amp;&amp; contents.size() &gt; 0) &#123;</span><br><span class="line">       	return contents.get(0);</span><br><span class="line">   	&#125;</span><br><span class="line">   	return &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">	* 从网络获取json数据</span><br><span class="line">	* @param url</span><br><span class="line">	* @return</span><br><span class="line">	*/</span><br><span class="line">def getJsonDataFromNet(String url) &#123;</span><br><span class="line">   	//使用接口配置</span><br><span class="line">   	def connection = new URL(url).openConnection()</span><br><span class="line">   	connection.setRequestMethod(&#x27;GET&#x27;)</span><br><span class="line">   	connection.connect()</span><br><span class="line">   	def resp = connection.content.text</span><br><span class="line"></span><br><span class="line">   	def jsonSlurper = new JsonSlurper()</span><br><span class="line">   	return jsonSlurper.parseText(resp).data</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//关闭测试相关的task</span><br><span class="line">tasks.whenTaskAdded &#123; task -&gt;</span><br><span class="line">   	if (task.name.contains(&#x27;AndroidTest&#x27;)) &#123;</span><br><span class="line">       	task.enabled = false</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Java扩展"><a href="#Java扩展" class="headerlink" title="Java扩展"></a>Java扩展</h3><p>没有变体的概念</p>
 <p><a class="link" href="https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_tasks">官方文档<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="如何迁移到gradle"><a href="#如何迁移到gradle" class="headerlink" title="如何迁移到gradle"></a>如何迁移到gradle</h2><p><img src="/2018/06/23/Gradle-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89Plugin/12.png"></p>

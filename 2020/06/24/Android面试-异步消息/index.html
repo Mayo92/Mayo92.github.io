@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Jul 21 2020 10:43:06 GMT+0800">2020-07-21 10:43:06</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:52:30 GMT+0800">2024-07-11 15:52:30</span>
             </span>
         
 
@@ -303,54 +303,7 @@
 <li>一个Asynctask实例，只能执行一次execute方法</li>
 </ul>
 <p>代码</p>
-<pre><code>public class UpdateTextTask extends AsyncTask&lt;Void, Integer, Integer&gt; &#123;
-
-    private Context context;
-
-    UpdateTextTask(Context context) &#123;
-        this.context = context;
-    &#125;
-
-    /**
-     * 运行在UI线程中，在调用doInBackground()之前执行
-     */
-    @Override
-    protected void onPreExecute() &#123;
-        Toast.makeText(context, &quot;开始执行&quot;, Toast.LENGTH_SHORT).show();
-    &#125;
-
-    /**
-     * 后台运行的方法，可以运行非UI线程，可以执行耗时的方法
-     */
-    @Override
-    protected Integer doInBackground(Void... voids) &#123;
-        int i = 0;
-        while (i &lt; 10) &#123;
-            i++;
-            publishProgress(i);
-            try &#123;
-                Thread.sleep(1000);
-            &#125; catch (InterruptedException e) &#123;
-            &#125;
-        &#125;
-        return null;
-    &#125;
-
-    /**
-     * 运行在ui线程中，在doInBackground()执行完毕后执行
-     */
-    @Override
-    protected void onPostExecute(Integer integer) &#123;
-        Toast.makeText(context, &quot;执行完毕&quot;, Toast.LENGTH_SHORT).show();
-    &#125;
-
-    /**
-     * 在publishProgress()被调用以后执行，publishProgress()用于更新进度
-     */
-    @Override
-    protected void onProgressUpdate(Integer... values) &#123; &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public class UpdateTextTask extends AsyncTask&lt;Void, Integer, Integer&gt; &#123;</span><br><span class="line"></span><br><span class="line">   	private Context context;</span><br><span class="line"></span><br><span class="line">   	UpdateTextTask(Context context) &#123;</span><br><span class="line">       	this.context = context;</span><br><span class="line">   	&#125;</span><br><span class="line">   </span><br><span class="line">   	/**</span><br><span class="line">    	* 运行在UI线程中，在调用doInBackground()之前执行</span><br><span class="line">    	*/</span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onPreExecute() &#123;</span><br><span class="line">       	Toast.makeText(context, &quot;开始执行&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* 后台运行的方法，可以运行非UI线程，可以执行耗时的方法</span><br><span class="line">    	*/</span><br><span class="line">   	@Override</span><br><span class="line">   	protected Integer doInBackground(Void... voids) &#123;</span><br><span class="line">       	int i = 0;</span><br><span class="line">       	while (i &lt; 10) &#123;</span><br><span class="line">           	i++;</span><br><span class="line">           	publishProgress(i);</span><br><span class="line">           	try &#123;</span><br><span class="line">               	Thread.sleep(1000);</span><br><span class="line">           	&#125; catch (InterruptedException e) &#123;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">       	return null;</span><br><span class="line">   	&#125;</span><br><span class="line">   </span><br><span class="line">   	/**</span><br><span class="line">    	* 运行在ui线程中，在doInBackground()执行完毕后执行</span><br><span class="line">    	*/</span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onPostExecute(Integer integer) &#123;</span><br><span class="line">       	Toast.makeText(context, &quot;执行完毕&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* 在publishProgress()被调用以后执行，publishProgress()用于更新进度</span><br><span class="line">    	*/</span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onProgressUpdate(Integer... values) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Asynctask源码：线程池-SerialExecutor创建"><a href="#Asynctask源码：线程池-SerialExecutor创建" class="headerlink" title="Asynctask源码：线程池&amp;SerialExecutor创建"></a>Asynctask源码：线程池&amp;SerialExecutor创建</h4><p><img src="/2020/06/24/Android%E9%9D%A2%E8%AF%95-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF/14.png"></p>
 <p>CP_COUNT CPU核心数</p>
 <p>CORE_POOL_SIZE 线程数的核心大小</p>

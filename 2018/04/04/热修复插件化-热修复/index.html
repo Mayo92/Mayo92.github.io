@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Oct 01 2020 15:31:17 GMT+0800">2020-10-01 15:31:17</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 13:33:23 GMT+0800">2024-07-11 13:33:23</span>
             </span>
         
 
@@ -273,201 +273,24 @@
 <h2 id="AndFix（已停止维护）"><a href="#AndFix（已停止维护）" class="headerlink" title="AndFix（已停止维护）"></a>AndFix（已停止维护）</h2><p>只能用于方法的替换</p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/2.png"></p>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/3.png"></p>
-<h3 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h3><pre><code>compile &#39;com.alipay.euler:andfix:0.5.0@aar&#39;
-</code></pre>
+<h3 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &#x27;com.alipay.euler:andfix:0.5.0@aar&#x27;</span><br></pre></td></tr></table></figure>
+
 <p>如果引入的库，仅仅是提供java代码的使用，那么在对应的module下compile即可。如果还有自定义脚本，需要在根gradle中，引入classpath</p>
-<pre><code>public class AndFixPatchManager &#123;
-
-    private static AndFixPatchManager mInstance = null;
-
-    private static PatchManager mPatchManager = null;
-
-    public static AndFixPatchManager getInstance() &#123;
-        if (mInstance == null) &#123;
-            synchronized (AndFixPatchManager.class) &#123;
-                if (mInstance == null) &#123;
-                    mInstance = new AndFixPatchManager();
-                &#125;
-            &#125;
-        &#125;
-        return mInstance;
-    &#125;
-
-    //初始化AndFix方法
-    public void initPatch(Context context) &#123;
-        mPatchManager = new PatchManager(context);
-        mPatchManager.init(Utils.getVersionName(context));
-        mPatchManager.loadPatch();
-    &#125;
-
-    //加载我们的patch文件
-    public void addPatch(String path) &#123;
-        try &#123;
-            if (mPatchManager != null) &#123;
-                mPatchManager.addPatch(path);
-            &#125;
-        &#125; catch (Exception e) &#123;
-            e.printStackTrace();
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class AndFixPatchManager &#123;</span><br><span class="line"></span><br><span class="line">   	private static AndFixPatchManager mInstance = null;</span><br><span class="line"></span><br><span class="line">   	private static PatchManager mPatchManager = null;</span><br><span class="line"></span><br><span class="line">   	public static AndFixPatchManager getInstance() &#123;</span><br><span class="line">       	if (mInstance == null) &#123;</span><br><span class="line">           	synchronized (AndFixPatchManager.class) &#123;</span><br><span class="line">               	if (mInstance == null) &#123;</span><br><span class="line">                   	mInstance = new AndFixPatchManager();</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">       	return mInstance;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//初始化AndFix方法</span><br><span class="line">   	public void initPatch(Context context) &#123;</span><br><span class="line">       	mPatchManager = new PatchManager(context);</span><br><span class="line">       	mPatchManager.init(Utils.getVersionName(context));</span><br><span class="line">       	mPatchManager.loadPatch();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//加载我们的patch文件</span><br><span class="line">   	public void addPatch(String path) &#123;</span><br><span class="line">       	try &#123;</span><br><span class="line">           	if (mPatchManager != null) &#123;</span><br><span class="line">               	mPatchManager.addPatch(path);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125; catch (Exception e) &#123;</span><br><span class="line">           	e.printStackTrace();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
 <li>build一个有bug的old apk安装到手机</li>
 <li>分析问题解决bug后，build一个new apk</li>
 </ul>
 <p>代码</p>
-<pre><code>public class MainActivity extends AppCompatActivity &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private static final String FILE_END = &quot;.apatch&quot;;</span><br><span class="line">   	private String mPatchDir;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">       	mPatchDir = getExternalCacheDir().getAbsolutePath()+&quot;/apatch/&quot;;</span><br><span class="line">       	Log.e(&quot;yly&quot;,mPatchDir);</span><br><span class="line"></span><br><span class="line">       	File file = new File(mPatchDir);</span><br><span class="line">       	if(file == null || !file.exists())&#123;</span><br><span class="line">           	file.mkdir();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public void createBug(View v)&#123;</span><br><span class="line">       	print();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public void fixBug(View v)&#123;</span><br><span class="line">       	AndFixPatchManager.getInstance().addPatch(getPatchName());</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public void print()&#123;</span><br><span class="line">       	String error = &quot;yly&quot;;</span><br><span class="line">       	Log.e(&quot;yly&quot;,error);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public String getPatchName() &#123;</span><br><span class="line">       	return mPatchDir.concat(&quot;fix&quot;).concat(FILE_END);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    private static final String FILE_END = &quot;.apatch&quot;;
-    private String mPatchDir;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mPatchDir = getExternalCacheDir().getAbsolutePath()+&quot;/apatch/&quot;;
-        Log.e(&quot;yly&quot;,mPatchDir);
-
-        File file = new File(mPatchDir);
-        if(file == null || !file.exists())&#123;
-            file.mkdir();
-        &#125;
-    &#125;
-
-    public void createBug(View v)&#123;
-        print();
-    &#125;
-
-    public void fixBug(View v)&#123;
-        AndFixPatchManager.getInstance().addPatch(getPatchName());
-    &#125;
-
-    public void print()&#123;
-        String error = &quot;yly&quot;;
-        Log.e(&quot;yly&quot;,error);
-    &#125;
-
-    public String getPatchName() &#123;
-        return mPatchDir.concat(&quot;fix&quot;).concat(FILE_END);
-    &#125;
-&#125;
-</code></pre>
 <h3 id="patch生成"><a href="#patch生成" class="headerlink" title="patch生成"></a>patch生成</h3><p>apkpatch-1.0.3文件夹</p>
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/4.png"></p>
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/5.png"></p>
 <p>命令保存为脚本，复制命令，创建create_patch.sh，粘贴命令，前面加上sh</p>
 <h3 id="patch安装"><a href="#patch安装" class="headerlink" title="patch安装"></a>patch安装</h3><h3 id="将AndFix组件化"><a href="#将AndFix组件化" class="headerlink" title="将AndFix组件化"></a>将AndFix组件化</h3><h4 id="组件化步骤"><a href="#组件化步骤" class="headerlink" title="组件化步骤"></a>组件化步骤</h4><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/6.png"></p>
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/7.png"></p>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><pre><code>public class AndFixService extends Service &#123;
-    private static final String TAG = AndFixService.class.getSimpleName();
-    private static final String FILE_END = &quot;.apatch&quot;;
-    private static final int UPDATE_PATCH = 0x02;
-    private static final int DOWNLOAD_PATCH = 0x01;
-
-    private String mPatchFileDir;
-    private String mPatchFile;
-    private Handler mHandler = new Handler() &#123;
-
-        @Override
-    public void handleMessage(Message msg) &#123;
-            switch (msg.what) &#123;
-                case UPDATE_PATCH:
-                    checkPatchUpdate();
-                    break;
-                case DOWNLOAD_PATCH:
-                    downloadPatch();
-                    break;
-            &#125;
-        &#125;
-    &#125;;
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) &#123;
-        return null;
-    &#125;
-
-
-    @Override
-    public void onCreate() &#123;
-        super.onCreate();
-        init();
-    &#125;
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) &#123;
-        mHandler.sendEmptyMessage(UPDATE_PATCH);
-        return START_NOT_STICKY;
-    &#125;
-
-    //完成文件目录的构造
-    private void init() &#123;
-
-        mPatchFileDir = getExternalCacheDir().getAbsolutePath() + &quot;/apatch/&quot;;
-        File patchDir = new File(mPatchFileDir);
-
-        try &#123;
-            if (patchDir == null || !patchDir.exists()) &#123;
-                patchDir.mkdir();
-            &#125;
-        &#125; catch (Exception e) &#123;
-            e.printStackTrace();
-            stopSelf();
-        &#125;
-    &#125;
-
-    private BasePatch mBasePatchInfo;
-
-    //检查服务器是否有patch文件
-    private void checkPatchUpdate() &#123;
-        RequestCenter.requestPatchUpdateInfo(new DisposeDataListener() &#123;
-            @Override
-            public void onSuccess(Object responseObj) &#123;
-                mBasePatchInfo = (BasePatch) responseObj;
-                if (!TextUtils.isEmpty(mBasePatchInfo.data.downloadUrl)) &#123;
-                    //下载patch文件
-                    mHandler.sendEmptyMessage(DOWNLOAD_PATCH);
-                &#125; else &#123;
-                    stopSelf();
-                &#125;
-            &#125;
-
-            @Override
-            public void onFailure(Object reasonObj) &#123;
-                stopSelf();
-            &#125;
-        &#125;);
-    &#125;
-
-    //完成patch文件的下载
-    private void downloadPatch() &#123;
-        //初始化patch文件下载路径
-        mPatchFile = mPatchFileDir.concat(String.valueOf(System.currentTimeMillis())).
-            concat(FILE_END);
-
-        RequestCenter.downloadFile(mBasePatchInfo.data.downloadUrl, mPatchFile,
-                new DisposeDownloadListener() &#123;
-                    @Override
-                    public void onProgress(int progrss) &#123;
-                        Log.d(TAG, &quot;current progedss: &quot; + progrss);
-                    &#125;
-
-                    @Override
-                    public void onSuccess(Object responseObj) &#123;
-                        //将我们下载好的patch文件添加到我们的andfix中
-                        AndFixPatchManager.getInstance().addPatch(mPatchFile);
-                    &#125;
-
-                    @Override
-                    public void onFailure(Object reasonObj) &#123;
-                        stopSelf();
-                    &#125;
-                &#125;);
-    &#125;
-&#125;
-</code></pre>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">public class AndFixService extends Service &#123;</span><br><span class="line">   	private static final String TAG = AndFixService.class.getSimpleName();</span><br><span class="line">   	private static final String FILE_END = &quot;.apatch&quot;;</span><br><span class="line">   	private static final int UPDATE_PATCH = 0x02;</span><br><span class="line">   	private static final int DOWNLOAD_PATCH = 0x01;</span><br><span class="line"></span><br><span class="line">   	private String mPatchFileDir;</span><br><span class="line">   	private String mPatchFile;</span><br><span class="line">   	private Handler mHandler = new Handler() &#123;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       public void handleMessage(Message msg) &#123;</span><br><span class="line">           	switch (msg.what) &#123;</span><br><span class="line">               	case UPDATE_PATCH:</span><br><span class="line">                   	checkPatchUpdate();</span><br><span class="line">                   	break;</span><br><span class="line">               	case DOWNLOAD_PATCH:</span><br><span class="line">                   	downloadPatch();</span><br><span class="line">                   	break;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;;</span><br><span class="line"></span><br><span class="line">   	@Nullable</span><br><span class="line">   	@Override</span><br><span class="line">   	public IBinder onBind(Intent intent) &#123;</span><br><span class="line">       	return null;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onCreate() &#123;</span><br><span class="line">       	super.onCreate();</span><br><span class="line">       	init();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">       	mHandler.sendEmptyMessage(UPDATE_PATCH);</span><br><span class="line">       	return START_NOT_STICKY;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//完成文件目录的构造</span><br><span class="line">   	private void init() &#123;</span><br><span class="line"></span><br><span class="line">       	mPatchFileDir = getExternalCacheDir().getAbsolutePath() + &quot;/apatch/&quot;;</span><br><span class="line">       	File patchDir = new File(mPatchFileDir);</span><br><span class="line"></span><br><span class="line">       	try &#123;</span><br><span class="line">           	if (patchDir == null || !patchDir.exists()) &#123;</span><br><span class="line">               	patchDir.mkdir();</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125; catch (Exception e) &#123;</span><br><span class="line">           	e.printStackTrace();</span><br><span class="line">           	stopSelf();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	private BasePatch mBasePatchInfo;</span><br><span class="line"></span><br><span class="line">   	//检查服务器是否有patch文件</span><br><span class="line">   	private void checkPatchUpdate() &#123;</span><br><span class="line">       	RequestCenter.requestPatchUpdateInfo(new DisposeDataListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onSuccess(Object responseObj) &#123;</span><br><span class="line">               	mBasePatchInfo = (BasePatch) responseObj;</span><br><span class="line">               	if (!TextUtils.isEmpty(mBasePatchInfo.data.downloadUrl)) &#123;</span><br><span class="line">                   	//下载patch文件</span><br><span class="line">                   	mHandler.sendEmptyMessage(DOWNLOAD_PATCH);</span><br><span class="line">               	&#125; else &#123;</span><br><span class="line">                   	stopSelf();</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line"></span><br><span class="line">           	@Override</span><br><span class="line">           	public void onFailure(Object reasonObj) &#123;</span><br><span class="line">               	stopSelf();</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//完成patch文件的下载</span><br><span class="line">   	private void downloadPatch() &#123;</span><br><span class="line">       	//初始化patch文件下载路径</span><br><span class="line">       	mPatchFile = mPatchFileDir.concat(String.valueOf(System.currentTimeMillis())).</span><br><span class="line">               concat(FILE_END);</span><br><span class="line"></span><br><span class="line">       	RequestCenter.downloadFile(mBasePatchInfo.data.downloadUrl, mPatchFile,</span><br><span class="line">               	new DisposeDownloadListener() &#123;</span><br><span class="line">                   	@Override</span><br><span class="line">                   	public void onProgress(int progrss) &#123;</span><br><span class="line">                       	Log.d(TAG, &quot;current progedss: &quot; + progrss);</span><br><span class="line">                   	&#125;</span><br><span class="line"></span><br><span class="line">                   	@Override</span><br><span class="line">                   	public void onSuccess(Object responseObj) &#123;</span><br><span class="line">                       	//将我们下载好的patch文件添加到我们的andfix中</span><br><span class="line">                       	AndFixPatchManager.getInstance().addPatch(mPatchFile);</span><br><span class="line">                   	&#125;</span><br><span class="line"></span><br><span class="line">                   	@Override</span><br><span class="line">                   	public void onFailure(Object reasonObj) &#123;</span><br><span class="line">                       	stopSelf();</span><br><span class="line">                   	&#125;</span><br><span class="line">               	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="AndFix源码"><a href="#AndFix源码" class="headerlink" title="AndFix源码"></a>AndFix源码</h3><p>入口：PatchManager（外观模式）</p>
 <p>AndFixManager，bug修复方法替换由它完成</p>
 <p>SortedSet<Patch> mPatchs，包含应用所有的patch文件</Patch></p>
@@ -516,300 +339,37 @@
 <p>修改签名</p>
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/20.png"></p>
 <p>2.执行命令</p>
-<pre><code>java -jar tinker-patch-cli.jar -old old.apk -new new.apk -config tinker_config.xml -out output_path
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar tinker-patch-cli.jar -old old.apk -new new.apk -config tinker_config.xml -out output_path</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/21.png"></p>
-<h4 id="gradle插件的方式"><a href="#gradle插件的方式" class="headerlink" title="gradle插件的方式"></a>gradle插件的方式</h4><pre><code>def bakPath = file(&quot;$&#123;buildDir&#125;/bakApk/&quot;) //指定基准文件存放位置
+<h4 id="gradle插件的方式"><a href="#gradle插件的方式" class="headerlink" title="gradle插件的方式"></a>gradle插件的方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line">def bakPath = file(&quot;$&#123;buildDir&#125;/bakApk/&quot;) //指定基准文件存放位置</span><br><span class="line"></span><br><span class="line">ext &#123;</span><br><span class="line">   	tinkerEnable = true</span><br><span class="line">   	tinkerOldApkPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;</span><br><span class="line">   	tinkerID = &quot;1.0&quot;</span><br><span class="line">   	tinkerApplyMappingPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;</span><br><span class="line">   	tinkerApplyResourcePath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;</span><br><span class="line">   	tinkerBuildFlavorDirectory = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def buildWithTinker() &#123;</span><br><span class="line">   	return ext.tinkerEnable</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getOldApkPath() &#123;</span><br><span class="line">   	return ext.tinkerOldApkPath</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getApplyMappingPath() &#123;</span><br><span class="line">   	return ext.tinkerApplyMappingPath</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getApplyResourceMappingPath() &#123;</span><br><span class="line">   	return ext.tinkerApplyResourcePath</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getTinkerIdValue() &#123;</span><br><span class="line">   	return ext.tinkerID</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getTinkerBuildFlavorDirectory()&#123;</span><br><span class="line">   	return ext.tinkerBuildFlavorDirectory</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (buildWithTinker()) &#123;</span><br><span class="line">   	//启用tinker</span><br><span class="line">   	apply plugin: &#x27;com.tencent.tinker.patch&#x27;</span><br><span class="line"></span><br><span class="line">   	//所有tinker相关的参数配置</span><br><span class="line">   	tinkerPatch &#123;</span><br><span class="line"></span><br><span class="line">       	oldApk = getOldApkPath() //指定old apk文件径</span><br><span class="line"></span><br><span class="line">       	ignoreWarning = false   //不忽略tinker的警告，有则中止patch文件的生成</span><br><span class="line"></span><br><span class="line">       	useSign = true  //强制patch文件也使用签名</span><br><span class="line"></span><br><span class="line">       	tinkerEnable = buildWithTinker(); //指定是否启用tinker</span><br><span class="line"></span><br><span class="line">       	buildConfig &#123;</span><br><span class="line"></span><br><span class="line">           	applyMapping = getApplyMappingPath()  //指定old apk打包时所使用的混淆文件</span><br><span class="line"></span><br><span class="line">           	applyResourceMapping = getApplyResourceMappingPath()  //指定old apk的资源文件</span><br><span class="line"></span><br><span class="line">           	tinkerId = getTinkerIdValue() //指定TinkerID</span><br><span class="line"></span><br><span class="line">           	keepDexApply = false</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	dex &#123;</span><br><span class="line"></span><br><span class="line">           	dexMode = &quot;jar&quot; //jar、raw</span><br><span class="line">           	pattern = [&quot;classes*.dex&quot;, &quot;assets/secondary-dex-?.jar&quot;] //指定dex文件目录</span><br><span class="line">           	loader = [&quot;com.imooc.tinker.MyTinkerApplication&quot;] //指定加载patch文件时用到的类</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	lib &#123;</span><br><span class="line"></span><br><span class="line">           	pattern = [&quot;libs/*/*.so&quot;]</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	res &#123;</span><br><span class="line"></span><br><span class="line">           	pattern = [&quot;res/*&quot;, &quot;assets/*&quot;, &quot;resources.arcs&quot;, &quot;AndoridManifest.xml&quot;] //指定tinker可以修改的资源路径</span><br><span class="line"></span><br><span class="line">           	ignoreChange = [&quot;assets/sample_meta.txt&quot;] //指定不受影响的资源路径</span><br><span class="line"></span><br><span class="line">           	largeModSize = 100 //资源修改大小默认值</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	//patch相关信息</span><br><span class="line">       	packageConfig &#123;</span><br><span class="line"></span><br><span class="line">           	configField(&quot;patchMessage&quot;, &quot;fix the 1.0 version&#x27;s bugs&quot;)</span><br><span class="line"></span><br><span class="line">           	configField(&quot;patchVersion&quot;, &quot;1.0&quot;)</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">	//判断当前项目是否配置多渠道</span><br><span class="line">   	List&lt;String&gt; flavors = new ArrayList&lt;&gt;();</span><br><span class="line">   	project.android.productFlavors.each &#123; flavor -&gt;</span><br><span class="line">       	flavors.add(flavor.name)</span><br><span class="line">   	&#125;</span><br><span class="line">   	boolean hasFlavors = flavors.size() &gt; 0</span><br><span class="line">   </span><br><span class="line">   	/**</span><br><span class="line">    	* 复制基准包和其它必须文件到指定目录</span><br><span class="line">    	*/</span><br><span class="line">   	android.applicationVariants.all &#123; variant -&gt;</span><br><span class="line">       	/**</span><br><span class="line">        	* task type, you want to bak</span><br><span class="line">        	*/</span><br><span class="line">       	def taskName = variant.name</span><br><span class="line">       	def date = new Date().format(&quot;MMdd-HH-mm-ss&quot;)</span><br><span class="line"></span><br><span class="line">       	tasks.all &#123;</span><br><span class="line">           	if (&quot;assemble$&#123;taskName.capitalize()&#125;&quot;.equalsIgnoreCase(it.name)) &#123;</span><br><span class="line"></span><br><span class="line">               	it.doLast &#123;</span><br><span class="line">                   	copy &#123;</span><br><span class="line">                       	def fileNamePrefix = &quot;$&#123;project.name&#125;-$&#123;variant.baseName&#125;&quot;</span><br><span class="line">                       	def newFileNamePrefix = hasFlavors ? &quot;$&#123;fileNamePrefix&#125;&quot; : &quot;$&#123;fileNamePrefix&#125;-$&#123;date&#125;&quot;</span><br><span class="line"></span><br><span class="line">                       	def destPath = hasFlavors ? file(&quot;$&#123;bakPath&#125;/$&#123;project.name&#125;-$&#123;date&#125;/$&#123;variant.flavorName&#125;&quot;) : bakPath</span><br><span class="line">                       	from variant.outputs.outputFile</span><br><span class="line">                       	into destPath</span><br><span class="line">                       	rename &#123; String fileName -&gt;</span><br><span class="line">                           	fileName.replace(&quot;$&#123;fileNamePrefix&#125;.apk&quot;, &quot;$&#123;newFileNamePrefix&#125;.apk&quot;)</span><br><span class="line">                       	&#125;</span><br><span class="line"></span><br><span class="line">                       	from &quot;$&#123;buildDir&#125;/outputs/mapping/$&#123;variant.dirName&#125;/mapping.txt&quot;</span><br><span class="line">                       	into destPath</span><br><span class="line">                       	rename &#123; String fileName -&gt;</span><br><span class="line">                           	fileName.replace(&quot;mapping.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-mapping.txt&quot;)</span><br><span class="line">                       	&#125;</span><br><span class="line"></span><br><span class="line">                       	from &quot;$&#123;buildDir&#125;/intermediates/symbols/$&#123;variant.dirName&#125;/R.txt&quot;</span><br><span class="line">                       	into destPath</span><br><span class="line">                       	rename &#123; String fileName -&gt;</span><br><span class="line">                           	fileName.replace(&quot;R.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-R.txt&quot;)</span><br><span class="line">                       	&#125;</span><br><span class="line">                   	&#125;</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">    	* 多渠道</span><br><span class="line">    	*/</span><br><span class="line">   	project.afterEvaluate &#123;</span><br><span class="line">       	if (hasFlavors) &#123;</span><br><span class="line">           	task(tinkerPatchAllFlavorRelease) &#123;</span><br><span class="line">               	group = &#x27;tinker&#x27;</span><br><span class="line">               	def originOldPath = getTinkerBuildFlavorDirectory()</span><br><span class="line">               	for (String flavor : flavors) &#123;</span><br><span class="line">                   	def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Release&quot;)</span><br><span class="line">                   	dependsOn tinkerTask</span><br><span class="line">                   	def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;ReleaseManifest&quot;)</span><br><span class="line">                   	preAssembleTask.doFirst &#123;</span><br><span class="line">                       	String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 15)</span><br><span class="line">                       	//拼凑名字</span><br><span class="line">                       	project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release.apk&quot;</span><br><span class="line">                       	project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-mapping.txt&quot;</span><br><span class="line">                       	project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-R.txt&quot;</span><br><span class="line">                   	&#125;</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line"></span><br><span class="line">           	task(tinkerPatchAllFlavorDebug) &#123;</span><br><span class="line">               	group = &#x27;tinker&#x27;</span><br><span class="line">               	def originOldPath = getTinkerBuildFlavorDirectory()</span><br><span class="line">               	for (String flavor : flavors) &#123;</span><br><span class="line">                   	def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Debug&quot;)</span><br><span class="line">                   	dependsOn tinkerTask</span><br><span class="line">                   	def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;DebugManifest&quot;)</span><br><span class="line">                   	preAssembleTask.doFirst &#123;</span><br><span class="line">                       	String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 13)</span><br><span class="line">                       	project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug.apk&quot;</span><br><span class="line">                       	project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-mapping.txt&quot;</span><br><span class="line">                       	project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-R.txt&quot;</span><br><span class="line">                   	&#125;</span><br><span class="line"></span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-ext &#123;
-    tinkerEnable = true
-    tinkerOldApkPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
-    tinkerID = &quot;1.0&quot;
-    tinkerApplyMappingPath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
-    tinkerApplyResourcePath = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
-    tinkerBuildFlavorDirectory = &quot;$&#123;bakPath&#125;/app-0511-12-36-20&quot;
-&#125;
-
-def buildWithTinker() &#123;
-    return ext.tinkerEnable
-&#125;
-
-def getOldApkPath() &#123;
-    return ext.tinkerOldApkPath
-&#125;
-
-def getApplyMappingPath() &#123;
-    return ext.tinkerApplyMappingPath
-&#125;
-
-def getApplyResourceMappingPath() &#123;
-    return ext.tinkerApplyResourcePath
-&#125;
-
-def getTinkerIdValue() &#123;
-    return ext.tinkerID
-&#125;
-
-def getTinkerBuildFlavorDirectory()&#123;
-    return ext.tinkerBuildFlavorDirectory
-&#125;
-
-if (buildWithTinker()) &#123;
-    //启用tinker
-    apply plugin: &#39;com.tencent.tinker.patch&#39;
-
-    //所有tinker相关的参数配置
-    tinkerPatch &#123;
-
-        oldApk = getOldApkPath() //指定old apk文件径
-
-        ignoreWarning = false   //不忽略tinker的警告，有则中止patch文件的生成
-
-        useSign = true  //强制patch文件也使用签名
-
-        tinkerEnable = buildWithTinker(); //指定是否启用tinker
-
-        buildConfig &#123;
-
-            applyMapping = getApplyMappingPath()  //指定old apk打包时所使用的混淆文件
-
-            applyResourceMapping = getApplyResourceMappingPath()  //指定old apk的资源文件
-
-            tinkerId = getTinkerIdValue() //指定TinkerID
-
-            keepDexApply = false
-        &#125;
-
-        dex &#123;
-
-            dexMode = &quot;jar&quot; //jar、raw
-            pattern = [&quot;classes*.dex&quot;, &quot;assets/secondary-dex-?.jar&quot;] //指定dex文件目录
-            loader = [&quot;com.imooc.tinker.MyTinkerApplication&quot;] //指定加载patch文件时用到的类
-        &#125;
-
-        lib &#123;
-
-            pattern = [&quot;libs/*/*.so&quot;]
-        &#125;
-
-        res &#123;
-
-            pattern = [&quot;res/*&quot;, &quot;assets/*&quot;, &quot;resources.arcs&quot;, &quot;AndoridManifest.xml&quot;] //指定tinker可以修改的资源路径
-
-            ignoreChange = [&quot;assets/sample_meta.txt&quot;] //指定不受影响的资源路径
-
-            largeModSize = 100 //资源修改大小默认值
-        &#125;
-
-        //patch相关信息
-        packageConfig &#123;
-
-            configField(&quot;patchMessage&quot;, &quot;fix the 1.0 version&#39;s bugs&quot;)
-
-            configField(&quot;patchVersion&quot;, &quot;1.0&quot;)
-        &#125;
-    &#125;
-
-    //判断当前项目是否配置多渠道
-    List&lt;String&gt; flavors = new ArrayList&lt;&gt;();
-    project.android.productFlavors.each &#123; flavor -&gt;
-        flavors.add(flavor.name)
-    &#125;
-    boolean hasFlavors = flavors.size() &gt; 0
-
-    /**
-     * 复制基准包和其它必须文件到指定目录
-     */
-    android.applicationVariants.all &#123; variant -&gt;
-        /**
-         * task type, you want to bak
-         */
-        def taskName = variant.name
-        def date = new Date().format(&quot;MMdd-HH-mm-ss&quot;)
-
-        tasks.all &#123;
-            if (&quot;assemble$&#123;taskName.capitalize()&#125;&quot;.equalsIgnoreCase(it.name)) &#123;
-
-                it.doLast &#123;
-                    copy &#123;
-                        def fileNamePrefix = &quot;$&#123;project.name&#125;-$&#123;variant.baseName&#125;&quot;
-                        def newFileNamePrefix = hasFlavors ? &quot;$&#123;fileNamePrefix&#125;&quot; : &quot;$&#123;fileNamePrefix&#125;-$&#123;date&#125;&quot;
-
-                        def destPath = hasFlavors ? file(&quot;$&#123;bakPath&#125;/$&#123;project.name&#125;-$&#123;date&#125;/$&#123;variant.flavorName&#125;&quot;) : bakPath
-                        from variant.outputs.outputFile
-                        into destPath
-                        rename &#123; String fileName -&gt;
-                            fileName.replace(&quot;$&#123;fileNamePrefix&#125;.apk&quot;, &quot;$&#123;newFileNamePrefix&#125;.apk&quot;)
-                        &#125;
-
-                        from &quot;$&#123;buildDir&#125;/outputs/mapping/$&#123;variant.dirName&#125;/mapping.txt&quot;
-                        into destPath
-                        rename &#123; String fileName -&gt;
-                            fileName.replace(&quot;mapping.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-mapping.txt&quot;)
-                        &#125;
-
-                        from &quot;$&#123;buildDir&#125;/intermediates/symbols/$&#123;variant.dirName&#125;/R.txt&quot;
-                        into destPath
-                        rename &#123; String fileName -&gt;
-                            fileName.replace(&quot;R.txt&quot;, &quot;$&#123;newFileNamePrefix&#125;-R.txt&quot;)
-                        &#125;
-                    &#125;
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-
-    /**
-     * 多渠道
-     */
-    project.afterEvaluate &#123;
-        if (hasFlavors) &#123;
-            task(tinkerPatchAllFlavorRelease) &#123;
-                group = &#39;tinker&#39;
-                def originOldPath = getTinkerBuildFlavorDirectory()
-                for (String flavor : flavors) &#123;
-                    def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Release&quot;)
-                    dependsOn tinkerTask
-                    def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;ReleaseManifest&quot;)
-                    preAssembleTask.doFirst &#123;
-                        String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 15)
-                        //拼凑名字
-                        project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release.apk&quot;
-                        project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-mapping.txt&quot;
-                        project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-release-R.txt&quot;
-                    &#125;
-                &#125;
-            &#125;
-
-            task(tinkerPatchAllFlavorDebug) &#123;
-                group = &#39;tinker&#39;
-                def originOldPath = getTinkerBuildFlavorDirectory()
-                for (String flavor : flavors) &#123;
-                    def tinkerTask = tasks.getByName(&quot;tinkerPatch$&#123;flavor.capitalize()&#125;Debug&quot;)
-                    dependsOn tinkerTask
-                    def preAssembleTask = tasks.getByName(&quot;process$&#123;flavor.capitalize()&#125;DebugManifest&quot;)
-                    preAssembleTask.doFirst &#123;
-                        String flavorName = preAssembleTask.name.substring(7, 8).toLowerCase() + preAssembleTask.name.substring(8, preAssembleTask.name.length() - 13)
-                        project.tinkerPatch.oldApk = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug.apk&quot;
-                        project.tinkerPatch.buildConfig.applyMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-mapping.txt&quot;
-                        project.tinkerPatch.buildConfig.applyResourceMapping = &quot;$&#123;originOldPath&#125;/$&#123;flavorName&#125;/$&#123;project.name&#125;-$&#123;flavorName&#125;-debug-R.txt&quot;
-                    &#125;
-
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
 <h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/22.png"></p>
 <h3 id="Tinker进阶"><a href="#Tinker进阶" class="headerlink" title="Tinker进阶"></a>Tinker进阶</h3><h4 id="如何支持多渠道打包"><a href="#如何支持多渠道打包" class="headerlink" title="如何支持多渠道打包"></a>如何支持多渠道打包</h4><p>app&#x2F;build.gradle下的android{}</p>
-<pre><code>//真正的多渠道脚本支持
-productFlavors &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//真正的多渠道脚本支持</span><br><span class="line">   productFlavors &#123;</span><br><span class="line"></span><br><span class="line">       googleplayer &#123;</span><br><span class="line">           manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;googleplayer&quot;]</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       baidu &#123;</span><br><span class="line">           manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       productFlavors.all &#123;</span><br><span class="line">           flavor -&gt; flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-    googleplayer &#123;
-        manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;googleplayer&quot;]
-    &#125;
-
-    baidu &#123;
-        manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]
-    &#125;
-
-    productFlavors.all &#123;
-        flavor -&gt; flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-    &#125;
-&#125;
-</code></pre>
 <p>脚本看上面的“gradle插件的方式”</p>
 <h4 id="如何自定义Tinker行为"><a href="#如何自定义Tinker行为" class="headerlink" title="如何自定义Tinker行为"></a>如何自定义Tinker行为</h4><blockquote>
 <p>自定义PatchListener监听patch receiver事件</p>
 </blockquote>
 <p>DefaultPatchListener的patchCheck方法</p>
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/23.png"></p>
-<pre><code>//1.较验patch文件是否合法  2.启动Service去安装patch文件
-public class CustomPatchListener extends DefaultPatchListener &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">//1.较验patch文件是否合法  2.启动Service去安装patch文件</span><br><span class="line">public class CustomPatchListener extends DefaultPatchListener &#123;</span><br><span class="line"></span><br><span class="line">   	private String currentMD5;</span><br><span class="line"></span><br><span class="line">   	public void setCurrentMD5(String md5Value) &#123;</span><br><span class="line"></span><br><span class="line">       	this.currentMD5 = md5Value;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public CustomPatchListener(Context context) &#123;</span><br><span class="line">       	super(context);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">	//拓展MD5校验</span><br><span class="line">   	@Override</span><br><span class="line">   	protected int patchCheck(String path) &#123;</span><br><span class="line">       	//patch文件ms5较验</span><br><span class="line">       	if (!Utils.isFileMD5Matched(path, currentMD5)) &#123;</span><br><span class="line"></span><br><span class="line">           	return ShareConstants.ERROR_PATCH_DISABLE;</span><br><span class="line">       	&#125;</span><br><span class="line">       	</span><br><span class="line">       	return super.patchCheck(path);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    private String currentMD5;
-
-    public void setCurrentMD5(String md5Value) &#123;
-
-        this.currentMD5 = md5Value;
-    &#125;
-
-    public CustomPatchListener(Context context) &#123;
-        super(context);
-    &#125;
-
-    //拓展MD5校验
-    @Override
-    protected int patchCheck(String path) &#123;
-        //patch文件ms5较验
-        if (!Utils.isFileMD5Matched(path, currentMD5)) &#123;
-
-            return ShareConstants.ERROR_PATCH_DISABLE;
-        &#125;
-        
-        return super.patchCheck(path);
-    &#125;
-&#125;
-</code></pre>
 <blockquote>
 <p>自定义TinkerResultService改变patch安装成功后行为</p>
 </blockquote>
 <p>DefaultTinkerResultService -&gt; AbstractResultService（onPatchResult） -&gt; IntentService</p>
 <p>DefaultTinkerResultService的onPatchResult方法</p>
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/24.png"></p>
-<pre><code>//本类的作用：决定在patch安装完以后的后续操作，默认实现是杀进程
-public class CustomResultService extends DefaultTinkerResultService &#123;
-    private static final String TAG = &quot;Tinker.SampleResultService&quot;;
-
-    //返回patch文件的最终安装结果
-    @Override
-    public void onPatchResult(PatchResult result) &#123;
-        if (result == null) &#123;
-            TinkerLog.e(TAG, &quot;DefaultTinkerResultService received null result!!!!&quot;);
-            return;
-        &#125;
-        TinkerLog.i(TAG, &quot;DefaultTinkerResultService received a result:%s &quot;, result.toString());
-
-        //first, we want to kill the recover process
-        TinkerServiceInternals.killTinkerPatchServiceProcess(getApplicationContext());
-
-        // if success and newPatch, it is nice to delete the raw file, and restart at once
-        // only main process can load an upgrade patch!
-        if (result.isSuccess) &#123;
-            deleteRawPatchFile(new File(result.rawPatchFilePath));
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//本类的作用：决定在patch安装完以后的后续操作，默认实现是杀进程</span><br><span class="line">public class CustomResultService extends DefaultTinkerResultService &#123;</span><br><span class="line">   	private static final String TAG = &quot;Tinker.SampleResultService&quot;;</span><br><span class="line"></span><br><span class="line">   	//返回patch文件的最终安装结果</span><br><span class="line">   	@Override</span><br><span class="line">   	public void onPatchResult(PatchResult result) &#123;</span><br><span class="line">       	if (result == null) &#123;</span><br><span class="line">           	TinkerLog.e(TAG, &quot;DefaultTinkerResultService received null result!!!!&quot;);</span><br><span class="line">           	return;</span><br><span class="line">       	&#125;</span><br><span class="line">       	TinkerLog.i(TAG, &quot;DefaultTinkerResultService received a result:%s &quot;, result.toString());</span><br><span class="line"></span><br><span class="line">       	//first, we want to kill the recover process</span><br><span class="line">       	TinkerServiceInternals.killTinkerPatchServiceProcess(getApplicationContext());</span><br><span class="line"></span><br><span class="line">       	// if success and newPatch, it is nice to delete the raw file, and restart at once</span><br><span class="line">       	// only main process can load an upgrade patch!</span><br><span class="line">       	if (result.isSuccess) &#123;</span><br><span class="line">           	deleteRawPatchFile(new File(result.rawPatchFilePath));</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>自定义行为后修改初始化方法</p>
 </blockquote>
-<pre><code>mPatchListener = new CustomPatchListener(getApplicationContext());
-
-    //补丁文件加载过程中可能出现所有异常的监听
-   LoadReporter loadReporter = new DefaultLoadReporter(getApplicationContext());
-   //合成阶段可能出现所有异常的监听
-   PatchReporter patchReporter = new DefaultPatchReporter(getApplicationContext());
-
-   AbstractPatch upgradePatchProcessor = new UpgradePatch();
-
-   TinkerInstaller.install(applicationLike,
-            loadReporter,
-            patchReporter,
-            mPatchListener,
-            CustomResultService.class,
-            upgradePatchProcessor); //完成Tinker初始化
-            
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mPatchListener = new CustomPatchListener(getApplicationContext());</span><br><span class="line"></span><br><span class="line">	//补丁文件加载过程中可能出现所有异常的监听</span><br><span class="line">      LoadReporter loadReporter = new DefaultLoadReporter(getApplicationContext());</span><br><span class="line">      //合成阶段可能出现所有异常的监听</span><br><span class="line">      PatchReporter patchReporter = new DefaultPatchReporter(getApplicationContext());</span><br><span class="line"></span><br><span class="line">      AbstractPatch upgradePatchProcessor = new UpgradePatch();</span><br><span class="line"></span><br><span class="line">      TinkerInstaller.install(applicationLike,</span><br><span class="line">               loadReporter,</span><br><span class="line">               patchReporter,</span><br><span class="line">               mPatchListener,</span><br><span class="line">               CustomResultService.class,</span><br><span class="line">               upgradePatchProcessor); //完成Tinker初始化</span><br></pre></td></tr></table></figure>
 <p>修改完成Patch文件的加载方法</p>
-<pre><code>public static void loadPatch(String path, String md5Value) &#123;
-    if (Tinker.isTinkerInstalled()) &#123;
-        mPatchListener.setCurrentMD5(md5Value);
-        TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), path);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void loadPatch(String path, String md5Value) &#123;</span><br><span class="line">    if (Tinker.isTinkerInstalled()) &#123;</span><br><span class="line">        mPatchListener.setCurrentMD5(md5Value);</span><br><span class="line">        TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), path);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Tinker源码"><a href="#Tinker源码" class="headerlink" title="Tinker源码"></a>Tinker源码</h3><p>1.TinkerInstaller（外观模式） 对 Tinker 的包装</p>
 <p>2.Tinker（构建+单例）</p>
 <p><img src="/2018/04/04/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E7%83%AD%E4%BF%AE%E5%A4%8D/25.png"></p>

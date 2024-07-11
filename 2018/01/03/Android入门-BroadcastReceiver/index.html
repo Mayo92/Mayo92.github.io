@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Dec 02 2020 18:23:01 GMT+0800">2020-12-02 18:23:01</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 11:35:37 GMT+0800">2024-07-11 11:35:37</span>
             </span>
         
 
@@ -219,12 +219,6 @@
                 <ul class="post-category-ul">
                     
                             <li class="category-item"><a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">星球Android入门</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">Android基础</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">四大组件</a></li>
                         
                     
                 </ul>
@@ -266,12 +260,10 @@
 
 <p>而有序广播是按照接收者声明的优先级别（声明在intent-filter元素的android:priority属性中，数越大优先级别越高,取值范围:-1000到1000。也可以调用IntentFilter对象的setPriority()进行设置），被接收者依次接收广播。如：A的级别高于B,B的级别高于C,那么，广播先传给A，再传给B，最后传给C。A得到广播后，可以往广播里存入数据，当广播传给B时,B可以从广播中得到A存入的数据。</p>
 <h3 id="发送广播"><a href="#发送广播" class="headerlink" title="发送广播"></a>发送广播</h3><p>发送普通广播，所有订阅者都有机会获得并进行处理。</p>
-<pre><code>Context.sendBroadcast()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Context.sendBroadcast()</span><br></pre></td></tr></table></figure>
 <p>发送有序广播，系统会根据接收者声明的优先级别按顺序逐个执行接收者，前面的接收者有权终止广播(BroadcastReceiver.abortBroadcast())，如果广播被前面的接收者终止，后面的接收者就再也无法获取到广播。对于有序广播，前面的接收者可以将处理结果通过setResultExtras(Bundle)方法存放进结果对象，然后传给下一个接收者，通过代码：Bundle bundle &#x3D;getResultExtras(true))可以获取上一个接收者存入在结果对象中的数据。</p>
 <p>系统收到短信，发出的广播属于有序广播。如果想阻止用户收到短信，可以通过设置优先级，让你们自定义的接收者先获取到广播，然后终止广播，这样用户就接收不到短信了。</p>
-<pre><code>Context.sendOrderedBroadcast()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Context.sendOrderedBroadcast()</span><br></pre></td></tr></table></figure>
 <h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>如果一个广播处理完onReceive 那么系统将认定此对象将不再是一个活动的对象，也就会finished掉它</p>
 <p><img src="/2018/01/03/Android%E5%85%A5%E9%97%A8-BroadcastReceiver/1.png"></p>
 <h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ul>
@@ -281,86 +273,13 @@
 </ul>
 <p><strong>注意 ：BroadcastReceiver生命周期很短</strong></p>
 <p>如果需要在onReceiver完成一些耗时操作，应该考虑在Service中开启一个新线程处理耗时操作，不应该在BroadcastReceiver中开启一个新的线程，因为BroadcastReceiver生命周期很短，在执行完onReceiver以后就结束，如果开启一个新的线程，可能出现BroadcastRecevier退出以后线程还在，而如果BroadcastReceiver所在的进程结束了，该线程就会被标记为一个空线程，根据Android的内存管理策略，在系统内存紧张的时候，会按照优先级，结束优先级低的线程，而空线程无异是优先级最低的，这样就可能导致BroadcastReceiver启动的子线程不能执行完成。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code>public class MyBroadcastReceiver extends BroadcastReceiver &#123;
-    @Override
-    public void onReceive(Context context, Intent intent) &#123;
-        Log.i(&quot;yly&quot;,&quot;intent-action : &quot; + intent.getAction());
-        if(intent.getAction().equals(&quot;test&quot;))&#123;
-            Toast.makeText(context,&quot;test&quot;,Toast.LENGTH_LONG).show();
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class MyBroadcastReceiver extends BroadcastReceiver &#123;</span><br><span class="line">   	@Override</span><br><span class="line">   	public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">       	Log.i(&quot;yly&quot;,&quot;intent-action : &quot; + intent.getAction());</span><br><span class="line">       	if(intent.getAction().equals(&quot;test&quot;))&#123;</span><br><span class="line">           	Toast.makeText(context,&quot;test&quot;,Toast.LENGTH_LONG).show();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>静态注册，8.0后有限制，建议使用动态注册</p>
-<pre><code>&lt;receiver android:name=&quot;.MyBroadcastReceiver&quot;&gt;
-      &lt;intent-filter&gt;
-          &lt;action android:name=&quot;test&quot;/&gt;
-      &lt;/intent-filter&gt;
-&lt;/receiver&gt;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;receiver android:name=&quot;.MyBroadcastReceiver&quot;&gt;</span><br><span class="line">         &lt;intent-filter&gt;</span><br><span class="line">             &lt;action android:name=&quot;test&quot;/&gt;</span><br><span class="line">         &lt;/intent-filter&gt;</span><br><span class="line">   &lt;/receiver&gt;</span><br></pre></td></tr></table></figure>
 <p>发送广播</p>
-<pre><code>public class MainActivity extends AppCompatActivity &#123;
-
-    private Button mButton;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mButton = findViewById(R.id.button);
-
-        mButton.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent();
-                intent.setAction(&quot;test&quot;);
-                intent.setClass(MainActivity.this,MyBroadcastReceiver.class);//8.0加上这句
-                sendBroadcast(intent);
-            &#125;
-        &#125;);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mButton;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">       	mButton = findViewById(R.id.button);</span><br><span class="line"></span><br><span class="line">       	mButton.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent();</span><br><span class="line">               	intent.setAction(&quot;test&quot;);</span><br><span class="line">               	intent.setClass(MainActivity.this,MyBroadcastReceiver.class);//8.0加上这句</span><br><span class="line">               	sendBroadcast(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>动态注册及发送</p>
-<pre><code>public class MainActivity extends AppCompatActivity &#123;
-
-    private Button mButton;
-
-    private IntentFilter intentFilter;
-
-    private MyBroadcastReceiver mMyBroadcastReceiver;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        intentFilter = new IntentFilter();
-        intentFilter.addAction(&quot;test&quot;);
-        mMyBroadcastReceiver = new MyBroadcastReceiver();
-        registerReceiver(mMyBroadcastReceiver, intentFilter);
-
-        mButton = findViewById(R.id.button);
-
-        mButton.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent();
-                intent.setAction(&quot;test&quot;);
-//                intent.setClass(MainActivity.this,MyBroadcastReceiver.class);
-                sendBroadcast(intent);
-            &#125;
-        &#125;);
-    &#125;
-
-    @Override
-    protected void onDestroy() &#123;
-        super.onDestroy();
-        unregisterReceiver(mMyBroadcastReceiver);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mButton;</span><br><span class="line"></span><br><span class="line">   	private IntentFilter intentFilter;</span><br><span class="line"></span><br><span class="line">   	private MyBroadcastReceiver mMyBroadcastReceiver;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">       	intentFilter = new IntentFilter();</span><br><span class="line">       	intentFilter.addAction(&quot;test&quot;);</span><br><span class="line">       	mMyBroadcastReceiver = new MyBroadcastReceiver();</span><br><span class="line">       	registerReceiver(mMyBroadcastReceiver, intentFilter);</span><br><span class="line"></span><br><span class="line">       	mButton = findViewById(R.id.button);</span><br><span class="line"></span><br><span class="line">       	mButton.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent();</span><br><span class="line">               	intent.setAction(&quot;test&quot;);</span><br><span class="line">//                intent.setClass(MainActivity.this,MyBroadcastReceiver.class);</span><br><span class="line">               	sendBroadcast(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onDestroy() &#123;</span><br><span class="line">       	super.onDestroy();</span><br><span class="line">       	unregisterReceiver(mMyBroadcastReceiver);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="静态注册和动态注册区别"><a href="#静态注册和动态注册区别" class="headerlink" title="静态注册和动态注册区别"></a>静态注册和动态注册区别</h3><blockquote>
 <p>动态注册广播不是常驻型广播，也就是说广播跟随activity的生命周期。注意: 在activity结束前，移除广播接收器。<br>静态注册是常驻型，也就是说当应用程序关闭后，如果有信息广播来，程序也会被系统调用自动运行。</p>
 </blockquote>
@@ -389,8 +308,7 @@
 </blockquote>
 <h3 id="在Android8-0上突破隐式广播的限制"><a href="#在Android8-0上突破隐式广播的限制" class="headerlink" title="在Android8.0上突破隐式广播的限制"></a>在Android8.0上突破隐式广播的限制</h3><p>若App的TargetSDK达到了26， 我们正常静态注册的广播就没有用了。能用的仅有以下豁免的Broadcast, 包括我们自己正常发广播，如果不指定包名， 静态注册的也是收不到的。PS：动态注册是没有影响的</p>
 <p>在我们收不到广播的时候，系统会有如下打印，即这个后台的广播接收器不会被执行</p>
-<pre><code>W BroadcastQueue: Background execution not allowed:******************
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W BroadcastQueue: Background execution not allowed:******************</span><br></pre></td></tr></table></figure>
 <h4 id="应对方法"><a href="#应对方法" class="headerlink" title="应对方法"></a>应对方法</h4><ul>
 <li>能动态注册，就不静态注册</li>
 <li>如果一定要静态注册， 发送的时候指定包名，即发送显式广播</li>
@@ -407,14 +325,11 @@
 <li>r.intent.getFlags() &amp; Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND) &#x3D;&#x3D; 0 不能带有FLAG_RECEIVER_INCLUDE_BACKGROUND这个标志位，若带了，那就进不去了</li>
 </ul>
 <p>综上，设置包名或者携带 FLAG_RECEIVER_INCLUDE_BACKGROUND 这个标志位即可。我们发现在AS中使用Intent是找不到这个标志位的，应该是hide了，没有被编译进SDK。那么我们直接带硬编码即可。</p>
-<pre><code>public static final int FLAG_RECEIVER_INCLUDE_BACKGROUND = 0x01000000;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static final int FLAG_RECEIVER_INCLUDE_BACKGROUND = 0x01000000;</span><br></pre></td></tr></table></figure>
 <p>使用添加</p>
-<pre><code>intent.setPackage(&quot;com.yly.broadcastreceiver&quot;);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.setPackage(&quot;com.yly.broadcastreceiver&quot;);</span><br></pre></td></tr></table></figure>
 <p>或</p>
-<pre><code>intent.addFlags(0x01000000);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.addFlags(0x01000000);</span><br></pre></td></tr></table></figure>
 <p>即能让广播突破隐式广播限制。</p>
 
                     

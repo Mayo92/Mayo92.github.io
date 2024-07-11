@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Mar 30 2020 22:44:49 GMT+0800">2020-03-30 22:44:49</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 14:42:33 GMT+0800">2024-07-11 14:42:33</span>
             </span>
         
 
@@ -254,191 +254,78 @@
                     
 
                     
-                         <h2 id="基础语法讲解"><a href="#基础语法讲解" class="headerlink" title="基础语法讲解"></a>基础语法讲解</h2><h2 id="1-变量详解"><a href="#1-变量详解" class="headerlink" title="1.变量详解"></a>1.变量详解</h2><p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/0.png"></p>
-<h3 id="1-1-变量的类型"><a href="#1-1-变量的类型" class="headerlink" title="1.1 变量的类型"></a>1.1 变量的类型</h3><pre><code>int x = 10
-println x.class
+                         <h2 id="基础语法讲解"><a href="#基础语法讲解" class="headerlink" title="基础语法讲解"></a>基础语法讲解</h2><h2 id="1-变量详解"><a href="#1-变量详解" class="headerlink" title="1.变量详解"></a>1.变量详解</h2><span id="more"></span>
 
-double y = 3.14
-println y.class
-</code></pre>
-<span id="more"></span>
+<p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/0.png"></p>
+<h3 id="1-1-变量的类型"><a href="#1-1-变量的类型" class="headerlink" title="1.1 变量的类型"></a>1.1 变量的类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int x = 10</span><br><span class="line">println x.class</span><br><span class="line"></span><br><span class="line">double y = 3.14</span><br><span class="line">println y.class</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1.png"></p>
 <p>Groovy中没有基本类型变量，所有类型都是对象类型</p>
 <h3 id="1-2-变量的定义"><a href="#1-2-变量的定义" class="headerlink" title="1.2 变量的定义"></a>1.2 变量的定义</h3><h4 id="强类型定义方法"><a href="#强类型定义方法" class="headerlink" title="强类型定义方法"></a>强类型定义方法</h4><p>像Java一样，直接定义int类型、double类型等，声明这个变量的时候把类型确定了</p>
-<h4 id="弱类型def定义方法"><a href="#弱类型def定义方法" class="headerlink" title="弱类型def定义方法"></a>弱类型def定义方法</h4><pre><code>def x1 = 11
-println x1.class
-
-def y1 = 3.1415
-println y1.class
-
-def name = &#39;ss&#39;
-println name.class
-</code></pre>
+<h4 id="弱类型def定义方法"><a href="#弱类型def定义方法" class="headerlink" title="弱类型def定义方法"></a>弱类型def定义方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def x1 = 11</span><br><span class="line">println x1.class</span><br><span class="line"></span><br><span class="line">def y1 = 3.1415</span><br><span class="line">println y1.class</span><br><span class="line"></span><br><span class="line">def name = &#x27;ss&#x27;</span><br><span class="line">println name.class</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/2.png"></p>
 <p>根据后面的值就可以推断出变量的类型，编译器会自动推断</p>
 <h4 id="两种方式使用场景"><a href="#两种方式使用场景" class="headerlink" title="两种方式使用场景"></a>两种方式使用场景</h4><p>如果这个变量只用于自己而不会使用其他类或其他应用模块，推荐定义成def。如果这个变量要用于其他模块或者其他类，推荐使用强类型定义方式，因为不能动态的转换成其他类型，保证外界传给我们的值一定是正确的，反之调用方会疑惑</p>
-<pre><code>def x1 = 11
-x1 = &#39;test&#39;
-println x1.class
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def x1 = 11</span><br><span class="line">x1 = &#x27;test&#x27;</span><br><span class="line">println x1.class</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/3.png"></p>
 <p>def声明的变量可以随时改变类型，相当于Object类型</p>
 <h2 id="2-字符串详解"><a href="#2-字符串详解" class="headerlink" title="2.字符串详解"></a>2.字符串详解</h2><p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/4.png"></p>
 <h3 id="2-1-常用的三种定义方式"><a href="#2-1-常用的三种定义方式" class="headerlink" title="2.1 常用的三种定义方式"></a>2.1 常用的三种定义方式</h3><h4 id="单引号定义"><a href="#单引号定义" class="headerlink" title="单引号定义"></a>单引号定义</h4><p>内容就是字符串的内容，且不能更改。特殊字符跟Java一样，通过\转义</p>
-<pre><code>def name = &#39;a single string&#39;
-print name.class
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def name = &#x27;a single string&#x27;</span><br><span class="line">print name.class</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/5.png"></p>
-<h4 id="三引号定义"><a href="#三引号定义" class="headerlink" title="三引号定义"></a>三引号定义</h4><pre><code>def thupleName = &#39;&#39;&#39;three single string&#39;&#39;&#39;
-println thupleName.class
-</code></pre>
+<h4 id="三引号定义"><a href="#三引号定义" class="headerlink" title="三引号定义"></a>三引号定义</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def thupleName = &#x27;&#x27;&#x27;three single string&#x27;&#x27;&#x27;</span><br><span class="line">println thupleName.class</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/5.png"></p>
 <p>可以直接指定格式，有格式的建议使用三引号</p>
-<pre><code>def thupleName2 = &#39;&#39;&#39;line one
-line two
-line three
-&#39;&#39;&#39;
-println thupleName2
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def thupleName2 = &#x27;&#x27;&#x27;line one</span><br><span class="line">line two</span><br><span class="line">line three</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">println thupleName2</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/6.png"></p>
 <p>可以添加一个反斜杠，让格式更统一</p>
-<pre><code>def thupleName2 = &#39;&#39;&#39;\
-line one
-line two
-line three
-&#39;&#39;&#39;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def thupleName2 = &#x27;&#x27;&#x27;\</span><br><span class="line">line one</span><br><span class="line">line two</span><br><span class="line">line three</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
 <h4 id="双引号定义"><a href="#双引号定义" class="headerlink" title="双引号定义"></a>双引号定义</h4><p>最常用，可扩展字符串</p>
-<pre><code>def doubleName = &quot;common string&quot;
-println doubleName.class
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def doubleName = &quot;common string&quot;</span><br><span class="line">println doubleName.class</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/5.png"></p>
-<pre><code>def name2 = &quot;zz&quot;
-def hello = &quot;hello:$&#123;name2&#125;&quot;
-println hello
-println hello.class
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def name2 = &quot;zz&quot;</span><br><span class="line">def hello = &quot;hello:$&#123;name2&#125;&quot;</span><br><span class="line">println hello</span><br><span class="line">println hello.class</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/7.png"></p>
 <p>可以使用${}扩展，并且如果有扩展表达式就改变了类型，{}可以是任意的表达式</p>
-<pre><code>def sum = &quot;sum of 2 and 3 equals $&#123;2 + 3&#125;&quot;
-println sum
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def sum = &quot;sum of 2 and 3 equals $&#123;2 + 3&#125;&quot;</span><br><span class="line">println sum</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/8.png"></p>
 <h4 id="两种类型可以互相转换"><a href="#两种类型可以互相转换" class="headerlink" title="两种类型可以互相转换"></a>两种类型可以互相转换</h4><p>String与GString可以相互传递，相互调用</p>
-<pre><code>def sum = &quot;sum of 2 and 3 equals $&#123;2 + 3&#125;&quot;
-
-def result = echo(sum)
-println result
-println result.class
-
-String echo(String message)&#123;
-    return message
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def sum = &quot;sum of 2 and 3 equals $&#123;2 + 3&#125;&quot;</span><br><span class="line"></span><br><span class="line">def result = echo(sum)</span><br><span class="line">println result</span><br><span class="line">println result.class</span><br><span class="line"></span><br><span class="line">String echo(String message)&#123;</span><br><span class="line">   	return message</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/9.png"></p>
 <h3 id="2-2-字符串方法详解"><a href="#2-2-字符串方法详解" class="headerlink" title="2.2 字符串方法详解"></a>2.2 字符串方法详解</h3><p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/10.png"></p>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/11.png"></p>
 <p>方法的来源。java.lang.String与java一样。DefaultGroovyMethods是groovy对所有对象的扩展，不仅仅是String。StringGroovyMethods继承于DefaultGroovyMethods，重写了DefaultGroovyMethods中的许多方法，使得方法更适用于String去使用。重点学习StringGroovyMethods。</p>
 <p>这节主要学习StringGroovyMethods的普通类型参数方法（闭包在闭包章节学习）</p>
-<h4 id="center方法"><a href="#center方法" class="headerlink" title="center方法"></a>center方法</h4><pre><code>//对字符串填充，以字符串为中心两边去填充，后面的参数不传则以空格填充
-def str = &quot;groovy&quot;
-println str.center(8,&#39;a&#39;)
-</code></pre>
+<h4 id="center方法"><a href="#center方法" class="headerlink" title="center方法"></a>center方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//对字符串填充，以字符串为中心两边去填充，后面的参数不传则以空格填充</span><br><span class="line">def str = &quot;groovy&quot;</span><br><span class="line">println str.center(8,&#x27;a&#x27;)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/12.png"></p>
-<h4 id="padLeft、padRight方法"><a href="#padLeft、padRight方法" class="headerlink" title="padLeft、padRight方法"></a>padLeft、padRight方法</h4><pre><code>//从左边开始填充
-println str.padLeft(8,&#39;a&#39;)
-//从右边开始填充
-println str.padRight(8,&#39;a&#39;)
-</code></pre>
+<h4 id="padLeft、padRight方法"><a href="#padLeft、padRight方法" class="headerlink" title="padLeft、padRight方法"></a>padLeft、padRight方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//从左边开始填充</span><br><span class="line">println str.padLeft(8,&#x27;a&#x27;)</span><br><span class="line">//从右边开始填充</span><br><span class="line">println str.padRight(8,&#x27;a&#x27;)</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/13.png"></p>
-<h4 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h4><pre><code>//字符串比较
-def str2 = &#39;Hello&#39;
-println str &gt; str2
-</code></pre>
+<h4 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//字符串比较</span><br><span class="line">def str2 = &#x27;Hello&#x27;</span><br><span class="line">println str &gt; str2</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/14.png"></p>
-<h4 id="索引方法"><a href="#索引方法" class="headerlink" title="索引方法"></a>索引方法</h4><pre><code>//索引
-println str[0]
-println str[0..1]
-</code></pre>
+<h4 id="索引方法"><a href="#索引方法" class="headerlink" title="索引方法"></a>索引方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//索引</span><br><span class="line">println str[0]</span><br><span class="line">println str[0..1]</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/15.png"></p>
-<h4 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h4><pre><code>def str = &quot;groovy Hello&quot;
-def str2 = &#39;Hello&#39;
-//减法，减去str中包含的str2，如没有str2则返回str
-//println str.minus(str2)
-println str - str2
-</code></pre>
+<h4 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def str = &quot;groovy Hello&quot;</span><br><span class="line">def str2 = &#x27;Hello&#x27;</span><br><span class="line">//减法，减去str中包含的str2，如没有str2则返回str</span><br><span class="line">//println str.minus(str2)</span><br><span class="line">println str - str2</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/16.png"></p>
-<h4 id="逆向操作"><a href="#逆向操作" class="headerlink" title="逆向操作"></a>逆向操作</h4><pre><code>//逆向
-println str.reverse()
-</code></pre>
+<h4 id="逆向操作"><a href="#逆向操作" class="headerlink" title="逆向操作"></a>逆向操作</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//逆向</span><br><span class="line">println str.reverse()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/17.png"></p>
-<h4 id="首字母大写"><a href="#首字母大写" class="headerlink" title="首字母大写"></a>首字母大写</h4><pre><code>//首字母大写
-println str.capitalize()
-</code></pre>
+<h4 id="首字母大写"><a href="#首字母大写" class="headerlink" title="首字母大写"></a>首字母大写</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//首字母大写</span><br><span class="line">println str.capitalize()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/18.png"></p>
-<h4 id="是否是数字类型"><a href="#是否是数字类型" class="headerlink" title="是否是数字类型"></a>是否是数字类型</h4><pre><code>//是否是数字类型字符串
-println str.isNumber()
-</code></pre>
+<h4 id="是否是数字类型"><a href="#是否是数字类型" class="headerlink" title="是否是数字类型"></a>是否是数字类型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//是否是数字类型字符串</span><br><span class="line">println str.isNumber()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/19.png"></p>
-<h4 id="类型转换方法"><a href="#类型转换方法" class="headerlink" title="类型转换方法"></a>类型转换方法</h4><pre><code>//类型转换
-def str3 = &#39;1111&#39;
-println str3.toInteger().class
-</code></pre>
+<h4 id="类型转换方法"><a href="#类型转换方法" class="headerlink" title="类型转换方法"></a>类型转换方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//类型转换</span><br><span class="line">def str3 = &#x27;1111&#x27;</span><br><span class="line">println str3.toInteger().class</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/20.png">	</p>
 <h2 id="3-逻辑控制详解"><a href="#3-逻辑控制详解" class="headerlink" title="3.逻辑控制详解"></a>3.逻辑控制详解</h2><p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/21.png"></p>
 <p>switch&#x2F;case、for循环不一样，关注这两个即可</p>
 <h3 id="3-1-switch-case"><a href="#3-1-switch-case" class="headerlink" title="3.1 switch&#x2F;case"></a>3.1 switch&#x2F;case</h3><p>条件可以是任意类型</p>
-<pre><code>def x = 1.23
-def result
-switch (x)&#123;
-    case &#39;foo&#39;:
-        result = &#39;found foo&#39;
-        break
-    case &#39;bar&#39;:
-        result = &#39;bar&#39;
-        break
-    case [4,5,6,&#39;inlist&#39;]://列表
-        result = &#39;list&#39;
-        break
-    case 12..30://范围
-        result = &#39;range&#39;
-        break
-    case Integer:
-        result = &#39;Integer&#39;
-        break
-    case BigDecimal:
-        result = &#39;BigDecimal&#39;
-        break
-    default:
-        result = &#39;default&#39;
-&#125;
-
-println result
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def x = 1.23</span><br><span class="line">def result</span><br><span class="line">switch (x)&#123;</span><br><span class="line">   	case &#x27;foo&#x27;:</span><br><span class="line">       	result = &#x27;found foo&#x27;</span><br><span class="line">       	break</span><br><span class="line">   	case &#x27;bar&#x27;:</span><br><span class="line">       	result = &#x27;bar&#x27;</span><br><span class="line">       	break</span><br><span class="line">   	case [4,5,6,&#x27;inlist&#x27;]://列表</span><br><span class="line">       	result = &#x27;list&#x27;</span><br><span class="line">       	break</span><br><span class="line">   	case 12..30://范围</span><br><span class="line">       	result = &#x27;range&#x27;</span><br><span class="line">       	break</span><br><span class="line">   	case Integer:</span><br><span class="line">       	result = &#x27;Integer&#x27;</span><br><span class="line">       	break</span><br><span class="line">   	case BigDecimal:</span><br><span class="line">       	result = &#x27;BigDecimal&#x27;</span><br><span class="line">       	break</span><br><span class="line">   	default:</span><br><span class="line">       	result = &#x27;default&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println result</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/22.png"></p>
-<h3 id="3-2-for对范围的循环"><a href="#3-2-for对范围的循环" class="headerlink" title="3.2 for对范围的循环"></a>3.2 for对范围的循环</h3><pre><code>//对范围的循环
-def sum = 0
-for (i in 0..9)&#123;
-    sum += i
-&#125;
-println sum
-</code></pre>
+<h3 id="3-2-for对范围的循环"><a href="#3-2-for对范围的循环" class="headerlink" title="3.2 for对范围的循环"></a>3.2 for对范围的循环</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//对范围的循环</span><br><span class="line">def sum = 0</span><br><span class="line">for (i in 0..9)&#123;</span><br><span class="line">   	sum += i</span><br><span class="line">&#125;</span><br><span class="line">println sum</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/23.png"></p>
-<h3 id="3-3-for对list循环"><a href="#3-3-for对list循环" class="headerlink" title="3.3 for对list循环"></a>3.3 for对list循环</h3><pre><code>//对list循环
-sum = 0
-for (i in [0,1,2,3,4,5,6,7,8,9])&#123;
-    sum += i
-&#125;
-println sum
-</code></pre>
+<h3 id="3-3-for对list循环"><a href="#3-3-for对list循环" class="headerlink" title="3.3 for对list循环"></a>3.3 for对list循环</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//对list循环</span><br><span class="line">sum = 0</span><br><span class="line">for (i in [0,1,2,3,4,5,6,7,8,9])&#123;</span><br><span class="line">   	sum += i</span><br><span class="line">&#125;</span><br><span class="line">println sum</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/23.png"></p>
-<h3 id="3-4-for对map的循环"><a href="#3-4-for对map的循环" class="headerlink" title="3.4 for对map的循环"></a>3.4 for对map的循环</h3><pre><code>//对map的循环
-sum = 0
-for (i in [&#39;lili&#39;:1,&#39;lucy&#39;:2,&#39;luck&#39;:3])&#123;
-    sum += i.value
-&#125;
-println sum
-</code></pre>
+<h3 id="3-4-for对map的循环"><a href="#3-4-for对map的循环" class="headerlink" title="3.4 for对map的循环"></a>3.4 for对map的循环</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//对map的循环</span><br><span class="line">sum = 0</span><br><span class="line">for (i in [&#x27;lili&#x27;:1,&#x27;lucy&#x27;:2,&#x27;luck&#x27;:3])&#123;</span><br><span class="line">   	sum += i.value</span><br><span class="line">&#125;</span><br><span class="line">println sum</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/19/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/24.png"></p>
 
                     

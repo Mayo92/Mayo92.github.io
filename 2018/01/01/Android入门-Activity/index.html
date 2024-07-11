@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Dec 02 2020 18:21:58 GMT+0800">2020-12-02 18:21:58</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 11:27:33 GMT+0800">2024-07-11 11:27:33</span>
             </span>
         
 
@@ -219,12 +219,6 @@
                 <ul class="post-category-ul">
                     
                             <li class="category-item"><a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/">星球Android入门</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/">Android基础</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E6%98%9F%E7%90%83Android%E5%85%A5%E9%97%A8/Android%E5%9F%BA%E7%A1%80/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">四大组件</a></li>
                         
                     
                 </ul>
@@ -263,9 +257,7 @@
                     
 
                     
-                         <h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>onCreate() -&gt; onStart() -&gt; onResume() -&gt; 
-onPause()  -&gt; onStop()  -&gt; onDestroy()
-</code></pre>
+                         <h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onCreate() -&gt; onStart() -&gt; onResume() -&gt; </span><br><span class="line">onPause()  -&gt; onStop()  -&gt; onDestroy()</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
 <p><img src="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/1.png"></p>
@@ -317,114 +309,20 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
 <p><strong>注意：默认情况下，所有Activity所需的任务栈的名称为应用的包名，可以通过给Activity指定TaskAffinity属性来指定任务栈，这个属性值不能与包名相同，否则就没有意义</strong></p>
 <h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>众所周知当我们多次启动同一个Activity时，系统会创建多个实例，并把它们按照先进后出的原则一一放入任务栈中，当我们按back键时，就会有一个activity从任务栈顶移除，重复下去，直到任务栈为空，系统就会回收这个任务栈。但是这样以来，系统多次启动同一个Activity时就会重复创建多个实例，这种做法显然不合理，为了能够优化这个问题，Android提供四种启动模式来修改系统这一默认行为。</p>
 <p>为了打印方便，定义一个基础Activity，在其onCreate方法和onNewIntent方法中打印出当前Activity的日志信息，主要包括所属的task，当前类的hashcode，以及taskAffinity的值。之后我们进行测试的Activity都直接继承该Activity</p>
-<pre><code>public class BaseActivity extends AppCompatActivity &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class BaseActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	Log.i(&quot;yly&quot;, &quot;*****onCreate()方法******&quot;);</span><br><span class="line">       	Log.i(&quot;yly&quot;, &quot;onCreate：&quot; + getClass().getSimpleName() + &quot; TaskId: &quot; + getTaskId() + &quot; hasCode:&quot; + this.hashCode());</span><br><span class="line">       	dumpTaskAffinity();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onNewIntent(Intent intent) &#123;</span><br><span class="line">       	super.onNewIntent(intent);</span><br><span class="line">       	Log.i(&quot;yly&quot;, &quot;*****onNewIntent()方法*****&quot;);</span><br><span class="line">       	Log.i(&quot;yly&quot;, &quot;onNewIntent：&quot; + getClass().getSimpleName() + &quot; TaskId: &quot; + getTaskId() + &quot; hasCode:&quot; + this.hashCode());</span><br><span class="line">       	dumpTaskAffinity();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	protected void dumpTaskAffinity()&#123;</span><br><span class="line">       	try &#123;</span><br><span class="line">           	ActivityInfo info = this.getPackageManager()</span><br><span class="line">                   .getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);</span><br><span class="line">           	Log.i(&quot;yly&quot;, &quot;taskAffinity:&quot;+info.taskAffinity);</span><br><span class="line">       	&#125; catch (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">           	e.printStackTrace();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        Log.i(&quot;yly&quot;, &quot;*****onCreate()方法******&quot;);
-        Log.i(&quot;yly&quot;, &quot;onCreate：&quot; + getClass().getSimpleName() + &quot; TaskId: &quot; + getTaskId() + &quot; hasCode:&quot; + this.hashCode());
-        dumpTaskAffinity();
-    &#125;
-
-    @Override
-    protected void onNewIntent(Intent intent) &#123;
-        super.onNewIntent(intent);
-        Log.i(&quot;yly&quot;, &quot;*****onNewIntent()方法*****&quot;);
-        Log.i(&quot;yly&quot;, &quot;onNewIntent：&quot; + getClass().getSimpleName() + &quot; TaskId: &quot; + getTaskId() + &quot; hasCode:&quot; + this.hashCode());
-        dumpTaskAffinity();
-    &#125;
-
-    protected void dumpTaskAffinity()&#123;
-        try &#123;
-            ActivityInfo info = this.getPackageManager()
-                .getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
-            Log.i(&quot;yly&quot;, &quot;taskAffinity:&quot;+info.taskAffinity);
-        &#125; catch (PackageManager.NameNotFoundException e) &#123;
-            e.printStackTrace();
-        &#125;
-    &#125;
-&#125;
-</code></pre>
 <h4 id="standard-默认模式"><a href="#standard-默认模式" class="headerlink" title="standard-默认模式"></a>standard-默认模式</h4><p>这个模式是默认的启动模式，即标准模式，在不指定启动模式的前提下，系统默认使用该模式启动Activity，每次启动一个Activity都会重写创建一个新的实例，不管这个实例存不存在，这种模式下，谁启动了该模式的Activity，该Activity就属于启动它的Activity的任务栈中。这个Activity它的onCreate()，onStart()，onResume()方法都会被调用。</p>
-<pre><code>public class ActivityStandard extends BaseActivity &#123;
-
-    private Button mButton;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_standard);
-        mButton = findViewById(R.id.button);
-        mButton.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent(ActivityStandard.this,ActivityStandard.class);
-                startActivity(intent);
-            &#125;
-        &#125;);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class ActivityStandard extends BaseActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mButton;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_standard);</span><br><span class="line">       	mButton = findViewById(R.id.button);</span><br><span class="line">       	mButton.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent(ActivityStandard.this,ActivityStandard.class);</span><br><span class="line">               	startActivity(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>点击四次按钮后：</p>
 <p><img src="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/6.png"></p>
 <p>可以看到日志输出了四次StandardActivity的日志，并且所属的任务栈的id都是79，这也验证了谁启动了该模式的Activity，该Activity就属于启动它的Activity的任务栈中这句话。并且每一个Activity的hashcode都是不一样的，说明他们是不同的实例，即“每次启动一个Activity都会重写创建一个新的实例”。</p>
 <h4 id="singleTop-栈顶复用模式"><a href="#singleTop-栈顶复用模式" class="headerlink" title="singleTop-栈顶复用模式"></a>singleTop-栈顶复用模式</h4><p>这个模式下，如果新的activity已经位于栈顶，那么这个Activity不会被重写创建，同时它的onNewIntent方法会被调用，通过此方法的参数我们可以去除当前请求的信息。如果栈顶不存在该Activity的实例，则情况与standard模式相同。需要注意的是这个Activity它的onCreate()，onStart()方法不会被调用，因为它并没有发生改变。</p>
 <p>配置：</p>
-<pre><code>&lt;activity android:name=&quot;.ActivitySingleTop&quot; android:launchMode=&quot;singleTop&quot;/&gt;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.ActivitySingleTop&quot; android:launchMode=&quot;singleTop&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <p>ActivitySingleTop</p>
-<pre><code>public class ActivitySingleTop extends BaseActivity &#123;
-
-    private Button mButton1,mButton2;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_singletop);
-
-        mButton1 = findViewById(R.id.button1);
-        mButton2 = findViewById(R.id.button2);
-
-        mButton1.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent(ActivitySingleTop.this, ActivitySingleTop.class);
-                startActivity(intent);
-            &#125;
-        &#125;);
-
-        mButton2.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent(ActivitySingleTop.this, OtherTopActivity.class);
-                startActivity(intent);
-            &#125;
-        &#125;);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class ActivitySingleTop extends BaseActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mButton1,mButton2;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_singletop);</span><br><span class="line"></span><br><span class="line">       	mButton1 = findViewById(R.id.button1);</span><br><span class="line">       	mButton2 = findViewById(R.id.button2);</span><br><span class="line"></span><br><span class="line">       	mButton1.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent(ActivitySingleTop.this, ActivitySingleTop.class);</span><br><span class="line">               	startActivity(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line"></span><br><span class="line">       	mButton2.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent(ActivitySingleTop.this, OtherTopActivity.class);</span><br><span class="line">               	startActivity(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>OtherTopActivity</p>
-<pre><code>public class OtherTopActivity extends BaseActivity &#123;
-
-    private Button mButton;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_othertop);
-
-        mButton = findViewById(R.id.button3);
-        mButton.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent(OtherTopActivity.this, ActivitySingleTop.class);
-                startActivity(intent);
-            &#125;
-        &#125;);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class OtherTopActivity extends BaseActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mButton;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_othertop);</span><br><span class="line"></span><br><span class="line">       	mButton = findViewById(R.id.button3);</span><br><span class="line">       	mButton.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent(OtherTopActivity.this, ActivitySingleTop.class);</span><br><span class="line">               	startActivity(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/7.png"></p>
 <p>我们看到，除了第一次进入ActivitySingleTop这个Activity时，输出的是onCreate方法中的日志，后续的都是调用了onNewIntent方法，并没有调用onCreate方法，并且日志的hashcode都是一样的，说明栈中只有一个实例。这是因为第一次进入的时候，栈中没有该实例，则创建，后续发现栈顶有这个实例，则直接复用，并且调用onNewIntent方法。</p>
 <p>那么假设栈中有该实例，但是该实例不在栈顶情况又如何呢？我们先从MainTestActivity中进入到ActivitySingleTop，然后再跳转到OtherTopActivity中，再从OtherTopActivity中跳回ActivitySingleTop，再从ActivitySingleTop跳到ActivitySingleTop中，看看整个过程的日志。</p>
@@ -446,65 +344,15 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
 <li>为一个activity的taskAffinity设置一个空字符串，表明这个activity不属于任何task</li>
 </ul>
 <p>指定方式如下：</p>
-<pre><code>&lt;activity android:name=&quot;.ActivitySingleTop&quot; android:launchMode=&quot;singleTop&quot; android:taskAffinity=&quot;com.castiel.demo.singletop&quot;/&gt;
-&lt;activity android:name=&quot;.ActivityStandard&quot; android:launchMode=&quot;standard&quot; android:taskAffinity=&quot;com.castiel.demo.standard&quot;/&gt;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.ActivitySingleTop&quot; android:launchMode=&quot;singleTop&quot; android:taskAffinity=&quot;com.castiel.demo.singletop&quot;/&gt;</span><br><span class="line">&lt;activity android:name=&quot;.ActivityStandard&quot; android:launchMode=&quot;standard&quot; android:taskAffinity=&quot;com.castiel.demo.standard&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
 <h4 id="singleTask-栈内复用模式"><a href="#singleTask-栈内复用模式" class="headerlink" title="singleTask-栈内复用模式"></a>singleTask-栈内复用模式</h4><p>这个模式十分复杂，有各式各样的组合。在这个模式下，如果栈中存在这个Activity的实例就会复用这个Activity，不管它是否位于栈顶，复用时，会将它上面的Activity全部出栈，并且会回调该实例的onNewIntent方法。其实这个过程还存在一个任务栈的匹配，因为这个模式启动时，会在自己需要的任务栈中寻找实例，这个任务栈就是通过taskAffinity属性指定。如果这个任务栈不存在，则会创建这个任务栈。	</p>
 <p>配置形式：</p>
-<pre><code>&lt;activity android:name=&quot;.ActivitySingleTask&quot; android:launchMode=&quot;singleTask&quot;/&gt;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.ActivitySingleTask&quot; android:launchMode=&quot;singleTask&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <p>ActivitySingleTask</p>
-<pre><code>public class ActivitySingleTask extends BaseActivity &#123;
-
-    private Button btn1,btn2;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_singletask);
-    
-        btn1 = findViewById(R.id.btn1);
-        btn2 = findViewById(R.id.btn2);
-
-        btn1.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent(ActivitySingleTask.this, ActivitySingleTask.class);
-                startActivity(intent);
-            &#125;
-        &#125;);
-
-        btn2.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent(ActivitySingleTask.this, OtherTaskActivity.class);
-                startActivity(intent);
-            &#125;
-        &#125;);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class ActivitySingleTask extends BaseActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button btn1,btn2;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_singletask);</span><br><span class="line">       </span><br><span class="line">       	btn1 = findViewById(R.id.btn1);</span><br><span class="line">       	btn2 = findViewById(R.id.btn2);</span><br><span class="line"></span><br><span class="line">       	btn1.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent(ActivitySingleTask.this, ActivitySingleTask.class);</span><br><span class="line">               	startActivity(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line"></span><br><span class="line">       	btn2.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent(ActivitySingleTask.this, OtherTaskActivity.class);</span><br><span class="line">               	startActivity(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>OtherTaskActivity</p>
-<pre><code>public class OtherTaskActivity extends BaseActivity &#123;
-
-    private Button mButton;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_othertask);
-
-        mButton = findViewById(R.id.button4);
-        mButton.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent(OtherTaskActivity.this, ActivitySingleTask.class);
-                startActivity(intent);
-            &#125;
-        &#125;);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class OtherTaskActivity extends BaseActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mButton;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_othertask);</span><br><span class="line"></span><br><span class="line">       	mButton = findViewById(R.id.button4);</span><br><span class="line">       	mButton.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent(OtherTaskActivity.this, ActivitySingleTask.class);</span><br><span class="line">               	startActivity(intent);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>现在我们先不指定任何taskAffinity属性，对它做类似singleTop的操作，即从入口MainTestActivity进入SingleTaskActivity，然后跳到OtherActivity，再跳回到SingleTaskActivity。看看整个过程的日志。</p>
 <p><img src="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/9.png"></p>
 <p>当我们从MainTestActivity进入到SingleTaskActivity，再进入到OtherActivity后，此时栈中有3个Activity实例，并且SingleTaskActivity不在栈顶，而在OtherActivity跳到SingleTaskActivity时，并没有创建一个新的SingleTaskActivity，而是复用了该实例，并且回调了onNewIntent方法。并且原来的OtherActivity出栈了，具体见下面的信息，使用命令adb shell dumpsys activity activities可进行查看</p>
@@ -512,10 +360,7 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
 <p>可以看到当前栈中只有两个Activity，即原来栈中位于SingleTaskActivity 之上的Activity都出栈了。</p>
 <p>我们看到使用singleTask启动模式启动一个Activity，它还是在原来的task中启动。其实是这样的，我们并没有指定taskAffinity属性，这说明和默认值一样，也就是包名，当MainTestActivity启动时创建的Task的名字就是包名，因为MainTestActivity也没有指定taskAffinity，而当我们启动SingleTaskActivity ，首先会寻找需要的任务栈是否存在，也就是taskAffinity指定的值，这里就是包名，发现存在，就不再创建新的task，而是直接使用。当该task中存在该Activity实例时就会复用该实例，这就是栈内复用模式。</p>
 <p>这时候，如果我们指定SingleTaskActivity 的taskAffinity值。</p>
-<pre><code>&lt;activity android:name=&quot;.ActivitySingleTask&quot; android:launchMode=&quot;singleTask&quot;
-              android:taskAffinity=&quot;com.yly.demo.singletask&quot;/&gt;
-              
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.ActivitySingleTask&quot; android:launchMode=&quot;singleTask&quot;</span><br><span class="line">                 android:taskAffinity=&quot;com.yly.demo.singletask&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <p>还是之前的操作。但是日志就会变得不一样。</p>
 <p><img src="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/11.png"></p>
 <p>我们看到SingleTaskActivity所属的任务栈的TaskId发生了变换，也就是说开启了一个新的Task，并且之后的OtherActivity也运行在了该Task上。<br><strong>日志OtherActivity并未在新task上</strong></p>
@@ -538,34 +383,13 @@ onPause()  -&gt; onStop()  -&gt; onDestroy()
 <p>我们看到，指定了相同的taskAffinity的SingleTaskActivity和MainActivity被启动到了同一个task中，taskId都为105。</p>
 <h4 id="singleInstance-全局唯一模式"><a href="#singleInstance-全局唯一模式" class="headerlink" title="singleInstance-全局唯一模式"></a>singleInstance-全局唯一模式</h4><p>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</p>
 <p>配置形式：</p>
-<pre><code>&lt;activity android:name=&quot;.singleinstance.SingleInstanceActivity&quot; android:launchMode=&quot;singleInstance&quot; &gt;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.singleinstance.SingleInstanceActivity&quot; android:launchMode=&quot;singleInstance&quot; &gt;</span><br></pre></td></tr></table></figure>
 <p>ActivitySingleInstance</p>
-<pre><code>public class ActivitySingleInstance extends BaseActivity &#123;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_singleinstance);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class ActivitySingleInstance extends BaseActivity &#123;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_singleinstance);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>配置</p>
-<pre><code>&lt;activity
-        android:name=&quot;.ActivitySingleInstance&quot;
-        android:launchMode=&quot;singleInstance&quot;&gt;
-
-        &lt;intent-filter&gt;
-            &lt;action android:name=&quot;com.yly.demo.singleinstance&quot; /&gt;
-            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
-        &lt;/intent-filter&gt;
-&lt;/activity&gt;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">           android:name=&quot;.ActivitySingleInstance&quot;</span><br><span class="line">           android:launchMode=&quot;singleInstance&quot;&gt;</span><br><span class="line"></span><br><span class="line">           &lt;intent-filter&gt;</span><br><span class="line">               &lt;action android:name=&quot;com.yly.demo.singleinstance&quot; /&gt;</span><br><span class="line">               &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</span><br><span class="line">           &lt;/intent-filter&gt;</span><br><span class="line">   &lt;/activity&gt;</span><br></pre></td></tr></table></figure>
 <p>使用下面的方式分别在两个应用中启动它</p>
-<pre><code>Intent intent = new Intent();
-intent.setAction(&quot;com.yly.demo.singleinstance&quot;);
-startActivity(intent);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = new Intent();</span><br><span class="line">intent.setAction(&quot;com.yly.demo.singleinstance&quot;);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
 <p>查看日志</p>
 <p><img src="/2018/01/01/Android%E5%85%A5%E9%97%A8-Activity/16.png"></p>
 <p>我们看到，第一个应用启动SingleInstanceActivity时，由于系统中不存在该实例，所以新建了一个Task，按home键后，使用另一个App进入该Activity，由于系统中已经存在了一个实例，不会再创建新的Task，直接复用该实例，并且回调onNewIntent方法。可以从他们的hashcode中可以看出这是同一个实例。因此我们可以理解为：SingleInstance模式启动的Activity在系统中具有全局唯一性。</p>
@@ -623,11 +447,11 @@ startActivity(intent);
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2017/05/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/"
-                                   title="设计模式-单例"
+                                   href="/2017/11/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/"
+                                   title="第一行代码笔记-Material Design"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">设计模式-单例</span>
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-Material Design</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

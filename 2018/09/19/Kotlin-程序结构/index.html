@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Nov 14 2019 16:09:19 GMT+0800">2019-11-14 16:09:19</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:21:40 GMT+0800">2024-07-11 15:21:40</span>
             </span>
         
 
@@ -254,7 +254,9 @@
                     
 
                     
-                         <h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><h3 id="常量与变量-val-var"><a href="#常量与变量-val-var" class="headerlink" title="常量与变量(val,var)"></a>常量与变量(val,var)</h3><h4 id="什么是常量"><a href="#什么是常量" class="headerlink" title="什么是常量"></a>什么是常量</h4><ul>
+                         <h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><h3 id="常量与变量-val-var"><a href="#常量与变量-val-var" class="headerlink" title="常量与变量(val,var)"></a>常量与变量(val,var)</h3><h4 id="什么是常量"><a href="#什么是常量" class="headerlink" title="什么是常量"></a>什么是常量</h4><span id="more"></span>
+
+<ul>
 <li>val &#x3D; value，值类型</li>
 <li>类似Java的final</li>
 <li>不可能重复赋值</li>
@@ -262,8 +264,6 @@
 </ul>
 <p>运行时常量：val x &#x3D; getX()</p>
 <p>编译期常量：const val x &#x3D; 2</p>
-<span id="more"></span>
-
 <h4 id="什么是变量"><a href="#什么是变量" class="headerlink" title="什么是变量"></a>什么是变量</h4><ul>
 <li>var &#x3D; variable</li>
 <li>举例：</li>
@@ -291,106 +291,52 @@
 <p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/5.png"></p>
 <h3 id="函数（function）"><a href="#函数（function）" class="headerlink" title="函数（function）"></a>函数（function）</h3><p>没有返回值为Unit,可以不写</p>
 <p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/6.png"></p>
-<pre><code>fun main(args: Array&lt;String&gt;) &#123;
-
-    println(&quot;hello $&#123;args[0]&#125;&quot;)
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line"></span><br><span class="line">   	println(&quot;hello $&#123;args[0]&#125;&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/7.png"></p>
 <p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/8.png"></p>
-<pre><code>fun main(args: Array&lt;String&gt;) &#123;
-
-    checkArgs(args)
-    val arg1 = args[0].toInt()
-    val arg2 = args[1].toInt()
-    println(&quot;$arg1 + $arg2 = $&#123;sum(arg1,arg2)&#125;&quot;)
-&#125;
-
-fun checkArgs(args: Array&lt;String&gt;)&#123;
-    if (args.size != 2)&#123;
-        printUsage()
-        //传入的值为了提示调用者程序出现问题了，根据开发者提供的对应表来查询
-        System.exit(-1)//0xFF
-    &#125;
-&#125;
-
-fun printUsage()&#123;
-    println(&quot;请传入两个整数参数&quot;)
-&#125;
-
-//只返回一个表达式的函数的简洁写法
-fun sum(arg1:Int,arg2:Int) = arg1 + arg2
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line"></span><br><span class="line">   	checkArgs(args)</span><br><span class="line">   	val arg1 = args[0].toInt()</span><br><span class="line">   	val arg2 = args[1].toInt()</span><br><span class="line">   	println(&quot;$arg1 + $arg2 = $&#123;sum(arg1,arg2)&#125;&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun checkArgs(args: Array&lt;String&gt;)&#123;</span><br><span class="line">   	if (args.size != 2)&#123;</span><br><span class="line">       	printUsage()</span><br><span class="line">       	//传入的值为了提示调用者程序出现问题了，根据开发者提供的对应表来查询</span><br><span class="line">       	System.exit(-1)//0xFF</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun printUsage()&#123;</span><br><span class="line">   	println(&quot;请传入两个整数参数&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//只返回一个表达式的函数的简洁写法</span><br><span class="line">fun sum(arg1:Int,arg2:Int) = arg1 + arg2</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/9.png"></p>
 <p>匿名函数</p>
-<pre><code>val int2Long = fun(x:Int):Long&#123;
-    return x.toLong()
-&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val int2Long = fun(x:Int):Long&#123;</span><br><span class="line">   	return x.toLong()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println(int2Long(3))</span><br></pre></td></tr></table></figure>
 
-println(int2Long(3))
-</code></pre>
 <p><em>总结</em></p>
 <p>函数也是一个类型，它与String、int一样可以赋值，可以传递。只不过它本身是一个代码块，有特殊的用处罢了</p>
 <h4 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h4><p>以特定功能组织起来的代码块</p>
-<pre><code>fun[函数名]([参数列表]):[返回值类型]&#123;[函数体]&#125;
-fun[函数名]([参数列表])=[表达式]
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fun[函数名]([参数列表]):[返回值类型]&#123;[函数体]&#125;</span><br><span class="line">fun[函数名]([参数列表])=[表达式]</span><br></pre></td></tr></table></figure>
 <p>举例</p>
-<pre><code>fun sayHi(name:String)&#123;print(&quot;Hi,$name&quot;)&#125;
-fun sayHi(name:String) = print(&quot;Hi,$name&quot;)
-</code></pre>
-<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><pre><code>fun([参数列表])...
-
-val sayHi = fun(name:String) = print(&quot;Hi,$name&quot;)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fun sayHi(name:String)&#123;print(&quot;Hi,$name&quot;)&#125;</span><br><span class="line">fun sayHi(name:String) = print(&quot;Hi,$name&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fun([参数列表])...</span><br><span class="line"></span><br><span class="line">val sayHi = fun(name:String) = print(&quot;Hi,$name&quot;)</span><br></pre></td></tr></table></figure>
 <h4 id="编写函数的注意事项"><a href="#编写函数的注意事项" class="headerlink" title="编写函数的注意事项"></a>编写函数的注意事项</h4><ul>
 <li>功能要单一</li>
 <li>函数名要做到顾名思义</li>
 <li>参数个数不要太多</li>
 </ul>
-<h3 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h3><pre><code>//Lambda表达式的返回值是表达式的最后一行的值
-//(Int,Int) -&gt; Int
-val sum = &#123;arg1:Int,arg2:Int -&gt;
-    println(&quot;$arg1 + $arg2 = $&#123;arg1 + arg2&#125;&quot;) //Unit
-    arg1+arg2
-&#125;
+<h3 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//Lambda表达式的返回值是表达式的最后一行的值</span><br><span class="line">//(Int,Int) -&gt; Int</span><br><span class="line">val sum = &#123;arg1:Int,arg2:Int -&gt;</span><br><span class="line">   	println(&quot;$arg1 + $arg2 = $&#123;arg1 + arg2&#125;&quot;) //Unit</span><br><span class="line">   	arg1+arg2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用lambda,()相当于invoke()</span><br><span class="line">   println(sum(1,2))</span><br><span class="line">   println(sum.invoke(1,2))</span><br></pre></td></tr></table></figure>
 
-//调用lambda,()相当于invoke()
-println(sum(1,2))
-println(sum.invoke(1,2))
-</code></pre>
 <p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/10.png"></p>
 <p>简化</p>
-<pre><code>//函数的最后一个参数是lambda表达式 args.forEach (&#123; println(it) &#125; )
-//可以转换成args.forEach ()&#123; println(it) &#125;
-//如果()内没有内容可删除 args.forEach &#123; println(it) &#125;
-//如果传入的函数和所接收的lambda表达式类型一致 可以简化成如下
-args.forEach(::println)//Array的拓展方法
-</code></pre>
-<p>终止forEach</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	//函数的最后一个参数是lambda表达式 args.forEach (&#123; println(it) &#125; )</span><br><span class="line">    //可以转换成args.forEach ()&#123; println(it) &#125;</span><br><span class="line">    //如果()内没有内容可删除 args.forEach &#123; println(it) &#125;</span><br><span class="line">    //如果传入的函数和所接收的lambda表达式类型一致 可以简化成如下</span><br><span class="line">    args.forEach(::println)//Array的拓展方法</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">终止forEach</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>//这里return相当于return main函数
 args.forEach &#123;
     if (it == &quot;q&quot;) return
     println(it)
 &#125;
 </code></pre>
-<p>并不会真正终止forEach，只是把这一次的lambda表达式的调用返回了，条件前的还是继续执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">并不会真正终止forEach，只是把这一次的lambda表达式的调用返回了，条件前的还是继续执行</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>args.forEach ForEach@&#123;
     print(it)
     if (it == &quot;q&quot;) return@ForEach
     println(it)
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/11.png"></p>
-<p>这样写与上面截图一致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">![](11.png)</span><br><span class="line"></span><br><span class="line">这样写与上面截图一致</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>args.forEach &#123;
     print(it)
     if (it == &quot;q&quot;) return@forEach
     println(it)
 &#125;
 </code></pre>
-<p>真正的终止方法</p>
-<p>这样可以真正终止，并且不会像流式数据处理循环两次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">真正的终止方法</span><br><span class="line"></span><br><span class="line">这样可以真正终止，并且不会像流式数据处理循环两次</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>run breaking@&#123;
     args.forEach continuing@&#123;
         print(it)
@@ -399,12 +345,10 @@ args.forEach &#123;
     &#125;
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/12.png"></p>
-<p>流式数据处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">![](12.png)</span><br><span class="line">    </span><br><span class="line">流式数据处理</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>args.takeWhile &#123; it != &quot;q&quot; &#125;.forEach(::println)
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/13.png"></p>
-<p>类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](13.png)</span><br><span class="line"></span><br><span class="line">类型</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>fun printUsage()&#123;
     println(&quot;请传入两个整数参数&quot;)
 &#125;
@@ -412,76 +356,24 @@ args.forEach &#123;
 //对于具名函数::相当于对函数的引用
 println(::printUsage is ()-&gt;Unit)//返回true
 </code></pre>
-<p><em>总结</em></p>
-<h4 id="什么是Lambda表达式"><a href="#什么是Lambda表达式" class="headerlink" title="什么是Lambda表达式"></a>什么是Lambda表达式</h4><ul>
-<li>匿名函数</li>
-<li>写法:{[参数列表] -&gt; [函数体,最后一行是返回值]}</li>
-<li>举例：val sum &#x3D; {a:Int,b:Int -&gt; a + b}</li>
-</ul>
-<h4 id="Lambda类型表示举例"><a href="#Lambda类型表示举例" class="headerlink" title="Lambda类型表示举例"></a>Lambda类型表示举例</h4><ul>
-<li>()-&gt;Unit:无参，返回值为Unit</li>
-<li>(Int)-&gt;Int:传入整形，返回一个整形</li>
-<li>(String,(String)-&gt;String)-&gt;Boolean:传入字符串、Lambda，返回Boolean</li>
-</ul>
-<h4 id="Lambda的调用"><a href="#Lambda的调用" class="headerlink" title="Lambda的调用"></a>Lambda的调用</h4><ul>
-<li>用()进行调用</li>
-<li>等价于invoke()</li>
-<li>举例：</li>
-</ul>
-<p>val sum &#x3D; {a:Int,b:Int -&gt; a + b}</p>
-<p>sum(2,3)</p>
-<p>sum.invoke(2,3)</p>
-<h4 id="Lambda的简化"><a href="#Lambda的简化" class="headerlink" title="Lambda的简化"></a>Lambda的简化</h4><ul>
-<li>函数参数调用时最后一个lambda可以移出去</li>
-<li>函数参数只有一个lambda，调用时小括号可以省略</li>
-<li>lambda只有一个参数可默认为it</li>
-<li>入参、返回值与形参一致的函数可以用函数引用的方式作为实参传入</li>
-</ul>
-<h3 id="类成员（成员方法、成员变量）"><a href="#类成员（成员方法、成员变量）" class="headerlink" title="类成员（成员方法、成员变量）"></a>类成员（成员方法、成员变量）</h3><h4 id="什么是类成员"><a href="#什么是类成员" class="headerlink" title="什么是类成员"></a>什么是类成员</h4><ul>
-<li>属性：或者说成员变量，类范围内的变量</li>
-<li>方法：或者说成员函数，类范围内的函数</li>
-</ul>
-<h4 id="函数和方法的区别"><a href="#函数和方法的区别" class="headerlink" title="函数和方法的区别"></a>函数和方法的区别</h4><ul>
-<li>函数强调功能本身，不考虑从属</li>
-<li>方法的称呼通常是从类的角度出发</li>
-<li>叫法不同而已，不要纠结</li>
-</ul>
-<h4 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h4><ul>
-<li>写法与普通函数完全一致</li>
-</ul>
-<p><em>例子</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">*总结*</span><br><span class="line"></span><br><span class="line">#### 什么是Lambda表达式</span><br><span class="line"></span><br><span class="line">- 匿名函数</span><br><span class="line">- 写法:&#123;[参数列表] -&gt; [函数体,最后一行是返回值]&#125;</span><br><span class="line">- 举例：val sum = &#123;a:Int,b:Int -&gt; a + b&#125;</span><br><span class="line"></span><br><span class="line">#### Lambda类型表示举例</span><br><span class="line"></span><br><span class="line">- ()-&gt;Unit:无参，返回值为Unit</span><br><span class="line">- (Int)-&gt;Int:传入整形，返回一个整形</span><br><span class="line">- (String,(String)-&gt;String)-&gt;Boolean:传入字符串、Lambda，返回Boolean</span><br><span class="line"></span><br><span class="line">#### Lambda的调用</span><br><span class="line"></span><br><span class="line">- 用()进行调用</span><br><span class="line">- 等价于invoke()</span><br><span class="line">- 举例：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">val sum = &#123;a:Int,b:Int -&gt; a + b&#125;</span><br><span class="line">	</span><br><span class="line">sum(2,3)</span><br><span class="line">	</span><br><span class="line">sum.invoke(2,3)</span><br><span class="line"></span><br><span class="line">#### Lambda的简化</span><br><span class="line"></span><br><span class="line">- 函数参数调用时最后一个lambda可以移出去</span><br><span class="line">- 函数参数只有一个lambda，调用时小括号可以省略</span><br><span class="line">- lambda只有一个参数可默认为it</span><br><span class="line">- 入参、返回值与形参一致的函数可以用函数引用的方式作为实参传入</span><br><span class="line"></span><br><span class="line">### 类成员（成员方法、成员变量）</span><br><span class="line"></span><br><span class="line">#### 什么是类成员</span><br><span class="line"></span><br><span class="line">- 属性：或者说成员变量，类范围内的变量</span><br><span class="line">- 方法：或者说成员函数，类范围内的函数</span><br><span class="line"></span><br><span class="line">#### 函数和方法的区别</span><br><span class="line"></span><br><span class="line">- 函数强调功能本身，不考虑从属</span><br><span class="line">- 方法的称呼通常是从类的角度出发</span><br><span class="line">- 叫法不同而已，不要纠结</span><br><span class="line"></span><br><span class="line">#### 定义方法</span><br><span class="line"></span><br><span class="line">- 写法与普通函数完全一致</span><br><span class="line"></span><br><span class="line">*例子*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>class Hello&#123;
     fun sayHello(name:String)=print(&quot;Hello,$name&quot;)
 &#125;
 </code></pre>
-<h4 id="定义属性"><a href="#定义属性" class="headerlink" title="定义属性"></a>定义属性</h4><ul>
-<li>构造方法参数中val&#x2F;var修饰的都是属性</li>
-<li>类内部也可以定义属性</li>
-</ul>
-<p><em>例子</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">#### 定义属性</span><br><span class="line"></span><br><span class="line">- 构造方法参数中val/var修饰的都是属性</span><br><span class="line">- 类内部也可以定义属性</span><br><span class="line"></span><br><span class="line">*例子*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>class Hello(val aField:Int,notAField:Int)&#123;
     var anotherField:Float = 3f
 &#125;
 </code></pre>
-<p>notAField不是</p>
-<h4 id="属性访问控制"><a href="#属性访问控制" class="headerlink" title="属性访问控制"></a>属性访问控制</h4><ul>
-<li>属性可以定义getter&#x2F;setter</li>
-</ul>
-<p><em>例子</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">notAField不是</span><br><span class="line"></span><br><span class="line">#### 属性访问控制</span><br><span class="line"></span><br><span class="line">- 属性可以定义getter/setter</span><br><span class="line"></span><br><span class="line">*例子*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>val a:Int = 0
     get() = field
 var b:Float = 0f
     set(value)&#123;field = value&#125;
-    
 </code></pre>
-<h4 id="属性初始化"><a href="#属性初始化" class="headerlink" title="属性初始化"></a>属性初始化</h4><ul>
-<li>属性的初始化尽量在构造方法中完成</li>
-<li>无法在构造方法中初始化，尝试降级为局部变量</li>
-<li>var用lateinit延迟初始化，val用lazy</li>
-<li>可空类型谨慎使用null直接初始化</li>
-</ul>
-<p>	</p>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre><code>class 妹子(var 性格:String,var 长相:String,var 声音:String) &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">		</span><br><span class="line">#### 属性初始化</span><br><span class="line"></span><br><span class="line">- 属性的初始化尽量在构造方法中完成</span><br><span class="line">- 无法在构造方法中初始化，尝试降级为局部变量</span><br><span class="line">- var用lateinit延迟初始化，val用lazy</span><br><span class="line">- 可空类型谨慎使用null直接初始化	</span><br><span class="line"></span><br><span class="line">#### 例子</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>class 妹子(var 性格:String,var 长相:String,var 声音:String) &#123;
 
     fun 唱歌(歌名:String)&#123;
         //唱歌的具体实现
@@ -500,7 +392,7 @@ fun main(args: Array&lt;String&gt;) &#123;
     某个妹子.跳舞(&quot;天鹅湖&quot;)
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/14.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](14.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>class X
 
 class A&#123;
@@ -537,15 +429,8 @@ fun main(args: Array&lt;String&gt;) &#123;
     println(a.e)
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/15.png"></p>
-<h3 id="基本运算符"><a href="#基本运算符" class="headerlink" title="基本运算符"></a>基本运算符</h3><ul>
-<li>任何类可以定义或者重载父类的基本运算符</li>
-<li>通过运算符对应的具名函数来定义</li>
-<li>对参数个数做要求，对参数和返回值类型不做要求</li>
-<li>不能像Scala一样定义任意运算符</li>
-</ul>
-<p>	</p>
-<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><pre><code>class Complex(var real:Double,var imaginary:Double)&#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](15.png)</span><br><span class="line"></span><br><span class="line">### 基本运算符</span><br><span class="line"></span><br><span class="line">- 任何类可以定义或者重载父类的基本运算符</span><br><span class="line">- 通过运算符对应的具名函数来定义</span><br><span class="line">- 对参数个数做要求，对参数和返回值类型不做要求</span><br><span class="line">- 不能像Scala一样定义任意运算符	</span><br><span class="line"></span><br><span class="line">#### 例子</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>class Complex(var real:Double,var imaginary:Double)&#123;
 
     //运算符方法的重载定义要求名字对的上，前面加上operator关键字，参数个数要对的上，参数类型与返回类型不关心
     operator fun plus(other:Complex):Complex&#123;
@@ -595,30 +480,8 @@ fun main(args: Array&lt;String&gt;) &#123;
     println(Book() on Desk())//这种自定义的on函数一般只在DSL里使用，不要乱用
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/16.png"></p>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/17.png"></p>
-<h3 id="表达式（中缀表达式，分支表达式，when表达式等）"><a href="#表达式（中缀表达式，分支表达式，when表达式等）" class="headerlink" title="表达式（中缀表达式，分支表达式，when表达式等）"></a>表达式（中缀表达式，分支表达式，when表达式等）</h3><h4 id="中缀表达式"><a href="#中缀表达式" class="headerlink" title="中缀表达式"></a>中缀表达式</h4><ul>
-<li><p>只有一个参数，且用infix修饰的函数</p>
-<p>  class Book{infix fun on(place:String){….}}</p>
-<p>  Book() on “My Desk”</p>
-</li>
-</ul>
-<h4 id="分支表达式-是表达式可以有返回值不是语句"><a href="#分支表达式-是表达式可以有返回值不是语句" class="headerlink" title="分支表达式(是表达式可以有返回值不是语句)"></a>分支表达式(是表达式可以有返回值不是语句)</h4><p>if表达式</p>
-<ul>
-<li><p>if…else</p>
-<p>  if(a &#x3D;&#x3D; b)…else if(a &#x3D;&#x3D; c)…else…</p>
-</li>
-<li><p>表达式与完备性</p>
-<p>  val x &#x3D; if(b&lt;0) 0 else b</p>
-<p>  val x &#x3D; if(b&lt;0) 0 &#x2F;&#x2F;错误，赋值时，分支必须完备</p>
-</li>
-</ul>
-<h4 id="when表达式"><a href="#when表达式" class="headerlink" title="when表达式"></a>when表达式</h4><ul>
-<li>加强版switch，支持任意类型</li>
-<li>支持纯表达式条件分支(类似if)</li>
-<li>表达式与完备性</li>
-</ul>
-<h4 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h4><pre><code>private const val USERNAME = &quot;123&quot;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](16.png)</span><br><span class="line"></span><br><span class="line">![](17.png)</span><br><span class="line"></span><br><span class="line">### 表达式（中缀表达式，分支表达式，when表达式等）</span><br><span class="line"></span><br><span class="line">#### 中缀表达式</span><br><span class="line"></span><br><span class="line">- 只有一个参数，且用infix修饰的函数</span><br><span class="line"></span><br><span class="line">	class Book&#123;infix fun on(place:String)&#123;....&#125;&#125;</span><br><span class="line">	</span><br><span class="line">	Book() on &quot;My Desk&quot;</span><br><span class="line">	</span><br><span class="line">#### 分支表达式(是表达式可以有返回值不是语句)</span><br><span class="line"></span><br><span class="line">if表达式</span><br><span class="line"></span><br><span class="line">- if...else</span><br><span class="line"></span><br><span class="line">	if(a == b)...else if(a == c)...else...</span><br><span class="line">	</span><br><span class="line">- 表达式与完备性</span><br><span class="line"></span><br><span class="line">	val x = if(b&lt;0) 0 else b</span><br><span class="line">	</span><br><span class="line">	val x = if(b&lt;0) 0 //错误，赋值时，分支必须完备</span><br><span class="line">	</span><br><span class="line">#### when表达式</span><br><span class="line"></span><br><span class="line">- 加强版switch，支持任意类型</span><br><span class="line">- 支持纯表达式条件分支(类似if)</span><br><span class="line">- 表达式与完备性</span><br><span class="line"></span><br><span class="line">#### 例子</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>private const val USERNAME = &quot;123&quot;
 private const val PASSWORD = &quot;456&quot;
 
 private const val DEBUG = 1
@@ -649,7 +512,7 @@ fun main(args: Array&lt;String&gt;) &#123;
     &#125;
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/18.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](18.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>fun main(args: Array&lt;String&gt;) &#123;
     val x = 5
     when(x)&#123;
@@ -666,30 +529,8 @@ fun main(args: Array&lt;String&gt;) &#123;
     println(mode)
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/19.png"></p>
-<p>when第一个满足就不继续往下执行了。同时判断多个条件，用,隔开</p>
-<h3 id="3-7-循环语句（for循环，while循环，continue-break）"><a href="#3-7-循环语句（for循环，while循环，continue-break）" class="headerlink" title="3-7 循环语句（for循环，while循环，continue,break）"></a>3-7 循环语句（for循环，while循环，continue,break）</h3><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><ul>
-<li><p>基本写法</p>
-<p>  for(element in elements)</p>
-</li>
-<li><p>给任意类实现Iterator方法</p>
-</li>
-</ul>
-<h4 id="while循环-与java一样"><a href="#while循环-与java一样" class="headerlink" title="while循环(与java一样)"></a>while循环(与java一样)</h4><ul>
-<li>古董级语法</li>
-<li>do…while(…)…</li>
-<li>while(…)…</li>
-</ul>
-<h4 id="跳过和终止循环"><a href="#跳过和终止循环" class="headerlink" title="跳过和终止循环"></a>跳过和终止循环</h4><ul>
-<li><p>跳过当前循环用continue</p>
-</li>
-<li><p>终止循环用break</p>
-</li>
-<li><p>多层循环嵌套的终止结合标签使用</p>
-<p>  Outter@for(…){<br>  Inner@while(i&lt;0){ if(…) break@Outter }<br>  }</p>
-</li>
-</ul>
-<h4 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h4><pre><code>fun main(args: Array&lt;String&gt;) &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](19.png)</span><br><span class="line"></span><br><span class="line">when第一个满足就不继续往下执行了。同时判断多个条件，用,隔开</span><br><span class="line"></span><br><span class="line">### 3-7 循环语句（for循环，while循环，continue,break）</span><br><span class="line"></span><br><span class="line">#### for循环</span><br><span class="line"></span><br><span class="line">- 基本写法</span><br><span class="line"></span><br><span class="line">	for(element in elements)</span><br><span class="line">	</span><br><span class="line">- 给任意类实现Iterator方法</span><br><span class="line"></span><br><span class="line">#### while循环(与java一样)</span><br><span class="line"></span><br><span class="line">- 古董级语法</span><br><span class="line">- do...while(...)...</span><br><span class="line">- while(...)...</span><br><span class="line"></span><br><span class="line">#### 跳过和终止循环</span><br><span class="line"></span><br><span class="line">- 跳过当前循环用continue</span><br><span class="line">- 终止循环用break</span><br><span class="line">- 多层循环嵌套的终止结合标签使用</span><br><span class="line"></span><br><span class="line">	Outter@for(...)&#123;</span><br><span class="line">		Inner@while(i&lt;0)&#123; if(...) break@Outter &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">#### 例子</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>fun main(args: Array&lt;String&gt;) &#123;
     for (arg in args)&#123;
         println(arg)
     &#125;
@@ -740,19 +581,8 @@ class MyIntList&#123;
     &#125;
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/20.png"></p>
-<h3 id="异常捕获-try-catch-finally"><a href="#异常捕获-try-catch-finally" class="headerlink" title="异常捕获(try,catch,finally)"></a>异常捕获(try,catch,finally)</h3><h4 id="try…catch"><a href="#try…catch" class="headerlink" title="try…catch"></a>try…catch</h4><ul>
-<li>catch分支匹配异常类型</li>
-<li>表达式，可以用来赋值</li>
-</ul>
-<h4 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h4><ul>
-<li><p>无论代码是否抛出异常都会执行</p>
-</li>
-<li><p>下面的写法，先执行finally再返回</p>
-<p>  return try{ x&#x2F;y }catch(e:Exception){ 0 }finally{…}</p>
-</li>
-</ul>
-<h4 id="例子-4"><a href="#例子-4" class="headerlink" title="例子"></a>例子</h4><pre><code>fun main(args: Array&lt;String&gt;) &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](20.png)</span><br><span class="line"></span><br><span class="line">### 异常捕获(try,catch,finally)</span><br><span class="line"></span><br><span class="line">#### try...catch</span><br><span class="line"></span><br><span class="line">- catch分支匹配异常类型</span><br><span class="line">- 表达式，可以用来赋值</span><br><span class="line"></span><br><span class="line">#### finally</span><br><span class="line"></span><br><span class="line">- 无论代码是否抛出异常都会执行</span><br><span class="line">- 下面的写法，先执行finally再返回</span><br><span class="line"></span><br><span class="line">	return try&#123; x/y &#125;catch(e:Exception)&#123; 0 &#125;finally&#123;...&#125;</span><br><span class="line">	</span><br><span class="line">#### 例子</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>fun main(args: Array&lt;String&gt;) &#123;
     try &#123;
         val arg1 = args[0].toInt()
         val arg2 = args[1].toInt()
@@ -772,7 +602,7 @@ fun sum(arg1:Int,arg2:Int):Int&#123;
     return arg1 + arg2
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/21.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](21.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>fun main(args: Array&lt;String&gt;) &#123;
     val result = try &#123;
         args[0].toInt() / args[1].toInt()
@@ -783,32 +613,12 @@ fun sum(arg1:Int,arg2:Int):Int&#123;
     println(result)
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/22.png"></p>
-<h3 id="具名参数，变长参数，默认参数"><a href="#具名参数，变长参数，默认参数" class="headerlink" title="具名参数，变长参数，默认参数"></a>具名参数，变长参数，默认参数</h3><h4 id="具名参数"><a href="#具名参数" class="headerlink" title="具名参数"></a>具名参数</h4><ul>
-<li>给函数的实参附上行参</li>
-</ul>
-<p>举例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">![](22.png)</span><br><span class="line"></span><br><span class="line">### 具名参数，变长参数，默认参数</span><br><span class="line"></span><br><span class="line">#### 具名参数</span><br><span class="line"></span><br><span class="line">- 给函数的实参附上行参</span><br><span class="line"></span><br><span class="line">举例:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>fun sum(arg1:Int,arg2:Int)=arg1+arg2
 sum(arg1=2,arg2=3)
 </code></pre>
-<p>参数顺序交换没有关系</p>
-<h4 id="变长参数"><a href="#变长参数" class="headerlink" title="变长参数"></a>变长参数</h4><ul>
-<li>某个参数可以接收多个值</li>
-<li>可以不作为最后一个参数</li>
-<li>如果传参时有歧义，需使用具名参数</li>
-</ul>
-<h4 id="Spread-Operator"><a href="#Spread-Operator" class="headerlink" title="* Spread Operator"></a>* Spread Operator</h4><ul>
-<li>只支持展开Array</li>
-<li>只用于变长参数列表的实参</li>
-<li>不能重载</li>
-<li>不算一般意义上的运算符</li>
-</ul>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
-<li>为函数指定默认值</li>
-<li>可以为任意位置的参数指定默认值</li>
-<li>传参时，如果有歧义，需要使用具名参数</li>
-</ul>
-<h4 id="例子-5"><a href="#例子-5" class="headerlink" title="例子"></a>例子</h4><pre><code>fun main(vararg args:String) &#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">参数顺序交换没有关系</span><br><span class="line"></span><br><span class="line">#### 变长参数</span><br><span class="line"></span><br><span class="line">- 某个参数可以接收多个值</span><br><span class="line">- 可以不作为最后一个参数</span><br><span class="line">- 如果传参时有歧义，需使用具名参数</span><br><span class="line"></span><br><span class="line">#### * Spread Operator</span><br><span class="line"></span><br><span class="line">- 只支持展开Array</span><br><span class="line">- 只用于变长参数列表的实参</span><br><span class="line">- 不能重载</span><br><span class="line">- 不算一般意义上的运算符</span><br><span class="line"></span><br><span class="line">#### 默认参数</span><br><span class="line"></span><br><span class="line">- 为函数指定默认值</span><br><span class="line">- 可以为任意位置的参数指定默认值</span><br><span class="line">- 传参时，如果有歧义，需要使用具名参数</span><br><span class="line"></span><br><span class="line">#### 例子</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>fun main(vararg args:String) &#123;
     //使用与数组一样
     for(arg in args)&#123;
         println(arg)
@@ -834,8 +644,11 @@ fun hello(double:Double = 3.0,vararg ints:Int,string:String = &quot;Hello&quot;)
     println(string)
 &#125;
 </code></pre>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/23.png"></p>
-<p><img src="/2018/09/19/Kotlin-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/24.png"></p>
+<pre><code>    
+![](23.png)
+
+![](24.png)
+</code></pre>
 
                     
                 </div>
@@ -916,7 +729,7 @@ fun hello(double:Double = 3.0,vararg ints:Int,string:String = &quot;Hello&quot;)
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F-val-var"><span class="nav-number">1.1.</span> <span class="nav-text">常量与变量(val,var)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.1.3.</span> <span class="nav-text">类型推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#val%E4%B8%8Efinal"><span class="nav-number">1.1.4.</span> <span class="nav-text">val与final</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%EF%BC%88function%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">函数（function）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E5%87%BD%E6%95%B0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">编写函数的注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">Lambda表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">什么是Lambda表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda%E7%B1%BB%E5%9E%8B%E8%A1%A8%E7%A4%BA%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">Lambda类型表示举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda%E7%9A%84%E8%B0%83%E7%94%A8"><span class="nav-number">1.3.3.</span> <span class="nav-text">Lambda的调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda%E7%9A%84%E7%AE%80%E5%8C%96"><span class="nav-number">1.3.4.</span> <span class="nav-text">Lambda的简化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%EF%BC%88%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E3%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">类成员（成员方法、成员变量）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E6%88%90%E5%91%98"><span class="nav-number">1.4.1.</span> <span class="nav-text">什么是类成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.2.</span> <span class="nav-text">函数和方法的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.3.</span> <span class="nav-text">定义方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-number">1.4.4.</span> <span class="nav-text">定义属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="nav-number">1.4.5.</span> <span class="nav-text">属性访问控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.4.6.</span> <span class="nav-text">属性初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.4.7.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.5.</span> <span class="nav-text">基本运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%88%86%E6%94%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8Cwhen%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%89%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">表达式（中缀表达式，分支表达式，when表达式等）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.6.1.</span> <span class="nav-text">中缀表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E6%98%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%AF%E4%BB%A5%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%8D%E6%98%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.6.2.</span> <span class="nav-text">分支表达式(是表达式可以有返回值不是语句)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#when%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.6.3.</span> <span class="nav-text">when表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-2"><span class="nav-number">1.6.4.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%EF%BC%88for%E5%BE%AA%E7%8E%AF%EF%BC%8Cwhile%E5%BE%AA%E7%8E%AF%EF%BC%8Ccontinue-break%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">3-7 循环语句（for循环，while循环，continue,break）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.7.1.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF-%E4%B8%8Ejava%E4%B8%80%E6%A0%B7"><span class="nav-number">1.7.2.</span> <span class="nav-text">while循环(与java一样)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%92%8C%E7%BB%88%E6%AD%A2%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.7.3.</span> <span class="nav-text">跳过和终止循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-3"><span class="nav-number">1.7.4.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7-try-catch-finally"><span class="nav-number">1.8.</span> <span class="nav-text">异常捕获(try,catch,finally)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#try%E2%80%A6catch"><span class="nav-number">1.8.1.</span> <span class="nav-text">try…catch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#finally"><span class="nav-number">1.8.2.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-4"><span class="nav-number">1.8.3.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E5%8F%82%E6%95%B0%EF%BC%8C%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0%EF%BC%8C%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.</span> <span class="nav-text">具名参数，变长参数，默认参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.1.</span> <span class="nav-text">具名参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.2.</span> <span class="nav-text">变长参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Operator"><span class="nav-number">1.9.3.</span> <span class="nav-text">* Spread Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.4.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-5"><span class="nav-number">1.9.5.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F-val-var"><span class="nav-number">1.1.</span> <span class="nav-text">常量与变量(val,var)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.1.3.</span> <span class="nav-text">类型推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#val%E4%B8%8Efinal"><span class="nav-number">1.1.4.</span> <span class="nav-text">val与final</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%EF%BC%88function%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">函数（function）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E5%87%BD%E6%95%B0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">编写函数的注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">Lambda表达式</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -1043,7 +856,7 @@ fun hello(double:Double = 3.0,vararg ints:Int,string:String = &quot;Hello&quot;)
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F-val-var"><span class="nav-number">1.1.</span> <span class="nav-text">常量与变量(val,var)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.1.3.</span> <span class="nav-text">类型推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#val%E4%B8%8Efinal"><span class="nav-number">1.1.4.</span> <span class="nav-text">val与final</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%EF%BC%88function%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">函数（function）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E5%87%BD%E6%95%B0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">编写函数的注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">Lambda表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">什么是Lambda表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda%E7%B1%BB%E5%9E%8B%E8%A1%A8%E7%A4%BA%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">Lambda类型表示举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda%E7%9A%84%E8%B0%83%E7%94%A8"><span class="nav-number">1.3.3.</span> <span class="nav-text">Lambda的调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda%E7%9A%84%E7%AE%80%E5%8C%96"><span class="nav-number">1.3.4.</span> <span class="nav-text">Lambda的简化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%EF%BC%88%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E3%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">类成员（成员方法、成员变量）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E6%88%90%E5%91%98"><span class="nav-number">1.4.1.</span> <span class="nav-text">什么是类成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.2.</span> <span class="nav-text">函数和方法的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.3.</span> <span class="nav-text">定义方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-number">1.4.4.</span> <span class="nav-text">定义属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="nav-number">1.4.5.</span> <span class="nav-text">属性访问控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.4.6.</span> <span class="nav-text">属性初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.4.7.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.5.</span> <span class="nav-text">基本运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%88%86%E6%94%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8Cwhen%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%89%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">表达式（中缀表达式，分支表达式，when表达式等）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.6.1.</span> <span class="nav-text">中缀表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E6%98%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%AF%E4%BB%A5%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%8D%E6%98%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.6.2.</span> <span class="nav-text">分支表达式(是表达式可以有返回值不是语句)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#when%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.6.3.</span> <span class="nav-text">when表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-2"><span class="nav-number">1.6.4.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%EF%BC%88for%E5%BE%AA%E7%8E%AF%EF%BC%8Cwhile%E5%BE%AA%E7%8E%AF%EF%BC%8Ccontinue-break%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">3-7 循环语句（for循环，while循环，continue,break）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.7.1.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF-%E4%B8%8Ejava%E4%B8%80%E6%A0%B7"><span class="nav-number">1.7.2.</span> <span class="nav-text">while循环(与java一样)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%92%8C%E7%BB%88%E6%AD%A2%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.7.3.</span> <span class="nav-text">跳过和终止循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-3"><span class="nav-number">1.7.4.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7-try-catch-finally"><span class="nav-number">1.8.</span> <span class="nav-text">异常捕获(try,catch,finally)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#try%E2%80%A6catch"><span class="nav-number">1.8.1.</span> <span class="nav-text">try…catch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#finally"><span class="nav-number">1.8.2.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-4"><span class="nav-number">1.8.3.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E5%8F%82%E6%95%B0%EF%BC%8C%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0%EF%BC%8C%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.</span> <span class="nav-text">具名参数，变长参数，默认参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.1.</span> <span class="nav-text">具名参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.2.</span> <span class="nav-text">变长参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Operator"><span class="nav-number">1.9.3.</span> <span class="nav-text">* Spread Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="nav-number">1.9.4.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-5"><span class="nav-number">1.9.5.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F-val-var"><span class="nav-number">1.1.</span> <span class="nav-text">常量与变量(val,var)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.1.3.</span> <span class="nav-text">类型推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#val%E4%B8%8Efinal"><span class="nav-number">1.1.4.</span> <span class="nav-text">val与final</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%EF%BC%88function%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">函数（function）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E5%87%BD%E6%95%B0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">编写函数的注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">Lambda表达式</span></a></li></ol></li></ol>
     </div>
 </div>
 

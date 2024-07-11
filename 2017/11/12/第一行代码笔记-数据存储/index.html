@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Mayo">
+    
+    <title>
+        
+            第一行代码笔记-数据存储 |
+        
+        妙妙屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               妙妙屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about-me"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about-me"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        第一行代码笔记-数据存储
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://avatars.githubusercontent.com/u/16527293?v=4">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Mayo</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2017-11-12 10:39:31</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jul 11 2024 12:38:17 GMT+0800">2024-07-11 12:38:17</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">第一行代码</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SharedPreferences/">SharedPreferences</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">SQLite数据库</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>持久化技术就是指那些将内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据仍然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在瞬时状态和持久状态之间进行转换。</p>
+<span id="more"></span>
+
+<p>Android主要提供3中方式用于简单地实现数据持久化功能，即文件存储、SharedPreference存储、数据库存储。还可以存储在手机SD卡中，不过其他三种更加安全也更加简单。</p>
+<h3 id="2-文件存储"><a href="#2-文件存储" class="headerlink" title="2. 文件存储"></a>2. 文件存储</h3><p>不对存储的内容进行任何的格式化处理，所有数据都是原封不动地保存到文件中的，因而比较适合用于存储一些简单的文本数据或二进制数据。如果要使用文件存储的方式来保存一些较为复杂的文本数据，就需要定义一套自己的格式规范，这样可以方便之后将数据从文件中重新解析出来。</p>
+<h4 id="2-1-将数据存储到文件中"><a href="#2-1-将数据存储到文件中" class="headerlink" title="2.1 将数据存储到文件中"></a>2.1 将数据存储到文件中</h4><p>Context类提供了一个openFileOutput()方法，可以用于将数据存储到指定的文件中。这里接收到两个参数，第一个参数是文件名，，在文件创建的时候使用的就是这个名称，注意这里离指定的文件名不可包含路径，因为所有的文件都是默认存储到&#x2F;data&#x2F;data&#x2F;<packagename>&#x2F;files&#x2F;目录下的。第二个参数是文件的操作模式，主要有两种模式可选，MORDE_PRIVATE和MODE_APPENDE。MORDE_PRIVATE是默认的操作模式，表示指定同样文件名的时候，所写入的内容将会覆盖原文件中的内容。MODE_APPENDE则表示如果该文件已存在，就往文件里追加内容，不存在就创建新文件。openFileOutput()方法返回的是一个FileOutputStream对象，得到了这个对象之后就可以使用java流的方式将数据写入到文件中了。</packagename></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public void save()&#123;</span><br><span class="line">	String data = &quot;Data to save&quot;;</span><br><span class="line">	FileOutputStream out = null;</span><br><span class="line">	BufferedWriter writer = null;</span><br><span class="line">	try&#123;</span><br><span class="line">		out = openFileOutput(&quot;data&quot;,Context. MORDE_PRIVATE);</span><br><span class="line">		writer = new BufferedWriter(new OutputStreamWriter(out));</span><br><span class="line">		writer.write(data);</span><br><span class="line">	&#125; catch(IOException e)&#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">		try&#123;</span><br><span class="line">			if(writer != null)&#123;</span><br><span class="line">				writer.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (IOException e)&#123;</span><br><span class="line">			e.print</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-从文件中读取数据"><a href="#2-2-从文件中读取数据" class="headerlink" title="2.2 从文件中读取数据"></a>2.2 从文件中读取数据</h4><p>Context类提供一个openFileInput()方法,用于从文件中读取数据。接收一个参数，即要读取的文件名，然后系统会自动到&#x2F;data&#x2F;data&#x2F;<package name>&#x2F;files&#x2F;目录下去加载这个文件，并返回一个FileInputStream对象。</package></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public String load()&#123;</span><br><span class="line">	FileInputStream in = null;</span><br><span class="line">	BufferedReader reader = null;</span><br><span class="line">	StringBuilder content = new StringBuilder();</span><br><span class="line">	try&#123;</span><br><span class="line">		in = openFileInput(&quot;data&quot;);</span><br><span class="line">		reader = new BufferedReader(new InputStreamReader(in));</span><br><span class="line">		String line = &quot;&quot;;</span><br><span class="line">		while((line = reader.readLine()) != null)&#123;</span><br><span class="line">			content.append(line);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; catch(IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">		if(reader != null) &#123;</span><br><span class="line">			try&#123;</span><br><span class="line">				reader.close();</span><br><span class="line">			&#125; catch(IOException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return content.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-SharedPreferences存储"><a href="#3-SharedPreferences存储" class="headerlink" title="3. SharedPreferences存储"></a>3. SharedPreferences存储</h3><p>使用键值对的方式来存储数据。</p>
+<h4 id="3-1-将数据存储到SharedPreferences中"><a href="#3-1-将数据存储到SharedPreferences中" class="headerlink" title="3.1 将数据存储到SharedPreferences中"></a>3.1 将数据存储到SharedPreferences中</h4><h5 id="Android主要提供3种方法用于得到SharedPreferences对象"><a href="#Android主要提供3种方法用于得到SharedPreferences对象" class="headerlink" title="Android主要提供3种方法用于得到SharedPreferences对象:"></a>Android主要提供3种方法用于得到SharedPreferences对象:</h5><p>1.Context中的getSharedPreferences()方法。接收两个参数，第一个用于指定SharedPreferences文件的名称，如果指定的文件不存在则会创建一个，SharedPreferences文件都是存放在&#x2F;data&#x2F;data&#x2F;<package name>&#x2F;shared_prefs&#x2F;目录下的。第二个参数用于指定操作模式，目前只有MODE_PRiVATE这一种模式可选，和直接传入0效果相同，表示只有当前的应用才可以对这个SharedPreferences文件进行读写。</package></p>
+<p>2.Activity中的getSharedPreferences()方法。只接收一个参数即操作模式，会自动将当前活动的类名作为SharedPreferences的文件名。</p>
+<p>3.PreferenceManager类中的getDefaultSharedPreference()方法。这是一个静态方法，接收一个Context对象，并自动使用当前应用程序的包名作为前缀来命名SharedPreferences文件。</p>
+<h5 id="向SharedPreferences文件中存储数据分为3步"><a href="#向SharedPreferences文件中存储数据分为3步" class="headerlink" title="向SharedPreferences文件中存储数据分为3步:"></a>向SharedPreferences文件中存储数据分为3步:</h5><ul>
+<li>调用SharedPreferences的edit()方法获取一个SharedPreferences.Editor对象</li>
+<li>向SharedPreferences.Editor对象中添加数据</li>
+<li>调用apply()方法将添加的数据提交</li>
+</ul>
+<h4 id="3-2-从SharedPreferences中读取数据"><a href="#3-2-从SharedPreferences中读取数据" class="headerlink" title="3.2 从SharedPreferences中读取数据"></a>3.2 从SharedPreferences中读取数据</h4><p>SharedPreferences对象中提供了一系列的get方法，用于对存储的数据进行读取。</p>
+<h3 id="4-SQLite数据库存储"><a href="#4-SQLite数据库存储" class="headerlink" title="4. SQLite数据库存储"></a>4. SQLite数据库存储</h3><h4 id="4-1-创建数据库"><a href="#4-1-创建数据库" class="headerlink" title="4.1 创建数据库"></a>4.1 创建数据库</h4><p>SQLiteOpenHelper可以简单的对数据库进行创建和升级。它是一个抽象类，需要创建一个自己的帮助类去继承它。有两个抽象方法，onCreate()和onUpgrade()，必须重写这两个方法，实现创建、升级数据库的逻辑。</p>
+<p>SQLiteOpenHelper还有两个非常重要的实例方法，getReadableDatabase()和getWritebleDatabase()。这个两个方法都可以创建或者打开一个现有的数据库（如果数据库已存在则打开否则创建），返回一个可对数据库进行读写操作的对象。不同的是，当数据库不可写入的时候（如磁盘空间已满）, getReadableDatabase()方法返回的对象将以只读的方式打开数据库,getWriteableDatabase()将出现异常。</p>
+<p>SQLiteOpenHelper有两个构造方法可以重写，一般使用参数少的，接收四个参数，第一个是Context，第二个是数据库名，第三个是允许我们在查询数据的时候返回一个自定义Cursor，一般出入null。第四个参数表示当前数据库的版本号，用于升级操作。构建出实例之后，再调用getReadableDatabase()或getWritebleDatabase()方法就可以创建数据库了，文件放在&#x2F;data&#x2F;data&#x2F;<package name>&#x2F;databases&#x2F;目录下。此时，重写的onCreate()方法会得到执行，所以通常会在这里处理一些创建表的逻辑。</package></p>
+<h5 id="创建一个BookStore-db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列"><a href="#创建一个BookStore-db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列" class="headerlink" title="创建一个BookStore.db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列:"></a>创建一个BookStore.db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table Book (</span><br><span class="line">	id integer primary key autoincrement,</span><br><span class="line">	author text,</span><br><span class="line">	price real,</span><br><span class="line">	pages integer,</span><br><span class="line">	name text)</span><br></pre></td></tr></table></figure>
+<p>integer表示整型，real浮点型，text文本类型，blob二进制类型。primary key主键，autoincrement表示id列自增长。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">public class MyDatabaseHelper extends SQLiteOpenHelper &#123;</span><br><span class="line"></span><br><span class="line">	public static final String CREATE_BOOK = &quot;create table Book (&quot;</span><br><span class="line">		+ &quot;id integer primary key autoincrement,&quot;</span><br><span class="line">		+ &quot;author text,&quot;</span><br><span class="line">		+ &quot;price real,&quot;</span><br><span class="line">		+ &quot;pages integer,&quot;</span><br><span class="line">		+ &quot;name text)&quot;;</span><br><span class="line">	</span><br><span class="line">	private Context mContext;</span><br><span class="line">	</span><br><span class="line">	public MyDatabaseHelper(Context context,Sring name,</span><br><span class="line">								SQLiteDatabase.CursorFactry factory,int version)&#123;</span><br><span class="line">								</span><br><span class="line">		super(context,name,factory,version);</span><br><span class="line">		</span><br><span class="line">		mContext = context;				</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onCreate(SQLiteDatabase db)&#123;</span><br><span class="line">		db.execSQL(CREATE_BOOK);</span><br><span class="line">		Toast.makeText(mContext,&quot;Create succeeded&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion)&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">	</span><br><span class="line">	private MyDatabaseHelper dbHelper;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">		</span><br><span class="line">		super.onCreate(savedInstanceState);</span><br><span class="line">		setContentView(R.layout.activity_main);</span><br><span class="line">		dbHelper = new MyDatabaseHelper(this,&quot;BookStore.db&quot;,null,1);</span><br><span class="line">		Button createDatabase = (Button)findViewById(R.id.create_database);</span><br><span class="line">		createDatabase.setOnClickListener(new View.OnClickListener()&#123;</span><br><span class="line">			</span><br><span class="line">			@Override</span><br><span class="line">			public void onClick(View v)&#123;</span><br><span class="line">				dbHelper.getWritebleDatabase();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击事件调用了getWritebleDatabase()方法，检测到当前程序没有这个数据库，会创建这个数据库并调用MyDatabaseHelper中的onCreate()方法,再次点击不会创建了。</p>
+<p>adb shell后cd到数据库目录，有两个文件，一个是BookStore.db，另一个是BookStore.db-journal则是让数据库能支持事务而产生的临时日志文件，通常这个文件大小为0。sqlite3加数据库名称可以打开数据库。输入.table可以看有哪些表，其中android_metadata表是每个数据库都会自动生成的。输入.schema可以查看他们的建表语句。输入.exit或.quit退出数据库编辑，再输入.exit就可以退出控制台了。</p>
+<h4 id="4-2-升级数据库"><a href="#4-2-升级数据库" class="headerlink" title="4.2 升级数据库"></a>4.2 升级数据库</h4><h5 id="添加Category表用于记录图书的分类"><a href="#添加Category表用于记录图书的分类" class="headerlink" title="添加Category表用于记录图书的分类:"></a>添加Category表用于记录图书的分类:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">create table Category (</span><br><span class="line">	id integer primary key autoincrement,</span><br><span class="line">	category_name text,</span><br><span class="line">	category_code integer)</span><br><span class="line">	</span><br><span class="line">public class MyDatabaseHelper extends SQLiteOpenHelper &#123;</span><br><span class="line"></span><br><span class="line">	public static final String CREATE_BOOK = &quot;create table Book (&quot;</span><br><span class="line">		+ &quot;id integer primary key autoincrement,&quot;</span><br><span class="line">		+ &quot;author text,&quot;</span><br><span class="line">		+ &quot;price real,&quot;</span><br><span class="line">		+ &quot;pages integer,&quot;</span><br><span class="line">		+ &quot;name text)&quot;;</span><br><span class="line"></span><br><span class="line">	public static final String CREATE_CATEGORY = &quot;create table Category (&quot;</span><br><span class="line">		+ &quot;id integer primary key autoincrement,&quot;</span><br><span class="line">		+ &quot;category_name text,&quot;</span><br><span class="line">		+ &quot;category_code integer)&quot;;</span><br><span class="line">	</span><br><span class="line">	private Context mContext;</span><br><span class="line">	</span><br><span class="line">	public MyDatabaseHelper(Context context,Sring name,</span><br><span class="line">								SQLiteDatabase.CursorFactry factory,int version)&#123;</span><br><span class="line">								</span><br><span class="line">		super(context,name,factory,version);			mContext = context;				</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onCreate(SQLiteDatabase db)&#123;</span><br><span class="line">		db.execSQL(CREATE_BOOK);</span><br><span class="line">		db.execSQL(CREATE_CATEGORY);</span><br><span class="line">		Toast.makeText(mContext,&quot;Create succeeded&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion)&#123;</span><br><span class="line">		db.execSQL(&quot;drop table if exists Book&quot;);</span><br><span class="line">		db.execSQL(&quot;drop table if exists Category&quot;);</span><br><span class="line">		onCreate(db);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">	</span><br><span class="line">	private MyDatabaseHelper dbHelper;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">		</span><br><span class="line">		super.onCreate(savedInstanceState);</span><br><span class="line">		setContentView(R.layout.activity_main);</span><br><span class="line">		dbHelper = new MyDatabaseHelper(this,&quot;BookStore.db&quot;,null,2);</span><br><span class="line">		Button createDatabase = (Button)findViewById(R.id.create_database);</span><br><span class="line">		createDatabase.setOnClickListener(new View.OnClickListener()&#123;</span><br><span class="line">			</span><br><span class="line">			@Override</span><br><span class="line">			public void onClick(View v)&#123;</span><br><span class="line">				dbHelper.getWritebleDatabase();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-添加数据"><a href="#4-3-添加数据" class="headerlink" title="4.3 添加数据"></a>4.3 添加数据</h4><p>对数据的操作无非是四种,CRUD。C是Create添加，R是Retrieve查询，U是Update更新，D是Delete删除。SQL命令中，添加使用insert，查询使用selete，更新使用uodate，删除使用delete。</p>
+<p>SQLiteOpenHelper的getReadableDatabase()和getWritebleDatabase()方法不仅可以创建和升级数据库，还会返回一个SQLiteDatabase对象，借助这个对象就可以进行CRUD操作了。</p>
+<p>SQLiteDatabase提供一个insert()方法，接收三个参数，第一个是表名，第二个参数用于在未指定添加数据的情况下给某些可为空的列自动赋值NULL，一般用不到这个功能，直接传入null即可。第三个参数是一个ContentValues对象，提供一系列的put()方法进行重载，用于向ContentValues中添加数据，只需要将表中的每个列名及相应的待添加数据传入即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db = dbHelper.getWritebleDatabase();</span><br><span class="line">ContentValues values = new ContentValues();</span><br><span class="line">//开始组装第一条数据</span><br><span class="line">values.put(&quot;name&quot;,&quot;The Da Vinci code&quot;);</span><br><span class="line">values.put(&quot;author&quot;,&quot;Dan Brown&quot;);</span><br><span class="line">values.put(&quot;pages&quot;,454);</span><br><span class="line">values.put(&quot;price&quot;,16.96);</span><br><span class="line">db.insert(&quot;Book&quot;,null,values);</span><br><span class="line">values.clear();</span><br><span class="line">//开始组装第二条数据</span><br><span class="line">values.put(&quot;name&quot;,&quot;The Lost Symbol&quot;);</span><br><span class="line">values.put(&quot;author&quot;,&quot;Dan Brown&quot;);</span><br><span class="line">values.put(&quot;pages&quot;,510);</span><br><span class="line">values.put(&quot;price&quot;,19.95);</span><br><span class="line">db.insert(&quot;Book&quot;,null,values);</span><br></pre></td></tr></table></figure>
+<h4 id="4-4-更新数据"><a href="#4-4-更新数据" class="headerlink" title="4.4 更新数据"></a>4.4 更新数据</h4><p>SQLiteDatabase提供一个update()方法,接收四个参数，第一个参数是表名，第二个参数是一个ContentValues对象，第三个及第四个都用于约束更新某一行或某几行中的数据，不指定的话默认所有。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db = dbHelper.getWritebleDatabase();</span><br><span class="line">ContentValues values = new ContentValues();</span><br><span class="line">values.put(&quot;price&quot;,10.99);</span><br><span class="line">db.update(&quot;Book&quot;,values,&quot;name=?&quot;,new String[]&#123;&quot;The Da Vinci code&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<p>第三个参数是SQL语句的where部分，表示更新所有name等于?的行，而?是一个占位符，可以通过第四个参数提供的一个字符串数组为第三个参数中的每个占位符指定相应的内容。</p>
+<h4 id="4-5-删除数据"><a href="#4-5-删除数据" class="headerlink" title="4.5 删除数据"></a>4.5 删除数据</h4><p>SQLiteDatabase提供一个delete()方法，接收三个参数，第一个参数是表名，第二个及第三个都用于约束删除某一行或某几行中的数据，不指定的话默认删除所有行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db = dbHelper.getWritebleDatabase();</span><br><span class="line">db.delete(&quot;Book&quot;,&quot;pages&gt;?&quot;,new String[]&#123;&quot;500&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="4-6-查询数据"><a href="#4-6-查询数据" class="headerlink" title="4.6 查询数据"></a>4.6 查询数据</h4><p>SQLiteDatabase提供一个query()方法,接收七个参数，第一个参数是表名；第二个参数用于指定去查询哪几列，如果不指定默认查询所有列；第三个及第四个都用于约束查询某一行或某几行中的数据，不指定的话默认查询所有行；第五个参数用于指定需要去group by的列，不指定则表示不对查询结果进行group by操作；第六个参数用于对group by之后的数据进行进一步的过滤，不指定则表示不进行过滤；第七个参数用于指定查询结果的排序方式，不指定则表示使用默认的排序方式。</p>
+<p><img src="/2017/11/12/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/1.png"></p>
+<p>query()方法会返回一个Cursor对象，查询到的所有数据都将从这个对象中取出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db = dbHelper.getWritebleDatabase();</span><br><span class="line">//查询Book表中所有数据</span><br><span class="line">Cursor cursor = db.query(&quot;Book&quot;,null,null,null,null,null,null);</span><br><span class="line">if(cursor.moveToFirst())&#123;</span><br><span class="line">	do&#123;</span><br><span class="line">		//遍历Cursor对象，取出数据并打印</span><br><span class="line">		String name = cursor.getString(cursor.getColumnIndex(&quot;name&quot;));</span><br><span class="line">		String author = cursor.getString(cursor.getColumnIndex(&quot;author&quot;));</span><br><span class="line">		int pages = cursor.getInt(cursor.getColumnIndex(&quot;pages&quot;));</span><br><span class="line">		double price = cursor.getDouble(cursor.getColumnIndex(&quot;price&quot;));</span><br><span class="line">	&#125; while (cursor.moveToNext());</span><br><span class="line">&#125; </span><br><span class="line">cursor.close();</span><br></pre></td></tr></table></figure>
+<h4 id="4-7-使用SQL操作数据库"><a href="#4-7-使用SQL操作数据库" class="headerlink" title="4.7 使用SQL操作数据库"></a>4.7 使用SQL操作数据库</h4><h5 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(&quot;insert into Book (name,author,pages,price) values(?,?,?,?)&quot;,</span><br><span class="line">			new String[] &#123;&quot;xxxx&quot;,&quot;xxxx&quot;,&quot;xxxx&quot;,&quot;xxxx&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(&quot;update Book set price = ? where name = ?&quot;,</span><br><span class="line">			new String[]&#123;&quot;xxxx&quot;,&quot;xxxx&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(&quot;delete from Book where pages &gt; ?&quot;,new String[] &#123;&quot;xxxx&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.rawQuery(&quot;select * from Book&quot;,null);</span><br></pre></td></tr></table></figure>
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SharedPreferences/">SharedPreferences</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">SQLite数据库</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2017/11/13/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-ContentProvider/"
+                                   title="第一行代码笔记-ContentProvider"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-ContentProvider</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2017/11/11/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Broadcast/"
+                                   title="第一行代码笔记-Broadcast"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-Broadcast</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="nav-number">2.</span> <span class="nav-text">2. 文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%B0%86%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 将数据存储到文件中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 从文件中读取数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-SharedPreferences%E5%AD%98%E5%82%A8"><span class="nav-number">3.</span> <span class="nav-text">3. SharedPreferences存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E5%B0%86%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0SharedPreferences%E4%B8%AD"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 将数据存储到SharedPreferences中</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Android%E4%B8%BB%E8%A6%81%E6%8F%90%E4%BE%9B3%E7%A7%8D%E6%96%B9%E6%B3%95%E7%94%A8%E4%BA%8E%E5%BE%97%E5%88%B0SharedPreferences%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.1.1.</span> <span class="nav-text">Android主要提供3种方法用于得到SharedPreferences对象:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%91SharedPreferences%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E5%88%86%E4%B8%BA3%E6%AD%A5"><span class="nav-number">3.1.2.</span> <span class="nav-text">向SharedPreferences文件中存储数据分为3步:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E4%BB%8ESharedPreferences%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 从SharedPreferences中读取数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8"><span class="nav-number">4.</span> <span class="nav-text">4. SQLite数据库存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 创建数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AABookStore-db%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AABook%E8%A1%A8%EF%BC%8C%E8%A1%A8%E4%B8%AD%E6%9C%89id%EF%BC%88%E4%B8%BB%E9%94%AE%EF%BC%89%E3%80%81%E4%BD%9C%E8%80%85%E3%80%81%E4%BB%B7%E6%A0%BC%E3%80%81%E9%A1%B5%E6%95%B0%E3%80%81%E4%B9%A6%E5%90%8D%E7%AD%89%E5%88%97"><span class="nav-number">4.1.1.</span> <span class="nav-text">创建一个BookStore.db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 升级数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Category%E8%A1%A8%E7%94%A8%E4%BA%8E%E8%AE%B0%E5%BD%95%E5%9B%BE%E4%B9%A6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">4.2.1.</span> <span class="nav-text">添加Category表用于记录图书的分类:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 添加数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 更新数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 删除数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 查询数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7-%E4%BD%BF%E7%94%A8SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 使用SQL操作数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.1.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.2.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.3.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.4.</span> <span class="nav-text">查询数据</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2017</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Mayo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="nav-number">2.</span> <span class="nav-text">2. 文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%B0%86%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 将数据存储到文件中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 从文件中读取数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-SharedPreferences%E5%AD%98%E5%82%A8"><span class="nav-number">3.</span> <span class="nav-text">3. SharedPreferences存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E5%B0%86%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0SharedPreferences%E4%B8%AD"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 将数据存储到SharedPreferences中</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Android%E4%B8%BB%E8%A6%81%E6%8F%90%E4%BE%9B3%E7%A7%8D%E6%96%B9%E6%B3%95%E7%94%A8%E4%BA%8E%E5%BE%97%E5%88%B0SharedPreferences%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.1.1.</span> <span class="nav-text">Android主要提供3种方法用于得到SharedPreferences对象:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%91SharedPreferences%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E5%88%86%E4%B8%BA3%E6%AD%A5"><span class="nav-number">3.1.2.</span> <span class="nav-text">向SharedPreferences文件中存储数据分为3步:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E4%BB%8ESharedPreferences%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 从SharedPreferences中读取数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8"><span class="nav-number">4.</span> <span class="nav-text">4. SQLite数据库存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 创建数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AABookStore-db%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AABook%E8%A1%A8%EF%BC%8C%E8%A1%A8%E4%B8%AD%E6%9C%89id%EF%BC%88%E4%B8%BB%E9%94%AE%EF%BC%89%E3%80%81%E4%BD%9C%E8%80%85%E3%80%81%E4%BB%B7%E6%A0%BC%E3%80%81%E9%A1%B5%E6%95%B0%E3%80%81%E4%B9%A6%E5%90%8D%E7%AD%89%E5%88%97"><span class="nav-number">4.1.1.</span> <span class="nav-text">创建一个BookStore.db的数据库，创建一个Book表，表中有id（主键）、作者、价格、页数、书名等列:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 升级数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Category%E8%A1%A8%E7%94%A8%E4%BA%8E%E8%AE%B0%E5%BD%95%E5%9B%BE%E4%B9%A6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">4.2.1.</span> <span class="nav-text">添加Category表用于记录图书的分类:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 添加数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 更新数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 删除数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 查询数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7-%E4%BD%BF%E7%94%A8SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 使用SQL操作数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.1.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.2.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.3.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">4.7.4.</span> <span class="nav-text">查询数据</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

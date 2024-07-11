@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Apr 08 2020 17:52:24 GMT+0800">2020-04-08 17:52:24</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 14:45:34 GMT+0800">2024-07-11 14:45:34</span>
             </span>
         
 
@@ -256,111 +256,51 @@
                     
                          <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="1-groovy中闭包基础详解"><a href="#1-groovy中闭包基础详解" class="headerlink" title="1.groovy中闭包基础详解"></a>1.groovy中闭包基础详解</h2><p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/25.png"></p>
 <h3 id="1-1-闭包定义及调用（与方法对比学习）"><a href="#1-1-闭包定义及调用（与方法对比学习）" class="headerlink" title="1.1 闭包定义及调用（与方法对比学习）"></a>1.1 闭包定义及调用（与方法对比学习）</h3><p>闭包就是一段代码块</p>
-<pre><code>def clouser = &#123; println &#39;hello groovy!&#39; &#125;
-//执行
-clouser.call()
-//第二种调用
-clouser()
-</code></pre>
 <span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def clouser = &#123; println &#x27;hello groovy!&#x27; &#125;</span><br><span class="line">//执行</span><br><span class="line">clouser.call()</span><br><span class="line">//第二种调用</span><br><span class="line">clouser()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/26.png"></p>
 <h3 id="1-2-闭包参数"><a href="#1-2-闭包参数" class="headerlink" title="1.2 闭包参数"></a>1.2 闭包参数</h3><p>-&gt;之前为参数部分，-&gt;之后为闭包体</p>
-<pre><code>def clouser = &#123;String name  -&gt; println &quot;hello $&#123;name&#125;&quot; &#125;
-clouser.call(&#39;groovy&#39;)
-clouser(&#39;groovy&#39;)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def clouser = &#123;String name  -&gt; println &quot;hello $&#123;name&#125;&quot; &#125;</span><br><span class="line">clouser.call(&#x27;groovy&#x27;)</span><br><span class="line">clouser(&#x27;groovy&#x27;)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/27.png"></p>
 <p>多个参数</p>
-<pre><code>def clouser = &#123;String name,int age  -&gt; println &quot;hello $&#123;name&#125;,My age is $&#123;age&#125;&quot; &#125;
-def name = &#39;groovy&#39;
-clouser(name,4)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def clouser = &#123;String name,int age  -&gt; println &quot;hello $&#123;name&#125;,My age is $&#123;age&#125;&quot; &#125;</span><br><span class="line">def name = &#x27;groovy&#x27;</span><br><span class="line">clouser(name,4)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/28.png"></p>
 <p>默认参数it,所有闭包都有的默认参数，不需要显示申明</p>
-<pre><code>def clouser = &#123;println &quot;hello $&#123;it&#125;&quot; &#125;
-def name = &#39;groovy&#39;
-clouser(name)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def clouser = &#123;println &quot;hello $&#123;it&#125;&quot; &#125;</span><br><span class="line">def name = &#x27;groovy&#x27;</span><br><span class="line">clouser(name)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/29.png"></p>
 <h3 id="1-3-闭包返回值"><a href="#1-3-闭包返回值" class="headerlink" title="1.3 闭包返回值"></a>1.3 闭包返回值</h3><p>闭包一定会有返回值（与方法不同），下面代码return改为println后，返回值为null</p>
-<pre><code>//def clouser = &#123;String name  -&gt; return   &quot;hello $&#123;name&#125;&quot; &#125;
-def clouser = &#123;String name  -&gt; println  &quot;hello $&#123;name&#125;&quot; &#125;
-def result = clouser(&#39;groovy&#39;)
-println result
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//def clouser = &#123;String name  -&gt; return   &quot;hello $&#123;name&#125;&quot; &#125;</span><br><span class="line">def clouser = &#123;String name  -&gt; println  &quot;hello $&#123;name&#125;&quot; &#125;</span><br><span class="line">def result = clouser(&#x27;groovy&#x27;)</span><br><span class="line">println result</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/30.png"></p>
 <h2 id="2-groovy中闭包使用详解"><a href="#2-groovy中闭包使用详解" class="headerlink" title="2.groovy中闭包使用详解"></a>2.groovy中闭包使用详解</h2><p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/31.png"></p>
 <h3 id="2-1-与基本类型的结合使用"><a href="#2-1-与基本类型的结合使用" class="headerlink" title="2.1 与基本类型的结合使用"></a>2.1 与基本类型的结合使用</h3><p>可以在DefaultGroovyMethods方法中查看实现，参数的个数查看源码方法里call()的个数</p>
 <p>闭包作为方法参数的最后一个可以不写在括号里</p>
 <p>不用指定闭包参数类型，因为groovy是动态类型的，会在运行时自己推断</p>
-<h4 id="阶乘方法"><a href="#阶乘方法" class="headerlink" title="阶乘方法"></a>阶乘方法</h4><pre><code>int x = fab(5)
-println x
-int y = fab2(5)
-println y
-
-//求指定number的阶乘
-int fab(int number) &#123;
-    int result = 1
-    1.upto(number , &#123; num -&gt; result *= num&#125;)
-    return result
-&#125;
-
-int fab2 (int number)&#123;
-    int result = 1
-    number.downto(1) &#123;num -&gt; result*= num&#125;
-    return result
-&#125;
-</code></pre>
+<h4 id="阶乘方法"><a href="#阶乘方法" class="headerlink" title="阶乘方法"></a>阶乘方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int x = fab(5)</span><br><span class="line">println x</span><br><span class="line">int y = fab2(5)</span><br><span class="line">println y</span><br><span class="line"></span><br><span class="line">//求指定number的阶乘</span><br><span class="line">int fab(int number) &#123;</span><br><span class="line">   	int result = 1</span><br><span class="line">   	1.upto(number , &#123; num -&gt; result *= num&#125;)</span><br><span class="line">   	return result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int fab2 (int number)&#123;</span><br><span class="line">   	int result = 1</span><br><span class="line">   	number.downto(1) &#123;num -&gt; result*= num&#125;</span><br><span class="line">   	return result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/32.png"></p>
-<h4 id="累计求和方法"><a href="#累计求和方法" class="headerlink" title="累计求和方法"></a>累计求和方法</h4><pre><code>//times方法起始值始终是0
-int call (int number) &#123;
-    int result = 0
-    number.times &#123;
-        num -&gt; result+=num
-    &#125;
-    return result
-&#125;
-//0加到4
-int z = call(5)
-println z
-</code></pre>
+<h4 id="累计求和方法"><a href="#累计求和方法" class="headerlink" title="累计求和方法"></a>累计求和方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//times方法起始值始终是0</span><br><span class="line">int call (int number) &#123;</span><br><span class="line">   	int result = 0</span><br><span class="line">   	number.times &#123;</span><br><span class="line">       	num -&gt; result+=num</span><br><span class="line">   	&#125;</span><br><span class="line">   	return result</span><br><span class="line">&#125;</span><br><span class="line">//0加到4</span><br><span class="line">int z = call(5)</span><br><span class="line">println z</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/33.png"></p>
 <h3 id="2-2-与String结合使用"><a href="#2-2-与String结合使用" class="headerlink" title="2.2 与String结合使用"></a>2.2 与String结合使用</h3><h4 id="each遍历"><a href="#each遍历" class="headerlink" title="each遍历"></a>each遍历</h4><p>each的返回值还是str的值（调用者本身）</p>
-<pre><code>String str = &#39;the 2 and 3 is 5&#39;
-str.each &#123;print it&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = &#x27;the 2 and 3 is 5&#x27;</span><br><span class="line">str.each &#123;print it&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/34.png"></p>
 <h4 id="find方法"><a href="#find方法" class="headerlink" title="find方法"></a>find方法</h4><p>查找符合条件的第一个,闭包是一个Boolean类型返回值</p>
-<pre><code>println str.find &#123;it.isNumber()&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println str.find &#123;it.isNumber()&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/35.png"></p>
 <h4 id="findAll方法"><a href="#findAll方法" class="headerlink" title="findAll方法"></a>findAll方法</h4><p>遍历字符串找到所有符合的放到集合里，闭包是一个Boolean类型返回值</p>
-<pre><code>def list = str.findAll &#123;it.isNumber()&#125;
-println list.toListString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def list = str.findAll &#123;it.isNumber()&#125;</span><br><span class="line">println list.toListString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/36.png"></p>
 <h4 id="any方法"><a href="#any方法" class="headerlink" title="any方法"></a>any方法</h4><p>只要满足条件就返回true，闭包是一个Boolean类型返回值</p>
-<pre><code>def result = str.any &#123; it.isNumber() &#125;
-println result
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def result = str.any &#123; it.isNumber() &#125;</span><br><span class="line">println result</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/37.png"></p>
 <h4 id="every方法"><a href="#every方法" class="headerlink" title="every方法"></a>every方法</h4><p>每一项都满足返回true，闭包是一个Boolean类型返回值</p>
-<pre><code>println str.every &#123;it.isNumber()&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println str.every &#123;it.isNumber()&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/38.png"></p>
 <h4 id="collect方法"><a href="#collect方法" class="headerlink" title="collect方法"></a>collect方法</h4><p>将字符串的每一个元素都应用闭包，会产生一个新的结果，将结果添加到list返回</p>
-<pre><code>def list2 = str.collect &#123;it.toUpperCase()&#125;
-println list2.toListString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def list2 = str.collect &#123;it.toUpperCase()&#125;</span><br><span class="line">println list2.toListString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/39.png"></p>
 <h3 id="2-3-与数据结构结合使用（数据结构章节）"><a href="#2-3-与数据结构结合使用（数据结构章节）" class="headerlink" title="2.3 与数据结构结合使用（数据结构章节）"></a>2.3 与数据结构结合使用（数据结构章节）</h3><h3 id="2-4-与文件等结合使用（文件章节）"><a href="#2-4-与文件等结合使用（文件章节）" class="headerlink" title="2.4 与文件等结合使用（文件章节）"></a>2.4 与文件等结合使用（文件章节）</h3><h2 id="3-groovy中闭包进阶详解（了解即可）"><a href="#3-groovy中闭包进阶详解（了解即可）" class="headerlink" title="3.groovy中闭包进阶详解（了解即可）"></a>3.groovy中闭包进阶详解（了解即可）</h2><p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/40.png"></p>
-<h3 id="3-1-三个重要的变量"><a href="#3-1-三个重要的变量" class="headerlink" title="3.1 三个重要的变量"></a>3.1 三个重要的变量</h3><pre><code>def scriptClouser = &#123;
-    println &quot;scriptClouser this:&quot;+this
-    println &quot;scriptClouser owner:&quot;+owner
-    println &quot;scriptClouser delegate:&quot;+delegate
-&#125;
-scriptClouser.call()
-</code></pre>
+<h3 id="3-1-三个重要的变量"><a href="#3-1-三个重要的变量" class="headerlink" title="3.1 三个重要的变量"></a>3.1 三个重要的变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def scriptClouser = &#123;</span><br><span class="line">   	println &quot;scriptClouser this:&quot;+this</span><br><span class="line">   	println &quot;scriptClouser owner:&quot;+owner</span><br><span class="line">   	println &quot;scriptClouser delegate:&quot;+delegate</span><br><span class="line">&#125;</span><br><span class="line">scriptClouser.call()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/41.png"></p>
 <ul>
 <li><pre><code>this：与java一样，代表闭包定义处的类，如上例指向脚本所对应的类
@@ -370,122 +310,25 @@ scriptClouser.call()
 <li>delegate：代表任意对象，有默认值与owner一致</li>
 </ul>
 <p>例子</p>
-<pre><code>//脚本中定义了一个内部类
-class Person &#123;
-
-    def static classClouser = &#123;
-        println &quot;classClouser this:&quot;+this
-        println &quot;classClouser owner:&quot;+owner
-        println &quot;classClouser delegate:&quot;+delegate
-    &#125;
-
-    def static say() &#123;
-        def classClouser = &#123;
-            println &quot;methodClassClouser this:&quot;+this
-            println &quot;methodClassClouser owner:&quot;+owner
-            println &quot;methodClassClouser delegate:&quot;+delegate
-        &#125;
-
-        classClouser.call()
-    &#125;
-&#125;
-Person.classClouser.call()
-Person.say()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//脚本中定义了一个内部类</span><br><span class="line">class Person &#123;</span><br><span class="line"></span><br><span class="line">   	def static classClouser = &#123;</span><br><span class="line">       	println &quot;classClouser this:&quot;+this</span><br><span class="line">       	println &quot;classClouser owner:&quot;+owner</span><br><span class="line">       	println &quot;classClouser delegate:&quot;+delegate</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	def static say() &#123;</span><br><span class="line">       	def classClouser = &#123;</span><br><span class="line">           	println &quot;methodClassClouser this:&quot;+this</span><br><span class="line">           	println &quot;methodClassClouser owner:&quot;+owner</span><br><span class="line">           	println &quot;methodClassClouser delegate:&quot;+delegate</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	classClouser.call()</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Person.classClouser.call()</span><br><span class="line">Person.say()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/42.png"></p>
 <p>上图指向的是类的字节码而不是对象，因为是static的</p>
-<pre><code>//闭包中定义闭包
-def outClouser = &#123;
-    def innerClouser = &#123;
-        println &quot;innerClouser this:&quot;+this
-        println &quot;innerClouser owner:&quot;+owner
-        println &quot;innerClouser delegate:&quot;+delegate
-    &#125;
-    innerClouser.call()
-&#125;
-outClouser.call()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//闭包中定义闭包</span><br><span class="line">def outClouser = &#123;</span><br><span class="line">   	def innerClouser = &#123;</span><br><span class="line">       	println &quot;innerClouser this:&quot;+this</span><br><span class="line">       	println &quot;innerClouser owner:&quot;+owner</span><br><span class="line">       	println &quot;innerClouser delegate:&quot;+delegate</span><br><span class="line">   	&#125;</span><br><span class="line">   	innerClouser.call()</span><br><span class="line">&#125;</span><br><span class="line">outClouser.call()</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/43.png"></p>
 <p><strong>总结：</strong>大多数情况，三者一致。如果直接在类和方法中定义闭包，三个变量是一样的。如果再闭包中又嵌套定义一个闭包，this与owner、delegate的值不一样，owner、delegate会指向离他最近的闭包的对象</p>
-<pre><code>//修改delegate
-Person p = new Person()
-def outClouser = &#123;
-    def innerClouser = &#123;
-        println &quot;innerClouser this:&quot;+this
-        println &quot;innerClouser owner:&quot;+owner
-        println &quot;innerClouser delegate:&quot;+delegate
-    &#125;
-    innerClouser.delegate = p //修改默认的delegate
-    innerClouser.call()
-&#125;
-outClouser.call()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//修改delegate</span><br><span class="line">Person p = new Person()</span><br><span class="line">def outClouser = &#123;</span><br><span class="line">   	def innerClouser = &#123;</span><br><span class="line">       	println &quot;innerClouser this:&quot;+this</span><br><span class="line">       	println &quot;innerClouser owner:&quot;+owner</span><br><span class="line">       	println &quot;innerClouser delegate:&quot;+delegate</span><br><span class="line">   	&#125;</span><br><span class="line">   	innerClouser.delegate = p //修改默认的delegate</span><br><span class="line">   	innerClouser.call()</span><br><span class="line">&#125;</span><br><span class="line">outClouser.call()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/44.png"></p>
 <p>人为修改delegate所指向的对象，delegate与owner不一样。this与owner不能修改</p>
-<h3 id="3-2-闭包委托策略（三个关键字的作用）"><a href="#3-2-闭包委托策略（三个关键字的作用）" class="headerlink" title="3.2 闭包委托策略（三个关键字的作用）"></a>3.2 闭包委托策略（三个关键字的作用）</h3><h4 id="更改属性"><a href="#更改属性" class="headerlink" title="更改属性"></a>更改属性</h4><pre><code>class Student&#123;
-    String name
-    def pretty = &#123;
-        &quot;My name is $&#123;name&#125;&quot;
-    &#125;
-    String toString()&#123;
-        pretty.call()
-    &#125;
-&#125;
-class Teacher&#123;
-    String name
-&#125;
-def stu = new Student(name: &#39;krido&#39;)
-def tea = new Teacher(name: &#39;mayo&#39;)
-stu.pretty.delegate = tea
-//更改委托策略。改为delegate后，会去找tea的name，如果没有name属性，会从owner中去找，如果此时是DELEGATE_ONLY找不到则会报错
-stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
-println stu.toString()
-</code></pre>
+<h3 id="3-2-闭包委托策略（三个关键字的作用）"><a href="#3-2-闭包委托策略（三个关键字的作用）" class="headerlink" title="3.2 闭包委托策略（三个关键字的作用）"></a>3.2 闭包委托策略（三个关键字的作用）</h3><h4 id="更改属性"><a href="#更改属性" class="headerlink" title="更改属性"></a>更改属性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Student&#123;</span><br><span class="line">   	String name</span><br><span class="line">   	def pretty = &#123;</span><br><span class="line">       	&quot;My name is $&#123;name&#125;&quot;</span><br><span class="line">   	&#125;</span><br><span class="line">   	String toString()&#123;</span><br><span class="line">       	pretty.call()</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Teacher&#123;</span><br><span class="line">   	String name</span><br><span class="line">&#125;</span><br><span class="line">def stu = new Student(name: &#x27;krido&#x27;)</span><br><span class="line">def tea = new Teacher(name: &#x27;mayo&#x27;)</span><br><span class="line">stu.pretty.delegate = tea</span><br><span class="line">//更改委托策略。改为delegate后，会去找tea的name，如果没有name属性，会从owner中去找，如果此时是DELEGATE_ONLY找不到则会报错</span><br><span class="line">stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST</span><br><span class="line">println stu.toString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/45.png"></p>
-<pre><code>class Student&#123;
-    String name
-    def pretty = &#123;
-        &quot;My name is $&#123;name&#125;&quot;
-    &#125;
-    String toString()&#123;
-        pretty.call()
-    &#125;
-&#125;
-class Teacher&#123;
-    String name1
-&#125;
-def stu = new Student(name: &#39;krido&#39;)
-def tea = new Teacher(name1: &#39;mayo&#39;)
-stu.pretty.delegate = tea
-//更改委托策略
-stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST
-println stu.toString()
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Student&#123;</span><br><span class="line">   	String name</span><br><span class="line">   	def pretty = &#123;</span><br><span class="line">       	&quot;My name is $&#123;name&#125;&quot;</span><br><span class="line">   	&#125;</span><br><span class="line">   	String toString()&#123;</span><br><span class="line">       	pretty.call()</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Teacher&#123;</span><br><span class="line">   	String name1</span><br><span class="line">&#125;</span><br><span class="line">def stu = new Student(name: &#x27;krido&#x27;)</span><br><span class="line">def tea = new Teacher(name1: &#x27;mayo&#x27;)</span><br><span class="line">stu.pretty.delegate = tea</span><br><span class="line">//更改委托策略</span><br><span class="line">stu.pretty.resolveStrategy = Closure.DELEGATE_FIRST</span><br><span class="line">println stu.toString()</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/20/Gradle-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95-%E9%97%AD%E5%8C%85/46.png"></p>
 <p>改成name1后，因为tea中没有name，Closure.DELEGATE_FIRST找不到会去OWNER中寻找。如果上例改成DELEGATE_ONLY，会报错，因为tea没有找到name属性</p>
 <p>委托策略默认是OWNER_FIRST，表明闭包中的变量、方法等都是首先从OWNER对象所指向的对象处去寻找。一共有四组（OWNER_FIRST、DELEGATE_FIRST、OWNER_ONLY、DELEGATE_ONLY）</p>
 <p>通过不同的委托策略的指定，我们可以修改闭包所要调用的变量和方法</p>
-<h4 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h4><pre><code>class Student2&#123;
-    def self = &#123;
-        mySelf()
-    &#125;
-
-    String mySelf()&#123;
-        println(&quot;i&#39;m student&quot;)
-    &#125;
-&#125;
-class Teacher2&#123;
-
-    String mySelf()&#123;
-        println(&quot;i&#39;m teacher&quot;)
-    &#125;
-&#125;
-def stu2 = new Student2()
-def tea2 = new Teacher2()
-stu2.self.delegate = tea2
-stu2.self.resolveStrategy = Closure.DELEGATE_ONLY
-stu2.self()
-</code></pre>
+<h4 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Student2&#123;</span><br><span class="line">   	def self = &#123;</span><br><span class="line">       	mySelf()</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	String mySelf()&#123;</span><br><span class="line">       	println(&quot;i&#x27;m student&quot;)</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Teacher2&#123;</span><br><span class="line"></span><br><span class="line">   	String mySelf()&#123;</span><br><span class="line">       	println(&quot;i&#x27;m teacher&quot;)</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">def stu2 = new Student2()</span><br><span class="line">def tea2 = new Teacher2()</span><br><span class="line">stu2.self.delegate = tea2</span><br><span class="line">stu2.self.resolveStrategy = Closure.DELEGATE_ONLY</span><br><span class="line">stu2.self()</span><br></pre></td></tr></table></figure>
 <p>上面会输出”i’m teacher”</p>
 
                     

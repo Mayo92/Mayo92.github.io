@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Apr 09 2020 16:13:10 GMT+0800">2020-04-09 16:13:10</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 14:57:02 GMT+0800">2024-07-11 14:57:02</span>
             </span>
         
 
@@ -254,178 +254,26 @@
                     
 
                     
-                         <h2 id="1-如何解析一个xml格式数据"><a href="#1-如何解析一个xml格式数据" class="headerlink" title="1.如何解析一个xml格式数据"></a>1.如何解析一个xml格式数据</h2><p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/1.png"></p>
-<span id="more"></span>
+                         <h2 id="1-如何解析一个xml格式数据"><a href="#1-如何解析一个xml格式数据" class="headerlink" title="1.如何解析一个xml格式数据"></a>1.如何解析一个xml格式数据</h2><span id="more"></span>
 
-<pre><code>final String xml = &#39;&#39;&#39;
-&lt;response version-api=&quot;2.0&quot;&gt;
-    &lt;value&gt;
-        &lt;books id=&quot;1&quot; classification=&quot;android&quot;&gt;
-            &lt;book available=&quot;20&quot; id=&quot;1&quot;&gt;
-                &lt;title&gt;疯狂Android讲义&lt;/title&gt;
-                &lt;author id=&quot;1&quot;&gt;李刚&lt;/author&gt;
-            &lt;/book&gt;
-            &lt;book available=&quot;14&quot; id=&quot;2&quot;&gt;
-               &lt;title&gt;第一行代码&lt;/title&gt;
-               &lt;author id=&quot;2&quot;&gt;郭林&lt;/author&gt;
-           &lt;/book&gt;
-           &lt;book available=&quot;13&quot; id=&quot;3&quot;&gt;
-               &lt;title&gt;Android开发艺术探索&lt;/title&gt;
-               &lt;author id=&quot;3&quot;&gt;任玉刚&lt;/author&gt;
-           &lt;/book&gt;
-           &lt;book available=&quot;5&quot; id=&quot;4&quot;&gt;
-               &lt;title&gt;Android源码设计模式&lt;/title&gt;
-               &lt;author id=&quot;4&quot;&gt;何红辉&lt;/author&gt;
-           &lt;/book&gt;
-       &lt;/books&gt;
-       &lt;books id=&quot;2&quot; classification=&quot;web&quot;&gt;
-           &lt;book available=&quot;10&quot; id=&quot;1&quot;&gt;
-               &lt;title&gt;Vue从入门到精通&lt;/title&gt;
-               &lt;author id=&quot;4&quot;&gt;李刚&lt;/author&gt;
-           &lt;/book&gt;
-       &lt;/books&gt;
-   &lt;/value&gt;
-&lt;/response&gt;
-&#39;&#39;&#39;
-</code></pre>
-<h3 id="1-1-获取值-获取属性"><a href="#1-1-获取值-获取属性" class="headerlink" title="1.1 获取值&#x2F;获取属性"></a>1.1 获取值&#x2F;获取属性</h3><pre><code>def xmlSlurper = new XmlSlurper()
-//response指向根节点
-def response = xmlSlurper.parseText(xml)
-println response.value.books[1].book[0].author
-//获取属性值，@属性名
-println response.value.books[0].@classification
-</code></pre>
+<p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/1.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">final String xml = &#x27;&#x27;&#x27;</span><br><span class="line">   &lt;response version-api=&quot;2.0&quot;&gt;</span><br><span class="line">       &lt;value&gt;</span><br><span class="line">           &lt;books id=&quot;1&quot; classification=&quot;android&quot;&gt;</span><br><span class="line">               &lt;book available=&quot;20&quot; id=&quot;1&quot;&gt;</span><br><span class="line">                   &lt;title&gt;疯狂Android讲义&lt;/title&gt;</span><br><span class="line">                   &lt;author id=&quot;1&quot;&gt;李刚&lt;/author&gt;</span><br><span class="line">               &lt;/book&gt;</span><br><span class="line">               &lt;book available=&quot;14&quot; id=&quot;2&quot;&gt;</span><br><span class="line">                  &lt;title&gt;第一行代码&lt;/title&gt;</span><br><span class="line">                  &lt;author id=&quot;2&quot;&gt;郭林&lt;/author&gt;</span><br><span class="line">              &lt;/book&gt;</span><br><span class="line">              &lt;book available=&quot;13&quot; id=&quot;3&quot;&gt;</span><br><span class="line">                  &lt;title&gt;Android开发艺术探索&lt;/title&gt;</span><br><span class="line">                  &lt;author id=&quot;3&quot;&gt;任玉刚&lt;/author&gt;</span><br><span class="line">              &lt;/book&gt;</span><br><span class="line">              &lt;book available=&quot;5&quot; id=&quot;4&quot;&gt;</span><br><span class="line">                  &lt;title&gt;Android源码设计模式&lt;/title&gt;</span><br><span class="line">                  &lt;author id=&quot;4&quot;&gt;何红辉&lt;/author&gt;</span><br><span class="line">              &lt;/book&gt;</span><br><span class="line">          &lt;/books&gt;</span><br><span class="line">          &lt;books id=&quot;2&quot; classification=&quot;web&quot;&gt;</span><br><span class="line">              &lt;book available=&quot;10&quot; id=&quot;1&quot;&gt;</span><br><span class="line">                  &lt;title&gt;Vue从入门到精通&lt;/title&gt;</span><br><span class="line">                  &lt;author id=&quot;4&quot;&gt;李刚&lt;/author&gt;</span><br><span class="line">              &lt;/book&gt;</span><br><span class="line">          &lt;/books&gt;</span><br><span class="line">      &lt;/value&gt;</span><br><span class="line">   &lt;/response&gt;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-获取值-获取属性"><a href="#1-1-获取值-获取属性" class="headerlink" title="1.1 获取值&#x2F;获取属性"></a>1.1 获取值&#x2F;获取属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def xmlSlurper = new XmlSlurper()</span><br><span class="line">//response指向根节点</span><br><span class="line">def response = xmlSlurper.parseText(xml)</span><br><span class="line">println response.value.books[1].book[0].author</span><br><span class="line">//获取属性值，@属性名</span><br><span class="line">println response.value.books[0].@classification</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/2.png"></p>
-<h3 id="1-2-遍历查找"><a href="#1-2-遍历查找" class="headerlink" title="1.2 遍历查找"></a>1.2 遍历查找</h3><pre><code>def list = []
-response.value.books.each &#123;
-    books -&gt;
-        //对下面节点进行遍历
-        books.book.each&#123;
-            book -&gt;
-                def author = book.author.text()
-                if(author.equals(&#39;李刚&#39;))&#123;
-                    list.add(book.title.text())
-                &#125;
-        &#125;
-&#125;
-println list.toListString()
-</code></pre>
+<h3 id="1-2-遍历查找"><a href="#1-2-遍历查找" class="headerlink" title="1.2 遍历查找"></a>1.2 遍历查找</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def list = []</span><br><span class="line">response.value.books.each &#123;</span><br><span class="line">   	books -&gt;</span><br><span class="line">       	//对下面节点进行遍历</span><br><span class="line">       	books.book.each&#123;</span><br><span class="line">           	book -&gt;</span><br><span class="line">               	def author = book.author.text()</span><br><span class="line">               	if(author.equals(&#x27;李刚&#x27;))&#123;</span><br><span class="line">                   	list.add(book.title.text())</span><br><span class="line">               	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">&#125;</span><br><span class="line">println list.toListString()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/3.png"></p>
-<h3 id="1-3-深度遍历（depthFirst-简写’-’）"><a href="#1-3-深度遍历（depthFirst-简写’-’）" class="headerlink" title="1.3 深度遍历（depthFirst()简写’**’）"></a>1.3 深度遍历（depthFirst()简写’**’）</h3><pre><code>response.depthFirst().findAll &#123;
-    book -&gt; return book.author.text() == &#39;李刚&#39;
-&#125;.each &#123;
-    println it.title.text()
-&#125;
-
-def list2 = []
-response.&#39;**&#39;.findAll &#123;
-    book -&gt;
-        if(book.author.text() == &#39;李刚&#39;)&#123;
-            list2.add(book.title.text())
-        &#125;
-&#125;
-println list2.toListString()
-
-def books = response.depthFirst().findAll &#123;
-    book -&gt; book.author.text() == &#39;李刚&#39;
-&#125;.collect&#123;
-    name -&gt; return name.title.text()
-&#125;
-println books
-</code></pre>
+<h3 id="1-3-深度遍历（depthFirst-简写’-’）"><a href="#1-3-深度遍历（depthFirst-简写’-’）" class="headerlink" title="1.3 深度遍历（depthFirst()简写’**’）"></a>1.3 深度遍历（depthFirst()简写’**’）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">response.depthFirst().findAll &#123;</span><br><span class="line">   	book -&gt; return book.author.text() == &#x27;李刚&#x27;</span><br><span class="line">&#125;.each &#123;</span><br><span class="line">   	println it.title.text()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def list2 = []</span><br><span class="line">response.&#x27;**&#x27;.findAll &#123;</span><br><span class="line">   	book -&gt;</span><br><span class="line">       	if(book.author.text() == &#x27;李刚&#x27;)&#123;</span><br><span class="line">           	list2.add(book.title.text())</span><br><span class="line">       	&#125;</span><br><span class="line">&#125;</span><br><span class="line">println list2.toListString()</span><br><span class="line"></span><br><span class="line">def books = response.depthFirst().findAll &#123;</span><br><span class="line">   	book -&gt; book.author.text() == &#x27;李刚&#x27;</span><br><span class="line">&#125;.collect&#123;</span><br><span class="line">   	name -&gt; return name.title.text()</span><br><span class="line">&#125;</span><br><span class="line">println books</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/4.png"></p>
 <p>遍历不会改变原来的集合，打印输出原来的集合不对</p>
-<h3 id="1-4-广度遍历（children-简写’-’）"><a href="#1-4-广度遍历（children-简写’-’）" class="headerlink" title="1.4 广度遍历（children()简写’*’）"></a>1.4 广度遍历（children()简写’*’）</h3><pre><code>def name = response.value.books.children().findAll&#123;
-    //node.name()返回当前节点的名字
-    node -&gt; node.name() == &#39;book&#39; &amp;&amp; node.@id == &#39;2&#39;
-&#125;.collect&#123;
-    node -&gt; return node.title.text()
-&#125;
-println name
-</code></pre>
+<h3 id="1-4-广度遍历（children-简写’-’）"><a href="#1-4-广度遍历（children-简写’-’）" class="headerlink" title="1.4 广度遍历（children()简写’*’）"></a>1.4 广度遍历（children()简写’*’）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def name = response.value.books.children().findAll&#123;</span><br><span class="line">   	//node.name()返回当前节点的名字</span><br><span class="line">   	node -&gt; node.name() == &#x27;book&#x27; &amp;&amp; node.@id == &#x27;2&#x27;</span><br><span class="line">&#125;.collect&#123;</span><br><span class="line">   	node -&gt; return node.title.text()</span><br><span class="line">&#125;</span><br><span class="line">println name</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/5.png"></p>
-<h2 id="2-如何创建一个xml格式数据"><a href="#2-如何创建一个xml格式数据" class="headerlink" title="2.如何创建一个xml格式数据"></a>2.如何创建一个xml格式数据</h2><h3 id="2-1-直接写"><a href="#2-1-直接写" class="headerlink" title="2.1 直接写"></a>2.1 直接写</h3><pre><code>def sw = new StringWriter()
-def xmlBuilder = new MarkupBuilder(sw)//用来生成xml数据的核心类
-//根结点langs创建成功
-xmlBuilder.langs(type:&#39;current&#39;,count:&#39;3&#39;,mainstream: &#39;true&#39;)&#123;
-    //第一个language结点
-    language(flavor: &#39;static&#39;, version: &#39;1.5&#39;,)&#123;
-        //第一个age结点
-        age(&#39;18&#39;)
-    &#125;
-    language(flavor: &#39;dynamic&#39;, version: &#39;1.6&#39;,)&#123;
-        age(&#39;10&#39;)
-    &#125;
-    language(flavor: &#39;dynamic&#39;, version: &#39;1.9&#39;,&#39;JavaScript&#39;)&#123;&#125;
-&#125;
-println sw
-</code></pre>
+<h2 id="2-如何创建一个xml格式数据"><a href="#2-如何创建一个xml格式数据" class="headerlink" title="2.如何创建一个xml格式数据"></a>2.如何创建一个xml格式数据</h2><h3 id="2-1-直接写"><a href="#2-1-直接写" class="headerlink" title="2.1 直接写"></a>2.1 直接写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def sw = new StringWriter()</span><br><span class="line">def xmlBuilder = new MarkupBuilder(sw)//用来生成xml数据的核心类</span><br><span class="line">//根结点langs创建成功</span><br><span class="line">xmlBuilder.langs(type:&#x27;current&#x27;,count:&#x27;3&#x27;,mainstream: &#x27;true&#x27;)&#123;</span><br><span class="line">   	//第一个language结点</span><br><span class="line">   	language(flavor: &#x27;static&#x27;, version: &#x27;1.5&#x27;,)&#123;</span><br><span class="line">       	//第一个age结点</span><br><span class="line">       	age(&#x27;18&#x27;)</span><br><span class="line">   	&#125;</span><br><span class="line">   	language(flavor: &#x27;dynamic&#x27;, version: &#x27;1.6&#x27;,)&#123;</span><br><span class="line">       	age(&#x27;10&#x27;)</span><br><span class="line">   	&#125;</span><br><span class="line">   	language(flavor: &#x27;dynamic&#x27;, version: &#x27;1.9&#x27;,&#x27;JavaScript&#x27;)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">println sw</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/6.png"></p>
-<h3 id="2-2-实体类转换"><a href="#2-2-实体类转换" class="headerlink" title="2.2 实体类转换"></a>2.2 实体类转换</h3><pre><code>//对应xml中的langs结点
-class Langs&#123;
-    String type = &#39;current&#39;
-    int count = 3
-    boolean mainstream = true
-    def list = [new Language(flavor: &#39;static&#39;,version: &#39;1.5&#39;,value: &#39;java&#39;),
-            new Language(flavor: &#39;dynamic&#39;,version: &#39;1.6&#39;,value: &#39;groovy&#39;),
-            new Language(flavor: &#39;dynamic&#39;,version: &#39;1.9&#39;,value: &#39;JavaScript&#39;)]
-&#125;
-//对应xml中的languang结点
-class Language&#123;
-    String flavor
-    String version
-    String value
-&#125;
-Langs langs = new Langs()
-xmlBuilder.langs(type:langs.type,count:langs.count,mainstream:langs.mainstream)&#123;
-    langs.list.each &#123;
-        language(flavor:  it.flavor,version: it.version,it.value)&#123;
-            age(&#39;10&#39;)
-        &#125;
-    &#125;
-&#125;
-println sw
-</code></pre>
+<h3 id="2-2-实体类转换"><a href="#2-2-实体类转换" class="headerlink" title="2.2 实体类转换"></a>2.2 实体类转换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//对应xml中的langs结点</span><br><span class="line">class Langs&#123;</span><br><span class="line">   	String type = &#x27;current&#x27;</span><br><span class="line">   	int count = 3</span><br><span class="line">   	boolean mainstream = true</span><br><span class="line">   	def list = [new Language(flavor: &#x27;static&#x27;,version: &#x27;1.5&#x27;,value: &#x27;java&#x27;),</span><br><span class="line">               new Language(flavor: &#x27;dynamic&#x27;,version: &#x27;1.6&#x27;,value: &#x27;groovy&#x27;),</span><br><span class="line">               new Language(flavor: &#x27;dynamic&#x27;,version: &#x27;1.9&#x27;,value: &#x27;JavaScript&#x27;)]</span><br><span class="line">&#125;</span><br><span class="line">//对应xml中的languang结点</span><br><span class="line">class Language&#123;</span><br><span class="line">   	String flavor</span><br><span class="line">   	String version</span><br><span class="line">   	String value</span><br><span class="line">&#125;</span><br><span class="line">Langs langs = new Langs()</span><br><span class="line">xmlBuilder.langs(type:langs.type,count:langs.count,mainstream:langs.mainstream)&#123;</span><br><span class="line">   	langs.list.each &#123;</span><br><span class="line">       	language(flavor:  it.flavor,version: it.version,it.value)&#123;</span><br><span class="line">           	age(&#x27;10&#x27;)</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">println sw</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/7.png"></p>
-<h2 id="3-json转换成xml"><a href="#3-json转换成xml" class="headerlink" title="3.json转换成xml"></a>3.json转换成xml</h2><pre><code>def getNetworkData(String url)&#123;
-    //发送HTTP请求
-    def connection = new URL(url).openConnection()
-    connection.setRequestMethod(&#39;GET&#39;)
-    connection.connect()
-    def response = connection.content.text
-
-    //json转换为实体对象
-    def jsonSlurper = new JsonSlurper()
-    return jsonSlurper.parseText(response)
-&#125;
-
-def response = getNetworkData(&#39;https://wanandroid.com/wxarticle/chapters/json&#39;)
-
-def list = response.data
-
-println list
-
-def sw = new StringWriter()
-
-def xmlBuilder = new MarkupBuilder(sw)
-
-xmlBuilder.datas()&#123;
-    list.each&#123;
-        a -&gt; data()&#123;
-            children(a.children)
-            courseId(a.courseId)
-            id(a.id)
-            name(a.name)
-            order(a.order)
-            parentChapterId(a.parentChapterId)
-            userControlSetTop(a.userControlSetTop)
-            visible(a.visible)
-        &#125;
-    &#125;
-&#125;
-
-println sw
-</code></pre>
+<h2 id="3-json转换成xml"><a href="#3-json转换成xml" class="headerlink" title="3.json转换成xml"></a>3.json转换成xml</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def getNetworkData(String url)&#123;</span><br><span class="line">   	//发送HTTP请求</span><br><span class="line">   	def connection = new URL(url).openConnection()</span><br><span class="line">   	connection.setRequestMethod(&#x27;GET&#x27;)</span><br><span class="line">   	connection.connect()</span><br><span class="line">   	def response = connection.content.text</span><br><span class="line"></span><br><span class="line">   	//json转换为实体对象</span><br><span class="line">   	def jsonSlurper = new JsonSlurper()</span><br><span class="line">   	return jsonSlurper.parseText(response)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def response = getNetworkData(&#x27;https://wanandroid.com/wxarticle/chapters/json&#x27;)</span><br><span class="line"></span><br><span class="line">def list = response.data</span><br><span class="line"></span><br><span class="line">println list</span><br><span class="line"></span><br><span class="line">def sw = new StringWriter()</span><br><span class="line"></span><br><span class="line">def xmlBuilder = new MarkupBuilder(sw)</span><br><span class="line"></span><br><span class="line">xmlBuilder.datas()&#123;</span><br><span class="line">   	list.each&#123;</span><br><span class="line">       	a -&gt; data()&#123;</span><br><span class="line">           	children(a.children)</span><br><span class="line">           	courseId(a.courseId)</span><br><span class="line">           	id(a.id)</span><br><span class="line">           	name(a.name)</span><br><span class="line">           	order(a.order)</span><br><span class="line">           	parentChapterId(a.parentChapterId)</span><br><span class="line">           	userControlSetTop(a.userControlSetTop)</span><br><span class="line">           	visible(a.visible)</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println sw</span><br></pre></td></tr></table></figure>
 <p>it有作用范围，闭包{}里	</p>
 <p><img src="/2018/05/24/Gradle-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-xml%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/8.png"></p>
 

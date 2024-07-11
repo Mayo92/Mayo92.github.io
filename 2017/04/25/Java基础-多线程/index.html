@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Dec 24 2020 09:48:00 GMT+0800">2020-12-24 09:48:00</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 10:39:31 GMT+0800">2024-07-11 10:39:31</span>
             </span>
         
 
@@ -255,13 +255,13 @@
 
                     
                          <h3 id="多线程的概念"><a href="#多线程的概念" class="headerlink" title="多线程的概念"></a>多线程的概念</h3><p>System类的gc方法告诉垃圾回收器调用finalize方法，但不一定立即执行。</p>
+<span id="more"></span>
+
 <h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><ul>
 <li>创建一个Thread类，或者一个Thread子类的对象</li>
 <li>创建一个实现Runnable接口的类的对象</li>
 <li>实现callable接口，重写call()方法，call()作为线程的执行体，具有返回值，并且可以对异常进行声明和抛出；使用start()方法来启动线程</li>
 </ul>
-<span id="more"></span>
-
 <h3 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h3><p>Thread是一个线程类，位于java.lang包下</p>
 <p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/11.png"></p>
 <p>常用方法:</p>
@@ -353,10 +353,7 @@
 <li>语句块</li>
 </ul>
 <p>Java同步代码块的格式：</p>
-<pre><code>synchronized(对象)&#123;
-    需要被同步的代码;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">synchronized(对象)&#123;</span><br><span class="line">	需要被同步的代码;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>同步函数：在函数上加上synchronized修饰符即可</p>
 <p>同步函数和同步代码块的区别（建议使用同步代码块）：</p>
 <ol>
@@ -366,27 +363,9 @@
 <p>由于同步函数的锁是固定的this，同步代码块的锁是任意的对象，那么如果同步函数和同步代码块都使用this 作为锁，就可以实现同步</p>
 <p>静态的同步函数使用的锁是该函数所属字节码文件对象，可以用getClass方法获取，也可以用当前类名.class 表示。</p>
 <h4 id="多线程下的单例模式"><a href="#多线程下的单例模式" class="headerlink" title="多线程下的单例模式"></a>多线程下的单例模式</h4><p>饿汉式：不存在安全问题，因为不存在多个线程共同操作数据的情况</p>
-<pre><code>class Single&#123;
-    private static final Single s = new Single(); 
-    private Single()&#123;&#125;
-    public static Single getInstance()&#123;&#125; 
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Single&#123;</span><br><span class="line">	private static final Single s = new Single(); </span><br><span class="line">	private Single()&#123;&#125;</span><br><span class="line">	public static Single getInstance()&#123;&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>懒汉式：</p>
-<pre><code>class Single&#123;
-    private static Single s = null;
-    private Single()&#123;&#125;
-    public static Single getInstance()&#123;
-        if(s ==null)&#123;
-            synchronized(Single.class)&#123;
-                if(s == null)
-                    s = new Single();
-            &#125;
-        &#125;
-        return s;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Single&#123;</span><br><span class="line">	private static Single s = null;</span><br><span class="line">	private Single()&#123;&#125;</span><br><span class="line">	public static Single getInstance()&#123;</span><br><span class="line">		if(s ==null)&#123;</span><br><span class="line">			synchronized(Single.class)&#123;</span><br><span class="line">				if(s == null)</span><br><span class="line">					s = new Single();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return s;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>死锁常见情景之一：同步的嵌套</p>
 <p><img src="/2017/04/25/Java%E5%9F%BA%E7%A1%80-%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png"></p>
 <p>当线程t1获取到obj对象锁执行同步代码块，线程t2获取到this对象锁执行show方法。同步代码块中的show方法因无法获取到this对象锁无法执行，show方法中的同步代码块因无法获取到obj对象锁无法执行，就会产生死锁</p>
@@ -414,15 +393,7 @@
 <h4 id="生产者消费者模式中条件判断是使用while而不是if"><a href="#生产者消费者模式中条件判断是使用while而不是if" class="headerlink" title="生产者消费者模式中条件判断是使用while而不是if"></a>生产者消费者模式中条件判断是使用while而不是if</h4><p>永远在循环（loop）里调用 wait 和 notify，不是在 If 语句现在你知道wait应该永远在被synchronized的背景下和那个被多线程共享的对象上调用，下一个一定要记住的问题就是，你应该永远在while循环，而不是if语句中调用wait。因为线程是在某些条件下等待的——在我们的例子里，即“如果缓冲区队列是满的话，那么生产者线程应该等待”，你可能直觉就会写一个if语句。但if语句存在一些微妙的小问题，导致即使条件没被满足，你的线程你也有可能被错误地唤醒。所以如果你不在线程被唤醒后再次使用while循环检查唤醒条件是否被满足，你的程序就有可能会出错——例如在缓冲区为满的时候生产者继续生产数据，或者缓冲区为空的时候消费者开始消耗数据。所以记住，永远在while循环而不是if语句中使用wait！</p>
 <p>因为在多核处理器环境中，Signal唤醒操作可能会激活多于一个线程（阻塞在条件变量上的线程），使得多个调用等待的线程返回。所以用while循环对condition多次判断，可以避免这种假唤醒。</p>
 <p>基于以上认知，下面这个是使用wait和notify函数的规范代码模板：</p>
-<pre><code>// The standard idiom for calling the wait method in Java
-synchronized(sharedObject) &#123;
-    while(condition) &#123;
-        sharedObject.wait();
-        // (Releases lock, and reacquires on wakeup)
-&#125;
-// do action based upon condition e.g. take or put into queue
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// The standard idiom for calling the wait method in Java</span><br><span class="line">synchronized(sharedObject) &#123;</span><br><span class="line">   	while(condition) &#123;</span><br><span class="line">       	sharedObject.wait();</span><br><span class="line">       	// (Releases lock, and reacquires on wakeup)</span><br><span class="line">&#125;</span><br><span class="line">// do action based upon condition e.g. take or put into queue</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ps:在while循环里使用wait的目的，是在线程被唤醒的前后都持续检查条件是否被满足。如果条件并未改变，wait被调用之前notify的唤醒通知就来了，那么这个线程并不能保证被唤醒，有可能会导致死锁问题。</p>
 <p>注意：</p>
 <ol>

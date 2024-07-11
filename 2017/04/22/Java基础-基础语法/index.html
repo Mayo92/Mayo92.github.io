@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Dec 26 2020 15:22:35 GMT+0800">2020-12-26 15:22:35</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 10:27:11 GMT+0800">2024-07-11 10:27:11</span>
             </span>
         
 
@@ -302,8 +302,8 @@
 </ul>
 <p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/10.png"></p>
 <h4 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h4><p>又称为统一码、万国码。目标是支持世界上所有的字符集</p>
-<pre><code>char c=‘\u005d’;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char c=‘\u005d’;</span><br></pre></td></tr></table></figure>
+
 <p>Unicode表示法，在值前加前缀\u</p>
 <h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><p><img src="/2017/04/22/Java%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/5.png"></p>
 <h4 id="表达式的数据类型自动提升"><a href="#表达式的数据类型自动提升" class="headerlink" title="表达式的数据类型自动提升"></a>表达式的数据类型自动提升</h4><ul>
@@ -379,10 +379,8 @@
 <li>可以结束当前循环的执行，但是要继续下一次循环的执行</li>
 </ul>
 <h4 id="增强型for循环"><a href="#增强型for循环" class="headerlink" title="增强型for循环"></a>增强型for循环</h4><p>又叫foreach循环</p>
-<pre><code>int[] arr=&#123;1,2,3,4,5&#125;;
-for(int n:arr)
-    System.out.println(n);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int[] arr=&#123;1,2,3,4,5&#125;;</span><br><span class="line">for(int n:arr)</span><br><span class="line">	System.out.println(n);</span><br></pre></td></tr></table></figure>
+
 <p>三元运算符就是if else语句的简写格式，当if else运算后，有一个具体的结果时，可以简化写成三元运算符</p>
 <p>对于几个固定的值判断，建议使用switch语句，因为switch语句会将具体的答案都加载进内存，效率相对高</p>
 <p>一定要注意不要写while(x &lt; 3);这样的语句，后面的分号就是循环体，代表不执行任何语句，这个循环就成了一个死循环</p>
@@ -411,10 +409,7 @@ for(int n:arr)
 <h4 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h4><p>用于存储局部变量，当变量所属的作用域一旦结束，所占空间会自动释放</p>
 <h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><p>数组和对象，通过new建立的实例都存放在堆内存中。每一个实体都有内存地址值。实体中的变量都有默认初始化值，根据类型的不同而不同。整数类型是0，小数类型是0.0或0.0f，boolean类型是false，char类型是’\u0000’。</p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>所谓方法，就是用来解决一类问题的代码的有序组合，是一个功能模块。</p>
-<h4 id="方法声明"><a href="#方法声明" class="headerlink" title="方法声明"></a>方法声明</h4><pre><code>访问修饰符 返回类型 方法名(参数列表)&#123;
-    方法体
-&#125;
-</code></pre>
+<h4 id="方法声明"><a href="#方法声明" class="headerlink" title="方法声明"></a>方法声明</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">访问修饰符 返回类型 方法名(参数列表)&#123;</span><br><span class="line">	方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="方法分类"><a href="#方法分类" class="headerlink" title="方法分类"></a>方法分类</h4><p>根据方法是否带参数、是否返回值，可分为四类：</p>
 <ul>
 <li>无参无返回值方法</li>
@@ -423,8 +418,7 @@ for(int n:arr)
 <li>带参带返回值方法</li>
 </ul>
 <h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><p>方法名相同，参数列表不同</p>
-<h4 id="可变参数列表"><a href="#可变参数列表" class="headerlink" title="可变参数列表"></a>可变参数列表</h4><pre><code>public void sum(int... n)&#123;&#125;
-</code></pre>
+<h4 id="可变参数列表"><a href="#可变参数列表" class="headerlink" title="可变参数列表"></a>可变参数列表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void sum(int... n)&#123;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>可变参数一定是方法中的最后一个参数</li>
 <li>一个方法只能有一个可变参数</li>
@@ -442,8 +436,7 @@ for(int n:arr)
 <li>F5跳到方法内部执行</li>
 <li>F7由方法内部返回调用处</li>
 </ul>
-<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><pre><code>Arrays.binarySearch
-</code></pre>
+<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.binarySearch</span><br></pre></td></tr></table></figure>
 <p>如果包含在数组中，返回搜索键的索引，否则返回（-(插入点)-1）。插入点被定义为第一个大于此键的元素索引，如果数组中的所有元素都小于指定的键，则为a.length，保证了当前仅当此键被找到时，返回的值&gt;&#x3D;0。</p>
 
                     

@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Nov 25 2020 12:19:42 GMT+0800">2020-11-25 12:19:42</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 11:03:46 GMT+0800">2024-07-11 11:03:46</span>
             </span>
         
 
@@ -327,118 +327,17 @@
 <p>由于UDP协议传输数据，只管发送数据，而不管接收端是否能够接收到数据。因此，应该首先启动接收端程序，再启动发送端程序。</p>
 <p>聊天程序（双窗口模式）</p>
 <p>UDP发送端</p>
-<pre><code>public class UDPSendDemo&#123;
-    
-    public static void main(String[] args) throws Exception&#123;
-        
-        DatagramSocket ds = new DatagramSocket(8888);
-        BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
-        String line = null;
-        while((line = bufr.readLine()) != null)&#123;
-            byte[] buf = line.getBytes();
-            DatagramPacket dp = new DatagramPacket(buf,buf.length,InetAddress.getByName(&quot;192.168.1.100&quot;),10000);
-            ds.send(dp);
-            if(&quot;886&quot;.equals(line))
-                break;
-        &#125;
-        ds.close();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class UDPSendDemo&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws Exception&#123;</span><br><span class="line">		</span><br><span class="line">		DatagramSocket ds = new DatagramSocket(8888);</span><br><span class="line">		BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">		String line = null;</span><br><span class="line">		while((line = bufr.readLine()) != null)&#123;</span><br><span class="line">			byte[] buf = line.getBytes();</span><br><span class="line">			DatagramPacket dp = new DatagramPacket(buf,buf.length,InetAddress.getByName(&quot;192.168.1.100&quot;),10000);</span><br><span class="line">			ds.send(dp);</span><br><span class="line">			if(&quot;886&quot;.equals(line))</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		ds.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>UDP接收端</p>
-<pre><code>public class UDPReceDemo&#123;
-    
-    public static void main(String[] args) throws Exception &#123;
-        
-        DatagramSocket ds = new DatagramSocket(10000);
-        while(true)&#123;
-            byte[] buf = new byte[1024];
-            DatagramPacket dp = new DatagramPacket(buf,buf.length);
-            ds.receive(dp);
-            String ip = dp.getAddress().getHostAddress();
-            int port = dp.getPort();
-            String text = new String(dp.getData(),0,dp.getLength());
-            System.out.println(ip + &quot;:&quot; + port + &quot;:&quot; + text);
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class UDPReceDemo&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		</span><br><span class="line">		DatagramSocket ds = new DatagramSocket(10000);</span><br><span class="line">		while(true)&#123;</span><br><span class="line">			byte[] buf = new byte[1024];</span><br><span class="line">			DatagramPacket dp = new DatagramPacket(buf,buf.length);</span><br><span class="line">			ds.receive(dp);</span><br><span class="line">			String ip = dp.getAddress().getHostAddress();</span><br><span class="line">			int port = dp.getPort();</span><br><span class="line">			String text = new String(dp.getData(),0,dp.getLength());</span><br><span class="line">			System.out.println(ip + &quot;:&quot; + port + &quot;:&quot; + text);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>聊天程序（单窗口模式-群聊）</p>
 <p>UDP发送端</p>
-<pre><code>public class Send implements Runnable&#123;
-    
-    private DatagramSocket ds;
-    
-    public Send(DatagramSocket ds)&#123;
-        this.ds = ds;
-    &#125;
-    
-    public void run()&#123;
-    
-        try&#123;
-            BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
-            String line = null;
-            
-            while((line = bufr.readLine()) != null)&#123;
-            
-                byte[] buf = line.getBytes();
-                //255是广播地址，这样，所有192.168.1.*这个网段的所有人都会收到信息
-                DatagramPacket dp = new DatagramPacket(buf,buf.length,InetAddress.getByName(&quot;192.168.1.255&quot;),10001);
-                ds.send(dp);
-                if(&quot;886&quot;.equals(line))
-                    break;
-            &#125;
-            ds.close();
-        &#125;catch(Exception e)&#123;
-            e.printStackTrace();
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class Send implements Runnable&#123;</span><br><span class="line">	</span><br><span class="line">	private DatagramSocket ds;</span><br><span class="line">	</span><br><span class="line">	public Send(DatagramSocket ds)&#123;</span><br><span class="line">		this.ds = ds;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void run()&#123;</span><br><span class="line">	</span><br><span class="line">		try&#123;</span><br><span class="line">			BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">			String line = null;</span><br><span class="line">			</span><br><span class="line">			while((line = bufr.readLine()) != null)&#123;</span><br><span class="line">			</span><br><span class="line">				byte[] buf = line.getBytes();</span><br><span class="line">				//255是广播地址，这样，所有192.168.1.*这个网段的所有人都会收到信息</span><br><span class="line">				DatagramPacket dp = new DatagramPacket(buf,buf.length,InetAddress.getByName(&quot;192.168.1.255&quot;),10001);</span><br><span class="line">				ds.send(dp);</span><br><span class="line">				if(&quot;886&quot;.equals(line))</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			ds.close();</span><br><span class="line">		&#125;catch(Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>UDP接收端</p>
-<pre><code>public class Rece implements Runnable&#123;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Rece implements Runnable&#123;</span><br><span class="line"></span><br><span class="line">	private DatagramSocket ds;</span><br><span class="line">	</span><br><span class="line">	public Rece(DatagramSocket ds)&#123;</span><br><span class="line">		this.ds = ds;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void run()&#123;</span><br><span class="line">	</span><br><span class="line">		try&#123;</span><br><span class="line">		</span><br><span class="line">			while(true)&#123;</span><br><span class="line">				byte[] buf = new byte[1024];</span><br><span class="line">				DatagramPacket dp = new DatagramPacket(buf,buf.length);</span><br><span class="line">				ds.receive(dp);</span><br><span class="line">				String ip = dp.getAddress().getHostAddress();</span><br><span class="line">				int port = dp.getPort();</span><br><span class="line">				String text = new String(dp.getData(),0,dp.getLength());</span><br><span class="line">				System.out.println(ip + &quot;:&quot; + port + &quot;:&quot; + text);</span><br><span class="line">				if(text.equals(&quot;886&quot;))</span><br><span class="line">					System.out.println(ip + &quot;...退出聊天室&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;catch(Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    private DatagramSocket ds;
-    
-    public Rece(DatagramSocket ds)&#123;
-        this.ds = ds;
-    &#125;
-    
-    public void run()&#123;
-    
-        try&#123;
-        
-            while(true)&#123;
-                byte[] buf = new byte[1024];
-                DatagramPacket dp = new DatagramPacket(buf,buf.length);
-                ds.receive(dp);
-                String ip = dp.getAddress().getHostAddress();
-                int port = dp.getPort();
-                String text = new String(dp.getData(),0,dp.getLength());
-                System.out.println(ip + &quot;:&quot; + port + &quot;:&quot; + text);
-                if(text.equals(&quot;886&quot;))
-                    System.out.println(ip + &quot;...退出聊天室&quot;);
-            &#125;
-        &#125;catch(Exception e)&#123;
-            e.printStackTrace();
-        &#125;
-    &#125;
-&#125;
-</code></pre>
 <p>启动发送端、接收端线程程序</p>
-<pre><code>public class ChatDemo&#123;
-    
-    public static void main(String[] args) throws IOException &#123;
-    
-        DatagramSocket send = new DatagramSocket();
-        DatagramSocket rece = new DatagramSocket(10001);
-        Send s = new Send(send);
-        Rece r = new Rece(rece);
-        new Thread(s).start();
-        new Thread(r).start();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class ChatDemo&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">	</span><br><span class="line">		DatagramSocket send = new DatagramSocket();</span><br><span class="line">		DatagramSocket rece = new DatagramSocket(10001);</span><br><span class="line">		Send s = new Send(send);</span><br><span class="line">		Rece r = new Rece(rece);</span><br><span class="line">		new Thread(s).start();</span><br><span class="line">		new Thread(r).start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="TCP协议-客户端-服务端"><a href="#TCP协议-客户端-服务端" class="headerlink" title="TCP协议-客户端&amp;服务端"></a>TCP协议-客户端&amp;服务端</h4><p><img src="/2017/04/28/Java%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/4.png"></p>
 <p>客户端（Client）首先与服务端（Server）建立连接，形成通道（其实就是IO流），然后，数据就可以在通道之间进行传输，并且单个Server端可以同时与多个Client端建立连接。</p>
 <ul>
@@ -462,153 +361,21 @@
 <p>TCP协议传输数据必须先开服务端，再开客户端。否则，客户端根本连接不上服务端。</p>
 <p>服务端和客户端交互</p>
 <p>TCP客户端</p>
-<pre><code>public class ClientDemo&#123;
-    
-    public static void main(String[] args) throws UnknownHostException,IOException &#123;
-        
-        Socket socket = new Socket(&quot;192.168.1.100&quot;,10002);
-        OutputStream out = socket.getOutputStream();
-        out.write(&quot;tcp演示：哥们又来了！&quot;.getBytes());
-        //读取客户端返回的数据，使用Socket读取流。
-        InputStream in = socket.getInputStream();
-        byte[] buf = new byte[1024];
-        int len = in.read(buf);
-        String text = new String(buf,0,len);
-        System.out.println(text);
-        socket.close();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class ClientDemo&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws UnknownHostException,IOException &#123;</span><br><span class="line">		</span><br><span class="line">		Socket socket = new Socket(&quot;192.168.1.100&quot;,10002);</span><br><span class="line">		OutputStream out = socket.getOutputStream();</span><br><span class="line">		out.write(&quot;tcp演示：哥们又来了！&quot;.getBytes());</span><br><span class="line">		//读取客户端返回的数据，使用Socket读取流。</span><br><span class="line">		InputStream in = socket.getInputStream();</span><br><span class="line">		byte[] buf = new byte[1024];</span><br><span class="line">		int len = in.read(buf);</span><br><span class="line">		String text = new String(buf,0,len);</span><br><span class="line">		System.out.println(text);</span><br><span class="line">		socket.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>TCP服务端</p>
-<pre><code>public class ServerDemo&#123;
-    
-    public static void main(String[] args) throws IOException &#123;
-        
-        ServerSocket ss = new ServerSocket(10002);
-        Socket s = ss.accept();
-        String ip = s.getInetAddress().getHostAddress();
-        InputStream in = s.getInputStream();
-        byte[] buf = new byte[1024];
-        int len = in.read(buf);
-        String text = new String(buf,0,len);
-        System.out.println(ip + &quot;:&quot; + text);
-        //使用客户端socket对象的输出流给客户端返回数据
-        OutputStream out = s.getOutputStream();
-        out.write(&quot;收到&quot;.getBytes());
-        s.close();
-        ss.close();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class ServerDemo&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">		</span><br><span class="line">		ServerSocket ss = new ServerSocket(10002);</span><br><span class="line">		Socket s = ss.accept();</span><br><span class="line">		String ip = s.getInetAddress().getHostAddress();</span><br><span class="line">		InputStream in = s.getInputStream();</span><br><span class="line">		byte[] buf = new byte[1024];</span><br><span class="line">		int len = in.read(buf);</span><br><span class="line">		String text = new String(buf,0,len);</span><br><span class="line">		System.out.println(ip + &quot;:&quot; + text);</span><br><span class="line">		//使用客户端socket对象的输出流给客户端返回数据</span><br><span class="line">		OutputStream out = s.getOutputStream();</span><br><span class="line">		out.write(&quot;收到&quot;.getBytes());</span><br><span class="line">		s.close();</span><br><span class="line">		ss.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>文本转换TCP客户端和服务端</p>
 <p>TCP客户端</p>
-<pre><code>public class TransClient&#123;
-    
-    public static void main(String[] args) throws UnknownHostException,IOException &#123;
-        
-        //1. 创建socket客户端对象。
-        Socket s = new Socket(&quot;192.168.1.100&quot;,10004);
-        //2. 获取键盘录入
-        BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
-        //3. socket输出流
-        PrintWriter out = new PrintWriter(s.getOutputStream(),true);
-        //4. socket输入流，读取服务端返回的大写数据。
-        BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        String line = null;
-        
-        while((line = bufr.readLine()) != null)&#123;
-            
-            if(&quot;over&quot;.equals(line))
-                break;
-            out.println(line);
-            //读取服务端发回的一行大写数据。
-            String upperStr = bufIn.readLine();
-            System.out.println(upperStr);
-        &#125;
-        s.close();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class TransClient&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws UnknownHostException,IOException &#123;</span><br><span class="line">		</span><br><span class="line">		//1. 创建socket客户端对象。</span><br><span class="line">		Socket s = new Socket(&quot;192.168.1.100&quot;,10004);</span><br><span class="line">		//2. 获取键盘录入</span><br><span class="line">		BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">		//3. socket输出流</span><br><span class="line">		PrintWriter out = new PrintWriter(s.getOutputStream(),true);</span><br><span class="line">		//4. socket输入流，读取服务端返回的大写数据。</span><br><span class="line">		BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));</span><br><span class="line">		String line = null;</span><br><span class="line">		</span><br><span class="line">		while((line = bufr.readLine()) != null)&#123;</span><br><span class="line">			</span><br><span class="line">			if(&quot;over&quot;.equals(line))</span><br><span class="line">				break;</span><br><span class="line">			out.println(line);</span><br><span class="line">			//读取服务端发回的一行大写数据。</span><br><span class="line">			String upperStr = bufIn.readLine();</span><br><span class="line">			System.out.println(upperStr);</span><br><span class="line">		&#125;</span><br><span class="line">		s.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>TCP服务端</p>
-<pre><code>public class TransServer&#123;
-    
-    public static void main(String[] args) throws IOException &#123;
-        
-        //1. 创建ServerSocket。
-        ServerSocket ss = new ServerSocket(10004);
-        //2. 获取socket对象。
-        Socket s = ss.accept();
-        //获取ip。
-        String ip = s.getInetAddress().getHostAddress();
-        System.out.println(ip + &quot;......connected&quot;);
-        //3. 获取socket读取流，并装饰。
-        BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        //4. 获取socket的输出流，并装饰。
-        PrintWriter out = new PrintWriter(s.getOutputStream(),true);
-        String line = null;
-        
-        while((line = bufIn.readLine()) != null)&#123;
-            System.out.println(line);
-            out.println(line.toUpperCase());
-        &#125;
-        s.close();
-        ss.close();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class TransServer&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">		</span><br><span class="line">		//1. 创建ServerSocket。</span><br><span class="line">		ServerSocket ss = new ServerSocket(10004);</span><br><span class="line">		//2. 获取socket对象。</span><br><span class="line">		Socket s = ss.accept();</span><br><span class="line">		//获取ip。</span><br><span class="line">		String ip = s.getInetAddress().getHostAddress();</span><br><span class="line">		System.out.println(ip + &quot;......connected&quot;);</span><br><span class="line">		//3. 获取socket读取流，并装饰。</span><br><span class="line">		BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));</span><br><span class="line">		//4. 获取socket的输出流，并装饰。</span><br><span class="line">		PrintWriter out = new PrintWriter(s.getOutputStream(),true);</span><br><span class="line">		String line = null;</span><br><span class="line">		</span><br><span class="line">		while((line = bufIn.readLine()) != null)&#123;</span><br><span class="line">			System.out.println(line);</span><br><span class="line">			out.println(line.toUpperCase());</span><br><span class="line">		&#125;</span><br><span class="line">		s.close();</span><br><span class="line">		ss.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面案例中之所以客户端结束后，服务端也随之结束的原因在于：客户端的socket关闭后，服务端获取的客户端socket读取流也关闭了，因此读取不到数据，line &#x3D; bufIn.readLine()为null，循环结束，ServerSocket的close方法也就执行关闭了。</p>
 <p>上面案例中的客户端和服务端的PrintWriter对象out获取到数据后，一定要刷新，否则对方（服务端或客户端）就获取不到数据，程序便无法正常执行。刷新操作可以通过PrintWriter类的println()方法实现，也可以通过PrintWriter类的flush()方法实现。但是，由于获取数据的方法是BufferedReader对象bufIn的readLine()方法（阻塞式方法），此方法只有遇到“\r\n”标记时，才认为数据读取完毕，赋值给String对象line。所以，使用PrintWriter类的flush()方法刷新数据时一定要记得追加“\r\n”！</p>
 <p>TCP协议上传文本文件</p>
 <p>TCP服务端</p>
-<pre><code>public class UploadServer&#123;
-    
-    public static void main(String[] args) throws IOException &#123;
-        
-        ServerSocket ss = new ServerSocket(10005);
-        Socket s = ss.accept();
-        System.out.println(s.getInetAddress().getHostAddress() + &quot;......connected&quot;);
-        BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        BufferedWriter bufw = new BufferedWriter(new FileWriter(&quot;d:\\demo\\server.txt&quot;));
-        String line = null;
-        
-        while((line = bufIn.readLine()) != null)&#123;
-            bufw.write(line);
-            bufw.newLine();
-        &#125;
-        
-        PrintWriter out = new PrintWriter(s.getOutputStream(),true);
-        out.println(&quot;上传成功&quot;);
-        bufw.close();
-        s.close();
-        ss.close();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class UploadServer&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">		</span><br><span class="line">		ServerSocket ss = new ServerSocket(10005);</span><br><span class="line">		Socket s = ss.accept();</span><br><span class="line">		System.out.println(s.getInetAddress().getHostAddress() + &quot;......connected&quot;);</span><br><span class="line">		BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));</span><br><span class="line">		BufferedWriter bufw = new BufferedWriter(new FileWriter(&quot;d:\\demo\\server.txt&quot;));</span><br><span class="line">		String line = null;</span><br><span class="line">		</span><br><span class="line">		while((line = bufIn.readLine()) != null)&#123;</span><br><span class="line">			bufw.write(line);</span><br><span class="line">			bufw.newLine();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		PrintWriter out = new PrintWriter(s.getOutputStream(),true);</span><br><span class="line">		out.println(&quot;上传成功&quot;);</span><br><span class="line">		bufw.close();</span><br><span class="line">		s.close();</span><br><span class="line">		ss.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>TCP客户端</p>
-<pre><code>public class UploadClient&#123;
-    
-    public static void main(String[] args) throws UnknownHostException,IOException &#123;
-        
-        Socket s = new Socket(&quot;192.168.1.100&quot;,10005);
-        BufferedReader bufr = new BufferedReader(new FileReader(&quot;d:\\demo\\client.txt&quot;));
-        PrintWriter out = new PrintWriter(s.getOutputStream(),true);
-        String line = null;
-        
-        while((line = bufr.readLine()) != null)&#123;
-            out.println(line);
-        &#125;
-        
-        //告诉服务端，客户端写完了。
-        s.shutdownOutput();
-        
-        BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        String str = bufIn.readLine();
-        System.out.println(str);
-        bufr.close();
-        s.close();
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class UploadClient&#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws UnknownHostException,IOException &#123;</span><br><span class="line">		</span><br><span class="line">		Socket s = new Socket(&quot;192.168.1.100&quot;,10005);</span><br><span class="line">		BufferedReader bufr = new BufferedReader(new FileReader(&quot;d:\\demo\\client.txt&quot;));</span><br><span class="line">		PrintWriter out = new PrintWriter(s.getOutputStream(),true);</span><br><span class="line">		String line = null;</span><br><span class="line">		</span><br><span class="line">		while((line = bufr.readLine()) != null)&#123;</span><br><span class="line">			out.println(line);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		//告诉服务端，客户端写完了。</span><br><span class="line">		s.shutdownOutput();</span><br><span class="line">		</span><br><span class="line">		BufferedReader bufIn = new BufferedReader(new InputStreamReader(s.getInputStream()));</span><br><span class="line">		String str = bufIn.readLine();</span><br><span class="line">		System.out.println(str);</span><br><span class="line">		bufr.close();</span><br><span class="line">		s.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="了解客户端和服务器端原理"><a href="#了解客户端和服务器端原理" class="headerlink" title="了解客户端和服务器端原理"></a>了解客户端和服务器端原理</h3><p>最常见的客户端：浏览器，IE&#x2F;chrome。</p>
 <p>最常见的服务端：服务器，Tomcat。</p>
 <h4 id="URL-URLConnection"><a href="#URL-URLConnection" class="headerlink" title="URL&amp;URLConnection"></a>URL&amp;URLConnection</h4><p>URI：统一资源标示符。</p>

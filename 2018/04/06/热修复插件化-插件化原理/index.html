@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Oct 08 2020 11:17:50 GMT+0800">2020-10-08 11:17:50</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 13:35:51 GMT+0800">2024-07-11 13:35:51</span>
             </span>
         
 
@@ -299,68 +299,8 @@
 <li>如何自定义classloader加载类文件</li>
 <li>如何调用插件apk文件中的类</li>
 </ul>
-<h3 id="获取另一个apk里的方法"><a href="#获取另一个apk里的方法" class="headerlink" title="获取另一个apk里的方法"></a>获取另一个apk里的方法</h3><pre><code>//主apk加载Bundle.apk里的方法
-String apkPath = getExternalCacheDir().getAbsolutePath() + &quot;/bundle.apk&quot;;
-loadApk(apkPath);
-
-private void loadApk(String apkPath) &#123;
-    File optDir = getDir(&quot;opt&quot;, MODE_PRIVATE);
-    //初始化classLoader
-    DexClassLoader classLoader = new DexClassLoader(apkPath,
-            optDir.getAbsolutePath(), null, this.getClassLoader());
-
-    try &#123;
-        Class cls = classLoader.loadClass(&quot;com.imooc.bundle.BundleUtil&quot;);
-        if (cls != null) &#123;
-
-            Object instacne = cls.newInstance();
-            Method method = cls.getMethod(&quot;printLog&quot;);
-            method.invoke(instacne);
-        &#125;
-    &#125; catch (Exception e) &#123;
-        e.printStackTrace();
-    &#125;
-&#125;
-</code></pre>
-<h3 id="定义简单的classloader"><a href="#定义简单的classloader" class="headerlink" title="定义简单的classloader"></a>定义简单的classloader</h3><pre><code>public class CustomClassLoader extends DexClassLoader &#123;
-
-    public CustomClassLoader(String dexPath, String optimizedDirectory, String librarySearchPath, ClassLoader parent) &#123;
-        super(dexPath, optimizedDirectory, librarySearchPath, parent);
-    &#125;
-
-
-    @Override
-    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException &#123;
-
-        byte[] classData = getClassData(name);
-        if (classData != null) &#123;
-            return defineClass(name, classData, 0, classData.length);
-        &#125; else &#123;
-
-            throw new ClassNotFoundException();
-        &#125;
-    &#125;
-
-    private byte[] getClassData(String name) &#123;
-
-        try &#123;
-            InputStream inputStream = new FileInputStream(name);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            int buffersize = 4096;
-            byte[] buffer = new byte[buffersize];
-            int bytesNumRead = -1;
-            while ((bytesNumRead = inputStream.read(buffer)) != -1) &#123;
-                baos.write(buffer, 0, bytesNumRead);
-            &#125;
-            return baos.toByteArray();
-        &#125; catch (Exception e) &#123;
-            e.printStackTrace();
-        &#125;
-
-        return null;
-    &#125;
-&#125;
-</code></pre>
+<h3 id="获取另一个apk里的方法"><a href="#获取另一个apk里的方法" class="headerlink" title="获取另一个apk里的方法"></a>获取另一个apk里的方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//主apk加载Bundle.apk里的方法</span><br><span class="line">String apkPath = getExternalCacheDir().getAbsolutePath() + &quot;/bundle.apk&quot;;</span><br><span class="line">   loadApk(apkPath);</span><br><span class="line">   </span><br><span class="line">   private void loadApk(String apkPath) &#123;</span><br><span class="line">       File optDir = getDir(&quot;opt&quot;, MODE_PRIVATE);</span><br><span class="line">       //初始化classLoader</span><br><span class="line">       DexClassLoader classLoader = new DexClassLoader(apkPath,</span><br><span class="line">               optDir.getAbsolutePath(), null, this.getClassLoader());</span><br><span class="line"></span><br><span class="line">       try &#123;</span><br><span class="line">           Class cls = classLoader.loadClass(&quot;com.imooc.bundle.BundleUtil&quot;);</span><br><span class="line">           if (cls != null) &#123;</span><br><span class="line"></span><br><span class="line">               Object instacne = cls.newInstance();</span><br><span class="line">               Method method = cls.getMethod(&quot;printLog&quot;);</span><br><span class="line">               method.invoke(instacne);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; catch (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="定义简单的classloader"><a href="#定义简单的classloader" class="headerlink" title="定义简单的classloader"></a>定义简单的classloader</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class CustomClassLoader extends DexClassLoader &#123;</span><br><span class="line"></span><br><span class="line">   	public CustomClassLoader(String dexPath, String optimizedDirectory, String librarySearchPath, ClassLoader parent) &#123;</span><br><span class="line">       	super(dexPath, optimizedDirectory, librarySearchPath, parent);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException &#123;</span><br><span class="line"></span><br><span class="line">       	byte[] classData = getClassData(name);</span><br><span class="line">       	if (classData != null) &#123;</span><br><span class="line">           	return defineClass(name, classData, 0, classData.length);</span><br><span class="line">       	&#125; else &#123;</span><br><span class="line"></span><br><span class="line">           	throw new ClassNotFoundException();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	private byte[] getClassData(String name) &#123;</span><br><span class="line"></span><br><span class="line">       	try &#123;</span><br><span class="line">           	InputStream inputStream = new FileInputStream(name);</span><br><span class="line">           	ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">           	int buffersize = 4096;</span><br><span class="line">           	byte[] buffer = new byte[buffersize];</span><br><span class="line">           	int bytesNumRead = -1;</span><br><span class="line">           	while ((bytesNumRead = inputStream.read(buffer)) != -1) &#123;</span><br><span class="line">               	baos.write(buffer, 0, bytesNumRead);</span><br><span class="line">           	&#125;</span><br><span class="line">           	return baos.toByteArray();</span><br><span class="line">       	&#125; catch (Exception e) &#123;</span><br><span class="line">           	e.printStackTrace();</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	return null;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>需要为每个插件定义classloader</p>
 <h3 id="资源文件加载"><a href="#资源文件加载" class="headerlink" title="资源文件加载"></a>资源文件加载</h3><h4 id="Android资源加载所需的类"><a href="#Android资源加载所需的类" class="headerlink" title="Android资源加载所需的类"></a>Android资源加载所需的类</h4><p><img src="/2018/04/06/%E7%83%AD%E4%BF%AE%E5%A4%8D%E6%8F%92%E4%BB%B6%E5%8C%96-%E6%8F%92%E4%BB%B6%E5%8C%96%E5%8E%9F%E7%90%86/5.png"></p>
 <p>如果资源只有文件名，需要通过assetmanager通过文件名加载资源。如果资源有对应的ID（如图片、布局、动画），通过resources类完成对应资源的加载，再通过assetmanager完成资源文件的读写。</p>
@@ -371,101 +311,9 @@ private void loadApk(String apkPath) &#123;
 <li>为每个插件apk创建对应的类加载器，资源管理器等</li>
 </ul>
 <h3 id="模拟简单的插件化框架"><a href="#模拟简单的插件化框架" class="headerlink" title="模拟简单的插件化框架"></a>模拟简单的插件化框架</h3><p>PluginInfo：</p>
-<pre><code>public class PluginInfo &#123;
-
-    public DexClassLoader mClassLoader;
-
-    public AssetManager mAssetManager;
-
-    public Resources mResouces;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class PluginInfo &#123;</span><br><span class="line"></span><br><span class="line">   	public DexClassLoader mClassLoader;</span><br><span class="line"></span><br><span class="line">   	public AssetManager mAssetManager;</span><br><span class="line"></span><br><span class="line">   	public Resources mResouces;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>PluginManager:（不需要那么多static）</p>
-<pre><code>public class PluginManager &#123;
-
-    private static PluginManager mInstacne;
-
-    private static Context mContext;
-    private static File mOptFile;
-    private static HashMap&lt;String, PluginInfo&gt; mPluginMap;
-
-    private PluginManager(Context context) &#123;
-        mContext = context;
-        mOptFile = mContext.getDir(&quot;opt&quot;, mContext.MODE_PRIVATE);
-        mPluginMap = new HashMap&lt;&gt;();
-    &#125;
-
-    //获取单例对象方法
-    public static PluginManager getInstance(Context context) &#123;
-
-        if (mInstacne == null) &#123;
-            synchronized (PluginManager.class) &#123;
-                if (mInstacne == null) &#123;
-
-                    mInstacne = new PluginManager(context);
-                &#125;
-            &#125;
-        &#125;
-        return mInstacne;
-    &#125;
-
-
-    public static PluginInfo loadApk(String apkPath) &#123;
-
-        if (mPluginMap.get(apkPath) != null) &#123;
-             return mPluginMap.get(apkPath);
-        &#125;
-
-        PluginInfo pluginInfo = new PluginInfo();
-        pluginInfo.mClassLoader = createPluginDexClassLoader(apkPath);
-        pluginInfo.mAssetManager = createPluginAssetManager(apkPath);
-        pluginInfo.mResouces = createPluginResources(apkPath);
-
-        mPluginMap.put(apkPath, pluginInfo);
-
-        return pluginInfo;
-    &#125;
-
-    //为插件apk创建对应的classLoader
-    private static DexClassLoader createPluginDexClassLoader(String apkPath) &#123;
-
-        DexClassLoader classLoader = new DexClassLoader(apkPath,
-            mOptFile.getAbsolutePath(), null, null);
-        return classLoader;
-    &#125;
-
-    //为对应的插件创建AssetManager
-    private static AssetManager createPluginAssetManager(String apkPath) &#123;
-
-        try &#123;
-            AssetManager assetManager = AssetManager.class.newInstance();
-            Method addAssetPath = assetManager.getClass().getMethod(&quot;addAssetPath&quot;,
-                String.class);
-
-            addAssetPath.invoke(assetManager, apkPath);
-            return assetManager;
-        &#125; catch (Exception e) &#123;
-            e.printStackTrace();
-        &#125;
-
-        return null;
-    &#125;
-
-    //为对应的插件创建resoures
-    private static Resources createPluginResources(String apkPath) &#123;
-
-        AssetManager assetManager = createPluginAssetManager(apkPath);
-
-        Resources superResources = mContext.getResources();
-
-        Resources pluginResources = new Resources(assetManager,
-            superResources.getDisplayMetrics(), superResources.getConfiguration());
-
-        return pluginResources;
-    &#125;
-&#125;
-</code></pre>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">public class PluginManager &#123;</span><br><span class="line"></span><br><span class="line">   	private static PluginManager mInstacne;</span><br><span class="line"></span><br><span class="line">   	private static Context mContext;</span><br><span class="line">   	private static File mOptFile;</span><br><span class="line">   	private static HashMap&lt;String, PluginInfo&gt; mPluginMap;</span><br><span class="line"></span><br><span class="line">   	private PluginManager(Context context) &#123;</span><br><span class="line">       	mContext = context;</span><br><span class="line">       	mOptFile = mContext.getDir(&quot;opt&quot;, mContext.MODE_PRIVATE);</span><br><span class="line">       	mPluginMap = new HashMap&lt;&gt;();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//获取单例对象方法</span><br><span class="line">   	public static PluginManager getInstance(Context context) &#123;</span><br><span class="line"></span><br><span class="line">       	if (mInstacne == null) &#123;</span><br><span class="line">           	synchronized (PluginManager.class) &#123;</span><br><span class="line">               	if (mInstacne == null) &#123;</span><br><span class="line"></span><br><span class="line">                   	mInstacne = new PluginManager(context);</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">       	return mInstacne;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   	public static PluginInfo loadApk(String apkPath) &#123;</span><br><span class="line"></span><br><span class="line">       	if (mPluginMap.get(apkPath) != null) &#123;</span><br><span class="line">            	return mPluginMap.get(apkPath);</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	PluginInfo pluginInfo = new PluginInfo();</span><br><span class="line">       	pluginInfo.mClassLoader = createPluginDexClassLoader(apkPath);</span><br><span class="line">       	pluginInfo.mAssetManager = createPluginAssetManager(apkPath);</span><br><span class="line">       	pluginInfo.mResouces = createPluginResources(apkPath);</span><br><span class="line"></span><br><span class="line">       	mPluginMap.put(apkPath, pluginInfo);</span><br><span class="line"></span><br><span class="line">       	return pluginInfo;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//为插件apk创建对应的classLoader</span><br><span class="line">   	private static DexClassLoader createPluginDexClassLoader(String apkPath) &#123;</span><br><span class="line"></span><br><span class="line">       	DexClassLoader classLoader = new DexClassLoader(apkPath,</span><br><span class="line">               mOptFile.getAbsolutePath(), null, null);</span><br><span class="line">       	return classLoader;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//为对应的插件创建AssetManager</span><br><span class="line">   	private static AssetManager createPluginAssetManager(String apkPath) &#123;</span><br><span class="line"></span><br><span class="line">       	try &#123;</span><br><span class="line">           	AssetManager assetManager = AssetManager.class.newInstance();</span><br><span class="line">           	Method addAssetPath = assetManager.getClass().getMethod(&quot;addAssetPath&quot;,</span><br><span class="line">                   String.class);</span><br><span class="line"></span><br><span class="line">           	addAssetPath.invoke(assetManager, apkPath);</span><br><span class="line">           	return assetManager;</span><br><span class="line">       	&#125; catch (Exception e) &#123;</span><br><span class="line">           	e.printStackTrace();</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	return null;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//为对应的插件创建resoures</span><br><span class="line">   	private static Resources createPluginResources(String apkPath) &#123;</span><br><span class="line"></span><br><span class="line">       	AssetManager assetManager = createPluginAssetManager(apkPath);</span><br><span class="line"></span><br><span class="line">       	Resources superResources = mContext.getResources();</span><br><span class="line"></span><br><span class="line">       	Resources pluginResources = new Resources(assetManager,</span><br><span class="line">               superResources.getDisplayMetrics(), superResources.getConfiguration());</span><br><span class="line"></span><br><span class="line">       	return pluginResources;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
                     
                 </div>
 

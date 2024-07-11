@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Oct 08 2020 14:40:33 GMT+0800">2020-10-08 14:40:33</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:34:42 GMT+0800">2024-07-11 15:34:42</span>
             </span>
         
 
@@ -254,29 +254,15 @@
                     
 
                     
-                         <h2 id="安装node、npm"><a href="#安装node、npm" class="headerlink" title="安装node、npm"></a>安装node、npm</h2><h3 id="进入官网下载或命令下载，检查是否安装完成"><a href="#进入官网下载或命令下载，检查是否安装完成" class="headerlink" title="进入官网下载或命令下载，检查是否安装完成"></a>进入官网下载或命令下载，检查是否安装完成</h3><pre><code>node -v
-npm -v
-</code></pre>
+                         <h2 id="安装node、npm"><a href="#安装node、npm" class="headerlink" title="安装node、npm"></a>安装node、npm</h2><h3 id="进入官网下载或命令下载，检查是否安装完成"><a href="#进入官网下载或命令下载，检查是否安装完成" class="headerlink" title="进入官网下载或命令下载，检查是否安装完成"></a>进入官网下载或命令下载，检查是否安装完成</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h3 id="更改npm源，如不更改会导致某些资源下载失败"><a href="#更改npm源，如不更改会导致某些资源下载失败" class="headerlink" title="更改npm源，如不更改会导致某些资源下载失败"></a>更改npm源，如不更改会导致某些资源下载失败</h3><pre><code>npm config set registry http://registry.npm.taobao.org/
-</code></pre>
-<h2 id="安装http-server"><a href="#安装http-server" class="headerlink" title="安装http-server"></a>安装http-server</h2><pre><code>npm install http-server -g
-</code></pre>
+<h3 id="更改npm源，如不更改会导致某些资源下载失败"><a href="#更改npm源，如不更改会导致某些资源下载失败" class="headerlink" title="更改npm源，如不更改会导致某些资源下载失败"></a>更改npm源，如不更改会导致某些资源下载失败</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry http://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure>
+<h2 id="安装http-server"><a href="#安装http-server" class="headerlink" title="安装http-server"></a>安装http-server</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server -g</span><br></pre></td></tr></table></figure>
 <p>-g表示安装在全局，不只是当前用户能使用。如果报找不到文件的错误，使用管理员权限运行</p>
-<pre><code>npm install http-server -g
-</code></pre>
-<h2 id="加载H5文件"><a href="#加载H5文件" class="headerlink" title="加载H5文件"></a>加载H5文件</h2><h3 id="cd到文件目录执行"><a href="#cd到文件目录执行" class="headerlink" title="cd到文件目录执行"></a>cd到文件目录执行</h3><pre><code>//.表示在当前目录下
-http-server .
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server -g</span><br></pre></td></tr></table></figure>
+<h2 id="加载H5文件"><a href="#加载H5文件" class="headerlink" title="加载H5文件"></a>加载H5文件</h2><h3 id="cd到文件目录执行"><a href="#cd到文件目录执行" class="headerlink" title="cd到文件目录执行"></a>cd到文件目录执行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//.表示在当前目录下</span><br><span class="line">http-server .</span><br></pre></td></tr></table></figure>
 <p>如果显示结果如下，则表示本地服务器已经启动</p>
-<pre><code>http-server .
-Starting up http-server, serving .
-Available on:
-http://127.0.0.1:8080
-http://192.168.1.229:8080
-http://192.168.2.1:8080
-Hit CTRL-C to stop the server
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http-server .</span><br><span class="line">Starting up http-server, serving .</span><br><span class="line">Available on:</span><br><span class="line">http://127.0.0.1:8080</span><br><span class="line">http://192.168.1.229:8080</span><br><span class="line">http://192.168.2.1:8080</span><br><span class="line">Hit CTRL-C to stop the server</span><br></pre></td></tr></table></figure>
 <h3 id="打开浏览器，输入localhost-8080"><a href="#打开浏览器，输入localhost-8080" class="headerlink" title="打开浏览器，输入localhost:8080"></a>打开浏览器，输入localhost:8080</h3><p>点击文件所在文件夹即可访问H5文件</p>
 <h2 id="在手机端加载H5"><a href="#在手机端加载H5" class="headerlink" title="在手机端加载H5"></a>在手机端加载H5</h2><p>上面结果的</p>
 <ul>

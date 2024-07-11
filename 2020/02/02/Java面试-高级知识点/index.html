@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Dec 15 2020 18:19:31 GMT+0800">2020-12-15 18:19:31</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:48:07 GMT+0800">2024-07-11 15:48:07</span>
             </span>
         
 
@@ -388,65 +388,7 @@
 <p><img src="/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/12.png"></p>
 <p><img src="/2020/02/02/Java%E9%9D%A2%E8%AF%95-%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/13.png"></p>
 <p>一个服务器有线程池，假如线程只有三个，那么就做不了高并发。目前功能是输入123，服务器返回123，那么等待的地方有两个，一个是连接的过程，一个是等待输入的过程，NIO代码如下：</p>
-<pre><code>public class NioServer &#123;
-
-  public static void main(String[] args) throws IOException &#123;
-        ServerSocketChannel serverChannel =
-            ServerSocketChannel.open();
-        serverChannel.configureBlocking(false);
-        serverChannel.bind(new InetSocketAddress(8888));
-        System.out.println(&quot;Listening on &quot;
-    + serverChannel.getLocalAddress());
-
-        Selector selector = Selector.open();
-        serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
-        RequestHandler requestHandler = new RequestHandler();
-        while (true) &#123;
-          int selected = selector.select();
-          if (selected == 0) &#123;
-            continue;
-          &#125;
-
-          Set&lt;SelectionKey&gt; selectedKeys = selector.selectedKeys();
-          Iterator&lt;SelectionKey&gt; keyIter = selectedKeys.iterator();
-
-          while (keyIter.hasNext()) &#123;
-            SelectionKey key = keyIter.next();
-        //等待连接
-            if (key.isAcceptable()) &#123;
-              ServerSocketChannel channel =
-          (ServerSocketChannel) key.channel();
-              SocketChannel clientChannel = channel.accept();
-              System.out.println(&quot;Incoming connection from &quot;
-          + clientChannel.getRemoteAddress());
-              clientChannel.configureBlocking(false);
-              clientChannel.register(
-          selector, SelectionKey.OP_READ);
-            &#125;
-
-        //等待输入
-            if (key.isReadable()) &#123;
-              SocketChannel channel =
-          (SocketChannel) key.channel();
-              channel.read(buffer);
-              String request = new String(buffer.array()).trim();
-              buffer.clear();
-              System.out.println(String.format(
-          &quot;Request from %s: %s&quot;,
-                  channel.getRemoteAddress(),
-          request));
-              String response = requestHandler.handle(request);
-              channel.write(ByteBuffer.wrap(response.getBytes()));
-            &#125;
-
-            keyIter.remove();
-          &#125;
-        &#125;
-      &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">public class NioServer &#123;</span><br><span class="line"></span><br><span class="line"> 	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">   		ServerSocketChannel serverChannel =</span><br><span class="line">       		ServerSocketChannel.open();</span><br><span class="line">   		serverChannel.configureBlocking(false);</span><br><span class="line">   		serverChannel.bind(new InetSocketAddress(8888));</span><br><span class="line">   		System.out.println(&quot;Listening on &quot;</span><br><span class="line">       + serverChannel.getLocalAddress());</span><br><span class="line"></span><br><span class="line">   		Selector selector = Selector.open();</span><br><span class="line">   		serverChannel.register(selector, SelectionKey.OP_ACCEPT);</span><br><span class="line"></span><br><span class="line">   		ByteBuffer buffer = ByteBuffer.allocate(1024);</span><br><span class="line">   		RequestHandler requestHandler = new RequestHandler();</span><br><span class="line">   		while (true) &#123;</span><br><span class="line">     		int selected = selector.select();</span><br><span class="line">     		if (selected == 0) &#123;</span><br><span class="line">       		continue;</span><br><span class="line">     		&#125;</span><br><span class="line"></span><br><span class="line">     		Set&lt;SelectionKey&gt; selectedKeys = selector.selectedKeys();</span><br><span class="line">     		Iterator&lt;SelectionKey&gt; keyIter = selectedKeys.iterator();</span><br><span class="line"></span><br><span class="line">     		while (keyIter.hasNext()) &#123;</span><br><span class="line">       		SelectionKey key = keyIter.next();</span><br><span class="line">		//等待连接</span><br><span class="line">       		if (key.isAcceptable()) &#123;</span><br><span class="line">         		ServerSocketChannel channel =</span><br><span class="line">             (ServerSocketChannel) key.channel();</span><br><span class="line">         		SocketChannel clientChannel = channel.accept();</span><br><span class="line">         		System.out.println(&quot;Incoming connection from &quot;</span><br><span class="line">             + clientChannel.getRemoteAddress());</span><br><span class="line">         		clientChannel.configureBlocking(false);</span><br><span class="line">         		clientChannel.register(</span><br><span class="line">             selector, SelectionKey.OP_READ);</span><br><span class="line">       		&#125;</span><br><span class="line"></span><br><span class="line">		//等待输入</span><br><span class="line">       		if (key.isReadable()) &#123;</span><br><span class="line">         		SocketChannel channel =</span><br><span class="line">             (SocketChannel) key.channel();</span><br><span class="line">         		channel.read(buffer);</span><br><span class="line">         		String request = new String(buffer.array()).trim();</span><br><span class="line">         		buffer.clear();</span><br><span class="line">         		System.out.println(String.format(</span><br><span class="line">             &quot;Request from %s: %s&quot;,</span><br><span class="line">             		channel.getRemoteAddress(),</span><br><span class="line">             request));</span><br><span class="line">         		String response = requestHandler.handle(request);</span><br><span class="line">         		channel.write(ByteBuffer.wrap(response.getBytes()));</span><br><span class="line">       		&#125;</span><br><span class="line"></span><br><span class="line">       		keyIter.remove();</span><br><span class="line">     		&#125;</span><br><span class="line">   		&#125;</span><br><span class="line"> 		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>ServerSocketChannel只有一个，用来监听端口。每连上一个用户，我们在selector中加一个client的SocketChannel, 见if (key.isAcceptable())每次用户有输入，我们就读输入，并且将结果写到对应的client的SocketChannel，见if (key.isReadable())</p>
 <p>首先，并发是目的。就是几个请求要同时执行。异步和多线程都是其实现方式。多线程那自然他们可以通过线程切换来同时处理多个请求。异步则是在一个线程里，可以请求多个io操作。这些io操作完成后各自会触发中断请求，我们的那一个线程可以通过检查谁发生了中断去处理谁的数据。对于io密集型服务，异步可以省去多线程的开销，更容易突破线程数量限制，做到高并发。对于计算密集型，由于cpu同时只能做一件事，所以在计算时其他服务请求就无法被执行，这样可能多线程更为适合</p>
 <h4 id="select模型的缺点"><a href="#select模型的缺点" class="headerlink" title="select模型的缺点"></a>select模型的缺点</h4><ul>

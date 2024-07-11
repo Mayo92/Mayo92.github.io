@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Dec 01 2020 09:57:47 GMT+0800">2020-12-01 09:57:47</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 10:30:26 GMT+0800">2024-07-11 10:30:26</span>
             </span>
         
 
@@ -256,14 +256,14 @@
                     
                          <h3 id="面向对象概念"><a href="#面向对象概念" class="headerlink" title="面向对象概念"></a>面向对象概念</h3><h4 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h4><p>万物皆对象、客观存在的事物</p>
 <p>对象：用来描述客观事物的一个实体，由一组属性和方法构成</p>
+<span id="more"></span>
+
 <h4 id="什么是面向对象"><a href="#什么是面向对象" class="headerlink" title="什么是面向对象"></a>什么是面向对象</h4><p>人关注对象，人关注事物信息</p>
 <h4 id="面向对象的特征"><a href="#面向对象的特征" class="headerlink" title="面向对象的特征"></a>面向对象的特征</h4><ol>
 <li>封装(encapsulation)</li>
 <li>继承(inheritance)</li>
 <li>多态(polymorphism)</li>
 </ol>
-<span id="more"></span>
-
 <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类是模子，确定对象将会拥有的特征（属性）和行为（方法）</p>
 <h4 id="类的特点"><a href="#类的特点" class="headerlink" title="类的特点"></a>类的特点</h4><ul>
 <li>类是对象的类型</li>
@@ -309,8 +309,7 @@
 </ul>
 <h4 id="对象内存结构"><a href="#对象内存结构" class="headerlink" title="对象内存结构"></a>对象内存结构</h4><p>只要是用new操作符定义的实体就会在堆内存中开辟一个新的空间，并且每一个对象中都有一份属于自己的属性。</p>
 <p>需要提到的是c1、c2都是对实体的引用变量，如果执行c2 &#x3D; c1，那么c2也就指向了c1引用的实体。c2原来引用的实体因为没有被引用变量引用，就会被垃圾回收器回收。</p>
-<h4 id="基本数据类型参数及引用数据类型参数传递"><a href="#基本数据类型参数及引用数据类型参数传递" class="headerlink" title="基本数据类型参数及引用数据类型参数传递"></a>基本数据类型参数及引用数据类型参数传递</h4><pre><code>Demo d = new Demo();
-</code></pre>
+<h4 id="基本数据类型参数及引用数据类型参数传递"><a href="#基本数据类型参数及引用数据类型参数传递" class="headerlink" title="基本数据类型参数及引用数据类型参数传递"></a>基本数据类型参数及引用数据类型参数传递</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo d = new Demo();</span><br></pre></td></tr></table></figure>
 <p>在堆内存中创建，d作为引用变量，指向堆内存中创建的实体对象</p>
 <p>总结：在java中，方法参数的传递永远都是传值，而这个值，对于基本数据类型，值就是你赋给变量的那个值。 而对于引用数据类型，这个值是对象的引用，而不是这个对象本身</p>
 <h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><ul>

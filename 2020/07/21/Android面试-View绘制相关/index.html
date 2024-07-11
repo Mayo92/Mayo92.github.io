@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Jul 21 2020 17:19:15 GMT+0800">2020-07-21 17:19:15</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:52:56 GMT+0800">2024-07-11 15:52:56</span>
             </span>
         
 
@@ -254,9 +254,9 @@
                     
 
                     
-                         <h3 id="decorview、Window、surface等概念"><a href="#decorview、Window、surface等概念" class="headerlink" title="decorview、Window、surface等概念"></a>decorview、Window、surface等概念</h3><p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/1.png"></p>
-<span id="more"></span>
+                         <h3 id="decorview、Window、surface等概念"><a href="#decorview、Window、surface等概念" class="headerlink" title="decorview、Window、surface等概念"></a>decorview、Window、surface等概念</h3><span id="more"></span>
 
+<p><img src="/2020/07/21/Android%E9%9D%A2%E8%AF%95-View%E7%BB%98%E5%88%B6%E7%9B%B8%E5%85%B3/1.png"></p>
 <p>Activity接收到焦点，请求绘制UI布局，由Android的framework层处理，从根节点开始，对布局数依次测量绘制。每一个Activity都与一个window相关，用户界面通过window承载</p>
 <p>PhoneWindow是window的唯一实现类，窗口是屏幕上用于绘制各种我们的UI布局当中元素以及响应我们用户输入事件的一个矩形的区域。Android中为窗口提供一个功能，独占一个surface实例的显示区域，每一个窗口的surface由WindowsManagerService系统服务来分配。可以把surface看成一个画布，应用可以通过canvas在上面作画，通过surface的surfaceFlinger将多块surface按照特定的顺序进行混合，然后会输出到framebuffer，这样用户界面就得以显示。</p>
 <p>DecorView应用窗口的根容器，本质上是FrameLayout，有一个唯一的子View，垂直的LinearLayout，包含两个元素，ContentView是窗口内容相关的容器，也是一个FrameLayout，setcontentview就是设置它的子view</p>

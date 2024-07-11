@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Dec 28 2020 20:52:39 GMT+0800">2020-12-28 20:52:39</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:46:19 GMT+0800">2024-07-11 15:46:19</span>
             </span>
         
 
@@ -323,35 +323,19 @@
 </ul>
 <p>需要拷贝一份再调用Collections.unmodifiableXXX方法。因为unmodifiableList是一个view，我们看到的和外面传进来的reporters其实是同一个list。只是因为包了一层unmodifiableList，在Manager类里面改不了了。但是在外面还是可以改的，并且会体现到Manager里面。而我们使用new ArrayList拷贝了一份之后，就杜绝了外面有人可以改变它。</p>
 <p><img src="/2020/02/01/Java%E9%9D%A2%E8%AF%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/7.png"></p>
-<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="从List到List"><a href="#从List到List" class="headerlink" title="从List到List"></a>从List到List<T></T></h4><pre><code>规定List中的元素只能是类型T
-ArrayLis&lt;Integer&gt;，ArrayLis&lt;String&gt;
-LinkList&lt;Integer&gt;，LinkList&lt;String&gt;
-</code></pre>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="从List到List"><a href="#从List到List" class="headerlink" title="从List到List"></a>从List到List<T></T></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">规定List中的元素只能是类型T</span><br><span class="line">ArrayLis&lt;Integer&gt;，ArrayLis&lt;String&gt;</span><br><span class="line">LinkList&lt;Integer&gt;，LinkList&lt;String&gt;</span><br></pre></td></tr></table></figure>
+
 <p>T是对象才知道的，类是不知道的，所以static方法要加上T</p>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre><code>List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); //JDK1.7
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); //JDK1.7</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; list = LinkedList.of(1,2,3);</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; list = LinkedList.newEmptyList();</span><br><span class="line"></span><br><span class="line">Object.equals(emptyIntList , LinkedList.&lt;Integer&gt;newEmptyList())</span><br><span class="line"></span><br><span class="line">class ArrayList&lt;T&gt; &#123;... //写在类定义上</span><br><span class="line"></span><br><span class="line">public &lt;V&gt; void printList(List&lt;V&gt; list) &#123;... //写在方法定义上</span><br></pre></td></tr></table></figure>
+<h4 id="Java-Type-Erasure"><a href="#Java-Type-Erasure" class="headerlink" title="Java Type Erasure"></a>Java Type Erasure</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">早期java没有泛型</span><br><span class="line">为了兼容，在运行时将所有泛型内容Erase</span><br><span class="line">运行时，List,List&lt;&gt;没有区别</span><br></pre></td></tr></table></figure>
 
-List&lt;Integer&gt; list = LinkedList.of(1,2,3);
-
-List&lt;Integer&gt; list = LinkedList.newEmptyList();
-
-Object.equals(emptyIntList , LinkedList.&lt;Integer&gt;newEmptyList())
-
-class ArrayList&lt;T&gt; &#123;... //写在类定义上
-
-public &lt;V&gt; void printList(List&lt;V&gt; list) &#123;... //写在方法定义上
-</code></pre>
-<h4 id="Java-Type-Erasure"><a href="#Java-Type-Erasure" class="headerlink" title="Java Type Erasure"></a>Java Type Erasure</h4><pre><code>早期java没有泛型
-为了兼容，在运行时将所有泛型内容Erase
-运行时，List,List&lt;&gt;没有区别
-</code></pre>
 <h4 id="运行时如何知道泛型类型"><a href="#运行时如何知道泛型类型" class="headerlink" title="运行时如何知道泛型类型"></a>运行时如何知道泛型类型</h4><p>加上类型参数</p>
 <p><img src="/2020/02/01/Java%E9%9D%A2%E8%AF%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/8.png"></p>
-<h4 id="Covariance"><a href="#Covariance" class="headerlink" title="Covariance"></a>Covariance</h4><pre><code>ArrayList&lt;Integer&gt;是List&lt;Integer&gt;吗？  是的
-List&lt;Integer&gt;是List&lt;Object&gt;吗？  不是
-</code></pre>
+<h4 id="Covariance"><a href="#Covariance" class="headerlink" title="Covariance"></a>Covariance</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Integer&gt;是List&lt;Integer&gt;吗？  是的</span><br><span class="line">List&lt;Integer&gt;是List&lt;Object&gt;吗？  不是</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2020/02/01/Java%E9%9D%A2%E8%AF%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/9.png"></p>
-<pre><code>把List&lt;Integer&gt;转换成List&lt;Object&gt;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把List&lt;Integer&gt;转换成List&lt;Object&gt;</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2020/02/01/Java%E9%9D%A2%E8%AF%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/10.png"></p>
 <h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="什么是接口？接口与抽象类的区别？"><a href="#什么是接口？接口与抽象类的区别？" class="headerlink" title="什么是接口？接口与抽象类的区别？"></a>什么是接口？接口与抽象类的区别？</h4><ul>
 <li>表现区别，接口的函数没有实现，接口可以多继承</li>

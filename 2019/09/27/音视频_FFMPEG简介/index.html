@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jan 08 2020 16:22:23 GMT+0800">2020-01-08 16:22:23</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 15:41:49 GMT+0800">2024-07-11 15:41:49</span>
             </span>
         
 
@@ -291,28 +291,24 @@
 <p>查看帮助的具体信息，.&#x2F;configure –list-encoders等，如下图</p>
 <p><img src="/2019/09/27/%E9%9F%B3%E8%A7%86%E9%A2%91_FFMPEG%E7%AE%80%E4%BB%8B/5.png"></p>
 <p>执行下面命令（配置可以根据上面更改，如调试状态可打开debug关闭优化等，–prefix为安装目录）</p>
-<pre><code>./configure --prefix=/Users/yaoluyang/FFmpeg --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libx264 --enable-libx265 --enable-filter=delogo --enable-debug --disable-optimizations --enable-libspeex --enable-videotoolbox --enable-shared --enable-pthreads --enable-version3 --enable-hardcoded-tables --cc=clang --host-cflags= --host-ldflags=
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/Users/yaoluyang/FFmpeg --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libx264 --enable-libx265 --enable-filter=delogo --enable-debug --disable-optimizations --enable-libspeex --enable-videotoolbox --enable-shared --enable-pthreads --enable-version3 --enable-hardcoded-tables --cc=clang --host-cflags= --host-ldflags=</span><br></pre></td></tr></table></figure>
+
 <p>出现错误解决办法</p>
 <p><strong>nasm&#x2F;yasm not found or too old. Use –disable-x86asm for a crippled build</strong></p>
-<pre><code>brew install yasm
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install yasm</span><br></pre></td></tr></table></figure>
+
 <p><strong>ERROR: libfdk_aac not found</strong></p>
-<pre><code>brew install fdk-aac
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fdk-aac</span><br></pre></td></tr></table></figure>
+
 <p><strong>ERROR: speex not found using pkg-config</strong></p>
-<pre><code>brew install speex
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install speex</span><br></pre></td></tr></table></figure>
+
 <p><strong>ERROR: x265 not found using pkg-config</strong></p>
-<pre><code>brew install x264
-brew install x265
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install x264</span><br><span class="line">brew install x265</span><br></pre></td></tr></table></figure>
 <p>编译完成查看Makefile（按住ESC键输入:q退出）</p>
-<pre><code>vi Makefile
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi Makefile</span><br></pre></td></tr></table></figure>
 <p>再次执行编译命令</p>
-<pre><code>make &amp;&amp; make install
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 <p>完成后返回之前命令安装目录，多出四个目录</p>
 <p><img src="/2019/09/27/%E9%9F%B3%E8%A7%86%E9%A2%91_FFMPEG%E7%AE%80%E4%BB%8B/7.png"></p>
 <ul>
@@ -322,13 +318,9 @@ brew install x265
 <li>share目录，文档相关</li>
 </ul>
 <p>执行的时候</p>
-<pre><code>/Users/yaoluyang/FFmpeg/bin/ffmpeg
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Users/yaoluyang/FFmpeg/bin/ffmpeg</span><br></pre></td></tr></table></figure>
 <p>配置环境变量</p>
-<pre><code>open ~/.zshrc
-export PATH=$&#123;PATH&#125;:/Users/yaoluyang/FFmpeg/bin
-</code></pre>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">open ~/.zshrc</span><br><span class="line">export PATH=$&#123;PATH&#125;:/Users/yaoluyang/FFmpeg/bin</span><br></pre></td></tr></table></figure>
                     
                 </div>
 

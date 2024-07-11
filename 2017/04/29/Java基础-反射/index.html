@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Nov 25 2020 14:57:39 GMT+0800">2020-11-25 14:57:39</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 11:08:35 GMT+0800">2024-07-11 11:08:35</span>
             </span>
         
 
@@ -261,65 +261,21 @@
 <p>如果想要对指定名称的字节码文件进行加载并获取其中的内容并调用，这时就使用到了反射技术。</p>
 <p>用于描述字节码的类就是Class类，创建对象，可以提取字节码文件中的内容，如字段、构造函数、一般函数。该类就可以获取字节码文件中的所有内容，那么反射就是依靠该类完成的。想要对一个类文件进行解剖，只要获取到该类的字节码文件对象即可。</p>
 <h3 id="获取字节码文件对象的3种方式"><a href="#获取字节码文件对象的3种方式" class="headerlink" title="获取字节码文件对象的3种方式"></a>获取字节码文件对象的3种方式</h3><h4 id="Object类中的getClass-方法"><a href="#Object类中的getClass-方法" class="headerlink" title="Object类中的getClass()方法"></a>Object类中的getClass()方法</h4><p>想要用这种方式，必须要明确具体的类，并创建对象。麻烦。</p>
-<pre><code>Person p = new Person();
-Class clazz = p.getClass();
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = new Person();</span><br><span class="line">Class clazz = p.getClass();</span><br></pre></td></tr></table></figure>
 <h4 id="任何数据类型都具备一个静态的属性-class来获取其对应的Class对象"><a href="#任何数据类型都具备一个静态的属性-class来获取其对应的Class对象" class="headerlink" title="任何数据类型都具备一个静态的属性.class来获取其对应的Class对象"></a>任何数据类型都具备一个静态的属性.class来获取其对应的Class对象</h4><p>相对简单，但是还是要明确用到类中的静态成员。还是不够扩展。</p>
-<pre><code>Class clazz = Person.class;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Person.class;</span><br></pre></td></tr></table></figure>
 <h4 id="只要通过给定的类的字符串名称就可以获取该类"><a href="#只要通过给定的类的字符串名称就可以获取该类" class="headerlink" title="只要通过给定的类的字符串名称就可以获取该类"></a>只要通过给定的类的字符串名称就可以获取该类</h4><p>更为扩展，可以用Class类中的方法完成</p>
-<pre><code>String className = &quot;cn.itcast.bean.Person&quot;;
-Class clazz = Class.forName(className);
-</code></pre>
-<h3 id="获取Class中的构造函数"><a href="#获取Class中的构造函数" class="headerlink" title="获取Class中的构造函数"></a>获取Class中的构造函数</h3><pre><code>String name = &quot;cn.itcast.bean.Person&quot;;
-//找寻该文件类文件，并加载进内存，并产生Class对象。
-Class clazz = Class.forName(name);
-Object obj = clazz.newInstance();//调用Person的空参构造函数
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String className = &quot;cn.itcast.bean.Person&quot;;</span><br><span class="line">Class clazz = Class.forName(className);</span><br></pre></td></tr></table></figure>
+<h3 id="获取Class中的构造函数"><a href="#获取Class中的构造函数" class="headerlink" title="获取Class中的构造函数"></a>获取Class中的构造函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String name = &quot;cn.itcast.bean.Person&quot;;</span><br><span class="line">//找寻该文件类文件，并加载进内存，并产生Class对象。</span><br><span class="line">Class clazz = Class.forName(name);</span><br><span class="line">Object obj = clazz.newInstance();//调用Person的空参构造函数</span><br></pre></td></tr></table></figure>
 <p>指定构造函数</p>
-<pre><code>String name = &quot;cn.itcast.bean.Person&quot;;
-Class clazz = Class.forName(name);
-//获取到了指定的构造函数对象
-Constructor constructor = clazz.getConstructor(int.class,String.class);
-Object obj = constructor.newInstance(38,&quot;小明&quot;);
-</code></pre>
-<h3 id="获取Class的字段"><a href="#获取Class的字段" class="headerlink" title="获取Class的字段"></a>获取Class的字段</h3><pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
-//getField只能获取所有可访问公共字段，private获取不到。
-//getDeclaredField可以获取到公共字段，也可以获取到私有字段。
-Field field = clazz.getDeclaredField(&quot;age&quot;);
-
-//对私有字段的访问取消权限检查，暴力访问。
-field.setAccessible(true);
-
-Object obj = clazz.newInstance();
-//为对象的属性赋值
-field.set(obj,89);
-//获取某对象的某属性值
-Object o = field.get(obj);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String name = &quot;cn.itcast.bean.Person&quot;;</span><br><span class="line">Class clazz = Class.forName(name);</span><br><span class="line">//获取到了指定的构造函数对象</span><br><span class="line">Constructor constructor = clazz.getConstructor(int.class,String.class);</span><br><span class="line">Object obj = constructor.newInstance(38,&quot;小明&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="获取Class的字段"><a href="#获取Class的字段" class="headerlink" title="获取Class的字段"></a>获取Class的字段</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);</span><br><span class="line">//getField只能获取所有可访问公共字段，private获取不到。</span><br><span class="line">//getDeclaredField可以获取到公共字段，也可以获取到私有字段。</span><br><span class="line">Field field = clazz.getDeclaredField(&quot;age&quot;);</span><br><span class="line"></span><br><span class="line">//对私有字段的访问取消权限检查，暴力访问。</span><br><span class="line">field.setAccessible(true);</span><br><span class="line"></span><br><span class="line">Object obj = clazz.newInstance();</span><br><span class="line">//为对象的属性赋值</span><br><span class="line">field.set(obj,89);</span><br><span class="line">//获取某对象的某属性值</span><br><span class="line">Object o = field.get(obj);</span><br></pre></td></tr></table></figure>
 <h3 id="获取Class中的方法"><a href="#获取Class中的方法" class="headerlink" title="获取Class中的方法"></a>获取Class中的方法</h3><p>获取指定Class中的公共函数</p>
-<pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
-//获取的都是公有的方法
-Method[] methods = clazz.getMethods();
-//只获取本类中所有方法，包括私有。
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);</span><br><span class="line">//获取的都是公有的方法</span><br><span class="line">Method[] methods = clazz.getMethods();</span><br><span class="line">//只获取本类中所有方法，包括私有。</span><br></pre></td></tr></table></figure>
 <p>获取空参数一般方法</p>
-<pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
-Method method = clazz.getMethod(&quot;show&quot;,null);
-Object obj = clazz.newInstance();
-Constructor constructor = clazz.getConstructor(int.class,String.class);
-obj = constructor.newInstance(37,&quot;小明&quot;);
-method.invoke(obj,null);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);</span><br><span class="line">Method method = clazz.getMethod(&quot;show&quot;,null);</span><br><span class="line">Object obj = clazz.newInstance();</span><br><span class="line">Constructor constructor = clazz.getConstructor(int.class,String.class);</span><br><span class="line">obj = constructor.newInstance(37,&quot;小明&quot;);</span><br><span class="line">method.invoke(obj,null);</span><br></pre></td></tr></table></figure>
 <p>获取一般方法</p>
-<pre><code>Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);
-Method method = clazz.getMethod(&quot;paramMethod&quot;,String.class,int.class);
-Object obj = clazz.newInstance();
-Constructor constructor = clazz.getConstructor();
-obj = constructor.newInstance();
-method.invoke(obj,&quot;小强&quot;,89);
-</code></pre>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(&quot;cn.itcast.bean.Person&quot;);</span><br><span class="line">Method method = clazz.getMethod(&quot;paramMethod&quot;,String.class,int.class);</span><br><span class="line">Object obj = clazz.newInstance();</span><br><span class="line">Constructor constructor = clazz.getConstructor();</span><br><span class="line">obj = constructor.newInstance();</span><br><span class="line">method.invoke(obj,&quot;小强&quot;,89);</span><br></pre></td></tr></table></figure>
                     
                 </div>
 
