@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="我小的时候很怕哲学家，因为大人们告诉我哲学家没有感情都是冷血动物。但事实并非如此，当FA♂乐器响起之时，他们如获新生">
+    <meta name="author" content="Mayo">
+    
+    <title>
+        
+            Java面试-编码技巧 |
+        
+        妙妙屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               妙妙屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about-me"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about-me"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Java面试-编码技巧
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://avatars.githubusercontent.com/u/16527293?v=4">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Mayo</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-01-09 20:39:56</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jul 11 2024 17:22:07 GMT+0800">2024-07-11 17:22:07</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java%E9%9D%A2%E8%AF%95/">Java面试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="数学归纳法"><a href="#数学归纳法" class="headerlink" title="数学归纳法"></a>数学归纳法</h3><span id="more"></span>
+
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/1.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/2.png"></p>
+<h3 id="递归控制"><a href="#递归控制" class="headerlink" title="递归控制"></a>递归控制</h3><h4 id="如何证明递归函数正确执行"><a href="#如何证明递归函数正确执行" class="headerlink" title="如何证明递归函数正确执行"></a>如何证明递归函数正确执行</h4><ul>
+<li>数学归纳法中的数学&#x2F;自然语言 &lt;–&gt; 程序语言</li>
+</ul>
+<h4 id="递归书写方法"><a href="#递归书写方法" class="headerlink" title="递归书写方法"></a>递归书写方法</h4><ul>
+<li>严格定义递归函数作用，包括参数、返回值、side-effect</li>
+<li>先一般，后特殊</li>
+<li>每次调用必须缩小问题范围</li>
+<li>每次问题规模缩小程度必须为1</li>
+</ul>
+<h3 id="例题链表创建"><a href="#例题链表创建" class="headerlink" title="例题链表创建"></a>例题链表创建</h3><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/3.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/4.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class Node&lt;T&gt; &#123;</span><br><span class="line">  private final T value;</span><br><span class="line">  private Node&lt;T&gt; next;</span><br><span class="line"></span><br><span class="line">  public Node(T value) &#123;</span><br><span class="line">    this.value = value;</span><br><span class="line">    this.next = null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public T getValue() &#123;</span><br><span class="line">    return value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public Node&lt;T&gt; getNext() &#123;</span><br><span class="line">    return next;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public void setNext(Node&lt;T&gt; next) &#123;</span><br><span class="line">    this.next = next;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public static &lt;T&gt; void printLinkedList(Node&lt;T&gt; head) &#123;</span><br><span class="line">    while(head != null) &#123;</span><br><span class="line">      System.out.print(head.getValue());</span><br><span class="line">      System.out.print(&quot; &quot;);</span><br><span class="line">      head = head.getNext();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; Node&lt;T&gt; createLinkedList(List&lt;T&gt; data) &#123;</span><br><span class="line">  if (data.isEmpty()) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Node&lt;T&gt; firstNode = new Node&lt;&gt;(data.get(0));</span><br><span class="line">  firstNode.setNext(</span><br><span class="line">      createLinkedList(data.subList(1, data.size())));</span><br><span class="line">  return firstNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题链表反转"><a href="#例题链表反转" class="headerlink" title="例题链表反转"></a>例题链表反转</h3><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/5.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/6.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; Node&lt;T&gt; reverseLinkedList(Node&lt;T&gt; head) &#123;</span><br><span class="line">   // size == 0 or size == 1</span><br><span class="line">   if (head == null || head.getNext() == null) &#123;</span><br><span class="line">     return head;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   Node&lt;T&gt; newHead = reverseLinkedList(head.getNext());</span><br><span class="line">   head.getNext().setNext(head);</span><br><span class="line">   head.setNext(null);</span><br><span class="line">   return newHead;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题列出所有组合"><a href="#例题列出所有组合" class="headerlink" title="例题列出所有组合"></a>例题列出所有组合</h3><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/7.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public void combinations(</span><br><span class="line">      List&lt;Integer&gt; selected, List&lt;Integer&gt; data, int n) &#123;</span><br><span class="line">    if (n == 0) &#123;</span><br><span class="line">      // output all selected elements</span><br><span class="line">      for (Integer i : selected) &#123;</span><br><span class="line">        System.out.print(i);</span><br><span class="line">        System.out.print(&quot; &quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println();</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (data.isEmpty()) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // select element 0</span><br><span class="line">    selected.add(data.get(0));</span><br><span class="line">    combinations(selected, data.subList(1, data.size()), n - 1);</span><br><span class="line"></span><br><span class="line">    // un-select element 0</span><br><span class="line">    selected.remove(selected.size() - 1);</span><br><span class="line">    combinations(selected, data.subList(1, data.size()), n);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="递归开销"><a href="#递归开销" class="headerlink" title="递归开销"></a>递归开销</h3><h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><ul>
+<li>函数调用开销</li>
+<li>Stack Overflow</li>
+<li>问题规模：n million 栈大小？</li>
+</ul>
+<h3 id="循环书写方法"><a href="#循环书写方法" class="headerlink" title="循环书写方法"></a>循环书写方法</h3><ul>
+<li>定义循环不变式，并在循环体每次结束后保持循环不变式</li>
+<li>先一般，后特殊	</li>
+<li>每次必须向前推进循环不变式中涉及的变量值</li>
+<li>每次推进的规模必须是1</li>
+</ul>
+<h3 id="例题链表反转非递归"><a href="#例题链表反转非递归" class="headerlink" title="例题链表反转非递归"></a>例题链表反转非递归</h3><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/8.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/9.png"></p>
+<p>循环看问题，从中间一刀切开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; Node&lt;T&gt; reverseLinkedList(Node&lt;T&gt; head) &#123;</span><br><span class="line">   Node&lt;T&gt; newHead = null;</span><br><span class="line">   Node&lt;T&gt; curHead = head;</span><br><span class="line">   // Loop invariant:</span><br><span class="line">   // newHead points to the linked list already reversed.</span><br><span class="line">   // curHead points to the linked list not yet reversed.</span><br><span class="line"></span><br><span class="line">   // Loop invariant holds.</span><br><span class="line">   while(curHead != null) &#123;</span><br><span class="line">     // Loop invariant holds.</span><br><span class="line">     Node&lt;T&gt; next = curHead.getNext();</span><br><span class="line">     curHead.setNext(newHead);</span><br><span class="line">     newHead = curHead;</span><br><span class="line">     curHead = next;</span><br><span class="line">     // Loop invariant holds.</span><br><span class="line">   &#125;</span><br><span class="line">   // Loop invariant holds.</span><br><span class="line">   return newHead;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题链表删除结点"><a href="#例题链表删除结点" class="headerlink" title="例题链表删除结点"></a>例题链表删除结点</h3><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/10.png"></p>
+<p>链表中有重复元素要注意</p>
+<h4 id="头结点没有previous怎么办"><a href="#头结点没有previous怎么办" class="headerlink" title="头结点没有previous怎么办"></a>头结点没有previous怎么办</h4><ul>
+<li>特殊处理</li>
+<li>增加虚拟头结点</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; Node&lt;T&gt; deleteIfEquals(Node&lt;T&gt; head, T value) &#123;</span><br><span class="line">   while (head != null &amp;&amp; head.getValue() == value) &#123;</span><br><span class="line">     head = head.getNext();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   if (head == null) &#123;</span><br><span class="line">     return null;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   Node&lt;T&gt; prev = head;</span><br><span class="line">   // Loop invariant: list nodes from head up to prev has been</span><br><span class="line">   // processed. (Nodes with values equal to value are deleted.)</span><br><span class="line">   while(prev.getNext() != null) &#123;</span><br><span class="line">     if (prev.getNext().getValue() == value) &#123;</span><br><span class="line">       // delete it</span><br><span class="line">       prev.setNext(prev.getNext().getNext());</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">       prev = prev.getNext();</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   return head;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="边界控制-二分查找"><a href="#边界控制-二分查找" class="headerlink" title="边界控制-二分查找"></a>边界控制-二分查找</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li>规定要检查的值K可能在的数组arr内下标区间a，b</li>
+<li>计算区间a，b的中间点m</li>
+<li>若k &lt; arr[m] ，将区间缩小为a, m，继续二分查找</li>
+<li>若k &gt; arr[m]，将区间缩小为m, b，继续二分查找</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int binarySearch(int[] arr, int k) &#123;</span><br><span class="line">   int a = 0;</span><br><span class="line">   int b = arr.length; //这里用半开半闭区间比较方便[a,b)</span><br><span class="line">   // Loop invariant: [a, b) is a valid range. (a &lt;= b)</span><br><span class="line">   // k may only be within range [a, b).</span><br><span class="line">   while (a &lt; b) &#123;</span><br><span class="line">     int m = a + (b - a) / 2; // m = (a + b) / 2 may overflow!</span><br><span class="line">     if (k &lt; arr[m]) &#123;</span><br><span class="line">       b = m;</span><br><span class="line">     &#125; else if (k &gt; arr[m]) &#123;</span><br><span class="line">       a = m + 1;</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">       return m;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return -1;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果有重复元素怎么做？</p>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><ul>
+<li>数组</li>
+<li>链表</li>
+<li>队列、栈</li>
+</ul>
+<h4 id="树"><a href="#树" class="headerlink" title="树"></a>树</h4><ul>
+<li>二叉树</li>
+<li>搜索树</li>
+<li>堆&#x2F;优先队列</li>
+</ul>
+<h4 id="栈-队列-优先队列"><a href="#栈-队列-优先队列" class="headerlink" title="栈&#x2F;队列&#x2F;优先队列"></a>栈&#x2F;队列&#x2F;优先队列</h4><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/11.png"></p>
+<h4 id="图"><a href="#图" class="headerlink" title="图"></a>图</h4><ul>
+<li>无向图</li>
+<li>有向图</li>
+<li>有向无环图</li>
+</ul>
+<h4 id="图的算法"><a href="#图的算法" class="headerlink" title="图的算法"></a>图的算法</h4><ul>
+<li>深度优先遍历</li>
+<li>广度优先遍历</li>
+<li>拓扑排序</li>
+<li>最短路径&#x2F;最小生成树</li>
+</ul>
+<h3 id="Java集合类型"><a href="#Java集合类型" class="headerlink" title="Java集合类型"></a>Java集合类型</h3><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/12.png"></p>
+<p>Map是一个独立的接口</p>
+<h4 id="ArrayList与LinkedList的区别"><a href="#ArrayList与LinkedList的区别" class="headerlink" title="ArrayList与LinkedList的区别"></a>ArrayList与LinkedList的区别</h4><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/13.png"></p>
+<h4 id="HashMap和Hashtable的区别"><a href="#HashMap和Hashtable的区别" class="headerlink" title="HashMap和Hashtable的区别"></a>HashMap和Hashtable的区别</h4><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/14.png"></p>
+<h4 id="HashMap-HashSet-TreeMap-TreeSet"><a href="#HashMap-HashSet-TreeMap-TreeSet" class="headerlink" title="HashMap&lt;K,V&gt; &#x2F; HashSet &#x2F; TreeMap&lt;K,V&gt; &#x2F; TreeSet"></a>HashMap&lt;K,V&gt; &#x2F; HashSet<K> &#x2F; TreeMap&lt;K,V&gt; &#x2F; TreeSet<K></K></K></h4><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/15.png"> </p>
+<h3 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h3><h4 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h4><ul>
+<li>前序遍历</li>
+<li>中序遍历</li>
+<li>后续遍历</li>
+<li>层次遍历</li>
+</ul>
+<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><ul>
+<li>先遍历树根</li>
+<li>然后前序遍历左子树</li>
+<li>再前序遍历右子树</li>
+</ul>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/16.png"></p>
+<p>中序遍历，先左，然后根，然后右</p>
+<p>后序遍历，先后序遍历左子树，再后序遍历右子树，再遍历根节点，DGEBFCA</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line">  private final char value;</span><br><span class="line">  private TreeNode left;</span><br><span class="line">  private TreeNode right;</span><br><span class="line">  private TreeNode parent;</span><br><span class="line"></span><br><span class="line">  public TreeNode(char value) &#123;</span><br><span class="line">    this.value = value;</span><br><span class="line">    this.left = null;</span><br><span class="line">    this.right = null;</span><br><span class="line">    this.parent = null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public char getValue() &#123;</span><br><span class="line">    return value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public TreeNode getLeft() &#123;</span><br><span class="line">    return left;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public void setLeft(TreeNode left) &#123;</span><br><span class="line">    this.left = left;</span><br><span class="line">    if (this.left != null) &#123;</span><br><span class="line">      this.left.setParent(this);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public TreeNode getRight() &#123;</span><br><span class="line">    return right;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public void setRight(TreeNode right) &#123;</span><br><span class="line">    this.right = right;</span><br><span class="line">    if (this.right != null) &#123;</span><br><span class="line">      this.right.setParent(this);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public TreeNode getParent() &#123;</span><br><span class="line">    return parent;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private void setParent(TreeNode parent) &#123;</span><br><span class="line">    this.parent = parent;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public void preOrder(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  System.out.print(root.getValue());</span><br><span class="line">  preOrder(root.getLeft());</span><br><span class="line">  preOrder(root.getRight());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void inOrder(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  inOrder(root.getLeft());</span><br><span class="line">  System.out.print(root.getValue());</span><br><span class="line">  inOrder(root.getRight());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void postOrder(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  postOrder(root.getLeft());</span><br><span class="line">  postOrder(root.getRight());</span><br><span class="line">  System.out.print(root.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="根据前序中序构造二叉树"><a href="#根据前序中序构造二叉树" class="headerlink" title="根据前序中序构造二叉树"></a>根据前序中序构造二叉树</h4><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/17.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public String postOrder(String preOrder, String inOrder) &#123;</span><br><span class="line">  if (preOrder.isEmpty()) &#123;</span><br><span class="line">    return &quot;&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  char rootValue = preOrder.charAt(0);</span><br><span class="line">  int rootIndex = inOrder.indexOf(rootValue);</span><br><span class="line"></span><br><span class="line">  return</span><br><span class="line">      postOrder(</span><br><span class="line">          preOrder.substring(1, 1 + rootIndex),</span><br><span class="line">          inOrder.substring(0, rootIndex)) +</span><br><span class="line">      postOrder(</span><br><span class="line">          preOrder.substring(1 + rootIndex),</span><br><span class="line">          inOrder.substring(1 + rootIndex)) +</span><br><span class="line">      rootValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结</p>
+<ul>
+<li>思考算法时：只要减小问题规模即可</li>
+<li>初始值的确定：根据递归函数定义</li>
+</ul>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/18.png"></p>
+<h4 id="中序遍历下一个结点"><a href="#中序遍历下一个结点" class="headerlink" title="中序遍历下一个结点"></a>中序遍历下一个结点</h4><p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/19.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/20.png"></p>
+<p>这是一个搜索树，坐叶子比根小，右叶子比根大。对搜索树做中序遍历出来的是有序序列</p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/1.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode next(TreeNode node) &#123;</span><br><span class="line">  if (node == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (node.getRight() != null) &#123;</span><br><span class="line">    return first(node.getRight());</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    while(node.getParent() != null</span><br><span class="line">        &amp;&amp; node.getParent().getRight() == node) &#123;</span><br><span class="line">      node = node.getParent();</span><br><span class="line">    &#125;</span><br><span class="line">    // now we have:</span><br><span class="line">    // node.getParent() == null</span><br><span class="line">    // || node is left child of its parent</span><br><span class="line">    return node.getParent();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeNode first(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  TreeNode curNode = root;</span><br><span class="line">  while(curNode.getLeft() != null) &#123;</span><br><span class="line">    curNode = curNode.getLeft();</span><br><span class="line">  &#125;</span><br><span class="line">  return curNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3><ul>
+<li>代表最坏情况用时</li>
+</ul>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/21.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/22.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/23.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/24.png"></p>
+<p><img src="/2020/01/09/Java%E9%9D%A2%E8%AF%95-%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/25.png"></p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java%E9%9D%A2%E8%AF%95/">Java面试</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2020/01/10/Java%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+                                   title="Java面试-设计模式"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java面试-设计模式</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2020/01/08/Java%E9%9D%A2%E8%AF%95-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/"
+                                   title="Java面试-程序设计语言基础"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java面试-程序设计语言基础</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">数学归纳法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%8E%A7%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">递归控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8E%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E6%AD%A3%E7%A1%AE%E6%89%A7%E8%A1%8C"><span class="nav-number">2.1.</span> <span class="nav-text">如何证明递归函数正确执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E4%B9%A6%E5%86%99%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">递归书写方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%88%9B%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">例题链表创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC"><span class="nav-number">4.</span> <span class="nav-text">例题链表反转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E7%BB%84%E5%90%88"><span class="nav-number">5.</span> <span class="nav-text">例题列出所有组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%BC%80%E9%94%80"><span class="nav-number">6.</span> <span class="nav-text">递归开销</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stack"><span class="nav-number">6.1.</span> <span class="nav-text">Stack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E4%B9%A6%E5%86%99%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">循环书写方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC%E9%9D%9E%E9%80%92%E5%BD%92"><span class="nav-number">8.</span> <span class="nav-text">例题链表反转非递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="nav-number">9.</span> <span class="nav-text">例题链表删除结点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%B4%E7%BB%93%E7%82%B9%E6%B2%A1%E6%9C%89previous%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">9.1.</span> <span class="nav-text">头结点没有previous怎么办</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E6%8E%A7%E5%88%B6-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">10.</span> <span class="nav-text">边界控制-二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">10.1.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">11.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">11.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">11.2.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%88-%E9%98%9F%E5%88%97-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="nav-number">11.3.</span> <span class="nav-text">栈&#x2F;队列&#x2F;优先队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">11.4.</span> <span class="nav-text">图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">11.5.</span> <span class="nav-text">图的算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">12.</span> <span class="nav-text">Java集合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList%E4%B8%8ELinkedList%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">12.1.</span> <span class="nav-text">ArrayList与LinkedList的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">12.2.</span> <span class="nav-text">HashMap和Hashtable的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap-HashSet-TreeMap-TreeSet"><span class="nav-number">12.3.</span> <span class="nav-text">HashMap&lt;K,V&gt; &#x2F; HashSet &#x2F; TreeMap&lt;K,V&gt; &#x2F; TreeSet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">13.</span> <span class="nav-text">树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">13.1.</span> <span class="nav-text">二叉树的遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">13.2.</span> <span class="nav-text">前序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%89%8D%E5%BA%8F%E4%B8%AD%E5%BA%8F%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">13.3.</span> <span class="nav-text">根据前序中序构造二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9"><span class="nav-number">13.4.</span> <span class="nav-text">中序遍历下一个结点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">14.</span> <span class="nav-text">算法复杂度</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2017</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Mayo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">数学归纳法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%8E%A7%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">递归控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8E%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E6%AD%A3%E7%A1%AE%E6%89%A7%E8%A1%8C"><span class="nav-number">2.1.</span> <span class="nav-text">如何证明递归函数正确执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E4%B9%A6%E5%86%99%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">递归书写方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%88%9B%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">例题链表创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC"><span class="nav-number">4.</span> <span class="nav-text">例题链表反转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E7%BB%84%E5%90%88"><span class="nav-number">5.</span> <span class="nav-text">例题列出所有组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%BC%80%E9%94%80"><span class="nav-number">6.</span> <span class="nav-text">递归开销</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stack"><span class="nav-number">6.1.</span> <span class="nav-text">Stack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E4%B9%A6%E5%86%99%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">循环书写方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC%E9%9D%9E%E9%80%92%E5%BD%92"><span class="nav-number">8.</span> <span class="nav-text">例题链表反转非递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="nav-number">9.</span> <span class="nav-text">例题链表删除结点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%B4%E7%BB%93%E7%82%B9%E6%B2%A1%E6%9C%89previous%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">9.1.</span> <span class="nav-text">头结点没有previous怎么办</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E6%8E%A7%E5%88%B6-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">10.</span> <span class="nav-text">边界控制-二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">10.1.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">11.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">11.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">11.2.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%88-%E9%98%9F%E5%88%97-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="nav-number">11.3.</span> <span class="nav-text">栈&#x2F;队列&#x2F;优先队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">11.4.</span> <span class="nav-text">图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">11.5.</span> <span class="nav-text">图的算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">12.</span> <span class="nav-text">Java集合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList%E4%B8%8ELinkedList%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">12.1.</span> <span class="nav-text">ArrayList与LinkedList的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">12.2.</span> <span class="nav-text">HashMap和Hashtable的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap-HashSet-TreeMap-TreeSet"><span class="nav-number">12.3.</span> <span class="nav-text">HashMap&lt;K,V&gt; &#x2F; HashSet &#x2F; TreeMap&lt;K,V&gt; &#x2F; TreeSet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">13.</span> <span class="nav-text">树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">13.1.</span> <span class="nav-text">二叉树的遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">13.2.</span> <span class="nav-text">前序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%89%8D%E5%BA%8F%E4%B8%AD%E5%BA%8F%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">13.3.</span> <span class="nav-text">根据前序中序构造二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9"><span class="nav-number">13.4.</span> <span class="nav-text">中序遍历下一个结点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">14.</span> <span class="nav-text">算法复杂度</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
