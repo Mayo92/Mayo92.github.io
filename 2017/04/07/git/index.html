@@ -9,7 +9,7 @@
     
     <title>
         
-            第一行代码笔记-Git |
+            Git |
         
         妙妙屋
     </title>
@@ -179,7 +179,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        第一行代码笔记-Git
+                        Git
                     </div>
                 
 
@@ -205,12 +205,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2018-03-18 15:01:18</span>
+                <span class="datetime">2017-04-07 18:14:19</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Dec 24 2020 20:56:50 GMT+0800">2020-12-24 20:56:50</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 10:16:29 GMT+0800">2024-07-11 10:16:29</span>
             </span>
         
 
@@ -218,10 +218,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/">第一行代码</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></li>
+                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a></li>
                         
                     
                 </ul>
@@ -258,69 +255,50 @@
 
                     
                          <h3 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h3><p>提供一种可配性很强的机制来允许用户将指定的文件或目录排除在版本控制之外，它会检查代码仓库的目录下是否存在一个名为.gitignore的文件，存在的话会一行一行读取这个文件的内容，并把每一行指定的文件或目录排除在版本控制之外，文件或目录可以使用”*”通配符的。</p>
+<span id="more"></span>
+
 <p>AS在创建项目的时候会自动帮我们创建两个.gitignore文件，一个在根目录下，一个在app模块下。</p>
 <p>配置完成之后，就可以提交代码，先使用add命令将所有文件进行添加</p>
-<pre><code>git add .
-</code></pre>
-<span id="more"></span>	
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
 <p>然后执行commit命令完成提交</p>
-<pre><code>git commit -m &quot;first commit&quot;
-</code></pre>
-<h3 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h3><h5 id="查看文件修改的情况"><a href="#查看文件修改的情况" class="headerlink" title="查看文件修改的情况"></a>查看文件修改的情况</h5><pre><code>git status
-</code></pre>
-<h5 id="查看文件修改的内容"><a href="#查看文件修改的内容" class="headerlink" title="查看文件修改的内容"></a>查看文件修改的内容</h5><pre><code>git diff
-</code></pre>
-<h5 id="查看某个文件修改的内容"><a href="#查看某个文件修改的内容" class="headerlink" title="查看某个文件修改的内容"></a>查看某个文件修改的内容</h5><pre><code>git diff app/src/main/java/com/example/providertest/MainActivity.java
-</code></pre>
-<h3 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h3><h5 id="只要代码没有提交，所有修改的内容都是可以撤销的"><a href="#只要代码没有提交，所有修改的内容都是可以撤销的" class="headerlink" title="只要代码没有提交，所有修改的内容都是可以撤销的"></a>只要代码没有提交，所有修改的内容都是可以撤销的</h5><pre><code>git checkout app/src/main/java/com/example/providertest/MainActivity.java
-</code></pre>
-<h5 id="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："><a href="#对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：" class="headerlink" title="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："></a>对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</h5><pre><code>git reset HEAD app/src/main/java/com/example/providertest/MainActivity.java
-</code></pre>
-<h3 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h3><h5 id="每次提交记录都会包含提交id、提交人、提交日期、描述信息"><a href="#每次提交记录都会包含提交id、提交人、提交日期、描述信息" class="headerlink" title="每次提交记录都会包含提交id、提交人、提交日期、描述信息"></a>每次提交记录都会包含提交id、提交人、提交日期、描述信息</h5><pre><code>git log
-</code></pre>
-<h5 id="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"><a href="#只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录" class="headerlink" title="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"></a>只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</h5><pre><code>git log 1fa380xxxxxxx -1
-</code></pre>
-<h5 id="查看这条记录具体修改什么内容，在命令中加入-p参数"><a href="#查看这条记录具体修改什么内容，在命令中加入-p参数" class="headerlink" title="查看这条记录具体修改什么内容，在命令中加入-p参数"></a>查看这条记录具体修改什么内容，在命令中加入-p参数</h5><pre><code>git log 1fa380xxxxxxx -1 -p
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;first commit&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h3><h5 id="查看文件修改的情况"><a href="#查看文件修改的情况" class="headerlink" title="查看文件修改的情况"></a>查看文件修改的情况</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h5 id="查看文件修改的内容"><a href="#查看文件修改的内容" class="headerlink" title="查看文件修改的内容"></a>查看文件修改的内容</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<h5 id="查看某个文件修改的内容"><a href="#查看某个文件修改的内容" class="headerlink" title="查看某个文件修改的内容"></a>查看某个文件修改的内容</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff app/src/main/java/com/example/providertest/MainActivity.java</span><br></pre></td></tr></table></figure>
+<h3 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h3><h5 id="只要代码没有提交，所有修改的内容都是可以撤销的"><a href="#只要代码没有提交，所有修改的内容都是可以撤销的" class="headerlink" title="只要代码没有提交，所有修改的内容都是可以撤销的"></a>只要代码没有提交，所有修改的内容都是可以撤销的</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout app/src/main/java/com/example/providertest/MainActivity.java</span><br></pre></td></tr></table></figure>
+<h5 id="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："><a href="#对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：" class="headerlink" title="对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下："></a>对于已添加的文件我们应该先对其取消添加，然后才可以撤回提交，取消添加如下：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD app/src/main/java/com/example/providertest/MainActivity.java</span><br></pre></td></tr></table></figure>
+<h3 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h3><h5 id="每次提交记录都会包含提交id、提交人、提交日期、描述信息"><a href="#每次提交记录都会包含提交id、提交人、提交日期、描述信息" class="headerlink" title="每次提交记录都会包含提交id、提交人、提交日期、描述信息"></a>每次提交记录都会包含提交id、提交人、提交日期、描述信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+<h5 id="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"><a href="#只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录" class="headerlink" title="只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录"></a>只想查看其中一条记录，可以在命令中指定该记录的id，并加上-1参数表示只想看到一行记录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log 1fa380xxxxxxx -1</span><br></pre></td></tr></table></figure>
+<h5 id="查看这条记录具体修改什么内容，在命令中加入-p参数"><a href="#查看这条记录具体修改什么内容，在命令中加入-p参数" class="headerlink" title="查看这条记录具体修改什么内容，在命令中加入-p参数"></a>查看这条记录具体修改什么内容，在命令中加入-p参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log 1fa380xxxxxxx -1 -p</span><br></pre></td></tr></table></figure>
 <h3 id="分支的作用"><a href="#分支的作用" class="headerlink" title="分支的作用"></a>分支的作用</h3><p>在现有代码的基础上开辟一个分叉口，使得代码可以在主干线和分支线上同时进行开发，且互相不会影响。</p>
-<p><img src="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-Git/1.png"></p>
+<p><img src="/2017/04/07/git/1.png"></p>
 <p>查看当前版本库中有哪些分支，前面有*说明代码在哪个分支上：</p>
-<pre><code>git branch
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
 <p>创建一个分支,名为version1.0：</p>
-<pre><code>git branch version1.0
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch version1.0</span><br></pre></td></tr></table></figure>
 <p>切换到version1.0这个分支：</p>
-<pre><code>git checkout version1.0
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout version1.0</span><br></pre></td></tr></table></figure>
 <p>在version1.0分支上修改并提交的代码将不会影响到master分支，同理，master分支上修改并提交的代码也不会影响到version1.0分支，最好的办法是使用merge命令来完成合并操作：</p>
-<pre><code>git checkout master
-git merge version1.0
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge version1.0</span><br></pre></td></tr></table></figure>
 <p>这两行代码就可以在version1.0分支上修改并提交的内容合并到master分支，合并后可能存在代码冲突的情况，需要自行修改</p>
 <p>删除分支：</p>
-<pre><code>git branch -D version1.0
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D version1.0</span><br></pre></td></tr></table></figure>
 <h3 id="与远程版本库协作"><a href="#与远程版本库协作" class="headerlink" title="与远程版本库协作"></a>与远程版本库协作</h3><p>养成经常从版本库获取最新代码的习惯</p>
 <p>将代码下载到本地：</p>
-<pre><code>git clone https://github.com/example/test.git
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/example/test.git</span><br></pre></td></tr></table></figure>
 <p>本地修改的内容同步到远程版本库：</p>
-<pre><code>git push origin master
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <p>origin部分指定的是远程版本库的Git地址，master部分指定的是同步到哪一个分支，上述命令就完成了将本地代码同步到<a class="link" href="https://github.com/example/test.git%E8%BF%99%E4%B8%AA%E7%89%88%E6%9C%AC%E5%BA%93%E7%9A%84master%E5%88%86%E6%94%AF%E4%B8%8A%E7%9A%84%E5%8A%9F%E8%83%BD%E3%80%82">https://github.com/example/test.git这个版本库的master分支上的功能。<i class="fas fa-external-link-alt"></i></a></p>
 <p>将远程版本库上的修改同步到本地，Git提供两种命令完成此功能，分别是fetch和pull，fetch的语法规则和push差不多，如下所示：</p>
-<pre><code>git fetch origin master
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin master</span><br></pre></td></tr></table></figure>
 <p>执行上述命令后，会将远程版本库上的代码同步到本地，同步下来的代码不会合并到任何分支上去，而是会存放到一个origin&#x2F;master分支上，这时我们可以通过diff命令来查看远程版本库上到底修改了哪些东西：</p>
-<pre><code>git diff origin/master
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff origin/master</span><br></pre></td></tr></table></figure>
 <p>再调用merge命令将origin&#x2F;master分支上的修改合并到主分支上即可：</p>
-<pre><code>git merge origin/master
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure>
 <p>pull命令则是相当于将fetch和merge这两个命令放在一起执行了，它可以从远程版本库上获取最新的代码合并到本地：</p>
-<pre><code>git pull origin master
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+
 
                     
                 </div>
@@ -352,14 +330,14 @@ git merge version1.0
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2018/03/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-MD/"
-                                   title="第一行代码笔记-Material Design"
+                                   href="/2017/04/08/VPS/"
+                                   title="VPS"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-Material Design</span>
+                                        <span class="post-nav-title-item text-ellipsis">VPS</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -369,11 +347,11 @@ git merge version1.0
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2018/03/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0-LBS/"
-                                   title="第一行代码笔记-LBS"
+                                   href="/2017/04/07/Markdown/"
+                                   title="Markdown"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">第一行代码笔记-LBS</span>
+                                        <span class="post-nav-title-item text-ellipsis">Markdown</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

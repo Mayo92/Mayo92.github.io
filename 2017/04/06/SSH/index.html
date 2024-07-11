@@ -33,7 +33,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"zh-CN"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"妙妙屋","author":"Mayo","avatar":"https://avatars.githubusercontent.com/u/16527293?v=4","logo":null,"favicon":null},"menu":{"home":"/","archives":"/archives","categories":"/categories","about":"/about-me"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2017,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -95,16 +95,6 @@
                         
                         <li class="menu-item">
                             <a class=""
-                               href="/tags"
-                            >
-                                
-                                标签
-                            </a>
-                        </li>
-                    
-                        
-                        <li class="menu-item">
-                            <a class=""
                                href="/categories"
                             >
                                 
@@ -149,13 +139,6 @@
                     <a class=""
                        href="/archives"
                     >归档</a>
-                </li>
-            
-                
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags"
-                    >标签</a>
                 </li>
             
                 
@@ -227,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 26 2024 15:52:36 GMT+0800">2024-06-26 15:52:36</span>
+                <span class="datetime" data-updated="Thu Jul 11 2024 10:07:46 GMT+0800">2024-07-11 10:07:46</span>
             </span>
         
 
@@ -235,7 +218,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li>
+                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a></li>
                         
                     
                 </ul>
@@ -278,32 +261,15 @@
 </ul>
 <span id="more"></span>
 
-<h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1. 检查是否存在"></a>1. 检查是否存在</h4><h5 id="1-1-输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1-输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1 输入id_rsa.pub 或 id_dsa.pub"></a>1.1 输入id_rsa.pub 或 id_dsa.pub</h5><pre><code>ls -al ~/.ssh
-# Lists the files in your .ssh directory, if they exist
-</code></pre>
-<h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2. 生成新的ssh key"></a>2. 生成新的ssh key</h4><h5 id="2-1-生成public-private-rsa-key-pair"><a href="#2-1-生成public-private-rsa-key-pair" class="headerlink" title="2.1 生成public&#x2F;private rsa key pair"></a>2.1 生成public&#x2F;private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “<a class="link" href="mailto:&#121;&#x6f;&#117;&#x72;&#x5f;&#101;&#109;&#x61;&#105;&#x6c;&#64;&#x65;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;">&#121;&#x6f;&#117;&#x72;&#x5f;&#101;&#109;&#x61;&#105;&#x6c;&#64;&#x65;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>“，默认会在相应的路径下( &#x2F;your_home_path )生成id_rsa和id_rsa.pub两个文件</p>
-<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
-# Creates a new ssh key using the provided email
-Generating public/private rsa key pair.
-Enter file in which to save the key (/your_home_path/.ssh/id_rsa):
-</code></pre>
+<h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1. 检查是否存在"></a>1. 检查是否存在</h4><h5 id="1-1-输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1-输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1 输入id_rsa.pub 或 id_dsa.pub"></a>1.1 输入id_rsa.pub 或 id_dsa.pub</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br><span class="line"># Lists the files in your .ssh directory, if they exist</span><br></pre></td></tr></table></figure>
+<h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2. 生成新的ssh key"></a>2. 生成新的ssh key</h4><h5 id="2-1-生成public-private-rsa-key-pair"><a href="#2-1-生成public-private-rsa-key-pair" class="headerlink" title="2.1 生成public&#x2F;private rsa key pair"></a>2.1 生成public&#x2F;private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “<a class="link" href="mailto:&#x79;&#111;&#117;&#114;&#x5f;&#x65;&#109;&#97;&#105;&#x6c;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x79;&#111;&#117;&#114;&#x5f;&#x65;&#109;&#97;&#105;&#x6c;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>“，默认会在相应的路径下( &#x2F;your_home_path )生成id_rsa和id_rsa.pub两个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br><span class="line"># Creates a new ssh key using the provided email</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/your_home_path/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
 <h5 id="2-2-输入passphrase-可以跳过"><a href="#2-2-输入passphrase-可以跳过" class="headerlink" title="2.2 输入passphrase(可以跳过)"></a>2.2 输入passphrase(可以跳过)</h5><p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p>
-<pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
-Enter same passphrase again: [Type passphrase again]
-</code></pre>
-<h5 id="sample-result"><a href="#sample-result" class="headerlink" title="sample result:"></a>sample result:</h5><pre><code>Your identification has been saved in /your_home_path/.ssh/id_rsa.
-Your public key has been saved in /your_home_path/.ssh/id_rsa.pub.
-The key fingerprint is:
-#01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
-</code></pre>
-<h5 id="2-3-将新生成的key添加到ssh-agent中"><a href="#2-3-将新生成的key添加到ssh-agent中" class="headerlink" title="2.3 将新生成的key添加到ssh-agent中:"></a>2.3 将新生成的key添加到ssh-agent中:</h5><pre><code># start the ssh-agent in the background
-eval &quot;$(ssh-agent -s)&quot;
-Agent pid 59566
-ssh-add ~/.ssh/id_rsa
-</code></pre>
-<h4 id="3-复制ssh-key-mac"><a href="#3-复制ssh-key-mac" class="headerlink" title="3. 复制ssh key(mac)"></a>3. 复制ssh key(mac)</h4><pre><code>pbcopy &lt; ~/.ssh/id_rsa.pub
-# Copies the contents of the id_rsa.pub file to your clipboard
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase): [Type a passphrase]</span><br><span class="line">Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure>
+<h5 id="sample-result"><a href="#sample-result" class="headerlink" title="sample result:"></a>sample result:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in /your_home_path/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /your_home_path/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">#01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</span><br></pre></td></tr></table></figure>
+<h5 id="2-3-将新生成的key添加到ssh-agent中"><a href="#2-3-将新生成的key添加到ssh-agent中" class="headerlink" title="2.3 将新生成的key添加到ssh-agent中:"></a>2.3 将新生成的key添加到ssh-agent中:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># start the ssh-agent in the background</span><br><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br><span class="line">Agent pid 59566</span><br><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-复制ssh-key-mac"><a href="#3-复制ssh-key-mac" class="headerlink" title="3. 复制ssh key(mac)"></a>3. 复制ssh key(mac)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"># Copies the contents of the id_rsa.pub file to your clipboard</span><br></pre></td></tr></table></figure>
 <p>或者Find前往文件夹~&#x2F;.ssh&#x2F;id_rsa.pub打开id_rsa.pub文件，里面的信息即为SSH key</p>
 
                     
