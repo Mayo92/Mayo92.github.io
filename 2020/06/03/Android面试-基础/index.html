@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jul 11 2024 15:50:58 GMT+0800">2024-07-11 15:50:58</span>
+                <span class="datetime" data-updated="Sun Jul 14 2024 09:40:38 GMT+0800">2024-07-14 09:40:38</span>
             </span>
         
 
@@ -446,34 +446,8 @@
 <p>asBinder方法，获取远端代理的Binder对象</p>
 <p>mRemote.transact(Stub.TRANSACTION_addPerson, _data, _reply, 0)方法，利用远端的Binder对象从服务端获取数据</p>
 <h3 id="广播：静态-动态注册使用、特点、应用场景"><a href="#广播：静态-动态注册使用、特点、应用场景" class="headerlink" title="广播：静态&amp;动态注册使用、特点、应用场景"></a>广播：静态&amp;动态注册使用、特点、应用场景</h3><p>动态注册代码</p>
-<pre><code>    // 选择在Activity生命周期方法中的onResume()中注册
-    @Override
-    protected void onResume() &#123;
-        super.onResume();
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 选择在Activity生命周期方法中的onResume()中注册</span><br><span class="line">   @Override</span><br><span class="line">   protected void onResume() &#123;</span><br><span class="line">       super.onResume();</span><br><span class="line"></span><br><span class="line">       // 1. 实例化BroadcastReceiver子类 &amp;  IntentFilter</span><br><span class="line">       mBroadcastReceiver = new MyBroadcastReceiver();</span><br><span class="line">       IntentFilter intentFilter = new IntentFilter();</span><br><span class="line"></span><br><span class="line">       // 2. 设置接收广播的类型</span><br><span class="line">       intentFilter.addAction(CONNECTIVITY_SERVICE);</span><br><span class="line"></span><br><span class="line">       // 3. 动态注册：调用Context的registerReceiver（）方法</span><br><span class="line">       registerReceiver(mBroadcastReceiver, intentFilter);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   // 注册广播后，要在相应位置记得销毁广播</span><br><span class="line">   // 即在onPause() 中unregisterReceiver(mBroadcastReceiver)</span><br><span class="line">   // 当此Activity实例化时，会动态将MyBroadcastReceiver注册到系统中</span><br><span class="line">   // 当此Activity销毁时，动态注册的MyBroadcastReceiver将不再接收到相应的广播。</span><br><span class="line">   @Override</span><br><span class="line">   protected void onPause() &#123;</span><br><span class="line">       super.onPause();</span><br><span class="line">       //销毁在onResume()方法中的广播</span><br><span class="line">       unregisterReceiver(mBroadcastReceiver);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-        // 1. 实例化BroadcastReceiver子类 &amp;  IntentFilter
-        mBroadcastReceiver = new MyBroadcastReceiver();
-        IntentFilter intentFilter = new IntentFilter();
-
-        // 2. 设置接收广播的类型
-        intentFilter.addAction(CONNECTIVITY_SERVICE);
-
-        // 3. 动态注册：调用Context的registerReceiver（）方法
-        registerReceiver(mBroadcastReceiver, intentFilter);
-    &#125;
-
-
-    // 注册广播后，要在相应位置记得销毁广播
-    // 即在onPause() 中unregisterReceiver(mBroadcastReceiver)
-    // 当此Activity实例化时，会动态将MyBroadcastReceiver注册到系统中
-    // 当此Activity销毁时，动态注册的MyBroadcastReceiver将不再接收到相应的广播。
-    @Override
-    protected void onPause() &#123;
-        super.onPause();
-        //销毁在onResume()方法中的广播
-        unregisterReceiver(mBroadcastReceiver);
-    &#125;
-</code></pre>
 <p>根据Activity生命周期，onPause()方法在Activity被销毁之前一定会被执行，而某些情况如内存不足销毁，onStop()及onDestroy()不一定会被执行，所以在onPause()方法注销广播，防止内存泄漏</p>
 <ol>
 <li>自动回调onReceive()方法</li>
