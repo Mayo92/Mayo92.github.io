@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jul 11 2024 15:37:37 GMT+0800">2024-07-11 15:37:37</span>
+                <span class="datetime" data-updated="Sun Jul 14 2024 09:29:02 GMT+0800">2024-07-14 09:29:02</span>
             </span>
         
 
@@ -314,291 +314,54 @@
 <p>原生调用web方法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void showWebDialog (String text) &#123;</span><br><span class="line">       String jsCode = String.format(&quot;window.showWebDialog(&#x27;%s&#x27;)&quot;, text);</span><br><span class="line">       webView.evaluateJavascript(jsCode, null);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   //web端</span><br><span class="line">   window.showWebDialog = text =&gt; window.alert(text);</span><br></pre></td></tr></table></figure>
 <p>Web调用原生方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">	document.addEventListener(&#x27;DOMContentLoaded&#x27;, e =&gt; &#123;</span><br><span class="line">      const editText = document.querySelector(&#x27;#editText&#x27;);</span><br><span class="line">      const showBtn = document.querySelector(&#x27;#showBtn&#x27;);</span><br><span class="line">      showBtn.addEventListener(&#x27;click&#x27;, e =&gt; &#123;</span><br><span class="line">        const inputValue = editText.value;</span><br><span class="line">        showNativeDialog(inputValue)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    function showNativeDialog (text) &#123;</span><br><span class="line">      window.alert(&#x27;jsbridge://showNativeDialog?text=&#x27; + text);</span><br><span class="line">    &#125;</span><br><span class="line">```    </span><br><span class="line">    </span><br><span class="line">原生添加alter监听</span><br><span class="line"></span><br><span class="line">![](5.png)</span><br><span class="line"></span><br><span class="line">### 注入API方式</span><br><span class="line"></span><br><span class="line">#### 优缺点</span><br><span class="line"></span><br><span class="line">* 优点：简单直观</span><br><span class="line">* 缺点：有兼容性问题（Android4.2+）</span><br><span class="line"></span><br><span class="line">![](6.png)</span><br><span class="line"></span><br><span class="line">Web调用原生方法需要改变</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>function showNativeDialog (text) &#123;
-  window.NativeBridge.showNativeDialog(text);
-&#125;
-
-//原生
-webView.setWebChromeClient(new WebChromeClient());
-webView.addJavascriptInterface(new NativeBridge(this), &quot;NativeBridge&quot;);
-
-class NativeBridge &#123;
-    private  Context ctx;
-    NativeBridge(Context ctx) &#123;
-        this.ctx = ctx;
-    &#125;
-
-    @JavascriptInterface
-    public void showNativeDialog(String text) &#123;
-        new AlertDialog.Builder(ctx).setMessage(text).create().show();
-    &#125;
-&#125;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">### 支持回调的JSBridge</span><br><span class="line"></span><br><span class="line">场景：Web端获取Native端输入框的值</span><br><span class="line"></span><br><span class="line">* 在对端执行操作并返回结果</span><br><span class="line">* 有输入有输出才是完整的调用</span><br><span class="line"></span><br><span class="line">![](7.png)</span><br><span class="line"></span><br><span class="line">Web代码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>let id = 1
-const callbackMap = &#123;&#125;
-window.JSSDK = &#123;
-  getWebEditTextValue(callbackId)&#123;
-    const editText = document.querySelector(&#39;#editText&#39;);
-    const inputValue = editText.value;
-    NativeBridge.receiveMessage(callbackId,value)
-  &#125;,
-  getNativeEditTextValue(callback)&#123;
-    const callbackId = id++
-    callbackMap[callbackId] = callback
-    NativeBridge.getNativeEditTextValue(callbackId)
-  &#125;,
-  receiveMessage(callbackId,value)&#123;
-    if(callbackMap[callbackId])&#123;
-      callbackMap[callbackId](value)
-    &#125;
-  &#125;
-&#125;
-
-////
-showBtn2.addEventListener(&#39;click&#39;, e =&gt; &#123;
-    window.JSSDK.getNativeEditTextValue(value =&gt; window.alert(&#39;Native输入值:&#39;+value))
-&#125;)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">Native代码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>showBtn2.setOnClickListener(new View.OnClickListener() &#123;
-        @Override
-        public void onClick(View view) &#123;
-            mNativeSDK.getWebEditTextValue(new Callback() &#123;
-                @Override
-                public void invoke(String value) &#123;
-                    Log.e(&quot;11&quot;,&quot;web输入值：&quot;+value);
-                &#125;
-            &#125;);
-        &#125;
-&#125;);
-
-////    
-interface Callback &#123;
-    void invoke(String value);
-&#125;
-
-class NativeSDK&#123;
-
-    private Context mContext;
-    private int id = 1;
-    private Map&lt;Integer,Callback&gt; callbackMap = new HashMap&lt;&gt;();
-
-    NativeSDK(Context context)&#123;
-        mContext = context;
-    &#125;
-
-    void getWebEditTextValue(Callback callback)&#123;
-        int callbackId = id++;
-        callbackMap.put(callbackId,callback);
-
-        final String jsCode = String.format(&quot;window.JSSDK.getWebEditTextValue(%s)&quot;,callbackId);
-        ((MainActivity)mContext).runOnUiThread(new Runnable() &#123;
-            @Override
-            public void run() &#123;
-                ((MainActivity)mContext).webView.evaluateJavascript(jsCode, null);
-            &#125;
-        &#125;);
-    &#125;
-    
-    void receiveMessage(int callbackId,String value)&#123;
-        if(callbackMap.containsKey(callbackId))&#123;
-            callbackMap.get(callbackId).invoke(value);
-        &#125;
-    &#125;
-&#125;
-
-///
-@JavascriptInterface
-public void getNativeEditTextValue(int callbackId) &#123;
-        String vale = editText.getText().toString();
-        final String jsCode = String.format(&quot;window.JSSDK.receiveMessage(%s,&#39;%s&#39;)&quot;, callbackId,vale);
-        runOnUiThread(new Runnable() &#123;
-            @Override
-            public void run() &#123;
-                webView.evaluateJavascript(jsCode, null);
-            &#125;
-        &#125;);
-&#125;
-
-@JavascriptInterface
-public void receiveMessage(int callbackId,String value)&#123;
-        ((MainActivity)ctx).mNativeSDK.receiveMessage(callbackId,value);
-&#125;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">流程讲解：Native获取Web输入框的值，先调用NativeSDK里的getWebEditTextValue方法，跳转到Web端JSSDK里的getWebEditTextValue方法，跳转到Native端的receiveMessage方法，跳转到NativeSDK的receiveMessage方法，Map获取接口对象执行接口方法</span><br><span class="line"></span><br><span class="line">### JSBridge的开源实现</span><br><span class="line"></span><br><span class="line">* JsBridge：拦截URL Schema</span><br><span class="line">* DSBridge：注入JS API</span><br><span class="line"></span><br><span class="line">[DSBridge](https://github.com/wendux/DSBridge-Android)</span><br><span class="line"></span><br><span class="line">Native代码：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>public class Main2Activity extends AppCompatActivity &#123;
-
-    private DWebView webView;
-    private EditText editText;
-    private Button showBtn;
-    private Button refreshBtn;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-
-        editText = findViewById(R.id.editText);
-        showBtn = findViewById(R.id.showBtn);
-        refreshBtn = findViewById(R.id.refreshBtn);
-        webView = findViewById(R.id.webview);
-
-        webView.loadUrl(&quot;http://192.168.0.121:8080&quot;);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.addJavascriptObject(new JsApi(this),null);
-
-        showBtn.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                webView.callHandler(&quot;getWebEditTextValue&quot;, null, new OnReturnValue&lt;String&gt;() &#123;
-                    @Override
-                    public void onValue(String retValue) &#123;
-                        Log.e(&quot;11&quot;,&quot;web输入值：&quot;+retValue);
-                    &#125;
-                &#125;);
-            &#125;
-        &#125;);
-    &#125;
-
-    class JsApi&#123;
-        private Context mContext;
-    
-        JsApi(Context context)&#123;
-            mContext = context;
-        &#125;
-
-        //for asynchronous invocation
-        @JavascriptInterface
-        public void getNativeEditTextValue(Object msg, CompletionHandler&lt;String&gt; handler) &#123;
-            String value = ((Main2Activity)mContext).editText.getText().toString();
-            handler.complete(value);
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">Web端代码：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>&lt;script src=&quot;https://unpkg.com/dsbridge@3.1.3/dist/dsbridge.js&quot;&gt; &lt;/script&gt;
-  &lt;script&gt;
-    dsBridge.register(&#39;getWebEditTextValue&#39;,() =&gt; &#123;
-      const editText = document.querySelector(&#39;#editText&#39;);
-      return editText.value
-&#125;	)
-
-    document.addEventListener(&#39;DOMContentLoaded&#39;, e =&gt; &#123;
-      const showBtn = document.querySelector(&#39;#showBtn&#39;);
-      showBtn.addEventListener(&#39;click&#39;, e =&gt; &#123;
-        dsBridge.call(&#39;getNativeEditTextValue&#39;,&#39;&#39;,value =&gt; &#123;
-          window.alert(&#39;Native输入值：&#39;+value)
-        &#125;)
-      &#125;)
-    &#125;)
-  &lt;/script&gt;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">  	</span><br><span class="line">## 混合APP实战</span><br><span class="line"></span><br><span class="line">### Web端HTTP请求存在的问题</span><br><span class="line"></span><br><span class="line">* Web发送请求接口XMLHttpRequest和fetch</span><br><span class="line">* 浏览器同源政策CORS安全限制</span><br><span class="line">* 不够安全、无法优化网络</span><br><span class="line"></span><br><span class="line">### Web端跨域请求</span><br><span class="line"></span><br><span class="line">![](8.png)</span><br><span class="line"></span><br><span class="line">![](9.png)</span><br><span class="line"></span><br><span class="line">### 原生HTTP请求优点</span><br><span class="line"></span><br><span class="line">* 没有浏览器跨域限制</span><br><span class="line">* 安全加密、签名校验</span><br><span class="line">* 弱网优化、流量优化</span><br><span class="line"></span><br><span class="line">### Web端跨域请求</span><br><span class="line"></span><br><span class="line">![](10.png)</span><br><span class="line"></span><br><span class="line">### Native端沉浸式换肤</span><br><span class="line"></span><br><span class="line">![](11.png)</span><br><span class="line"></span><br><span class="line">### 代码</span><br><span class="line"></span><br><span class="line">Native：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>public class MainActivity extends AppCompatActivity &#123;
-
-    private DWebView webView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        webView = findViewById(R.id.webView);
-        webView.addJavascriptObject(new JsApi(), null);
-        webView.loadUrl(&quot;http://10.43.101.59:8080&quot;);
-    &#125;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) &#123;
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    &#125;
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) &#123;
-        changeTheme(0xFFFF0000);
-        return true;
-    &#125;
-
-    // 换肤
-    private void changeTheme (int color) &#123;
-           // 状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().setStatusBarColor(color);
-
-        // 标题栏
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
-
-        // 导航栏
-        getWindow().setNavigationBarColor(color);
-
-        // Web 网页的背景
-        webView.callHandler(&quot;changeTheme&quot;, new Object[]&#123;color&#125;);
-    &#125;
-
-    public class JsApi &#123;
-        @JavascriptInterface
-        public void nativeRequest(Object params, CompletionHandler handler) &#123;
-            try &#123;
-                String url = ((JSONObject)params).getString(&quot;url&quot;);
-                String data = request(url);
-                handler.complete(data);
-            &#125; catch (Exception e) &#123;
-                handler.complete(e.getMessage());
-                e.printStackTrace();
-            &#125;
-        &#125;
-
-        private String request(String urlSpec) throws Exception &#123;
-            HttpURLConnection connection = (HttpURLConnection) new URL(urlSpec).openConnection();
-            connection.setRequestMethod(&quot;GET&quot;);
-            InputStream inputStream = connection.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuffer result = new StringBuffer();
-            String line;
-            while((line = reader.readLine()) != null) &#123;
-                result.append(line);
-            &#125;
-            reader.close();
-            connection.disconnect();
-            return result.toString();
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">Web端：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>&lt;script&gt;
-    document.addEventListener(&#39;DOMContentLoaded&#39;, e =&gt; &#123;
-          const urlTextEl = document.querySelector(&#39;#urlText&#39;)
-          const sendBtn = document.querySelector(&#39;#sendBtn&#39;)
-          const responseEl = document.querySelector(&#39;#response&#39;)
-          sendBtn.addEventListener(&#39;click&#39;, e =&gt; &#123;
-            const url = urlTextEl.value
-            if (url) &#123;
-                  // 清除旧数据
-                  responseEl.textContent = &#39;&#39;
-                  // 发送原生请求
-                  dsBridge.call(&quot;nativeRequest&quot;, &#123;url: url&#125;, data =&gt; &#123;
-                    responseEl.textContent = data
-                  &#125;)
-            &#125;
-          &#125;)
-    &#125;)
-
-    dsBridge.register(&quot;changeTheme&quot;, color =&gt; &#123;
-          // android  0xFFFF0000   ARGB
-          // web 0xFF0000FF  RGBA
-          document.body.style.backgroundColor = &#39;#&#39; + (color &amp; 0x00FFFFFF).toString(16)
-    &#125;)
-  &lt;/script&gt;	
-</code></pre>
-<pre><code>
-</code></pre>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">document.addEventListener(&#x27;DOMContentLoaded&#x27;, e =&gt; &#123;</span><br><span class="line">     const editText = document.querySelector(&#x27;#editText&#x27;);</span><br><span class="line">     const showBtn = document.querySelector(&#x27;#showBtn&#x27;);</span><br><span class="line">     showBtn.addEventListener(&#x27;click&#x27;, e =&gt; &#123;</span><br><span class="line">       const inputValue = editText.value;</span><br><span class="line">       showNativeDialog(inputValue)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">   function showNativeDialog (text) &#123;</span><br><span class="line">     window.alert(&#x27;jsbridge://showNativeDialog?text=&#x27; + text);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>原生添加alter监听</p>
+<p><img src="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/5.png"></p>
+<h3 id="注入API方式"><a href="#注入API方式" class="headerlink" title="注入API方式"></a>注入API方式</h3><h4 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h4><ul>
+<li>优点：简单直观</li>
+<li>缺点：有兼容性问题（Android4.2+）</li>
+</ul>
+<p><img src="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/6.png"></p>
+<p>Web调用原生方法需要改变</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function showNativeDialog (text) &#123;</span><br><span class="line">     window.NativeBridge.showNativeDialog(text);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   //原生</span><br><span class="line">   webView.setWebChromeClient(new WebChromeClient());</span><br><span class="line">   webView.addJavascriptInterface(new NativeBridge(this), &quot;NativeBridge&quot;);</span><br><span class="line">   </span><br><span class="line">   class NativeBridge &#123;</span><br><span class="line">       private  Context ctx;</span><br><span class="line">       NativeBridge(Context ctx) &#123;</span><br><span class="line">           this.ctx = ctx;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       @JavascriptInterface</span><br><span class="line">       public void showNativeDialog(String text) &#123;</span><br><span class="line">           new AlertDialog.Builder(ctx).setMessage(text).create().show();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="支持回调的JSBridge"><a href="#支持回调的JSBridge" class="headerlink" title="支持回调的JSBridge"></a>支持回调的JSBridge</h3><p>场景：Web端获取Native端输入框的值</p>
+<ul>
+<li>在对端执行操作并返回结果</li>
+<li>有输入有输出才是完整的调用</li>
+</ul>
+<p><img src="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/7.png"></p>
+<p>Web代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let id = 1</span><br><span class="line">   const callbackMap = &#123;&#125;</span><br><span class="line">   window.JSSDK = &#123;</span><br><span class="line">     getWebEditTextValue(callbackId)&#123;</span><br><span class="line">       const editText = document.querySelector(&#x27;#editText&#x27;);</span><br><span class="line">       const inputValue = editText.value;</span><br><span class="line">       NativeBridge.receiveMessage(callbackId,value)</span><br><span class="line">     &#125;,</span><br><span class="line">     getNativeEditTextValue(callback)&#123;</span><br><span class="line">       const callbackId = id++</span><br><span class="line">       callbackMap[callbackId] = callback</span><br><span class="line">       NativeBridge.getNativeEditTextValue(callbackId)</span><br><span class="line">     &#125;,</span><br><span class="line">     receiveMessage(callbackId,value)&#123;</span><br><span class="line">       if(callbackMap[callbackId])&#123;</span><br><span class="line">         callbackMap[callbackId](value)</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   ////</span><br><span class="line">   showBtn2.addEventListener(&#x27;click&#x27;, e =&gt; &#123;</span><br><span class="line">       window.JSSDK.getNativeEditTextValue(value =&gt; window.alert(&#x27;Native输入值:&#x27;+value))</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<p>Native代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">showBtn2.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void onClick(View view) &#123;</span><br><span class="line">               mNativeSDK.getWebEditTextValue(new Callback() &#123;</span><br><span class="line">                   @Override</span><br><span class="line">                   public void invoke(String value) &#123;</span><br><span class="line">                       Log.e(&quot;11&quot;,&quot;web输入值：&quot;+value);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;);</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">   </span><br><span class="line">   ////    </span><br><span class="line">   interface Callback &#123;</span><br><span class="line">       void invoke(String value);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   class NativeSDK&#123;</span><br><span class="line"></span><br><span class="line">       private Context mContext;</span><br><span class="line">       private int id = 1;</span><br><span class="line">       private Map&lt;Integer,Callback&gt; callbackMap = new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       NativeSDK(Context context)&#123;</span><br><span class="line">           mContext = context;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       void getWebEditTextValue(Callback callback)&#123;</span><br><span class="line">           int callbackId = id++;</span><br><span class="line">           callbackMap.put(callbackId,callback);</span><br><span class="line"></span><br><span class="line">           final String jsCode = String.format(&quot;window.JSSDK.getWebEditTextValue(%s)&quot;,callbackId);</span><br><span class="line">           ((MainActivity)mContext).runOnUiThread(new Runnable() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public void run() &#123;</span><br><span class="line">                   ((MainActivity)mContext).webView.evaluateJavascript(jsCode, null);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;);</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       void receiveMessage(int callbackId,String value)&#123;</span><br><span class="line">           if(callbackMap.containsKey(callbackId))&#123;</span><br><span class="line">               callbackMap.get(callbackId).invoke(value);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   ///</span><br><span class="line">   @JavascriptInterface</span><br><span class="line">   public void getNativeEditTextValue(int callbackId) &#123;</span><br><span class="line">           String vale = editText.getText().toString();</span><br><span class="line">           final String jsCode = String.format(&quot;window.JSSDK.receiveMessage(%s,&#x27;%s&#x27;)&quot;, callbackId,vale);</span><br><span class="line">           runOnUiThread(new Runnable() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public void run() &#123;</span><br><span class="line">                   webView.evaluateJavascript(jsCode, null);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   @JavascriptInterface</span><br><span class="line">   public void receiveMessage(int callbackId,String value)&#123;</span><br><span class="line">           ((MainActivity)ctx).mNativeSDK.receiveMessage(callbackId,value);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>流程讲解：Native获取Web输入框的值，先调用NativeSDK里的getWebEditTextValue方法，跳转到Web端JSSDK里的getWebEditTextValue方法，跳转到Native端的receiveMessage方法，跳转到NativeSDK的receiveMessage方法，Map获取接口对象执行接口方法</p>
+<h3 id="JSBridge的开源实现"><a href="#JSBridge的开源实现" class="headerlink" title="JSBridge的开源实现"></a>JSBridge的开源实现</h3><ul>
+<li>JsBridge：拦截URL Schema</li>
+<li>DSBridge：注入JS API</li>
+</ul>
+<p><a class="link" href="https://github.com/wendux/DSBridge-Android">DSBridge<i class="fas fa-external-link-alt"></i></a></p>
+<p>Native代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class Main2Activity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private DWebView webView;</span><br><span class="line">   	private EditText editText;</span><br><span class="line">   	private Button showBtn;</span><br><span class="line">   	private Button refreshBtn;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main2);</span><br><span class="line"></span><br><span class="line">       	editText = findViewById(R.id.editText);</span><br><span class="line">       	showBtn = findViewById(R.id.showBtn);</span><br><span class="line">       	refreshBtn = findViewById(R.id.refreshBtn);</span><br><span class="line">       	webView = findViewById(R.id.webview);</span><br><span class="line"></span><br><span class="line">       	webView.loadUrl(&quot;http://192.168.0.121:8080&quot;);</span><br><span class="line">       	webView.getSettings().setJavaScriptEnabled(true);</span><br><span class="line">       	webView.setWebChromeClient(new WebChromeClient());</span><br><span class="line">       	webView.addJavascriptObject(new JsApi(this),null);</span><br><span class="line"></span><br><span class="line">       	showBtn.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	webView.callHandler(&quot;getWebEditTextValue&quot;, null, new OnReturnValue&lt;String&gt;() &#123;</span><br><span class="line">                   	@Override</span><br><span class="line">                   	public void onValue(String retValue) &#123;</span><br><span class="line">                       	Log.e(&quot;11&quot;,&quot;web输入值：&quot;+retValue);</span><br><span class="line">                   	&#125;</span><br><span class="line">               	&#125;);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	class JsApi&#123;</span><br><span class="line">       	private Context mContext;</span><br><span class="line">       </span><br><span class="line">       	JsApi(Context context)&#123;</span><br><span class="line">           	mContext = context;</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	//for asynchronous invocation</span><br><span class="line">       	@JavascriptInterface</span><br><span class="line">       	public void getNativeEditTextValue(Object msg, CompletionHandler&lt;String&gt; handler) &#123;</span><br><span class="line">           	String value = ((Main2Activity)mContext).editText.getText().toString();</span><br><span class="line">           	handler.complete(value);</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Web端代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://unpkg.com/dsbridge@3.1.3/dist/dsbridge.js&quot;&gt; &lt;/script&gt;</span><br><span class="line"> 	&lt;script&gt;</span><br><span class="line">   	dsBridge.register(&#x27;getWebEditTextValue&#x27;,() =&gt; &#123;</span><br><span class="line">     	const editText = document.querySelector(&#x27;#editText&#x27;);</span><br><span class="line">     	return editText.value</span><br><span class="line">   &#125;	)</span><br><span class="line"></span><br><span class="line">   	document.addEventListener(&#x27;DOMContentLoaded&#x27;, e =&gt; &#123;</span><br><span class="line">     	const showBtn = document.querySelector(&#x27;#showBtn&#x27;);</span><br><span class="line">     	showBtn.addEventListener(&#x27;click&#x27;, e =&gt; &#123;</span><br><span class="line">       	dsBridge.call(&#x27;getNativeEditTextValue&#x27;,&#x27;&#x27;,value =&gt; &#123;</span><br><span class="line">         	window.alert(&#x27;Native输入值：&#x27;+value)</span><br><span class="line">       	&#125;)</span><br><span class="line">     	&#125;)</span><br><span class="line">   	&#125;)</span><br><span class="line"> 	&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="混合APP实战"><a href="#混合APP实战" class="headerlink" title="混合APP实战"></a>混合APP实战</h2><h3 id="Web端HTTP请求存在的问题"><a href="#Web端HTTP请求存在的问题" class="headerlink" title="Web端HTTP请求存在的问题"></a>Web端HTTP请求存在的问题</h3><ul>
+<li>Web发送请求接口XMLHttpRequest和fetch</li>
+<li>浏览器同源政策CORS安全限制</li>
+<li>不够安全、无法优化网络</li>
+</ul>
+<h3 id="Web端跨域请求"><a href="#Web端跨域请求" class="headerlink" title="Web端跨域请求"></a>Web端跨域请求</h3><p><img src="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/8.png"></p>
+<p><img src="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/9.png"></p>
+<h3 id="原生HTTP请求优点"><a href="#原生HTTP请求优点" class="headerlink" title="原生HTTP请求优点"></a>原生HTTP请求优点</h3><ul>
+<li>没有浏览器跨域限制</li>
+<li>安全加密、签名校验</li>
+<li>弱网优化、流量优化</li>
+</ul>
+<h3 id="Web端跨域请求-1"><a href="#Web端跨域请求-1" class="headerlink" title="Web端跨域请求"></a>Web端跨域请求</h3><p><img src="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/10.png"></p>
+<h3 id="Native端沉浸式换肤"><a href="#Native端沉浸式换肤" class="headerlink" title="Native端沉浸式换肤"></a>Native端沉浸式换肤</h3><p><img src="/2019/01/02/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/11.png"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>Native：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private DWebView webView;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">       	webView = findViewById(R.id.webView);</span><br><span class="line">       	webView.addJavascriptObject(new JsApi(), null);</span><br><span class="line">       	webView.loadUrl(&quot;http://10.43.101.59:8080&quot;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public boolean onCreateOptionsMenu(Menu menu) &#123;</span><br><span class="line">       	getMenuInflater().inflate(R.menu.menu, menu);</span><br><span class="line">       	return true;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public boolean onOptionsItemSelected(@NonNull MenuItem item) &#123;</span><br><span class="line">       	changeTheme(0xFFFF0000);</span><br><span class="line">       	return true;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	// 换肤</span><br><span class="line">   	private void changeTheme (int color) &#123;</span><br><span class="line">      		// 状态栏</span><br><span class="line">       	getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);</span><br><span class="line">       	getWindow().setStatusBarColor(color);</span><br><span class="line"></span><br><span class="line">       	// 标题栏</span><br><span class="line">       	getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));</span><br><span class="line"></span><br><span class="line">       	// 导航栏</span><br><span class="line">       	getWindow().setNavigationBarColor(color);</span><br><span class="line"></span><br><span class="line">       	// Web 网页的背景</span><br><span class="line">       	webView.callHandler(&quot;changeTheme&quot;, new Object[]&#123;color&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public class JsApi &#123;</span><br><span class="line">       	@JavascriptInterface</span><br><span class="line">       	public void nativeRequest(Object params, CompletionHandler handler) &#123;</span><br><span class="line">           	try &#123;</span><br><span class="line">               	String url = ((JSONObject)params).getString(&quot;url&quot;);</span><br><span class="line">               	String data = request(url);</span><br><span class="line">               	handler.complete(data);</span><br><span class="line">           	&#125; catch (Exception e) &#123;</span><br><span class="line">               	handler.complete(e.getMessage());</span><br><span class="line">               	e.printStackTrace();</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	private String request(String urlSpec) throws Exception &#123;</span><br><span class="line">           	HttpURLConnection connection = (HttpURLConnection) new URL(urlSpec).openConnection();</span><br><span class="line">           	connection.setRequestMethod(&quot;GET&quot;);</span><br><span class="line">           	InputStream inputStream = connection.getInputStream();</span><br><span class="line">           	BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));</span><br><span class="line">           	StringBuffer result = new StringBuffer();</span><br><span class="line">           	String line;</span><br><span class="line">           	while((line = reader.readLine()) != null) &#123;</span><br><span class="line">               	result.append(line);</span><br><span class="line">           	&#125;</span><br><span class="line">           	reader.close();</span><br><span class="line">           	connection.disconnect();</span><br><span class="line">           	return result.toString();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Web端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">   	document.addEventListener(&#x27;DOMContentLoaded&#x27;, e =&gt; &#123;</span><br><span class="line">     		const urlTextEl = document.querySelector(&#x27;#urlText&#x27;)</span><br><span class="line">     		const sendBtn = document.querySelector(&#x27;#sendBtn&#x27;)</span><br><span class="line">     		const responseEl = document.querySelector(&#x27;#response&#x27;)</span><br><span class="line">     		sendBtn.addEventListener(&#x27;click&#x27;, e =&gt; &#123;</span><br><span class="line">       		const url = urlTextEl.value</span><br><span class="line">       		if (url) &#123;</span><br><span class="line">         			// 清除旧数据</span><br><span class="line">         			responseEl.textContent = &#x27;&#x27;</span><br><span class="line">         			// 发送原生请求</span><br><span class="line">         			dsBridge.call(&quot;nativeRequest&quot;, &#123;url: url&#125;, data =&gt; &#123;</span><br><span class="line">           			responseEl.textContent = data</span><br><span class="line">         			&#125;)</span><br><span class="line">       		&#125;</span><br><span class="line">     		&#125;)</span><br><span class="line">   	&#125;)</span><br><span class="line"></span><br><span class="line">   	dsBridge.register(&quot;changeTheme&quot;, color =&gt; &#123;</span><br><span class="line">     		// android  0xFFFF0000   ARGB</span><br><span class="line">     		// web 0xFF0000FF  RGBA</span><br><span class="line">     		document.body.style.backgroundColor = &#x27;#&#x27; + (color &amp; 0x00FFFFFF).toString(16)</span><br><span class="line">   	&#125;)</span><br><span class="line"> 	&lt;/script&gt;	</span><br></pre></td></tr></table></figure>
                     
                 </div>
 
@@ -678,7 +441,7 @@ public void receiveMessage(int callbackId,String value)&#123;
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%84%8F%E4%B9%89"><span class="nav-number">1.4.</span> <span class="nav-text">学习意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="nav-number">1.5.</span> <span class="nav-text">核心技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E6%A1%86%E6%9E%B6"><span class="nav-number">1.6.</span> <span class="nav-text">主流框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSBridge"><span class="nav-number">2.</span> <span class="nav-text">JSBridge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSBridge%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">JSBridge两种实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A6%E6%88%AAURL-Schema%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">拦截URL Schema方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%84%8F%E4%B9%89"><span class="nav-number">1.4.</span> <span class="nav-text">学习意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="nav-number">1.5.</span> <span class="nav-text">核心技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E6%A1%86%E6%9E%B6"><span class="nav-number">1.6.</span> <span class="nav-text">主流框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSBridge"><span class="nav-number">2.</span> <span class="nav-text">JSBridge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSBridge%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">JSBridge两种实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A6%E6%88%AAURL-Schema%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">拦截URL Schema方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5API%E6%96%B9%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">注入API方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-2"><span class="nav-number">2.4.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E5%9B%9E%E8%B0%83%E7%9A%84JSBridge"><span class="nav-number">2.5.</span> <span class="nav-text">支持回调的JSBridge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSBridge%E7%9A%84%E5%BC%80%E6%BA%90%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.6.</span> <span class="nav-text">JSBridge的开源实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B7%E5%90%88APP%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">混合APP实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web%E7%AB%AFHTTP%E8%AF%B7%E6%B1%82%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">Web端HTTP请求存在的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82"><span class="nav-number">3.2.</span> <span class="nav-text">Web端跨域请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%94%9FHTTP%E8%AF%B7%E6%B1%82%E4%BC%98%E7%82%B9"><span class="nav-number">3.3.</span> <span class="nav-text">原生HTTP请求优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82-1"><span class="nav-number">3.4.</span> <span class="nav-text">Web端跨域请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Native%E7%AB%AF%E6%B2%89%E6%B5%B8%E5%BC%8F%E6%8D%A2%E8%82%A4"><span class="nav-number">3.5.</span> <span class="nav-text">Native端沉浸式换肤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.6.</span> <span class="nav-text">代码</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -805,7 +568,7 @@ public void receiveMessage(int callbackId,String value)&#123;
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%84%8F%E4%B9%89"><span class="nav-number">1.4.</span> <span class="nav-text">学习意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="nav-number">1.5.</span> <span class="nav-text">核心技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E6%A1%86%E6%9E%B6"><span class="nav-number">1.6.</span> <span class="nav-text">主流框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSBridge"><span class="nav-number">2.</span> <span class="nav-text">JSBridge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSBridge%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">JSBridge两种实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A6%E6%88%AAURL-Schema%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">拦截URL Schema方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%84%8F%E4%B9%89"><span class="nav-number">1.4.</span> <span class="nav-text">学习意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="nav-number">1.5.</span> <span class="nav-text">核心技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E6%A1%86%E6%9E%B6"><span class="nav-number">1.6.</span> <span class="nav-text">主流框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSBridge"><span class="nav-number">2.</span> <span class="nav-text">JSBridge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSBridge%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">JSBridge两种实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A6%E6%88%AAURL-Schema%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">拦截URL Schema方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5API%E6%96%B9%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">注入API方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-2"><span class="nav-number">2.4.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E5%9B%9E%E8%B0%83%E7%9A%84JSBridge"><span class="nav-number">2.5.</span> <span class="nav-text">支持回调的JSBridge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSBridge%E7%9A%84%E5%BC%80%E6%BA%90%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.6.</span> <span class="nav-text">JSBridge的开源实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B7%E5%90%88APP%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">混合APP实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web%E7%AB%AFHTTP%E8%AF%B7%E6%B1%82%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">Web端HTTP请求存在的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82"><span class="nav-number">3.2.</span> <span class="nav-text">Web端跨域请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%94%9FHTTP%E8%AF%B7%E6%B1%82%E4%BC%98%E7%82%B9"><span class="nav-number">3.3.</span> <span class="nav-text">原生HTTP请求优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82-1"><span class="nav-number">3.4.</span> <span class="nav-text">Web端跨域请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Native%E7%AB%AF%E6%B2%89%E6%B5%B8%E5%BC%8F%E6%8D%A2%E8%82%A4"><span class="nav-number">3.5.</span> <span class="nav-text">Native端沉浸式换肤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.6.</span> <span class="nav-text">代码</span></a></li></ol></li></ol>
     </div>
 </div>
 
