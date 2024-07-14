@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jul 11 2024 11:31:50 GMT+0800">2024-07-11 11:31:50</span>
+                <span class="datetime" data-updated="Sun Jul 14 2024 08:58:35 GMT+0800">2024-07-14 08:58:35</span>
             </span>
         
 
@@ -284,160 +284,58 @@
 <p>定义一个类继承service</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">public class MyService extends Service &#123;</span><br><span class="line"></span><br><span class="line">   	private String TAG = &quot;MyService&quot;;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onCreate() &#123;</span><br><span class="line">       	super.onCreate();</span><br><span class="line">       	Log.i(TAG,&quot;onCreate&quot;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onStart(Intent intent, int startId) &#123;</span><br><span class="line">       	super.onStart(intent, startId);</span><br><span class="line">       	Log.i(TAG,&quot;onStart&quot;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">       	Log.i(TAG,&quot;onStartCommand&quot;);</span><br><span class="line">       	return super.onStartCommand(intent, flags, startId);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	//绑定服务时调用这个方法，返回一个IBinder对象</span><br><span class="line">   	@Override</span><br><span class="line">   	public IBinder onBind(Intent intent) &#123;</span><br><span class="line">      	 	Log.i(TAG,&quot;onBind&quot;);</span><br><span class="line">       	return new MyBinder();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public boolean onUnbind(Intent intent) &#123;</span><br><span class="line">       	Log.i(TAG,&quot;onUnbind&quot;);</span><br><span class="line">       	return super.onUnbind(intent);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	public void onDestroy() &#123;</span><br><span class="line">       	super.onDestroy();</span><br><span class="line">       	Log.i(TAG,&quot;onDestroy&quot;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public interface MyIBinder&#123;</span><br><span class="line">       	void test();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	public class MyBinder extends Binder implements MyIBinder&#123;</span><br><span class="line"></span><br><span class="line">       	public void stopService(ServiceConnection serviceConnection)&#123;</span><br><span class="line">           	unbindService(serviceConnection);</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public void test() &#123;</span><br><span class="line">           	for (int i=0;i&lt;20;i++)&#123;</span><br><span class="line">               	Log.i(TAG,&quot;test&quot;+i);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在manifest.xml文件中注册service</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	&lt;service android:name=&quot;.MyService&quot; android:exported=&quot;true&quot;&gt;</span><br><span class="line">         &lt;intent-filter&gt;</span><br><span class="line">             &lt;action android:name=&quot;com.yly.yservice&quot;/&gt;</span><br><span class="line">             &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</span><br><span class="line">         &lt;/intent-filter&gt;</span><br><span class="line">    &lt;/service&gt;</span><br><span class="line">```   </span><br><span class="line">    </span><br><span class="line">绑定自定义的service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>public class MainActivity extends AppCompatActivity &#123;
-
-    private String TAG = &quot;MyService&quot;;
-    private Button mButton1,mButton2;
-    private MyService.MyBinder mMyBinder;
-    private ServiceConnection mServiceConnection;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mButton1 = findViewById(R.id.button);
-        mButton2 = findViewById(R.id.button2);
-
-        mButton1.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                mServiceConnection = new MyServiceConnection();
-                Intent intent = new Intent(MainActivity.this,MyService.class);
-                //startService(intent);
-                bindService(intent,mServiceConnection,BIND_AUTO_CREATE);
-        &#125;
-        &#125;);
-
-        mButton2.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                unbindService(mServiceConnection);
-            &#125;
-        &#125;);
-    &#125;
-
-    class MyServiceConnection implements ServiceConnection &#123;
-
-        //这里的第二个参数IBinder就是Service中的onBind方法返回的
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) &#123;
-            Log.i(TAG, &quot;onServiceConnected&quot;);
-            mMyBinder = (MyService.MyBinder) iBinder;
-        &#125;
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) &#123;
-            Log.i(TAG, &quot;onServiceDisconnected&quot;);
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">startService输出日志：</span><br><span class="line"></span><br><span class="line">![](1.png)</span><br><span class="line"></span><br><span class="line">bindService 输出日志：</span><br><span class="line"></span><br><span class="line">![](2.png)</span><br><span class="line"></span><br><span class="line">### IntentService</span><br><span class="line"></span><br><span class="line">IntentService是Service的子类，比普通的Service增加了额外的功能。</span><br><span class="line"></span><br><span class="line">先看Service本身存在两个问题：</span><br><span class="line"></span><br><span class="line">- Service不会专门启动一条单独的进程，Service与它所在应用位于同一个进程中</span><br><span class="line">- Service也不是专门一条新线程，因此不应该在Service中直接处理耗时的任务</span><br><span class="line"></span><br><span class="line">IntentService特征:</span><br><span class="line"></span><br><span class="line">- 会创建独立的worker线程来处理所有的Intent请求</span><br><span class="line">- 会创建独立的worker线程来处理onHandleIntent()方法实现的代码，无需处理多线程问题</span><br><span class="line">- 所有请求处理完成后，IntentService会自动停止，无需调用stopSelf()方法停止Service</span><br><span class="line">- 为Service的onBind()提供默认实现，返回null</span><br><span class="line">- 为Service的onStartCommand提供默认实现，将请求Intent添加到队列中</span><br><span class="line"></span><br><span class="line">### 绑定远程服务(aidl文件的使用)</span><br><span class="line"></span><br><span class="line">远程服务是位于另一个项目中的一个对外开放的服务，区别于本地服务。</span><br><span class="line"></span><br><span class="line">- 远程服务：调用者和服务在不同的工程代码里面</span><br><span class="line">- 本地服务：调用者和服务在同一个工程代码里面</span><br><span class="line"></span><br><span class="line">绑定远程服务的步骤:</span><br><span class="line"></span><br><span class="line">- 在服务的内部创建一个内部类，提供一个方法，可以间接调用服务的方法</span><br><span class="line">- 把暴露的接口文件的扩展名改为.aidl文件 去掉访问修饰符</span><br><span class="line">- 实现服务的onbind方法，继承Binder和实现aidl定义的接口，提供给外界可调用的方法</span><br><span class="line">- 在activity 中绑定服务。bindService()</span><br><span class="line">- 在服务成功绑定的时候会回调 onServiceConnected方法 传递一个 IBinder对象</span><br><span class="line">- aidl定义的接口.Stub.asInterface(binder) 调用接口里面的方法</span><br><span class="line"></span><br><span class="line">.aidl：android interface definition language 安卓接口定义语言。</span><br><span class="line">aidl文件都是公有的，没有访问权限修饰符。</span><br><span class="line"></span><br><span class="line">**例子**</span><br><span class="line"></span><br><span class="line">*远程服务的程序：*</span><br><span class="line"></span><br><span class="line">定义一个Service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>public class MyService extends Service &#123;
-
-    public MyService()&#123;&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;service android:name=&quot;.MyService&quot; android:exported=&quot;true&quot;&gt;</span><br><span class="line">        &lt;intent-filter&gt;</span><br><span class="line">            &lt;action android:name=&quot;com.yly.yservice&quot;/&gt;</span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</span><br><span class="line">        &lt;/intent-filter&gt;</span><br><span class="line">   &lt;/service&gt;</span><br></pre></td></tr></table></figure>
 
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) &#123;
-        //返回MyBind对象
-        return new MyBinder();
-    &#125;
+<p>绑定自定义的service</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private String TAG = &quot;MyService&quot;;</span><br><span class="line">   	private Button mButton1,mButton2;</span><br><span class="line">   	private MyService.MyBinder mMyBinder;</span><br><span class="line">   	private ServiceConnection mServiceConnection;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">       	mButton1 = findViewById(R.id.button);</span><br><span class="line">       	mButton2 = findViewById(R.id.button2);</span><br><span class="line"></span><br><span class="line">       	mButton1.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	mServiceConnection = new MyServiceConnection();</span><br><span class="line">               	Intent intent = new Intent(MainActivity.this,MyService.class);</span><br><span class="line">				//startService(intent);</span><br><span class="line">               	bindService(intent,mServiceConnection,BIND_AUTO_CREATE);</span><br><span class="line">           &#125;</span><br><span class="line">       	&#125;);</span><br><span class="line"></span><br><span class="line">       	mButton2.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	unbindService(mServiceConnection);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	class MyServiceConnection implements ServiceConnection &#123;</span><br><span class="line"></span><br><span class="line">       	//这里的第二个参数IBinder就是Service中的onBind方法返回的</span><br><span class="line">       	@Override</span><br><span class="line">       	public void onServiceConnected(ComponentName componentName, IBinder iBinder) &#123;</span><br><span class="line">           	Log.i(TAG, &quot;onServiceConnected&quot;);</span><br><span class="line">           	mMyBinder = (MyService.MyBinder) iBinder;</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public void onServiceDisconnected(ComponentName componentName) &#123;</span><br><span class="line">           	Log.i(TAG, &quot;onServiceDisconnected&quot;);</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>startService输出日志：</p>
+<p><img src="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/1.png"></p>
+<p>bindService 输出日志：</p>
+<p><img src="/2018/01/02/Android%E5%85%A5%E9%97%A8-Service/2.png"></p>
+<h3 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h3><p>IntentService是Service的子类，比普通的Service增加了额外的功能。</p>
+<p>先看Service本身存在两个问题：</p>
+<ul>
+<li>Service不会专门启动一条单独的进程，Service与它所在应用位于同一个进程中</li>
+<li>Service也不是专门一条新线程，因此不应该在Service中直接处理耗时的任务</li>
+</ul>
+<p>IntentService特征:</p>
+<ul>
+<li>会创建独立的worker线程来处理所有的Intent请求</li>
+<li>会创建独立的worker线程来处理onHandleIntent()方法实现的代码，无需处理多线程问题</li>
+<li>所有请求处理完成后，IntentService会自动停止，无需调用stopSelf()方法停止Service</li>
+<li>为Service的onBind()提供默认实现，返回null</li>
+<li>为Service的onStartCommand提供默认实现，将请求Intent添加到队列中</li>
+</ul>
+<h3 id="绑定远程服务-aidl文件的使用"><a href="#绑定远程服务-aidl文件的使用" class="headerlink" title="绑定远程服务(aidl文件的使用)"></a>绑定远程服务(aidl文件的使用)</h3><p>远程服务是位于另一个项目中的一个对外开放的服务，区别于本地服务。</p>
+<ul>
+<li>远程服务：调用者和服务在不同的工程代码里面</li>
+<li>本地服务：调用者和服务在同一个工程代码里面</li>
+</ul>
+<p>绑定远程服务的步骤:</p>
+<ul>
+<li>在服务的内部创建一个内部类，提供一个方法，可以间接调用服务的方法</li>
+<li>把暴露的接口文件的扩展名改为.aidl文件 去掉访问修饰符</li>
+<li>实现服务的onbind方法，继承Binder和实现aidl定义的接口，提供给外界可调用的方法</li>
+<li>在activity 中绑定服务。bindService()</li>
+<li>在服务成功绑定的时候会回调 onServiceConnected方法 传递一个 IBinder对象</li>
+<li>aidl定义的接口.Stub.asInterface(binder) 调用接口里面的方法</li>
+</ul>
+<p>.aidl：android interface definition language 安卓接口定义语言。<br>aidl文件都是公有的，没有访问权限修饰符。</p>
+<p><strong>例子</strong></p>
+<p><em>远程服务的程序：</em></p>
+<p>定义一个Service</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class MyService extends Service &#123;</span><br><span class="line"></span><br><span class="line">   	public MyService()&#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   	@Nullable</span><br><span class="line">   	@Override</span><br><span class="line">   	public IBinder onBind(Intent intent) &#123;</span><br><span class="line">       	//返回MyBind对象</span><br><span class="line">       	return new MyBinder();</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	/**</span><br><span class="line">    	* 直接继承IMyBinder.Stub</span><br><span class="line">    	*/</span><br><span class="line">   	private class MyBinder extends IMyBinder.Stub &#123;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public void invokeMethodInMyService() throws RemoteException &#123;</span><br><span class="line">           	methodInMyService();</span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	private void methodInMyService() &#123;</span><br><span class="line">       	Looper.prepare();</span><br><span class="line">       	Toast.makeText(getApplicationContext(), &quot;服务里的方法执行了。。。&quot;,</span><br><span class="line">               Toast.LENGTH_SHORT).show();</span><br><span class="line">       	Looper.loop();</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建IMyBinder.aidl文件，工具会自动生成一个IMyBinder的接口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface IMyBinder &#123;</span><br><span class="line"></span><br><span class="line">    	void invokeMethodInMyService();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Manifes.xml件中进行配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;service android:name=&quot;.MyService&quot;&gt;</span><br><span class="line">       &lt;intent-filter&gt;</span><br><span class="line">           &lt;action android:name=&quot;com.yly.myservice&quot;/&gt;</span><br><span class="line">       &lt;/intent-filter&gt;</span><br><span class="line">   &lt;/service&gt;</span><br></pre></td></tr></table></figure>
 
-    /**
-     * 直接继承IMyBinder.Stub
-     */
-    private class MyBinder extends IMyBinder.Stub &#123;
+<p><em>调用远程服务的程序：</em></p>
+<p>创建一个和远程服务程序的MyBinder.aidl一样的文件（包括包名），拷贝即可</p>
+<p>绑定服务，调用方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">   	private Button mButton1,mButton2;</span><br><span class="line"></span><br><span class="line">   	private IMyBinder mIMyBinder;</span><br><span class="line"></span><br><span class="line">   	private MyConn mMyConn;</span><br><span class="line"></span><br><span class="line">   	@Override</span><br><span class="line">   	protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">       	super.onCreate(savedInstanceState);</span><br><span class="line">       	setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">       	mButton1 = findViewById(R.id.button1);</span><br><span class="line">       	mButton2 = findViewById(R.id.button2);</span><br><span class="line"></span><br><span class="line">       	mButton1.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	Intent intent = new Intent();</span><br><span class="line">               	intent.setAction(&quot;com.yly.myservice&quot;);</span><br><span class="line">               	intent.setPackage(&quot;com.yly.aidlservice&quot;);</span><br><span class="line">               	mMyConn = new MyConn();</span><br><span class="line">               	bindService(intent,mMyConn,BIND_AUTO_CREATE);</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line"></span><br><span class="line">       	mButton2.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           	@Override</span><br><span class="line">           	public void onClick(View view) &#123;</span><br><span class="line">               	try &#123;</span><br><span class="line">                   	mIMyBinder.invokeMethodInMyService();</span><br><span class="line">               &#125; catch (RemoteException e) &#123;</span><br><span class="line">                   	e.printStackTrace();</span><br><span class="line">               	&#125;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;);</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	private class MyConn implements ServiceConnection &#123;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public void onServiceConnected(ComponentName componentName, IBinder iBinder) &#123;</span><br><span class="line">           	//通过Stub得到接口类型</span><br><span class="line">           	mIMyBinder = IMyBinder.Stub.asInterface(iBinder);</span><br><span class="line">           	Log.e(&quot;xxx&quot;,&quot;绑定成功&quot;);</span><br><span class="line">       	&#125;</span><br><span class="line"></span><br><span class="line">       	@Override</span><br><span class="line">       	public void onServiceDisconnected(ComponentName componentName) &#123;</span><br><span class="line"></span><br><span class="line">       	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        @Override
-        public void invokeMethodInMyService() throws RemoteException &#123;
-            methodInMyService();
-        &#125;
-    &#125;
-
-    private void methodInMyService() &#123;
-        Looper.prepare();
-        Toast.makeText(getApplicationContext(), &quot;服务里的方法执行了。。。&quot;,
-            Toast.LENGTH_SHORT).show();
-        Looper.loop();
-    &#125;
-&#125;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">创建IMyBinder.aidl文件，工具会自动生成一个IMyBinder的接口。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>interface IMyBinder &#123;
-
-     void invokeMethodInMyService();
-
-&#125;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">在Manifes.xml件中进行配置</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>&lt;service android:name=&quot;.MyService&quot;&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.yly.myservice&quot;/&gt;
-    &lt;/intent-filter&gt;
-&lt;/service&gt;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">*调用远程服务的程序：*</span><br><span class="line"></span><br><span class="line">创建一个和远程服务程序的MyBinder.aidl一样的文件（包括包名），拷贝即可</span><br><span class="line"></span><br><span class="line">绑定服务，调用方法</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>public class MainActivity extends AppCompatActivity &#123;
-
-    private Button mButton1,mButton2;
-
-    private IMyBinder mIMyBinder;
-
-    private MyConn mMyConn;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) &#123;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mButton1 = findViewById(R.id.button1);
-        mButton2 = findViewById(R.id.button2);
-
-        mButton1.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                Intent intent = new Intent();
-                intent.setAction(&quot;com.yly.myservice&quot;);
-                intent.setPackage(&quot;com.yly.aidlservice&quot;);
-                mMyConn = new MyConn();
-                bindService(intent,mMyConn,BIND_AUTO_CREATE);
-            &#125;
-        &#125;);
-
-        mButton2.setOnClickListener(new View.OnClickListener() &#123;
-            @Override
-            public void onClick(View view) &#123;
-                try &#123;
-                    mIMyBinder.invokeMethodInMyService();
-            &#125; catch (RemoteException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;);
-    &#125;
-
-    private class MyConn implements ServiceConnection &#123;
-
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) &#123;
-            //通过Stub得到接口类型
-            mIMyBinder = IMyBinder.Stub.asInterface(iBinder);
-            Log.e(&quot;xxx&quot;,&quot;绑定成功&quot;);
-        &#125;
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) &#123;
-
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<pre><code>
-</code></pre>
 
                     
                 </div>
@@ -518,7 +416,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%EF%BC%88LocalService%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">本地服务（LocalService）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">两种启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8DstartService"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一种startService</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dbind"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二种bind</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%EF%BC%88LocalService%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">本地服务（LocalService）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">两种启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8DstartService"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一种startService</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dbind"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二种bind</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IntentService"><span class="nav-number">1.3.</span> <span class="nav-text">IntentService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1-aidl%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">绑定远程服务(aidl文件的使用)</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -645,7 +543,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%EF%BC%88LocalService%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">本地服务（LocalService）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">两种启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8DstartService"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一种startService</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dbind"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二种bind</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%EF%BC%88LocalService%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">本地服务（LocalService）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">两种启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8DstartService"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一种startService</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dbind"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二种bind</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IntentService"><span class="nav-number">1.3.</span> <span class="nav-text">IntentService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1-aidl%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">绑定远程服务(aidl文件的使用)</span></a></li></ol></li></ol>
     </div>
 </div>
 
