@@ -262,7 +262,7 @@
 <span id="more"></span>
 
 <h4 id="1-检查是否存在"><a href="#1-检查是否存在" class="headerlink" title="1. 检查是否存在"></a>1. 检查是否存在</h4><h5 id="1-1-输入id-rsa-pub-或-id-dsa-pub"><a href="#1-1-输入id-rsa-pub-或-id-dsa-pub" class="headerlink" title="1.1 输入id_rsa.pub 或 id_dsa.pub"></a>1.1 输入id_rsa.pub 或 id_dsa.pub</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br><span class="line"># Lists the files in your .ssh directory, if they exist</span><br></pre></td></tr></table></figure>
-<h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2. 生成新的ssh key"></a>2. 生成新的ssh key</h4><h5 id="2-1-生成public-private-rsa-key-pair"><a href="#2-1-生成public-private-rsa-key-pair" class="headerlink" title="2.1 生成public&#x2F;private rsa key pair"></a>2.1 生成public&#x2F;private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “<a class="link" href="mailto:&#x79;&#111;&#117;&#x72;&#x5f;&#101;&#109;&#x61;&#x69;&#x6c;&#x40;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#x6d;">&#x79;&#111;&#117;&#x72;&#x5f;&#101;&#109;&#x61;&#x69;&#x6c;&#x40;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>“，默认会在相应的路径下( &#x2F;your_home_path )生成id_rsa和id_rsa.pub两个文件</p>
+<h4 id="2-生成新的ssh-key"><a href="#2-生成新的ssh-key" class="headerlink" title="2. 生成新的ssh key"></a>2. 生成新的ssh key</h4><h5 id="2-1-生成public-private-rsa-key-pair"><a href="#2-1-生成public-private-rsa-key-pair" class="headerlink" title="2.1 生成public&#x2F;private rsa key pair"></a>2.1 生成public&#x2F;private rsa key pair</h5><p>输入ssh-keygen -t rsa -C “<a class="link" href="mailto:&#x79;&#x6f;&#117;&#114;&#95;&#x65;&#109;&#x61;&#105;&#108;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x79;&#x6f;&#117;&#114;&#95;&#x65;&#109;&#x61;&#105;&#108;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>“，默认会在相应的路径下( &#x2F;your_home_path )生成id_rsa和id_rsa.pub两个文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br><span class="line"># Creates a new ssh key using the provided email</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/your_home_path/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
 <h5 id="2-2-输入passphrase-可以跳过"><a href="#2-2-输入passphrase-可以跳过" class="headerlink" title="2.2 输入passphrase(可以跳过)"></a>2.2 输入passphrase(可以跳过)</h5><p>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些失误</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase): [Type a passphrase]</span><br><span class="line">Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure>
@@ -392,114 +392,27 @@
     <!-- post tools -->
     
         <div class="post-tools right-toc">
-            $li-margin-bottom = 0.8rem
-$post-tool-button-width = 2.5rem
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
 
-.post-tools-container {
-  padding-top var(--component-gap)
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
 
-  .post-tools-list {
-    li {
-      margin-bottom $li-margin-bottom
+        <!-- PC go comment -->
+        
 
-      &:last-child {
-        margin-bottom 0
-      }
-    }
-
-
-    li.tools-item {
-      position relative
-      box-sizing border-box
-      width $post-tool-button-width
-      height $post-tool-button-width
-      color var(--text-color-3)
-      font-size 1.2rem
-      background var(--background-color-1)
-      border-radius 50%
-      box-shadow 2px 2px 5px var(--shadow-color)
-      cursor pointer
-
-      &:hover {
-        box-shadow 2px 2px 8px var(--shadow-hover-color)
-      }
-
-      i {
-        color var(--text-color-3)
-      }
-
-
-      &:hover {
-        color var(--background-color-1)
-        background var(--primary-color)
-
-        i {
-          color var(--background-color-1) !important
-        }
-      }
-
-
-      &.toggle-show-toc {
-        display none
-      }
-
-
-      &.go-to-comments {
-        .post-comments-count {
-          position absolute
-          top 0
-          right -1rem
-          display none
-          align-items center
-          justify-content center
-          box-sizing border-box
-          min-width 1.1rem
-          height 1.1rem
-          padding 0 0.2rem
-          color var(--badge-color)
-          font-size 12px
-          background var(--badge-background-color)
-          border-radius 0.4rem
-
-          +keep-tablet() {
-            display none !important
-          }
-        }
-      }
-    }
-
-
-    li.status-item {
-      width $post-tool-button-width
-      height $post-tool-button-width
-      color var(--text-color-3)
-      font-size 1.6rem
-      cursor pointer
-
-
-      &.post-lock {
-        cursor default
-
-        .fa-lock-open {
-          display none
-          color var(--keep-success-color)
-        }
-
-        &.decrypt {
-          cursor pointer
-
-          .fa-lock-open {
-            display block
-          }
-
-          .fa-lock {
-            display none
-          }
-        }
-      }
-    }
-  }
-}
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
 
         </div>
     

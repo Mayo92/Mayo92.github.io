@@ -293,7 +293,7 @@
 <p>8.打开要激活的软件对应的文本复制，粘贴到软件ActivationCode处，点击Activate</p>
 <h4 id="key-is-invalid"><a href="#key-is-invalid" class="headerlink" title="key is invalid"></a>key is invalid</h4><p>1.进入micool_macconfig，configfile，jetbra，找到ja-netfilter.jar</p>
 <p>2.拖入终端，复制路径</p>
-<p>3.先用临时账户激活 <a class="link" href="mailto:&#x31;&#49;&#x34;&#56;&#54;&#x39;&#54;&#x36;&#51;&#x39;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x31;&#49;&#x34;&#56;&#54;&#x39;&#54;&#x36;&#51;&#x39;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>密码99936869wu</p>
+<p>3.先用临时账户激活 <a class="link" href="mailto:&#x31;&#x31;&#x34;&#x38;&#x36;&#57;&#54;&#54;&#51;&#x39;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;">&#x31;&#x31;&#x34;&#x38;&#x36;&#57;&#54;&#54;&#51;&#x39;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>密码99936869wu</p>
 <p>4.打开软件help，edit custom vm options</p>
 <p>5.输入<br>–add-opens&#x3D;java.base&#x2F;jdk.internal.org.objectweb.asm&#x3D;ALL-UNNAMED<br>–add-opens&#x3D;java.base&#x2F;jdk.internal.org.objectweb.asm.tree&#x3D;ALL-UNNAMED<br>再加一行上面jar包路径，-javaagent:填ja-netfilter.jar的路径&#x3D;jetbrains</p>
 <p>6.重启软件，输入软件对应激活码</p>
@@ -418,114 +418,27 @@
     <!-- post tools -->
     
         <div class="post-tools right-toc">
-            $li-margin-bottom = 0.8rem
-$post-tool-button-width = 2.5rem
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
 
-.post-tools-container {
-  padding-top var(--component-gap)
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
 
-  .post-tools-list {
-    li {
-      margin-bottom $li-margin-bottom
+        <!-- PC go comment -->
+        
 
-      &:last-child {
-        margin-bottom 0
-      }
-    }
-
-
-    li.tools-item {
-      position relative
-      box-sizing border-box
-      width $post-tool-button-width
-      height $post-tool-button-width
-      color var(--text-color-3)
-      font-size 1.2rem
-      background var(--background-color-1)
-      border-radius 50%
-      box-shadow 2px 2px 5px var(--shadow-color)
-      cursor pointer
-
-      &:hover {
-        box-shadow 2px 2px 8px var(--shadow-hover-color)
-      }
-
-      i {
-        color var(--text-color-3)
-      }
-
-
-      &:hover {
-        color var(--background-color-1)
-        background var(--primary-color)
-
-        i {
-          color var(--background-color-1) !important
-        }
-      }
-
-
-      &.toggle-show-toc {
-        display none
-      }
-
-
-      &.go-to-comments {
-        .post-comments-count {
-          position absolute
-          top 0
-          right -1rem
-          display none
-          align-items center
-          justify-content center
-          box-sizing border-box
-          min-width 1.1rem
-          height 1.1rem
-          padding 0 0.2rem
-          color var(--badge-color)
-          font-size 12px
-          background var(--badge-background-color)
-          border-radius 0.4rem
-
-          +keep-tablet() {
-            display none !important
-          }
-        }
-      }
-    }
-
-
-    li.status-item {
-      width $post-tool-button-width
-      height $post-tool-button-width
-      color var(--text-color-3)
-      font-size 1.6rem
-      cursor pointer
-
-
-      &.post-lock {
-        cursor default
-
-        .fa-lock-open {
-          display none
-          color var(--keep-success-color)
-        }
-
-        &.decrypt {
-          cursor pointer
-
-          .fa-lock-open {
-            display block
-          }
-
-          .fa-lock {
-            display none
-          }
-        }
-      }
-    }
-  }
-}
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
 
         </div>
     
