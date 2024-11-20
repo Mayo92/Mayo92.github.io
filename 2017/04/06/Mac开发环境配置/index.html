@@ -210,7 +210,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jul 11 2024 10:04:07 GMT+0800">2024-07-11 10:04:07</span>
+                <span class="datetime" data-updated="Wed Nov 20 2024 20:41:49 GMT+0800">2024-11-20 20:41:49</span>
             </span>
         
 
@@ -277,6 +277,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DIR=&quot;$(cd &quot;$(dirname &quot;$0&quot;)&quot; &amp;&amp; pwd)&quot;</span><br><span class="line">arch -x86_64 /bin/bash $DIR/build/ndk-build &quot;$@&quot;</span><br></pre></td></tr></table></figure>
 
 <p>或者Android studio里下载新版本</p>
+<h2 id="Flutter环境配置"><a href="#Flutter环境配置" class="headerlink" title="Flutter环境配置"></a>Flutter环境配置</h2><h3 id="解压SDK"><a href="#解压SDK" class="headerlink" title="解压SDK"></a>解压SDK</h3><h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">vim .zshrc</span><br><span class="line"></span><br><span class="line">将输入法切换到英文后再按i键切换到编辑模式</span><br><span class="line"></span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line">export PATH_TO_FLUTTER_GIT_DIRECTORY=/Users/yaoluyang/flutter/flutter</span><br><span class="line">export PATH=$PATH_TO_FLUTTER_GIT_DIRECTORY/bin:$PATH</span><br><span class="line"></span><br><span class="line">按esc键退出编辑模式回到命令模式</span><br><span class="line"></span><br><span class="line">最后输入:wq并回车保存并退出vim编辑器</span><br><span class="line"></span><br><span class="line">source .zshrc 命令将.zshrc配置文件中的环境变量加载到shell会话中</span><br><span class="line"></span><br><span class="line">在终端上输入 flutter，下载dart的cache，再执行flutter --version，然后次添加环境</span><br><span class="line"></span><br><span class="line">vim .zshrc</span><br><span class="line"></span><br><span class="line">export PATH=$PATH_TO_FLUTTER_GIT_DIRECTORY/bin/cache/dart-sdk/bin:$PATH</span><br><span class="line"></span><br><span class="line">按esc键退出编辑模式回到命令模式</span><br><span class="line"></span><br><span class="line">最后输入:wq并回车保存并退出vim编辑器</span><br><span class="line"></span><br><span class="line">执行flutter doctor -v进行诊断</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android-Studio配置"><a href="#Android-Studio配置" class="headerlink" title="Android Studio配置"></a>Android Studio配置</h3><ul>
+<li>下载flutter、dart插件</li>
+<li>配置flutter路径，打开dart源码链接</li>
+</ul>
 <h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><h3 id="激活过程"><a href="#激活过程" class="headerlink" title="激活过程"></a>激活过程</h3><p>1.访达，服务，服务偏好</p>
 <p>2.文件和文件夹，新建位于文件夹位置的终端窗口</p>
 <p>3.在桌面，右键激活的文件，新建位于文件夹位置的终端窗口</p>
@@ -287,7 +293,7 @@
 <p>8.打开要激活的软件对应的文本复制，粘贴到软件ActivationCode处，点击Activate</p>
 <h4 id="key-is-invalid"><a href="#key-is-invalid" class="headerlink" title="key is invalid"></a>key is invalid</h4><p>1.进入micool_macconfig，configfile，jetbra，找到ja-netfilter.jar</p>
 <p>2.拖入终端，复制路径</p>
-<p>3.先用临时账户激活 <a class="link" href="mailto:&#x31;&#x31;&#52;&#x38;&#x36;&#57;&#x36;&#54;&#51;&#57;&#64;&#113;&#x71;&#46;&#x63;&#111;&#x6d;">&#x31;&#x31;&#52;&#x38;&#x36;&#57;&#x36;&#54;&#51;&#57;&#64;&#113;&#x71;&#46;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>密码99936869wu</p>
+<p>3.先用临时账户激活 <a class="link" href="mailto:&#x31;&#49;&#x34;&#56;&#54;&#x39;&#54;&#x36;&#51;&#x39;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x31;&#49;&#x34;&#56;&#54;&#x39;&#54;&#x36;&#51;&#x39;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>密码99936869wu</p>
 <p>4.打开软件help，edit custom vm options</p>
 <p>5.输入<br>–add-opens&#x3D;java.base&#x2F;jdk.internal.org.objectweb.asm&#x3D;ALL-UNNAMED<br>–add-opens&#x3D;java.base&#x2F;jdk.internal.org.objectweb.asm.tree&#x3D;ALL-UNNAMED<br>再加一行上面jar包路径，-javaagent:填ja-netfilter.jar的路径&#x3D;jetbrains</p>
 <p>6.重启软件，输入软件对应激活码</p>
@@ -371,7 +377,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">MAC配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">C环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Java环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#M%E8%8A%AF%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">M芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">安装目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">环境变量配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">Android环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">SDK环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.2.</span> <span class="nav-text">NDK环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">4.2.1.</span> <span class="nav-text">查看版本号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A7%E7%89%88NDK%E4%B8%8D%E5%85%BC%E5%AE%B9M%E8%8A%AF%E7%89%87%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.2.</span> <span class="nav-text">旧版NDK不兼容M芯片问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">编译器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E8%BF%87%E7%A8%8B"><span class="nav-number">5.1.</span> <span class="nav-text">激活过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-is-invalid"><span class="nav-number">5.1.1.</span> <span class="nav-text">key is invalid</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">MAC配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">C环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Java环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#M%E8%8A%AF%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">M芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">安装目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">环境变量配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">Android环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">SDK环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.2.</span> <span class="nav-text">NDK环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">4.2.1.</span> <span class="nav-text">查看版本号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A7%E7%89%88NDK%E4%B8%8D%E5%85%BC%E5%AE%B9M%E8%8A%AF%E7%89%87%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.2.</span> <span class="nav-text">旧版NDK不兼容M芯片问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Flutter环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8BSDK"><span class="nav-number">5.1.</span> <span class="nav-text">解压SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="nav-number">5.2.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Studio%E9%85%8D%E7%BD%AE"><span class="nav-number">5.3.</span> <span class="nav-text">Android Studio配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">编译器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E8%BF%87%E7%A8%8B"><span class="nav-number">6.1.</span> <span class="nav-text">激活过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-is-invalid"><span class="nav-number">6.1.1.</span> <span class="nav-text">key is invalid</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -412,27 +418,114 @@
     <!-- post tools -->
     
         <div class="post-tools right-toc">
-            <div class="post-tools-container border-box">
-    <ul class="post-tools-list border-box">
-        <!-- PC encrypt again -->
-        
+            $li-margin-bottom = 0.8rem
+$post-tool-button-width = 2.5rem
 
-        <!-- PC TOC show toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
+.post-tools-container {
+  padding-top var(--component-gap)
 
-        <!-- PC go comment -->
-        
+  .post-tools-list {
+    li {
+      margin-bottom $li-margin-bottom
 
-        <!-- PC full screen -->
-        <li class="tools-item flex-center full-screen">
-            <i class="fa-solid fa-expand"></i>
-        </li>
-    </ul>
-</div>
+      &:last-child {
+        margin-bottom 0
+      }
+    }
+
+
+    li.tools-item {
+      position relative
+      box-sizing border-box
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.2rem
+      background var(--background-color-1)
+      border-radius 50%
+      box-shadow 2px 2px 5px var(--shadow-color)
+      cursor pointer
+
+      &:hover {
+        box-shadow 2px 2px 8px var(--shadow-hover-color)
+      }
+
+      i {
+        color var(--text-color-3)
+      }
+
+
+      &:hover {
+        color var(--background-color-1)
+        background var(--primary-color)
+
+        i {
+          color var(--background-color-1) !important
+        }
+      }
+
+
+      &.toggle-show-toc {
+        display none
+      }
+
+
+      &.go-to-comments {
+        .post-comments-count {
+          position absolute
+          top 0
+          right -1rem
+          display none
+          align-items center
+          justify-content center
+          box-sizing border-box
+          min-width 1.1rem
+          height 1.1rem
+          padding 0 0.2rem
+          color var(--badge-color)
+          font-size 12px
+          background var(--badge-background-color)
+          border-radius 0.4rem
+
+          +keep-tablet() {
+            display none !important
+          }
+        }
+      }
+    }
+
+
+    li.status-item {
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.6rem
+      cursor pointer
+
+
+      &.post-lock {
+        cursor default
+
+        .fa-lock-open {
+          display none
+          color var(--keep-success-color)
+        }
+
+        &.decrypt {
+          cursor pointer
+
+          .fa-lock-open {
+            display block
+          }
+
+          .fa-lock {
+            display none
+          }
+        }
+      }
+    }
+  }
+}
 
         </div>
     
@@ -498,7 +591,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">MAC配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">C环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Java环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#M%E8%8A%AF%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">M芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">安装目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">环境变量配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">Android环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">SDK环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.2.</span> <span class="nav-text">NDK环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">4.2.1.</span> <span class="nav-text">查看版本号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A7%E7%89%88NDK%E4%B8%8D%E5%85%BC%E5%AE%B9M%E8%8A%AF%E7%89%87%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.2.</span> <span class="nav-text">旧版NDK不兼容M芯片问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">编译器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E8%BF%87%E7%A8%8B"><span class="nav-number">5.1.</span> <span class="nav-text">激活过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-is-invalid"><span class="nav-number">5.1.1.</span> <span class="nav-text">key is invalid</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">MAC配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">C环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Java环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#M%E8%8A%AF%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">M芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">安装目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">环境变量配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">Android环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">SDK环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDK%E7%8E%AF%E5%A2%83"><span class="nav-number">4.2.</span> <span class="nav-text">NDK环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">4.2.1.</span> <span class="nav-text">查看版本号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A7%E7%89%88NDK%E4%B8%8D%E5%85%BC%E5%AE%B9M%E8%8A%AF%E7%89%87%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.2.</span> <span class="nav-text">旧版NDK不兼容M芯片问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Flutter环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8BSDK"><span class="nav-number">5.1.</span> <span class="nav-text">解压SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="nav-number">5.2.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Studio%E9%85%8D%E7%BD%AE"><span class="nav-number">5.3.</span> <span class="nav-text">Android Studio配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">编译器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E8%BF%87%E7%A8%8B"><span class="nav-number">6.1.</span> <span class="nav-text">激活过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-is-invalid"><span class="nav-number">6.1.1.</span> <span class="nav-text">key is invalid</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
